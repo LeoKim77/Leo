@@ -1,0 +1,970 @@
+{
+  "bond-001": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "value": -0.06,
+          "sourceLabel": "받는 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "조조",
+      "유비",
+      "손권"
+    ]
+  },
+  "bond-002": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "유비",
+      "관우",
+      "장비"
+    ]
+  },
+  "bond-003": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는책략피해",
+          "value": -0.06,
+          "sourceLabel": "받는 책략 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "유비",
+      "손상향"
+    ]
+  },
+  "bond-004": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는병기피해",
+          "value": -0.06,
+          "sourceLabel": "받는 병기 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "유비"
+    ]
+  },
+  "bond-005": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "유비"
+    ]
+  },
+  "bond-006": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는회복량",
+          "value": 0.08,
+          "sourceLabel": "받는 치유 효과"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "제갈량",
+      "황월영"
+    ]
+  },
+  "bond-007": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는책략피해",
+          "value": -0.08,
+          "sourceLabel": "받는 책략 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "제갈량",
+      "서서"
+    ]
+  },
+  "bond-008": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "value": 0.5,
+          "sourceLabel": "주는 책략 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "제갈량",
+      "주유"
+    ]
+  },
+  "bond-009": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [],
+      "pctStatMods": [
+        {
+          "stat": "지력",
+          "pct": 0.06
+        },
+        {
+          "stat": "통솔",
+          "pct": 0.06
+        }
+      ],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "제갈량"
+    ]
+  },
+  "bond-010": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": {
+        "stats": [
+          "방어관통",
+          "간파"
+        ],
+        "perCount": 0.05
+      }
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "제갈량"
+    ]
+  },
+  "bond-011": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "회심",
+          "value": 0.1,
+          "sourceLabel": "회심 확률"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "관우",
+      "장비",
+      "황충",
+      "조운",
+      "마초"
+    ]
+  },
+  "bond-012": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "방어관통",
+          "value": 0.06,
+          "sourceLabel": "방어 관통"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "관우",
+      "관평",
+      "주창"
+    ]
+  },
+  "bond-013": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "value": 0.08,
+          "sourceLabel": "추격 전법 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "마초"
+    ]
+  },
+  "bond-014": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "value": 0.05,
+          "sourceLabel": "병기 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "마초"
+    ]
+  },
+  "bond-015": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "value": -0.05,
+          "sourceLabel": "받는 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "정보",
+      "황개",
+      "황충"
+    ]
+  },
+  "bond-016": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "황충"
+    ]
+  },
+  "bond-017": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "value": 0.07,
+          "sourceLabel": "주는 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "손견",
+      "손책",
+      "손권",
+      "손상향"
+    ]
+  },
+  "bond-018": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "무력",
+          "value": 20,
+          "mode": "point"
+        }
+      ],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "손권",
+      "감녕"
+    ]
+  },
+  "bond-019": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "value": -0.12,
+          "sourceLabel": "받는 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "손권"
+    ]
+  },
+  "bond-020": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "손권"
+    ]
+  },
+  "bond-021": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "value": 0.04,
+          "sourceLabel": "액티브 전법 발동률"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "주유",
+      "소교"
+    ]
+  },
+  "bond-022": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "심리공격",
+          "value": 0.08,
+          "sourceLabel": "심리 공격"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "주유",
+      "노숙",
+      "여몽"
+    ]
+  },
+  "bond-023": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "value": -0.12,
+          "sourceLabel": "받는 액티브 전법 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "주유",
+      "황개"
+    ]
+  },
+  "bond-024": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "value": 0.08,
+          "sourceLabel": "주는 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "주유"
+    ]
+  },
+  "bond-025": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "value": -0.12,
+          "sourceLabel": "받는 액티브 전법 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "여몽",
+      "노숙"
+    ]
+  },
+  "bond-026": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "무력",
+          "value": 20,
+          "mode": "point"
+        }
+      ],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "태사자",
+      "손책"
+    ]
+  },
+  "bond-027": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "value": 0.08,
+          "sourceLabel": "일반 공격 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "태사자",
+      "감녕"
+    ]
+  },
+  "bond-028": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "지력",
+          "value": 20,
+          "mode": "point"
+        }
+      ],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "소교",
+      "대교"
+    ]
+  },
+  "bond-029": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "value": 20,
+          "mode": "point"
+        }
+      ],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "손책",
+      "대교"
+    ]
+  },
+  "bond-030": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "value": -0.03,
+          "sourceLabel": "받는 피해"
+        }
+      ],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "value": 10,
+          "mode": "point"
+        }
+      ],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "황개",
+      "감녕",
+      "서성",
+      "정보"
+    ]
+  },
+  "bond-031": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "value": 0.12,
+          "sourceLabel": "일반 공격 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "조조",
+      "허저",
+      "전위"
+    ]
+  },
+  "bond-032": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "value": 20,
+          "mode": "point"
+        }
+      ],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "조조"
+    ]
+  },
+  "bond-033": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는책략피해",
+          "value": -0.15,
+          "sourceLabel": "받는 책략 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "조조"
+    ]
+  },
+  "bond-034": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "조조"
+    ]
+  },
+  "bond-035": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "간파",
+          "value": 0.05,
+          "sourceLabel": "간파"
+        },
+        {
+          "stat": "받는피해",
+          "value": -0.04,
+          "sourceLabel": "받는 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "곽가",
+      "정욱",
+      "순욱"
+    ]
+  },
+  "bond-036": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "방어관통",
+          "value": 0.05,
+          "sourceLabel": "방어 관통"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "서황",
+      "허저"
+    ]
+  },
+  "bond-037": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는병기피해",
+          "value": -0.06,
+          "sourceLabel": "받는 병기 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "견희"
+    ]
+  },
+  "bond-038": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": 15,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "하후돈",
+      "하후연",
+      "조인"
+    ]
+  },
+  "bond-039": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "방어관통",
+          "value": 0.06,
+          "sourceLabel": "방어 관통"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "우금",
+      "장합",
+      "서황"
+    ]
+  },
+  "bond-040": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "무력",
+          "value": 20,
+          "mode": "point"
+        }
+      ],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "안량",
+      "문추",
+      "장합"
+    ]
+  },
+  "bond-041": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "value": 20,
+          "mode": "point"
+        }
+      ],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "동탁",
+      "여포",
+      "이유",
+      "화웅"
+    ]
+  },
+  "bond-042": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "value": -0.12,
+          "sourceLabel": "받는 일반공격+추격 피해(통합 근사)"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "여포",
+      "초선"
+    ]
+  },
+  "bond-043": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "회유",
+          "value": 0.1,
+          "sourceLabel": "회유"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "여포"
+    ]
+  },
+  "bond-044": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "value": 0.05,
+          "sourceLabel": "병기 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "여포"
+    ]
+  },
+  "bond-045": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "value": 0.08,
+          "sourceLabel": "액티브 전법 발동률"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "장각",
+      "장보",
+      "장량"
+    ]
+  },
+  "bond-046": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "장각"
+    ]
+  },
+  "bond-047": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는병기피해",
+          "value": -0.06,
+          "sourceLabel": "받는 병기 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "장각"
+    ]
+  },
+  "bond-048": {
+    "parsed": {
+      "buffs": [
+        {
+          "stat": "받는책략피해",
+          "value": -0.03,
+          "sourceLabel": "받는 책략 피해"
+        },
+        {
+          "stat": "받는병기피해",
+          "value": -0.03,
+          "sourceLabel": "받는 병기 피해"
+        }
+      ],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": true,
+    "legacyMembersInRoster": [
+      "원소"
+    ]
+  },
+  "bond-049": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "대교",
+      "견희"
+    ]
+  },
+  "bond-050": {
+    "parsed": {
+      "buffs": [],
+      "statMods": [],
+      "pctStatMods": [],
+      "highestStatBoost": null,
+      "perMemberScale": null
+    },
+    "simulatable": false,
+    "legacyMembersInRoster": [
+      "초선",
+      "채문희",
+      "견희",
+      "손상향"
+    ]
+  }
+}

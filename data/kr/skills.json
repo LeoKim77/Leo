@@ -1,0 +1,4857 @@
+[
+  {
+    "id": "supply-cut",
+    "name": {
+      "ko": "보급 차단",
+      "zhTW": "斷敵糧道",
+      "zhCN": "断敌粮道",
+      "aliases": [
+        "단적량도",
+        "단적양도"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "턴 시작 시 적군 단일 목표에게 2턴 동안 지속되는 군량 고갈을(를) 부여한다. 턴 종료 시 군량 고갈 상태를 보유한 적군에게 110%의 책략 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%96%B7%E6%95%B5%E7%B3%A7%E9%81%93"
+      }
+    ]
+  },
+  {
+    "id": "strong-wind",
+    "name": {
+      "ko": "광풍의 분노",
+      "zhTW": "狂風大作",
+      "zhCN": "狂风大作",
+      "aliases": [
+        "광풍대작"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "2번째와 4번째 턴 시작 시, 전체 적군과 우군이 2턴 동안 폭풍 상태가 된다. 홀수 턴 시작 시, 60% 확률로 전체 적군에게 100%의 책략 피해를 준다. 짝수 턴 시작 시, 60% 확률로 랜덤 적군 단일 목표에게 280%의 책략 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%8B%82%E9%A2%A8%E5%A4%A7%E4%BD%9C"
+      }
+    ]
+  },
+  {
+    "id": "supreme-war",
+    "name": {
+      "ko": "비상한 전략",
+      "zhTW": "上兵伐謀",
+      "zhCN": "上兵伐谋",
+      "aliases": [
+        "상병벌모"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "지휘",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "턴 시작 시, 랜덤 적군 단일 목표에게 120%의 책략 피해를 주며, 비상한 전략의 피해는 턴 수에 따라 매 턴 10% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%B8%8A%E5%85%B5%E4%BC%90%E8%AC%80"
+      }
+    ]
+  },
+  {
+    "id": "hundred-battles",
+    "name": {
+      "ko": "백전불태",
+      "zhTW": "百戰不殆",
+      "zhCN": "百战不殆",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "통솔/지력/무력이 가장 높은 우군 단일 목표가 피해를 받으면 60% 확률로 통솔/지력/무력이 7포인트 증가하며, 8회 중첩될 수 있고, 전투 종료까지 지속된다. 동일한 목표에게 적용될 수 있다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%99%BE%E6%88%B0%E4%B8%8D%E6%AE%86"
+      }
+    ]
+  },
+  {
+    "id": "armor-edge",
+    "name": {
+      "ko": "결사의 다짐",
+      "zhTW": "披堅執銳",
+      "zhCN": "披坚执锐",
+      "aliases": [
+        "피견집예",
+        "강철의 희생"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 시, 랜덤 우군 단일 목표(전열 우선)가 결사 획득: 행동 전, 자신의 병력을 회복하며(치유율 80%, 목표의 지력과 통솔의 영향 받음), 받는 병기 피해가 20% 감소한다. 무력이 가장 높은 우군 단일 목표가 다짐 획득: 일반 공격 후, 50% 확률로 랜덤 적군 단일 목표에게 100%의 병기 피해를 1회 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%8A%AB%E5%A0%85%E5%9F%B7%E9%8A%B3"
+      }
+    ]
+  },
+  {
+    "id": "ready",
+    "name": {
+      "ko": "준비 완료",
+      "zhTW": "蓄勢待發",
+      "zhCN": "蓄势待发",
+      "aliases": [
+        "축세대발",
+        "기세 축적"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 시작 시, 우군 2명의 주는 피해가 7% 증가하며, 중첩될 수 있고, 전투 종료까지 지속된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%93%84%E5%8B%A2%E5%BE%85%E7%99%BC"
+      }
+    ]
+  },
+  {
+    "id": "choose-momentum",
+    "name": {
+      "ko": "인재 기용",
+      "zhTW": "任人擇勢",
+      "zhCN": "任人择势",
+      "aliases": [
+        "임인택세"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "3번째 턴부터 우군 2명은 매 턴 80% 확률로 다음 피해에 회심 또는 묘책(이)가 반드시 발동되며, 해당 회심 또는 묘책 피해가 40% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%BB%BB%E4%BA%BA%E6%93%87%E5%8B%A2"
+      }
+    ]
+  },
+  {
+    "id": "sacrifice",
+    "name": {
+      "ko": "정의의 희생",
+      "zhTW": "捨生取義",
+      "zhCN": "舍生取义",
+      "aliases": [
+        "사생취의"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 후 2턴 동안 전체 우군의 연타 확률이 30% 증가하며, 2턴 동안 무력이 가장 높은 우군 단일 목표가 정신 회복을(를) 획득하고, 자신이 무장해제을(를) 획득한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%8D%A8%E7%94%9F%E5%8F%96%E7%BE%A9"
+      }
+    ]
+  },
+  {
+    "id": "civil-martial",
+    "name": {
+      "ko": "문과 무",
+      "zhTW": "文治武功",
+      "zhCN": "文治武功",
+      "aliases": [
+        "문치무공"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "지휘",
+    "trait": "문무",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 행동 시, 60% 확률로 랜덤 적군 2명에게 100%의 병기와 책략 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%96%87%E6%B2%BB%E6%AD%A6%E5%8A%9F"
+      }
+    ]
+  },
+  {
+    "id": "avoid-edge",
+    "name": {
+      "ko": "허점 공략",
+      "zhTW": "避其銳氣",
+      "zhCN": "避其锐气",
+      "aliases": [
+        "피기예기"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 후 4턴 동안 자신과 랜덤 우군 단일 목표가 받는 피해가 26% 감소한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%81%BF%E5%85%B6%E9%8A%B3%E6%B0%A3"
+      }
+    ]
+  },
+  {
+    "id": "forge-armor",
+    "name": {
+      "ko": "전쟁 종식",
+      "zhTW": "鑄甲銷戈",
+      "zhCN": "铸甲销戈",
+      "aliases": [
+        "주갑소과"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 후 첫 3턴 동안 전체 우군이 턴 시작 시 65% 확률로 방어 1스택을 획득한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%91%84%E7%94%B2%E9%8A%B7%E6%88%88"
+      }
+    ]
+  },
+  {
+    "id": "flood-seven",
+    "name": {
+      "ko": "칠군수몰",
+      "zhTW": "水淹七軍",
+      "zhCN": "水淹七军",
+      "aliases": [
+        "수엄칠군"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "1턴 동안 준비 후 적군 전체에게 2턴 동안 지속되는 홍수을(를) 부여하고, 260%의 병기 피해를 주며, 1턴 동안 지속되는 침묵 또는 무장 해제 중 한 가지를 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%B0%B4%E6%B7%B9%E4%B8%83%E8%BB%8D"
+      }
+    ]
+  },
+  {
+    "id": "break-through",
+    "name": {
+      "ko": "파죽지세",
+      "zhTW": "勢如破竹",
+      "zhCN": "势如破竹",
+      "aliases": [
+        "세여파죽"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.5,
+    "procRateText": "27.5%~ 50%",
+    "text": "2턴 동안 자신의 회심 확률이 20% 증가한다. 전체 적군에게 140%의 병기 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%8B%A2%E5%A6%82%E7%A0%B4%E7%AB%B9"
+      }
+    ]
+  },
+  {
+    "id": "break-army",
+    "name": {
+      "ko": "기습 제압",
+      "zhTW": "破軍襲敵",
+      "zhCN": "破军袭敌",
+      "aliases": [
+        "파군습적"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "1턴 동안 준비 후 전체 적군에게 300%의 병기 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%A0%B4%E8%BB%8D%E8%A5%B2%E6%95%B5"
+      }
+    ]
+  },
+  {
+    "id": "take-banner",
+    "name": {
+      "ko": "압도적 승리",
+      "zhTW": "斬將奪旗",
+      "zhCN": "斩将夺旗",
+      "aliases": [
+        "참장탈기"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "통솔이 가장 낮은 적군 단일 목표에게 220%의 병기 피해를 주며, 2턴 동안 지속되는 군량 고갈을(를) 부여한다. 목표가 군량 고갈 상태를 보유한 경우, 추가로 80%의 병기 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%96%AC%E5%B0%87%E5%A5%AA%E6%97%97"
+      }
+    ]
+  },
+  {
+    "id": "famous",
+    "name": {
+      "ko": "찬란한 위명",
+      "zhTW": "威名顯赫",
+      "zhCN": "威名显赫",
+      "aliases": [
+        "위명현혁"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.5,
+    "procRateText": "27.5%~ 50%",
+    "text": "2턴 동안 자신의 회유이(가) 30% 증가한다. 이후 랜덤 적군 2명에게 220%의 병기 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%A8%81%E5%90%8D%E9%A1%AF%E8%B5%AB"
+      }
+    ]
+  },
+  {
+    "id": "all-directions",
+    "name": {
+      "ko": "팔방전",
+      "zhTW": "戰八方",
+      "zhCN": "战八方",
+      "aliases": [
+        "전팔방",
+        "전방위 공격"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "전체 적군에게 130%의 병기 피해를 주고 2턴 동안 지속되는 위협을(를) 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%88%B0%E5%85%AB%E6%96%B9"
+      }
+    ]
+  },
+  {
+    "id": "ambushes",
+    "name": {
+      "ko": "퇴로 매복",
+      "zhTW": "伏兵四起",
+      "zhCN": "伏兵四起",
+      "aliases": [
+        "복병사기"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "랜덤 적군 단일 목표에게 100%~140%의 병기 피해를 주며, 4회 발동된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%BC%8F%E5%85%B5%E5%9B%9B%E8%B5%B7"
+      }
+    ]
+  },
+  {
+    "id": "encircle-break",
+    "name": {
+      "ko": "포위 돌파",
+      "zhTW": "破陣馳圍",
+      "zhCN": "破阵驰围",
+      "aliases": [
+        "파진치위"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "1턴 동안 준비 후 2턴 동안 랜덤 적군 단일 목표가 받는 피해를 30% 증가시키며, 해당 목표에게 440%의 병기 피해를 준다. 해당 전법은 첫 턴 발동 시 준비할 필요 없다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%A0%B4%E9%99%A3%E9%A6%B3%E5%9C%8D"
+      }
+    ]
+  },
+  {
+    "id": "wind-cloud",
+    "name": {
+      "ko": "구름과 바람",
+      "zhTW": "風卷殘雲",
+      "zhCN": "风卷残云",
+      "aliases": [
+        "풍권잔운"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "랜덤 적군 2명에게 180%의 병기 피해를 주며, 목표가 폭풍 상태면 이번 피해가 25% 증가한다. 자신이 폭풍 상태면 2턴 동안 자신의 피신 확률이 10% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%A2%A8%E5%8D%B7%E6%AE%98%E9%9B%B2"
+      }
+    ]
+  },
+  {
+    "id": "swift-flank",
+    "name": {
+      "ko": "측면 공격",
+      "zhTW": "疾行側擊",
+      "zhCN": "疾行侧击",
+      "aliases": [
+        "질행측격"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "랜덤 적군 단일 목표에게 150%의 병기 피해를 주며, 2턴 동안 지속되는 위협을(를) 부여한다. 2회 발동된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%96%BE%E8%A1%8C%E5%81%B4%E6%93%8A"
+      }
+    ]
+  },
+  {
+    "id": "defeat-like-wind",
+    "name": {
+      "ko": "기풍당당",
+      "zhTW": "克敵如風",
+      "zhCN": "克敌如风",
+      "aliases": [
+        "극적여풍"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "랜덤 적군 단일 목표에게 240%의 병기 피해(후열 우선 선택)를 주며, 2턴 동안 지속되는 폭풍을(를) 부여한다. 목표가 폭풍 상태면 2턴 동안 추가로 목표의 선공을 25포인트 감소시킨다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%85%8B%E6%95%B5%E5%A6%82%E9%A2%A8"
+      }
+    ]
+  },
+  {
+    "id": "fire-feather",
+    "name": {
+      "ko": "화검",
+      "zhTW": "火羽",
+      "zhCN": "火羽",
+      "aliases": [
+        "화우"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "전체 적군에게 150%의 병기 피해를 주고 2턴 동안 지속되는 화공을(를) 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%81%AB%E7%BE%BD"
+      }
+    ]
+  },
+  {
+    "id": "meet-enemy",
+    "name": {
+      "ko": "응전",
+      "zhTW": "迎敵",
+      "zhCN": "迎敌",
+      "aliases": [
+        "영적"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "1턴 동안 준비 후 2턴 동안 자신의 방어 관통이(가) 20% 증가하며, 이후 적군 단일 목표에게 440%의 병기 피해를 준다. 전열 목표를 우선적으로 선택한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%BF%8E%E6%95%B5"
+      }
+    ]
+  },
+  {
+    "id": "raise-banner",
+    "name": {
+      "ko": "민중 봉기",
+      "zhTW": "揭竿而起",
+      "zhCN": "揭竿而起",
+      "aliases": [
+        "게간이기"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "랜덤 적군 2명에게 150%의 병기 피해를 주며, 목표에게 1턴 동안 지속되는 군량 고갈을(를) 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%8F%AD%E7%AB%BF%E8%80%8C%E8%B5%B7"
+      }
+    ]
+  },
+  {
+    "id": "foresight",
+    "name": {
+      "ko": "예측의 신",
+      "zhTW": "料事如神",
+      "zhCN": "料事如神",
+      "aliases": [
+        "요사여신"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "랜덤 적군 2명에게 180%의 책략 피해를 주며, 50% 확률로 1턴 동안 지속되는 침묵을(를) 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%96%99%E4%BA%8B%E5%A6%82%E7%A5%9E"
+      }
+    ]
+  },
+  {
+    "id": "highest-wisdom",
+    "name": {
+      "ko": "최상의 지략",
+      "zhTW": "上智為間",
+      "zhCN": "上智为间",
+      "aliases": [
+        "상지위간"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "랜덤 적군 단일 목표에게 1턴 동안 지속되는 혼란을(를) 부여하며, 300%의 책략 피해를 준다. 목표가 혼란 상태면 추가로 해당 목표에게 150%의 책략 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%B8%8A%E6%99%BA%E7%82%BA%E9%96%93"
+      }
+    ]
+  },
+  {
+    "id": "five-thunder",
+    "name": {
+      "ko": "청천벽력",
+      "zhTW": "五雷轟頂",
+      "zhCN": "五雷轰顶",
+      "aliases": [
+        "오뢰굉정"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "1턴 동안 준비 후 랜덤 적군 단일 목표에게 160%의 책략 피해를 주며, 총 5회 시전한다. 홍수 상태인 목표를 명중할 때마다 해당 피해가 40% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%BA%94%E9%9B%B7%E8%BD%9F%E9%A0%82"
+      }
+    ]
+  },
+  {
+    "id": "unexpected",
+    "name": {
+      "ko": "출기불의",
+      "zhTW": "出其不意",
+      "zhCN": "出其不意",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "랜덤 적군 단일 목표에게 350%의 책략 피해를 주며, 목표가 디버프 상태를 보유한 경우, 이번 피해 수치가 25% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%87%BA%E5%85%B6%E4%B8%8D%E6%84%8F"
+      }
+    ]
+  },
+  {
+    "id": "qimen",
+    "name": {
+      "ko": "기문둔갑",
+      "zhTW": "奇門遁甲",
+      "zhCN": "奇门遁甲",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "1턴 동안 준비 후 전체 적군에게 250%의 책략 피해를 주며, 25% 확률로 1턴 동안 지속되는 공포을(를) 부여한다. 목표가 보유 중인 기타 이상 상태 하나 당 책략 피해 계수가 25% 증가하고, 공포 부여 확률이 8% 증가한다. 5회까지 증가할 수 있다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%A5%87%E9%96%80%E9%81%81%E7%94%B2"
+      }
+    ]
+  },
+  {
+    "id": "fire-camp",
+    "name": {
+      "ko": "화공전술",
+      "zhTW": "烈火焚營",
+      "zhCN": "烈火焚营",
+      "aliases": [
+        "열화분영",
+        "화공 전술"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "전체 적군에게 80%의 책략 피해를 주고, 2턴 동안 지속되는 화공 상태를 부여한다. 이후 다시 분영 3회 진행: 랜덤 적군 단일 목표에게 80%의 책략 피해를 준다. 목표가 폭풍 상태면 분영 피해 수치가 30% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%83%88%E7%81%AB%E7%84%9A%E7%87%9F"
+      }
+    ]
+  },
+  {
+    "id": "calamity",
+    "name": {
+      "ko": "재해 이용",
+      "zhTW": "巧利天災",
+      "zhCN": "巧利天灾",
+      "aliases": [
+        "교리천재",
+        "천재 활용"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "자신을 제외한 전체 적군과 우군에게 140%의 책략 피해를 준다. 적군 목표가 화공 상태면 40% 확률로 1턴 동안 지속되는 혼란을(를) 부여한다. 적군 목표가 홍수 상태면 40% 확률로 1턴 동안 지속되는 무장 해제를(를) 부여한다. 적군 목표가 폭풍 상태면 40% 확률로 1턴 동안 지속되는 침묵을(를) 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%B7%A7%E5%88%A9%E5%A4%A9%E7%81%BD"
+      }
+    ]
+  },
+  {
+    "id": "flood-break",
+    "name": {
+      "ko": "수전 섬멸",
+      "zhTW": "決水破敵",
+      "aliases": [
+        "결수파적"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "랜덤 적군 2명에게 100%의 책략 피해를 주며, 목표가 홍수 상태면 추가로 60%의 책략 피해를 준다. 그렇지 않으면 2턴 동안 지속되는 홍수을(를) 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%B1%BA%E6%B0%B4%E7%A0%B4%E6%95%B5"
+      }
+    ]
+  },
+  {
+    "id": "helpless",
+    "name": {
+      "ko": "속수무책",
+      "zhTW": "束手無策",
+      "zhCN": "束手无策",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "랜덤 적군 단일 목표에게 200%의 책략 피해를 주고, 1턴 동안 지속되는 침묵을(를) 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%9D%9F%E6%89%8B%E7%84%A1%E7%AD%96"
+      }
+    ]
+  },
+  {
+    "id": "good-plan",
+    "name": {
+      "ko": "양책 수립",
+      "zhTW": "籌劃良策",
+      "zhCN": "筹划良策",
+      "aliases": [
+        "주획양책"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "2턴 동안 자신의 지력이 20포인트 증가하며, 랜덤 적군 2명에게 160%의 책략 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%B1%8C%E5%8A%83%E8%89%AF%E7%AD%96"
+      }
+    ]
+  },
+  {
+    "id": "one-plan-win",
+    "name": {
+      "ko": "결정적인 수",
+      "zhTW": "一計決勝",
+      "zhCN": "一计决胜",
+      "aliases": [
+        "일계결승"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.35,
+    "procRateText": "35%",
+    "text": "1턴 동안 준비 후 랜덤 적군 2명에게 220%의 책략 피해를 주며, 2턴 동안 지속되는 허약 상태를 부여한다. 목표가 허약 상태면 추가로 50%의 책략 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%B8%80%E8%A8%88%E6%B1%BA%E5%8B%9D"
+      }
+    ]
+  },
+  {
+    "id": "direct-world",
+    "name": {
+      "ko": "천하평론",
+      "zhTW": "指點乾坤",
+      "zhCN": "指点乾坤",
+      "aliases": [
+        "지점건곤",
+        "천하 지도"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "문무",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "무력이 가장 높은 우군 단일 목표가 적군 전체에게 80% 병기 피해를 주게 하며, 지력이 가장 높은 우군 단일 목표가 적군 전체에게 80%의 책략 피해를 주게 한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%8C%87%E9%BB%9E%E4%B9%BE%E5%9D%A4"
+      }
+    ]
+  },
+  {
+    "id": "civil-military",
+    "name": {
+      "ko": "문무겸비",
+      "zhTW": "文武雙全",
+      "zhCN": "文武双全",
+      "aliases": [
+        "문무쌍전"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "문무",
+    "procRate": 0.65,
+    "procRateText": "65%",
+    "text": "무력이 가장 높은 적군 단일 목표에게 220%의 책략 피해를 주며, 지력이 가장 높은 적군 단일 목표에게 220%의 병기 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%96%87%E6%AD%A6%E9%9B%99%E5%85%A8"
+      }
+    ]
+  },
+  {
+    "id": "loot-fire",
+    "name": {
+      "ko": "방화범",
+      "zhTW": "趁火打劫",
+      "zhCN": "趁火打劫",
+      "aliases": [
+        "진화타겁"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "문무",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "1턴 동안 준비 후 랜덤 적군 2명에게 220%의 책략과 병기 피해를 주며, 목표가 화공 상태면 추가로 2턴 동안 지속되는 혼란 상태를 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%B6%81%E7%81%AB%E6%89%93%E5%8A%AB"
+      }
+    ]
+  },
+  {
+    "id": "strategize",
+    "name": {
+      "ko": "전략 계획",
+      "zhTW": "運籌帷幄",
+      "zhCN": "运筹帷幄",
+      "aliases": [
+        "운추유악",
+        "운주유악"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "보조",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "2턴 동안 랜덤 적군 2명의 무력, 지력, 통솔, 선공이 25 감소한다(지력의 영향 받음), 2회 중첩될 수 있다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%81%8B%E7%B1%8C%E5%B8%B7%E5%B9%84"
+      }
+    ]
+  },
+  {
+    "id": "no-hardship",
+    "name": {
+      "ko": "강철의 의지",
+      "zhTW": "無難之志",
+      "zhCN": "无难之志",
+      "aliases": [
+        "무난지지",
+        "난관 없는 의지"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "보조",
+    "procRate": 0.7,
+    "procRateText": "38.5%~ 70%",
+    "text": "2턴 동안 우군 2명의 연타 확률이 45%, 회유이(가) 20% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%84%A1%E9%9B%A3%E4%B9%8B%E5%BF%97"
+      }
+    ]
+  },
+  {
+    "id": "fresh-breeze",
+    "name": {
+      "ko": "청풍 질주",
+      "zhTW": "清風驅疾",
+      "zhCN": "清风驱疾",
+      "aliases": [
+        "청풍구질"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "치유",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "랜덤 우군 2명의 디버프 상태 1가지를 제거하며, 병력을 회복시킨다(치유율 180%, 지력의 영향 받음).",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%B8%85%E9%A2%A8%E9%A9%85%E7%96%BE"
+      }
+    ]
+  },
+  {
+    "id": "see-fire",
+    "name": {
+      "ko": "예리한 판단",
+      "zhTW": "洞若觀火",
+      "zhCN": "洞若观火",
+      "aliases": [
+        "동약관화",
+        "통약관화"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "치유",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "랜덤 우군 단일 목표의 병력을 회복시키고(치유율 260%, 지력의 영향 받음), 해당 목표에게 2턴 동안 정신 회복을(를) 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%B4%9E%E8%8B%A5%E8%A7%80%E7%81%AB"
+      }
+    ]
+  },
+  {
+    "id": "qingnang",
+    "name": {
+      "ko": "청낭 치료",
+      "zhTW": "青囊急救",
+      "zhCN": "青囊急救",
+      "aliases": [
+        "청낭급구",
+        "청낭치료"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "치유",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "병력이 가장 낮은 우군 단일 목표의 디버프 상태 3가지를 제거하며, 병력을 회복시킨다(치유율 260%, 지력의 영향 받음).",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%9D%92%E5%9B%8A%E6%80%A5%E6%95%91"
+      }
+    ]
+  },
+  {
+    "id": "sing-wine",
+    "name": {
+      "ko": "전장의 노래",
+      "zhTW": "詠歌嘗酒",
+      "zhCN": "咏歌尝酒",
+      "aliases": [
+        "영가상주"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "치유",
+    "procRate": 0.65,
+    "procRateText": "65%",
+    "text": "랜덤 우군 2명의 병력을 회복시키며(치유율 130%, 지력의 영향 받음) 2턴 동안 통솔을 16포인트 증가시킨다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%A9%A0%E6%AD%8C%E5%98%97%E9%85%92"
+      }
+    ]
+  },
+  {
+    "id": "stone-wall",
+    "name": {
+      "ko": "견고한 방어",
+      "zhTW": "堅如磐石",
+      "zhCN": "坚如磐石",
+      "aliases": [
+        "견여반석"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "방어",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "적군 전체를 조롱하고, 2턴 동안 자신이 받는 피해가 30% 감소한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%A0%85%E5%A6%82%E7%A3%90%E7%9F%B3"
+      }
+    ]
+  },
+  {
+    "id": "clear-fields",
+    "name": {
+      "ko": "청야 전술",
+      "zhTW": "堅壁清野",
+      "zhCN": "坚壁清野",
+      "aliases": [
+        "견벽청야"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "방어",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "적군 전체를 조롱하며, 2턴 동안 자신의 통솔이 36포인트 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%A0%85%E5%A3%81%E6%B8%85%E9%87%8E"
+      }
+    ]
+  },
+  {
+    "id": "subdue-soldiers",
+    "name": {
+      "ko": "적군 굴복",
+      "zhTW": "屈人之兵",
+      "zhCN": "屈人之兵",
+      "aliases": [
+        "굴인지병"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "액티브",
+    "trait": "방어",
+    "procRate": 0.4,
+    "procRateText": "22%~ 40%",
+    "text": "랜덤 적군 2명에게 1턴 동안 지속되는 무장 해제를(를) 부여한다. 목표가 무장 해제를 이미 보유한 경우, 2턴 동안 목표가 주는 피해가 15% 감소한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%B1%88%E4%BA%BA%E4%B9%8B%E5%85%B5"
+      }
+    ]
+  },
+  {
+    "id": "speed-first",
+    "name": {
+      "ko": "신속전개",
+      "zhTW": "兵貴神速",
+      "aliases": [
+        "병귀신속"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "일반 공격 후 2턴 동안 자신의 선공이 30포인트 증가하며, 랜덤 적군 2명에게 180%의 병기 피해(추가로 선공의 영향 받음)를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%85%B5%E8%B2%B4%E7%A5%9E%E9%80%9F"
+      }
+    ]
+  },
+  {
+    "id": "thousand-raid",
+    "name": {
+      "ko": "천리기습",
+      "zhTW": "千里突襲",
+      "zhCN": "千里突袭",
+      "aliases": [
+        "천리돌습",
+        "천리 기습"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "일반 공격 후, 선공이 가장 낮은 적군 단일 목표에게 280%의 병기 피해(추가로 양측 선공 차이의 영향 받음)를 주며, 목표가 후열이면 추가로 100%의 병기 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%8D%83%E9%87%8C%E7%AA%81%E8%A5%B2"
+      }
+    ]
+  },
+  {
+    "id": "iron-cavalry",
+    "name": {
+      "ko": "철기병 돌격",
+      "zhTW": "鐵騎橫衝",
+      "zhCN": "铁骑横冲",
+      "aliases": [
+        "철기횡충",
+        "철기 횡충"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "일반 공격 후, 2턴 동안 자신의 회심 확률이 20% 증가하며, 이후 해당 목표에게 400%의 병기 피해를 준다. 발동 여부와 상관없이 해당 피해 계수가 매 턴 25% 감소한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%90%B5%E9%A8%8E%E6%A9%AB%E8%A1%9D"
+      }
+    ]
+  },
+  {
+    "id": "exploit-void",
+    "name": {
+      "ko": "허점 공격",
+      "zhTW": "乘虛而入",
+      "zhCN": "乘虚而入",
+      "aliases": [
+        "승허이입"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "일반 공격 후, 랜덤 적군 단일 목표에게 280%의 병기 피해를 준다. 목표가 허약 상태면 이번 피해 수치가 30% 증가하며, 허약 상태가 아니면 65% 확률로 1턴 동안 지속되는 허약을(를) 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%B9%98%E8%99%9B%E8%80%8C%E5%85%A5"
+      }
+    ]
+  },
+  {
+    "id": "gate-halberd",
+    "name": {
+      "ko": "원문사극",
+      "zhTW": "轅門射戟",
+      "zhCN": "辕门射戟",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.7,
+    "procRateText": "70%",
+    "text": "일반 공격 후, 목표에게 220%의 병기 피해를 부여한다. 자신이 후열이면 75% 확률로 2턴 동안 자신의 액티브 전법 발동률이 10% 증가하며, 3회 중첩할 수 있다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%BD%85%E9%96%80%E5%B0%84%E6%88%9F"
+      }
+    ]
+  },
+  {
+    "id": "attack-unready",
+    "name": {
+      "ko": "무방비 공격",
+      "zhTW": "攻其不備",
+      "zhCN": "攻其不备",
+      "aliases": [
+        "공기불비"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "일반 공격 후, 공격 목표에게 280%의 병기 피해를 주고 1턴 동안 지속되는 침묵을(를) 부여한다. 목표가 침묵 상태면 50% 확률로 1턴 동안 지속되는 공포을(를) 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%94%BB%E5%85%B6%E4%B8%8D%E5%82%99"
+      }
+    ]
+  },
+  {
+    "id": "sweep-army",
+    "name": {
+      "ko": "천군 소탕",
+      "zhTW": "橫掃千軍",
+      "zhCN": "横扫千军",
+      "aliases": [
+        "횡소천군"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "일반 공격 후, 전체 적군에게 120%의 병기 피해를 준다. 시전 성공 후, 추격 전법피해가 8%증가하고, 최대 5회 중첩되며, 전투종료까지 지속된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%A9%AB%E6%8E%83%E5%8D%83%E8%BB%8D"
+      }
+    ]
+  },
+  {
+    "id": "battlefield-raid",
+    "name": {
+      "ko": "순간 돌습",
+      "zhTW": "臨陣突襲",
+      "zhCN": "临阵突袭",
+      "aliases": [
+        "임진돌습"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "일반 공격 후, 2턴 동안 목표의 통솔을 30포인트 감소시키며, 이후 해당 목표에게 250%의 병기 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%87%A8%E9%99%A3%E7%AA%81%E8%A5%B2"
+      }
+    ]
+  },
+  {
+    "id": "disrupt-formation",
+    "name": {
+      "ko": "적진 교란",
+      "zhTW": "亂敵方陣",
+      "zhCN": "乱敌方阵",
+      "aliases": [
+        "난적방진"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.35,
+    "procRateText": "35%",
+    "text": "일반 공격 후, 공격 목표에게 220%의 병기 피해를 주며, 1턴 동안 지속되는 혼란을(를) 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%BA%82%E6%95%B5%E6%96%B9%E9%99%A3"
+      }
+    ]
+  },
+  {
+    "id": "night-raid",
+    "name": {
+      "ko": "야습",
+      "zhTW": "夜襲",
+      "zhCN": "夜袭",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "일반 공격 후, 랜덤 적군 2명에게 120%의 병기 피해를 주며, 자신의 선공이 목표보다 높으면 추가로 50%의 병기 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%A4%9C%E8%A5%B2"
+      }
+    ]
+  },
+  {
+    "id": "raid-granary",
+    "name": {
+      "ko": "창고 기습",
+      "zhTW": "計襲糧倉",
+      "zhCN": "计袭粮仓",
+      "aliases": [
+        "계습량창",
+        "계습양창"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "책략",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "일반 공격 후, 공격 목표에게 300%의 책략 피해를 주며, 2턴 동안 지속되는 군량 고갈을(를) 부여한다. 목표가 이미 군량 고갈 상태를 보유한 경우, 추가로 해당 목표에게 100%의 책략 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%A8%88%E8%A5%B2%E7%B3%A7%E5%80%89"
+      }
+    ]
+  },
+  {
+    "id": "stratagems",
+    "name": {
+      "ko": "넘치는 계책",
+      "zhTW": "奇計迭出",
+      "zhCN": "奇计迭出",
+      "aliases": [
+        "기계질출",
+        "기계첩출"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "추격",
+    "trait": "책략",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "일반 공격 후, 랜덤 적군 단일 목표에게 250%의 책략 피해를 주며, 후열 적군을 우선 선택한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%A5%87%E8%A8%88%E8%BF%AD%E5%87%BA"
+      }
+    ]
+  },
+  {
+    "id": "light-support",
+    "name": {
+      "ko": "경무장",
+      "zhTW": "輕裝馳援",
+      "zhCN": "轻装驰援",
+      "aliases": [
+        "경장치원"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "방어",
+    "procRate": 0.5,
+    "procRateText": "27.5%~ 50%",
+    "text": "일반 공격 후, 랜덤 우군 2명에게 1스택의 방어을(를) 부여하고, 2턴 동안 해당 우군의 받는 피해를 20% 감소시킨다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%BC%95%E8%A3%9D%E9%A6%B3%E6%8F%B4"
+      }
+    ]
+  },
+  {
+    "id": "brave-three-armies",
+    "name": {
+      "ko": "용맹한 삼군",
+      "zhTW": "勇冠三軍",
+      "zhCN": "勇冠三军",
+      "aliases": [
+        "용관삼군"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 회유이(가) 30% 증가하며, 일반 공격 후, 자신이 주는 병기 피해가 6% 증가한다. 6회 중첩될 수 있다. 일반 공격을 3회 누적 시전한 후 랜덤 적군 단일 목표에게 200%의 병기 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%8B%87%E5%86%A0%E4%B8%89%E8%BB%8D"
+      }
+    ]
+  },
+  {
+    "id": "ten-thousand",
+    "name": {
+      "ko": "일인천군",
+      "zhTW": "萬夫莫當",
+      "zhCN": "万夫莫当",
+      "aliases": [
+        "만부막당",
+        "만부부당"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "일반 공격 후, 60% 확률로 공격 목표의 우군 2명에게 이번 일반 공격의 100%의 피해 전달을(를) 준다. 자신의 무력이 목표보다 높으면 추가로 30%의 병기 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%90%AC%E5%A4%AB%E8%8E%AB%E7%95%B6"
+      }
+    ]
+  },
+  {
+    "id": "assault",
+    "name": {
+      "ko": "강습",
+      "zhTW": "強襲",
+      "zhCN": "强袭",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "일반 공격 후, 랜덤 적군 단일 목표에게 이번 일반 공격 80%의 피해 전달을(를) 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%BC%B7%E8%A5%B2"
+      }
+    ]
+  },
+  {
+    "id": "brave-in-danger",
+    "name": {
+      "ko": "위기의 결전",
+      "zhTW": "臨危勇烈",
+      "zhCN": "临危勇烈",
+      "aliases": [
+        "임위용렬"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 반격 확률이 40% 증가하며, 받는 일반 공격 피해가 20% 감소한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%87%A8%E5%8D%B1%E5%8B%87%E7%83%88"
+      }
+    ]
+  },
+  {
+    "id": "pursue-remnants",
+    "name": {
+      "ko": "패잔병 척결",
+      "zhTW": "計逐窮寇",
+      "zhCN": "计逐穷寇",
+      "aliases": [
+        "계축궁구"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "패시브",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "책략 피해를 준 후, 60% 확률로 랜덤 적군 단일 목표에게 일반 공격을 1회 부여하며, 매 턴 최대 1회 발동된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%A8%88%E9%80%90%E7%AA%AE%E5%AF%87"
+      }
+    ]
+  },
+  {
+    "id": "talk-laugh-heart",
+    "name": {
+      "ko": "독설가",
+      "zhTW": "談笑誅心",
+      "zhCN": "谈笑诛心",
+      "aliases": [
+        "담소주심"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "패시브",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "적군이 디버프 상태를 받으면 60% 확률로 랜덤 적군 단일 목표에게 110%의 책략 피해를 주며, 매 턴 최대 2회 발동된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%AB%87%E7%AC%91%E8%AA%85%E5%BF%83"
+      }
+    ]
+  },
+  {
+    "id": "unstoppable",
+    "name": {
+      "ko": "예리한 통찰",
+      "zhTW": "銳不可當",
+      "zhCN": "锐不可当",
+      "aliases": [
+        "예불가당",
+        "예리한 돌격"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 방어 관통이(가) 16%, 주는 피해가 35% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%8A%B3%E4%B8%8D%E5%8F%AF%E7%95%B6"
+      }
+    ]
+  },
+  {
+    "id": "best-strategy",
+    "name": {
+      "ko": "충신의 기재",
+      "zhTW": "王佐之才",
+      "zhCN": "王佐之才",
+      "aliases": [
+        "왕좌지재"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 묘책이(가) 24% 증가한다(지력의 영향 받음). 책략 피해를 준 후, 50% 확률로 2턴 동안 자신의 지력이 10포인트 증가하며, 4회 중첩될 수 있다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%8E%8B%E4%BD%90%E4%B9%8B%E6%89%8D"
+      }
+    ]
+  },
+  {
+    "id": "divine-aid",
+    "name": {
+      "ko": "신의 가호",
+      "zhTW": "如有神助",
+      "zhCN": "如有神助",
+      "aliases": [
+        "여유신조",
+        "신의 도움"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "패시브",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "액티브 전법 발동률이 8% 증가하며, 액티브 전법 피해가 15% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%A6%82%E6%9C%89%E7%A5%9E%E5%8A%A9"
+      }
+    ]
+  },
+  {
+    "id": "valiant-form",
+    "name": {
+      "ko": "듬직한 자태",
+      "zhTW": "驍勇之姿",
+      "aliases": [
+        "효용지자"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "패시브",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 연타 확률이 60% 증가하며, 주는 피해가 10% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%A9%8D%E5%8B%87%E4%B9%8B%E5%A7%BF"
+      }
+    ]
+  },
+  {
+    "id": "support-selfless",
+    "name": {
+      "ko": "전력 지원",
+      "zhTW": "忘私相助",
+      "zhCN": "忘私相助",
+      "aliases": [
+        "망사상조",
+        "헌신 지원"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "치유",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신이 피해를 받기 직전, 50% 확률로 우군 2명의 병력을 회복시킨다(치유율 50%, 지력과 통솔의 영향 받음).",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%BF%98%E7%A7%81%E7%9B%B8%E5%8A%A9"
+      }
+    ]
+  },
+  {
+    "id": "rest-army",
+    "name": {
+      "ko": "평화의 기운",
+      "zhTW": "來好息師",
+      "zhCN": "来好息师",
+      "aliases": [
+        "병효식사",
+        "내호식사"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "패시브",
+    "trait": "치유",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 종료 시, 전열 우군 전체의 병력을 회복한다(치유율 90%, 지력의 영향 받음).",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%BE%86%E5%A5%BD%E6%81%AF%E5%B8%AB"
+      }
+    ]
+  },
+  {
+    "id": "war-sustains-war",
+    "name": {
+      "ko": "전쟁 조달",
+      "zhTW": "以戰養戰",
+      "zhCN": "以战养战",
+      "aliases": [
+        "이전양전"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "패시브",
+    "trait": "치유",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "무력이 20포인트 증가하며, 일반 공격 후, 자신의 병력을 회복한다(치유율 110%, 지력과 무력의 영향 받음).",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%BB%A5%E6%88%B0%E9%A4%8A%E6%88%B0"
+      }
+    ]
+  },
+  {
+    "id": "spring-breeze",
+    "name": {
+      "ko": "지혜의 바람",
+      "zhTW": "如沐春風",
+      "zhCN": "如沐春风",
+      "aliases": [
+        "여목춘풍"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "희귀",
+    "kind": "패시브",
+    "trait": "치유",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 행동 시, 자신의 병력을 회복한다(치유율 140%, 지력과 통솔의 영향 받음).",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%A6%82%E6%B2%90%E6%98%A5%E9%A2%A8"
+      }
+    ]
+  },
+  {
+    "id": "taxation",
+    "name": {
+      "ko": "세금 과징수",
+      "zhTW": "橫徵暴斂",
+      "zhCN": "横征暴敛",
+      "aliases": [
+        "횡정폭렴"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 중 디버프 효과 부여 후, 자신의 병력을 회복하며(치유율 40%, 지력과 통솔의 영향 받음), 2턴 동안 자신이 받는 피해가 10% 감소한다. 4회 중첩될 수 있다. 턴마다 최대 10회 발동된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%A9%AB%E5%BE%B5%E6%9A%B4%E6%96%82"
+      }
+    ]
+  },
+  {
+    "id": "calm",
+    "name": {
+      "ko": "고요한 제압",
+      "zhTW": "以靜制動",
+      "zhCN": "以静制动",
+      "aliases": [
+        "이정제동",
+        "침착 대응"
+      ]
+    },
+    "isUnique": false,
+    "season": "S1",
+    "overseasSeason": "S1",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "홀수 턴에 자신이 일반 공격할 수 없으며, 받는 병기 피해, 받는 일반 공격 피해, 받는 추격 전법 피해가 35% 감소한다. 짝수 턴에 자신이 액티브 전법을 발동할 수 없으며, 받는 책략 피해, 받는 액티브 전법 피해가 35% 감소한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%BB%A5%E9%9D%9C%E5%88%B6%E5%8B%95"
+      }
+    ]
+  },
+  {
+    "id": "overwhelming-win",
+    "name": {
+      "ko": "연전연승",
+      "zhTW": "勝敵益強",
+      "zhCN": "胜敌益强",
+      "aliases": [
+        "승적익강"
+      ]
+    },
+    "isUnique": false,
+    "season": "S2",
+    "overseasSeason": "S2",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "문무",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "병기 피해를 주면 자신의 무력이 16 상승하고, 책략 피해를 주면 지력이 16 상승합니다. 각각 최대 8회 중첩됩니다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%8B%9D%E6%95%B5%E7%9B%8A%E5%BC%B7"
+      }
+    ]
+  },
+  {
+    "id": "break-hardship",
+    "name": {
+      "ko": "요새 함락",
+      "zhTW": "摧堅克難",
+      "zhCN": "摧坚克难",
+      "aliases": [
+        "최견극난"
+      ]
+    },
+    "isUnique": false,
+    "season": "S2",
+    "overseasSeason": "S2",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 회심 확률이 20% 상승합니다. 매 턴 행동 종료 시 랜덤 적군 2명에게 110% 병기 피해를 줍니다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%91%A7%E5%A0%85%E5%85%8B%E9%9B%A3"
+      }
+    ]
+  },
+  {
+    "id": "solid-defense",
+    "name": {
+      "ko": "난공불락",
+      "zhTW": "固若金湯",
+      "zhCN": "固若金汤",
+      "aliases": [
+        "고약금탕",
+        "철벽 방어"
+      ]
+    },
+    "isUnique": false,
+    "season": "S2",
+    "overseasSeason": "S2",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 통솔이 15% 상승합니다. 2턴부터 매 턴 시작 시 60% 확률로 랜덤 적군 2명을 도발하며 2턴 지속됩니다(통솔 영향).",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%9B%BA%E8%8B%A5%E9%87%91%E6%B9%AF"
+      }
+    ]
+  },
+  {
+    "id": "hide-light",
+    "name": {
+      "ko": "도광양회",
+      "zhTW": "韜光養晦",
+      "zhCN": "韬光养晦",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S2",
+    "overseasSeason": "S2",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "모략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "고유 액티브 전법 발동률이 6% 상승합니다(지력 영향). 매 턴 시작 시 자신이 주는 책략 피해가 8% 상승하며 전투 종료까지 중첩됩니다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%9F%9C%E5%85%89%E9%A4%8A%E6%99%A6"
+      }
+    ]
+  },
+  {
+    "id": "odd-even",
+    "name": {
+      "ko": "음과 양",
+      "zhTW": "奇正相生",
+      "zhCN": "奇正相生",
+      "aliases": [
+        "기정상생"
+      ]
+    },
+    "isUnique": false,
+    "season": "S2",
+    "overseasSeason": "S2",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "치료",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "2턴부터 턴 시작 시 65% 확률로 랜덤 우군 2명의 병력을 회복하고(치료율 150%, 지력 영향), 턴 종료 시 65% 확률로 랜덤 적군 2명에게 150% 책략 피해를 줍니다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%A5%87%E6%AD%A3%E7%9B%B8%E7%94%9F"
+      }
+    ]
+  },
+  {
+    "id": "know-people",
+    "name": {
+      "ko": "유현정책",
+      "zhTW": "任人唯賢",
+      "aliases": [
+        "임인유현"
+      ]
+    },
+    "isUnique": false,
+    "season": "S2",
+    "overseasSeason": "S2",
+    "grade": "영웅",
+    "kind": "액티브",
+    "trait": "보조",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "랜덤 우군 2명이 주는 피해가 15%, 통솔이 25 상승합니다. 2턴 지속됩니다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%BB%BB%E4%BA%BA%E5%94%AF%E8%B3%A2"
+      }
+    ]
+  },
+  {
+    "id": "strike-gap",
+    "name": {
+      "ko": "틈새 공략",
+      "zhTW": "乘間投隙",
+      "zhCN": "乘间投隙",
+      "aliases": [
+        "승간투극",
+        "틈새 공격"
+      ]
+    },
+    "isUnique": false,
+    "season": "S2",
+    "overseasSeason": "S2",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "모략",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "일반 공격 후 랜덤 적군 1명에게 1턴간 혼란을 부여하고 120% 책략 피해를 줍니다. 대상이 이미 혼란 상태면 대상 측의 랜덤 우군 1명에게 100% 책략 피해를 줍니다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%B9%98%E9%96%93%E6%8A%95%E9%9A%99"
+      }
+    ]
+  },
+  {
+    "id": "drain-morale",
+    "name": {
+      "ko": "삼군 압도",
+      "zhTW": "三軍奪氣",
+      "zhCN": "三军夺气",
+      "aliases": [
+        "삼군탈기",
+        "삼군 사기 저하"
+      ]
+    },
+    "isUnique": false,
+    "season": "S2",
+    "overseasSeason": "S2",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "보조",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "일반 공격 후 현재 대상의 무력·지력·통솔을 각각 30 감소시킵니다. 2턴 지속되며 최대 5회 중첩됩니다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E4%B8%89%E8%BB%8D%E5%A5%AA%E6%B0%A3"
+      }
+    ]
+  },
+  {
+    "id": "use-talent",
+    "name": {
+      "ko": "적재적소",
+      "zhTW": "知人善任",
+      "zhCN": "知人善任",
+      "aliases": [
+        "지인선임"
+      ]
+    },
+    "isUnique": false,
+    "season": "S2",
+    "overseasSeason": "S2",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "방어",
+    "procRate": 0.75,
+    "procRateText": "75%",
+    "text": "지력이 가장 높은 우군 1명이 받는 피해를 25% 감소시켜 2턴 지속시키고(지력 영향), 저항 1중첩(피해 1회 무효)을 부여합니다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%9F%A5%E4%BA%BA%E5%96%84%E4%BB%BB"
+      }
+    ]
+  },
+  {
+    "id": "relentless-chase",
+    "name": {
+      "ko": "투혼의추격",
+      "zhTW": "窮追不捨",
+      "aliases": [
+        "궁추불사"
+      ]
+    },
+    "isUnique": false,
+    "season": "S2",
+    "overseasSeason": "S2",
+    "grade": "영웅",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 행동 시 60% 확률로 이상 상태가 있는 적군에게 각각 120% 병기 피해를 줍니다. 대상마다 발동 여부를 따로 판정합니다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%AA%AE%E8%BF%BD%E4%B8%8D%E6%8D%A8"
+      }
+    ]
+  },
+  {
+    "id": "u-liu-bei",
+    "name": {
+      "ko": "백성과 함께",
+      "zhTW": "攜民渡江"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "liu-bei",
+    "season": "S1",
+    "kind": "지휘",
+    "trait": "치유",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 시, 전체 우군의 통솔이 18포인트 증가하며(지력의 영향 받음), 매 턴 종료 시, 전체 우군의 병력을 회복한다(치유율 100%, 지력의 영향 받음). 병력이 가장 낮은 우군 단일 목표의 디버프 상태 1가지를 제거하고, 1회 추가로 회복시킨다(치유율 90%, 지력이 영향 받음).",
+    "overseasText": "아군 전체 통솔이 18 증가한다. 매 턴 종료 시 아군 전체 병력을 100% 회복하고, 병력이 가장 낮은 아군의 약화 1개를 정화한 뒤 90% 추가 회복한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%8A%89%E5%82%99"
+      }
+    ]
+  },
+  {
+    "id": "u-cao-cao",
+    "name": {
+      "ko": "난세의 간웅",
+      "zhTW": "亂世奸雄",
+      "zhCN": "乱世奸雄"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "cao-cao",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 시, 전체 우군이 받는 피해가 14% 감소하며(지력의 영향 받음), 6%의 회유와(과) 심리 공격을(를) 획득한다(지력의 영향 받음). 통솔이 가장 높은 우군 단일 목표가 피해를 받을 때마다 30% 확률로 자신의 병력을 회복한다(치유율 40%, 지력과 통솔의 영향 받음).",
+    "overseasText": "전투 시작 시 아군 전체가 받는 모든 피해가 14% 감소하고 병인·모략 흡혈이 6% 증가한다. 통솔이 가장 높은 아군은 피해를 줄 때 30% 확률로 병력 40%를 회복한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%9B%B9%E6%93%8D"
+      }
+    ]
+  },
+  {
+    "id": "u-sun-quan",
+    "name": {
+      "ko": "강동 호거",
+      "zhTW": "虎踞江東"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "sun-quan",
+    "season": "S1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신이 액티브 전법을 학습할 때마다 전체 우군의 액티브 전법 발동률이 7% 증가하고, 받는 병기 피해가 5% 감소한다. 자신이 액티브 전법이 아닌 전법을 학습할 때마다 전체 우군의 28% 연타 확률이 증가하고, 받는 책략 피해가 5%(모든 효과는 자신의 최고 속성 영향을 받음) 감소한다.",
+    "overseasText": "아군이 장착한 능동 전법 1개마다 아군 전체 능동 발동률이 7% 증가하고 받는 병인 피해가 5% 감소한다. 비능동 전법 1개마다 연격이 28% 증가하고 받는 모략 피해가 5% 감소한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E6%AC%8A"
+      }
+    ]
+  },
+  {
+    "id": "u-zhuge-liang",
+    "name": {
+      "ko": "초선차전",
+      "zhTW": "草船借箭",
+      "zhCN": "草船借箭"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhuge-liang",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "지휘",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 심리 공격이(가) 24% 증가하며, 자신이 피해를 주거나 받으면 50% 확률로 랜덤 적군 단일 목표에게 80%의 책략 피해를 주고, 매 턴 5회 발동될 수 있다.",
+    "overseasText": "모략 흡혈이 24% 증가한다. 피해를 주거나 받을 때 50% 확률로 무작위 적 1명에게 모략 피해 80%를 주며 한 턴 최대 5회 발동한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%AB%B8%E8%91%9B%E4%BA%AE"
+      }
+    ]
+  },
+  {
+    "id": "u-guan-yu",
+    "name": {
+      "ko": "화하 진압",
+      "zhTW": "威震華夏"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "guan-yu",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "2턴 동안 자신의 액티브 전법 발동률이 8% 증가하며, 위협 상태를 보유한 적군 1명마다 추가로 3% 증가한다. 이후 전체 적군에게 180%의 병기 피해를 주며, 목표가 제어 상태을(를) 보유하면 목표가 탈주병을(를) 생성하게 한다(무력의 영향 받음).",
+    "overseasText": "2턴 동안 자신의 능동 전법 발동률이 8% 증가하고, 공포 상태 적 1명마다 3%가 추가된다. 적 전체에 병인 피해 160%를 주며, 제어 중인 적에게는 유랑병 상태를 만든다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%97%9C%E7%BE%BD"
+      }
+    ]
+  },
+  {
+    "id": "u-zhao-yun",
+    "name": {
+      "ko": "칠진칠출",
+      "zhTW": "七進七出",
+      "zhCN": "七进七出"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhao-yun",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 피신 확률이 35% 증가하며, 피신 성공 후, 용담 발동: 랜덤 적군 2명에게 즉시 90%의 병기 피해를 주며, 현재 턴에서 다음 용담의 피해 계수가 10% 감소한다. 용담은 매 턴 7회 발동될 수 있다.",
+    "overseasText": "회피가 35% 증가한다. 회피 성공 시 무작위 적 2명에게 병인 피해 90%를 주며 같은 턴 반복 발동마다 계수가 10% 감소한다. 한 턴 최대 7회 발동한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%B6%99%E9%9B%B2"
+      }
+    ]
+  },
+  {
+    "id": "u-ma-chao",
+    "name": {
+      "ko": "기병 돌격",
+      "zhTW": "縱馬橫槍"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "ma-chao",
+    "season": "S1",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 회심 확률이 45% 증가하며, 회심 피해를 준 후, 목표에게 추격 피해 발동: 통솔을 무시하는 60%의 병기 피해(회심 발동 불가)를 1회 준다. 목표가 디버프 상태를 보유한 경우, 추격 피해가 20% 증가하며, 추격 피해는 매 턴 5회 발동될 수 있다.",
+    "overseasText": "회심이 45% 증가한다. 회심 발생 뒤 방어를 무시하는 병인 피해 60%를 추가하며, 대상이 약화 상태면 20%가 더해진다. 한 턴 최대 5회 발동한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%A6%AC%E8%B6%85"
+      }
+    ]
+  },
+  {
+    "id": "u-guo-jia",
+    "name": {
+      "ko": "주도면밀",
+      "zhTW": "算無遺策"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "guo-jia",
+    "season": "S1",
+    "kind": "지휘",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 시, 자신과 지력이 가장 높은 우군의 액티브 전법 발동률이 6% 증가한다. 자신이 액티브 전법 발동 성공 후, 70% 확률로 1회 추가 발동한다(추가로 전법 준비할 필요 없음).",
+    "overseasText": "자신과 지력이 가장 높은 아군의 능동 전법 발동률이 6% 증가한다. 자신이 능동 전법을 발동한 뒤 60% 확률로 다시 발동하며 준비 전법은 준비 과정 없이 효과만 반복한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%83%AD%E5%98%89"
+      }
+    ]
+  },
+  {
+    "id": "u-dian-wei",
+    "name": {
+      "ko": "고대의 악래",
+      "zhTW": "古之惡來"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "dian-wei",
+    "season": "S1",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 반격 확률이 60% 증가하며, 자신이 피해를 받은 후, 2턴 동안 자신의 반격 피해가 20%, 통솔이 20포인트 증가한다. 5회 중첩될 수 있다.",
+    "overseasText": "반격이 60% 증가한다. 피해를 받은 뒤 2턴 동안 반격 피해와 통솔이 각각 20 증가하며 최대 5회 중첩된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%85%B8%E9%9F%8B"
+      }
+    ]
+  },
+  {
+    "id": "u-zhou-yu",
+    "name": {
+      "ko": "기지의 승리",
+      "zhTW": "臨機制勝"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhou-yu",
+    "season": "S1",
+    "kind": "지휘",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 중, 전체 적군과 우군이 이상 상태 효과를 받으면 자신이 70% 확률로 기지 발동: 랜덤 적군 2명에게 즉시 60%의 책략 피해를 준다. 매 턴 기지는 최대 4회 발동되며, 기지 총 4회 발동 후, 전체 우군의 병력을 회복한다(치유율 40%, 지력의 영향 받음).",
+    "overseasText": "어느 부대든 이상 상태를 얻을 때 70% 확률로 적 2명에게 모략 피해 60%를 준다. 한 턴 최대 4회이며, 4회 발동하면 아군 전체 병력을 40% 회복한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%91%A8%E7%91%9C"
+      }
+    ]
+  },
+  {
+    "id": "u-sun-shangxiang",
+    "name": {
+      "ko": "궁희",
+      "zhTW": "弓腰姬"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "sun-shangxiang",
+    "season": "S1",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.65,
+    "procRateText": "65%",
+    "text": "일반 공격 후, 랜덤 적군 단일 목표에게 320%의 병기 피해를 주며, 적에 이성이 1명 있을 때마다 해당 피해 계수가 50% 증가하고, 75% 확률로 후열 목표를 우선적으로 선택한다.",
+    "overseasText": "일반 공격 후 무작위 적군 1명에게 320% 병인 피해를 준다. 이성 적군 1명마다 계수가 30% 증가하고, 75% 확률로 후열을 우선 공격한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E5%B0%9A%E9%A6%99"
+      }
+    ]
+  },
+  {
+    "id": "u-lü-meng",
+    "name": {
+      "ko": "백의도강",
+      "zhTW": "白衣渡江",
+      "zhCN": "白衣渡江"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "lü-meng",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.7,
+    "procRateText": "70%",
+    "text": "랜덤 적군 2명에게 180%의 책략 피해를 주며, 2턴 동안 지속되는 군량 고갈을(를) 부여한다. 목표가 군량 고갈 상태면 추가로 목표에게 80%의 책략 피해를 준다.",
+    "overseasText": "적 2명에게 모략 피해 160%와 2턴 단량을 건다. 이미 단량인 대상에게는 모략 피해 80%를 추가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%91%82%E8%92%99"
+      }
+    ]
+  },
+  {
+    "id": "u-dong-zhuo",
+    "name": {
+      "ko": "압도적 권력",
+      "zhTW": "權傾朝野"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "dong-zhuo",
+    "season": "S1",
+    "kind": "지휘",
+    "trait": "문무",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 행동 시, 전체 적군과 우군의 통솔을 20포인트 탈취하고, 전체 적군에게 60%의 병기와 책략 피해(추가로 통솔의 영향 받음)를 준다. 탈취한 통솔은 턴 종료 시 반환되며, 탈취 효과는 매 턴 10% 감소한다.",
+    "overseasText": "각 부대가 행동할 때 모든 아군과 적군에게서 통솔 20을 빼앗고, 통솔 영향을 받는 병인·모략 피해 60%를 적 전체에 준다. 전투 종료 시 통솔을 돌려주며 강탈량은 매 턴 10%씩 감소한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%91%A3%E5%8D%93"
+      }
+    ]
+  },
+  {
+    "id": "u-lü-bu",
+    "name": {
+      "ko": "무쌍의 용사",
+      "zhTW": "驍勇無前"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "lü-bu",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "22%~ 40%",
+    "text": "전체 적군과 서로 1회의 일반 공격을 진행한다(서로 일반 공격 진행 시 자신의 무장 해제 상태 면역). 자신의 무력 수치가 목표보다 높으면 추가로 100%의 병기 피해를 준다.",
+    "overseasText": "모든 적군과 서로 일반 공격을 1회씩 한다. 이 과정에서 자신은 무장해제에 면역이며, 자신의 무력이 대상보다 높으면 병인 피해 100%를 추가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%91%82%E5%B8%83"
+      }
+    ]
+  },
+  {
+    "id": "u-hua-tuo",
+    "name": {
+      "ko": "마비산",
+      "zhTW": "麻沸散",
+      "zhCN": "麻沸散"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "hua-tuo",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "턴 종료 시, 병력이 가장 낮은 우군 단일 목표가 받는 피해가 16% 감소하며(지력의 영향 받음), 1턴 동안 해당 목표에게 정신 회복을(를) 부여한다. 또한 해당 목표의 병력을 회복시킨다(치유율 240%, 지력의 영향 받음).",
+    "overseasText": "턴 종료 시 아군 중 병력이 가장 낮은 1명이 받는 피해를 16% 낮추고(지력 영향) 1턴 동안 정신 회복을 부여한다. 이어서 병력을 240% 회복한다(지력 영향).",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%8F%AF%E4%BD%97"
+      }
+    ]
+  },
+  {
+    "id": "u-zhang-jiao",
+    "name": {
+      "ko": "황천의 시대",
+      "zhTW": "黃天當立"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhang-jiao",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "1턴 동안 준비 후 전체 적군에게 300%의 책략 피해를 주며, 상대가 보유 중인 디버프 상태 1개당 책략 피해 계수가 30% 증가한다. 3회 증가할 수 있으며, 자신이 황천 효과를 획득한다: 준비 전 전법 발동 시, 50% 확률로 준비를 1턴 건너뛴다. 4턴 지속된다.",
+    "overseasText": "1턴 준비 뒤 적 전체에 모략 피해 300%를 준다. 대상의 약화 1개마다 계수가 30% 증가하며 최대 3개까지 반영된다. 이후 4턴 동안 50% 확률로 준비를 건너뛴다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E8%A7%92"
+      }
+    ]
+  },
+  {
+    "id": "u-diao-chan",
+    "name": {
+      "ko": "폐월",
+      "zhTW": "閉月",
+      "zhCN": "闭月"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "diao-chan",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "패시브",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신이 이성에게 받는 피해가 30% 감소한다(최고 속성의 영향 받음). 매 턴 종료 시, 무력이 가장 높은 우군 단일 목표의 병기 피해가 15% 증가하며, 이번 턴에 초선에게 피해를 준 목표에게 통솔을 무시하는 60%의 병기 피해를 1회 준다(회심 발동 불가).",
+    "overseasText": "이성 장수에게 받는 피해가 25% 감소한다. 턴 종료 시 무력이 가장 높은 아군의 병인 피해가 15% 증가하고, 초선을 공격했던 부대에 방어 무시 병인 피해 45%를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%B2%82%E8%9F%AC"
+      }
+    ]
+  },
+  {
+    "id": "u-taishi-ci",
+    "name": {
+      "ko": "완벽한 사격",
+      "zhTW": "弦無虛發"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "taishi-ci",
+    "season": "S1",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 시작 시, 50% 확률로 축력 1스택 획득: 일반 공격 성공 후, 모든 축력 스택수를 소모하여 추가로 일반 공격을 시전한다(무장 해제 상태 무시, 일반 공격 횟수는 축력 스택수와 동일, 최대 10스택까지 중첩 가능). 자신이 일반 공격을 시전하기 전 이미 무장 해제 또는 일반 공격 불가 상태일 경우 50% 확률로 1스택의 축력을 획득한다.",
+    "overseasText": "매 턴 90% 확률로 충전 1회를 얻고 일반 공격 뒤 충전을 모두 소비해 추가 일반 공격을 한다. 일반 공격 전 무장해제 등으로 행동할 수 없으면 95% 확률로 충전을 얻는다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%A4%AA%E5%8F%B2%E6%85%88"
+      }
+    ]
+  },
+  {
+    "id": "u-da-qiao",
+    "name": {
+      "ko": "국색",
+      "zhTW": "國色",
+      "zhCN": "国色"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "da-qiao",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 시작 시, 랜덤 적군 2명이 받는 피해가 1턴 동안 20% 증가하며, 랜덤 우군 2명의 병력을 회복시킨다(치유율 180%, 지력의 영향 받음).",
+    "overseasText": "매 턴 시작 시 적 2명이 받는 피해를 20% 높이고, 아군 2명의 병력을 180% 회복한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%A4%A7%E5%96%AC"
+      }
+    ]
+  },
+  {
+    "id": "u-lu-su",
+    "name": {
+      "ko": "형주 분할",
+      "zhTW": "劃湘分荊"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "lu-su",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "방어",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "적군과 우군 전체의 랜덤 목표 4개에게 1턴 동안 지속되는 무장 해제을(를) 부여한다. 우군 목표가 선택되면 1턴 동안 목표가 받는 피해가 20% 감소한다(지력의 영향 받음). 적군 목표가 선택되면 1턴 동안 목표가 받는 피해가 20% 증가한다(지력의 영향 받음).",
+    "overseasText": "전체 부대 중 무작위 4명을 고른다. 아군이면 1턴 무장해제와 피해 감소 20%를, 적군이면 1턴 무장해제와 받는 피해 증가 20%를 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%AD%AF%E8%82%85"
+      }
+    ]
+  },
+  {
+    "id": "u-gan-ning",
+    "name": {
+      "ko": "수전의 제왕",
+      "zhTW": "錦帆渠魁"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "gan-ning",
+    "season": "S1",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "일반 공격 피해가 150% 증가하며, 일반 공격 전, 2턴 동안 자신의 무력이 12포인트 증가한다. 4회 중첩될 수 있다.",
+    "overseasText": "일반 공격 피해가 140% 증가한다. 일반 공격 전에 자신의 무력이 10 증가해 2턴 지속되며 최대 4회 중첩된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%94%98%E5%AF%A7"
+      }
+    ]
+  },
+  {
+    "id": "u-xu-chu",
+    "name": {
+      "ko": "백병 혈전",
+      "zhTW": "裸衣血戰"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "xu-chu",
+    "season": "S1",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 시, 자신의 선공과 무력이 20포인트 증가하며, 연타 확률이 100% 증가하고, 통솔이 15포인트 감소한다. 우군 전체가 일반 공격을 4회 누적 시전할 때마다, 우군 전체의 방어 관통이(가) 2% 증가한다(무력의 영향 받음).",
+    "overseasText": "전투 시작 시 자신의 선공과 무력이 각각 20 증가하고 연격률이 100% 증가하는 대신 통솔이 15 감소한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%A8%B1%E8%A4%9A"
+      }
+    ]
+  },
+  {
+    "id": "u-deng-ai",
+    "name": {
+      "ko": "둔전령",
+      "zhTW": "屯田令",
+      "zhCN": "屯田令"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "deng-ai",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "지휘",
+    "trait": "치유",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 후 첫 3턴 동안 전체 적군과 우군이 주는 피해가 35% 감소한다. 매 턴 시작 시, 전체 우군이 받는 회복 효과가 10% 증가하며, 해당 효과는 중첩될 수 있다. 이후 전체 우군의 병력이 회복된다(치유율 100%, 지력의 영향 받음).",
+    "overseasText": "첫 3턴 동안 모든 부대의 피해량이 35% 감소한다. 매 턴 아군 전체의 받는 회복 효과가 10%씩 누적 증가한 뒤 아군 전체 병력을 100% 회복한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%84%A7%E8%89%BE"
+      }
+    ]
+  },
+  {
+    "id": "u-xiahou-dun",
+    "name": {
+      "ko": "강렬",
+      "zhTW": "剛烈",
+      "zhCN": "刚烈"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "xiahou-dun",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신이 피해를 받은 후, 40% 확률로 피해를 준 목표에게 80%의 병기 피해를 주며(추가로 통솔의 영향 받음), 2턴 동안 해당 목표가 주는 피해가 30% 감소한다.",
+    "overseasText": "피해를 받은 뒤 40% 확률로 공격자에게 통솔 영향을 받는 병인 피해 80%를 주고, 2턴 동안 그 대상의 피해량을 30% 낮춘다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%A4%8F%E4%BE%AF%E6%83%87"
+      }
+    ]
+  },
+  {
+    "id": "u-zhen-luo",
+    "name": {
+      "ko": "바람과 눈꽃",
+      "zhTW": "流風回雪"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhen-luo",
+    "season": "S1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 시작 시, 자신의 병력을 회복하며(치유율 140%, 지력의 영향 받음), 우군 1명(후열 우선 선택)이 낙수의 여신을 1턴 동안 획득한다: 자신의 병력을 회복하며(치유율 140%, 지력의 영향 받음), 주는 피해가 12.25% 증가한다. 낙수의 여신 획득 후, 처음으로 일반 공격이 아닌 피해 시전 시 회심 및 묘책이(가) 반드시 발동된다.",
+    "overseasText": "매 턴 시작 시 자신의 병력을 140% 회복한다(지력 영향). 무작위 아군 1명(후열 우선)은 1턴 동안 낙신을 얻어 병력을 140% 회복하고 주는 피해가 25% 증가하며, 낙신 뒤 첫 비일반 공격은 회심과 기책이 반드시 발동한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%94%84%E6%B4%9B"
+      }
+    ]
+  },
+  {
+    "id": "u-zhang-fei",
+    "name": {
+      "ko": "만인의 적",
+      "zhTW": "萬人之敵"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhang-fei",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "전체 적군에게 140%의 병기 피해를 주며, 2턴 동안 지속되는 위협을(를) 부여한다. 목표가 이미 위협 상태를 보유한 경우, 60% 확률로 1턴 동안 지속되는 공포을(를) 부여한다.",
+    "overseasText": "적군 전체에 140% 병인 피해를 준다. 공포 상태인 적은 30% 확률로 1턴 기절하고, 공포가 없는 적은 2턴 동안 공포 상태가 된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E9%A3%9B"
+      }
+    ]
+  },
+  {
+    "id": "u-huang-yueying",
+    "name": {
+      "ko": "목우유마",
+      "zhTW": "木牛流馬",
+      "zhCN": "木牛流马"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "huang-yueying",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "홀수 턴 시작 시, 전체 우군이 주는 피해가 25% 증가하며(지력의 영향 받음), 턴 종료까지 지속된다. 짝수 턴 시작 시, 전체 우군이 병력을 회복한다(치유율 220%, 지력의 영향 받음).",
+    "overseasText": "홀수 턴 시작 시 아군 전체 피해량이 25% 증가하고, 짝수 턴 시작 시 아군 전체 병력을 220% 회복한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%BB%83%E6%9C%88%E8%8B%B1"
+      }
+    ]
+  },
+  {
+    "id": "u-xun-yu",
+    "name": {
+      "ko": "인재 등용",
+      "zhTW": "建計舉人"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "xun-yu",
+    "season": "S1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전체 우군의 묘책와(과) 간파이(가) 25% 증가한다(지력의 영향 받음). 자신이 주는 회복 효과에 30% 확률로(묘책의 영향 받음) 2배 회복 효과가 발동된다.",
+    "overseasText": "아군 전체의 기책과 간파가 15% 증가한다(지력 영향). 자신이 주는 회복은 35% 확률로 2배가 된다(기책 영향).",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%8D%80%E5%BD%A7"
+      }
+    ]
+  },
+  {
+    "id": "u-xiahou-yuan",
+    "name": {
+      "ko": "신속기습",
+      "zhTW": "神速奔襲"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "xiahou-yuan",
+    "season": "S1",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 행동 시, 1턴 동안 자신의 무력 수치가 선공 수치의 40% 만큼 증가한다. 자신보다 선공이 낮은 적군 1명 당 1스택의 신속을 획득한다: 1턴 동안 주는 피해와 회심 확률이 5% 증가하며(선공의 영향 받음), 해당 적군에게 30%의 병기 피해를 준다.",
+    "overseasText": "매 턴 행동할 때 자신의 무력이 선공의 40%만큼 증가해 1턴 지속된다. 선공 판정에서 1위라면 1턴 동안 신속을 얻어 주는 피해와 회심 확률이 25% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%A4%8F%E4%BE%AF%E6%B7%B5"
+      }
+    ]
+  },
+  {
+    "id": "u-cao-ren",
+    "name": {
+      "ko": "고진양번",
+      "zhTW": "固鎮襄樊",
+      "zhCN": "固镇襄樊"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "cao-ren",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "홀수 턴에 자신이 후열로부터 받는 피해가 30% 감소하고(통솔의 영향 받음), 전열로부터 받는 피해가 15% 감소한다(통솔의 영향 받음). 짝수 턴 시작 시, 75% 확률로 랜덤 적군 2명에게 1턴 동안 지속되는 침묵을(를) 부여하며, 확률은 목표마다 개별적으로 판정된다.",
+    "overseasText": "홀수 턴에는 후열이 받는 피해가 30%, 전열이 받는 피해가 15% 감소한다. 짝수 턴 시작 시 대상마다 75% 확률로 적 2명에게 1턴 침묵을 건다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%9B%B9%E4%BB%81"
+      }
+    ]
+  },
+  {
+    "id": "u-xu-shu",
+    "name": {
+      "ko": "겸손한 자세",
+      "zhTW": "折節學問"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "xu-shu",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "문무",
+    "procRate": 0.65,
+    "procRateText": "65%",
+    "text": "랜덤 적군 단일 목표에게 220%의 책략과 병기 피해를 준다. 목표의 무력이 지력보다 높으면 무장 해제을(를) 부여하며, 반대일 경우 침묵을(를) 부여한다. 1턴 지속.",
+    "overseasText": "무작위 적군 1명에게 각각 220% 모략 피해와 병인 피해를 준다. 대상의 무력이 지력보다 높으면 1턴 무장해제, 그렇지 않으면 1턴 전법 봉쇄를 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BE%90%E5%BA%B6"
+      }
+    ]
+  },
+  {
+    "id": "u-huang-zhong",
+    "name": {
+      "ko": "전장 평정",
+      "zhTW": "定軍揚威"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "huang-zhong",
+    "season": "S1",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "일반 공격 후, 2턴 동안 공격 목표의 선공과 무력을 24 감소시킨다(무력의 영향 받음). 이후 디버프 상태를 보유한 적군 목표에게 180%의 병기 피해를 준다.",
+    "overseasText": "일반 공격 뒤 대상의 선공과 무력을 2턴 동안 24 낮춘다. 대상이 이미 약화 상태면 병인 피해 180%를 추가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%BB%83%E5%BF%A0"
+      }
+    ]
+  },
+  {
+    "id": "u-xu-sheng",
+    "name": {
+      "ko": "백리의성",
+      "zhTW": "百里疑城",
+      "zhCN": "百里疑城"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "xu-sheng",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 후 4턴 동안 전체 우군이 피해를 받기 직전 25% 확률로(통솔의 영향 받음) 1스택의 방어을(를) 획득한다. 4번째 턴 시작 시, 자신의 통솔이 40포인트 증가하며, 전체 적군에게 2턴 동안 지속되는 홍수 상태를 부여한다.",
+    "overseasText": "첫 4턴 동안 아군 전체는 피해를 받기 전 25% 확률로 저항 1회를 얻는다. 4턴 시작 시 아군 전체 통솔이 40 증가하고 적 전체에 2턴 수몰을 건다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BE%90%E7%9B%9B"
+      }
+    ]
+  },
+  {
+    "id": "u-cai-wenji",
+    "name": {
+      "ko": "비분시",
+      "zhTW": "悲憤詩",
+      "zhCN": "悲愤诗"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "cai-wenji",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "액티브",
+    "trait": "치유",
+    "procRate": 0.65,
+    "procRateText": "65%",
+    "text": "전체 우군의 병력을 회복하고(치유율 120%, 지력의 영향 받음), 1스택의 방어을(를) 부여한다. 목표가 전열이면 추가로 병력을 회복한다(치유율 50%, 지력의 영향 받음).",
+    "overseasText": "병력이 가장 낮은 아군과 통솔이 가장 높은 아군의 병력을 180% 회복하고 저항 1회를 준다. 이미 저항이 있으면 60%를 추가 회복한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%94%A1%E6%96%87%E5%A7%AC"
+      }
+    ]
+  },
+  {
+    "id": "u-li-ru",
+    "name": {
+      "ko": "군주 시해",
+      "zhTW": "鴆飲毒弑"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "li-ru",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.55,
+    "procRateText": "37%~ 55%",
+    "text": "랜덤 적군 2명에게 2턴 동안 지속되는 짐독 상태를 1스택 부여하며, 우군 2명이 2턴 동안 시해 상태를 획득한다. 시해: 짐독 상태인 목표에게 병기 또는 책략 피해를 준 후, 50% 확률로 목표에게 1스택의 짐독 상태를 부여한다.",
+    "overseasText": "무작위 적군 2명에게 2턴 동안 짐독 1중첩을 부여하고, 아군 2명에게 2턴 동안 짐시를 부여한다. 짐독 대상에게 병인 또는 모략 피해를 주면 50% 확률로 짐독이 1중첩 추가된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%9D%8E%E5%84%92"
+      }
+    ]
+  },
+  {
+    "id": "u-pang-de",
+    "name": {
+      "ko": "필사의 돌격",
+      "zhTW": "陷陣蹈難"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "pang-de",
+    "season": "S1",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 3번째, 5번째 턴에 자신이 행동 시, 2턴 동안 전체 적군의 통솔과 지력을 30포인트 감소시킨다(무력의 영향 받음). 이어서 340%의 병기 피해를 준다.",
+    "overseasText": "3·5턴에 적군 전체의 통솔과 지력을 각각 30 낮춰 2턴 지속시키고(무력 영향), 이어서 340% 병인 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%BE%90%E5%BE%B7"
+      }
+    ]
+  },
+  {
+    "id": "u-zou-shi",
+    "name": {
+      "ko": "눈부신 자태",
+      "zhTW": "顧盼生姿"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zou-shi",
+    "season": "S1",
+    "kind": "패시브",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 시, 전체 우군이 눈짓 획득: 받는 피해, 받는 추격 전법 피해, 받는 액티브 전법 피해가 16% 감소한다. 주씨가 병기 피해를 받은 후, 60% 확률로 전체 우군의 눈짓 효과가 2% 감소하며, 최대 8회 감소한다. 4번째 턴부터, 매 턴 랜덤 우군 2명의 병력을 회복한다(치유율 140%, 지력의 영향 받음).",
+    "overseasText": "전투 시작 시 아군 전체가 고반을 얻어 받는 피해·추격 피해·액티브 피해가 16% 감소한다. 추씨가 병인 피해를 받으면 60% 확률로 이 감쇄가 2%씩 낮아지며 최대 8회 적용된다. 4턴부터 매 턴 무작위 아군 2명의 병력을 140% 회복한다(지력 영향).",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%84%92%E6%B0%8F"
+      }
+    ]
+  },
+  {
+    "id": "u-zhang-bao",
+    "name": {
+      "ko": "도술의 귀재",
+      "zhTW": "妖風大作"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhang-bao",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "랜덤 적군 2명에게 280%의 책략 피해를 주며, 2턴 동안 지속되는 요술와(과) 폭풍 상태를 부여한다. 목표가 요술 상태면 이번 피해가 35% 증가한다.",
+    "overseasText": "무작위 적군 2명에게 280% 모략 피해를 주고 2턴 동안 요술과 폭풍을 부여한다. 이미 요술 상태인 대상은 이번 피해가 35% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E5%AF%B6"
+      }
+    ]
+  },
+  {
+    "id": "u-yuan-shao",
+    "name": {
+      "ko": "군웅 집결",
+      "zhTW": "合聚群雄"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "yuan-shao",
+    "season": "S1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 행동 시, 무력/지력/선공이 가장 높은 우군 단일 목표가 무력/지력/선공이 가장 낮은 적군 단일 목표에게 각각 75%의 병기와 책략 피해를 준다.",
+    "overseasText": "각 부대가 행동할 때 아군 중 무력·지력·선공이 각각 가장 높은 장수가 적군 중 해당 능력이 가장 낮은 대상을 공격해 병인 및 모략 피해 75%를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%A2%81%E7%B4%B9"
+      }
+    ]
+  },
+  {
+    "id": "u-zhang-he",
+    "name": {
+      "ko": "적진 돌파",
+      "zhTW": "大破街亭"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhang-he",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "자신의 방어 관통이(가) 5% 증가하며, 전투 종료까지 지속되고, 4회 중첩될 수 있다. 이후 랜덤 적군 2명에게 220%의 병기 피해를 주며, 65% 확률로 1턴 동안 지속되는 무장 해제을(를) 부여한다. 목표가 이미 무장 해제 상태면 이번 피해가 30% 증가한다.",
+    "overseasText": "자신의 방어 관통이 5% 증가하며 전투 종료까지 최대 4회 중첩된다. 이어서 무작위 적군 2명에게 220% 병인 피해를 주고 65% 확률로 1턴 무장해제를 부여한다. 이미 무장해제 상태면 피해가 30% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E9%83%83"
+      }
+    ]
+  },
+  {
+    "id": "u-xiao-qiao",
+    "name": {
+      "ko": "천향",
+      "zhTW": "天香",
+      "zhCN": "天香"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "xiao-qiao",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "액티브",
+    "trait": "치유",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "랜덤 적군 2명에게 1턴 동안 지속되는 허약을(를) 부여한다. 랜덤 우군 2명의 병력을 회복시킨다(치유율 250%, 지력의 영향 받음).",
+    "overseasText": "적 2명에게 1턴 허약을 부여하고 아군 2명의 병력을 250% 회복한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%B0%8F%E5%96%AC"
+      }
+    ]
+  },
+  {
+    "id": "u-sun-ce",
+    "name": {
+      "ko": "강동 제패",
+      "zhTW": "制霸江東"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "sun-ce",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.65,
+    "procRateText": "65%",
+    "text": "적군 랜덤 2명에게 250%의 병기 피해를 주고, 자신과 랜덤 우군 단일 목표의 병력을 회복한다(치유율 65%, 무력의 영향 받음).",
+    "overseasText": "적 2명에게 병인 피해 200%를 주며 후열이면 50%가 추가된다. 자신의 병력을 100% 회복하고 전열이면 회복 계수가 30% 추가된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E7%AD%96"
+      }
+    ]
+  },
+  {
+    "id": "u-cheng-yu",
+    "name": {
+      "ko": "용맹의 화신",
+      "zhTW": "勇冠賁育"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "cheng-yu",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "랜덤 적군 단일 목표가 탈주병을(를) 생성하게 한다(지력의 영향 받음). 이후 해당 적군에게 360%의 책략 피해를 주며, 목표가 전열이면 피해 계수가 80% 증가한다.",
+    "overseasText": "무작위 적군 1명에게 360% 모략 피해를 준다. 대상이 전열이면 도주병을 추가로 발생시킨다(지력 영향).",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%A8%8B%E6%98%B1"
+      }
+    ]
+  },
+  {
+    "id": "u-yu-jin",
+    "name": {
+      "ko": "침착한 지휘",
+      "zhTW": "持軍毅重"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "yu-jin",
+    "season": "S1",
+    "kind": "패시브",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 통솔이 30포인트 증가한다. 매 턴 처음 피해를 받은 후, 랜덤 적군 2명이 받는 피해가 10% 증가하며(통솔의 영향 받음), 60% 확률로 공격자에게 2턴 동안 지속되는 무장 해제 효과를 부여한다.",
+    "overseasText": "자신의 통솔이 30 증가한다. 매 턴 처음 피해를 받은 뒤 무작위 적군 2명이 받는 피해를 8% 높이고(통솔 영향), 60% 확률로 공격자를 2턴 동안 무장해제한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E4%BA%8E%E7%A6%81"
+      }
+    ]
+  },
+  {
+    "id": "u-xu-huang",
+    "name": {
+      "ko": "승승장구",
+      "zhTW": "長驅直入"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "xu-huang",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "랜덤 적군 단일 목표에게 350%의 병기 피해를 주며, 1턴 동안 지속되는 침묵을(를) 부여한다. 목표가 이미 침묵 상태를 보유 중이거나 병력이 가장 낮은 적군 단일 목표면 이번 피해 수치가 30% 증가한다.",
+    "overseasText": "무작위 적군 1명에게 350% 병인 피해를 주고 1턴 동안 전법 봉쇄를 부여한다. 대상이 이미 전법 봉쇄 상태이거나 적군 중 병력이 가장 낮으면 이번 피해가 30% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BE%90%E6%99%83"
+      }
+    ]
+  },
+  {
+    "id": "u-guan-ping",
+    "name": {
+      "ko": "청룡 출격",
+      "zhTW": "龍吟四海"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "guan-ping",
+    "season": "S1",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신이 병기 피해를 준 후, 75% 확률로 용의 포효 발동: 목표에게 2턴 동안 지속되는 위협을(를) 부여하며, 목표가 위협 상태면 목표에게 100%의 병기 피해를 주는 것으로 변경된다. 매 턴 용의 포효가 4회 발동될 수 있다.",
+    "overseasText": "병인 피해를 준 뒤 75% 확률로 용음을 발동한다. 대상에게 2턴 공포를 부여하며, 이미 공포 상태라면 대신 100% 병인 피해를 준다. 한 턴 최대 4회 발동한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%97%9C%E5%B9%B3"
+      }
+    ]
+  },
+  {
+    "id": "u-cheng-pu",
+    "name": {
+      "ko": "흥왕의 위업",
+      "zhTW": "興王定霸"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "cheng-pu",
+    "season": "S1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전체 우군에게 병기 피해를 준 후, 60% 확률로 병력을 회복한다(치유율 40%, 지력과 통솔의 영향 받음). 책략 피해를 준 후, 60% 확률로 2턴 동안 받는 피해가 14% 감소하며, 2회 중첩될 수 있다.",
+    "overseasText": "아군이 병인 피해를 준 뒤 60% 확률로 병력을 40% 회복한다(지력·통솔 영향). 모략 피해를 준 뒤에는 60% 확률로 받는 피해가 14% 감소해 2턴 지속되며 최대 2회 중첩된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%A8%8B%E6%99%AE"
+      }
+    ]
+  },
+  {
+    "id": "u-zhou-cang",
+    "name": {
+      "ko": "충성과 용맹",
+      "zhTW": "忠烈勇武"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhou-cang",
+    "season": "S1",
+    "kind": "패시브",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 행동 시 자신의 병력을 회복한다(치유율 200%, 지력과 통솔의 영향 받음). 45% 확률로 랜덤 적군 2명에게 2턴 동안 지속되는 조롱 및 위협 상태를 부여한다.",
+    "overseasText": "매 턴 행동할 때 자신의 병력을 200% 회복한다(지력·통솔 영향). 40% 확률로 무작위 적군 2명에게 도발과 공포를 2턴 동안 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%91%A8%E5%80%89"
+      }
+    ]
+  },
+  {
+    "id": "u-yan-liang",
+    "name": {
+      "ko": "남다른 완력",
+      "zhTW": "膂力過人"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "yan-liang",
+    "season": "S1",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "일반 공격 후, 현재 공격 목표에게 150%의 병기 피해를 주며, 목표의 무력이 자신보다 낮으면 추가로 70%의 병기 피해를 준다.",
+    "overseasText": "일반 공격 후 현재 대상에게 150% 병인 피해를 준다. 대상의 무력이 자신보다 낮으면 70% 병인 피해를 추가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%A1%8F%E8%89%AF"
+      }
+    ]
+  },
+  {
+    "id": "u-wen-chou",
+    "name": {
+      "ko": "치열한 교전",
+      "zhTW": "交鋒震威"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "wen-chou",
+    "season": "S1",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "일반 공격 후, 2턴 동안 백발백중 상태를 획득하며, 이후 병력이 가장 낮은 적군 단일 목표에게 280%의 병기 피해를 준다.",
+    "overseasText": "일반 공격 후 2턴 동안 필중을 얻고, 적군 중 병력이 가장 낮은 1명에게 280% 병인 피해를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%96%87%E9%86%9C"
+      }
+    ]
+  },
+  {
+    "id": "u-zhang-liang",
+    "name": {
+      "ko": "괴술",
+      "zhTW": "妖武"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhang-liang",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.65,
+    "procRateText": "65%",
+    "text": "2턴 동안 자신의 회유와(과) 피신 확률이 25% 증가하며, 이후 랜덤 적군 2명에게 220%의 병기 피해를 주고, 2턴 동안 지속되는 요술을(를) 부여한다.",
+    "overseasText": "자신의 병인 흡혈과 회피율이 각각 25% 증가해 2턴 지속된다. 이어서 무작위 적군 2명에게 220% 병인 피해를 주고 2턴 동안 요술을 부여한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E6%A2%81"
+      }
+    ]
+  },
+  {
+    "id": "u-huang-gai",
+    "name": {
+      "ko": "고육지계",
+      "zhTW": "苦肉計"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "huang-gai",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "방어",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "2턴 동안 자신이 받는 피해가 30% 감소한다(통솔의 영향 받음). 지력이 가장 높은 우군이 자신에게 60%의 병기 피해를 주며, 랜덤 적군 2명에게 220%의 책략 피해를 주고, 2턴 동안 지속되는 화공을(를) 부여한다.",
+    "overseasText": "2턴 동안 받는 피해가 30% 감소한다. 지력이 가장 높은 아군이 황개에게 병인 피해 60%를 준 뒤, 적 2명에게 모략 피해 220%와 2턴 화염을 건다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%BB%83%E8%93%8B"
+      }
+    ]
+  },
+  {
+    "id": "u-hua-xiong",
+    "name": {
+      "ko": "장군의 무용",
+      "zhTW": "耀武揚威"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "hua-xiong",
+    "season": "S1",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "2턴 동안 자신에게 침묵을(를) 부여한다. 랜덤 적군 단일 목표에게 250%의 병기 피해와 일반 공격을 1회 시전한다(무장 해제 상태 무시).",
+    "overseasText": "자신이 2턴 동안 전법 봉쇄 상태가 된다. 무작위 적군 1명에게 250% 병인 피해와 일반 공격 1회를 주며, 이 일반 공격은 무장해제를 무시한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%8F%AF%E9%9B%84"
+      }
+    ]
+  },
+  {
+    "id": "u-sun-jian",
+    "name": {
+      "ko": "무열파로",
+      "zhTW": "武烈破虜",
+      "zhCN": "武烈破虏"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "sun-jian",
+    "season": "S1",
+    "overseasSeason": "S1",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "2턴 동안 랜덤 적군 단일 목표의 통솔을 40포인트 감소시키며(무력 또는 통솔 중 높은 수치의 영향 받음), 250%의 병기 피해를 준다(추가로 통솔의 영향 받음). 그리고 1턴 동안 지속되는 공포을(를) 부여하고, 목표의 통솔이 자신보다 높으면 통솔 감소 효과를 50% 증가한다.",
+    "overseasText": "무작위 적군 1명의 통솔을 40 낮춰 2턴 지속시키고(무력·통솔 중 높은 값 영향), 250% 병인 피해를 준다. 대상 통솔이 자신보다 낮으면 1턴 기절시키고, 높으면 통솔 감소량이 50% 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E5%A0%85"
+      }
+    ]
+  },
+  {
+    "id": "u-sima-yi",
+    "name": {
+      "ko": "매의 응시",
+      "zhTW": "鷹視狼顧",
+      "zhCN": "鹰视狼顾"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "sima-yi",
+    "season": "S2",
+    "overseasSeason": "S3",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "포석을 진행하여 포진 상태 1가지를 랜덤으로 획득하며(다른 상태 우선 획득), 전투 종료까지 지속된다. 50% 확률로(지력의 영향 받음) 1회 재 포석한다. 랜덤 적군 2명에게 50%의 책략 피해를 주며, 포석으로 제공되는 상태 1가지 당 책략 피해 계수가 20%증가한다, 8회까지 증가할 수 있다.",
+    "overseasText": "무작위 고유 진법 이익 1개를 얻고 50% 확률로 하나를 더 얻는다. 적 2명에게 모략 피해 50%를 주며, 보유한 진법 이익마다 계수가 20% 증가한다. 최대 8개까지 반영된다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%8F%B8%E9%A6%AC%E6%87%BF"
+      }
+    ]
+  },
+  {
+    "id": "u-yue-jin",
+    "name": {
+      "ko": "선봉정신",
+      "zhTW": "每戰先登"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "yue-jin",
+    "season": "S2",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작시, 자신과 랜덤 우군 1명(같은 열 우선)이 선등을 획등한다. 선등: 선공 30포인트 증가, 주는 피해 14% 증가(선공의 영향 받음), 받는 피해가 14% 감소한다(선공의 영향 받음). 전투 첫 2턴동안 자신이 전열이면 선등 효과가 30% 증가한다.",
+    "overseasText": "자신과 같은 열의 무작위 아군 1명이 선공 30, 피해량 14%, 피해 감소 14%를 얻는다. 첫 2턴에는 전열 대상 효과가 30% 추가 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%A8%82%E9%80%B2"
+      }
+    ]
+  },
+  {
+    "id": "u-zhang-liao",
+    "name": {
+      "ko": "바람방랑자",
+      "zhTW": "風襲逍遙"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhang-liao",
+    "season": "S2",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "관통이(가) 20%증가한다. 매 턴 시작시, 60%확률(이미 손실된 병력의 영향 받음)로 1턴 동안 정신회복을 획븍한다. 자신이 전열이면 피해를 준 후, 랜덤 적군 단일 목표에서 50%의 피해전달을 주며 후열 목표를 우선적으로 선택한다.",
+    "overseasText": "병인 관통이 20% 증가한다. 매 턴 시작 시 60% 확률로 명료를 얻고, 전열에 있을 때 피해를 주면 후열을 우선해 50%의 전이 피해를 추가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E9%81%BC"
+      }
+    ]
+  },
+  {
+    "id": "u-jia-xu",
+    "name": {
+      "ko": "현묘한계책",
+      "zhTW": "詭道玄機"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "jia-xu",
+    "season": "S2",
+    "kind": "지휘",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 시작시, 90% 확률로 랜덤 적군 단일 목표와 우군 1명에게 2턴 동안 지속되는 혼란을 부여한다. 적군 목표가 이미 혼란 상태일 경우, 추가로 300%의 책략 피해를 준다. 우군 목표가 이미 혼란 상태일 경우, 추가로 해당 목표와 자신의 병력을 회복한다. (치유율 110% 지력의 영향 받음)",
+    "overseasText": "매 턴 시작 시 무작위 적군과 아군 1명에게 2턴 혼란을 건다. 이미 혼란인 적은 모략 피해 300%를 받고, 이미 혼란인 아군과 자신은 110% 회복한다. 아군 오인 피해는 60% 감소한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%B3%88%E8%A9%A1"
+      }
+    ]
+  },
+  {
+    "id": "u-gan-furen",
+    "name": {
+      "ko": "황심의 가호",
+      "zhTW": "皇思淑仁"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "gan-furen",
+    "season": "S2",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 시작 시, 60% 확률(지력의 영향 받음)로 2턴 동안 랜덤 아군 2~3명의 피신율이 18%증가 한다(지력의 영향 받음). 매 턴 종료 시, 랜덤 아군 2명의 병력을 회복시킨다.(치유율 120%)",
+    "overseasText": "매 턴 시작 시 60% 확률로 아군 2명의 회피를 2턴 동안 18% 높인다. 턴 종료 시 아군 2명의 병력을 120% 회복한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%94%98%E5%A4%AB%E4%BA%BA"
+      }
+    ]
+  },
+  {
+    "id": "u-lu-xun",
+    "name": {
+      "ko": "화소연영",
+      "zhTW": "火燒連營",
+      "zhCN": "火烧连营"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "lu-xun",
+    "season": "S2",
+    "overseasSeason": "S2",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "랜덤 적군 단일 목표에게 2턴 동안 지속되는 화공을 부여한다. 이후 화공 상태를 보유한 적군 목표에게 2턴 동안 지속되는 연소 상태를 1스택 부여하며, 220%의 책략피해를 주고, 40%확률로 (지력의 영향 받음) 추가로 1스택의 연소 상태를 부여한다.",
+    "overseasText": "적 1명에게 2턴 화염을 건다. 이미 화염이면 연소 중첩을 더하고 모략 피해 220%를 주며, 40% 확률로 연소를 한 번 더 추가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%99%B8%E9%81%9C"
+      }
+    ]
+  },
+  {
+    "id": "u-zhou-tai",
+    "name": {
+      "ko": "불굴의 의지",
+      "zhTW": "不屈意志",
+      "zhCN": "不屈意志"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhou-tai",
+    "season": "S2",
+    "overseasSeason": "S3",
+    "kind": "패시브",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "우군이 현재 병력의 10%보다 높은 피해를 받기 직전, 80%확률(통솔의 영향 받음)로 우군을 위해 해당 피해를 부담한다. 매 턴 각 우군마다 최대 3회 부담할 수 있으며, 부담하는 피해가 50%감소한다(통솔의 영향 받음). 자신이 곧 사망할 때 생존한 우군이 있으면 100%확률로 불굴이 발동된다. 불굴: 치명적인 피해를 1회 면역한다. 불굴이 발동될 때마다 다음 발동률이 10%감소한다.",
+    "overseasText": "아군이 현재 병력의 10%를 넘는 피해를 받을 때 80% 확률로 대신 받는다. 아군 1명당 매 턴 3회이며 대신 받는 피해는 50% 감소한다. 아군이 살아 있으면 치명 피해를 100% 확률로 버티되 발동할 때마다 다음 확률이 10% 낮아진다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%91%A8%E6%B3%B0"
+      }
+    ]
+  },
+  {
+    "id": "u-chen-gong",
+    "name": {
+      "ko": "지략전",
+      "zhTW": "智令從計"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "chen-gong",
+    "season": "S2",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 시작 시, 무력이 가장 높은 아군 단일 목표가 1턴 동안 종계를 획득한다. 종계: 받는 책략 피해가 15%감소하며(지력의 영향 받음), 추격 전법 발동 후, 랜덤 적군 단일 목표에게 140%의 책략 피해를 준다.(목표의 무력의 영향 받음).",
+    "overseasText": "매 턴 시작 시 무력이 가장 높은 아군이 받는 모략 피해를 15% 낮춘다. 그 아군이 추격 전법을 발동하면 무작위 적 1명에게 모략 피해 140%를 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%99%B3%E5%AE%AE"
+      }
+    ]
+  },
+  {
+    "id": "u-ma-yunlu",
+    "name": {
+      "ko": "치명적 미모",
+      "zhTW": "紅妝繚亂"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "ma-yunlu",
+    "season": "S2",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.7,
+    "procRateText": "70%",
+    "text": "일반 공격 후, 공격 목표에게 2턴 동안 지속되는 위협을 부여하며, 220%의 병기 피해를 준다. 80%확률로 추가로 220%의 병기 피해를 준다.",
+    "overseasText": "일반 공격 뒤 대상에게 2턴 공포를 걸고 병인 피해 220%를 준다. 80% 확률로 같은 계수의 병인 피해를 한 번 더 준다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%A6%AC%E9%9B%B2%E7%A5%BF"
+      }
+    ]
+  },
+  {
+    "id": "u-fa-zheng",
+    "name": {
+      "ko": "간파력",
+      "zhTW": "睹事知機"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "fa-zheng",
+    "season": "S2",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전체 적군에게 도사를 부여한다. 도사: 다음에 일반 공격 외의 다른 피해를 받은 후, 공격자의 병력을 회복시키며(치유율 80%, 지력의 영향 받음), 추가로 법정으로부터 120%의 책략 피해를 받는다.",
+    "overseasText": "적군 전체에 도사지기를 부여한다. 대상이 다음 비일반 공격 피해를 받은 뒤 공격자의 병력을 60% 회복시키고(지력 영향), 법정에게서 120% 모략 피해를 추가로 받는다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%B3%95%E6%AD%A3"
+      }
+    ]
+  },
+  {
+    "id": "u-pang-tong",
+    "name": {
+      "ko": "연환계",
+      "zhTW": "連環計",
+      "zhCN": "连环计"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "pang-tong",
+    "season": "S2",
+    "overseasSeason": "S3",
+    "kind": "지휘",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 간파가 20%증가한다(지력의 영향 받음). 홀수 턴에 전체에 1턴 동안 연환을 부여한다. 연환: 피해를 받으면 우군 2명이 25%(지력의 영향 받음)의 피해 전달을 받는다.",
+    "overseasText": "모략 관통이 20% 증가한다. 홀수 턴에는 적 전체가 1턴 연환 상태가 되며, 피해를 받은 대상의 다른 아군 2명이 그 피해의 25%를 전이 피해로 받는다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%BE%90%E7%B5%B1"
+      }
+    ]
+  },
+  {
+    "id": "u-tian-feng",
+    "name": {
+      "ko": "지략 방어",
+      "zhTW": "薦計阻敵"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "tian-feng",
+    "season": "S2",
+    "kind": "액티브",
+    "trait": "보조",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "통솔이 가장 높은 아군 단일 목표가 1스택의 방어를 획득하고, 무력, 지력, 선공이 40포인트 증가한다 (최고 속성의 영향 받음). 통솔이 가장 낮은 적군 단일 목표의 무력, 지력, 선공이 40포인트 감소한다(최고 속성의 영향 받음). 해당 효과는 2턴 동안 지속된다.",
+    "overseasText": "통솔이 가장 높은 아군에게 저항 1회와 2턴 동안 무력·지력·선공 40을 준다. 통솔이 가장 낮은 적은 같은 기간 무력·지력·선공이 40 감소한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%94%B0%E8%B1%90"
+      }
+    ]
+  },
+  {
+    "id": "u-gongsun-zan",
+    "name": {
+      "ko": "국경의 장수",
+      "zhTW": "威震塞外"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "gongsun-zan",
+    "season": "S2",
+    "kind": "추격",
+    "trait": "문무",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "일반 공격 후, 2턴 동안 자신의 피신율이 24%증가하며(선공의 영향 받음), 이후 랜덤 적군 2명에게 140%의 병기와 책략 피해를 준다.ㅏ (추가로 양측 선공 차이의 영향 받음).",
+    "overseasText": "일반 공격 뒤 자신의 회피가 2턴 동안 24% 증가한다. 적 2명에게 병인 및 모략 피해 140%를 주며 자신과 대상의 선공 차이에 따라 계수가 증가한다.",
+    "clauses": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 고유 전법",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%85%AC%E5%AD%AB%E7%93%9A"
+      }
+    ]
+  }
+]

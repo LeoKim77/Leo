@@ -1,0 +1,139 @@
+{
+  "일자진": {
+    "legacyHitRate": {
+      "front": 0.33,
+      "mid": 0.34,
+      "back": 0.33
+    },
+    "effects": [
+      {
+        "row": "front",
+        "mod": "받는피해",
+        "value": -0.08
+      }
+    ],
+    "traits": [
+      "전열이 받는 피해 8% 감소"
+    ]
+  },
+  "기형진": {
+    "legacyHitRate": {
+      "front": 0.074,
+      "mid": 0.463,
+      "back": 0.463
+    },
+    "effects": [
+      {
+        "row": "front",
+        "mod": "받는피해",
+        "value": -0.06
+      },
+      {
+        "row": "back",
+        "mod": "주는피해",
+        "value": 0.12
+      }
+    ],
+    "traits": [
+      "전열이 받는 피해 6% 감소",
+      "후열이 주는 피해 12% 증가"
+    ]
+  },
+  "안형진": {
+    "legacyHitRate": {
+      "front": 0.2,
+      "mid": 0.4,
+      "back": 0.4
+    },
+    "effects": [
+      {
+        "row": "front",
+        "stat": "통솔",
+        "value": 20
+      },
+      {
+        "row": "back",
+        "mod": "주는피해",
+        "value": 0.15
+      }
+    ],
+    "traits": [
+      "전열 통솔 20포인트 증가",
+      "후열이 주는 피해 15% 증가"
+    ]
+  },
+  "방원진": {
+    "legacyHitRate": {
+      "front": 0.4,
+      "mid": 0.4,
+      "back": 0.2
+    },
+    "effects": [
+      {
+        "row": "front",
+        "mod": "받는피해",
+        "value": -0.05
+      },
+      {
+        "row": "back",
+        "mod": "연타확률",
+        "value": 0.4
+      }
+    ],
+    "traits": [
+      "전열이 받는 피해 5% 감소",
+      "후열의 연타 확률 40% 증가"
+    ]
+  },
+  "추형진": {
+    "legacyHitRate": {
+      "front": 0.2,
+      "mid": 0.6,
+      "back": 0.2
+    },
+    "effects": [
+      {
+        "row": "front",
+        "mod": "주는피해",
+        "value": 0.16
+      },
+      {
+        "row": "back",
+        "mod": "받는피해",
+        "value": -0.05
+      }
+    ],
+    "traits": [
+      "전열이 주는 피해 16% 증가",
+      "후열이 받는 피해 5% 감소"
+    ]
+  },
+  "어린진": {
+    "legacyHitRate": {
+      "front": 0.6,
+      "mid": 0.2,
+      "back": 0.2
+    },
+    "effects": [
+      {
+        "row": "front",
+        "mod": "피신",
+        "value": 0.12
+      },
+      {
+        "row": "back",
+        "mod": "회심",
+        "value": 0.08
+      },
+      {
+        "row": "back",
+        "mod": "묘책",
+        "value": 0.08
+      }
+    ],
+    "traits": [
+      "전열 피신 12% 증가",
+      "후열 회심과 묘책 확률 8% 증가"
+    ]
+  }
+}

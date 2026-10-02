@@ -1,0 +1,22 @@
+{
+  "name": "cheonha-sim",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "import:all": "pnpm --filter @cheonha/data-tools import:all",
+    "build:bundle": "pnpm --filter @cheonha/data-tools bundle",
+    "test": "vitest run",
+    "typecheck": "tsc -b --noEmit 2>/dev/null || tsc -p tsconfig.json --noEmit",
+    "audit": "pnpm --filter @cheonha/audit run audit",
+    "dev": "pnpm --filter @cheonha/web dev",
+    "build": "pnpm build:bundle && pnpm --filter @cheonha/web build",
+    "mcp": "pnpm --filter @cheonha/mcp-server start"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.0",
+    "tsx": "^4.20.0",
+    "vitest": "^3.2.0",
+    "@types/node": "^22.0.0"
+  }
+}

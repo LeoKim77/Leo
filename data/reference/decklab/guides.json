@@ -1,0 +1,3086 @@
+{
+  "openingGuides": [
+    {
+      "id": "s-integrated",
+      "label": "S 통합 시즌",
+      "shortLabel": "S 통합",
+      "subtitle": "S2·S3 통합 서버 개척",
+      "summary": "공식 공개 전보의 최저 진입 기록과 일반 계정의 안전 진입선을 분리했습니다. 속공 수치는 해당 조합·홍도·장비·수비대 판독을 갖춘 경우에만 사용하세요.",
+      "paceNotes": {
+        "safe": "백판·초행 기준. 한 단계 늦춰 병손과 예비병을 보호합니다.",
+        "standard": "중간 홍도와 기본 장비를 갖춘 일반적인 추천선입니다.",
+        "rush": "고홍도·최적 장비·정찰 숙련자용 공개 최저선입니다. 실패 시 즉시 표준선으로 복귀하세요."
+      },
+      "fixedRules": [
+        "자원지는 목재:철광:석재를 약 3:3:4로 유지하고, 징병 부족이 아니면 식량 과투자를 피합니다.",
+        "15레벨에는 보라 장비·군마, 30레벨에는 주황 장비·군마를 장착합니다.",
+        "25·30·35레벨의 병법 해금·강화를 놓치지 않습니다.",
+        "일반·저홍도 계정은 2딜러+1저레벨 끼워 키우기보다 완성 3인으로 예비병 손실을 줄입니다."
+      ],
+      "stages": [
+        {
+          "id": "s-prepare",
+          "startLevel": 1,
+          "phase": "시작 전",
+          "title": "1군과 전법을 먼저 고정",
+          "target": "출정 준비",
+          "requirement": {
+            "safe": "완성 가능한 3인 1군 확정",
+            "standard": "1군·전쟁 전환 덱까지 확정",
+            "rush": "수비대표·장비·예비 전법까지 준비"
+          },
+          "tasks": [
+            "아래 선택지에서 실제 보유 완성도가 가장 높은 1군을 고릅니다.",
+            "고유 전법과 현재 사용 전법의 레벨·장수 위치·능력치 가점을 다시 확인합니다.",
+            "공격 전 정찰로 병종 상성과 수비대 핵심 제어·회복 전법을 확인합니다."
+          ],
+          "warnings": [
+            "티어가 높아도 고유 전법·핵심 전법이 비어 있으면 속공 기준을 적용하지 않습니다."
+          ],
+          "routes": [
+            {
+              "id": "yuan-dong-cai-s",
+              "name": "원소·동탁·채문희",
+              "badge": "S 통합 공개 전보",
+              "formation": "어린진",
+              "condition": "동탁의 무력·지력·선공 조율이 가능할 때",
+              "note": "12레벨 5급지, 25레벨 7급지 공개 사례가 있는 빠른 개척형입니다.",
+              "deckId": "dev-yuan-dong-cai",
+              "members": [
+                {
+                  "generalId": "yuan-shao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "direct-world",
+                    "divine-aid"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "cao-xun-sima",
+              "name": "조조·순욱·사마의",
+              "badge": "전쟁덱 무교체 전환",
+              "formation": "기형진",
+              "condition": "빠른 최고 급지보다 병손 안정과 전쟁 전환을 우선할 때",
+              "note": "조조 쌍감쇄를 먼저 완성하고 사마의가 후반 피해를 누적합니다.",
+              "deckId": "dev-cao-xun-sima",
+              "members": [
+                {
+                  "generalId": "cao-cao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "calm"
+                  ]
+                },
+                {
+                  "generalId": "xun-yu",
+                  "tacticIds": [
+                    "odd-even",
+                    "qingnang"
+                  ]
+                },
+                {
+                  "generalId": "sima-yi",
+                  "tacticIds": [
+                    "see-truth",
+                    "five-thunder"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "sun-xiao-zhou",
+              "name": "손권·소교·주유",
+              "badge": "S3 저전손 공개형",
+              "formation": "기형진",
+              "condition": "소교·손권 선공과 주유 핵심 전법을 맞출 수 있을 때",
+              "note": "24레벨 7급지, 28레벨 8급지 공개 전보가 있으며 전쟁 동작궁으로 이어집니다.",
+              "deckId": "dev-sun-xiao-zhou",
+              "members": [
+                {
+                  "generalId": "sun-quan",
+                  "tacticIds": [
+                    "stone-wall",
+                    "fire-camp"
+                  ]
+                },
+                {
+                  "generalId": "xiao-qiao",
+                  "tacticIds": [
+                    "helpless",
+                    "flood-break"
+                  ]
+                },
+                {
+                  "generalId": "zhou-yu",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "strong-wind"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "da-sun-taishi",
+              "name": "대교·손책·태사자",
+              "badge": "저비용 안정 대안",
+              "formation": "방원진",
+              "condition": "상위 개척 핵심 전법을 전쟁 1군에 남겨야 할 때",
+              "note": "진도는 느리지만 두 인연과 연격으로 편차가 작고 전법 경합이 비교적 낮습니다.",
+              "deckId": "dev-da-sun-taishi",
+              "members": [
+                {
+                  "generalId": "da-qiao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "forge-armor"
+                  ]
+                },
+                {
+                  "generalId": "sun-ce",
+                  "tacticIds": [
+                    "all-directions",
+                    "famous"
+                  ]
+                },
+                {
+                  "generalId": "taishi-ci",
+                  "tacticIds": [
+                    "attack-unready",
+                    "battlefield-raid"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "s-wiki",
+            "s-17173"
+          ]
+        },
+        {
+          "id": "s-early",
+          "startLevel": 1,
+          "phase": "1일차 초반",
+          "title": "2·3급지로 9레벨 달성",
+          "target": "3급지",
+          "requirement": {
+            "safe": "주 임무를 따라 9레벨",
+            "standard": "3급지 중심으로 9레벨",
+            "rush": "낮은 병손 수비대만 골라 9레벨"
+          },
+          "tasks": [
+            "주 임무에 필요한 건물만 올립니다.",
+            "3급지 5곳 안팎을 확보하며 9레벨까지 올립니다.",
+            "다음 4급지 수비대를 미리 정찰합니다."
+          ],
+          "warnings": [
+            "초반 건물을 임무 이상으로 올리면 5·6급지 진입 자원이 부족해집니다."
+          ],
+          "sourceIds": [
+            "s-wiki",
+            "s-17173"
+          ]
+        },
+        {
+          "id": "s-land4",
+          "startLevel": 9,
+          "phase": "1일차 초반",
+          "title": "첫 4급지 확보",
+          "target": "4급지",
+          "requirement": {
+            "safe": "9~10레벨 · 총병력 2,700 이상",
+            "standard": "9레벨 · 총병력 2,700 이상",
+            "rush": "9레벨 · 2,700 · 유리 병종 수비대"
+          },
+          "tasks": [
+            "고유 전법을 최고 레벨로 맞춥니다.",
+            "유리 병종이며 제어가 약한 수비대를 선택합니다.",
+            "첫 승리 뒤 병력을 회복하고 4급지로 경험치를 보충합니다."
+          ],
+          "warnings": [
+            "병종 불리 또는 핵심 전법 미완성 상태의 최저 병력 도전은 피하세요."
+          ],
+          "sourceIds": [
+            "s-wiki"
+          ]
+        },
+        {
+          "id": "s-land5",
+          "startLevel": 10,
+          "phase": "1일차 중반",
+          "title": "첫 5급지와 15레벨 장비",
+          "target": "5급지",
+          "requirement": {
+            "safe": "12~14레벨 · 총병력 3,600~4,200",
+            "standard": "10~12레벨 · 총병력 3,000~3,600",
+            "rush": "10레벨 · 3,000 · 공개 검증 조합만"
+          },
+          "tasks": [
+            "첫 5급지는 정찰 후 가장 쉬운 수비대를 고릅니다.",
+            "여러 5급지를 잡아 15레벨을 달성합니다.",
+            "15레벨 즉시 보라 장비와 군마를 장착하고 19레벨까지 올립니다."
+          ],
+          "warnings": [
+            "10레벨·3,000은 공개 최저선이지 모든 덱의 안전선이 아닙니다."
+          ],
+          "routes": [
+            {
+              "id": "yuan-dong-cai-s",
+              "name": "원소·동탁·채문희",
+              "badge": "S 통합 공개 전보",
+              "formation": "어린진",
+              "condition": "동탁의 무력·지력·선공 조율이 가능할 때",
+              "note": "12레벨 5급지, 25레벨 7급지 공개 사례가 있는 빠른 개척형입니다.",
+              "deckId": "dev-yuan-dong-cai",
+              "members": [
+                {
+                  "generalId": "yuan-shao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "direct-world",
+                    "divine-aid"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "sun-xiao-zhou",
+              "name": "손권·소교·주유",
+              "badge": "S3 저전손 공개형",
+              "formation": "기형진",
+              "condition": "소교·손권 선공과 주유 핵심 전법을 맞출 수 있을 때",
+              "note": "24레벨 7급지, 28레벨 8급지 공개 전보가 있으며 전쟁 동작궁으로 이어집니다.",
+              "deckId": "dev-sun-xiao-zhou",
+              "members": [
+                {
+                  "generalId": "sun-quan",
+                  "tacticIds": [
+                    "stone-wall",
+                    "fire-camp"
+                  ]
+                },
+                {
+                  "generalId": "xiao-qiao",
+                  "tacticIds": [
+                    "helpless",
+                    "flood-break"
+                  ]
+                },
+                {
+                  "generalId": "zhou-yu",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "strong-wind"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "cao-xun-sima",
+              "name": "조조·순욱·사마의",
+              "badge": "전쟁덱 무교체 전환",
+              "formation": "기형진",
+              "condition": "빠른 최고 급지보다 병손 안정과 전쟁 전환을 우선할 때",
+              "note": "조조 쌍감쇄를 먼저 완성하고 사마의가 후반 피해를 누적합니다.",
+              "deckId": "dev-cao-xun-sima",
+              "members": [
+                {
+                  "generalId": "cao-cao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "calm"
+                  ]
+                },
+                {
+                  "generalId": "xun-yu",
+                  "tacticIds": [
+                    "odd-even",
+                    "qingnang"
+                  ]
+                },
+                {
+                  "generalId": "sima-yi",
+                  "tacticIds": [
+                    "see-truth",
+                    "five-thunder"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "s-wiki",
+            "s-taptap-example",
+            "s-safe"
+          ]
+        },
+        {
+          "id": "s-land6",
+          "startLevel": 19,
+          "phase": "1일차 후반",
+          "title": "20레벨 완성과 6급지",
+          "target": "6급지",
+          "requirement": {
+            "safe": "20레벨 · 총병력 6,000 이상 · 전법 8~10",
+            "standard": "19~20레벨 · 총병력 5,700 이상 · 핵심 전법 10",
+            "rush": "18~19레벨 · 5,400~5,700 · 고홍도 검증 덱"
+          },
+          "tasks": [
+            "20레벨에 두 번째 사용 전법을 열고 핵심 전법부터 최고 레벨로 올립니다.",
+            "첫 6급지는 유리 병종·낮은 제어 수비대만 공격합니다.",
+            "병손이 안정되기 전까지 6급지 연속 출정을 하지 않습니다."
+          ],
+          "warnings": [
+            "첫 전투 병손이 커서 연속 출정이 어렵다면 같은 급지 재도전을 멈추고 이전 급지 소탕으로 보정합니다."
+          ],
+          "sourceIds": [
+            "s-wiki",
+            "s-safe",
+            "s-practical"
+          ]
+        },
+        {
+          "id": "s-land7",
+          "startLevel": 24,
+          "phase": "2일차",
+          "title": "병영과 7급지 안정화",
+          "target": "7급지",
+          "requirement": {
+            "safe": "25레벨 · 병영 4~5 · 총병력 8,700 이상",
+            "standard": "24~25레벨 · 총병력 7,800~8,700",
+            "rush": "공개 전보 충족 덱만 24~25레벨 단축"
+          },
+          "tasks": [
+            "병영과 25레벨 병법을 먼저 확인합니다.",
+            "동일 수비대를 반복 공격하기 전 첫 병손을 기록합니다.",
+            "7급지 소탕으로 29~30레벨까지 올립니다."
+          ],
+          "warnings": [
+            "원소·동탁·채문희 25레벨 7급지는 공개 사례이며 다른 덱에 그대로 적용하지 않습니다."
+          ],
+          "routes": [
+            {
+              "id": "yuan-dong-cai-s",
+              "name": "원소·동탁·채문희",
+              "badge": "S 통합 공개 전보",
+              "formation": "어린진",
+              "condition": "동탁의 무력·지력·선공 조율이 가능할 때",
+              "note": "12레벨 5급지, 25레벨 7급지 공개 사례가 있는 빠른 개척형입니다.",
+              "deckId": "dev-yuan-dong-cai",
+              "members": [
+                {
+                  "generalId": "yuan-shao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "direct-world",
+                    "divine-aid"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "sun-xiao-zhou",
+              "name": "손권·소교·주유",
+              "badge": "S3 저전손 공개형",
+              "formation": "기형진",
+              "condition": "소교·손권 선공과 주유 핵심 전법을 맞출 수 있을 때",
+              "note": "24레벨 7급지, 28레벨 8급지 공개 전보가 있으며 전쟁 동작궁으로 이어집니다.",
+              "deckId": "dev-sun-xiao-zhou",
+              "members": [
+                {
+                  "generalId": "sun-quan",
+                  "tacticIds": [
+                    "stone-wall",
+                    "fire-camp"
+                  ]
+                },
+                {
+                  "generalId": "xiao-qiao",
+                  "tacticIds": [
+                    "helpless",
+                    "flood-break"
+                  ]
+                },
+                {
+                  "generalId": "zhou-yu",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "strong-wind"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "cao-xun-sima",
+              "name": "조조·순욱·사마의",
+              "badge": "전쟁덱 무교체 전환",
+              "formation": "기형진",
+              "condition": "빠른 최고 급지보다 병손 안정과 전쟁 전환을 우선할 때",
+              "note": "조조 쌍감쇄를 먼저 완성하고 사마의가 후반 피해를 누적합니다.",
+              "deckId": "dev-cao-xun-sima",
+              "members": [
+                {
+                  "generalId": "cao-cao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "calm"
+                  ]
+                },
+                {
+                  "generalId": "xun-yu",
+                  "tacticIds": [
+                    "odd-even",
+                    "qingnang"
+                  ]
+                },
+                {
+                  "generalId": "sima-yi",
+                  "tacticIds": [
+                    "see-truth",
+                    "five-thunder"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "da-sun-taishi",
+              "name": "대교·손책·태사자",
+              "badge": "저비용 안정 대안",
+              "formation": "방원진",
+              "condition": "상위 개척 핵심 전법을 전쟁 1군에 남겨야 할 때",
+              "note": "진도는 느리지만 두 인연과 연격으로 편차가 작고 전법 경합이 비교적 낮습니다.",
+              "deckId": "dev-da-sun-taishi",
+              "members": [
+                {
+                  "generalId": "da-qiao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "forge-armor"
+                  ]
+                },
+                {
+                  "generalId": "sun-ce",
+                  "tacticIds": [
+                    "all-directions",
+                    "famous"
+                  ]
+                },
+                {
+                  "generalId": "taishi-ci",
+                  "tacticIds": [
+                    "attack-unready",
+                    "battlefield-raid"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "s-taptap-example",
+            "s-safe",
+            "s-wiki"
+          ]
+        },
+        {
+          "id": "s-land8",
+          "startLevel": 29,
+          "phase": "2~3일차",
+          "title": "30레벨 장비와 8급지",
+          "target": "8급지",
+          "requirement": {
+            "safe": "30레벨 · 총병력 10,200 이상 · 주황 장비",
+            "standard": "28~30레벨 · 공개 전보가 있는 주력 덱",
+            "rush": "27~28레벨 · 최적 수비대·고홍도 전용"
+          },
+          "tasks": [
+            "30레벨 주황 장비·군마와 병법 강화를 적용합니다.",
+            "수비대 피해 유형이 내 전열 감쇄와 맞는지 확인합니다.",
+            "8급지 병손이 안정된 뒤에만 9급지를 정찰합니다."
+          ],
+          "warnings": [
+            "손권·소교·주유 28레벨 등의 수치는 해당 공개 전보 조합에 한정됩니다."
+          ],
+          "routes": [
+            {
+              "id": "sun-xiao-zhou",
+              "name": "손권·소교·주유",
+              "badge": "S3 저전손 공개형",
+              "formation": "기형진",
+              "condition": "소교·손권 선공과 주유 핵심 전법을 맞출 수 있을 때",
+              "note": "24레벨 7급지, 28레벨 8급지 공개 전보가 있으며 전쟁 동작궁으로 이어집니다.",
+              "deckId": "dev-sun-xiao-zhou",
+              "members": [
+                {
+                  "generalId": "sun-quan",
+                  "tacticIds": [
+                    "stone-wall",
+                    "fire-camp"
+                  ]
+                },
+                {
+                  "generalId": "xiao-qiao",
+                  "tacticIds": [
+                    "helpless",
+                    "flood-break"
+                  ]
+                },
+                {
+                  "generalId": "zhou-yu",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "strong-wind"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "yuan-dong-cai-s",
+              "name": "원소·동탁·채문희",
+              "badge": "S 통합 공개 전보",
+              "formation": "어린진",
+              "condition": "동탁의 무력·지력·선공 조율이 가능할 때",
+              "note": "12레벨 5급지, 25레벨 7급지 공개 사례가 있는 빠른 개척형입니다.",
+              "deckId": "dev-yuan-dong-cai",
+              "members": [
+                {
+                  "generalId": "yuan-shao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "direct-world",
+                    "divine-aid"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "cao-xun-sima",
+              "name": "조조·순욱·사마의",
+              "badge": "전쟁덱 무교체 전환",
+              "formation": "기형진",
+              "condition": "빠른 최고 급지보다 병손 안정과 전쟁 전환을 우선할 때",
+              "note": "조조 쌍감쇄를 먼저 완성하고 사마의가 후반 피해를 누적합니다.",
+              "deckId": "dev-cao-xun-sima",
+              "members": [
+                {
+                  "generalId": "cao-cao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "calm"
+                  ]
+                },
+                {
+                  "generalId": "xun-yu",
+                  "tacticIds": [
+                    "odd-even",
+                    "qingnang"
+                  ]
+                },
+                {
+                  "generalId": "sima-yi",
+                  "tacticIds": [
+                    "see-truth",
+                    "five-thunder"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "da-sun-taishi",
+              "name": "대교·손책·태사자",
+              "badge": "저비용 안정 대안",
+              "formation": "방원진",
+              "condition": "상위 개척 핵심 전법을 전쟁 1군에 남겨야 할 때",
+              "note": "진도는 느리지만 두 인연과 연격으로 편차가 작고 전법 경합이 비교적 낮습니다.",
+              "deckId": "dev-da-sun-taishi",
+              "members": [
+                {
+                  "generalId": "da-qiao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "forge-armor"
+                  ]
+                },
+                {
+                  "generalId": "sun-ce",
+                  "tacticIds": [
+                    "all-directions",
+                    "famous"
+                  ]
+                },
+                {
+                  "generalId": "taishi-ci",
+                  "tacticIds": [
+                    "attack-unready",
+                    "battlefield-raid"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "s-taptap-example",
+            "s-practical",
+            "s-safe"
+          ]
+        },
+        {
+          "id": "s-land9",
+          "startLevel": 34,
+          "phase": "3일차 이후",
+          "title": "9급지와 전쟁덱 전환",
+          "target": "9급지·전쟁 준비",
+          "requirement": {
+            "safe": "34~35레벨 · 병영 10 · 전법 10",
+            "standard": "33~35레벨 · 8급지 저전손 확인",
+            "rush": "공개 전보·수비대표가 있는 경우만 단축"
+          },
+          "tasks": [
+            "35레벨 병법까지 적용하고 9급지 수비대를 정찰합니다.",
+            "전쟁 1군과 겹치는 핵심 전법의 반환 시점을 정합니다.",
+            "개척 1군을 유지할지 장수 무교체 전쟁형으로 바꿀지 결정합니다."
+          ],
+          "warnings": [
+            "개척 속도 때문에 전쟁 1군의 필수 전법 재배치가 늦어지지 않게 하세요."
+          ],
+          "routes": [
+            {
+              "id": "cao-xun-sima",
+              "name": "조조·순욱·사마의",
+              "badge": "전쟁덱 무교체 전환",
+              "formation": "기형진",
+              "condition": "빠른 최고 급지보다 병손 안정과 전쟁 전환을 우선할 때",
+              "note": "조조 쌍감쇄를 먼저 완성하고 사마의가 후반 피해를 누적합니다.",
+              "deckId": "dev-cao-xun-sima",
+              "members": [
+                {
+                  "generalId": "cao-cao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "calm"
+                  ]
+                },
+                {
+                  "generalId": "xun-yu",
+                  "tacticIds": [
+                    "odd-even",
+                    "qingnang"
+                  ]
+                },
+                {
+                  "generalId": "sima-yi",
+                  "tacticIds": [
+                    "see-truth",
+                    "five-thunder"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "sun-xiao-zhou",
+              "name": "손권·소교·주유",
+              "badge": "S3 저전손 공개형",
+              "formation": "기형진",
+              "condition": "소교·손권 선공과 주유 핵심 전법을 맞출 수 있을 때",
+              "note": "24레벨 7급지, 28레벨 8급지 공개 전보가 있으며 전쟁 동작궁으로 이어집니다.",
+              "deckId": "dev-sun-xiao-zhou",
+              "members": [
+                {
+                  "generalId": "sun-quan",
+                  "tacticIds": [
+                    "stone-wall",
+                    "fire-camp"
+                  ]
+                },
+                {
+                  "generalId": "xiao-qiao",
+                  "tacticIds": [
+                    "helpless",
+                    "flood-break"
+                  ]
+                },
+                {
+                  "generalId": "zhou-yu",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "strong-wind"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "yuan-dong-cai-s",
+              "name": "원소·동탁·채문희",
+              "badge": "S 통합 공개 전보",
+              "formation": "어린진",
+              "condition": "동탁의 무력·지력·선공 조율이 가능할 때",
+              "note": "12레벨 5급지, 25레벨 7급지 공개 사례가 있는 빠른 개척형입니다.",
+              "deckId": "dev-yuan-dong-cai",
+              "members": [
+                {
+                  "generalId": "yuan-shao",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "direct-world",
+                    "divine-aid"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "s-17173",
+            "s-wiki"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s-wiki",
+          "label": "S 통합 시즌 개척 지침",
+          "publisher": "대만 Gamer Wiki",
+          "url": "https://wiki2.gamer.com.tw/wiki.php?n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E9%96%8B%E8%8D%92%E6%8C%87%E5%8D%97&ss=147646"
+        },
+        {
+          "id": "s-17173",
+          "label": "S2~S3 개척 세부 점검표",
+          "publisher": "17173",
+          "url": "https://news.17173.com/content/04302026/095022178.shtml"
+        },
+        {
+          "id": "s-taptap-example",
+          "label": "S3 공개 전보·레벨별 편성 사례",
+          "publisher": "TapTap",
+          "url": "https://www.taptap.cn/moment/586256008662221853"
+        },
+        {
+          "id": "s-practical",
+          "label": "S3 레벨 구간별 실전 편성",
+          "publisher": "TapTap",
+          "url": "https://www.taptap.cn/moment/672523659121789623"
+        },
+        {
+          "id": "s-safe",
+          "label": "S3 안정 진입 병력 기준",
+          "publisher": "공략 교차자료",
+          "url": "https://www.house0562.com/news/50658/"
+        }
+      ]
+    },
+    {
+      "id": "w1",
+      "label": "문정 1 · 업주산하",
+      "shortLabel": "문정 1",
+      "subtitle": "업주산하 개척",
+      "summary": "공식 개척표를 안전 기준으로 두고, 대만 위키와 실전 공략의 홍도별 단축선을 선택지로 덧붙였습니다.",
+      "paceNotes": {
+        "safe": "백판·저홍도 기준. 신화창·좌채녕처럼 회복이 안정적인 경로를 우선합니다.",
+        "standard": "중홍도 기준. 공식 레벨선에서 쉬운 수비대를 골라 진행합니다.",
+        "rush": "고홍도·숙련자 기준. 좌전녕 단축선은 병손이 커지면 즉시 중단합니다."
+      },
+      "fixedRules": [
+        "초보자 보호 48시간 동안 장수 교체·전법 초기화를 활용하고 종료 전에 원상 복귀를 확인합니다.",
+        "체력 회복 닭은 부대원 중 한 명이라도 31레벨이 되면 사용할 수 없으므로 그 전에 소모합니다.",
+        "15레벨 보라 장비, 30레벨 주황 장비, 25·30·35레벨 병법을 즉시 적용합니다.",
+        "주 임무 이상으로 건물을 선행하지 말고, 공격 전 수비대 전법과 병종을 반드시 정찰합니다."
+      ],
+      "stages": [
+        {
+          "id": "w1-prepare",
+          "startLevel": 1,
+          "phase": "시작 전",
+          "title": "시즌 상점·48시간 계획",
+          "target": "개척 자원 확보",
+          "requirement": {
+            "safe": "명예 1,050 안팎 준비",
+            "standard": "상점·장비·닭 사용 순서 확정",
+            "rush": "수비대표와 교체 루트까지 확정"
+          },
+          "tasks": [
+            "동전·보라 장비·군마·병법서를 우선 구매합니다.",
+            "보라 장비의 파로·근학 등 개척 특기를 확인합니다.",
+            "낙양 소각 연의 보상의 체력 회복 닭과 31레벨 전 사용 시점을 기록합니다."
+          ],
+          "warnings": [
+            "시즌 상점 구매량은 보유 명예에 맞춰 조정하되 개척 장비·병법서를 후순위로 밀지 않습니다."
+          ],
+          "sourceIds": [
+            "w1-official",
+            "w1-repost"
+          ]
+        },
+        {
+          "id": "w1-early",
+          "startLevel": 1,
+          "phase": "1일차 초반",
+          "title": "2·3급지로 9레벨",
+          "target": "3급지",
+          "requirement": {
+            "safe": "주 임무를 따라 9레벨",
+            "standard": "3급지 중심 9레벨",
+            "rush": "쉬운 수비대 연속 출정"
+          },
+          "tasks": [
+            "주 임무에 필요한 건물만 올립니다.",
+            "3급지를 확보해 9레벨에 도달합니다.",
+            "원소·채문희·동탁 또는 신화창 전환 전법을 준비합니다."
+          ],
+          "warnings": [
+            "초반 자원 건물을 과도하게 선행하면 5급지 이후 병영 진도가 느려집니다."
+          ],
+          "routes": [
+            {
+              "id": "yuan-dong-cai-w",
+              "name": "원소·채문희·동탁",
+              "badge": "공식 표준 초반",
+              "formation": "기형진",
+              "condition": "10~19레벨의 공통 표준 선택",
+              "note": "문정 공식 개척표의 5~6급지 전환용 조합입니다. 20레벨 전에는 각 장수의 앞쪽 전법부터 우선합니다.",
+              "members": [
+                {
+                  "generalId": "yuan-shao",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "direct-world",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xin-huo",
+              "name": "강유·SP 제갈량·유비",
+              "badge": "백판 안정·최종 전환",
+              "formation": "안형진",
+              "condition": "저홍도이거나 9급지 이후 10급지·원정까지 한 덱으로 갈 때",
+              "note": "문정 공략에서 신화창으로 부르는 최종 개척축입니다. 안형진·시즌 해금 시점을 확인하세요.",
+              "members": [
+                {
+                  "generalId": "jiang-wei",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "punish-past"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                },
+                {
+                  "generalId": "liu-bei",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w1-wiki",
+            "w1-17173"
+          ]
+        },
+        {
+          "id": "w1-land4-5",
+          "startLevel": 9,
+          "phase": "1일차 중반",
+          "title": "4급지 뒤 바로 5급지 루프",
+          "target": "4·5급지",
+          "requirement": {
+            "safe": "4급지 9레벨·2,700 / 5급지 12레벨 전후",
+            "standard": "5급지 10~12레벨·3,000+",
+            "rush": "10레벨·3,000 · 고홍 원동채"
+          },
+          "tasks": [
+            "9레벨·2,700 이상에서 유리한 4급지를 확보합니다.",
+            "10레벨 이후 쉬운 5급지를 골라 첫 승리합니다.",
+            "15레벨에 보라 장비·군마를 장착하고 19레벨까지 5급지 소탕합니다."
+          ],
+          "warnings": [
+            "고홍 원동채와 저홍 신화창의 추천 수비대가 다르므로 정찰 없이 같은 기준을 적용하지 않습니다."
+          ],
+          "routes": [
+            {
+              "id": "yuan-dong-cai-w",
+              "name": "원소·채문희·동탁",
+              "badge": "공식 표준 초반",
+              "formation": "기형진",
+              "condition": "10~19레벨의 공통 표준 선택",
+              "note": "문정 공식 개척표의 5~6급지 전환용 조합입니다. 20레벨 전에는 각 장수의 앞쪽 전법부터 우선합니다.",
+              "members": [
+                {
+                  "generalId": "yuan-shao",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "direct-world",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xin-huo",
+              "name": "강유·SP 제갈량·유비",
+              "badge": "백판 안정·최종 전환",
+              "formation": "안형진",
+              "condition": "저홍도이거나 9급지 이후 10급지·원정까지 한 덱으로 갈 때",
+              "note": "문정 공략에서 신화창으로 부르는 최종 개척축입니다. 안형진·시즌 해금 시점을 확인하세요.",
+              "members": [
+                {
+                  "generalId": "jiang-wei",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "punish-past"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                },
+                {
+                  "generalId": "liu-bei",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w1-repost",
+            "w1-17173"
+          ]
+        },
+        {
+          "id": "w1-land6",
+          "startLevel": 19,
+          "phase": "1일차 후반",
+          "title": "20레벨 전법 완성과 6급지",
+          "target": "6급지",
+          "requirement": {
+            "safe": "20레벨 · 5,700~6,000 · 전법 10",
+            "standard": "18~19레벨 · 5,400~5,700",
+            "rush": "고홍 원동채 17레벨부터 수비대 선별"
+          },
+          "tasks": [
+            "20레벨에 두 번째 전법을 열고 핵심 전법을 최고 레벨로 맞춥니다.",
+            "공략 우선 수비대를 골라 첫 6급지를 확보합니다.",
+            "6급지 병손이 안정되면 24레벨 전후까지 소탕합니다."
+          ],
+          "warnings": [
+            "저홍도 신화창은 18레벨 이후, 원동채 저홍도는 19~20레벨이 안전합니다."
+          ],
+          "routes": [
+            {
+              "id": "yuan-dong-cai-w",
+              "name": "원소·채문희·동탁",
+              "badge": "공식 표준 초반",
+              "formation": "기형진",
+              "condition": "10~19레벨의 공통 표준 선택",
+              "note": "문정 공식 개척표의 5~6급지 전환용 조합입니다. 20레벨 전에는 각 장수의 앞쪽 전법부터 우선합니다.",
+              "members": [
+                {
+                  "generalId": "yuan-shao",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "direct-world",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xin-huo",
+              "name": "강유·SP 제갈량·유비",
+              "badge": "백판 안정·최종 전환",
+              "formation": "안형진",
+              "condition": "저홍도이거나 9급지 이후 10급지·원정까지 한 덱으로 갈 때",
+              "note": "문정 공략에서 신화창으로 부르는 최종 개척축입니다. 안형진·시즌 해금 시점을 확인하세요.",
+              "members": [
+                {
+                  "generalId": "jiang-wei",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "punish-past"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                },
+                {
+                  "generalId": "liu-bei",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w1-repost",
+            "w1-17173",
+            "w1-taptap"
+          ]
+        },
+        {
+          "id": "w1-land7",
+          "startLevel": 23,
+          "phase": "2일차 초반",
+          "title": "좌자 계열 전환과 7급지",
+          "target": "7급지",
+          "requirement": {
+            "safe": "24레벨 · 병영 5 · 8,700+",
+            "standard": "22~23레벨 · 6,900~8,700 · 중홍",
+            "rush": "21~22레벨 · 고홍 좌전녕"
+          },
+          "tasks": [
+            "좌전녕·좌채녕·신화창 중 실제 보유 완성도가 높은 조합을 선택합니다.",
+            "25레벨 병법을 확인하고 쉬운 7급지를 정찰합니다.",
+            "첫 병손이 크면 6급지 소탕으로 한 레벨 더 보정합니다."
+          ],
+          "warnings": [
+            "좌전녕 23레벨·6,900은 최적 수비대를 고른 단축선입니다."
+          ],
+          "routes": [
+            {
+              "id": "zuo-tian-ning",
+              "name": "좌자·전풍·장녕",
+              "badge": "중·고홍도 속공",
+              "formation": "기형진",
+              "condition": "7~9급지를 빠르게 올릴 장비·홍도·전법이 있을 때",
+              "note": "공략별로 좌자의 두 번째 방어 전법은 금성의 철벽 또는 어적임전으로 갈립니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "enemy-before"
+                  ]
+                },
+                {
+                  "generalId": "tian-feng",
+                  "tacticIds": [
+                    "yellow-heaven",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-ning",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "see-truth"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zuo-cai-ning",
+              "name": "좌자·채문희·장녕",
+              "badge": "백판·저홍도 안정",
+              "formation": "기형진",
+              "condition": "병손 편차를 줄이며 7~8급지에 진입할 때",
+              "note": "좌전녕보다 폭발력은 낮지만 회복과 보호가 안정적입니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "strategize",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-ning",
+                  "tacticIds": [
+                    "see-truth",
+                    "yellow-heaven"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xin-huo",
+              "name": "강유·SP 제갈량·유비",
+              "badge": "백판 안정·최종 전환",
+              "formation": "안형진",
+              "condition": "저홍도이거나 9급지 이후 10급지·원정까지 한 덱으로 갈 때",
+              "note": "문정 공략에서 신화창으로 부르는 최종 개척축입니다. 안형진·시즌 해금 시점을 확인하세요.",
+              "members": [
+                {
+                  "generalId": "jiang-wei",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "punish-past"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                },
+                {
+                  "generalId": "liu-bei",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w1-wiki",
+            "w1-17173",
+            "w1-taptap"
+          ]
+        },
+        {
+          "id": "w1-land8",
+          "startLevel": 29,
+          "phase": "2일차",
+          "title": "8급지와 30레벨 장비",
+          "target": "8급지",
+          "requirement": {
+            "safe": "29~30레벨 · 병영 5 · 10,200+",
+            "standard": "29레벨 · 좌전녕/좌채녕",
+            "rush": "27레벨 · 고홍 좌전녕"
+          },
+          "tasks": [
+            "30레벨 주황 장비·군마를 준비합니다.",
+            "좌전녕은 장비·홍도가 부족하면 좌채녕 또는 신화창으로 바꿉니다.",
+            "8급지 저전손을 확인한 뒤 9급지용 전법을 재배치합니다."
+          ],
+          "warnings": [
+            "백판·저홍도는 27레벨 속공선을 따라가지 말고 29~30레벨 안정선을 사용하세요."
+          ],
+          "routes": [
+            {
+              "id": "zuo-tian-ning",
+              "name": "좌자·전풍·장녕",
+              "badge": "중·고홍도 속공",
+              "formation": "기형진",
+              "condition": "7~9급지를 빠르게 올릴 장비·홍도·전법이 있을 때",
+              "note": "공략별로 좌자의 두 번째 방어 전법은 금성의 철벽 또는 어적임전으로 갈립니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "enemy-before"
+                  ]
+                },
+                {
+                  "generalId": "tian-feng",
+                  "tacticIds": [
+                    "yellow-heaven",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-ning",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "see-truth"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zuo-cai-ning",
+              "name": "좌자·채문희·장녕",
+              "badge": "백판·저홍도 안정",
+              "formation": "기형진",
+              "condition": "병손 편차를 줄이며 7~8급지에 진입할 때",
+              "note": "좌전녕보다 폭발력은 낮지만 회복과 보호가 안정적입니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "strategize",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-ning",
+                  "tacticIds": [
+                    "see-truth",
+                    "yellow-heaven"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xin-huo",
+              "name": "강유·SP 제갈량·유비",
+              "badge": "백판 안정·최종 전환",
+              "formation": "안형진",
+              "condition": "저홍도이거나 9급지 이후 10급지·원정까지 한 덱으로 갈 때",
+              "note": "문정 공략에서 신화창으로 부르는 최종 개척축입니다. 안형진·시즌 해금 시점을 확인하세요.",
+              "members": [
+                {
+                  "generalId": "jiang-wei",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "punish-past"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                },
+                {
+                  "generalId": "liu-bei",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zuo-yu-jiao",
+              "name": "좌자·우길·장각",
+              "badge": "후반 모략 대안",
+              "formation": "기형진",
+              "condition": "우길·장각의 모략 전법과 장비가 갖춰졌을 때",
+              "note": "8~9급지 선택지입니다. 능동 전법 편차가 있어 첫 정찰과 수비대 선별이 중요합니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "yu-ji",
+                  "tacticIds": [
+                    "see-truth",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-jiao",
+                  "tacticIds": [
+                    "highest-wisdom",
+                    "qimen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w1-repost",
+            "w1-wiki",
+            "w1-17173"
+          ]
+        },
+        {
+          "id": "w1-land9",
+          "startLevel": 33,
+          "phase": "2~3일차",
+          "title": "9급지와 신화창 전환",
+          "target": "9급지",
+          "requirement": {
+            "safe": "34레벨 · 병영 10 · 14,700+",
+            "standard": "33레벨 · 저전손 8급지 확인",
+            "rush": "32레벨 · 고홍 좌전녕·병영 5+"
+          },
+          "tasks": [
+            "안형진 해금과 35레벨 병법 강화 시점을 확인합니다.",
+            "저홍도는 신화창, 고홍도는 좌전녕·삼선 선택지를 비교합니다.",
+            "9급지 수비대 중 장비·전법 상성이 가장 쉬운 조합부터 공격합니다."
+          ],
+          "warnings": [
+            "9급지 단축선은 수비대별 편차가 커 레벨만 충족했다고 공격하지 않습니다."
+          ],
+          "routes": [
+            {
+              "id": "xin-huo",
+              "name": "강유·SP 제갈량·유비",
+              "badge": "백판 안정·최종 전환",
+              "formation": "안형진",
+              "condition": "저홍도이거나 9급지 이후 10급지·원정까지 한 덱으로 갈 때",
+              "note": "문정 공략에서 신화창으로 부르는 최종 개척축입니다. 안형진·시즌 해금 시점을 확인하세요.",
+              "members": [
+                {
+                  "generalId": "jiang-wei",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "punish-past"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                },
+                {
+                  "generalId": "liu-bei",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zuo-tian-ning",
+              "name": "좌자·전풍·장녕",
+              "badge": "중·고홍도 속공",
+              "formation": "기형진",
+              "condition": "7~9급지를 빠르게 올릴 장비·홍도·전법이 있을 때",
+              "note": "공략별로 좌자의 두 번째 방어 전법은 금성의 철벽 또는 어적임전으로 갈립니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "enemy-before"
+                  ]
+                },
+                {
+                  "generalId": "tian-feng",
+                  "tacticIds": [
+                    "yellow-heaven",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-ning",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "see-truth"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zuo-yu-jiao",
+              "name": "좌자·우길·장각",
+              "badge": "후반 모략 대안",
+              "formation": "기형진",
+              "condition": "우길·장각의 모략 전법과 장비가 갖춰졌을 때",
+              "note": "8~9급지 선택지입니다. 능동 전법 편차가 있어 첫 정찰과 수비대 선별이 중요합니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "yu-ji",
+                  "tacticIds": [
+                    "see-truth",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-jiao",
+                  "tacticIds": [
+                    "highest-wisdom",
+                    "qimen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w1-repost",
+            "w1-17173",
+            "w1-taptap"
+          ]
+        },
+        {
+          "id": "w1-late",
+          "startLevel": 35,
+          "phase": "4일차 이후",
+          "title": "관문·10급지·전쟁 전환",
+          "target": "10급지·원정",
+          "requirement": {
+            "safe": "38레벨 이상 신화창",
+            "standard": "35~38레벨 · 안형진 완성",
+            "rush": "35레벨 · 고홍·우수 병법"
+          },
+          "tasks": [
+            "4일차 12시 출생주→자원주 11레벨 관문 일정을 확인합니다.",
+            "6일차·10일차 관문 일정에 맞춰 체력과 예비병을 남깁니다.",
+            "48시간 종료 전에 임시 장수·전법 교체를 원상 복귀합니다."
+          ],
+          "warnings": [
+            "10~12급지는 이전 시즌보다 수비대 전법이 강하므로 반드시 정찰합니다."
+          ],
+          "routes": [
+            {
+              "id": "xin-huo",
+              "name": "강유·SP 제갈량·유비",
+              "badge": "백판 안정·최종 전환",
+              "formation": "안형진",
+              "condition": "저홍도이거나 9급지 이후 10급지·원정까지 한 덱으로 갈 때",
+              "note": "문정 공략에서 신화창으로 부르는 최종 개척축입니다. 안형진·시즌 해금 시점을 확인하세요.",
+              "members": [
+                {
+                  "generalId": "jiang-wei",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "punish-past"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                },
+                {
+                  "generalId": "liu-bei",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zuo-tian-ning",
+              "name": "좌자·전풍·장녕",
+              "badge": "중·고홍도 속공",
+              "formation": "기형진",
+              "condition": "7~9급지를 빠르게 올릴 장비·홍도·전법이 있을 때",
+              "note": "공략별로 좌자의 두 번째 방어 전법은 금성의 철벽 또는 어적임전으로 갈립니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "enemy-before"
+                  ]
+                },
+                {
+                  "generalId": "tian-feng",
+                  "tacticIds": [
+                    "yellow-heaven",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-ning",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "see-truth"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zuo-yu-jiao",
+              "name": "좌자·우길·장각",
+              "badge": "후반 모략 대안",
+              "formation": "기형진",
+              "condition": "우길·장각의 모략 전법과 장비가 갖춰졌을 때",
+              "note": "8~9급지 선택지입니다. 능동 전법 편차가 있어 첫 정찰과 수비대 선별이 중요합니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "yu-ji",
+                  "tacticIds": [
+                    "see-truth",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-jiao",
+                  "tacticIds": [
+                    "highest-wisdom",
+                    "qimen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w1-official",
+            "w1-repost",
+            "w1-17173"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "w1-official",
+          "label": "문정 1 업주산하 시즌 안내",
+          "publisher": "공식 시즌 페이지",
+          "url": "https://newslg.biligames.com/w1info/"
+        },
+        {
+          "id": "w1-wiki",
+          "label": "업주산하 개척 공략",
+          "publisher": "대만 Gamer Wiki",
+          "url": "https://wiki2.gamer.com.tw/wiki.php?n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%A5%AD%E9%91%84%E5%B1%B1%E6%B2%B3%E9%96%8B%E8%8D%92%E6%94%BB%E7%95%A5&ss=147646"
+        },
+        {
+          "id": "w1-repost",
+          "label": "공식 개척표·초보자 보호 전문",
+          "publisher": "4399 공식 콘텐츠 재게시",
+          "url": "https://bbs.4399.cn/thread-view-tid-49899101"
+        },
+        {
+          "id": "w1-17173",
+          "label": "홍도별 5~10급지 단축선",
+          "publisher": "17173",
+          "url": "https://news.17173.com/content/07252025/155111549.shtml"
+        },
+        {
+          "id": "w1-taptap",
+          "label": "업주산하 실전 개척 흐름",
+          "publisher": "TapTap",
+          "url": "https://www.taptap.cn/moment/698920363718871397"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "label": "문정 2 · 남군봉기",
+      "shortLabel": "문정 2",
+      "subtitle": "남군봉기 개척",
+      "summary": "문정 2 공식 개척표의 공통 레벨선을 중심으로 태학·진영 전법 일정과 남만 조건부 루트를 함께 정리했습니다.",
+      "paceNotes": {
+        "safe": "공식 표준 루트와 좌채녕·신화창을 우선하는 안정 경로입니다.",
+        "standard": "중홍도 기준. 공식 레벨선에서 수비대 상성을 골라 진행합니다.",
+        "rush": "남만 고육성 또는 좌전녕 고홍도 계정용입니다. 표준선보다 빠른 시도는 전보 확인이 전제입니다."
+      },
+      "fixedRules": [
+        "초보자 보호 48시간의 무료 장수 교체·전법 초기화·1분 점령을 활용합니다.",
+        "체력 회복 닭은 부대원 한 명이라도 31레벨이 되기 전에 사용합니다.",
+        "1일차 태학은 4점, 3일차 사장점병 완료 뒤 2레벨 태학은 8점을 얻으므로 철·목재·석재를 우선 교환합니다.",
+        "2일차 진영 전법 해금 뒤 첫 무료 초기화를 신중히 쓰고 이후 재연구 대기시간을 확인합니다."
+      ],
+      "stages": [
+        {
+          "id": "w2-prepare",
+          "startLevel": 1,
+          "phase": "시작 전",
+          "title": "표준 루트와 남만 루트 결정",
+          "target": "개척 1군 확정",
+          "requirement": {
+            "safe": "원소·채문희·동탁 준비",
+            "standard": "좌자 전환 장수까지 준비",
+            "rush": "남만 핵심·장비·전법 완성"
+          },
+          "tasks": [
+            "표준 원채동과 남만 대안의 보유 완성도를 비교합니다.",
+            "48시간 동안 사용할 임시 장수·전법을 기록합니다.",
+            "고유 전법과 현재 사용 전법의 레벨·장수 위치·능력치 가점을 다시 확인합니다.",
+            "공격 전 정찰로 병종 상성과 수비대 핵심 제어·회복 전법을 확인합니다."
+          ],
+          "warnings": [
+            "남만 루트는 핵심 장수와 축융부인 육성이 갖춰진 조건부 선택지입니다."
+          ],
+          "routes": [
+            {
+              "id": "yuan-dong-cai-w",
+              "name": "원소·채문희·동탁",
+              "badge": "공식 표준 초반",
+              "formation": "기형진",
+              "condition": "10~19레벨의 공통 표준 선택",
+              "note": "문정 공식 개척표의 5~6급지 전환용 조합입니다. 20레벨 전에는 각 장수의 앞쪽 전법부터 우선합니다.",
+              "members": [
+                {
+                  "generalId": "yuan-shao",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "direct-world",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dong-nanman",
+              "name": "동탁·맹획·축융부인",
+              "badge": "문정 2 남만 대안",
+              "formation": "기형진",
+              "condition": "남만 핵심 3장과 축융부인 육성이 갖춰졌을 때",
+              "note": "축융부인의 유지력으로 4~6급지 병손을 낮추는 조건부 대안입니다. 공식 공통 루트보다 무조건 빠르다는 뜻은 아닙니다.",
+              "deckId": "w2-open-dong-nanman",
+              "members": [
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "taxation",
+                    "fold-charge"
+                  ]
+                },
+                {
+                  "generalId": "meng-huo",
+                  "tacticIds": [
+                    "golden-fortress",
+                    "direct-world"
+                  ]
+                },
+                {
+                  "generalId": "zhu-rong",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xin-huo",
+              "name": "강유·SP 제갈량·유비",
+              "badge": "백판 안정·최종 전환",
+              "formation": "안형진",
+              "condition": "저홍도이거나 9급지 이후 10급지·원정까지 한 덱으로 갈 때",
+              "note": "문정 공략에서 신화창으로 부르는 최종 개척축입니다. 안형진·시즌 해금 시점을 확인하세요.",
+              "members": [
+                {
+                  "generalId": "jiang-wei",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "punish-past"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                },
+                {
+                  "generalId": "liu-bei",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w2-official",
+            "w2-taptap",
+            "w2-nanman"
+          ]
+        },
+        {
+          "id": "w2-day1",
+          "startLevel": 1,
+          "phase": "1일차 초반",
+          "title": "태학 1레벨과 9레벨",
+          "target": "3급지·태학 자원",
+          "requirement": {
+            "safe": "주 임무·3급지로 9레벨",
+            "standard": "태학 4점 자원 즉시 교환",
+            "rush": "철·목재·석재 병목 선제 해소"
+          },
+          "tasks": [
+            "군략탑 1레벨의 태학 4점을 확인합니다.",
+            "부족한 철·목재·석재부터 점수로 교환합니다.",
+            "3급지를 확보해 9레벨에 도달하고 4급지를 정찰합니다."
+          ],
+          "warnings": [
+            "식량보다 건설 병목 자원을 우선하되 징병이 막히면 즉시 재조정합니다."
+          ],
+          "sourceIds": [
+            "w2-taptap"
+          ]
+        },
+        {
+          "id": "w2-land4-5",
+          "startLevel": 9,
+          "phase": "1일차 중반",
+          "title": "4·5급지와 보라 장비",
+          "target": "5급지",
+          "requirement": {
+            "safe": "4급지 9레벨·2,700 / 5급지 12레벨 전후",
+            "standard": "5급지 10~12레벨·3,000+",
+            "rush": "남만·고홍 원채동 10레벨·3,000"
+          },
+          "tasks": [
+            "9레벨·2,700 이상에서 쉬운 4급지를 잡습니다.",
+            "첫 5급지 후 15레벨까지 쉬운 수비대를 반복합니다.",
+            "15레벨 보라 장비·군마를 장착하고 19레벨까지 올립니다."
+          ],
+          "warnings": [
+            "남만은 회복이 강해도 병종 불리·제어 수비대를 무시할 수 없습니다."
+          ],
+          "routes": [
+            {
+              "id": "yuan-dong-cai-w",
+              "name": "원소·채문희·동탁",
+              "badge": "공식 표준 초반",
+              "formation": "기형진",
+              "condition": "10~19레벨의 공통 표준 선택",
+              "note": "문정 공식 개척표의 5~6급지 전환용 조합입니다. 20레벨 전에는 각 장수의 앞쪽 전법부터 우선합니다.",
+              "members": [
+                {
+                  "generalId": "yuan-shao",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "direct-world",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dong-nanman",
+              "name": "동탁·맹획·축융부인",
+              "badge": "문정 2 남만 대안",
+              "formation": "기형진",
+              "condition": "남만 핵심 3장과 축융부인 육성이 갖춰졌을 때",
+              "note": "축융부인의 유지력으로 4~6급지 병손을 낮추는 조건부 대안입니다. 공식 공통 루트보다 무조건 빠르다는 뜻은 아닙니다.",
+              "deckId": "w2-open-dong-nanman",
+              "members": [
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "taxation",
+                    "fold-charge"
+                  ]
+                },
+                {
+                  "generalId": "meng-huo",
+                  "tacticIds": [
+                    "golden-fortress",
+                    "direct-world"
+                  ]
+                },
+                {
+                  "generalId": "zhu-rong",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w2-taptap",
+            "w2-nanman"
+          ]
+        },
+        {
+          "id": "w2-land6",
+          "startLevel": 19,
+          "phase": "1일차 후반",
+          "title": "20레벨 전법과 6급지",
+          "target": "6급지",
+          "requirement": {
+            "safe": "20레벨 · 5,700~6,000 · 핵심 전법 10",
+            "standard": "19~20레벨 · 5,700+",
+            "rush": "검증된 남만·고홍 조합만 18~19레벨"
+          },
+          "tasks": [
+            "20레벨 두 번째 전법을 열고 핵심 전법을 최고 레벨로 맞춥니다.",
+            "원채동·남만 중 첫 5급지 병손이 더 낮았던 조합을 유지합니다.",
+            "6급지로 24레벨까지 올리며 2일차 진영 전법을 준비합니다."
+          ],
+          "warnings": [
+            "첫 전투 병손이 커서 연속 출정이 어렵다면 같은 급지 재도전을 멈추고 이전 급지 소탕으로 보정합니다."
+          ],
+          "routes": [
+            {
+              "id": "yuan-dong-cai-w",
+              "name": "원소·채문희·동탁",
+              "badge": "공식 표준 초반",
+              "formation": "기형진",
+              "condition": "10~19레벨의 공통 표준 선택",
+              "note": "문정 공식 개척표의 5~6급지 전환용 조합입니다. 20레벨 전에는 각 장수의 앞쪽 전법부터 우선합니다.",
+              "members": [
+                {
+                  "generalId": "yuan-shao",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "direct-world",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dong-nanman",
+              "name": "동탁·맹획·축융부인",
+              "badge": "문정 2 남만 대안",
+              "formation": "기형진",
+              "condition": "남만 핵심 3장과 축융부인 육성이 갖춰졌을 때",
+              "note": "축융부인의 유지력으로 4~6급지 병손을 낮추는 조건부 대안입니다. 공식 공통 루트보다 무조건 빠르다는 뜻은 아닙니다.",
+              "deckId": "w2-open-dong-nanman",
+              "members": [
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "taxation",
+                    "fold-charge"
+                  ]
+                },
+                {
+                  "generalId": "meng-huo",
+                  "tacticIds": [
+                    "golden-fortress",
+                    "direct-world"
+                  ]
+                },
+                {
+                  "generalId": "zhu-rong",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w2-taptap",
+            "w2-nanman"
+          ]
+        },
+        {
+          "id": "w2-day2-3",
+          "startLevel": 23,
+          "phase": "2~3일차",
+          "title": "진영 전법·태학 2레벨",
+          "target": "시즌 기능 해금",
+          "requirement": {
+            "safe": "진영 전법 효과 확인 후 편성",
+            "standard": "2일차 연구·3일차 태학 순서 준수",
+            "rush": "사장점병 즉시 완료 후 8점 교환"
+          },
+          "tasks": [
+            "2일차 사장점병 2장으로 진영 전법을 해금하고 최대 4단계를 확인합니다.",
+            "첫 무료 초기화 뒤에는 재연구 대기시간이 있으므로 편성을 먼저 확정합니다.",
+            "3일차 사장점병을 먼저 완료하고 군략탑 2레벨로 올린 뒤 태학 8점을 교환합니다."
+          ],
+          "warnings": [
+            "3일차에는 태학 점수를 먼저 쓰지 말고 2레벨 승급 뒤 교환해야 자원 효율이 커집니다."
+          ],
+          "sourceIds": [
+            "w2-taptap",
+            "w2-official"
+          ]
+        },
+        {
+          "id": "w2-land7",
+          "startLevel": 24,
+          "phase": "2일차",
+          "title": "7급지와 좌자 계열 전환",
+          "target": "7급지",
+          "requirement": {
+            "safe": "24레벨 · 병영 5 · 8,700+",
+            "standard": "23~24레벨 · 좌채녕/좌전녕",
+            "rush": "고홍·남만 검증 전보가 있을 때만 단축"
+          },
+          "tasks": [
+            "좌채녕·좌전녕·남만 중 보유 완성도가 높은 조합을 선택합니다.",
+            "25레벨 병법과 병영을 확인합니다.",
+            "첫 7급지 병손이 크면 6급지로 한 레벨 더 보정합니다."
+          ],
+          "warnings": [
+            "문정 1의 홍도별 단축 수치를 문정 2에 그대로 복사하지 않습니다."
+          ],
+          "routes": [
+            {
+              "id": "zuo-cai-ning",
+              "name": "좌자·채문희·장녕",
+              "badge": "백판·저홍도 안정",
+              "formation": "기형진",
+              "condition": "병손 편차를 줄이며 7~8급지에 진입할 때",
+              "note": "좌전녕보다 폭발력은 낮지만 회복과 보호가 안정적입니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "cai-wenji",
+                  "tacticIds": [
+                    "strategize",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-ning",
+                  "tacticIds": [
+                    "see-truth",
+                    "yellow-heaven"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zuo-tian-ning",
+              "name": "좌자·전풍·장녕",
+              "badge": "중·고홍도 속공",
+              "formation": "기형진",
+              "condition": "7~9급지를 빠르게 올릴 장비·홍도·전법이 있을 때",
+              "note": "공략별로 좌자의 두 번째 방어 전법은 금성의 철벽 또는 어적임전으로 갈립니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "enemy-before"
+                  ]
+                },
+                {
+                  "generalId": "tian-feng",
+                  "tacticIds": [
+                    "yellow-heaven",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-ning",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "see-truth"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dong-nanman",
+              "name": "동탁·맹획·축융부인",
+              "badge": "문정 2 남만 대안",
+              "formation": "기형진",
+              "condition": "남만 핵심 3장과 축융부인 육성이 갖춰졌을 때",
+              "note": "축융부인의 유지력으로 4~6급지 병손을 낮추는 조건부 대안입니다. 공식 공통 루트보다 무조건 빠르다는 뜻은 아닙니다.",
+              "deckId": "w2-open-dong-nanman",
+              "members": [
+                {
+                  "generalId": "dong-zhuo",
+                  "tacticIds": [
+                    "taxation",
+                    "fold-charge"
+                  ]
+                },
+                {
+                  "generalId": "meng-huo",
+                  "tacticIds": [
+                    "golden-fortress",
+                    "direct-world"
+                  ]
+                },
+                {
+                  "generalId": "zhu-rong",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xin-huo",
+              "name": "강유·SP 제갈량·유비",
+              "badge": "백판 안정·최종 전환",
+              "formation": "안형진",
+              "condition": "저홍도이거나 9급지 이후 10급지·원정까지 한 덱으로 갈 때",
+              "note": "문정 공략에서 신화창으로 부르는 최종 개척축입니다. 안형진·시즌 해금 시점을 확인하세요.",
+              "members": [
+                {
+                  "generalId": "jiang-wei",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "punish-past"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                },
+                {
+                  "generalId": "liu-bei",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w2-taptap",
+            "w2-nanman"
+          ]
+        },
+        {
+          "id": "w2-land8-9",
+          "startLevel": 29,
+          "phase": "2~3일차",
+          "title": "8·9급지와 안형진 전환",
+          "target": "8·9급지",
+          "requirement": {
+            "safe": "8급지 29레벨·10,200 / 9급지 34레벨·14,700",
+            "standard": "30레벨 주황 장비·병영 5~10",
+            "rush": "공개 전보·유리 수비대가 있는 경우만 단축"
+          },
+          "tasks": [
+            "30레벨 주황 장비·군마와 병법을 장착합니다.",
+            "8급지 저전손 뒤 신화창 또는 SP 제갈 남만 안형진으로 전환합니다.",
+            "34레벨·병영 10·전법 10을 기준으로 9급지를 정찰합니다."
+          ],
+          "warnings": [
+            "안형진과 시즌 기능이 열리기 전에 최종 조합의 수치를 적용하지 않습니다."
+          ],
+          "routes": [
+            {
+              "id": "xin-huo",
+              "name": "강유·SP 제갈량·유비",
+              "badge": "백판 안정·최종 전환",
+              "formation": "안형진",
+              "condition": "저홍도이거나 9급지 이후 10급지·원정까지 한 덱으로 갈 때",
+              "note": "문정 공략에서 신화창으로 부르는 최종 개척축입니다. 안형진·시즌 해금 시점을 확인하세요.",
+              "members": [
+                {
+                  "generalId": "jiang-wei",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "punish-past"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                },
+                {
+                  "generalId": "liu-bei",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "sp-nanman",
+              "name": "축융부인·맹획·SP 제갈량",
+              "badge": "문정 2 후반 대안",
+              "formation": "안형진",
+              "condition": "안형진과 남만 핵심을 모두 해금한 뒤",
+              "note": "9급지 이후 개척·원정 겸용 대안입니다. 보유 조건이 높아 표준 루트와 별도로 표시합니다.",
+              "deckId": "w2-open-sp-nanman",
+              "members": [
+                {
+                  "generalId": "zhu-rong",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                },
+                {
+                  "generalId": "meng-huo",
+                  "tacticIds": [
+                    "golden-fortress",
+                    "step-camp"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zuo-tian-ning",
+              "name": "좌자·전풍·장녕",
+              "badge": "중·고홍도 속공",
+              "formation": "기형진",
+              "condition": "7~9급지를 빠르게 올릴 장비·홍도·전법이 있을 때",
+              "note": "공략별로 좌자의 두 번째 방어 전법은 금성의 철벽 또는 어적임전으로 갈립니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "enemy-before"
+                  ]
+                },
+                {
+                  "generalId": "tian-feng",
+                  "tacticIds": [
+                    "yellow-heaven",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-ning",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "see-truth"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zuo-yu-jiao",
+              "name": "좌자·우길·장각",
+              "badge": "후반 모략 대안",
+              "formation": "기형진",
+              "condition": "우길·장각의 모략 전법과 장비가 갖춰졌을 때",
+              "note": "8~9급지 선택지입니다. 능동 전법 편차가 있어 첫 정찰과 수비대 선별이 중요합니다.",
+              "members": [
+                {
+                  "generalId": "zuo-ci",
+                  "tacticIds": [
+                    "fold-charge",
+                    "golden-fortress"
+                  ]
+                },
+                {
+                  "generalId": "yu-ji",
+                  "tacticIds": [
+                    "see-truth",
+                    "foresight"
+                  ]
+                },
+                {
+                  "generalId": "zhang-jiao",
+                  "tacticIds": [
+                    "highest-wisdom",
+                    "qimen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w2-taptap",
+            "w2-nanman"
+          ]
+        },
+        {
+          "id": "w2-late",
+          "startLevel": 35,
+          "phase": "4일차 이후",
+          "title": "관문·징벽령·원정 전환",
+          "target": "10급지·원정",
+          "requirement": {
+            "safe": "9급지 저전손 후 전환",
+            "standard": "안형진 완성·전법 반환 계획",
+            "rush": "관문 일정에 맞춘 체력·예비병 비축"
+          },
+          "tasks": [
+            "4일차·5일차·10일차 정오의 관문 개방 일정을 확인합니다.",
+            "8일차 첫 징벽령 해금과 최대 3개 보유 한도를 확인합니다.",
+            "개척 전법을 전쟁 1군에 반환하고 신화창·SP 남만 중 원정 조합을 확정합니다."
+          ],
+          "warnings": [
+            "48시간 종료 전에 임시 교체를 원복하고, 관문 전에 체력과 예비병을 모두 소모하지 마세요."
+          ],
+          "routes": [
+            {
+              "id": "xin-huo",
+              "name": "강유·SP 제갈량·유비",
+              "badge": "백판 안정·최종 전환",
+              "formation": "안형진",
+              "condition": "저홍도이거나 9급지 이후 10급지·원정까지 한 덱으로 갈 때",
+              "note": "문정 공략에서 신화창으로 부르는 최종 개척축입니다. 안형진·시즌 해금 시점을 확인하세요.",
+              "members": [
+                {
+                  "generalId": "jiang-wei",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "punish-past"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                },
+                {
+                  "generalId": "liu-bei",
+                  "tacticIds": [
+                    "avoid-edge",
+                    "golden-fortress"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "sp-nanman",
+              "name": "축융부인·맹획·SP 제갈량",
+              "badge": "문정 2 후반 대안",
+              "formation": "안형진",
+              "condition": "안형진과 남만 핵심을 모두 해금한 뒤",
+              "note": "9급지 이후 개척·원정 겸용 대안입니다. 보유 조건이 높아 표준 루트와 별도로 표시합니다.",
+              "deckId": "w2-open-sp-nanman",
+              "members": [
+                {
+                  "generalId": "zhu-rong",
+                  "tacticIds": [
+                    "overwhelming-win",
+                    "unstoppable"
+                  ]
+                },
+                {
+                  "generalId": "meng-huo",
+                  "tacticIds": [
+                    "golden-fortress",
+                    "step-camp"
+                  ]
+                },
+                {
+                  "generalId": "sp-zhuge-liang",
+                  "tacticIds": [
+                    "fold-charge",
+                    "empty-city"
+                  ]
+                }
+              ]
+            }
+          ],
+          "sourceIds": [
+            "w2-official",
+            "w2-taptap"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "w2-official",
+          "label": "문정 2 남군봉기 시즌 안내",
+          "publisher": "공식 시즌 페이지",
+          "url": "https://newslg.biligames.com/w2info/"
+        },
+        {
+          "id": "w2-taptap",
+          "label": "문정 2 동맹 태학·공식 개척표",
+          "publisher": "TapTap 공식 공략",
+          "url": "https://www.taptap.cn/moment/718165104109027433"
+        },
+        {
+          "id": "w2-nanman",
+          "label": "문정 2 남만 선발 개척",
+          "publisher": "대만 Gamer Wiki",
+          "url": "https://wiki2.gamer.com.tw/wiki.php?f=M&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%8D%97%E8%A0%BB%E5%8F%8A%E9%8B%92%E9%9A%8A%E9%A6%96%E9%9A%8A%E5%BF%85%E7%B7%B4&ss=147646"
+        }
+      ]
+    }
+  ],
+  "promotionCommonRules": [
+    "1품마다 주는 피해 +1%, 받는 피해 -1%가 적용되어 5품에는 각각 +5%, -5%가 됩니다.",
+    "발동률 상승 대상인 고유 액티브 전법은 1품마다 +1%p, 5품에는 +5%p가 더해집니다.",
+    "추격 전법과 일부 액티브는 발동률 상승 대상이 아닙니다. 나머지 고유 전법 수치는 장수별 승품 툴팁을 따릅니다."
+  ],
+  "promotionGuides": [
+    {
+      "id": "s-integrated",
+      "label": "S 통합",
+      "subtitle": "S2+S3 통합 시즌",
+      "summary": "상위 덱 채용률과 승품으로 전투 구조가 바뀌는 폭을 함께 반영했습니다.",
+      "rankings": [
+        {
+          "rank": 1,
+          "generalId": "zhao-yun",
+          "efficiencyScore": 9.9,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "회피 수치 상승 + 공통 피해·감쇄",
+          "reason": "회피 성공이 생존과 반격 횟수를 동시에 늘려 승품 수치가 공격과 방어 양쪽으로 증폭됩니다.",
+          "uses": [
+            "초선·조운·감부인",
+            "조운·감부인·사마의"
+          ]
+        },
+        {
+          "rank": 2,
+          "generalId": "dian-wei",
+          "efficiencyScore": 9.8,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "반격 확률 상승 + 공통 피해·감쇄",
+          "reason": "피격 횟수가 많은 전열에서 반격 기회 자체가 늘어납니다. 확률 상승이 누적 강화와 바로 연결됩니다.",
+          "uses": [
+            "조조·전위·견희",
+            "조조·전위·황월영"
+          ]
+        },
+        {
+          "rank": 3,
+          "generalId": "lu-xun",
+          "efficiencyScore": 9.7,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "고유 액티브 발동률 상승 + 화염 핵심 수치",
+          "reason": "화염 중첩의 첫 단추인 고유 전법 발동이 안정되어 연소 누적과 후속 피해의 편차를 줄입니다.",
+          "uses": [
+            "조조·육손·손권",
+            "노숙·육손·손권"
+          ]
+        },
+        {
+          "rank": 4,
+          "generalId": "ma-chao",
+          "efficiencyScore": 9.6,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "회심 수치 상승 + 공통 피해",
+          "reason": "회심 뒤 방어 무시 추가타가 이어지는 구조라 회심 상승이 단순 피해 증가보다 큰 체감으로 이어집니다.",
+          "uses": [
+            "조조·원소·마초",
+            "원소·주태·마초"
+          ]
+        },
+        {
+          "rank": 5,
+          "generalId": "cao-cao",
+          "efficiencyScore": 9.5,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "전군 감쇄·흡혈·회복 관련 수치 상승",
+          "reason": "고유 전법이 세 아군 모두의 생존과 회복에 관여해 한 장수 승품이 부대 전체 효율로 환산됩니다.",
+          "uses": [
+            "조조·순욱·사마의",
+            "조조·순욱·주유"
+          ]
+        },
+        {
+          "rank": 6,
+          "generalId": "zhou-tai",
+          "efficiencyScore": 9.4,
+          "magnitude": "큼",
+          "target": "5품 완성",
+          "effect": "엄호 확률·엄호 피해 감소 상승",
+          "reason": "핵심 딜러 대신 피해를 받는 빈도와 그때의 손실이 함께 개선되어 보호형 덱의 안정성이 크게 오릅니다.",
+          "uses": [
+            "원소·주태·마초",
+            "주유·주태·황개"
+          ]
+        },
+        {
+          "rank": 7,
+          "generalId": "gan-furen",
+          "efficiencyScore": 9.3,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "회피 부여 확률·회피·치료 수치 상승",
+          "reason": "조운에게 회피 기회를 공급하고 동시에 전군 체력을 복구해 회피 덱의 핵심 연결부를 강화합니다.",
+          "uses": [
+            "초선·조운·감부인",
+            "조운·감부인·사마의"
+          ]
+        },
+        {
+          "rank": 8,
+          "generalId": "sima-yi",
+          "efficiencyScore": 9.2,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "추가 진법 획득 확률·진법 연동 피해 상승",
+          "reason": "진법 이익 개수가 후반 피해 계수와 연결되어 확률 상승이 사마의의 고점과 평균값을 함께 높입니다.",
+          "uses": [
+            "조조·순욱·사마의",
+            "하후돈·조조·사마의"
+          ]
+        },
+        {
+          "rank": 9,
+          "generalId": "sun-quan",
+          "efficiencyScore": 9.1,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "전군 액티브 발동·연격 지원 수치 상승",
+          "reason": "편성한 전법 유형에 따라 세 장수 모두가 혜택을 받으므로 액티브·추격 어느 방향에서도 투자 손실이 적습니다.",
+          "uses": [
+            "조조·육손·손권",
+            "노숙·육손·손권"
+          ]
+        },
+        {
+          "rank": 10,
+          "generalId": "da-qiao",
+          "efficiencyScore": 9,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "적 받는 피해 증가·아군 치료 수치 상승",
+          "reason": "매 턴 두 적의 피해 수용량과 두 아군의 회복량을 동시에 바꿔 공수 양면에서 승품 효율이 납니다.",
+          "uses": [
+            "대교·황개·주유",
+            "마초·대교·악진"
+          ]
+        },
+        {
+          "rank": 11,
+          "generalId": "yue-jin",
+          "efficiencyScore": 8.9,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "동열 선공·주는 피해·받는 피해 감소 상승",
+          "reason": "초반 전열 보정이 강화되어 속공 부대의 행동 순서와 생존을 한 번에 안정시킵니다.",
+          "uses": [
+            "여포·진궁·악진",
+            "주유·순욱·악진"
+          ]
+        },
+        {
+          "rank": 12,
+          "generalId": "xun-yu",
+          "efficiencyScore": 8.8,
+          "magnitude": "중상",
+          "target": "3품 권장",
+          "effect": "회심·기책·간파 지원 수치 상승",
+          "reason": "조조 중심 덱에서 주력 딜러의 치명타와 상태 대응을 함께 끌어올려 장기전 손실을 줄입니다.",
+          "uses": [
+            "조조·순욱·사마의",
+            "조조·순욱·주유"
+          ]
+        },
+        {
+          "rank": 13,
+          "generalId": "guan-yu",
+          "efficiencyScore": 8.7,
+          "magnitude": "중상",
+          "target": "3품 권장",
+          "effect": "고유 액티브 발동률 상승 + 광역 병인",
+          "reason": "자체 발동률 누적의 시작이 더 안정되어 광역 피해와 제어 연계가 끊길 위험을 낮춥니다.",
+          "uses": [
+            "유비·관우·장비",
+            "노숙·관우·손권"
+          ]
+        },
+        {
+          "rank": 14,
+          "generalId": "huang-gai",
+          "efficiencyScore": 8.6,
+          "magnitude": "중상",
+          "target": "1품 우선",
+          "effect": "자가 피해 감소·화염 피해 수치 상승",
+          "reason": "화공 덱 전열에서 자해 조건을 견디는 힘과 광역 화염 압박이 함께 올라갑니다.",
+          "uses": [
+            "대교·황개·주유",
+            "주유·주태·황개"
+          ]
+        },
+        {
+          "rank": 15,
+          "generalId": "zhang-fei",
+          "efficiencyScore": 8.5,
+          "magnitude": "중상",
+          "target": "1품 우선",
+          "effect": "공포 부여 확률·고유 액티브 수치 상승",
+          "reason": "공포 성공 여부가 관우와 후속 제어의 조건이 되므로 유관장 완성 시 투자 가치가 높아집니다.",
+          "uses": [
+            "유비·관우·장비",
+            "유비·장비·황충"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "w1",
+      "label": "문정 1",
+      "subtitle": "업주산하",
+      "summary": "문정 1 상위 편성과 다음 시즌까지의 유지 가치를 함께 반영했습니다.",
+      "rankings": [
+        {
+          "rank": 1,
+          "generalId": "zuo-ci",
+          "efficiencyScore": 10,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "액티브 실패 재판정 확률·자가 감쇄 상승",
+          "reason": "재판정은 아군 액티브 전법 전체의 실패를 되돌릴 수 있어 한 장수 승품이 여러 전법의 기대값을 올립니다.",
+          "uses": [
+            "좌자·연의 원소·장녕",
+            "육손·연의 원소·좌자"
+          ]
+        },
+        {
+          "rank": 2,
+          "generalId": "zhao-yun",
+          "efficiencyScore": 9.8,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "회피 수치 상승 + 공통 피해·감쇄",
+          "reason": "문정 1에서도 회피가 생존과 반격을 동시에 만들며 감부인·강유 편성의 전열 안정성을 크게 높입니다.",
+          "uses": [
+            "감부인·조운·강유"
+          ]
+        },
+        {
+          "rank": 3,
+          "generalId": "dian-wei",
+          "efficiencyScore": 9.7,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "반격 확률 상승 + 공통 피해·감쇄",
+          "reason": "SP 제갈량의 진형 지원을 받는 반격 전열에서 확률 상승이 누적 강화와 직접 맞물립니다.",
+          "uses": [
+            "조조·전위·SP 제갈량"
+          ]
+        },
+        {
+          "rank": 4,
+          "generalId": "lu-xun",
+          "efficiencyScore": 9.6,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "고유 액티브 발동률 상승 + 화염 핵심 수치",
+          "reason": "연의 원소·손권 편성에서도 화염 시동 안정성이 곧 부대 전체의 누적 피해 안정성입니다.",
+          "uses": [
+            "연의 원소·손권·육손",
+            "육손·연의 원소·좌자"
+          ]
+        },
+        {
+          "rank": 5,
+          "generalId": "jiang-wei",
+          "efficiencyScore": 9.5,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "토벌·문무 피해 핵심 수치 상승",
+          "reason": "매 턴 누적되는 토벌이 세 장수의 다단 피해와 연결되어 장기전일수록 승품의 공통 보정이 크게 누적됩니다.",
+          "uses": [
+            "강유·유비·SP 제갈량",
+            "감부인·조운·강유"
+          ]
+        },
+        {
+          "rank": 6,
+          "generalId": "ma-teng",
+          "efficiencyScore": 9.4,
+          "magnitude": "큼",
+          "target": "5품 완성",
+          "effect": "추격 피해·추가 일반 공격 확률 상승",
+          "reason": "추가 일반 공격은 장료·마운록 계열의 추격을 다시 여는 핵심이라 추격 덱 전체의 행동 수를 늘립니다.",
+          "uses": [
+            "연의 공손찬·연의 장료·마등",
+            "하후연·연의 장료·마등"
+          ]
+        },
+        {
+          "rank": 7,
+          "generalId": "gan-furen",
+          "efficiencyScore": 9.3,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "회피 부여 확률·회피·치료 수치 상승",
+          "reason": "조운의 회피 반격과 강유의 장기 누적을 동시에 지켜 문정 1 조감강의 안정 구간을 넓힙니다.",
+          "uses": [
+            "감부인·조운·강유"
+          ]
+        },
+        {
+          "rank": 8,
+          "generalId": "guan-yinping",
+          "efficiencyScore": 9.2,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "허약 연계 발동 확률·광역 병인 수치 상승",
+          "reason": "첫 액티브 뒤 허약이 성공하면 적의 반격을 끊고 마초의 약화 대상 추가타 조건도 빠르게 만듭니다.",
+          "uses": [
+            "마초·SP 제갈량·관은병"
+          ]
+        },
+        {
+          "rank": 9,
+          "generalId": "ma-chao",
+          "efficiencyScore": 9.1,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "회심 수치 상승 + 방어 무시 추가타",
+          "reason": "SP 제갈량·악진의 보조를 받는 속공 덱에서 회심 상승이 첫 3턴 킬 압박으로 바로 환산됩니다.",
+          "uses": [
+            "마초·SP 제갈량·악진",
+            "마초·SP 제갈량·관은병"
+          ]
+        },
+        {
+          "rank": 10,
+          "generalId": "sun-quan",
+          "efficiencyScore": 9,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "전군 액티브 발동·연격 지원 수치 상승",
+          "reason": "연의 원소·육손의 액티브 기대값과 전군 감쇄를 동시에 올려 상위 오나라 편성에서 효율이 안정적입니다.",
+          "uses": [
+            "연의 원소·손권·육손"
+          ]
+        },
+        {
+          "rank": 11,
+          "generalId": "wang-yi",
+          "efficiencyScore": 8.9,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "추가 모략 발동 확률·받는 피해 증가 수치 상승",
+          "reason": "일반·추격 행동이 많은 덱에서 광역 추가타와 받피증 중첩이 빠르게 쌓여 조순왕의 화력을 보조합니다.",
+          "uses": [
+            "조조·순욱·왕이"
+          ]
+        },
+        {
+          "rank": 12,
+          "generalId": "yue-jin",
+          "efficiencyScore": 8.8,
+          "magnitude": "중상",
+          "target": "3품 권장",
+          "effect": "동열 선공·주는 피해·받는 피해 감소 상승",
+          "reason": "마초의 초반 폭발 구간을 보호하면서 행동 순서까지 보정해 문정 1 최상위 속공 덱과 잘 맞습니다.",
+          "uses": [
+            "마초·SP 제갈량·악진"
+          ]
+        },
+        {
+          "rank": 13,
+          "generalId": "cao-cao",
+          "efficiencyScore": 8.7,
+          "magnitude": "중상",
+          "target": "3품 권장",
+          "effect": "전군 감쇄·흡혈·회복 관련 수치 상승",
+          "reason": "조순왕과 반격 SP 제갈 편성 양쪽에서 세 장수 생존을 동시에 보정해 범용성이 높습니다.",
+          "uses": [
+            "조조·순욱·왕이",
+            "조조·전위·SP 제갈량"
+          ]
+        },
+        {
+          "rank": 14,
+          "generalId": "yuan-shu",
+          "efficiencyScore": 8.6,
+          "magnitude": "중상",
+          "target": "1품 우선",
+          "effect": "전군 통솔·옥새 피해 수치 상승",
+          "reason": "초반 통솔 버프와 4턴 옥새 광역타가 모두 강화되어 대한방 계열의 버티기와 마무리를 함께 돕습니다.",
+          "uses": [
+            "주준·황보숭·원술"
+          ]
+        },
+        {
+          "rank": 15,
+          "generalId": "sp-zhuge-liang",
+          "efficiencyScore": 8.5,
+          "magnitude": "중상",
+          "target": "1품 우선",
+          "effect": "진형 증폭·전군 모략 감쇄 수치 상승",
+          "reason": "여러 문정 1 상위 덱의 공통 보조축이라 한 번 투자하면 마초·강유·전위 편성 사이에서 돌려 쓰기 좋습니다.",
+          "uses": [
+            "마초·SP 제갈량·악진",
+            "강유·유비·SP 제갈량"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "label": "문정 2",
+      "subtitle": "남군봉기",
+      "summary": "문정 2 신규 장수의 상위 편성 기여도와 기존 승품 핵심축의 재사용 가치를 반영했습니다.",
+      "rankings": [
+        {
+          "rank": 1,
+          "generalId": "zuo-ci",
+          "efficiencyScore": 10,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "액티브 실패 재판정 확률·자가 감쇄 상승",
+          "reason": "우길·장각을 포함한 액티브 편성에서 실패 판정을 다시 굴려 부대 전체의 발동 안정성을 크게 높입니다.",
+          "uses": [
+            "좌자·전풍·여포",
+            "좌자 중심 액티브 조합"
+          ]
+        },
+        {
+          "rank": 2,
+          "generalId": "yu-ji",
+          "efficiencyScore": 9.9,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "고유 액티브 발동률·아군 발동 지원 수치 상승",
+          "reason": "자신의 발동 안정성과 같은 열 아군의 액티브 발동 지원이 겹쳐 액티브 연쇄의 시동과 유지력을 함께 강화합니다.",
+          "uses": [
+            "좌자·우길·장각 계열"
+          ]
+        },
+        {
+          "rank": 3,
+          "generalId": "zhang-jiao",
+          "efficiencyScore": 9.8,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "준비 생략 확률·고유 액티브 발동률 상승",
+          "reason": "준비 턴을 건너뛰는 성공 횟수가 늘면 느린 고계수 전법의 가장 큰 약점이 줄어 삼선 계열의 고점이 안정됩니다.",
+          "uses": [
+            "좌자·우길·장각 계열"
+          ]
+        },
+        {
+          "rank": 4,
+          "generalId": "zhu-rong",
+          "efficiencyScore": 9.7,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "회심·속성 탈취·회복 핵심 수치 상승",
+          "reason": "속성 저하 대상에게 회심과 회복을 동시에 만들며 맹획·SP 제갈의 연계 조건을 공격으로 곧바로 환산합니다.",
+          "uses": [
+            "축융부인·맹획·군웅 SP 제갈량"
+          ]
+        },
+        {
+          "rank": 5,
+          "generalId": "meng-huo",
+          "efficiencyScore": 9.6,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "전군 병인 감쇄·남만 보정·추가타 수치 상승",
+          "reason": "남만 3인의 생존과 속성 저하 반응 추가타를 동시에 강화해 문정 2 최고점 편성의 기반을 단단하게 만듭니다.",
+          "uses": [
+            "축융부인·맹획·군웅 SP 제갈량"
+          ]
+        },
+        {
+          "rank": 6,
+          "generalId": "gao-shun",
+          "efficiencyScore": 9.5,
+          "magnitude": "최상",
+          "target": "5품 완성",
+          "effect": "누적 공수 증폭·광역 병인 수치 상승",
+          "reason": "누적 5000 피해마다 얻는 공수 보정이 장기전에서 반복 적용되어 대한방 계열의 후반 전투력을 높입니다.",
+          "uses": [
+            "황보숭·고순·원술"
+          ]
+        },
+        {
+          "rank": 7,
+          "generalId": "jiang-wei",
+          "efficiencyScore": 9.4,
+          "magnitude": "큼",
+          "target": "5품 완성",
+          "effect": "토벌·문무 피해 핵심 수치 상승",
+          "reason": "촉 주태와 SP 제갈의 보호를 받는 동안 토벌이 계속 쌓여 장기전 누적 피해와 공통 감쇄가 모두 살아납니다.",
+          "uses": [
+            "강유·촉 주태·SP 제갈량"
+          ]
+        },
+        {
+          "rank": 8,
+          "generalId": "sp-zhuge-liang",
+          "efficiencyScore": 9.3,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "진형 증폭·전군 모략 감쇄 수치 상승",
+          "reason": "군웅·촉·위 전환 형태에서도 같은 보조 구조를 활용해 여러 문정 2 상위 덱에 투자 효과를 재사용할 수 있습니다.",
+          "uses": [
+            "축융부인·맹획·군웅 SP 제갈량",
+            "강유·촉 주태·SP 제갈량"
+          ]
+        },
+        {
+          "rank": 9,
+          "generalId": "zhou-tai",
+          "efficiencyScore": 9.2,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "엄호 확률·엄호 피해 감소 상승",
+          "reason": "육손·손권의 딜 누적 시간을 벌고 촉 전환 편성에서도 핵심 딜러를 지켜 승품 재사용성이 높습니다.",
+          "uses": [
+            "육손·손권·주태",
+            "강유·촉 주태·SP 제갈량"
+          ]
+        },
+        {
+          "rank": 10,
+          "generalId": "lu-xun",
+          "efficiencyScore": 9.1,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "고유 액티브 발동률 상승 + 화염 핵심 수치",
+          "reason": "손권의 발동 지원과 결합하면 화염 중첩 편차가 더 줄어 오나라 상위 덱의 평균 화력을 높입니다.",
+          "uses": [
+            "육손·손권·주태"
+          ]
+        },
+        {
+          "rank": 11,
+          "generalId": "sun-quan",
+          "efficiencyScore": 9,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "전군 액티브 발동·연격 지원 수치 상승",
+          "reason": "육손의 액티브 시동과 주태의 생존을 함께 보정해 문정 2 오나라 핵심 조합의 연결축 역할을 합니다.",
+          "uses": [
+            "육손·손권·주태"
+          ]
+        },
+        {
+          "rank": 12,
+          "generalId": "yuan-shu",
+          "efficiencyScore": 8.9,
+          "magnitude": "큼",
+          "target": "3품 권장",
+          "effect": "전군 통솔·옥새 피해 수치 상승",
+          "reason": "고순의 누적 공수 효과가 쌓일 시간을 벌고 4턴 옥새 광역타로 대한방의 마무리 화력을 보탭니다.",
+          "uses": [
+            "황보숭·고순·원술"
+          ]
+        },
+        {
+          "rank": 13,
+          "generalId": "tian-feng",
+          "efficiencyScore": 8.8,
+          "magnitude": "중상",
+          "target": "3품 권장",
+          "effect": "고유 액티브 발동률·능력치 조작 수치 상승",
+          "reason": "좌자 재판정과 결합해 발동 편차를 줄이고 여포가 공격할 수 있는 능력치 우위 구간을 만듭니다.",
+          "uses": [
+            "좌자·전풍·여포"
+          ]
+        },
+        {
+          "rank": 14,
+          "generalId": "lü-bu",
+          "efficiencyScore": 8.7,
+          "magnitude": "중상",
+          "target": "1품 우선",
+          "effect": "고유 액티브 발동률·결투 추가 피해 상승",
+          "reason": "발동 기회가 늘수록 적 전체와의 일반 공격 및 추격 연계가 늘어 좌전여의 폭발 구간이 빨라집니다.",
+          "uses": [
+            "좌자·전풍·여포"
+          ]
+        },
+        {
+          "rank": 15,
+          "generalId": "cao-pi",
+          "efficiencyScore": 8.6,
+          "magnitude": "중상",
+          "target": "1품 우선",
+          "effect": "피해 감소 탈취·지력 탈취 수치 상승",
+          "reason": "적의 방어를 깎으면서 저속 아군의 지력을 누적해 사마의 후반 피해를 돕는 전용 보조축입니다.",
+          "uses": [
+            "사마의·조조·조비"
+          ]
+        }
+      ]
+    }
+  ],
+  "promotionSources": [
+    {
+      "label": "17173 · 승품 공통 규칙과 예외",
+      "url": "https://news.17173.com/content/02222025/143601484.shtml"
+    },
+    {
+      "label": "7724 · 장수별 승품 효과 분류표",
+      "url": "https://www.7724.com/sgmdtx/news/183208.html"
+    },
+    {
+      "label": "17173 · 승품 실전 추천과 삼선 조합",
+      "url": "https://news.17173.com/content/02252025/161802978.shtml"
+    },
+    {
+      "label": "17173 · 전위 반격 승품 평가",
+      "url": "https://news.17173.com/content/02252025/232706782.shtml"
+    },
+    {
+      "label": "233낙원 · 조운·전위 우선순위 교차검토",
+      "url": "https://www.233leyuan.com/post-detail/1965223227017727509"
+    }
+  ],
+  "notice": "툴팁에는 최고 레벨 수치만 표시합니다. 고요한 제압·구름과 바람·정의의 희생·허점 공격과 전용 특기 2종은 첨부된 최신 패치를 반영했으며, 인게임 표시가 최종 기준입니다."
+}

@@ -1,0 +1,2689 @@
+[
+  {
+    "id": "liu-bei",
+    "name": {
+      "ko": "유비",
+      "zhTW": "劉備",
+      "zhCN": "刘备"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "촉",
+    "row": "전열",
+    "role": "치유",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 145,
+      "지력": 198,
+      "통솔": 205,
+      "선공": 131
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-liu-bei",
+    "manuals": [
+      {
+        "name": "국지한서",
+        "text": "아군이 국가 진영 보너스를 활성화하지 않았으면 아군 전체의 진영 보너스-촉이 100% 적용된다."
+      },
+      {
+        "name": "인의론",
+        "text": "치유폭이 12% 증가하며,(지력의 영향 받음), 우군을 4회 치유할 때마다 랜덤 우군 단일 목표가 1턴 동안 정신 회복을 획득한다. 매 턴 최대 1회 발동된다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%8A%89%E5%82%99"
+      }
+    ]
+  },
+  {
+    "id": "cao-cao",
+    "name": {
+      "ko": "조조",
+      "zhTW": "曹操",
+      "zhCN": "曹操"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "전열",
+    "role": "보조방어",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 135,
+      "지력": 206,
+      "통솔": 221,
+      "선공": 134
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-cao-cao",
+    "manuals": [
+      {
+        "name": "맹덕신서 상권",
+        "text": "아군 전체의 액티브 전법 피해가 5% 증가한다."
+      },
+      {
+        "name": "맹덕신서 하권",
+        "text": "우군 중 통솔이 가장 높은 단일 대상의 반격률이 10% 상승한다. 우군 중 무력이 가장 높은 단일 대상의 일반 공격 피해가 10% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%9B%B9%E6%93%8D"
+      }
+    ]
+  },
+  {
+    "id": "sun-quan",
+    "name": {
+      "ko": "손권",
+      "zhTW": "孫權",
+      "zhCN": "孙权"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "균형",
+    "role": "문무보조",
+    "unitType": "창병",
+    "stats": {
+      "무력": 176,
+      "지력": 190,
+      "통솔": 196,
+      "선공": 179
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-sun-quan",
+    "manuals": [
+      {
+        "name": "동관한기",
+        "text": "자신의 액티브 전법 발동 후, 2턴 동안 전체 아군이 받는 피해가 5% 감소한다."
+      },
+      {
+        "name": "후주",
+        "text": "짝수 턴에 자신이 행동하기 전, 자신의 디버프 상태 1가지를 랜덤으로 제거한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E6%AC%8A"
+      }
+    ]
+  },
+  {
+    "id": "zhuge-liang",
+    "name": {
+      "ko": "제갈량",
+      "zhTW": "諸葛亮",
+      "zhCN": "诸葛亮"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "촉",
+    "row": "균형",
+    "role": "책략",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 74,
+      "지력": 260,
+      "통솔": 215,
+      "선공": 132
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhuge-liang",
+    "manuals": [
+      {
+        "name": "출사표",
+        "text": "홀수 턴에 랜덤 적군 2명이 받는 피해가 12% 증가한다. 짝수 턴에 랜덤 아군 2명이 받는 피해가 12% 감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%AB%B8%E8%91%9B%E4%BA%AE"
+      }
+    ]
+  },
+  {
+    "id": "guan-yu",
+    "name": {
+      "ko": "관우",
+      "zhTW": "關羽",
+      "zhCN": "关羽"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "촉",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "기병",
+    "stats": {
+      "무력": 244,
+      "지력": 147,
+      "통솔": 200,
+      "선공": 189
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-guan-yu",
+    "manuals": [
+      {
+        "name": "왕예",
+        "text": "자신이 책략 피해를 받은 후, 50% 확률로 2턴 동안 자신의 액티브 전법 발동률이 4% 증가하며, 2회 중첩될 수 있다."
+      },
+      {
+        "name": "오상",
+        "text": "병력이 자신보다 높은 목표에게 주는 피해가 10% 증가한다. 고유 전법 화하 진압이 병력이 자신보다 높은 목표에게 생성하는 탈주병 수가 30% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%97%9C%E7%BE%BD"
+      }
+    ]
+  },
+  {
+    "id": "zhao-yun",
+    "name": {
+      "ko": "조운",
+      "zhTW": "趙雲",
+      "zhCN": "赵云"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "촉",
+    "row": "전열",
+    "role": "병기",
+    "unitType": "기병",
+    "stats": {
+      "무력": 237,
+      "지력": 146,
+      "통솔": 204,
+      "선공": 170
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhao-yun",
+    "manuals": [
+      {
+        "name": "신용",
+        "text": "자신의 피신 확률과 회유가 5% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%B6%99%E9%9B%B2"
+      }
+    ]
+  },
+  {
+    "id": "ma-chao",
+    "name": {
+      "ko": "마초",
+      "zhTW": "馬超",
+      "zhCN": "马超"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "촉",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "기병",
+    "stats": {
+      "무력": 244,
+      "지력": 103,
+      "통솔": 181,
+      "선공": 189
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-ma-chao",
+    "manuals": [
+      {
+        "name": "철기령",
+        "text": "회심 확률이 6%, 회심 피해가 10% 증가한다."
+      },
+      {
+        "name": "마술",
+        "text": "회심 피해가 15% 증가하고, 고유 전법-기병 돌격의 추격 피해가 180% 증가하지만, 추격 피해는 매턴 1회만 발동한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%A6%AC%E8%B6%85"
+      }
+    ]
+  },
+  {
+    "id": "guo-jia",
+    "name": {
+      "ko": "곽가",
+      "zhTW": "郭嘉",
+      "zhCN": "郭嘉"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 46,
+      "지력": 242,
+      "통솔": 169,
+      "선공": 135
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-guo-jia",
+    "manuals": [
+      {
+        "name": "십승론",
+        "text": "받는 액티브 전법 피해와 추격 전법 피해가 12% 감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%83%AD%E5%98%89"
+      }
+    ]
+  },
+  {
+    "id": "dian-wei",
+    "name": {
+      "ko": "전위",
+      "zhTW": "典韋",
+      "zhCN": "典韦"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "전열",
+    "role": "방어병기",
+    "unitType": "창병",
+    "stats": {
+      "무력": 246,
+      "지력": 59,
+      "통솔": 193,
+      "선공": 169
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-dian-wei",
+    "manuals": [
+      {
+        "name": "절무",
+        "text": "자신의 무력이 10포인트 증가하며, 반격 피해가 20% 증가한다."
+      },
+      {
+        "name": "어전",
+        "text": "자신의 방어 관통이 7%, 반격 피해가 10% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%85%B8%E9%9F%8B"
+      }
+    ]
+  },
+  {
+    "id": "zhou-yu",
+    "name": {
+      "ko": "주유",
+      "zhTW": "周瑜",
+      "zhCN": "周瑜"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 120,
+      "지력": 238,
+      "통솔": 195,
+      "선공": 140
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhou-yu",
+    "manuals": [
+      {
+        "name": "화계",
+        "text": "적군이 공격으로 화공 상태로 될 경우, 35% 확률로 '기지' 효과 발동(턴당 최대 2회 발동, 고유 전법 기지의 승리-기지 발동 횟수와 개별적으로 계산)"
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%91%A8%E7%91%9C"
+      }
+    ]
+  },
+  {
+    "id": "sun-shangxiang",
+    "name": {
+      "ko": "손상향",
+      "zhTW": "孫尚香",
+      "zhCN": "孙尚香"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 215,
+      "지력": 124,
+      "통솔": 172,
+      "선공": 179
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-sun-shangxiang",
+    "manuals": [
+      {
+        "name": "무녀전",
+        "text": "자신이 주는 피해가 5% 증가하며, 연타율이 12% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E5%B0%9A%E9%A6%99"
+      }
+    ]
+  },
+  {
+    "id": "lü-meng",
+    "name": {
+      "ko": "여몽",
+      "zhTW": "呂蒙",
+      "zhCN": "吕蒙"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "창병",
+    "stats": {
+      "무력": 179,
+      "지력": 214,
+      "통솔": 184,
+      "선공": 176
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-lü-meng",
+    "manuals": [
+      {
+        "name": "권학",
+        "text": "자신이 받는 책략 피해가 6% 감소한다. 3번째 턴 종료 후, 자신의 지력이 30포인트 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%91%82%E8%92%99"
+      }
+    ]
+  },
+  {
+    "id": "dong-zhuo",
+    "name": {
+      "ko": "동탁",
+      "zhTW": "董卓",
+      "zhCN": "董卓"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "전열",
+    "role": "문무방어",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 200,
+      "지력": 151,
+      "통솔": 205,
+      "선공": 172
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-dong-zhuo",
+    "manuals": [
+      {
+        "name": "왕신",
+        "text": "통솔이 30포인트 증가하고, 고유 전법 압도적 권력 탈취 수치가 60% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%91%A3%E5%8D%93"
+      }
+    ]
+  },
+  {
+    "id": "lü-bu",
+    "name": {
+      "ko": "여포",
+      "zhTW": "呂布",
+      "zhCN": "吕布"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "기병",
+    "stats": {
+      "무력": 260,
+      "지력": 70,
+      "통솔": 179,
+      "선공": 192
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-lü-bu",
+    "manuals": [
+      {
+        "name": "도발",
+        "text": "받는 병기 피해가 7% 감소하며, 2번째 턴 시작 시 무력이 가장 높은 적군 단일 목표와 서로 1회 공격한다."
+      },
+      {
+        "name": "무쌍",
+        "text": "받는 병기 피해가 5% 감소하며, 반격률이 20% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%91%82%E5%B8%83"
+      }
+    ]
+  },
+  {
+    "id": "hua-tuo",
+    "name": {
+      "ko": "화타",
+      "zhTW": "華佗",
+      "zhCN": "华佗"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "후열",
+    "role": "치유",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 29,
+      "지력": 212,
+      "통솔": 140,
+      "선공": 133
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-hua-tuo",
+    "manuals": [
+      {
+        "name": "청낭경",
+        "text": "목표에게 치유 효과를 부여하고, 목표가 주는 피해가 6% 증가하며, 2턴 지속되고, 최대 2회 중첩될 수 있다."
+      },
+      {
+        "name": "오금희",
+        "text": "4번째 턴부터 매 턴 시작 시, 전체 아군이 25% 확률로 1스택의 방어를 획득한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%8F%AF%E4%BD%97"
+      }
+    ]
+  },
+  {
+    "id": "zhang-jiao",
+    "name": {
+      "ko": "장각",
+      "zhTW": "張角",
+      "zhCN": "张角"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 55,
+      "지력": 228,
+      "통솔": 195,
+      "선공": 131
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhang-jiao",
+    "manuals": [
+      {
+        "name": "태평도법",
+        "text": "액티브 전법 발동 후, 자신의 묘책 확률 및 책략 피해가 4% 증가하며, 최대 6회까지 중첩된다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E8%A7%92"
+      }
+    ]
+  },
+  {
+    "id": "diao-chan",
+    "name": {
+      "ko": "초선",
+      "zhTW": "貂蟬",
+      "zhCN": "貂蝉"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "기병",
+    "stats": {
+      "무력": 39,
+      "지력": 204,
+      "통솔": 176,
+      "선공": 147
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-diao-chan",
+    "manuals": [
+      {
+        "name": "상련",
+        "text": "매 턴 종료 시, 1턴 동안 무력이 가장 높은 우군의 방어 관통이 9% 증가한다."
+      },
+      {
+        "name": "화수",
+        "text": "매 턴 종료 시, 1턴 동안 무력이 가장 높은 우군의 연타율이 30% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%B2%82%E8%9F%AC"
+      }
+    ]
+  },
+  {
+    "id": "taishi-ci",
+    "name": {
+      "ko": "태사자",
+      "zhTW": "太史慈",
+      "zhCN": "太史慈"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 223,
+      "지력": 149,
+      "통솔": 194,
+      "선공": 195
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-taishi-ci",
+    "manuals": [
+      {
+        "name": "축력",
+        "text": "짝수 턴에 자신의 추격 전법 발동률이 15% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%A4%AA%E5%8F%B2%E6%85%88"
+      }
+    ]
+  },
+  {
+    "id": "da-qiao",
+    "name": {
+      "ko": "대교",
+      "zhTW": "大喬",
+      "zhCN": "大乔"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "균형",
+    "role": "보조치유",
+    "unitType": "창병",
+    "stats": {
+      "무력": 40,
+      "지력": 192,
+      "통솔": 183,
+      "선공": 113
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-da-qiao",
+    "manuals": [
+      {
+        "name": "상사문부",
+        "text": "고유 전법 국색이 디버프 상태를 부여하는 목표가 적군 전체로 바뀌며, 회복 효과는 50% 감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%A4%A7%E5%96%AC"
+      }
+    ]
+  },
+  {
+    "id": "lu-su",
+    "name": {
+      "ko": "노숙",
+      "zhTW": "魯肅",
+      "zhCN": "鲁肃"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "균형",
+    "role": "보조",
+    "unitType": "창병",
+    "stats": {
+      "무력": 89,
+      "지력": 217,
+      "통솔": 173,
+      "선공": 175
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-lu-su",
+    "manuals": [
+      {
+        "name": "치국론",
+        "text": "받는 피해가 7% 감소하며, 매 턴 액티브 전법 첫 발동 후, 랜덤 적군 단일 목표에게 2턴 동안 지속되는 군량 고갈을 부여한다."
+      },
+      {
+        "name": "탑상책",
+        "text": "매 턴 전체 아군이 액티브 전법 첫 발동 후, 랜덤 적군 단일 목표가 받는 책략 피해가 4% 증가하며, 1턴 지속되고, 3회 중첩될 수 있다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%AD%AF%E8%82%85"
+      }
+    ]
+  },
+  {
+    "id": "gan-ning",
+    "name": {
+      "ko": "감녕",
+      "zhTW": "甘寧",
+      "zhCN": "甘宁"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "기병",
+    "stats": {
+      "무력": 225,
+      "지력": 144,
+      "통솔": 186,
+      "선공": 188
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-gan-ning",
+    "manuals": [
+      {
+        "name": "산림탈기",
+        "text": "자신이 받는 병기 피해가 5% 감소하며, 회유와 5% 증가한다. 일반 공격 전, 60% 확률로 랜덤 적군 단일 목표에게 주는 책략 피해가 30% 증가한다."
+      },
+      {
+        "name": "겁술",
+        "text": "추격 전법을 발동할 수 없으며, 턴 종료 시, 30% 확률로 병력이 가장 낮은 적군 단일 목표를 추가로 일반 공격을 1회 부여한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%94%98%E5%AF%A7"
+      }
+    ]
+  },
+  {
+    "id": "xu-chu",
+    "name": {
+      "ko": "허저",
+      "zhTW": "許褚",
+      "zhCN": "许褚"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "창병",
+    "stats": {
+      "무력": 238,
+      "지력": 65,
+      "통솔": 169,
+      "선공": 186
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-xu-chu",
+    "manuals": [
+      {
+        "name": "정남권종",
+        "text": "추격 전법 발동률이 5% 증가하며, 추격 전법 피해가 12% 증가한다."
+      },
+      {
+        "name": "전서",
+        "text": "전투 시작 후 3턴 동안 자신의 회심 확률이 15% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%A8%B1%E8%A4%9A"
+      }
+    ]
+  },
+  {
+    "id": "deng-ai",
+    "name": {
+      "ko": "등애",
+      "zhTW": "鄧艾",
+      "zhCN": "邓艾"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "균형",
+    "role": "치유",
+    "unitType": "창병",
+    "stats": {
+      "무력": 175,
+      "지력": 196,
+      "통솔": 178,
+      "선공": 145
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-deng-ai",
+    "manuals": [
+      {
+        "name": "제하론",
+        "text": "매 턴 시작 시, 우군 2명의 방어 관통과 간파가 3% 증가하며, 전투 종료까지 지속되며, 중첩될 수 있다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%84%A7%E8%89%BE"
+      }
+    ]
+  },
+  {
+    "id": "xiahou-dun",
+    "name": {
+      "ko": "하후돈",
+      "zhTW": "夏侯惇",
+      "zhCN": "夏侯惇"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "기병",
+    "stats": {
+      "무력": 210,
+      "지력": 118,
+      "통솔": 205,
+      "선공": 152
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-xiahou-dun",
+    "manuals": [
+      {
+        "name": "위협",
+        "text": "고유 전법 강렬의 피해 감소 효과가 10% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%A4%8F%E4%BE%AF%E6%83%87"
+      }
+    ]
+  },
+  {
+    "id": "zhen-luo",
+    "name": {
+      "ko": "견희",
+      "zhTW": "甄洛",
+      "zhCN": "甄洛"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "태사자",
+    "role": "보조치유",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 33,
+      "지력": 201,
+      "통솔": 176,
+      "선공": 126
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhen-luo",
+    "manuals": [
+      {
+        "name": "낙신부",
+        "text": "상권 고유 전법 바람과 눈꽃의 낙수의 여신 효과가 지력이 가장 높은 단일 목표를 우선적으로 선택하고, 낙수의 여신 회복 효과가 10% 증가한다."
+      },
+      {
+        "name": "낙신부",
+        "text": "하권 고유 전법 바람과 눈꽃의 낙수의 여신 효과가 무력이 가장 높은 단일 목표를 우선적으로 선택하고, 낙수의 여신 회복 효과가 10% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%94%84%E6%B4%9B"
+      }
+    ]
+  },
+  {
+    "id": "zhang-fei",
+    "name": {
+      "ko": "장비",
+      "zhTW": "張飛",
+      "zhCN": "张飞"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "촉",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "창병",
+    "stats": {
+      "무력": 247,
+      "지력": 112,
+      "통솔": 182,
+      "선공": 183
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhang-fei",
+    "manuals": [
+      {
+        "name": "신정후도명",
+        "text": "고유 전법 만인의 적 발동률이 100% 증가하고, 위협 시전 확률이 12%로 감소하며, 주는 병기 피해 계수가 35% 감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E9%A3%9B"
+      }
+    ]
+  },
+  {
+    "id": "huang-yueying",
+    "name": {
+      "ko": "황월영",
+      "zhTW": "黃月英",
+      "zhCN": "黄月英"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "균형",
+    "role": "보조치유",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 46,
+      "지력": 212,
+      "통솔": 166,
+      "선공": 136
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-huang-yueying",
+    "manuals": [
+      {
+        "name": "기관술",
+        "text": "매 턴 시작 시, 통솔이 가장 높은 우군이 35% 확률로 적군 전체를 조롱한다."
+      },
+      {
+        "name": "천공비록",
+        "text": "홀수 턴에 지력이 가장 높은 우군이 첫 피해를 받은 후, 피해를 준 대상에게 100% 책략 피해를 가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%BB%83%E6%9C%88%E8%8B%B1"
+      }
+    ]
+  },
+  {
+    "id": "xun-yu",
+    "name": {
+      "ko": "순욱",
+      "zhTW": "荀彧",
+      "zhCN": "荀彧"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "보조치유",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 46,
+      "지력": 242,
+      "통솔": 150,
+      "선공": 132
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-xun-yu",
+    "manuals": [
+      {
+        "name": "북한",
+        "text": "지력이 가장 높은 아군 단일 목표의 묘책 확률이 6% 증가하며, 묘책 피해가 10% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%8D%80%E5%BD%A7"
+      }
+    ]
+  },
+  {
+    "id": "xiahou-yuan",
+    "name": {
+      "ko": "하후연",
+      "zhTW": "夏侯淵",
+      "zhCN": "夏侯渊"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "기병",
+    "stats": {
+      "무력": 215,
+      "지력": 93,
+      "통솔": 180,
+      "선공": 221
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-xiahou-yuan",
+    "manuals": [
+      {
+        "name": "신속",
+        "text": "회심 피해가 12% 증가(선공의 영향 받음)한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%A4%8F%E4%BE%AF%E6%B7%B5"
+      }
+    ]
+  },
+  {
+    "id": "cao-ren",
+    "name": {
+      "ko": "조인",
+      "zhTW": "曹仁",
+      "zhCN": "曹仁"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 142,
+      "지력": 148,
+      "통솔": 219,
+      "선공": 114
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-cao-ren",
+    "manuals": [
+      {
+        "name": "수도",
+        "text": "아군 전체가 받는 액티브 전법 피해가 12% 감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%9B%B9%E4%BB%81"
+      }
+    ]
+  },
+  {
+    "id": "xu-shu",
+    "name": {
+      "ko": "서서",
+      "zhTW": "徐庶",
+      "zhCN": "徐庶"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "촉",
+    "row": "후열",
+    "role": "문무",
+    "unitType": "기병",
+    "stats": {
+      "무력": 183,
+      "지력": 224,
+      "통솔": 165,
+      "선공": 194
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-xu-shu",
+    "manuals": [
+      {
+        "name": "장검행",
+        "text": "전투 시작 시, 자신의 무력이 지력의 25%만큼 증가하며, 책략 피해를 준 후, 다음에 주는 병기 피해가 40% 증가한다."
+      },
+      {
+        "name": "문공",
+        "text": "고유 전법 겸손한 자세가 주는 병기 피해가 책략 피해로 변환되고 해당 스킬 피해가 10% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BE%90%E5%BA%B6"
+      }
+    ]
+  },
+  {
+    "id": "huang-zhong",
+    "name": {
+      "ko": "황충",
+      "zhTW": "黃忠",
+      "zhCN": "黄忠"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "촉",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 228,
+      "지력": 131,
+      "통솔": 178,
+      "선공": 159
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-huang-zhong",
+    "manuals": [
+      {
+        "name": "궁술",
+        "text": "매 턴 종료 시, 자신이 턴 종료 전까지 시전한 일반 공격 횟수가 2회 미만이면, 1턴 동안 자신의 추격 전법 발동률과 피해가 25% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%BB%83%E5%BF%A0"
+      }
+    ]
+  },
+  {
+    "id": "xu-sheng",
+    "name": {
+      "ko": "서성",
+      "zhTW": "徐盛",
+      "zhCN": "徐盛"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "창병",
+    "stats": {
+      "무력": 162,
+      "지력": 173,
+      "통솔": 201,
+      "선공": 103
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-xu-sheng",
+    "manuals": [
+      {
+        "name": "의성",
+        "text": "전투 1번째 턴에 랜덤 적군 2명에게 2턴 동안 지속되는 홍수 상태를 부여하며, 전체 아군이 피해를 받을 때, 피해를 준 상대가 홍수 상태면 이번 피해가 8% 감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BE%90%E7%9B%9B"
+      }
+    ]
+  },
+  {
+    "id": "cai-wenji",
+    "name": {
+      "ko": "채문희",
+      "zhTW": "蔡文姬",
+      "zhCN": "蔡文姬"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "균형",
+    "role": "치유",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 29,
+      "지력": 211,
+      "통솔": 166,
+      "선공": 174
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-cai-wenji",
+    "manuals": [
+      {
+        "name": "호가십팔박",
+        "text": "고유 전법 비분시 발동률이 10% 증가한다. 발동 후, 1턴 동안 랜덤 적군 2명의 지력이 30포인트 감소한다. 단, 비분시의 치유 효과가 20% 감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%94%A1%E6%96%87%E5%A7%AC"
+      }
+    ]
+  },
+  {
+    "id": "li-ru",
+    "name": {
+      "ko": "이유",
+      "zhTW": "李儒",
+      "zhCN": "李儒"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "기병",
+    "stats": {
+      "무력": 43,
+      "지력": 217,
+      "통솔": 155,
+      "선공": 150
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-li-ru",
+    "manuals": [
+      {
+        "name": "비호",
+        "text": "전투 시작 시, 자신이 2스택의 방어를 획득하며, 우군 2명의 회유와 심리 공격이 6% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%9D%8E%E5%84%92"
+      }
+    ]
+  },
+  {
+    "id": "pang-de",
+    "name": {
+      "ko": "방덕",
+      "zhTW": "龐德",
+      "zhCN": "庞德"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "촉",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "기병",
+    "stats": {
+      "무력": 214,
+      "지력": 107,
+      "통솔": 170,
+      "선공": 195
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-pang-de",
+    "manuals": [
+      {
+        "name": "초기",
+        "text": "고유 전법 필사의 돌격이 2턴과 4턴에 발동한다."
+      },
+      {
+        "name": "상마",
+        "text": "아군의 기병 무력과 선공이 20포인트 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%BE%90%E5%BE%B7"
+      }
+    ]
+  },
+  {
+    "id": "zou-shi",
+    "name": {
+      "ko": "추씨",
+      "zhTW": "鄒氏",
+      "zhCN": "邹氏"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "후열",
+    "role": "보조치유",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 28,
+      "지력": 178,
+      "통솔": 163,
+      "선공": 142
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zou-shi",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%84%92%E6%B0%8F"
+      }
+    ]
+  },
+  {
+    "id": "zhang-bao",
+    "name": {
+      "ko": "장보",
+      "zhTW": "張寶",
+      "zhCN": "张宝"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 77,
+      "지력": 203,
+      "통솔": 177,
+      "선공": 144
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhang-bao",
+    "manuals": [
+      {
+        "name": "태평도법",
+        "text": "전체 적군이 요술 상태를 받은 후, 2턴 동안 받는 액티브 전법 피해가 10% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E5%AF%B6"
+      }
+    ]
+  },
+  {
+    "id": "yuan-shao",
+    "name": {
+      "ko": "원소",
+      "zhTW": "袁紹",
+      "zhCN": "袁绍"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "균형",
+    "role": "문무보조",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 170,
+      "지력": 173,
+      "통솔": 197,
+      "선공": 170
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-yuan-shao",
+    "manuals": [
+      {
+        "name": "세가",
+        "text": "아군이 국가 진영 보너스를 활성화하지 않았으면 아군 전체의 진영 보너스-군이 100% 적용된다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%A2%81%E7%B4%B9"
+      }
+    ]
+  },
+  {
+    "id": "zhang-he",
+    "name": {
+      "ko": "장합",
+      "zhTW": "張郃",
+      "zhCN": "张郃"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "창병",
+    "stats": {
+      "무력": 221,
+      "지력": 116,
+      "통솔": 187,
+      "선공": 154
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhang-he",
+    "manuals": [
+      {
+        "name": "임기응변",
+        "text": "무력이 15포인트 증가하며, 액티브 전법 발동률이 3% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E9%83%83"
+      }
+    ]
+  },
+  {
+    "id": "xiao-qiao",
+    "name": {
+      "ko": "소교",
+      "zhTW": "小喬",
+      "zhCN": "小乔"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "후열",
+    "role": "보조치유",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 40,
+      "지력": 191,
+      "통솔": 162,
+      "선공": 181
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-xiao-qiao",
+    "manuals": [
+      {
+        "name": "관문",
+        "text": "전투 중, 부대 내의 여성 무장이 매 턴 처음으로 회복 효과를 발동하면 랜덤 적군 단일 목표에게 100%의 책략 피해를 준다."
+      },
+      {
+        "name": "공근신",
+        "text": "고유 전법 천향의 발동률이 15% 증가하고, 회복 효과는 50% 감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%B0%8F%E5%96%AC"
+      }
+    ]
+  },
+  {
+    "id": "sun-ce",
+    "name": {
+      "ko": "손책",
+      "zhTW": "孫策",
+      "zhCN": "孙策"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "균형",
+    "role": "병기",
+    "unitType": "기병",
+    "stats": {
+      "무력": 229,
+      "지력": 136,
+      "통솔": 206,
+      "선공": 188
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-sun-ce",
+    "manuals": [
+      {
+        "name": "패왕전",
+        "text": "액티브 전법 발동 성공 후, 65% 확률로 자신의 디버프 상태 1가지를 랜덤으로 제거한다."
+      },
+      {
+        "name": "무구",
+        "text": "액티브 전법 발동 후, 40% 확률(무력의 영향을 받음)로 랜덤 적군 단일 목표에게 2턴 동안 지속되는 공포를 부여한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E7%AD%96"
+      }
+    ]
+  },
+  {
+    "id": "cheng-yu",
+    "name": {
+      "ko": "정욱",
+      "zhTW": "程昱",
+      "zhCN": "程昱"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 73,
+      "지력": 222,
+      "통솔": 162,
+      "선공": 174
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-cheng-yu",
+    "manuals": [
+      {
+        "name": "지용",
+        "text": "고유 전법 발동률이 5% 증가하고, 탈주병 수량이 30% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%A8%8B%E6%98%B1"
+      }
+    ]
+  },
+  {
+    "id": "yu-jin",
+    "name": {
+      "ko": "우금",
+      "zhTW": "于禁",
+      "zhCN": "于禁"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 156,
+      "지력": 106,
+      "통솔": 195,
+      "선공": 112
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-yu-jin",
+    "manuals": [
+      {
+        "name": "지군",
+        "text": "자신이 받는 피해가 8% 감소하며, 무장 해제 부여 후, 1턴 동안 목표가 주는 피해가 10% 감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E4%BA%8E%E7%A6%81"
+      }
+    ]
+  },
+  {
+    "id": "xu-huang",
+    "name": {
+      "ko": "서황",
+      "zhTW": "徐晃",
+      "zhCN": "徐晃"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 222,
+      "지력": 119,
+      "통솔": 185,
+      "선공": 171
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-xu-huang",
+    "manuals": [
+      {
+        "name": "파군",
+        "text": "액티브 전법 피해가 6% 증가하며, 방어 관통이 6% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BE%90%E6%99%83"
+      }
+    ]
+  },
+  {
+    "id": "guan-ping",
+    "name": {
+      "ko": "관평",
+      "zhTW": "關平",
+      "zhCN": "关平"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "촉",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "창병",
+    "stats": {
+      "무력": 217,
+      "지력": 97,
+      "통솔": 176,
+      "선공": 181
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-guan-ping",
+    "manuals": [
+      {
+        "name": "용음",
+        "text": "전투 1번째 턴에 전체 적군에게 2턴 지속되는 공포 상태를 부여한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%97%9C%E5%B9%B3"
+      }
+    ]
+  },
+  {
+    "id": "cheng-pu",
+    "name": {
+      "ko": "정보",
+      "zhTW": "程普",
+      "zhCN": "程普"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "전열",
+    "role": "보조",
+    "unitType": "창병",
+    "stats": {
+      "무력": 151,
+      "지력": 151,
+      "통솔": 196,
+      "선공": 136
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-cheng-pu",
+    "manuals": [
+      {
+        "name": "호신",
+        "text": "자신의 병력이 최초로 50% 미만이 되면 자신의 병력을 회복하며(치유율 200%, 지력과 통솔의 영향 받음), 받는 피해가 12% 감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%A8%8B%E6%99%AE"
+      }
+    ]
+  },
+  {
+    "id": "zhou-cang",
+    "name": {
+      "ko": "주창",
+      "zhTW": "周倉",
+      "zhCN": "周仓"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "촉",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "기병",
+    "stats": {
+      "무력": 166,
+      "지력": 116,
+      "통솔": 202,
+      "선공": 158
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhou-cang",
+    "manuals": [
+      {
+        "name": "충렬",
+        "text": "통솔이 15포인트 증가하고, 고유 전법 충성과 용맹이 부여하는 이상 상태 확률이 20% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%91%A8%E5%80%89"
+      }
+    ]
+  },
+  {
+    "id": "yan-liang",
+    "name": {
+      "ko": "안량",
+      "zhTW": "顏良",
+      "zhCN": "颜良"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "창병",
+    "stats": {
+      "무력": 215,
+      "지력": 85,
+      "통솔": 169,
+      "선공": 193
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-yan-liang",
+    "manuals": [
+      {
+        "name": "무·상",
+        "text": "자신과 무력이 가장 높은 우군의 추격 전법 발동 후, 2턴 동안 피해가 10% 증가하고, 방어 관통이 6% 증가한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%A1%8F%E8%89%AF"
+      }
+    ]
+  },
+  {
+    "id": "wen-chou",
+    "name": {
+      "ko": "문추",
+      "zhTW": "文醜",
+      "zhCN": "文丑"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "창병",
+    "stats": {
+      "무력": 216,
+      "지력": 76,
+      "통솔": 167,
+      "선공": 184
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-wen-chou",
+    "manuals": [
+      {
+        "name": "무·하",
+        "text": "자신과 무력이 가장 높은 우군의 추격 전법 발동 후, 2턴 동안 받는 피해가 7% 감소하며, 2회 중첩될 수 있다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%96%87%E9%86%9C"
+      }
+    ]
+  },
+  {
+    "id": "zhang-liang",
+    "name": {
+      "ko": "장량",
+      "zhTW": "張梁",
+      "zhCN": "张梁"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "전열",
+    "role": "방어병기",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 202,
+      "지력": 70,
+      "통솔": 199,
+      "선공": 167
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhang-liang",
+    "manuals": [
+      {
+        "name": "태평도법",
+        "text": "고유 전법 괴술, 회유 및 피신 확률 8% 증가, 1번째 턴에 괴술 발동 후 랜덤 적군 1명이 1턴 동안 능력 소진된다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E6%A2%81"
+      }
+    ]
+  },
+  {
+    "id": "huang-gai",
+    "name": {
+      "ko": "황개",
+      "zhTW": "黃蓋",
+      "zhCN": "黄盖"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "균형",
+    "role": "보조",
+    "unitType": "창병",
+    "stats": {
+      "무력": 166,
+      "지력": 165,
+      "통솔": 212,
+      "선공": 169
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-huang-gai",
+    "manuals": [
+      {
+        "name": "견결",
+        "text": "자신이 우군의 피해를 받은 후, 2턴 동안 자신이 받는 피해가 12% 감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%BB%83%E8%93%8B"
+      }
+    ]
+  },
+  {
+    "id": "hua-xiong",
+    "name": {
+      "ko": "화웅",
+      "zhTW": "華雄",
+      "zhCN": "华雄"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "기병",
+    "stats": {
+      "무력": 213,
+      "지력": 73,
+      "통솔": 168,
+      "선공": 195
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-hua-xiong",
+    "manuals": [
+      {
+        "name": "신무",
+        "text": "자신의 추격 전법 발동 성공 후, 16% 확률로 2턴 동안 능력 소진 효과로부터 면역된다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%8F%AF%E9%9B%84"
+      }
+    ]
+  },
+  {
+    "id": "sun-jian",
+    "name": {
+      "ko": "손견",
+      "zhTW": "孫堅",
+      "zhCN": "孙坚"
+    },
+    "season": "S1",
+    "overseasSeason": "S1",
+    "faction": "오",
+    "row": "전열",
+    "role": "병기",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 199,
+      "지력": 117,
+      "통솔": 217,
+      "선공": 150
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-sun-jian",
+    "manuals": [
+      {
+        "name": "무열",
+        "text": "자신이 받는 병기 피해가 8% 감소(통솔의 영향 받음)한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E5%A0%85"
+      }
+    ]
+  },
+  {
+    "id": "sima-yi",
+    "name": {
+      "ko": "사마의",
+      "zhTW": "司馬懿",
+      "zhCN": "司马懿"
+    },
+    "season": "S2",
+    "overseasSeason": "S3",
+    "faction": "위",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 85,
+      "지력": 245,
+      "통솔": 209,
+      "선공": 117
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-sima-yi",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%8F%B8%E9%A6%AC%E6%87%BF"
+      }
+    ]
+  },
+  {
+    "id": "yue-jin",
+    "name": {
+      "ko": "악진",
+      "zhTW": "樂進",
+      "zhCN": "乐进"
+    },
+    "season": "S2",
+    "overseasSeason": "S3",
+    "faction": "위",
+    "row": "전열",
+    "role": "병기",
+    "unitType": "창병",
+    "stats": {
+      "무력": 219,
+      "지력": 95,
+      "통솔": 186,
+      "선공": 197
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-yue-jin",
+    "manuals": [
+      {
+        "name": "동등",
+        "text": "자신 및 같은 열의 랜덤 우군 단일 목표가 받는 책략 피해가 6%감소한다."
+      }
+    ],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%A8%82%E9%80%B2"
+      }
+    ]
+  },
+  {
+    "id": "zhang-liao",
+    "name": {
+      "ko": "장료",
+      "zhTW": "張遼",
+      "zhCN": "张辽"
+    },
+    "season": "S2",
+    "overseasSeason": "S2",
+    "faction": "위",
+    "row": "전열",
+    "role": "병기",
+    "unitType": "기병",
+    "stats": {
+      "무력": 228,
+      "지력": 160,
+      "통솔": 191,
+      "선공": 205
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhang-liao",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E9%81%BC"
+      }
+    ]
+  },
+  {
+    "id": "jia-xu",
+    "name": {
+      "ko": "가후",
+      "zhTW": "賈詡",
+      "zhCN": "贾诩"
+    },
+    "season": "S2",
+    "overseasSeason": "S2",
+    "faction": "위",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 68,
+      "지력": 230,
+      "통솔": 159,
+      "선공": 149
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-jia-xu",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E8%B3%88%E8%A9%A1"
+      }
+    ]
+  },
+  {
+    "id": "gan-furen",
+    "name": {
+      "ko": "감부인",
+      "zhTW": "甘夫人",
+      "zhCN": "甘夫人"
+    },
+    "season": "S2",
+    "overseasSeason": "S3",
+    "faction": "오",
+    "row": "후열",
+    "role": "치유",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 39,
+      "지력": 190,
+      "통솔": 179,
+      "선공": 166
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-gan-furen",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%94%98%E5%A4%AB%E4%BA%BA"
+      }
+    ]
+  },
+  {
+    "id": "lu-xun",
+    "name": {
+      "ko": "육손",
+      "zhTW": "陸遜",
+      "zhCN": "陆逊"
+    },
+    "season": "S2",
+    "overseasSeason": "S2",
+    "faction": "오",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 86,
+      "지력": 228,
+      "통솔": 183,
+      "선공": 125
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-lu-xun",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%99%B8%E9%81%9C"
+      }
+    ]
+  },
+  {
+    "id": "zhou-tai",
+    "name": {
+      "ko": "주태",
+      "zhTW": "周泰",
+      "zhCN": "周泰"
+    },
+    "season": "S2",
+    "overseasSeason": "S3",
+    "faction": "군",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "방패병",
+    "stats": {
+      "무력": 155,
+      "지력": 88,
+      "통솔": 212,
+      "선공": 129
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhou-tai",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%91%A8%E6%B3%B0"
+      }
+    ]
+  },
+  {
+    "id": "chen-gong",
+    "name": {
+      "ko": "진궁",
+      "zhTW": "陳宮",
+      "zhCN": "陈宫"
+    },
+    "season": "S2",
+    "overseasSeason": "S2",
+    "faction": "촉",
+    "row": "균형",
+    "role": "보조",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 81,
+      "지력": 213,
+      "통솔": 162,
+      "선공": 152
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-chen-gong",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%99%B3%E5%AE%AE"
+      }
+    ]
+  },
+  {
+    "id": "ma-yunlu",
+    "name": {
+      "ko": "마운록",
+      "zhTW": "馬雲祿",
+      "zhCN": "马云禄"
+    },
+    "season": "S2",
+    "overseasSeason": "S2",
+    "faction": "촉",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "기병",
+    "stats": {
+      "무력": 214,
+      "지력": 109,
+      "통솔": 164,
+      "선공": 208
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-ma-yunlu",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%A6%AC%E9%9B%B2%E7%A5%BF"
+      }
+    ]
+  },
+  {
+    "id": "fa-zheng",
+    "name": {
+      "ko": "법정",
+      "zhTW": "法正",
+      "zhCN": "法正"
+    },
+    "season": "S2",
+    "overseasSeason": "S2",
+    "faction": "촉",
+    "row": "후열",
+    "role": "보조",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 66,
+      "지력": 217,
+      "통솔": 157,
+      "선공": 180
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-fa-zheng",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E6%B3%95%E6%AD%A3"
+      }
+    ]
+  },
+  {
+    "id": "pang-tong",
+    "name": {
+      "ko": "방통",
+      "zhTW": "龐統",
+      "zhCN": "庞统"
+    },
+    "season": "S2",
+    "overseasSeason": "S3",
+    "faction": "군",
+    "row": "후열",
+    "role": "보조",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 79,
+      "지력": 236,
+      "통솔": 162,
+      "선공": 126
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-pang-tong",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E9%BE%90%E7%B5%B1"
+      }
+    ]
+  },
+  {
+    "id": "tian-feng",
+    "name": {
+      "ko": "전풍",
+      "zhTW": "田豐",
+      "zhCN": "田丰"
+    },
+    "season": "S2",
+    "overseasSeason": "S2",
+    "faction": "군",
+    "row": "후열",
+    "role": "보조",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 65,
+      "지력": 185,
+      "통솔": 141,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-tian-feng",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%94%B0%E8%B1%90"
+      }
+    ]
+  },
+  {
+    "id": "gongsun-zan",
+    "name": {
+      "ko": "공손찬",
+      "zhTW": "公孫瓚",
+      "zhCN": "公孙瓒"
+    },
+    "season": "S2",
+    "overseasSeason": "S3",
+    "faction": "군",
+    "row": "균형",
+    "role": "문무",
+    "unitType": "기병",
+    "stats": {
+      "무력": 190,
+      "지력": 172,
+      "통솔": 189,
+      "선공": 200
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-gongsun-zan",
+    "manuals": [],
+    "sources": [
+      {
+        "kind": "kr-db",
+        "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+        "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E5%85%AC%E5%AD%AB%E7%93%9A"
+      }
+    ]
+  }
+]

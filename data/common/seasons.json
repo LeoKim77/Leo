@@ -1,0 +1,9 @@
+{
+  "current": "S2",
+  "note": "한국 서버 기준. 해외(중국/대만) 시즌·콘텐츠 그룹(S 통합, 문정 1/2 등)은 overseasSeason 으로 따로 기록한다.",
+  "seasons": [
+    { "id": "S1", "label": "시즌 1", "status": "past" },
+    { "id": "S2", "label": "시즌 2", "status": "live", "note": "2026-10 현재 진행 중" },
+    { "id": "S3", "label": "시즌 3", "status": "upcoming", "note": "준비 중 — 신규 무장/전법은 해외 자료(이름사전 S3)를 참고 정보로만 표시" }
+  ]
+}
