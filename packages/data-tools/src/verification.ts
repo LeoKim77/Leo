@@ -1,6 +1,7 @@
 // 전보 녹화 검증 대기 목록 (R-007)
 //   근사 처리한 금병법·전법·엔진 가정을 한곳에 모은다. 상태(대기/확인/기각)는 다시 만들어도 유지된다.
 import { join } from 'node:path';
+import { existsSync, readdirSync } from 'node:fs';
 import { DATA, readJson, writeJson } from './paths.ts';
 
 export interface VerificationItem {
@@ -12,6 +13,8 @@ export interface VerificationItem {
   title: string;
   assumption: string;
   howToVerify: string;
+  /** 높을수록 먼저 녹화 (계수 민감도·상위 티어덱 포함 여부로 매김) */
+  priority?: number;
   status: 'pending' | 'verified' | 'rejected';
   result?: string;
   resolvedAt?: string;
@@ -65,9 +68,31 @@ export function buildQueue(bundle: any): VerificationItem[] {
       assumption: cap.map(k => `${FIELD[k] || k}: ${ds[k]}`).join(' · '), howToVerify: `게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장` });
   }
   for (const e of readJson<any>(join(DATA, 'verification', 'engine-assumptions.json'), { items: [] }).items) {
-    keep({ id: `V-engine-${e.key}`, kind: 'engine', refs: e.refs || [], title: e.title, assumption: e.assumption, howToVerify: e.howToVerify });
+    keep({ id: `V-engine-${e.key}`, kind: 'engine', refs: e.refs || [], title: e.title, assumption: e.assumption, howToVerify: e.howToVerify, ...(e.priority != null ? { priority: e.priority } : {}) });
   }
-  writeJson(FILE, { note: '전보 녹화 검증 대기 목록 (R-007). status: pending=대기, verified=전보로 확인, rejected=틀림(수정 필요). MCP verification_resolve 로 판정을 기록한다.', items });
+  // 우선순위: 티어덱에 많이 쓰일수록, 특히 메타 분석의 시즌별 상위 3덱에 들어갈수록 먼저 녹화한다
+  const top3 = new Set<string>();
+  const adir = join(DATA, 'analysis');
+  if (existsSync(adir)) for (const f of readdirSync(adir).filter(x => x.endsWith('.json'))) {
+    const a = readJson<any>(join(adir, f), {});
+    Object.values(a.top3 || {}).forEach((ids: any) => ids.forEach((id: string) => top3.add(id)));
+  }
+  const uses = (ref: string) => {
+    let n = 0, top = 0;
+    for (const t of bundle.tierDecks || []) {
+      const hit = t.units.some((u: any) => u.generalId === ref || u.skillIds.includes(ref) || u.manualId === ref || `u-${u.generalId}` === ref);
+      if (hit) { n++; if (top3.has(t.id)) top++; }
+    }
+    return top * 10 + n;
+  };
+  for (const it of items) {
+    if (it.priority != null) continue;
+    const refs = it.kind === 'manual' ? [it.id.replace(/^V-manual-/, '')] : it.refs;
+    const p = Math.max(0, ...refs.map(uses));
+    if (p) it.priority = p;
+  }
+  items.sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0));
+  writeJson(FILE, { note: '전보 녹화 검증 대기 목록 (R-007). status: pending=대기, verified=전보로 확인, rejected=틀림(수정 필요). priority 가 높을수록 먼저 녹화. MCP verification_resolve 로 판정을 기록한다.', items });
   return items;
 }
 

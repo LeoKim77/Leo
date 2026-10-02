@@ -165,7 +165,8 @@ function skillTiming(skill) {
   return r;
 }
 // 페이즈 발동 (턴 시작 / 턴 종료)
-function mergeActionOrder(units) {
+function mergeActionOrder(units, coeffs) {
+  const win = (coeffs && coeffs.orderWindow) || 70;   // 선공 차가 이보다 크면 확정 선행 (용어 시트 4번)
   const bySpd = arr => arr.filter(u => u.alive).sort((a, b) => effStat(b, '선공') - effStat(a, '선공'));
   const A = bySpd(units.filter(u => u.side === 'A')), B = bySpd(units.filter(u => u.side === 'B'));
   const out = [];
@@ -173,8 +174,8 @@ function mergeActionOrder(units) {
     const a = A[0], b = B[0];
     const d = effStat(a, '선공') - effStat(b, '선공');
     let aFirst;
-    if (Math.abs(d) > 70) aFirst = d > 0;
-    else { const pHigh = 0.5 + Math.abs(d) / 140; aFirst = (__rng() < pHigh) === (d >= 0); }
+    if (Math.abs(d) > win) aFirst = d > 0;
+    else { const pHigh = 0.5 + Math.abs(d) / (2 * win); aFirst = (__rng() < pHigh) === (d >= 0); }
     out.push(aFirst ? A.shift() : B.shift());
   }
   return out.concat(A, B);
@@ -509,7 +510,7 @@ function calcHeal(caster, target, ratio, coeffs) {
   //   — "일반 공격 후" 발동이라 공격 피해량 연동(흡혈)일 가능성. 미해결, 표본 추가 필요.
   //   회복량은 시전자 병력에 비례하지 않는다. beta 미적용.
   const casterInt = effStat(caster, '지력');
-  const w = HEAL_STAT_W;   // v1.11: 회복은 검증된 기존 가중치 유지
+  const w = coeffs && coeffs.healStatW != null ? coeffs.healStatW : HEAL_STAT_W;   // v1.11: 회복은 검증된 기존 가중치 유지 (민감도 분석용으로 계수화)
   const effRatio = Math.max(0, ratio + (casterInt - 100) * w);
   // v1.12 W44(잠정): 회복 = 시전자 지력 × 유효치유율. 시전자 병력과 무관(평화의 기운 3턴 327 vs 예측 339).
   let heal = casterInt * effRatio;
@@ -1847,7 +1848,7 @@ function simulateOneBattle(armyA, armyB, coeffs) {
     // 70 이내의 접전에서는 난수가 개입한다(동률 시 무작위).
     // v1.12 W31: 인게임 규칙 — 아군끼리는 선공 순 고정, 양측 선두끼리 비교해 차례로 병합.
     //   선공 차 70 초과면 확정 선행, 이내면 격차에 비례해 선행 확률 상승(잠정: 0.5 + 격차/140)
-    const order = mergeActionOrder(units);
+    const order = mergeActionOrder(units, coeffs);
     // 실제 게임의 "행동 순서 판단 완료 [판단 결과]"에 대응 — 선공 기준 행동 순서를 매 턴 표기
     log.push(`${turn}턴: ── ${turn}번째 턴 ──`);
     // 짐독: 턴 시작 시 (60% × 스택수)의 책략 피해. 피해는 짐독을 건 이유의 지력으로 계산한다.

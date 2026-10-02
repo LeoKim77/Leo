@@ -4,7 +4,7 @@
 //   한 부대 안에서는 무장·전법이 겹치면 안 되고, 금병법은 무장당 1개(R-005).
 import type { GameBundle } from '@cheonha/engine';
 
-export interface VerifyItem { id: string; kind: string; refs: string[]; title: string; assumption: string; howToVerify: string; status: string }
+export interface VerifyItem { id: string; kind: string; refs: string[]; title: string; assumption: string; howToVerify: string; status: string; priority?: number }
 
 /** 이 중 하나가 덱에 있으면 관찰 가능 */
 type Need = { generalId?: string; manualId?: string; skillId?: string };
@@ -47,7 +47,15 @@ export function planVerification(bundle: GameBundle, queue: VerifyItem[], owned:
   const ownedNeed = (n: Need) => (!n.generalId || ownG.has(n.generalId)) && (!n.skillId || ownS.has(n.skillId));
 
   // capture(정보 화면 캡처로 확인) 항목은 전투가 필요 없어 계획에서 뺀다
-  const pending = queue.filter(q => q.status === 'pending' && q.kind !== 'capture').sort((a, b) => (ENGINE_FIRST[a.kind] ?? 9) - (ENGINE_FIRST[b.kind] ?? 9));
+  // 한국 서버에 아직 없는 시즌(예정)의 카드는 녹화할 수 없다
+  const order = (x: string) => parseInt(x.replace(/\D/g, '') || '0', 10);
+  const live = bundle.seasons?.find(x => x.status === 'live')?.id ?? bundle.season;
+  const future = (r: string) => {
+    const g = bundle.generals.find(x => x.id === r) || bundle.generals.find(x => x.id === sById.get(r)?.ownerGeneralId);
+    const season = g?.season ?? sById.get(r)?.season;
+    return !!season && !!live && order(season) > order(live);
+  };
+  const pending = queue.filter(q => q.status === 'pending' && q.kind !== 'capture' && !(q.refs.length && q.refs.every(future))).sort((a, b) => (ENGINE_FIRST[a.kind] ?? 9) - (ENGINE_FIRST[b.kind] ?? 9) || (b.priority ?? 0) - (a.priority ?? 0));
   const blocked: VerifyPlan['blocked'] = [];
   const todo: Array<{ it: VerifyItem; needs: Need[] }> = [];
   // 특정 카드가 필요 없는 엔진 가정(재교전 등)은 아무 전투에서나 보인다 → 첫 전투에 붙인다
@@ -112,7 +120,9 @@ export function planVerification(bundle: GameBundle, queue: VerifyItem[], owned:
         if (carrier) moves.push({ apply: () => [...units, { generalId: carrier, skillIds: [] }], gain: [] });
       }
       if (!moves.length) break;
-      moves.sort((a, b) => b.gain.length - a.gain.length);
+      // 우선순위가 높은 항목(승패 영향이 큰 계수·상위 티어덱 카드)을 많이 담는 수를 먼저 고른다
+      const weight = (g: number[]) => g.reduce((s, i) => s + 1 + (todo[i].it.priority ?? 0) / 10, 0);
+      moves.sort((a, b) => weight(b.gain) - weight(a.gain));
       const best = moves[0];
       if (!best.gain.length && !(units.length < 3 && units.every(u => u.skillIds.length >= 2))) break;
       const next = best.apply(units);

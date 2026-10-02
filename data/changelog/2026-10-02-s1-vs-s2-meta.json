@@ -1,0 +1,20 @@
+{
+  "id": "2026-10-02-s1-vs-s2-meta",
+  "date": "2026-10-02",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "S1×S2 티어덱 교차 시뮬·감사·계수 민감도 → 녹화 요청 갱신",
+  "body": "S1 티어덱 25개 × S2 티어덱 21개(525쌍, 쌍마다 100판, 진영 반씩 교대)와 시즌별 상위 3덱 × 같은 시즌 덱을 돌리고, 교차 전투 2,100판을 규칙 감사에 넣었습니다. 결과 파일: data/analysis/s1-vs-s2.json (다시 돌리기: tsx packages/data-tools/src/analyze-meta.ts S1 S2).\n결과\n- 감사: 교차 전투에서 새로 어긋난 규칙 없음(전법은 원문대로 발동). 실패는 기존 미지원 메커니즘(주태·법정·방통·성라기포)뿐.\n- 시뮬에서 S1 덱이 S2 덱을 70% 이김 — 시트 평가와 반대. 주태가 든 S2 덱 4개가 최하위(불굴의 의지 미구현), 조운 덱은 피격의 11~33%가 피신으로 무효(과다 의심), S2 세부 병종·병종특화 미반영이 주원인 후보.\n- 계수 민감도(±15%, 상위 덱 15쌍, 잡음 3.0%p): 책략 지력 계수 9.7%p · 병기 기초값 9.4%p · 통솔 방어 7.4%p · 무력 7.1%p · 지속 턴 감소 시점 4.8%p · 병기 병력 지수 4.5%p · 회심 배율 4.4%p. 회복·부상병·상성·행동 순서·스탯 영향 계수는 잡음 수준.\n녹화 요청 갱신\n- 엔진 가정에 우선순위를 매겨 앞에 둠: 책략 공식 → 주태 불굴의 의지 → 병기 공식 → 피신 중첩 → 세부 병종·병종특화(캡처) → 지속 턴 → 회심 배율.\n- 전법·금병법 항목은 상위 3덱에 들어갈수록 우선(주유〈화계〉·순욱〈북한〉·악진〈동등〉·결사의 다짐·선봉정신 등).\n- 검증 전투 짜기가 우선순위를 가중치로 쓰고, 한국 서버에 아직 없는 시즌(S3) 카드는 빼도록 바꿈. 전부 보유 기준 11판으로 S2 범위 72개.\n- 엔진: 회복 지력 가중치·행동 순서 기준을 계수로 꺼냄(동작 동일), 감사에 전투 편성을 직접 줄 수 있게 함.",
+  "refs": [],
+  "author": "Claude",
+  "files": [
+    "data/analysis/s1-vs-s2.json",
+    "data/verification/engine-assumptions.json",
+    "data/verification/queue.json",
+    "packages/audit/src/index.ts",
+    "packages/data-tools/src/analyze-meta.ts",
+    "packages/data-tools/src/verification.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/recommender/src/verify-plan.ts"
+  ]
+}

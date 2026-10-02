@@ -2,7 +2,7 @@
 import { Simulator, type GameBundle, type TraceEvent } from '@cheonha/engine';
 import { deriveExpectation, type Expectation } from './expect.ts';
 import { staticSkillChecks, staticGeneralChecks } from './static.ts';
-import { EvidenceCollector, judgeSkill, buildAuditPlan } from './dynamic.ts';
+import { EvidenceCollector, judgeSkill, buildAuditPlan, type AuditPlanItem } from './dynamic.ts';
 import { RULE_TITLES, worstOf, type AuditReport, type CheckResult, type Level, type SkillAudit, type ManualAudit } from './report.ts';
 
 export * from './report.ts';
@@ -26,6 +26,8 @@ export interface AuditOptions {
   onProgress?: (done: number, total: number, label: string) => void;
   /** 특정 전법만 감사 (웹에서 단건 감사) */
   onlySkillIds?: string[];
+  /** 감사 전투 편성을 직접 준다 (예: 시즌1 티어덱 × 시즌2 티어덱 교차) — 없으면 기본 편성 */
+  plan?: AuditPlanItem[];
 }
 
 export function runAudit(bundle: GameBundle, opts: AuditOptions = {}): AuditReport {
@@ -44,7 +46,7 @@ export function runAudit(bundle: GameBundle, opts: AuditOptions = {}): AuditRepo
   for (const s of bundle.skills) if (!expectations.has(s.id)) expectations.set(s.id, deriveExpectation(s));
 
   const collector = new EvidenceCollector(expectations, blockingRulesFromGlossary(bundle));
-  let plan = buildAuditPlan(sim, bundle, opts);
+  let plan = opts.plan || buildAuditPlan(sim, bundle, opts);
   if (opts.onlySkillIds) {
     const want = new Set(opts.onlySkillIds);
     plan = plan.filter(p => [p.a, p.b].some(d => d.units.some(u => u.skillIds.some(s => want.has(s)) || want.has(`u-${u.generalId}`))));
