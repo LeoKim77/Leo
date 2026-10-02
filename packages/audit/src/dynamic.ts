@@ -48,7 +48,9 @@ export class EvidenceCollector {
    */
   constructor(private expectations: Map<string, Expectation>, private rules: { blockBasic: string[]; blockActive: string[] }) {}
 
-  private ev(id: string) {
+  private ev(rawId: string) {
+    // "전법id#2" 처럼 딸린 효과는 원래 전법으로 합산한다 (금병법 m-…#n 도 마찬가지)
+    const id = rawId.split('#')[0];
     let e = this.bySkill.get(id);
     if (!e) { e = emptyEvidence(); this.bySkill.set(id, e); }
     return e;
@@ -75,7 +77,7 @@ export class EvidenceCollector {
     const units: Array<{ id: string; side: string; name: string; skills: string[] }> = battle.units;
     const nameOf = (id: string) => units.find(u => u.id === id)?.name || id;
     const sideOf = (id: string) => units.find(u => u.id === id)?.side;
-    const present = new Set(units.flatMap(u => u.skills));
+    const present = new Set(units.flatMap(u => u.skills.map(s => s.split('#')[0])));
     present.forEach(id => { this.ev(id).battles++; });
 
     const dead = new Set<string>();
@@ -223,7 +225,7 @@ export function judgeSkill(exp: Expectation, e: SkillEvidence | undefined, hasEn
     battleStart: ['battleStart'], turnStart: ['turnStart'], turnEnd: ['turnEnd'],
     action: ['action'], pursuit: ['pursuit', 'basic'],
   };
-  const allow = allowed[exp.timing];
+  const allow = allowed[exp.timing] && [...allowed[exp.timing], ...(exp.alsoTimings || []).flatMap(t => allowed[t] || [])];
   if (exp.timing === 'pursuit') {
     const bad = Object.entries(e.firedByPhase).filter(([p]) => !allow.includes(p));
     const badN = bad.reduce((a, [, v]) => a + v, 0);

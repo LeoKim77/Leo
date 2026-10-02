@@ -16,6 +16,8 @@ export const ENGINE_FIXES = [
     detail: '대상이 따로 적히지 않은 피해 항목(책략과 병기 동시 피해, "추가로" 피해)이 같은 발동 안에서 첫 대상을 공유하도록 고침. 방화범·문과 무·야습 등.' },
   { id: 'FEAT-001', date: '2026-10-02', found: '금병법 반영', title: '금병법용 계기 추가',
     detail: '액티브·추격 전법 발동 후 반응, 특정 상태 부여 후 반응, 전투당 1회 제한, 병력 조건, 추격 발동률, 고유 전법 발동률 가산, 병력 우위 대상 피해·탈주병 증가, 진영 보너스 대체.' },
+  { id: 'FEAT-002', date: '2026-10-02', found: 'S2 신규 전법 반영', title: 'S2 전법용 효과 추가',
+    detail: '상태를 피해보다 먼저 부여(statusFirst), 버프·스탯 효과의 대상 공유(tag), 「저항」(피해 1회 무효), 발동마다 쌓이는 자체 누적(selfStack).' },
   { id: 'FIX-003', date: '2026-10-02', found: '감사 D06', title: '피해 확률을 대상마다 따로 판정하던 문제',
     detail: '"N% 확률로 (대상)에게 피해" 를 발동 1회에 한 번만 판정하도록 고침. 문과 무·광풍의 분노·일인천군. 상태 부여 확률은 기존처럼 대상별 판정.' },
 ];
@@ -429,6 +431,13 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
     return { dmg: 0, crit: false, evaded: true };
   }
   
+  // FEAT-002 저항: 1스택 소모해 이번 피해를 무효로 한다 (적재적소 "저항 1중첩(피해 1회 무효)")
+  const resistIdx = defender.statuses.findIndex(s => s.name === '저항');
+  if (resistIdx >= 0) {
+    defender.statuses.splice(resistIdx, 1);
+    if (log) log.push(`${turnNo}턴:   [${defender.name}]이(가) 「저항」으로 이번 피해를 무효화했습니다.`);
+    return { dmg: 0, crit: false, resisted: true };
+  }
   // 방어 스택: 1스택 소모해 70~90% 감소 (기본 80% ± 난수, 무장 스탯과 무관한 시스템 고정값).
   // 평타·액티브·추격·지속피해 등 모든 직접 피해에 발동한다. 방어파괴 보유 공격자에겐 무시됨.
   const guardIdx = defender.statuses.findIndex(s => s.name === '방어');
@@ -626,6 +635,7 @@ function emitDebuffEvent(ctx, allUnits, coeffs, log, turn, contrib) {
 // isBasic: 이번 피해가 "일반 공격"(또는 그 연타)에서 나온 것인지 여부. 추격 전법 발동 조건 판정에 쓰인다.
 function dealDamage(attacker, defender, ratio, dmgType, coeffs, log, allUnits, turn, contrib, isBasic, dmgTag) {
   const result = calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turn, dmgTag || (isBasic ? 'basic' : 'active'));
+  if (result.resisted) return result;   // 저항으로 무효 — 피격·회피 연계 없음
   if (result.evaded) {
     // 피신 성공 이벤트 — 칠진칠출(조운)의 '용담'처럼 회피에 반응하는 전법용
     emitEvadeEvent({ evader: defender, attacker }, allUnits, coeffs, log, turn, contrib);
@@ -713,7 +723,8 @@ const STATUS_DEF = {
   // ── 기능성 버프 ──
   // 아래 넷은 STATUS_DEF의 공통 처리(statDelta/blockXxx)가 아니라 엔진 각 지점에서
   // 개별 로직으로 구현돼 있다. 감사기가 "정의 없음"으로 오탐하지 않도록 여기 등재한다.
-  '방어':      { guardStack: true },      // calcDamage: 1스택 소모해 피해 70~90% 감소
+  '방어':      { guardStack: true },
+  '저항':      { resistStack: true },     // FEAT-002: calcDamage — 1스택 소모해 피해 1회 무효      // calcDamage: 1스택 소모해 피해 70~90% 감소
   '피신':      { evadeStack: true },      // calcDamage: 확률로 피해 완전 무효
   '정신 회복': { suppressControl: true }, // isControlSuppressed(): 제어 상태 효과 무효화
   '백발백중':  { ignoreEvade: true },     // calcDamage: 대상의 피신을 무시
@@ -859,7 +870,14 @@ function applySkillEffects(unit, skill, allUnits, coeffs, log, turn, contrib, ev
   __T({ e: 'skill', inv: __inv, unit: unit.id, skill: skill.id, kind: skill.type, via: eventCtx ? 'event' : 'slot' });
   __skillStack.push(skill.id);
   __invStack.push(__inv);
-  try { return __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contrib, eventCtx); }
+  try {
+    if (skill.statusFirst && skill.effects && (skill.effects.statusEffects || []).length) {   // FEAT-002
+      const eff = skill.effects;
+      __applySkillEffectsImpl(unit, { ...skill, effects: { targets: eff.targets, statusEffects: eff.statusEffects } }, allUnits, coeffs, log, turn, contrib, eventCtx, true);
+      return __applySkillEffectsImpl(unit, { ...skill, effects: { ...eff, statusEffects: [] } }, allUnits, coeffs, log, turn, contrib, eventCtx);
+    }
+    return __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contrib, eventCtx);
+  }
   finally {
     __skillStack.pop(); __invStack.pop();
     // 금병법 등 "액티브/추격 전법 발동 후" 반응형 효과 (FEAT-001)
@@ -886,7 +904,7 @@ function emitCastEvent(ctx, allUnits, coeffs, log, turn, contrib) {
     });
   });
 }
-function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contrib, eventCtx) {
+function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contrib, eventCtx, __noCount) {
   const eff = skill.effects || {};
   const targetCodes = eff.targets && eff.targets.length ? eff.targets : ['random_enemy_1'];
   let value = 0;
@@ -908,6 +926,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     else if (sm.target && resolveSpecial(sm.target)) targets = resolveSpecial(sm.target);
     else if (sm.target) targets = selectTargets(unit, [sm.target], allUnits);
     else targets = selectTargets(unit, targetCodes, allUnits);
+    if (sm.tag) tags[sm.tag] = targets;   // FEAT-002
     targets.forEach(t => {
       if (sm.condition && !evalCondition(sm.condition, { attacker: unit, target: t, self: unit })) return;
       if (sm.chance != null && __rng() >= sm.chance) return;
@@ -1017,6 +1036,16 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         ratio *= (1 + d.conditionalBonusMult.mult);
       }
       // 개수 비례 증폭: 대상의 이상상태 수 / 적 이성 수 등
+      if (d.selfStack) {   // FEAT-002: 사마의 매의 응시 "포석" — 발동마다 1(+확률로 1) 쌓이고 1개당 계수 증가
+        const ss = d.selfStack;
+        attacker._stacks = attacker._stacks || {};
+        if (attacker._stacksInv !== __invStack[__invStack.length - 1]) {
+          attacker._stacksInv = __invStack[__invStack.length - 1];
+          let n = (attacker._stacks[ss.key] || 0) + (ss.gain || 1) + (ss.bonusChance && __rng() < ss.bonusChance ? 1 : 0);
+          attacker._stacks[ss.key] = Math.min(n, ss.max || 99);
+        }
+        ratio *= 1 + (ss.per || 0) * attacker._stacks[ss.key];
+      }
       if (d.scaleBy) {
         let n = 0;
         if (d.scaleBy.kind === 'targetAbnormal') n = abnormalCount(t);
@@ -1119,6 +1148,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     else if (b.target && resolveSpecial(b.target)) targets = resolveSpecial(b.target);
     else if (b.target) targets = selectTargets(unit, [b.target], allUnits);
     else targets = targetCodes.includes('self') ? [unit] : selectTargets(unit, targetCodes, allUnits);
+    if (b.tag) tags[b.tag] = targets;   // FEAT-002
     targets.forEach(t => {
       if (b.condition && !evalCondition(b.condition, { attacker: unit, target: t, self: unit })) return;
       if (b.chance != null && __rng() >= b.chance) return;
@@ -1265,7 +1295,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
   contrib[skill.id] += value;
   // 발동 횟수도 함께 집계한다 (기여도 0%인데 자주 터지는 버프성 전법을 구분하기 위함)
   contrib.__counts = contrib.__counts || {};
-  contrib.__counts[skill.id] = (contrib.__counts[skill.id] || 0) + 1;
+  if (!__noCount) contrib.__counts[skill.id] = (contrib.__counts[skill.id] || 0) + 1;
 }
 
 function procRateOf(skill, unit) {

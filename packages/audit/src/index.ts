@@ -124,7 +124,7 @@ function auditManual(g: GameBundle['generals'][number], m: NonNullable<GameBundl
     : st === 'unsupported' ? mchk('M01-def', 'warn', `미지원 — 시뮬에서 제외. ${m.note || ''}`)
     : mchk('M01-def', 'fail', '엔진 정의 없음'));
   const parts = m.engine?.parts || [];
-  const evs = parts.map((_, i) => collector.bySkill.get(`${m.id}#${i + 1}`)).filter(Boolean) as NonNullable<ReturnType<typeof collector.bySkill.get>>[];
+  const evs = [collector.bySkill.get(m.id!)].filter(Boolean) as NonNullable<ReturnType<typeof collector.bySkill.get>>[];
   const battles = evs.length ? Math.max(...evs.map(e => e.battles)) : 0;
   const fired = evs.reduce((a, e) => a + e.fired, 0);
   if (st === 'ok' || st === 'approx') {

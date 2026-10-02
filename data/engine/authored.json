@@ -1,0 +1,869 @@
+{
+ "note": "v1.12b 에 없는 전법(주로 S2 신규)의 엔진 정의 — 한국판 원문을 보고 직접 작성. status: ok/approx/unsupported, missingHints/approxHints: 이 문구가 든 원문 절은 미반영/근사로 표시.",
+ "skills": {
+  "overwhelming-win": {
+   "status": "ok",
+   "trigger": {
+    "event": "damage",
+    "role": "dealt",
+    "filterDmgType": "병기",
+    "chance": 1,
+    "maxPerTurn": 99
+   },
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [],
+    "statMods": [
+     {
+      "stat": "무력",
+      "min": 16,
+      "max": 16,
+      "target": "self",
+      "duration": 999,
+      "maxStacks": 8
+     }
+    ],
+    "statusEffects": [],
+    "targets": []
+   },
+   "parts": [
+    {
+     "trigger": {
+      "event": "damage",
+      "role": "dealt",
+      "filterDmgType": "책략",
+      "chance": 1,
+      "maxPerTurn": 99
+     },
+     "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+       {
+        "stat": "지력",
+        "min": 16,
+        "max": 16,
+        "target": "self",
+        "duration": 999,
+        "maxStacks": 8
+       }
+      ],
+      "statusEffects": [],
+      "targets": []
+     }
+    }
+   ]
+  },
+  "break-hardship": {
+   "status": "approx",
+   "note": "\"행동 종료 시\" 피해를 행동 시작 슬롯(액티브 전)에서 처리",
+   "_timing": "action",
+   "effects": {
+    "damage": [
+     {
+      "dmgType": "병기",
+      "min": 1.1,
+      "max": 1.1,
+      "target": "random_enemy_n"
+     }
+    ],
+    "heal": [],
+    "buffs": [],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": []
+   },
+   "parts": [
+    {
+     "_timing": "battleStart",
+     "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+       {
+        "stat": "회심",
+        "min": 0.2,
+        "max": 0.2,
+        "target": "self",
+        "duration": 999,
+        "maxStacks": 1
+       }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+     }
+    }
+   ],
+   "approxHints": [
+    "행동 종료 시"
+   ]
+  },
+  "solid-defense": {
+   "status": "approx",
+   "note": "\"도발\"=조롱. 통솔 영향 미반영, 확률은 대상별 판정(R-004)",
+   "_timing": "turnStart",
+   "onlyTurns": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [],
+    "statMods": [],
+    "statusEffects": [
+     {
+      "name": "조롱",
+      "target": "random_enemy_n",
+      "chance": 0.6,
+      "duration": 2
+     }
+    ],
+    "targets": []
+   },
+   "static": {
+    "statsPct": {
+     "통솔": 0.15
+    }
+   },
+   "approxHints": [
+    "통솔 영향"
+   ]
+  },
+  "hide-light": {
+   "status": "approx",
+   "note": "지력 영향 미반영",
+   "_timing": "turnStart",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [
+     {
+      "stat": "주는책략피해",
+      "min": 0.08,
+      "max": 0.08,
+      "target": "self",
+      "duration": 999,
+      "maxStacks": 8
+     }
+    ],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": []
+   },
+   "unit": {
+    "uniqueProcAddDelta": 0.06
+   },
+   "approxHints": [
+    "지력 영향"
+   ]
+  },
+  "odd-even": {
+   "status": "ok",
+   "_timing": "turnStart",
+   "onlyTurns": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "effects": {
+    "damage": [],
+    "heal": [
+     {
+      "min": 1.5,
+      "max": 1.5,
+      "target": "random_ally_n",
+      "chance": 0.65
+     }
+    ],
+    "buffs": [],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": []
+   },
+   "parts": [
+    {
+     "_timing": "turnEnd",
+     "onlyTurns": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "effects": {
+      "damage": [
+       {
+        "dmgType": "책략",
+        "min": 1.5,
+        "max": 1.5,
+        "target": "random_enemy_n",
+        "chance": 0.65
+       }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+     }
+    }
+   ]
+  },
+  "know-people": {
+   "status": "ok",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [
+     {
+      "stat": "주는피해",
+      "min": 0.15,
+      "max": 0.15,
+      "target": "tag:t",
+      "duration": 2,
+      "maxStacks": 1
+     }
+    ],
+    "statMods": [
+     {
+      "stat": "통솔",
+      "min": 25,
+      "max": 25,
+      "target": "random_ally_n",
+      "duration": 2,
+      "maxStacks": 1,
+      "tag": "t"
+     }
+    ],
+    "statusEffects": [],
+    "targets": []
+   }
+  },
+  "strike-gap": {
+   "status": "approx",
+   "note": "\"이미 혼란이면 대상 측 우군에게 100%\"는 미지원",
+   "effects": {
+    "damage": [
+     {
+      "dmgType": "책략",
+      "min": 1.2,
+      "max": 1.2,
+      "target": "random_enemy_1",
+      "tag": "main"
+     }
+    ],
+    "heal": [],
+    "buffs": [],
+    "statMods": [],
+    "statusEffects": [
+     {
+      "name": "혼란",
+      "target": "tag:main",
+      "duration": 1
+     }
+    ],
+    "targets": []
+   },
+   "missingHints": [
+    "이미 혼란 상태면"
+   ]
+  },
+  "drain-morale": {
+   "status": "ok",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [],
+    "statMods": [
+     {
+      "stat": "무력",
+      "min": -30,
+      "max": -30,
+      "target": "trigger_defender",
+      "duration": 2,
+      "maxStacks": 5
+     },
+     {
+      "stat": "지력",
+      "min": -30,
+      "max": -30,
+      "target": "trigger_defender",
+      "duration": 2,
+      "maxStacks": 5
+     },
+     {
+      "stat": "통솔",
+      "min": -30,
+      "max": -30,
+      "target": "trigger_defender",
+      "duration": 2,
+      "maxStacks": 5
+     }
+    ],
+    "statusEffects": [],
+    "targets": []
+   }
+  },
+  "use-talent": {
+   "status": "approx",
+   "note": "지력 영향 미반영",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [
+     {
+      "stat": "받는피해",
+      "min": -0.25,
+      "max": -0.25,
+      "target": "highest_intel_ally",
+      "duration": 2,
+      "maxStacks": 1
+     }
+    ],
+    "statMods": [],
+    "statusEffects": [
+     {
+      "name": "저항",
+      "target": "highest_intel_ally",
+      "duration": 99
+     }
+    ],
+    "targets": []
+   },
+   "approxHints": [
+    "지력 영향"
+   ]
+  },
+  "relentless-chase": {
+   "status": "ok",
+   "_timing": "action",
+   "effects": {
+    "damage": [
+     {
+      "dmgType": "병기",
+      "min": 1.2,
+      "max": 1.2,
+      "target": "all_enemy",
+      "condition": {
+       "type": "hasAnyStatus",
+       "who": "target",
+       "statuses": [
+        "공포",
+        "무장 해제",
+        "침묵",
+        "혼란",
+        "조롱",
+        "허약",
+        "군량 고갈",
+        "홍수",
+        "화공",
+        "폭풍",
+        "위협",
+        "요술"
+       ]
+      },
+      "chance": 0.6,
+      "chancePerTarget": true
+     }
+    ],
+    "heal": [],
+    "buffs": [],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": []
+   }
+  },
+  "u-sima-yi": {
+   "status": "approx",
+   "note": "포진 상태 자체의 효과는 미지원. 포석 수(발동마다 1 + 50%로 1, 최대 8)에 따른 피해 계수 증가만 반영",
+   "effects": {
+    "damage": [
+     {
+      "dmgType": "책략",
+      "min": 0.5,
+      "max": 0.5,
+      "target": "random_enemy_n",
+      "selfStack": {
+       "key": "포석",
+       "gain": 1,
+       "bonusChance": 0.5,
+       "max": 8,
+       "per": 0.2
+      }
+     }
+    ],
+    "heal": [],
+    "buffs": [],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": []
+   },
+   "missingHints": [
+    "포진 상태 1가지를 랜덤으로 획득"
+   ]
+  },
+  "u-yue-jin": {
+   "status": "approx",
+   "note": "선공 영향·\"첫 2턴 전열이면 30% 증가\" 미반영",
+   "_timing": "battleStart",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [
+     {
+      "stat": "주는피해",
+      "min": 0.14,
+      "max": 0.14,
+      "target": "self",
+      "duration": 999,
+      "maxStacks": 1
+     },
+     {
+      "stat": "받는피해",
+      "min": -0.14,
+      "max": -0.14,
+      "target": "self",
+      "duration": 999,
+      "maxStacks": 1
+     },
+     {
+      "stat": "주는피해",
+      "min": 0.14,
+      "max": 0.14,
+      "target": "tag:s",
+      "duration": 999,
+      "maxStacks": 1
+     },
+     {
+      "stat": "받는피해",
+      "min": -0.14,
+      "max": -0.14,
+      "target": "tag:s",
+      "duration": 999,
+      "maxStacks": 1
+     }
+    ],
+    "statMods": [
+     {
+      "stat": "선공",
+      "min": 30,
+      "max": 30,
+      "target": "self",
+      "duration": 999,
+      "maxStacks": 1
+     },
+     {
+      "stat": "선공",
+      "min": 30,
+      "max": 30,
+      "target": "random_ally_1",
+      "duration": 999,
+      "maxStacks": 1,
+      "tag": "s"
+     }
+    ],
+    "statusEffects": [],
+    "targets": []
+   },
+   "missingHints": [
+    "30% 증가"
+   ]
+  },
+  "u-zhang-liao": {
+   "status": "approx",
+   "note": "손실 병력 영향, 전열 시 피해 전달 미지원",
+   "_timing": "turnStart",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [],
+    "statMods": [],
+    "statusEffects": [
+     {
+      "name": "정신 회복",
+      "target": "self",
+      "chance": 0.6,
+      "duration": 1
+     }
+    ],
+    "targets": []
+   },
+   "parts": [
+    {
+     "_timing": "battleStart",
+     "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+       {
+        "stat": "방어관통",
+        "min": 0.2,
+        "max": 0.2,
+        "target": "self",
+        "duration": 999,
+        "maxStacks": 1
+       }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+     }
+    }
+   ],
+   "missingHints": [
+    "피해전달"
+   ]
+  },
+  "u-jia-xu": {
+   "status": "approx",
+   "note": "90% 판정이 대상별, \"우군이 이미 혼란이면 회복\" 미지원",
+   "_timing": "turnStart",
+   "effects": {
+    "damage": [
+     {
+      "dmgType": "책략",
+      "min": 3.0,
+      "max": 3.0,
+      "target": "random_enemy_1",
+      "tag": "e",
+      "condition": {
+       "type": "hasStatus",
+       "who": "target",
+       "status": "혼란"
+      }
+     }
+    ],
+    "heal": [],
+    "buffs": [],
+    "statMods": [],
+    "statusEffects": [
+     {
+      "name": "혼란",
+      "target": "tag:e",
+      "chance": 0.9,
+      "duration": 2
+     },
+     {
+      "name": "혼란",
+      "target": "random_ally_1",
+      "chance": 0.9,
+      "duration": 2
+     }
+    ],
+    "targets": []
+   },
+   "missingHints": [
+    "우군 목표가 이미 혼란"
+   ]
+  },
+  "u-gan-furen": {
+   "status": "approx",
+   "note": "\"2~3명\"을 2명으로, 지력 영향 미반영",
+   "_timing": "turnStart",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [
+     {
+      "stat": "피신",
+      "min": 0.18,
+      "max": 0.18,
+      "target": "random_ally_n",
+      "duration": 2,
+      "maxStacks": 1,
+      "chance": 0.6
+     }
+    ],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": []
+   },
+   "parts": [
+    {
+     "_timing": "turnEnd",
+     "effects": {
+      "damage": [],
+      "heal": [
+       {
+        "min": 1.2,
+        "max": 1.2,
+        "target": "random_ally_n"
+       }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+     }
+    }
+   ],
+   "approxHints": [
+    "2~3명"
+   ]
+  },
+  "u-lu-xun": {
+   "status": "approx",
+   "note": "연소 상태(지속 피해)는 미지원. 화공 부여 후 화공 보유 적에게 220% 책략 피해",
+   "statusFirst": true,
+   "effects": {
+    "damage": [
+     {
+      "dmgType": "책략",
+      "min": 2.2,
+      "max": 2.2,
+      "target": "all_enemy",
+      "condition": {
+       "type": "hasStatus",
+       "who": "target",
+       "status": "화공"
+      }
+     }
+    ],
+    "heal": [],
+    "buffs": [],
+    "statMods": [],
+    "statusEffects": [
+     {
+      "name": "화공",
+      "target": "random_enemy_1",
+      "duration": 2
+     }
+    ],
+    "targets": []
+   },
+   "missingHints": [
+    "연소"
+   ]
+  },
+  "u-zhou-tai": {
+   "status": "unsupported",
+   "note": "피해 대신 받기·치명상 면역(불굴)은 엔진에 없는 메커니즘"
+  },
+  "u-chen-gong": {
+   "status": "approx",
+   "note": "추격 연계 피해의 공격자를 진궁으로 처리, 목표 무력 영향 미반영",
+   "_timing": "turnStart",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [
+     {
+      "stat": "받는책략피해",
+      "min": -0.15,
+      "max": -0.15,
+      "target": "highest_power_ally",
+      "duration": 1,
+      "maxStacks": 1
+     }
+    ],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": []
+   },
+   "parts": [
+    {
+     "trigger": {
+      "event": "cast",
+      "castType": "추격",
+      "casterIs": [
+       "highest_power_ally"
+      ],
+      "chance": 1,
+      "maxPerTurn": 9
+     },
+     "effects": {
+      "damage": [
+       {
+        "dmgType": "책략",
+        "min": 1.4,
+        "max": 1.4,
+        "target": "random_enemy_1"
+       }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+     }
+    }
+   ]
+  },
+  "u-ma-yunlu": {
+   "status": "ok",
+   "effects": {
+    "damage": [
+     {
+      "dmgType": "병기",
+      "min": 2.2,
+      "max": 2.2,
+      "target": "trigger_defender"
+     },
+     {
+      "dmgType": "병기",
+      "min": 2.2,
+      "max": 2.2,
+      "target": "trigger_defender",
+      "chance": 0.8
+     }
+    ],
+    "heal": [],
+    "buffs": [],
+    "statMods": [],
+    "statusEffects": [
+     {
+      "name": "위협",
+      "target": "trigger_defender",
+      "duration": 2
+     }
+    ],
+    "targets": []
+   }
+  },
+  "u-fa-zheng": {
+   "status": "unsupported",
+   "note": "「도사」(다음 피해 후 회복·반사) 상태는 엔진에 없는 메커니즘"
+  },
+  "u-pang-tong": {
+   "status": "approx",
+   "note": "「연환」(피해 분산) 미지원. 간파 +20%만 반영",
+   "_timing": "battleStart",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [
+     {
+      "stat": "간파",
+      "min": 0.2,
+      "max": 0.2,
+      "target": "self",
+      "duration": 999,
+      "maxStacks": 1
+     }
+    ],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": []
+   },
+   "missingHints": [
+    "연환"
+   ]
+  },
+  "u-tian-feng": {
+   "status": "approx",
+   "note": "최고 속성 영향 미반영",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [],
+    "statMods": [
+     {
+      "stat": "무력",
+      "min": 40,
+      "max": 40,
+      "target": "highest_command_ally",
+      "duration": 2,
+      "maxStacks": 1
+     },
+     {
+      "stat": "지력",
+      "min": 40,
+      "max": 40,
+      "target": "highest_command_ally",
+      "duration": 2,
+      "maxStacks": 1
+     },
+     {
+      "stat": "선공",
+      "min": 40,
+      "max": 40,
+      "target": "highest_command_ally",
+      "duration": 2,
+      "maxStacks": 1
+     },
+     {
+      "stat": "무력",
+      "min": -40,
+      "max": -40,
+      "target": "lowest_control_enemy",
+      "duration": 2,
+      "maxStacks": 1
+     },
+     {
+      "stat": "지력",
+      "min": -40,
+      "max": -40,
+      "target": "lowest_control_enemy",
+      "duration": 2,
+      "maxStacks": 1
+     },
+     {
+      "stat": "선공",
+      "min": -40,
+      "max": -40,
+      "target": "lowest_control_enemy",
+      "duration": 2,
+      "maxStacks": 1
+     }
+    ],
+    "statusEffects": [
+     {
+      "name": "방어",
+      "target": "highest_command_ally",
+      "duration": 99
+     }
+    ],
+    "targets": []
+   }
+  },
+  "u-gongsun-zan": {
+   "status": "approx",
+   "note": "선공 영향·선공 차이 영향 미반영",
+   "effects": {
+    "damage": [
+     {
+      "dmgType": "병기",
+      "min": 1.4,
+      "max": 1.4
+     },
+     {
+      "dmgType": "책략",
+      "min": 1.4,
+      "max": 1.4
+     }
+    ],
+    "heal": [],
+    "buffs": [
+     {
+      "stat": "피신",
+      "min": 0.24,
+      "max": 0.24,
+      "target": "self",
+      "duration": 2,
+      "maxStacks": 1
+     }
+    ],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": [
+     "random_enemy_n"
+    ]
+   }
+  }
+ }
+}

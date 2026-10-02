@@ -171,6 +171,7 @@ export class Simulator {
     const E = this.engine;
     const formation = this.data.formations.find(f => f.name === deck.formation) || this.data.formations.find(f => f.name === '기형진') || this.data.formations[0];
     const manualsUsed: Array<{ unit: any; manual: Manual }> = [];
+    const skillStatics: Array<{ unit: any; name: string; st: any }> = [];
     const units = deck.units.map((u, idx) => {
       const g = this.generalById.get(u.generalId);
       if (!g) throw new Error(`무장 없음: ${u.generalId}`);
@@ -184,6 +185,11 @@ export class Simulator {
         for (const [path, v] of Object.entries(eng.uniquePatch)) setPath(uskill, path, v);
         delete uskill._timing;
       }
+      // 전법 정의에 딸린 추가 효과(parts) — 한 전법에 계기가 둘 이상일 때 (S2 연전연승 등)
+      const skillParts = [uskill, ...skills].filter(Boolean).flatMap((sk: any) => (sk.parts || []).map((part: any, i: number) => ({
+        ...structuredClone(part), id: `${sk.id}#${i + 1}`, name: sk.name, type: sk.type === '액티브' || sk.type === '추격' ? '패시브' : sk.type,
+        procRate: '100%', raw: sk.raw, isManual: true, isPart: true,
+      })));
       const manualSkills = (eng?.parts || []).map((part, i) => ({
         ...structuredClone(part),
         id: `${manual!.id}#${i + 1}`,
@@ -193,7 +199,11 @@ export class Simulator {
         raw: manual!.text,
         isManual: true,
       }));
-      const unit = E.buildUnit(g, [...skills, ...manualSkills], uskill, formation, u.position || legacyPosition(g.position), side, idx);
+      const unit = E.buildUnit(g, [...skills, ...skillParts, ...manualSkills], uskill, formation, u.position || legacyPosition(g.position), side, idx);
+      for (const sk of [uskill, ...skills].filter(Boolean) as any[]) {
+        if (sk.unit?.uniqueProcAddDelta) unit.uniqueProcAdd = (unit.uniqueProcAdd || 0) + sk.unit.uniqueProcAddDelta;
+        if (sk.static) skillStatics.push({ unit, name: sk.name, st: sk.static });
+      }
       if (manual && eng) {
         Object.assign(unit, eng.unit || {});
         unit.manual = { id: manual.id, name: manual.name, status: manual.status };
@@ -206,6 +216,13 @@ export class Simulator {
     E.applyTeamCompositionBonuses(units, prepLog);
     E.applyBondBonuses(units, this.data.bonds, prepLog);
     E.applyLoadoutSynergies(units);
+    // 전법의 고정 증감 (예: 난공불락 "통솔 15% 상승")
+    for (const { unit, name, st } of skillStatics) {
+      const parts: string[] = [];
+      for (const [k, v] of Object.entries(st.statsPct || {}) as Array<[string, number]>) { const add = unit.stats[k] * v; unit.stats[k] += add; parts.push(`${k} +${add.toFixed(1)}`); }
+      for (const [k, v] of Object.entries(st.mods || {}) as Array<[string, number]>) { unit.mods[k] = (unit.mods[k] || 0) + v; parts.push(`${k} ${v > 0 ? '+' : ''}${Math.round(v * 1000) / 10}%`); }
+      if (parts.length) prepLog.push(`0턴: [${unit.name}] 【${name}】 상시 효과 — ${parts.join(', ')}`);
+    }
     // 금병법 고정 증감 (편성 보너스 다음에 더한다)
     for (const { unit, manual } of manualsUsed) {
       const st = manual.engine?.static;

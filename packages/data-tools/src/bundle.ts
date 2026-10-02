@@ -157,8 +157,19 @@ export function buildBundle(): FullBundle {
     });
   }
   const overrides = readJson<any>(join(DATA, 'engine', 'overrides.json'), { skills: {} });
+  const authored = readJson<any>(join(DATA, 'engine', 'authored.json'), { skills: {} }).skills;
   for (const s of skills) {
     let eng = engSkills[s.id];
+    const au = !eng ? authored[s.id] : undefined;
+    if (au) {
+      // 직접 작성한 정의(S2 신규 등). 미지원이면 엔진에는 붙이지 않고 사유만 남긴다
+      const { status, note, missingHints = [], approxHints = [], ...def } = au;
+      (s as any).engineStatus = { status, note, source: 'authored' };
+      const marks = (t: string): Clause['status'] => (missingHints.some((h: string) => t.includes(h)) ? 'missing' : approxHints.some((h: string) => t.includes(h)) ? 'approx' : 'ok');
+      s.clauses = splitClauses(s.text).map((t, idx) => ({ idx, text: t, status: status === 'unsupported' ? 'missing' : marks(t) }));
+      if (status !== 'unsupported') s.engine = { ...def, authored: true, authoredStatus: status, authoredNote: note };
+      continue;
+    }
     const ov = overrides.skills?.[s.id];
     if (eng && ov) {
       eng = structuredClone(eng);

@@ -11,6 +11,8 @@ export interface Expectation {
   procRate: number | null;
   timing: Timing;
   timingEvidence?: string;
+  /** 원문에 함께 적힌 다른 반복 시점 ("턴 시작 시 … 턴 종료 시 …") */
+  alsoTimings?: Timing[];
   /** 특정 턴에만 발동 (예: 2번째와 4번째 턴) */
   onlyTurns?: number[];
   fromTurn?: number;
@@ -57,6 +59,11 @@ export function deriveExpectation(skill: Skill): Expectation {
       ['event', /피해를\s*(?:받으면|받은\s*후|받을\s*때|준\s*후)|부여\s*후|획득\s*후|발동\s*(?:성공\s*)?후/],
     ]);
     if (hit) { exp.timing = hit[0]; exp.timingEvidence = hit[1]; }
+    const also: Timing[] = [];
+    if (/턴\s*시작\s*시/.test(text)) also.push('turnStart');
+    if (/턴\s*종료\s*시/.test(text)) also.push('turnEnd');
+    if (/행동\s*(?:시|전|후)|행동 종료 시/.test(text)) also.push('action');
+    exp.alsoTimings = also.filter(t => t !== exp.timing);
     // 첫 절에 시점 문구가 없으면 "상시 효과"(포진 때 적용) — 예: "자신의 회유가 30% 증가하며, 일반 공격 후 …"
     const firstClause = text.split(/[,.]/)[0];
     if (hit && !/시\b|시,|후|전|때|마다|턴/.test(firstClause) && text.indexOf(hit[1]) > firstClause.length) {
@@ -75,8 +82,11 @@ export function deriveExpectation(skill: Skill): Expectation {
   if (prep && !/첫 턴 발동 시 준비할 필요 없/.test(text)) exp.prepTurns = +prep[1];
 
   // ---- 효과 ----
-  if (/병기(?:와 책략)? 피해를\s*(?:준|주|입)/.test(text) || /병기 피해를 (?:\d|각)/.test(text)) exp.damageTypes.push('병기');
-  if (/(?:병기와 )?책략 피해를\s*(?:준|주|입)/.test(text)) exp.damageTypes.push('책략');
+  // "피해를 주면 / 준 후" 는 발동 조건이지 효과가 아니다
+  const GIVE = '피해를\\s*(?:준(?!\\s*(?:후|뒤|경우))|주(?:며|고|는다)|줍니다|입힌다|입히며|가한다)';
+  if (new RegExp(`병기(?:와 책략)? ${GIVE}`).test(text) || /병기 피해를 (?:\d|각)/.test(text)) exp.damageTypes.push('병기');
+  if (new RegExp(`(?:병기와 )?책략 ${GIVE}`).test(text) || new RegExp(`책략과 병기 ${GIVE}`).test(text)) exp.damageTypes.push('책략');
+  if (new RegExp(`책략과 병기 ${GIVE}`).test(text) && !exp.damageTypes.includes('병기')) exp.damageTypes.push('병기');
   exp.heals = /회복(?:한다|하며|하고|시킨다|시키며|합니다)|치유율/.test(text) && !/받는 (?:회복|치유)/.test(text.replace(/치유율[^)]*\)/g, ''));
   const st = new Set<string>();
   for (const s of [...KNOWN_STATUSES, '무장해제']) {
