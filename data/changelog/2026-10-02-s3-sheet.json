@@ -32,5 +32,6 @@
     "packages/data-tools/src/import-gsheet.ts",
     "packages/data-tools/src/import-season.ts",
     "packages/engine/src/model.ts"
-  ]
+  ],
+  "commit": "355b9ea4ac30"
 }
