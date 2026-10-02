@@ -14,5 +14,17 @@
     "u-zhou-tai",
     "u-fa-zheng"
   ],
-  "author": "Claude"
+  "author": "Claude",
+  "commit": "7d643f412ae3",
+  "files": [
+    "data/audit/latest.json",
+    "data/engine/authored.json",
+    "docs/DESIGN.md",
+    "packages/audit/src/dynamic.ts",
+    "packages/audit/src/expect.ts",
+    "packages/audit/src/index.ts",
+    "packages/data-tools/src/bundle.ts",
+    "packages/engine/src/index.ts",
+    "packages/engine/src/legacy/core.js"
+  ]
 }

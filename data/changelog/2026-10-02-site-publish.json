@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-02-site-publish",
+  "date": "2026-10-02",
+  "season": "S2",
+  "category": "기타",
+  "title": "사이트 공개 (claude.ai 링크 + 단일 HTML 파일)",
+  "body": "지금까지 만든 웹을 접속해서 쓸 수 있게 올렸습니다.\n- claude.ai 아티팩트 링크: 업데이트할 때마다 같은 주소가 갱신됩니다. 로그인한 본인만 볼 수 있고, 공유는 원할 때 따로 켭니다.\n- 단일 HTML 파일(cheonha-lab.html): 예전처럼 내려받아 더블클릭으로 열 수 있습니다. 인터넷 없이도 시뮬·감사·추천이 됩니다.\n- 보유 무장·전법은 브라우저마다 따로 저장됩니다. 다른 기기로는 보유 탭의 '복사해서 내보내기 → 붙여넣기로 불러오기'로 옮기세요.\n- 게시판 글마다 그 업데이트에서 바뀐 파일 목록과 GitHub 링크를 보여 줍니다.\n\n확인된 규칙 추가: R-008 무장도 전체 부대를 통틀어 한 명씩만.\n업데이트 절차는 저장소의 .claude/skills/season-update 에 정리했습니다(시트·캡처·녹화 → 데이터·엔진 반영 → 감사 → 게시판 → 재배포).",
+  "refs": [],
+  "author": "Claude",
+  "files": [
+    "apps/web/vite.config.ts",
+    "apps/web/src/compute.ts",
+    "apps/web/src/worker.ts",
+    "apps/web/src/sim-client.ts",
+    "apps/web/src/state.ts",
+    "apps/web/src/views/board.ts",
+    "apps/web/src/views/roster.ts",
+    "apps/web/src/styles.css",
+    "apps/web/index.html",
+    "packages/data-tools/src/build-standalone.ts",
+    "packages/data-tools/src/build-bundle.ts",
+    "data/common/site.json",
+    "data/common/confirmed-rules.json",
+    "apps/mcp-server/src/server.ts",
+    "CLAUDE.md",
+    ".claude/skills/season-update/SKILL.md"
+  ]
+}

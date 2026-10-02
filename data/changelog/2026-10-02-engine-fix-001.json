@@ -9,5 +9,17 @@
     "u-dong-zhuo",
     "u-zhao-yun"
   ],
-  "author": "Claude"
+  "author": "Claude",
+  "commit": "7ad0305be8fc",
+  "files": [
+    "packages/audit/package.json",
+    "packages/audit/src/cli.ts",
+    "packages/audit/src/dynamic.ts",
+    "packages/audit/src/expect.ts",
+    "packages/audit/src/index.ts",
+    "packages/audit/src/report.ts",
+    "packages/audit/src/static.ts",
+    "packages/engine/src/legacy/core-v1.12b.js",
+    "packages/engine/src/legacy/core.js"
+  ]
 }

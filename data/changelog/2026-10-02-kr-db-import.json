@@ -8,5 +8,19 @@
   "refs": [],
   "source": "천하결전 DB 엑셀 (S2, 2025-09-25)",
   "author": "Claude",
-  "dataVersion": "S2.2026-10-02"
+  "dataVersion": "S2.2026-10-02",
+  "commit": "d12651f6f447",
+  "files": [
+    "data/common/seasons.json",
+    "data/common/term-map.json",
+    "data/kr/bonds.json",
+    "data/kr/formations.json",
+    "data/kr/generals.json",
+    "data/kr/glossary.json",
+    "data/kr/names.json",
+    "data/kr/skills.json",
+    "data/kr/tier-decks.json",
+    "data/sources/cheonha-db-S2-0925.xlsx",
+    "packages/data-tools/src/import-excel.ts"
+  ]
 }

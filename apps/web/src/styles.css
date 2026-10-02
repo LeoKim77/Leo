@@ -2,6 +2,8 @@
    묵색 바탕 · 인장주홍(내 덱) · 금박(티어/강조) · 온백 본문
    차트: 내 덱 #e0604c / 상대 #3987e5 (어두운 바탕에서 색각 검증 통과) */
 :root {
+  /* 묵색 바탕 한 가지 테마로 고정 (게임 화면과 같은 어두운 분위기) */
+  color-scheme: dark;
   --bg: #14171c;
   --panel: #1b1f26;
   --panel-2: #21262f;
@@ -24,7 +26,7 @@
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
-body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 16px; line-height: 1.55; min-height: 100vh; }
+body { font-family: 'Noto Sans KR', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 16px; line-height: 1.55; min-height: 100vh; }
 h1, h2, h3 { font-family: 'Noto Serif KR', serif; font-weight: 700; margin: 0; }
 a { color: var(--gold); }
 button, select, input, textarea { font: inherit; color: inherit; }
@@ -79,7 +81,7 @@ textarea { width: 100%; min-height: 90px; }
 /* 게시판 */
 .post { border-left: 3px solid var(--gold); }
 .post .meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--text-dim); margin-bottom: 4px; }
-.post h3 { font-family: 'Pretendard', sans-serif; font-size: 16.5px; margin-bottom: 6px; }
+.post h3 { font-family: 'Noto Sans KR', sans-serif; font-size: 16.5px; margin-bottom: 6px; }
 .post .body { white-space: pre-wrap; font-size: 14.5px; color: var(--text); }
 .post.cat-엔진 { border-left-color: var(--side-b); }
 .post.cat-전투\ 규칙 { border-left-color: var(--side-a); }
@@ -123,7 +125,7 @@ tr.click { cursor: pointer; } tr.click:hover td { background: var(--panel-2); }
 
 /* 차트 (SVG) */
 .chart { width: 100%; height: auto; display: block; overflow: visible; }
-.chart text { fill: var(--text-dim); font-size: 12px; font-family: 'Pretendard', sans-serif; }
+.chart text { fill: var(--text-dim); font-size: 12px; font-family: 'Noto Sans KR', sans-serif; }
 .chart .val { fill: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
 .chart .axis { stroke: var(--border); stroke-width: 1; }
 .chart .grid { stroke: var(--border); stroke-width: 1; stroke-dasharray: 2 4; }
@@ -138,3 +140,6 @@ tr.click { cursor: pointer; } tr.click:hover td { background: var(--panel-2); }
 .notice { font-size: 13.5px; color: var(--text-dim); background: var(--panel-2); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; }
 details summary { cursor: pointer; color: var(--text-dim); }
 .empty { color: var(--text-mute); padding: 24px; text-align: center; }
+
+.file-list { margin: 6px 0 0; padding-left: 18px; font-size: 13px; columns: 2 280px; }
+.file-list li { word-break: break-all; }

@@ -6,6 +6,11 @@ const CATS = ['전체', '신규 무장', '신규 전법', '밸런스 조정', '�
 let cat = '전체';
 let seasonOnly = false;
 
+const fileUrl = (path: string, commit?: string) => {
+  const site = (app.bundle as any).site || {};
+  return `${site.repo || 'https://github.com/LeoKim77/Leo'}/blob/${commit || site.branch || 'main'}/${path.split('/').map(encodeURIComponent).join('/')}`;
+};
+
 export function renderBoard(root: HTMLElement) {
   const posts = app.bundle.changelog.filter(p => (cat === '전체' || p.category === cat) && (!seasonOnly || p.season === app.season));
   const refLink = (id: string) => {
@@ -17,7 +22,8 @@ export function renderBoard(root: HTMLElement) {
   mount(root, 
     h('div', { class: 'section-head' },
       h('h2', null, '업데이트 게시판'),
-      h('span', { class: 'sub' }, `${app.bundle.changelog.length}건 · Claude 에게 게임 정보를 알려주면 MCP 로 여기에 기록됩니다`)),
+      h('span', { class: 'sub' }, `${app.bundle.changelog.length}건 · Claude 에게 게임 정보를 알려주면 MCP 로 여기에 기록됩니다`,
+        (app.bundle as any).site?.artifactUrl ? [' · 사이트 주소 ', h('a', { href: (app.bundle as any).site.artifactUrl, target: '_blank', rel: 'noopener' }, (app.bundle as any).site.artifactUrl.replace('https://', ''))] : null)),
     h('div', { class: 'toolbar' },
       CATS.map(c => h('button', { class: `chip ${c === cat ? 'on' : ''}`, onclick: () => { cat = c; renderBoard(root); } }, c)),
       h('label', { class: 'chip' + (seasonOnly ? ' on' : '') }, h('input', { type: 'checkbox', checked: seasonOnly, style: { display: 'none' }, onchange: () => { seasonOnly = !seasonOnly; renderBoard(root); } }), `${app.season}만`)),
@@ -29,6 +35,9 @@ export function renderBoard(root: HTMLElement) {
         p.author ? h('span', { class: 'muted' }, p.author) : null),
       h('h3', null, p.title),
       h('div', { class: 'body' }, p.body),
+      p.files?.length ? h('details', { class: 'files', style: { marginTop: '8px' } },
+        h('summary', null, `업데이트 파일 ${p.files.length}개${p.commit ? ` · 커밋 ${p.commit.slice(0, 7)}` : ''}`),
+        h('ul', { class: 'file-list' }, p.files.map(f => h('li', null, h('a', { href: fileUrl(f, p.commit), target: '_blank', rel: 'noopener' }, f))))) : null,
       (p.refs?.length || p.source) ? h('div', { class: 'meta', style: { marginTop: '8px' } },
         (p.refs || []).map(refLink),
         p.source ? h('span', { class: 'muted' }, `출처: ${p.source}`) : null) : null,

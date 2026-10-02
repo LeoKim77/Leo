@@ -11,7 +11,8 @@
     "audit": "pnpm --filter @cheonha/audit run audit",
     "dev": "pnpm --filter @cheonha/web dev",
     "build": "pnpm build:bundle && pnpm --filter @cheonha/web build",
-    "mcp": "pnpm --filter @cheonha/mcp-server start"
+    "mcp": "pnpm --filter @cheonha/mcp-server start",
+    "build:standalone": "pnpm build:bundle && pnpm --filter @cheonha/web build:standalone"
   },
   "devDependencies": {
     "typescript": "~5.9.0",

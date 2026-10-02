@@ -5,3 +5,4 @@ dist/
 .env
 .env.*
 apps/web/public/data/
+apps/web/dist-standalone/

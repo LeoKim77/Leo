@@ -6,5 +6,17 @@
   "title": "해외 참고 자료(천덱랩 deck-lab v5.0) 연결",
   "body": "천덱랩 공유 HTML의 장수·전법·덱·상성 근거 자료를 출처를 표기하고 참고 자료로 연결했습니다. 작성자 개인 정보와 이미지는 가져오지 않았습니다.\n해외 표기는 한국판 용어로 바꿔서 보여줍니다(병인→병기, 모략→책략, 회피→피신, 기책→묘책 등, data/common/term-map.json).",
   "source": "cheonha-deck-lab v5.0 (스냅샷 2026-08-29)",
-  "author": "Claude"
+  "author": "Claude",
+  "commit": "d12651f6f447",
+  "files": [
+    "data/common/term-map.json",
+    "data/reference/decklab/catalog.json",
+    "data/reference/decklab/decks.json",
+    "data/reference/decklab/guides.json",
+    "data/reference/decklab/index.json",
+    "data/reference/decklab/matchups.json",
+    "data/reference/decklab/yanwu.json",
+    "data/sources/overseas-sites.json",
+    "packages/data-tools/src/import-decklab.ts"
+  ]
 }

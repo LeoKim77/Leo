@@ -172,6 +172,10 @@ export interface ChangelogEntry {
   source?: string;
   author?: string;
   dataVersion?: string;
+  /** 이 업데이트로 바뀐 저장소 파일 */
+  files?: string[];
+  /** 반영된 커밋 (GitHub 링크용) */
+  commit?: string;
 }
 
 export interface SeasonInfo {

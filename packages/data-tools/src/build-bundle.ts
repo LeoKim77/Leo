@@ -8,6 +8,7 @@ import { buildQueue } from './verification.ts';
 const bundle: any = buildBundle();
 bundle.verification = buildQueue(bundle);
 bundle.confirmedRules = readJson<any>(join(DATA, 'common', 'confirmed-rules.json')).rules;
+bundle.site = readJson<any>(join(DATA, 'common', 'site.json'));
 const outDir = join(ROOT, 'apps', 'web', 'public', 'data');
 writeJson(join(outDir, 'bundle.json'), bundle);
 

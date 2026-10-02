@@ -14,5 +14,20 @@
     "u-zou-shi",
     "calm"
   ],
-  "author": "Claude"
+  "author": "Claude",
+  "commit": "4e6fa9b2bf51",
+  "files": [
+    "apps/web/src/views/codex.ts",
+    "data/audit/latest.json",
+    "data/engine/authored.json",
+    "data/engine/clause-review.json",
+    "data/engine/manuals.json",
+    "data/engine/overrides.json",
+    "packages/audit/src/report.ts",
+    "packages/audit/src/static.ts",
+    "packages/data-tools/src/bundle.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/engine/src/model.ts",
+    "tests/manuals.test.ts"
+  ]
 }

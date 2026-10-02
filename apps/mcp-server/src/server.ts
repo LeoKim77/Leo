@@ -10,6 +10,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 import { join } from 'node:path';
 import { existsSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 import { Simulator, type DeckSpec } from '@cheonha/engine';
 import { runAudit, type AuditReport } from '@cheonha/audit';
 import { Recommender } from '@cheonha/recommender';
@@ -249,14 +250,22 @@ server.registerTool('audit_run', {
 // ---------------- 쓰기 ----------------
 const CATEGORIES = ['신규 무장', '신규 전법', '밸런스 조정', '티어덱', '전투 규칙', '데이터 수정', '엔진', '기타'] as const;
 
-function postBoard(e: { title: string; body: string; category: typeof CATEGORIES[number]; season?: string; date?: string; refs?: string[]; source?: string }) {
+/** 아직 커밋하지 않은 변경 파일 (게시판 '업데이트 파일' 기본값) */
+function changedFiles(): string[] {
+  try {
+    const out = execSync('git status --porcelain', { cwd: ROOT, encoding: 'utf8' });
+    return out.split('\n').map(l => l.slice(3).trim()).filter(f => f && !f.startsWith('data/changelog/') && !f.startsWith('apps/web/public/'));
+  } catch { return []; }
+}
+
+function postBoard(e: { title: string; body: string; category: typeof CATEGORIES[number]; season?: string; date?: string; refs?: string[]; source?: string; files?: string[] }) {
   const { bundle } = ctx();
   const date = e.date || new Date().toISOString().slice(0, 10);
   const slug = e.title.replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '').slice(0, 40) || 'post';
   let id = `${date}-${slug}`;
   let n = 2;
   while (existsSync(join(DATA, 'changelog', `${id}.json`))) id = `${date}-${slug}-${n++}`;
-  const entry = { id, date, season: e.season || bundle.season, category: e.category, title: e.title, body: e.body, refs: e.refs || [], source: e.source, author: 'Claude (MCP)', dataVersion: bundle.dataVersion };
+  const entry = { id, date, season: e.season || bundle.season, category: e.category, title: e.title, body: e.body, refs: e.refs || [], source: e.source, author: 'Claude (MCP)', dataVersion: bundle.dataVersion, files: e.files ?? changedFiles() };
   writeJson(join(DATA, 'changelog', `${id}.json`), entry);
   return entry;
 }
@@ -268,6 +277,7 @@ server.registerTool('board_post', {
     title: z.string(), body: z.string(), category: z.enum(CATEGORIES),
     season: z.string().optional(), date: z.string().optional().describe('YYYY-MM-DD (기본 오늘)'),
     refs: z.array(z.string()).optional().describe('관련 무장·전법 id'), source: z.string().optional(),
+    files: z.array(z.string()).optional().describe('이 업데이트로 바뀐 파일 (생략하면 git 의 미커밋 변경 파일)'),
   },
 }, async (args) => {
   const e = postBoard(args);
@@ -383,7 +393,7 @@ server.registerTool('bundle_rebuild', {
 }, async () => {
   invalidate();
   const { bundle } = ctx();
-  const out: any = { ...bundle, verification: buildQueue(bundle), confirmedRules: readJson<any>(join(DATA, 'common', 'confirmed-rules.json')).rules };
+  const out: any = { ...bundle, verification: buildQueue(bundle), confirmedRules: readJson<any>(join(DATA, 'common', 'confirmed-rules.json')).rules, site: readJson<any>(join(DATA, 'common', 'site.json')) };
   writeJson(join(ROOT, 'apps', 'web', 'public', 'data', 'bundle.json'), out);
   return text({ dataVersion: bundle.dataVersion, generals: bundle.generals.length, skills: bundle.skills.length, posts: bundle.changelog.length });
 });

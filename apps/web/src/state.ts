@@ -28,14 +28,26 @@ export function saveUser(u: UserData) {
   try { localStorage.setItem(STORE_KEY, JSON.stringify(u)); } catch { /* 무시 */ }
 }
 
+/** 단일 파일 빌드는 데이터를 <script type="application/json" id="…"> 로 품고 있다 */
+function embedded(id: string): any | undefined {
+  const el = document.getElementById(id);
+  if (!el?.textContent) return undefined;
+  try { return JSON.parse(el.textContent); } catch { return undefined; }
+}
+
 export async function loadData() {
-  const get = async (p: string) => { const r = await fetch(p); if (!r.ok) throw new Error(`${p} ${r.status}`); return r.json(); };
+  const get = async (p: string) => {
+    const tag = { './data/bundle.json': 'cheonha-bundle', './data/audit.json': 'cheonha-audit' }[p];
+    const e = tag ? embedded(tag) : undefined;
+    if (e) return e;
+    const r = await fetch(p); if (!r.ok) throw new Error(`${p} ${r.status}`); return r.json();
+  };
   app.bundle = await get('./data/bundle.json');
   app.season = app.bundle.season;
   app.audit = await get('./data/audit.json').catch(() => null);
 }
 export async function loadDecklab() {
-  if (!app.decklab) app.decklab = await (await fetch('./data/reference-decklab.json')).json();
+  if (!app.decklab) app.decklab = embedded('cheonha-decklab') ?? await (await fetch('./data/reference-decklab.json')).json();
   return app.decklab;
 }
 

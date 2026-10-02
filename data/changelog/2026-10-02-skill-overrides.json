@@ -10,5 +10,10 @@
     "thousand-raid",
     "night-raid"
   ],
-  "author": "Claude"
+  "author": "Claude",
+  "commit": "7ad0305be8fc",
+  "files": [
+    "data/engine/overrides.json",
+    "packages/data-tools/src/bundle.ts"
+  ]
 }

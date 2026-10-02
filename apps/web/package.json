@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:standalone": "vite build --mode standalone && tsx ../../packages/data-tools/src/build-standalone.ts"
   },
   "dependencies": {
     "@cheonha/engine": "workspace:*",
@@ -13,6 +14,7 @@
     "@cheonha/recommender": "workspace:*"
   },
   "devDependencies": {
-    "vite": "^7.1.0"
+    "vite": "^7.1.0",
+    "vite-plugin-singlefile": "^2.3.3"
   }
 }
