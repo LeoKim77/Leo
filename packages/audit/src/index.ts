@@ -109,3 +109,23 @@ export function runAudit(bundle: GameBundle, opts: AuditOptions = {}): AuditRepo
     generals,
   };
 }
+
+/** 전투 한 판의 trace 를 감사한다 (웹 시뮬 화면의 "이 전투 감사") */
+export function auditSingleBattle(bundle: GameBundle, trace: TraceEvent[]) {
+  const expectations = new Map<string, Expectation>(bundle.skills.map(s => [s.id, deriveExpectation(s)]));
+  const collector = new EvidenceCollector(expectations, blockingRulesFromGlossary(bundle));
+  collector.ingest(trace, '');
+  const engineRules: CheckResult[] = Object.entries(collector.engineRules).map(([rule, r]) => ({
+    rule, title: RULE_TITLES[rule] || rule,
+    level: (r.checked === 0 ? 'skip' : r.violations ? 'fail' : r.soft ? 'warn' : 'pass') as Level,
+    message: r.checked === 0 ? '해당 없음' : r.violations ? `위반 ${r.violations}건` : r.soft ? `규칙 확인 필요 ${r.soft}건` : `위반 없음 (${r.checked}건 검사)`,
+    evidence: [...r.examples, ...(r.softExamples || [])],
+  }));
+  // 이 판에서 발동한 전법별: 원문 시점과 다른 단계에서 발동한 횟수
+  const skills = [...collector.bySkill.entries()].filter(([, e]) => e.fired > 0).map(([id, e]) => {
+    const s = bundle.skills.find(x => x.id === id);
+    const checks = judgeSkill(expectations.get(id)!, e, !!s?.engine, s?.text || '').filter(c => ['D02-phase', 'D03-turns', 'D05-effects', 'D06-targets', 'D07-limit'].includes(c.rule));
+    return { id, name: s?.name.ko || id, fired: e.fired, checks, worst: worstOf(checks.map(c => c.level)) };
+  });
+  return { engineRules, skills };
+}

@@ -1,5 +1,6 @@
 // GameBundle 을 파일로 쓴다 → 웹(apps/web/public/data)이 읽는다.
 import { join } from 'node:path';
+import { existsSync, copyFileSync } from 'node:fs';
 import { ROOT, DATA, readJson, writeJson } from './paths.ts';
 import { buildBundle } from './bundle.ts';
 
@@ -23,6 +24,10 @@ writeJson(join(outDir, 'reference-decklab.json'), {
   aiDecks: decks.aiDecks,
   verifiedCounters: matchups.verifiedCounters,
 });
+
+// 최근 감사 결과도 웹에 함께 싣는다
+const auditSrc = join(DATA, 'audit', 'latest.json');
+if (existsSync(auditSrc)) copyFileSync(auditSrc, join(outDir, 'audit.json'));
 
 const cov = bundle.skills.flatMap(s => s.clauses).reduce<Record<string, number>>((m, c) => { m[c.status] = (m[c.status] || 0) + 1; return m; }, {});
 console.log(`bundle ${bundle.dataVersion}: 무장 ${bundle.generals.length}, 전법 ${bundle.skills.length}, 절 상태`, cov);
