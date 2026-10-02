@@ -31,6 +31,18 @@ export interface GeneralAudit {
   worst: Level;
 }
 
+export interface ManualAudit {
+  id: string;
+  generalId: string;
+  general: string;
+  name: string;
+  status: string;
+  note?: string;
+  checks: CheckResult[];
+  sample?: { battles: number; fired: number };
+  worst: Level;
+}
+
 export interface AuditReport {
   generatedAt: string;
   dataVersion: string;
@@ -41,6 +53,7 @@ export interface AuditReport {
   engineRules: CheckResult[];
   skills: SkillAudit[];
   generals: GeneralAudit[];
+  manuals?: ManualAudit[];
 }
 
 const RANK: Record<Level, number> = { skip: 0, pass: 1, warn: 2, fail: 3 };
@@ -64,6 +77,9 @@ export const RULE_TITLES: Record<string, string> = {
   'D05-effects': '원문 효과 실제 발생',
   'D06-targets': '대상 수',
   'D07-limit': '턴당 발동 횟수 상한',
+  'M01-def': '금병법 엔진 정의',
+  'M02-fires': '금병법 실전 발동',
+  'M03-effects': '금병법 원문 효과 발생',
   'G01-stats': '무장 스탯 존재',
   'G02-unique': '고유 전법 존재',
   'E01-silence': '액티브 봉쇄 상태(침묵·공포 등)에서 액티브 미발동',

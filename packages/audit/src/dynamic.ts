@@ -148,10 +148,9 @@ export class EvidenceCollector {
           }
           if (t.kind === '추격') {
             this.engineRules['E03-pursuit'].checked++;
-            if (!basicThisTurn.has(turnKey(u))) {
-              // 액티브 전법 안의 "일반 공격"(예: 여포 무쌍의 용사) 뒤 추격은 게임 규칙 확인 대상 → 경고로 분리
-              if (basicDamageThisTurn.has(turnKey(u))) this.softViolate('E03-pursuit', `${label} ${t.turn}턴: [${nameOf(u)}] 전법 속 일반 공격 뒤 추격 【${id}】 발동 — 게임 규칙 확인 필요`);
-              else this.violate('E03-pursuit', `${label} ${t.turn}턴: [${nameOf(u)}] 일반 공격 없이 추격 【${id}】 발동`);
+            // 확인된 규칙 R-001: 액티브 전법 속 '일반 공격'(무쌍의 용사 등) 뒤 추격도 정상
+            if (!basicThisTurn.has(turnKey(u)) && !basicDamageThisTurn.has(turnKey(u))) {
+              this.violate('E03-pursuit', `${label} ${t.turn}턴: [${nameOf(u)}] 일반 공격 없이 추격 【${id}】 발동`);
             }
           }
           if (exp && e.phaseExamples.length < 3 && t.via === 'slot') e.phaseExamples.push(`${t.turn}턴 ${t.phase} — [${nameOf(u)}]`);
@@ -228,11 +227,12 @@ export function judgeSkill(exp: Expectation, e: SkillEvidence | undefined, hasEn
   if (exp.timing === 'pursuit') {
     const bad = Object.entries(e.firedByPhase).filter(([p]) => !allow.includes(p));
     const badN = bad.reduce((a, [, v]) => a + v, 0);
-    // 행동 단계(action)에서의 발동은 액티브 전법 속 '일반 공격' 뒤 연계일 수 있어 규칙 확인 대상(경고)으로 둔다
-    const hard = bad.filter(([p]) => p !== 'action').reduce((a, [, v]) => a + v, 0);
+    // 확인된 규칙 R-001: 행동 단계(action)의 발동은 액티브 전법 속 '일반 공격' 뒤 추격 — 정상
+    //   사건 반응형(via=event) 추격은 엔진이 일반 공격 판정 피해에만 걸어 주므로, 슬롯 발동만 단계를 엄격히 본다
+    //   (턴 시작 시 '서로 일반 공격'하는 금병법 — 여포 도발 — 뒤 추격도 정상)
+    const hard = Object.entries(e.slotByPhase).filter(([p]) => !allow.includes(p)).reduce((a, [, v]) => a + v, 0);
     out.push(hard ? chk('D02-phase', 'fail', `추격 전법이 일반 공격 단계 밖에서 ${hard}회 발동`, bad.map(([p, v]) => `${p}: ${v}회`))
-      : badN ? chk('D02-phase', 'warn', `액티브 전법 속 일반 공격 뒤 ${badN}회 발동 — 게임 규칙 확인 필요`, bad.map(([p, v]) => `${p}: ${v}회`))
-      : chk('D02-phase', e.fired ? 'pass' : 'skip', '일반 공격 단계에서만 발동'));
+      : chk('D02-phase', e.fired ? 'pass' : 'skip', badN ? `일반 공격 뒤 발동 (전법 속 일반 공격 뒤 ${badN}회 포함, 규칙 R-001)` : '일반 공격 단계에서만 발동'));
   } else if (allow && slotTotal) {
     const bad = Object.entries(e.slotByPhase).filter(([p]) => !allow.includes(p));
     const badN = bad.reduce((a, [, v]) => a + v, 0);
@@ -349,6 +349,25 @@ export function buildAuditPlan(sim: Simulator, bundle: GameBundle, opts: { tierS
     plan.push({ label: `[전법] ${s.name.ko} 장착`, a: { ...host, units }, b: opponent(k), seeds: extraSeeds });
     covered.add(s.id);
     k++;
+  }
+  // 금병법: 티어덱에서 쓰이지 않은 금병법도 한 번씩 장착해 본다 (R-003)
+  const usedManuals = new Set(decks.flatMap(d => d.spec.units.map(u => u.manualId).filter(Boolean)) as string[]);
+  for (const g of bundle.generals) {
+    for (const m of g.manuals || []) {
+      if (!m.id || usedManuals.has(m.id) || !(m.status === 'ok' || m.status === 'approx')) continue;
+      const withG = decks.find(d => d.spec.units.some(u => u.generalId === g.id));
+      let a: DeckSpec;
+      if (withG) a = { ...withG.spec, units: withG.spec.units.map(u => (u.generalId === g.id ? { ...u, manualId: m.id } : u)) };
+      else {
+        const host = decks[k % n].spec;
+        const units = host.units.map((u, j) => (j === 0 ? { generalId: g.id, skillIds: u.skillIds, manualId: m.id } : u));
+        if (new Set(units.map(u => u.generalId)).size !== units.length) continue;
+        a = { ...host, units };
+      }
+      plan.push({ label: `[금병법] ${g.name.ko}〈${m.name}〉`, a, b: opponent(k), seeds: extraSeeds });
+      usedManuals.add(m.id);
+      k++;
+    }
   }
   return plan;
 }

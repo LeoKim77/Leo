@@ -80,7 +80,7 @@ export function deriveExpectation(skill: Skill): Expectation {
   exp.heals = /회복(?:한다|하며|하고|시킨다|시키며|합니다)|치유율/.test(text) && !/받는 (?:회복|치유)/.test(text.replace(/치유율[^)]*\)/g, ''));
   const st = new Set<string>();
   for (const s of [...KNOWN_STATUSES, '무장해제']) {
-    const re = new RegExp(`${s}(?:을|를|이|가)?(?:\\(를\\)|\\(가\\))?\\s*(?:부여|획득|상태가 된다|1스택|\\d스택)`);
+    const re = new RegExp(`${s}(?:을|를|이|가)?(?:\\(를\\)|\\(가\\))?\\s*(?:부여|획득|상태가 된다|1스택|\\d스택)(?!\\s*(?:후|하면|할 때))`);
     if (re.test(text) || new RegExp(`지속되는\\s*${s}`).test(text)) st.add(normStatus(s));
   }
   exp.statuses = [...st];

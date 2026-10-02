@@ -45,9 +45,23 @@ export interface General {
   sources: SourceRef[];
 }
 
+/** 금병법 (각 무장 전용 병법). 사용자 확인 R-003: 시뮬에는 금병법만 반영 */
 export interface Manual {
   name: string;
   text: string;
+  /** 번들에서 채움: m-<무장id>-<순번> */
+  id?: string;
+  /** ok=원문대로, approx=근사, unsupported=미지원(시뮬 제외), missing=엔진 정의 없음 */
+  status?: 'ok' | 'approx' | 'unsupported' | 'missing';
+  note?: string;
+  engine?: ManualEngine;
+}
+
+export interface ManualEngine {
+  parts?: Array<Record<string, unknown>>;
+  static?: { mods?: Record<string, number>; stats?: Record<string, number> };
+  unit?: Record<string, unknown>;
+  uniquePatch?: Record<string, unknown>;
 }
 
 export interface Clause {
@@ -114,6 +128,8 @@ export interface TierDeckUnit {
   skillNames: string[];
   /** 세팅 병법 — 슬롯마다 대안이 있을 수 있음 ("병령/어적") */
   manualSlots: string[][];
+  /** 세팅 병법에 적힌 금병법 (번들에서 채움, 없으면 첫 금병법) */
+  manualId?: string;
   statCombo: string;
 }
 

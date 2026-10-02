@@ -113,7 +113,7 @@ tr.click { cursor: pointer; } tr.click:hover td { background: var(--panel-2); }
 /* 시뮬 */
 .deck-box { border-top: 3px solid var(--side-a); }
 .deck-box.b { border-top-color: var(--side-b); }
-.unit-row { display: grid; grid-template-columns: 1.2fr 1fr 1fr 74px; gap: 6px; margin-bottom: 6px; }
+.unit-row { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1fr; gap: 6px; margin-bottom: 6px; }
 @media (max-width: 560px) { .unit-row { grid-template-columns: 1fr 1fr; } }
 .unit-row select { width: 100%; min-width: 0; }
 .log { max-height: 460px; overflow: auto; font-size: 13px; line-height: 1.6; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px; white-space: pre-wrap; }

@@ -123,9 +123,17 @@ function generalDetail(g: General) {
       clauseView(u),
       u.overseasText ? h('div', { class: 'dim', style: { fontSize: '13.5px', marginTop: '8px' } }, h('b', null, '해외 자료: '), ko(u.overseasText)) : null,
       h('details', { style: { marginTop: '10px' } }, h('summary', null, '감사 결과'), auditChecks(u.id))) : null,
-    g.manuals.length ? h('div', { class: 'panel' }, h('h3', { style: { fontSize: '15px', marginBottom: '6px' } }, '전용 병법'),
-      g.manuals.map(m => h('div', { style: { marginBottom: '6px' } }, h('b', null, `〈${m.name}〉 `), h('span', { class: 'dim' }, m.text))),
-      h('div', { class: 'muted', style: { fontSize: '12.5px' } }, '병법 효과는 아직 전투 엔진에 반영되지 않았습니다.')) : null,
+    g.manuals.length ? h('div', { class: 'panel' }, h('h3', { style: { fontSize: '15px', marginBottom: '6px' } }, '금병법'),
+      g.manuals.map(m => {
+        const ma = app.audit?.manuals?.find(x => x.id === m.id);
+        const st = { ok: ['pass', '원문대로'], approx: ['warn', '근사'], unsupported: ['skip', '미지원'], missing: ['fail', '정의 없음'] }[m.status || 'missing'] as [string, string];
+        return h('div', { style: { marginBottom: '8px' } },
+          h('b', null, `〈${m.name}〉 `), lv(st[0], st[1]),
+          ma?.sample?.fired ? h('span', { class: 'muted', style: { fontSize: '12px' } }, ` 감사 ${ma.sample.battles}판 · 발동 ${ma.sample.fired}회`) : null,
+          h('div', { class: 'dim' }, m.text),
+          m.note ? h('div', { class: 'muted', style: { fontSize: '12.5px' } }, m.note) : null);
+      }),
+      h('div', { class: 'muted', style: { fontSize: '12.5px' } }, '시뮬에는 금병법만 반영합니다(덱마다 1개 선택). 그 밖의 세팅 병법은 개인 선택이라 제외합니다.')) : null,
     bonds.length ? h('div', { class: 'panel' }, h('h3', { style: { fontSize: '15px', marginBottom: '6px' } }, '인연'),
       bonds.map(b => h('div', { style: { marginBottom: '6px' } }, h('b', null, `${b.name} `), h('span', { class: 'badge' }, `${b.required}명`), h('span', { class: 'dim' }, `${b.memberNames.join(', ')} — ${b.text}`)))) : null,
     decks.length ? h('div', { class: 'panel' }, h('h3', { style: { fontSize: '15px', marginBottom: '6px' } }, '사용 티어덱'),

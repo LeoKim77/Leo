@@ -117,7 +117,11 @@ for (const r of manualRows) {
   const gname = s(r[2]);
   if (!gname) continue;
   const list: Manual[] = [];
-  for (const m of s(r[6]).matchAll(/<([^>]+)>\s*([^<]*)/g)) list.push({ name: m[1].trim(), text: m[2].trim() });
+  for (const m of s(r[6]).matchAll(/<([^>]+)>\s*([^<]*)/g)) {
+    // "<낙신부> 상권 고유 전법 …" 처럼 권 표기가 꺾쇠 밖에 있는 경우 이름에 붙인다
+    const vol = m[2].trim().match(/^(상권|중권|하권)\s+/);
+    list.push(vol ? { name: `${m[1].trim()} ${vol[1]}`, text: m[2].trim().slice(vol[0].length) } : { name: m[1].trim(), text: m[2].trim() });
+  }
   manualsByGeneral.set(gname, list);
 }
 

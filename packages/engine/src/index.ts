@@ -2,7 +2,7 @@
 // GameBundle(한국판 데이터 + 엔진 정의) → v1.12b 엔진 형식으로 바꿔 실행한다.
 import { createLegacyEngine } from './legacy/core.js';
 import { createRng } from './rng.ts';
-import type { GameBundle, General, Skill } from './model.ts';
+import type { GameBundle, General, Skill, Manual } from './model.ts';
 
 export * from './model.ts';
 export { createRng } from './rng.ts';
@@ -13,6 +13,19 @@ export interface DeckUnitSpec {
   generalId: string;
   skillIds: string[];
   position?: Position;
+  /** 금병법 id (m-<무장id>-<순번>). 생략하면 시뮬 가능한 첫 금병법, 'none' 이면 미장착 */
+  manualId?: string;
+}
+
+/** "a.b.0.c" 경로에 값을 넣는다 */
+function setPath(obj: any, path: string, value: unknown) {
+  const keys = path.split('.');
+  let cur = obj;
+  keys.slice(0, -1).forEach((k, i) => {
+    if (cur[k] == null) cur[k] = /^\d+$/.test(keys[i + 1]) ? [] : {};
+    cur = cur[k];
+  });
+  cur[keys[keys.length - 1]] = value;
 }
 export interface DeckSpec {
   name?: string;
@@ -95,6 +108,7 @@ export function toLegacyGameData(bundle: GameBundle & { engineGenerals?: Record<
       stats: { 무력: 0, 지력: 0, 통솔: 0, 선공: 0, ...stats },
       maxTroops: g.maxTroops,
       uniqueSkillId: g.uniqueSkillId,
+      manuals: g.manuals || [],
     };
   });
   return {
@@ -156,18 +170,52 @@ export class Simulator {
   buildArmy(deck: DeckSpec, side: 'A' | 'B') {
     const E = this.engine;
     const formation = this.data.formations.find(f => f.name === deck.formation) || this.data.formations.find(f => f.name === '기형진') || this.data.formations[0];
+    const manualsUsed: Array<{ unit: any; manual: Manual }> = [];
     const units = deck.units.map((u, idx) => {
       const g = this.generalById.get(u.generalId);
       if (!g) throw new Error(`무장 없음: ${u.generalId}`);
       const skills = u.skillIds.map(id => this.skillById.get(id)).filter(Boolean);
-      const uskill = this.uniqueById.get(g.uniqueSkillId);
-      return E.buildUnit(g, skills, uskill, formation, u.position || legacyPosition(g.position), side, idx);
+      let uskill = this.uniqueById.get(g.uniqueSkillId);
+      const manual = this.pickManual(g, u.manualId);
+      const eng = manual?.engine;
+      // 금병법이 고유 전법을 고치면 이 무장에게만 사본을 만들어 적용한다
+      if (uskill && eng?.uniquePatch) {
+        uskill = structuredClone(uskill);
+        for (const [path, v] of Object.entries(eng.uniquePatch)) setPath(uskill, path, v);
+        delete uskill._timing;
+      }
+      const manualSkills = (eng?.parts || []).map((part, i) => ({
+        ...structuredClone(part),
+        id: `${manual!.id}#${i + 1}`,
+        name: `금병법〈${manual!.name}〉`,
+        type: '패시브',
+        procRate: '100%',
+        raw: manual!.text,
+        isManual: true,
+      }));
+      const unit = E.buildUnit(g, [...skills, ...manualSkills], uskill, formation, u.position || legacyPosition(g.position), side, idx);
+      if (manual && eng) {
+        Object.assign(unit, eng.unit || {});
+        unit.manual = { id: manual.id, name: manual.name, status: manual.status };
+        manualsUsed.push({ unit, manual });
+      }
+      return unit;
     });
     const prepLog: string[] = [];
     E.applyFormationEffects(units, prepLog);
     E.applyTeamCompositionBonuses(units, prepLog);
     E.applyBondBonuses(units, this.data.bonds, prepLog);
     E.applyLoadoutSynergies(units);
+    // 금병법 고정 증감 (편성 보너스 다음에 더한다)
+    for (const { unit, manual } of manualsUsed) {
+      const st = manual.engine?.static;
+      const from = (manual.engine?.unit as any)?.statFromStat;
+      const parts: string[] = [];
+      for (const [k, v] of Object.entries(st?.mods || {})) { unit.mods[k] = (unit.mods[k] || 0) + v; parts.push(`${k} ${v > 0 ? '+' : ''}${Math.round(v * 1000) / 10}%`); }
+      for (const [k, v] of Object.entries(st?.stats || {})) { unit.stats[k] = (unit.stats[k] || 0) + v; parts.push(`${k} ${v > 0 ? '+' : ''}${v}`); }
+      if (from) { const add = unit.stats[from.from] * from.ratio; unit.stats[from.stat] += add; parts.push(`${from.stat} +${add.toFixed(1)}`); }
+      prepLog.push(`0턴: [${unit.name}] 금병법〈${manual.name}〉 장착${manual.status === 'approx' ? ' (근사)' : ''}${parts.length ? ' — ' + parts.join(', ') : ''}`);
+    }
     units.forEach((u: any) => { u.prepLog = prepLog; });
     return units;
   }
@@ -205,6 +253,15 @@ export class Simulator {
     };
   }
 
+  /** 덱에 지정한 금병법 → 없으면 시뮬 가능한 첫 금병법. 미지원·정의 없음은 장착하지 않는다 */
+  pickManual(g: { manuals?: Manual[] }, manualId?: string): Manual | null {
+    const ms = g.manuals || [];
+    if (manualId === 'none') return null;
+    const usable = (m?: Manual) => !!m && (m.status === 'ok' || m.status === 'approx');
+    const chosen = manualId ? ms.find(m => m.id === manualId) : ms.find(usable);
+    return usable(chosen) ? chosen! : null;
+  }
+
   /** 티어덱 → DeckSpec */
   tierDeckSpec(tierDeckId: string, formation = '기형진'): DeckSpec {
     const td = this.bundle.tierDecks.find(t => t.id === tierDeckId);
@@ -212,7 +269,7 @@ export class Simulator {
     return {
       name: `${td.tier} ${td.name}`,
       formation,
-      units: td.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(id => !id.startsWith('?')) })),
+      units: td.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(id => !id.startsWith('?')), manualId: u.manualId })),
     };
   }
 }

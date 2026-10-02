@@ -49,6 +49,7 @@ const deckInput = z.union([
     units: z.array(z.object({
       general: z.string().describe('무장 이름 또는 id'),
       skills: z.array(z.string()).max(2).describe('전법 2개 (이름 또는 id). 고유 전법은 자동 포함'),
+      manual: z.string().optional().describe('금병법 이름 (생략하면 그 무장의 첫 금병법, "없음" 이면 미장착)'),
       position: z.enum(['front', 'mid', 'back']).optional(),
     })).min(1).max(3),
   }),
@@ -66,8 +67,10 @@ function resolveDeck(d: z.infer<typeof deckInput>): DeckSpec {
     units: d.units.map(u => {
       const g = findGeneral(u.general);
       if (!g) throw new Error(`무장을 찾을 수 없습니다: ${u.general}`);
+      const manualId = u.manual === '없음' ? 'none' : u.manual ? g.manuals.find(m => squash(m.name) === squash(u.manual!))?.id : undefined;
+      if (u.manual && u.manual !== '없음' && !manualId) throw new Error(`${g.name.ko} 의 금병법이 아닙니다: ${u.manual} (가능: ${g.manuals.map(m => m.name).join(', ') || '없음'})`);
       return {
-        generalId: g.id, position: u.position,
+        generalId: g.id, position: u.position, manualId,
         skillIds: u.skills.map(s => { const f = findSkill(s); if (!f) throw new Error(`전법을 찾을 수 없습니다: ${s}`); return f.id; }),
       };
     }),

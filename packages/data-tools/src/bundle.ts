@@ -143,6 +143,19 @@ export function buildBundle(): FullBundle {
   const engFormations = readJson<Record<string, any>>(join(DATA, 'engine', 'formations.json'));
 
   for (const g of generals) if (engGenerals[g.id]?.gender) g.gender = engGenerals[g.id].gender;
+  // 금병법 엔진 정의 연결 (R-003)
+  const manualDefs = readJson<any>(join(DATA, 'engine', 'manuals.json'), { manuals: {} }).manuals;
+  const squashName = (x: string) => x.replace(/\s+/g, '');
+  for (const g of generals) {
+    (g.manuals || []).forEach((m: any, i: number) => {
+      m.id = `m-${g.id}-${i + 1}`;
+      const def = (manualDefs[g.id] || []).find((d: any) => squashName(d.name) === squashName(m.name));
+      if (!def) { m.status = 'missing'; return; }
+      m.status = def.status;
+      if (def.note) m.note = def.note;
+      m.engine = { parts: def.parts, static: def.static, unit: def.unit, uniquePatch: def.uniquePatch };
+    });
+  }
   const overrides = readJson<any>(join(DATA, 'engine', 'overrides.json'), { skills: {} });
   for (const s of skills) {
     let eng = engSkills[s.id];
@@ -170,7 +183,17 @@ export function buildBundle(): FullBundle {
     skills,
     bonds,
     formations,
-    tierDecks: applyPatches('tier-decks', readJson<any[]>(join(KR, 'tier-decks.json'))),
+    tierDecks: applyPatches('tier-decks', readJson<any[]>(join(KR, 'tier-decks.json'))).map(t => ({
+      ...t,
+      units: t.units.map((u: any) => {
+        // 세팅 병법 칸에 적힌 이름이 그 무장의 금병법이면 그것을, 아니면 시뮬 가능한 첫 금병법을 쓴다
+        const g = generals.find(x => x.id === u.generalId);
+        const ms = (g?.manuals || []) as any[];
+        const named = u.manualSlots.flat().map(squashName);
+        const pick = ms.find(m => named.includes(squashName(m.name))) || ms.find(m => m.status === 'ok' || m.status === 'approx') || ms[0];
+        return pick ? { ...u, manualId: pick.id } : u;
+      }),
+    })),
     glossary: readJson(join(KR, 'glossary.json')),
     termMap: readJson<any>(join(DATA, 'common', 'term-map.json')).mappings,
     changelog: loadChangelog(),

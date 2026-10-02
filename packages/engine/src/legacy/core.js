@@ -14,6 +14,8 @@ export const ENGINE_FIXES = [
     detail: '지휘·패시브(행동 시) 효과가 유발한 반격·연계로 시전자가 전사해도 이어서 액티브·일반 공격을 하던 문제를 고침.' },
   { id: 'FIX-002', date: '2026-10-02', found: '감사 D06', title: '한 전법의 여러 피해가 대상을 따로 뽑던 문제',
     detail: '대상이 따로 적히지 않은 피해 항목(책략과 병기 동시 피해, "추가로" 피해)이 같은 발동 안에서 첫 대상을 공유하도록 고침. 방화범·문과 무·야습 등.' },
+  { id: 'FEAT-001', date: '2026-10-02', found: '금병법 반영', title: '금병법용 계기 추가',
+    detail: '액티브·추격 전법 발동 후 반응, 특정 상태 부여 후 반응, 전투당 1회 제한, 병력 조건, 추격 발동률, 고유 전법 발동률 가산, 병력 우위 대상 피해·탈주병 증가, 진영 보너스 대체.' },
   { id: 'FIX-003', date: '2026-10-02', found: '감사 D06', title: '피해 확률을 대상마다 따로 판정하던 문제',
     detail: '"N% 확률로 (대상)에게 피해" 를 발동 1회에 한 번만 판정하도록 고침. 문과 무·광풍의 분노·일인천군. 상태 부여 확률은 기존처럼 대상별 판정.' },
 ];
@@ -300,6 +302,7 @@ function selectTargets(unit, targetCodes, allUnits) {
     case 'all_ally': result = allies; break;
     case 'random_enemy_n': result = weightedShuffleByPosition(enemies, 2); break;
     case 'random_ally_n': result = shuffle(allies).slice(0, 2); break;
+    case 'random_ally_1': result = shuffle(allies.filter(u => u !== unit)).slice(0, 1); break;   // FEAT-001: 랜덤 우군 단일(자신 제외)
     case 'random_enemy_1': result = [weightedPickByPosition(enemies)]; break;
     case 'lowest_control_enemy': result = [minBy(enemies, u => u.stats.통솔)]; break;
     case 'lowest_power_enemy': result = [minBy(enemies, u => u.stats.무력)]; break;
@@ -365,7 +368,9 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   //   주는 쪽: (1 + min(일반 증상 + 병기/책략 증상, 100%)) × (1 + 유형 증상)
   //   받는 쪽: (1 + 받는피해합성 + 위협류) × (1 + 받는 병기/책략) × (1 + 받는 유형)
   const outTypeMod = dmgType === '병기' ? (attacker.mods.주는병기피해 || 0) : (attacker.mods.주는책략피해 || 0);
-  const outShared = Math.min((attacker.mods.주는피해 || 0) + outTypeMod, 1.0);
+  // FEAT-001: "병력이 자신보다 높은 목표에게 주는 피해 증가" (관우 오상)
+  const vsHigher = defender.troops > attacker.troops ? (attacker.mods.병력우위대상피해 || 0) : 0;
+  const outShared = Math.min((attacker.mods.주는피해 || 0) + outTypeMod + vsHigher, 1.0);
   const typeMod = dmgType === '병기' ? (defender.mods.받는병기피해 || 0) : (defender.mods.받는책략피해 || 0);
   const statusIn = accumStatus(defender, 'inDamageAdd', 'add');   // 위협 등
   let kindMod = 0;
@@ -529,10 +534,14 @@ function rollTrigger(unit, skill) {
   const t = skill.trigger;
   const used = unit.triggerCounts[skill.id] || 0;
   if (used >= (t.maxPerTurn || 1)) return false;
+  unit.battleTriggerCounts = unit.battleTriggerCounts || {};
+  if (t.maxPerBattle != null && (unit.battleTriggerCounts[skill.id] || 0) >= t.maxPerBattle) return false;
+  if (t.condition && !evalCondition(t.condition, { self: unit, target: unit, attacker: unit })) return false;
   const __ok = __rng() < (t.chance != null ? t.chance : 1);
   __T({ e: 'roll', unit: unit.id, skill: skill.id, kind: 'trigger', p: t.chance != null ? t.chance : 1, ok: __ok, used, max: t.maxPerTurn || 1 });
   if (!__ok) return false;
   unit.triggerCounts[skill.id] = used + 1;
+  unit.battleTriggerCounts[skill.id] = (unit.battleTriggerCounts[skill.id] || 0) + 1;
   return true;
 }
 
@@ -606,6 +615,7 @@ function emitDebuffEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       if (t.role === 'ally_side' && target.side === u.side) return; // "적이 디버프 받으면" = 대상이 내 편이 아닐 때
       // '이상 상태'만 보는 트리거(주유 기지의 승리)는 기본 디버프에는 반응하지 않는다.
       if (t.abnormalOnly && !ctx.abnormal) return;
+      if (t.statusName && t.statusName !== ctx.statusName) return;   // FEAT-001: 특정 상태 부여에만 반응
       if (!rollTrigger(u, skill)) return;
       applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { caster, target });
     });
@@ -804,6 +814,16 @@ function evalCondition(cond, ctx) {
       result = u ? u.position === cond.pos : false;
       break;
     }
+    case 'unitType': {
+      const u = resolveWho(cond.who, ctx);
+      result = u ? u.unitType === cond.value : false;
+      break;
+    }
+    case 'troopsBelow': {
+      const u = resolveWho(cond.who, ctx);
+      result = u ? u.troops < u.maxTroops * cond.ratio : false;
+      break;
+    }
     case 'gender': {
       const u = resolveWho(cond.who, ctx);
       result = u ? u.gender === cond.value : false;
@@ -840,7 +860,31 @@ function applySkillEffects(unit, skill, allUnits, coeffs, log, turn, contrib, ev
   __skillStack.push(skill.id);
   __invStack.push(__inv);
   try { return __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contrib, eventCtx); }
-  finally { __skillStack.pop(); __invStack.pop(); }
+  finally {
+    __skillStack.pop(); __invStack.pop();
+    // 금병법 등 "액티브/추격 전법 발동 후" 반응형 효과 (FEAT-001)
+    if ((skill.type === '액티브' || skill.type === '추격') && !skill.isManual && unit.alive) emitCastEvent({ caster: unit, skill }, allUnits, coeffs, log, turn, contrib);
+  }
+}
+function emitCastEvent(ctx, allUnits, coeffs, log, turn, contrib) {
+  const { caster, skill: cast } = ctx;
+  allUnits.forEach(u => {
+    if (!u.alive) return;
+    u.skills.forEach(skill => {
+      const t = skill.trigger;
+      if (!t || t.event !== 'cast' || skill === cast) return;
+      if (t.castType && t.castType !== cast.type) return;
+      if (t.castSkill === 'unique' && !cast.isUnique) return;   // 자기 고유 전법 (role 'self' 와 함께 쓴다)
+      if (t.role === 'self' && u !== caster) return;
+      if (t.role === 'ally_side' && u.side !== caster.side) return;
+      if (t.casterIs) {
+        const ok = t.casterIs.some(code => code === 'self' ? u === caster : selectTargets(u, [code], allUnits)[0] === caster);
+        if (!ok) return;
+      }
+      if (!rollTrigger(u, skill)) return;
+      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker: caster, defender: null, caster });
+    });
+  });
 }
 function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contrib, eventCtx) {
   const eff = skill.effects || {};
@@ -853,6 +897,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     // 연계 발동 시 "방금 그 대상"을 가리키는 특수 코드 (예: 반격은 원래 공격자에게)
     if (code === 'trigger_defender' && eventCtx && eventCtx.defender) return [eventCtx.defender];
     if (code === 'trigger_attacker' && eventCtx && eventCtx.attacker) return [eventCtx.attacker];
+    if (code === 'trigger_target' && eventCtx && eventCtx.target) return [eventCtx.target];   // FEAT-001: 상태를 받은 대상
     if (code.startsWith('tag:') && tags[code.slice(4)]) return tags[code.slice(4)];
     return null;
   }
@@ -1211,7 +1256,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       // '디버프 부여 후' 트리거는 특수 디버프 12종에만 반응한다.
       // (정신 회복 같은 버프에 주유 기지의 승리가 반응하던 문제)
       if (SPECIAL_DEBUFFS.includes(se.name)) {
-        emitDebuffEvent({ caster: unit, target: t, abnormal: true }, allUnits, coeffs, log, turn, contrib);
+        emitDebuffEvent({ caster: unit, target: t, abnormal: true, statusName: se.name }, allUnits, coeffs, log, turn, contrib);
       }
     });
   });
@@ -1235,6 +1280,8 @@ function procRateOf(skill, unit) {
   if (unit && skill.type === '액티브') {
     base += (unit.mods.액티브발동률 || 0);
   }
+  if (unit && skill.type === '추격') base += (unit.mods.추격발동률 || 0);   // FEAT-001 (허저·태사자 금병법)
+  if (unit && skill.isUnique && unit.uniqueProcAdd) base += unit.uniqueProcAdd; // FEAT-001 (고유 전법 발동률 +N%)
   return clamp(base, 0, 1);
 }
 
@@ -1257,7 +1304,9 @@ function dealDesertionDamage(attacker, targets, skill, coeffs, log, turn, contri
   const raw = a * (skill.desertionCoef || 2.4) - (skill.desertionBase || 330);
   targets.forEach(t => {
     if (!t.alive || t.troops <= 0) return;
-    const dmg = Math.max(1, Math.round(raw));
+    // FEAT-001: 탈주병 수 증가 (정욱 지용, 관우 오상 — 병력이 자신보다 높은 목표)
+    const boost = 1 + (attacker.mods.탈주병증가 || 0) + (t.troops > attacker.troops ? (attacker.mods.탈주병증가_병력우위 || 0) : 0);
+    const dmg = Math.max(1, Math.round(raw * boost));
     t.troops = Math.max(0, t.troops - dmg);
     t.wounded = (t.wounded || 0) + Math.round(dmg * DEFAULT_COEFFS.woundedRate);
     if (t.troops <= 0) t.alive = false;
@@ -2049,6 +2098,9 @@ function applyTeamCompositionBonuses(units, log) {
     teamUnits.forEach(u => { countryCounts[u.country] = (countryCounts[u.country] || 0) + 1; });
     let topCountry = null, topCount = 0;
     Object.entries(countryCounts).forEach(([c, n]) => { if (n > topCount) { topCount = n; topCountry = c; } });
+    // FEAT-001: "국가 진영 보너스를 활성화하지 않았으면 진영 보너스-촉이 100% 적용" (유비 국지한서, 원소 세가)
+    const override = teamUnits.find(u => u._factionOverride);
+    if (topCount < 2 && override) { topCount = 3; topCountry = override._factionOverride; }
     if (topCount >= 2) {
       const pct = topCount >= 3 ? 0.10 : 0.05;
       if (log) log.push(`0턴: [${teamUnits[0].name}] 부대에서 【${topCountry}】 강화 효과를 획득하여, 속성이 ${(pct*100).toFixed(0)}% 증가했습니다.`);

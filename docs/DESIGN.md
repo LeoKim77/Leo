@@ -48,7 +48,8 @@ v1.12b는 한 파일(525KB) 안에 데이터·엔진·UI가 모두 들어 있다
 | 웹 | 완료 — 게시판·도감·티어덱·보유·시뮬·감사·해외 자료 | `apps/web/` |
 | 덱 추천(1~5덱) | 미착수 (P6) | — |
 | 효과 언어(AST) 엔진 | 미착수 — 현재는 v1.12b 효과 형식 | — |
-| 병법 효과 | 미반영 — 전용 병법 원문만 있음, 세팅 병법 효과 자료 없음 | — |
+| 금병법 | 완료 — 72개 중 원문대로 48 · 근사 19 · 미지원 5. 덱마다 1개 선택 (R-003: 세팅 병법은 개인 선택이라 제외) | `data/engine/manuals.json` |
+| 확인된 게임 규칙 | R-001~004 기록, 감사·엔진 근거로 사용 | `data/common/confirmed-rules.json` |
 | DB·배포(Supabase/Cloudflare) | 미착수 (P5) | — |
 
 ### 감사 시스템 요약
@@ -67,6 +68,7 @@ v1.12b는 한 파일(525KB) 안에 데이터·엔진·UI가 모두 들어 있다
 data/kr/            엑셀 원본 (다시 가져오면 갱신)
 data/engine/        v1.12b 효과 정의 (자동 변환)
 data/engine/overrides.json   감사로 찾은 효과 정의 수정 (검수됨)
+data/engine/manuals.json     금병법 효과 정의
 data/patches/       게임에서 확인한 정보 (MCP data_patch)
         ↓ build-bundle
 apps/web/public/data/bundle.json

@@ -3,7 +3,7 @@ import { Simulator, type GameBundle, type TraceEvent } from '@cheonha/engine';
 import { deriveExpectation, type Expectation } from './expect.ts';
 import { staticSkillChecks, staticGeneralChecks } from './static.ts';
 import { EvidenceCollector, judgeSkill, buildAuditPlan } from './dynamic.ts';
-import { RULE_TITLES, worstOf, type AuditReport, type CheckResult, type Level, type SkillAudit } from './report.ts';
+import { RULE_TITLES, worstOf, type AuditReport, type CheckResult, type Level, type SkillAudit, type ManualAudit } from './report.ts';
 
 export * from './report.ts';
 export { deriveExpectation } from './expect.ts';
@@ -79,6 +79,8 @@ export function runAudit(bundle: GameBundle, opts: AuditOptions = {}): AuditRepo
     return { id: g.id, name: g.name.ko, season: g.season, checks, worst: worstOf(checks.map(c => c.level)) };
   });
 
+  const manuals: ManualAudit[] = opts.onlySkillIds ? [] : bundle.generals.flatMap(g => (g.manuals || []).map(m => auditManual(g, m, collector)));
+
   const engineRules: CheckResult[] = Object.entries(collector.engineRules).map(([rule, r]) => ({
     rule, title: RULE_TITLES[rule] || rule,
     level: (r.checked === 0 ? 'skip' : r.violations ? 'fail' : r.soft ? 'warn' : 'pass') as Level,
@@ -87,7 +89,7 @@ export function runAudit(bundle: GameBundle, opts: AuditOptions = {}): AuditRepo
     evidence: [...r.examples, ...(r.softExamples || [])],
   }));
 
-  const all = [...skillAudits.flatMap(s => s.checks), ...generals.flatMap(g => g.checks), ...engineRules];
+  const all = [...skillAudits.flatMap(s => s.checks), ...generals.flatMap(g => g.checks), ...manuals.flatMap(m => m.checks), ...engineRules];
   const summary: Record<Level, number> = { pass: 0, warn: 0, fail: 0, skip: 0 };
   all.forEach(c => { summary[c.level]++; });
   const byRule = new Map<string, { rule: string; title: string; pass: number; warn: number; fail: number; skip: number }>();
@@ -107,7 +109,41 @@ export function runAudit(bundle: GameBundle, opts: AuditOptions = {}): AuditRepo
     engineRules,
     skills: skillAudits,
     generals,
+    manuals,
   };
+}
+
+const mchk = (rule: string, level: Level, message: string, evidence?: string[]): CheckResult => ({ rule, title: RULE_TITLES[rule] || rule, level, message, evidence });
+
+/** 금병법 하나: 정의 상태 + 실전 발동 + 원문 효과 */
+function auditManual(g: GameBundle['generals'][number], m: NonNullable<GameBundle['generals'][number]['manuals']>[number], collector: EvidenceCollector): ManualAudit {
+  const checks: CheckResult[] = [];
+  const st = m.status || 'missing';
+  checks.push(st === 'ok' ? mchk('M01-def', 'pass', '원문대로 정의')
+    : st === 'approx' ? mchk('M01-def', 'warn', `근사 반영 — ${m.note || ''}`)
+    : st === 'unsupported' ? mchk('M01-def', 'warn', `미지원 — 시뮬에서 제외. ${m.note || ''}`)
+    : mchk('M01-def', 'fail', '엔진 정의 없음'));
+  const parts = m.engine?.parts || [];
+  const evs = parts.map((_, i) => collector.bySkill.get(`${m.id}#${i + 1}`)).filter(Boolean) as NonNullable<ReturnType<typeof collector.bySkill.get>>[];
+  const battles = evs.length ? Math.max(...evs.map(e => e.battles)) : 0;
+  const fired = evs.reduce((a, e) => a + e.fired, 0);
+  if (st === 'ok' || st === 'approx') {
+    if (!parts.length) checks.push(mchk('M02-fires', 'pass', '편성 시 고정 증감 (발동 기록 없음)'));
+    else if (!battles) checks.push(mchk('M02-fires', 'skip', '감사 전투에 장착되지 않음'));
+    else checks.push(fired ? mchk('M02-fires', 'pass', `${battles}판 · 발동 ${fired}회`) : mchk('M02-fires', 'warn', `${battles}판 동안 발동하지 않음`));
+    if (parts.length && fired) {
+      const exp = deriveExpectation({ id: m.id!, name: { ko: m.name }, isUnique: false, season: g.season, kind: '패시브', procRate: 1, text: m.text, clauses: [], sources: [] } as any);
+      const dmg: Record<string, number> = {}, sts: Record<string, number> = {};
+      let heals = 0;
+      evs.forEach(e => { Object.entries(e.damage).forEach(([k, v]) => { dmg[k] = (dmg[k] || 0) + v; }); Object.entries(e.statuses).forEach(([k, v]) => { sts[k] = (sts[k] || 0) + v; }); heals += e.heals; });
+      const lacks = [...exp.damageTypes.filter(t => !dmg[t]).map(t => `${t} 피해`), ...exp.statuses.filter(x => !sts[x]).map(x => `「${x}」`), ...(exp.heals && !heals ? ['회복'] : [])];
+      if (exp.damageTypes.length || exp.statuses.length || exp.heals) {
+        checks.push(lacks.length ? mchk('M03-effects', 'warn', `원문 효과가 나오지 않음: ${lacks.join(', ')}`, [`피해 ${JSON.stringify(dmg)}`, `상태 ${JSON.stringify(sts)}`, `회복 ${heals}회`])
+          : mchk('M03-effects', 'pass', '원문 효과 관측됨', [`피해 ${JSON.stringify(dmg)}`, `상태 ${JSON.stringify(sts)}`, `회복 ${heals}회`]));
+      }
+    }
+  }
+  return { id: m.id!, generalId: g.id, general: g.name.ko, name: m.name, status: st, note: m.note, checks, sample: { battles, fired }, worst: worstOf(checks.map(c => c.level)) };
 }
 
 /** 전투 한 판의 trace 를 감사한다 (웹 시뮬 화면의 "이 전투 감사") */
