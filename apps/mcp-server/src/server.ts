@@ -13,7 +13,7 @@ import { existsSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import { Simulator, type DeckSpec } from '@cheonha/engine';
 import { runAudit, type AuditReport } from '@cheonha/audit';
-import { Recommender } from '@cheonha/recommender';
+import { Recommender, planVerification } from '@cheonha/recommender';
 import { buildBundle, loadChangelog, type FullBundle, type PatchKind } from '../../../packages/data-tools/src/bundle.ts';
 import { DATA, ROOT, readJson, writeJson } from '../../../packages/data-tools/src/paths.ts';
 import { normalizeKo } from '../../../packages/data-tools/src/terms.ts';
@@ -368,6 +368,30 @@ server.registerTool('verification_list', {
     items = items.filter(i => i.refs.some(r => ids.has(r)) || i.title.includes(ref));
   }
   return text({ total: items.length, items });
+});
+
+server.registerTool('verification_plan', {
+  title: '검증 전투 짜기',
+  description: '사용자 보유 무장·전법으로 검증 대기 항목을 가장 적은 전투 수에 담은 녹화용 부대를 짠다. 보유 목록은 웹 보유 탭 "복사해서 내보내기" JSON 을 그대로 넘겨도 된다.',
+  inputSchema: {
+    generals: z.array(z.string()).describe('보유 무장 이름/id (["전체"] 가능)'),
+    skills: z.array(z.string()).describe('보유 전법 이름/id (["전체"] 가능)'),
+  },
+}, async ({ generals, skills }) => {
+  const { bundle } = ctx();
+  const gs = generals[0] === '전체' ? bundle.generals.map(g => g.id) : generals.map(x => findGeneral(x)?.id).filter(Boolean) as string[];
+  const ss = skills[0] === '전체' ? bundle.skills.filter(s => !s.isUnique).map(s => s.id) : skills.map(x => findSkill(x)?.id).filter(Boolean) as string[];
+  const p = planVerification(bundle, buildQueue({ ...bundle }), { generals: gs, skills: ss });
+  const gn = (id: string) => bundle.generals.find(g => g.id === id);
+  return text({
+    summary: `검증 대기 ${p.total}개 중 ${p.covered}개를 ${p.battles.length}판으로`,
+    battles: p.battles.map((b, i) => ({
+      battle: i + 1,
+      units: b.units.map(u => ({ general: gn(u.generalId)?.name.ko, manual: gn(u.generalId)?.manuals.find(m => m.id === u.manualId)?.name ?? '자유', skills: [0, 1].map(k => (u.skillIds[k] ? bundle.skills.find(s => s.id === u.skillIds[k])?.name.ko : '자유')) })),
+      watch: b.items.map(it => `${it.title} — ${it.howToVerify}`),
+    })),
+    blocked: p.blocked,
+  });
 });
 
 server.registerTool('verification_resolve', {

@@ -198,3 +198,5 @@ export class Recommender {
     }
   }
 }
+
+export { planVerification, type VerifyPlan, type PlannedBattle, type VerifyItem } from './verify-plan.ts';

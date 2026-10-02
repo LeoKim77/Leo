@@ -40,3 +40,26 @@ describe('덱 추천', () => {
     expect(r.decks[0].validation!.opponents).toHaveLength(2);
   });
 });
+
+import { planVerification } from '../packages/recommender/src/index.ts';
+import { buildQueue } from '../packages/data-tools/src/verification.ts';
+
+describe('검증 전투 짜기', () => {
+  const queue = buildQueue(b as any);
+  it('전부 보유하면 모든 대기 항목을 담고, 부대마다 무장·전법이 겹치지 않는다', () => {
+    const p = planVerification(b, queue, { generals: allG, skills: allS });
+    expect(p.covered).toBe(p.total);
+    for (const bt of p.battles) {
+      expect(bt.units.length).toBeLessThanOrEqual(3);
+      const g = bt.units.map(u => u.generalId), s = bt.units.flatMap(u => u.skillIds);
+      expect(new Set(g).size).toBe(g.length);
+      expect(new Set(s).size).toBe(s.length);
+      bt.units.forEach(u => expect(u.skillIds.length).toBeLessThanOrEqual(2));
+    }
+  });
+  it('보유하지 않은 카드가 필요한 항목은 따로 알려 준다', () => {
+    const p = planVerification(b, queue, { generals: allG.slice(0, 10), skills: allS.slice(0, 10) });
+    expect(p.blocked.length).toBeGreaterThan(0);
+    for (const bt of p.battles) for (const u of bt.units) expect(allG.slice(0, 10)).toContain(u.generalId);
+  });
+});

@@ -1,7 +1,7 @@
 // 시뮬·감사·추천 계산. 보통은 Web Worker(worker.ts) 안에서, 워커를 못 쓰는 환경에선 메인 스레드에서 돈다
 import { Simulator, type DeckSpec, type GameBundle, type MonteCarloResult } from '@cheonha/engine';
 import { runAudit, auditSingleBattle } from '@cheonha/audit';
-import { Recommender } from '@cheonha/recommender';
+import { Recommender, planVerification } from '@cheonha/recommender';
 
 let bundle: GameBundle | null = null;
 let sim: Simulator | null = null;
@@ -11,6 +11,7 @@ type Msg =
   | { type: 'mc'; id: number; a: DeckSpec; b: DeckSpec; runs: number; seed: string }
   | { type: 'battle'; id: number; a: DeckSpec; b: DeckSpec; seed: string }
   | { type: 'audit'; id: number; skillIds: string[] }
+  | { type: 'verifyPlan'; id: number; owned: { generals: string[]; skills: string[] }; queue: any[] }
   | { type: 'recommend'; id: number; owned: { generals: string[]; skills: string[] }; count: number; allowGeneralSub: boolean; alternatives: any[]; validateRuns: number };
 
 function mergeMc(parts: MonteCarloResult[], seed: string): MonteCarloResult {
@@ -64,6 +65,8 @@ export function handle(m: Msg, post: Post) {
       const { trace, ...rest } = r;
       void trace;
       post({ id: m.id, type: 'result', result: { ...rest, audit } });
+    } else if (m.type === 'verifyPlan') {
+      post({ id: m.id, type: 'result', result: planVerification(bundle, m.queue, m.owned) });
     } else if (m.type === 'recommend') {
       const r = new Recommender(bundle).recommend({
         owned: m.owned, count: m.count, allowGeneralSub: m.allowGeneralSub, alternatives: m.alternatives,

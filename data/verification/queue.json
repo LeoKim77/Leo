@@ -601,19 +601,26 @@
     {
       "id": "V-engine-holder-duration",
       "kind": "engine",
-      "refs": [],
+      "refs": [
+        "all-directions",
+        "supply-cut",
+        "flood-seven"
+      ],
       "title": "지속 턴 = 보유자 행동 기준 (v1.12b 잠정 W05)",
       "assumption": "버프·디버프의 남은 턴은 보유자가 행동할 때 줄어든다.",
-      "howToVerify": "2턴 지속 상태가 몇 번째 행동 뒤에 사라지는지 전보에서 확인",
+      "howToVerify": "팔방전(위협 2턴)·보급 차단(군량 고갈 2턴)·칠군수몰(홍수 2턴) 중 하나가 걸린 뒤, 그 상태가 대상의 몇 번째 행동 뒤에 사라지는지 전보에서 확인",
       "status": "pending"
     },
     {
       "id": "V-engine-stat-influence",
       "kind": "engine",
-      "refs": [],
+      "refs": [
+        "u-liu-bei",
+        "u-cao-cao"
+      ],
       "title": "'(스탯)의 영향 받음' 계수 (v1.12b 잠정 W08)",
       "assumption": "효과 × (1 + (스탯 − 100) × 0.285%)",
-      "howToVerify": "같은 전법을 지력이 다른 두 무장이 쓴 전보에서 수치 비율 확인",
+      "howToVerify": "유비 백성과 함께(통솔 18포인트, 지력 영향)·조조 난세의 간웅(받는 피해 14%, 지력 영향)의 실제 수치를 툴팁·전보로 확인하고 시전자 지력과 함께 기록",
       "status": "pending"
     },
     {

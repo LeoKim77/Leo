@@ -1,10 +1,12 @@
 // 감사 — 고유 전법·전법이 실제 규칙(원문·용어 시트)대로 발동하는지
 import { h, mount, lv, select } from '../dom.ts';
-import { app } from '../state.ts';
+import { app, loadUser, generalById, skillById } from '../state.ts';
 import { stackedLevels } from '../charts.ts';
 import { call } from '../sim-client.ts';
 import { auditChecks, clauseView } from './codex.ts';
 import type { AuditReport, SkillAudit } from '@cheonha/audit';
+import type { VerifyPlan } from '@cheonha/recommender';
+import { setSimCustom } from './sim.ts';
 
 let level = 'fail';
 let rule = '';
@@ -12,6 +14,39 @@ let kindF = '전체';
 let q = '';
 let open = '';
 let busy = '';
+
+let plan: VerifyPlan | null = null;
+let planBusy = false;
+
+/** 내 보유 카드로 최소 전투 수의 검증 부대를 짠다 */
+function planSection(redraw: () => void) {
+  const user = loadUser();
+  const items = ((app.bundle as any).verification || []) as any[];
+  const run = async () => {
+    planBusy = true; redraw();
+    try { plan = await call<VerifyPlan>({ type: 'verifyPlan', owned: { generals: user.ownedGenerals, skills: user.ownedSkills }, queue: items }); }
+    finally { planBusy = false; redraw(); }
+  };
+  const mName = (gid: string, mid?: string) => generalById(gid)?.manuals.find(m => m.id === mid)?.name;
+  return h('div', { class: 'panel', style: { marginBottom: '12px' } },
+    h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '16px' } }, '녹화할 검증 전투'),
+      h('button', { class: 'btn primary', disabled: planBusy || !user.ownedGenerals.length, onclick: run }, planBusy ? '짜는 중…' : '내 보유 카드로 짜기')),
+    !user.ownedGenerals.length ? h('div', { class: 'sub' }, '보유 탭에서 가진 무장·전법을 먼저 체크하세요.') : h('div', { class: 'sub' }, '검증 대기 항목을 가장 적은 전투 수에 담습니다. 영향이 큰 엔진 가정부터 앞 전투에 넣습니다. 상대는 아무 덱이나 괜찮습니다. 전보를 0턴(포진)부터 끝까지 녹화해 주세요.'),
+    plan ? h('div', { style: { marginTop: '8px' } },
+      h('div', { class: 'notice' }, `검증 대기 ${plan.total}개 중 ${plan.covered}개를 ${plan.battles.length}판으로 확인할 수 있습니다.` + (plan.blocked.length ? ` 보유 카드로 볼 수 없는 항목 ${plan.blocked.length}개.` : '')),
+      plan.battles.map((b, i) => h('details', { class: 'panel', style: { marginBottom: '8px' }, open: i < 2 },
+        h('summary', null, h('b', null, `${i + 1}번 전투`), ` — ${b.items.length}개 항목 · `, b.units.map(u => `${generalById(u.generalId)?.name.ko}${u.manualId ? `〈${mName(u.generalId, u.manualId)}〉` : ''}`).join(' · ')),
+        h('table', { style: { marginTop: '6px' } }, h('tbody', null, b.units.map(u => h('tr', null,
+          h('td', { style: { width: '90px' } }, h('b', null, generalById(u.generalId)?.name.ko)),
+          h('td', null,
+            [0, 1].map(k => u.skillIds[k] ? h('span', { class: 'badge gold' }, skillById(u.skillIds[k])?.name.ko) : h('span', { class: 'badge' }, '자유')),
+            h('span', { class: 'muted', style: { fontSize: '12.5px' } }, u.manualId ? ` 금병법〈${mName(u.generalId, u.manualId)}〉 필수` : ' 금병법 자유')))))),
+        h('div', { style: { fontSize: '13px', marginTop: '6px' } }, h('b', null, '전보에서 볼 것'),
+          h('ol', { style: { margin: '4px 0 0', paddingLeft: '20px' } }, b.items.map(it => h('li', null, h('span', null, it.title), h('div', { class: 'muted' }, it.howToVerify))))),
+        h('button', { class: 'btn small', style: { marginTop: '6px' }, onclick: () => { setSimCustom('A', { name: `검증 ${i + 1}`, formation: '기형진', units: b.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds, manualId: u.manualId })) }); location.hash = '#/sim'; } }, '이 부대로 시뮬해 보기'))),
+      plan.blocked.length ? h('details', null, h('summary', null, `보유 카드로 볼 수 없는 항목 ${plan.blocked.length}개`),
+        h('ul', { style: { fontSize: '13px' } }, plan.blocked.map(x => h('li', null, `${x.title} — 필요: ${x.needs.join(' 또는 ')}`)))) : null) : null);
+}
 
 /** 전보 녹화 검증 대기 목록 (R-007) */
 function verificationSection() {
@@ -66,6 +101,7 @@ export function renderAudit(root: HTMLElement) {
     h('div', { class: 'panel', style: { marginBottom: '12px' } }, h('h3', { style: { fontSize: '15px', marginBottom: '4px' } }, '규칙별 결과 (전법·무장 항목 수)'),
       h('div', { class: 'chart-legend' }, (['pass', 'warn', 'fail', 'skip'] as const).map(k => h('span', null, lv(k)))),
       stackedLevels(fails.map(x => ({ label: x.title, pass: x.pass, warn: x.warn, fail: x.fail, skip: x.skip })))),
+    planSection(redraw),
     verificationSection(),
     r.manuals?.length ? h('details', { class: 'panel', style: { marginBottom: '12px' } },
       h('summary', null, `금병법 ${r.manuals.length}개 — 원문대로 ${r.manuals.filter(m => m.status === 'ok').length} · 근사 ${r.manuals.filter(m => m.status === 'approx').length} · 미지원 ${r.manuals.filter(m => m.status === 'unsupported').length}`),
