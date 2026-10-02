@@ -86,6 +86,17 @@ export function parseFormationTrait(trait: string) {
   return out;
 }
 
+/** "a.b.0.c" 경로에 값을 넣는다 (배열 인덱스 지원) */
+export function setPath(obj: any, path: string, value: unknown) {
+  const keys = path.split('.');
+  let cur = obj;
+  keys.slice(0, -1).forEach((k, i) => {
+    if (cur[k] == null) cur[k] = /^\d+$/.test(keys[i + 1]) ? [] : {};
+    cur = cur[k];
+  });
+  cur[keys[keys.length - 1]] = value;
+}
+
 export function loadChangelog(): ChangelogEntry[] {
   const dir = join(DATA, 'changelog');
   if (!existsSync(dir)) return [];
@@ -109,8 +120,15 @@ export function buildBundle(): FullBundle {
   const engFormations = readJson<Record<string, any>>(join(DATA, 'engine', 'formations.json'));
 
   for (const g of generals) if (engGenerals[g.id]?.gender) g.gender = engGenerals[g.id].gender;
+  const overrides = readJson<any>(join(DATA, 'engine', 'overrides.json'), { skills: {} });
   for (const s of skills) {
-    const eng = engSkills[s.id];
+    let eng = engSkills[s.id];
+    const ov = overrides.skills?.[s.id];
+    if (eng && ov) {
+      eng = structuredClone(eng);
+      for (const [path, v] of Object.entries(ov.set || {})) setPath(eng, path, v);
+      eng.overrideNote = { date: ov.date, found: ov.found, reason: ov.reason };
+    }
     if (eng) s.engine = eng;
     s.clauses = buildClauses(s.text, eng?.clauses);
   }

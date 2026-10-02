@@ -21,7 +21,11 @@ importers:
         specifier: ^3.2.0
         version: 3.2.7(@types/node@22.20.5)(tsx@4.23.15)
 
-  packages/audit: {}
+  packages/audit:
+    dependencies:
+      '@cheonha/engine':
+        specifier: workspace:*
+        version: link:../engine
 
   packages/data-tools:
     dependencies:

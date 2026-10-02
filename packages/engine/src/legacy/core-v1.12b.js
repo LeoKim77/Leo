@@ -6,17 +6,8 @@
 //   - Math.random → 주입 가능한 __rng (시드 고정 → 같은 판 재현)
 //   - window.GAME_DATA → createLegacyEngine(gameData) 인자
 //   - __T(...) 감사(audit)용 구조화 기록 지점 추가 (기록 함수가 없으면 아무 일도 안 함)
-// 효과 언어(AST) 엔진으로 넘어가기 전까지 이 파일이 실제 전투 규칙의 기준이다.
-// v1.12b 대비 수정 내역은 ENGINE_FIXES 와 data/changelog 에 남긴다. 원본 그대로는 core-v1.12b.js.
+// ※ 이 파일(core-v1.12b.js)은 원본과의 동등성 검증용으로 고정한다. 버그 수정은 core.js 에만 한다.
 // ============================================================
-export const ENGINE_FIXES = [
-  { id: 'FIX-001', date: '2026-10-02', found: '감사 E05', title: '행동 중 전사한 무장이 계속 행동하던 문제',
-    detail: '지휘·패시브(행동 시) 효과가 유발한 반격·연계로 시전자가 전사해도 이어서 액티브·일반 공격을 하던 문제를 고침.' },
-  { id: 'FIX-002', date: '2026-10-02', found: '감사 D06', title: '한 전법의 여러 피해가 대상을 따로 뽑던 문제',
-    detail: '대상이 따로 적히지 않은 피해 항목(책략과 병기 동시 피해, "추가로" 피해)이 같은 발동 안에서 첫 대상을 공유하도록 고침. 방화범·문과 무·야습 등.' },
-  { id: 'FIX-003', date: '2026-10-02', found: '감사 D06', title: '피해 확률을 대상마다 따로 판정하던 문제',
-    detail: '"N% 확률로 (대상)에게 피해" 를 발동 1회에 한 번만 판정하도록 고침. 문과 무·광풍의 분노·일인천군. 상태 부여 확률은 기존처럼 대상별 판정.' },
-];
 export function createLegacyEngine(gameData) {
 let __rng = Math.random;
 let __traceFn = null;
@@ -847,8 +838,6 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
   const targetCodes = eff.targets && eff.targets.length ? eff.targets : ['random_enemy_1'];
   let value = 0;
   const tags = {}; // 같은 스킬 내에서 앞서 정한 대상을 뒤 효과가 재사용하기 위한 태그 저장소
-  let __sharedDmgTargets = null; // FIX-002
-  const __chanceRolls = {};       // FIX-003
   function resolveSpecial(code) {
     // 연계 발동 시 "방금 그 대상"을 가리키는 특수 코드 (예: 반격은 원래 공격자에게)
     if (code === 'trigger_defender' && eventCtx && eventCtx.defender) return [eventCtx.defender];
@@ -905,14 +894,9 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       targets = resolveSpecial(d.target);
     } else if (d.target) {
       targets = selectTargets(attacker, [d.target], allUnits);
-    } else if (__sharedDmgTargets) {
-      // FIX-002: 대상이 따로 적히지 않은 피해 항목은 같은 발동 안에서 첫 대상을 공유한다
-      //   ("랜덤 적군 2명에게 책략과 병기 피해", "추가로 …" — v1.12b 는 항목마다 대상을 다시 뽑았다)
-      targets = __sharedDmgTargets;
     } else {
       targets = selectTargets(unit, targetCodes, allUnits).filter(t => t.side !== unit.side);
       if (!targets.length) targets = selectTargets(unit, ['random_enemy_1'], allUnits);
-      __sharedDmgTargets = targets;
     }
     if (d.reciprocal) targets = [...targets].sort((a, b) => effStat(b, '선공') - effStat(a, '선공')); // 선공 높은 순으로 순차 교전
     if (d.tag) tags[d.tag] = targets;
@@ -925,16 +909,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       if (d.reciprocal && !attacker.alive) return; // 교전 도중 공격자가 먼저 쓰러지면 남은 상대와는 교전하지 않음
       // 조건부 발동: 대상이 특정 상태를 가지고 있어야만 (예: "디버프 보유 시") 발동하는 별도 공격
       if (d.condition && !evalCondition(d.condition, { attacker, target: t, self: unit })) return;
-      if (d.chance != null) {
-        // FIX-003: "60% 확률로 랜덤 적군 2명에게 … 피해" 는 발동 1회에 한 번만 판정한다
-        //   (v1.12b 는 대상·항목마다 따로 굴려 2명 중 1명만 맞는 일이 생겼다). 대상별 판정은 chancePerTarget.
-        if (d.chancePerTarget) { if (__rng() >= d.chance) return; }
-        else {
-          const key = String(d.chance);
-          if (!(key in __chanceRolls)) __chanceRolls[key] = __rng() < d.chance;
-          if (!__chanceRolls[key]) return;
-        }
-      }
+      if (d.chance != null && __rng() >= d.chance) return;
       let ratio = lvVal(d.min, d.max);
       // 스탯 영향 계수 (statScale): "(추가로 통솔의 영향 받음)" 유형.
       //   중문 커뮤니티 자료가 제시한 모델 — 배율(%) += (시전자 스탯 - 100) x 가중치.
@@ -1443,13 +1418,9 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
   // 사용자 확인 순서: 선공 → 지휘 → 패시브 → 액티브 → 추격 (기존엔 패시브가 먼저였음)
   ['지휘', '패시브'].forEach(type => {
     byType(type).forEach(skill => {
-      if (!unit.alive) return;   // FIX-001
       applySkillEffects(unit, skill, allUnits, coeffs, log, turn, contrib);
     });
   });
-  // FIX-001: 자기 지휘·패시브가 유발한 반격·연계로 전사하면 그 자리에서 행동을 끝낸다.
-  //   (v1.12b: 병력 0 인 동탁이 이어서 행동하고 천하평론까지 발동 — 감사 E05 로 발견)
-  if (!unit.alive) return;
   // 준비 턴(prepTurns): "1턴 동안 준비 후 ~" 전법은 발동에 성공해도 즉시 터지지 않고
   // 다음 턴에 실행된다. 실제 전보에도 "【방화범】 발동 준비 중입니다"가 별도 줄로 찍힌다.
   // 준비 중 예약분은 위협/침묵의 영향을 받지 않고 예정대로 발동한다(이미 시전을 시작했으므로).
@@ -1468,7 +1439,6 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
     readyNow.length = 0;
   }
   readyNow.forEach(p => {
-    if (!unit.alive) return;   // FIX-001
     log.push(`${turn}턴: [${unit.name}]이(가) 【${p.skill.name}】 준비를 마치고 발동합니다.`);
     applySkillEffects(unit, p.skill, allUnits, coeffs, log, turn, contrib);
   });
@@ -1490,7 +1460,6 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
     __T({ e: 'blocked', unit: unit.id, what: '액티브', why });
   } else {
     byType('액티브').forEach(skill => {
-      if (!unit.alive) return;   // FIX-001
       const __p = procRateOf(skill, unit);
       const rolled = __rng() < __p;
       __T({ e: 'roll', unit: unit.id, skill: skill.id, kind: '액티브', p: __p, ok: rolled });
@@ -1557,7 +1526,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
       basicAttackTarget = target;
       unit.inBasicPhase = true;
       __phase = 'basic';
-      __T({ e: 'basic', unit: unit.id, dst: target.id, statuses: unit.statuses.map(s => s.name) });
+      __T({ e: 'basic', unit: unit.id, dst: target.id });
       unit._pursuitDoneThisHit = {};   // 이번 일반 공격에 대한 추격 판정 기록 초기화
       // ※ 로그 순서 주의: dealDamage 안에서 추격 전법 트리거(원문사극 등)가 즉시 발동하며
       //   자기 로그를 push한다. 따라서 "일반 공격을 발동했습니다" 줄을 dealDamage 호출 뒤에 쓰면
@@ -2127,7 +2096,6 @@ function applyBondBonuses(units, bondCatalog, log) {
 }
 
 return {
-  ENGINE_FIXES,
   setRng: (f) => { __rng = f; },
   setTrace: (f) => { __traceFn = f; },
   setSkillLevel: (lv) => { SKILL_LEVEL = lv; },

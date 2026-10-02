@@ -1,10 +1,10 @@
-// 이식한 엔진(packages/engine/src/legacy/core.js)이 원본 v1.12b HTML 엔진과
+// 이식한 엔진(packages/engine/src/legacy/core-v1.12b.js, 고정본)이 원본 v1.12b HTML 엔진과
 // 같은 시드에서 "글자 하나까지 같은 전보"를 내는지 확인한다.
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import vm from 'node:vm';
-import { createLegacyEngine } from '../packages/engine/src/legacy/core.js';
+import { createLegacyEngine } from '../packages/engine/src/legacy/core-v1.12b.js';
 import { createRng } from '../packages/engine/src/rng.ts';
 
 const html = readFileSync(join(__dirname, '..', 'legacy', 'simulator-v1.12b.html'), 'utf8');
