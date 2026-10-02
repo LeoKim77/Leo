@@ -16,5 +16,6 @@
     "data/common/site.json",
     "docs/DESIGN.md",
     "packages/data-tools/src/build-standalone.ts"
-  ]
+  ],
+  "commit": "8065614f7b35"
 }
