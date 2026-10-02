@@ -16,5 +16,6 @@
     "packages/recommender/src/index.ts",
     "tests/recommender.test.ts",
     "packages/recommender/src/verify-plan.ts"
-  ]
+  ],
+  "commit": "7f3a7d9070c8"
 }
