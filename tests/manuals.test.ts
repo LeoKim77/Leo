@@ -54,3 +54,24 @@ describe('금병법 (R-003)', () => {
     expect(u.manual).toBeUndefined();
   });
 });
+
+describe('전법 정의 수정 (S09·FEAT-003)', () => {
+  it('레벨 보간이 뒤집힌 정의가 없다', () => {
+    for (const s of b.skills) {
+      const eff = (s.engine as any)?.effects || {};
+      for (const k of ['statMods', 'buffs', 'damage', 'heal']) for (const d of eff[k] || []) {
+        if (d && d.min != null && d.max != null) expect(Math.abs(d.max) + 1e-9 >= Math.abs(d.min), `${s.name.ko} ${k}`).toBe(true);
+      }
+    }
+  });
+  it('결사의 다짐: 결사·다짐을 받은 무장이 직접 발동한다', () => {
+    const deck = { formation: '기형진', units: [{ generalId: gen('관우').id, skillIds: ['armor-edge'] }, { generalId: gen('조운').id, skillIds: [] }, { generalId: gen('유비').id, skillIds: [] }] };
+    let 결사 = 0, 다짐 = 0;
+    for (let i = 0; i < 10; i++) {
+      const r = sim.simulate(deck, sim.tierDeckSpec('tier-s1-02'), { seed: i, trace: true });
+      r.trace!.forEach((e: any) => { if (e.e === 'skill' && e.skill === 'armor-edge>결사') 결사++; if (e.e === 'skill' && e.skill === 'armor-edge>다짐') 다짐++; });
+    }
+    expect(결사).toBeGreaterThan(20);
+    expect(다짐).toBeGreaterThan(5);
+  });
+});

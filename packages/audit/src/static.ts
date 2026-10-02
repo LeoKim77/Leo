@@ -74,6 +74,17 @@ export function staticSkillChecks(skill: Skill, bundle: GameBundle, engineTiming
   checks.push(bad.length ? chk('S07-terms', 'warn', `해외 표기 발견: ${bad.map(t => `${t.from}→${t.to}`).join(', ')}`)
     : chk('S07-terms', 'pass', '한국판 용어'));
 
+  // S09 — 레벨 보간 방향: 1레벨→10레벨 값이 뒤집히면(|max|<|min|) 10레벨에서 약해진다
+  if (eng?.effects) {
+    const rev: string[] = [];
+    for (const kind of ['statMods', 'buffs', 'damage', 'heal']) {
+      (eng.effects[kind] || []).forEach((d: any, i: number) => {
+        if (d && typeof d === 'object' && d.min != null && d.max != null && Math.abs(d.max) + 1e-9 < Math.abs(d.min)) rev.push(`${kind}[${i}] ${d.stat || d.dmgType || ''} ${d.min} → ${d.max}`);
+      });
+    }
+    checks.push(rev.length ? chk('S09-level', 'fail', `1레벨→10레벨 값이 뒤집혀 10레벨 효과가 약하게 적용됩니다`, rev) : chk('S09-level', 'pass', '레벨 보간 정상'));
+  }
+
   // S08
   if (skill.isUnique) {
     const owner = bundle.generals.find(g => g.id === skill.ownerGeneralId);

@@ -158,16 +158,18 @@ export function buildBundle(): FullBundle {
   }
   const overrides = readJson<any>(join(DATA, 'engine', 'overrides.json'), { skills: {} });
   const authored = readJson<any>(join(DATA, 'engine', 'authored.json'), { skills: {} }).skills;
+  const clauseReview = readJson<any>(join(DATA, 'engine', 'clause-review.json'), { skills: {} }).skills;
   for (const s of skills) {
     let eng = engSkills[s.id];
-    const au = !eng ? authored[s.id] : undefined;
+    // 직접 작성한 정의: v1.12b 에 없는 전법, 또는 replace=true 로 v1.12b 정의를 대체
+    const au = authored[s.id] && (!eng || authored[s.id].replace) ? authored[s.id] : undefined;
     if (au) {
       // 직접 작성한 정의(S2 신규 등). 미지원이면 엔진에는 붙이지 않고 사유만 남긴다
-      const { status, note, missingHints = [], approxHints = [], ...def } = au;
+      const { status, note, missingHints = [], approxHints = [], replace, ...def } = au;
       (s as any).engineStatus = { status, note, source: 'authored' };
       const marks = (t: string): Clause['status'] => (missingHints.some((h: string) => t.includes(h)) ? 'missing' : approxHints.some((h: string) => t.includes(h)) ? 'approx' : 'ok');
       s.clauses = splitClauses(s.text).map((t, idx) => ({ idx, text: t, status: status === 'unsupported' ? 'missing' : marks(t) }));
-      if (status !== 'unsupported') s.engine = { ...def, authored: true, authoredStatus: status, authoredNote: note };
+      if (status !== 'unsupported') s.engine = { ...def, authored: true, authoredStatus: status, authoredNote: note, replacedLegacy: !!replace };
       continue;
     }
     const ov = overrides.skills?.[s.id];
@@ -178,6 +180,9 @@ export function buildBundle(): FullBundle {
     }
     if (eng) s.engine = eng;
     s.clauses = buildClauses(s.text, eng?.clauses);
+    for (const r of clauseReview[s.id] || []) {
+      s.clauses.forEach(c => { if (c.text.includes(r.match)) { c.status = r.status; c.reviewed = r.note || '검토됨'; } });
+    }
   }
   const bonds = applyPatches('bonds', readJson<any[]>(join(KR, 'bonds.json'))).map(b => ({ ...b, engine: engBonds[b.id] }));
   const formations: Formation[] = readJson<Formation[]>(join(KR, 'formations.json')).map(f => ({

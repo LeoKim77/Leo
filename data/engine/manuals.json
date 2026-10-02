@@ -412,7 +412,7 @@
     },
     "uniquePatch": {
      "effects.statMods.0.min": -32,
-     "effects.statMods.0.max": -16
+     "effects.statMods.0.max": -32
     },
     "note": "압도적 권력 탈취량 +60%"
    }

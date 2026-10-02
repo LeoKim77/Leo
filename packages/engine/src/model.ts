@@ -70,6 +70,8 @@ export interface Clause {
   /** ok: 엔진 반영, approx: 근사 반영, note: 수식어/설명, missing: 미반영 */
   status: 'ok' | 'approx' | 'note' | 'missing' | 'special';
   impl?: string[];
+  /** 사람이 검토해 상태를 고친 경우 그 사유 */
+  reviewed?: string;
 }
 
 export interface Skill {

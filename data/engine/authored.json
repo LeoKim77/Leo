@@ -864,6 +864,192 @@
      "random_enemy_n"
     ]
    }
+  },
+  "armor-edge": {
+   "replace": true,
+   "status": "approx",
+   "note": "결사 회복의 \"목표의 지력과 통솔 영향\"은 받은 무장의 지력으로 계산(통솔 미반영)",
+   "_timing": "battleStart",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [
+     {
+      "stat": "받는병기피해",
+      "min": -0.2,
+      "max": -0.2,
+      "target": "random_ally_front",
+      "duration": 999,
+      "maxStacks": 1,
+      "tag": "k"
+     }
+    ],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": [],
+    "grants": [
+     {
+      "key": "결사",
+      "target": "tag:k",
+      "skill": {
+       "_timing": "action",
+       "effects": {
+        "damage": [],
+        "heal": [
+         {
+          "min": 0.8,
+          "max": 0.8,
+          "target": "self"
+         }
+        ],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": [
+         "self"
+        ]
+       }
+      }
+     },
+     {
+      "key": "다짐",
+      "target": "highest_power_ally",
+      "skill": {
+       "trigger": {
+        "event": "damage",
+        "role": "dealt",
+        "afterBasic": true,
+        "chance": 0.5,
+        "maxPerTurn": 9
+       },
+       "effects": {
+        "damage": [
+         {
+          "dmgType": "병기",
+          "min": 1,
+          "max": 1,
+          "target": "random_enemy_1"
+         }
+        ],
+        "heal": [],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": []
+       }
+      }
+     }
+    ]
+   },
+   "approxHints": [
+    "지력과 통솔의 영향"
+   ]
+  },
+  "u-zou-shi": {
+   "replace": true,
+   "status": "ok",
+   "_timing": "battleStart",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [
+     {
+      "stat": "받는피해",
+      "min": -0.16,
+      "max": -0.16,
+      "target": "all_ally",
+      "duration": 999,
+      "maxStacks": 1
+     },
+     {
+      "stat": "받는추격피해",
+      "min": -0.16,
+      "max": -0.16,
+      "target": "all_ally",
+      "duration": 999,
+      "maxStacks": 1
+     },
+     {
+      "stat": "받는액티브피해",
+      "min": -0.16,
+      "max": -0.16,
+      "target": "all_ally",
+      "duration": 999,
+      "maxStacks": 1
+     }
+    ],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": []
+   },
+   "parts": [
+    {
+     "trigger": {
+      "event": "damage",
+      "role": "taken",
+      "filterDmgType": "병기",
+      "chance": 0.6,
+      "maxPerTurn": 9
+     },
+     "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+       {
+        "stat": "받는피해",
+        "min": 0.02,
+        "max": 0.02,
+        "target": "all_ally",
+        "duration": 999,
+        "maxStacks": 8
+       },
+       {
+        "stat": "받는추격피해",
+        "min": 0.02,
+        "max": 0.02,
+        "target": "all_ally",
+        "duration": 999,
+        "maxStacks": 8
+       },
+       {
+        "stat": "받는액티브피해",
+        "min": 0.02,
+        "max": 0.02,
+        "target": "all_ally",
+        "duration": 999,
+        "maxStacks": 8
+       }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+     }
+    },
+    {
+     "_timing": "turnStart",
+     "onlyTurns": [
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "effects": {
+      "damage": [],
+      "heal": [
+       {
+        "min": 1.4,
+        "max": 1.4,
+        "target": "random_ally_n"
+       }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+     }
+    }
+   ]
   }
  }
 }

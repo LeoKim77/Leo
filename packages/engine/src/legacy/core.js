@@ -18,6 +18,8 @@ export const ENGINE_FIXES = [
     detail: '액티브·추격 전법 발동 후 반응, 특정 상태 부여 후 반응, 전투당 1회 제한, 병력 조건, 추격 발동률, 고유 전법 발동률 가산, 병력 우위 대상 피해·탈주병 증가, 진영 보너스 대체.' },
   { id: 'FEAT-002', date: '2026-10-02', found: 'S2 신규 전법 반영', title: 'S2 전법용 효과 추가',
     detail: '상태를 피해보다 먼저 부여(statusFirst), 버프·스탯 효과의 대상 공유(tag), 「저항」(피해 1회 무효), 발동마다 쌓이는 자체 누적(selfStack).' },
+  { id: 'FEAT-003', date: '2026-10-02', found: '감사 S05 (결사의 다짐·눈부신 자태)', title: '효과 부여·일반 공격 후 계기',
+    detail: '다른 무장에게 전법처럼 동작하는 효과를 부여(grants), 추격이 아닌 "일반 공격 후" 계기(afterBasic), 전열 우선 대상(random_ally_front).' },
   { id: 'FIX-003', date: '2026-10-02', found: '감사 D06', title: '피해 확률을 대상마다 따로 판정하던 문제',
     detail: '"N% 확률로 (대상)에게 피해" 를 발동 1회에 한 번만 판정하도록 고침. 문과 무·광풍의 분노·일인천군. 상태 부여 확률은 기존처럼 대상별 판정.' },
 ];
@@ -304,6 +306,7 @@ function selectTargets(unit, targetCodes, allUnits) {
     case 'all_ally': result = allies; break;
     case 'random_enemy_n': result = weightedShuffleByPosition(enemies, 2); break;
     case 'random_ally_n': result = shuffle(allies).slice(0, 2); break;
+    case 'random_ally_front': { const fr = allies.filter(u => u.position === 'front'); result = [pick(fr.length ? fr : allies)]; break; }   // FEAT-003 전열 우선
     case 'random_ally_1': result = shuffle(allies.filter(u => u !== unit)).slice(0, 1); break;   // FEAT-001: 랜덤 우군 단일(자신 제외)
     case 'random_enemy_1': result = [weightedPickByPosition(enemies)]; break;
     case 'lowest_control_enemy': result = [minBy(enemies, u => u.stats.통솔)]; break;
@@ -580,6 +583,13 @@ function emitDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
         u._pursuitDoneThisHit = u._pursuitDoneThisHit || {};
         if (u._pursuitDoneThisHit[skill.id]) return;   // 이번 평타에서 이미 판정함
         u._pursuitDoneThisHit[skill.id] = true;
+      }
+      if (t.afterBasic) {   // FEAT-003: "일반 공격 후" — 추격과 같은 관문(일반 공격 판정 피해, 평타 1회당 1번)
+        if (!isBasic || !u.inBasicPhase || u !== attacker) return;
+        u._afterBasicDone = u._afterBasicDone || {};
+        const hitKey = skill.id + ':' + turn + ':' + (u._basicSeq || 0);
+        if (u._afterBasicDone[hitKey]) return;
+        u._afterBasicDone[hitKey] = true;
       }
       if (t.role === 'dealt' && u !== attacker) return;
       if (t.role === 'taken' && u !== defender) return;
@@ -1059,7 +1069,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       // 시전자 쪽 타격이 진짜 '일반 공격'이라, 대상마다 추격 전법 판정 기회가 생긴다.
       // (실제 전보: 여포 일반공격 → 원문사극 → 천군소탕 → 상대 맞받아침 → 반격 → 무력대비 보너스)
       const asBasic = !!d.asBasicAttack;
-      if (asBasic) { attacker.inBasicPhase = true; attacker._pursuitDoneThisHit = {}; }
+      if (asBasic) { attacker.inBasicPhase = true; attacker._pursuitDoneThisHit = {}; attacker._basicSeq = (attacker._basicSeq || 0) + 1; }
       const { dmg, crit } = dealDamage(attacker, t, ratio, d.dmgType, coeffs, log, allUnits, turn, contrib,
         asBasic, asBasic ? 'basic' : tag);
       if (asBasic) attacker.inBasicPhase = false;
@@ -1288,6 +1298,24 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       if (SPECIAL_DEBUFFS.includes(se.name)) {
         emitDebuffEvent({ caster: unit, target: t, abnormal: true, statusName: se.name }, allUnits, coeffs, log, turn, contrib);
       }
+    });
+  });
+
+  // FEAT-003 효과 부여: "~가 결사 획득: 행동 전 …" 처럼 받은 무장이 직접 발동하는 효과
+  (eff.grants || []).forEach(g => {
+    let targets;
+    if (g.target === 'self') targets = [unit];
+    else if (g.target && resolveSpecial(g.target)) targets = resolveSpecial(g.target);
+    else targets = selectTargets(unit, [g.target || 'random_ally_n'], allUnits);
+    targets.forEach(t => {
+      if (!t.alive) return;
+      const id = `${skill.id}>${g.key}`;
+      const expires = g.duration ? turn + g.duration : 999;
+      const exist = t.skills.find(x => x.id === id);
+      if (exist) { exist.expires = Math.max(exist.expires, expires); return; }
+      t.skills.push({ ...JSON.parse(JSON.stringify(g.skill)), id, name: `${skill.name}·${g.key}`, type: g.skill.type || '패시브', procRate: '100%', raw: g.raw || skill.raw, isManual: true, granted: true, grantedBy: unit.id, expires });
+      log.push(`${turn}턴:   [${t.name}]이(가) 「${g.key}」을(를) 획득했습니다. — ${unit.name}의 【${skill.name}】`);
+      __T({ e: 'status', src: unit.id, dst: t.id, status: g.key, dur: g.duration || 999, refreshed: false, skill: skill.id });
     });
   });
 
@@ -1635,6 +1663,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
       }
       basicAttackTarget = target;
       unit.inBasicPhase = true;
+      unit._basicSeq = (unit._basicSeq || 0) + 1;   // FEAT-003: 평타마다 '일반 공격 후' 판정 1번
       __phase = 'basic';
       __T({ e: 'basic', unit: unit.id, dst: target.id, statuses: unit.statuses.map(s => s.name) });
       unit._pursuitDoneThisHit = {};   // 이번 일반 공격에 대한 추격 판정 기록 초기화
@@ -1678,7 +1707,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
           const tg = allUnits.filter(u => u.alive && u.side !== unit.side);
           if (!tg.length) break;
           const t2 = weightedPickByPosition(tg);
-          unit._pursuitDoneThisHit = {};
+          unit._pursuitDoneThisHit = {}; unit._basicSeq = (unit._basicSeq || 0) + 1;
           log.push(`${turn}턴: [${unit.name}]이(가) [${t2.name}]에게 일반 공격을 발동했습니다. (축력)`);
           const idx2 = log.length; log.push('');
           const ex = dealDamage(unit, t2, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
@@ -1694,7 +1723,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
         log.push(`${turn}턴: [${unit.name}]이(가) 연타를 발동했습니다.`);
         const extraIdx = log.length;
         log.push('');
-        unit._pursuitDoneThisHit = {};   // 연격도 별도의 일반 공격 → 판정 기회 새로 부여
+        unit._pursuitDoneThisHit = {}; unit._basicSeq = (unit._basicSeq || 0) + 1;   // 연격도 별도의 일반 공격 → 판정 기회 새로 부여
         const extra = dealDamage(unit, target, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
         unit.dmgDealt += extra.dmg;
         log[extraIdx] = (extra.crit ? `${turn}턴:   [${unit.name}] 회심 발동. 회심 피해는 ${Math.round(coeffs.critMult * 100)}%입니다.\n` : '')
@@ -1796,6 +1825,7 @@ function simulateOneBattle(armyA, armyB, coeffs) {
   for (; turn <= MAX_TURN; turn++) {
     __turn = turn; __phase = 'turnStart';
     __T({ e: 'turn' });
+    units.forEach(u => { if (u.skills.some(s => s.granted)) u.skills = u.skills.filter(s => !s.granted || s.expires >= turn); });   // FEAT-003
     units.forEach(u => { u.triggerCounts = {}; u.counterUsedThisTurn = 0; }); // 연계 전법·반격 매 턴 상한 초기화
     // 용어 시트 4번: 양측 선공 차이가 70을 초과하면 높은 쪽이 '반드시' 먼저 행동한다.
     // 70 이내의 접전에서는 난수가 개입한다(동률 시 무작위).

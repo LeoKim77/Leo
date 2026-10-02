@@ -5,22 +5,124 @@
       "date": "2026-10-02",
       "found": "감사 D06-targets",
       "reason": "원문 '적군 전체에게 … 260%의 병기 피해' 인데 대상 코드가 비어 있어 랜덤 1명만 맞았다.",
-      "set": { "effects.targets": ["all_enemy"] }
+      "set": {
+        "effects.targets": [
+          "all_enemy"
+        ]
+      }
     },
     "thousand-raid": {
       "date": "2026-10-02",
       "found": "감사 D06-targets",
       "reason": "원문 '선공이 가장 낮은 적군 단일 목표에게 280% … 목표가 후열이면 추가로 100%'. 대상이 랜덤이었고 후열 조건 없이 추가 피해가 항상 들어갔다.",
       "set": {
-        "effects.targets": ["lowest_speed_enemy"],
-        "effects.damage.1.condition": { "type": "position", "who": "target", "pos": "back" }
+        "effects.targets": [
+          "lowest_speed_enemy"
+        ],
+        "effects.damage.1.condition": {
+          "type": "position",
+          "who": "target",
+          "pos": "back"
+        }
       }
     },
     "night-raid": {
       "date": "2026-10-02",
       "found": "감사 D06-targets",
       "reason": "원문 '자신의 선공이 목표보다 높으면 추가로 50%'. 조건 없이 추가 피해가 항상 들어갔다.",
-      "set": { "effects.damage.1.condition": { "type": "statCompareUnits", "who1": "self", "who2": "target", "stat": "선공", "op": ">" } }
+      "set": {
+        "effects.damage.1.condition": {
+          "type": "statCompareUnits",
+          "who1": "self",
+          "who2": "target",
+          "stat": "선공",
+          "op": ">"
+        }
+      }
+    },
+    "strategize": {
+      "date": "2026-10-02",
+      "found": "감사 S09 / 절 검토",
+      "reason": "레벨 보간이 뒤집혀(25→12.5) 10레벨에서 12.5만 감소했다. 원문 10레벨 25 감소.",
+      "set": {
+        "effects.statMods.0.min": -25,
+        "effects.statMods.0.max": -25,
+        "effects.statMods.1.min": -25,
+        "effects.statMods.1.max": -25,
+        "effects.statMods.2.min": -25,
+        "effects.statMods.2.max": -25,
+        "effects.statMods.3.min": -25,
+        "effects.statMods.3.max": -25
+      }
+    },
+    "u-dong-zhuo": {
+      "date": "2026-10-02",
+      "found": "감사 S09 / 절 검토",
+      "reason": "레벨 보간이 뒤집혀 10레벨에서 통솔 10만 탈취했다. 원문 20 탈취.",
+      "set": {
+        "effects.statMods.0.min": -20,
+        "effects.statMods.0.max": -20
+      }
+    },
+    "u-huang-zhong": {
+      "date": "2026-10-02",
+      "found": "감사 S09 / 절 검토",
+      "reason": "레벨 보간이 뒤집혀 24가 아니라 12만 감소했다.",
+      "set": {
+        "effects.statMods.0.min": -24,
+        "effects.statMods.0.max": -24,
+        "effects.statMods.1.min": -24,
+        "effects.statMods.1.max": -24
+      }
+    },
+    "u-sun-jian": {
+      "date": "2026-10-02",
+      "found": "감사 S09 / 절 검토",
+      "reason": "레벨 보간이 뒤집혀 40이 아니라 20만 감소했다.",
+      "set": {
+        "effects.statMods.0.min": -40,
+        "effects.statMods.0.max": -40
+      }
+    },
+    "calm": {
+      "date": "2026-10-02",
+      "found": "감사 S09 / 절 검토",
+      "reason": "원문의 감소 항목 중 받는 일반 공격·추격 피해(홀수 턴), 받는 액티브 피해(짝수 턴)가 빠져 있었다.",
+      "set": {
+        "effects.buffs.2": {
+          "stat": "받는일반공격피해",
+          "min": -0.35,
+          "max": -0.35,
+          "target": "self",
+          "duration": 1,
+          "maxStacks": 1,
+          "turnCond": {
+            "parity": "odd"
+          }
+        },
+        "effects.buffs.3": {
+          "stat": "받는추격피해",
+          "min": -0.35,
+          "max": -0.35,
+          "target": "self",
+          "duration": 1,
+          "maxStacks": 1,
+          "turnCond": {
+            "parity": "odd"
+          }
+        },
+        "effects.buffs.4": {
+          "stat": "받는액티브피해",
+          "min": -0.35,
+          "max": -0.35,
+          "target": "self",
+          "duration": 1,
+          "maxStacks": 1,
+          "turnCond": {
+            "parity": "even"
+          }
+        }
+      }
     }
   }
 }

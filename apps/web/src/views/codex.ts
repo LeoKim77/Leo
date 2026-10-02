@@ -63,7 +63,7 @@ function draw(root: HTMLElement) {
 export function clauseView(s: Skill) {
   const label: Record<string, string> = { ok: '엔진 반영', note: '수식어·설명', approx: '근사 반영', special: '특수 처리', missing: '미반영' };
   return h('div', null,
-    h('div', { style: { fontSize: '15px' } }, s.clauses.map((c, i) => [h('span', { class: `clause ${c.status}`, title: `${label[c.status]}${c.impl?.length ? ' · ' + c.impl.join(', ') : ''}` }, c.text), i < s.clauses.length - 1 ? ' / ' : ''])),
+    h('div', { style: { fontSize: '15px' } }, s.clauses.map((c, i) => [h('span', { class: `clause ${c.status}`, title: `${label[c.status]}${c.reviewed ? ' · 검토: ' + c.reviewed : c.impl?.length ? ' · ' + c.impl.join(', ') : ''}` }, c.text), i < s.clauses.length - 1 ? ' / ' : ''])),
     h('div', { class: 'legend' },
       h('span', null, h('i', { style: { background: 'var(--clause-ok)' } }), '엔진 반영'),
       h('span', null, h('i', { style: { background: 'var(--clause-note)' } }), '수식어·특수'),

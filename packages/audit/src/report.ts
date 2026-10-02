@@ -70,6 +70,7 @@ export const RULE_TITLES: Record<string, string> = {
   'S06-timing': '발동 시점 해석 일치',
   'S07-terms': '한국판 용어 사용',
   'S08-owner': '고유 전법 ↔ 무장 연결',
+  'S09-level': '레벨 보간 방향 (1→10레벨)',
   'D01-fires': '실전 발동 여부',
   'D02-phase': '발동 시점 준수',
   'D03-turns': '특정 턴 조건 준수',
