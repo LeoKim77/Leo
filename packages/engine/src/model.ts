@@ -42,6 +42,8 @@ export interface General {
   uniqueSkillId: string;
   /** 전용 병법 */
   manuals: Manual[];
+  /** 아직 공개 자료가 없어 임시값·추정값을 쓴 항목 (예: stats: '임시값') */
+  dataStatus?: Record<string, string>;
   sources: SourceRef[];
 }
 
@@ -94,6 +96,8 @@ export interface Skill {
   /** 엔진(v1.12b 계승)이 실행하는 효과 정의 */
   engine?: LegacyEngineSkill;
   clauses: Clause[];
+  /** 임시값·추정값·해외 번역문을 쓴 항목 (text, kind, procRate, name …) */
+  dataStatus?: Record<string, string>;
   sources: SourceRef[];
 }
 
@@ -133,6 +137,13 @@ export interface TierDeckUnit {
   /** 세팅 병법에 적힌 금병법 (번들에서 채움, 없으면 첫 금병법) */
   manualId?: string;
   statCombo: string;
+  /** 덱에서 바꾼 병종 (시트의 "좌자(궁병)") */
+  unitType?: string;
+  /** 전법 칸마다 적힌 대안 ("보보위영/허점공략") */
+  skillAlternatives?: Array<Array<{ name: string; id?: string }>>;
+  /** '금·' 표시된 금병법 이름 */
+  goldManuals?: string[];
+  gear?: { trait?: string; mount?: string };
 }
 
 export interface TierDeck {
@@ -141,7 +152,10 @@ export interface TierDeck {
   tier: string;
   name: string;
   note?: string;
+  formation?: string;
   units: TierDeckUnit[];
+  /** 시트에서 색칠된 칸 (뜻은 시트 작성자 확인 필요) */
+  highlight?: Array<{ field: string; unit: number; color: string }>;
   source: SourceRef;
 }
 

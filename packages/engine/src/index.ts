@@ -15,6 +15,8 @@ export interface DeckUnitSpec {
   position?: Position;
   /** 금병법 id (m-<무장id>-<순번>). 생략하면 시뮬 가능한 첫 금병법, 'none' 이면 미장착 */
   manualId?: string;
+  /** 병종 바꾸기 (병종 변경 아이템 등). 생략하면 무장 기본 병종 */
+  unitType?: string;
 }
 
 /** "a.b.0.c" 경로에 값을 넣는다 */
@@ -57,7 +59,7 @@ export interface BattleResult {
   units: Array<{ id: string; side: string; name: string; generalId: string; troops: number; maxTroops: number; dmgDealt: number; healDone: number }>;
 }
 
-export interface ApproxEffect { owner: string; name: string; kind: '근사' | '일부 미반영' | '미구현'; note: string }
+export interface ApproxEffect { owner: string; name: string; kind: '근사' | '일부 미반영' | '미구현' | '임시 자료'; note: string }
 
 export interface MonteCarloResult {
   runs: number;
@@ -177,7 +179,8 @@ export class Simulator {
     const manualsUsed: Array<{ unit: any; manual: Manual }> = [];
     const skillStatics: Array<{ unit: any; name: string; st: any }> = [];
     const units = deck.units.map((u, idx) => {
-      const g = this.generalById.get(u.generalId);
+      const g0 = this.generalById.get(u.generalId);
+      const g = g0 && u.unitType ? { ...g0, unitType: u.unitType } : g0;
       if (!g) throw new Error(`무장 없음: ${u.generalId}`);
       const skills = u.skillIds.map(id => this.skillById.get(id)).filter(Boolean);
       let uskill = this.uniqueById.get(g.uniqueSkillId);
@@ -290,9 +293,14 @@ export class Simulator {
     for (const u of deck.units) {
       const g = this.bundle.generals.find(x => x.id === u.generalId);
       if (!g) continue;
+      // 공개 자료가 없어 임시값을 쓴 무장 정보 (능력치·병종·배치)
+      const gs = g.dataStatus || {};
+      const tmp = Object.entries(gs).filter(([k, v]) => k !== 'faction' && !(k === 'unitType' && (u.unitType || !/미확인/.test(v))) && /임시|미확인/.test(v));
+      if (tmp.length) out.push({ owner: g.name.ko, name: '무장 정보', kind: '임시 자료', note: tmp.map(([k, v]) => `${({ stats: '능력치', unitType: '병종', row: '배치' } as any)[k] || k} ${v}`).join(', ') });
       for (const sid of [g.uniqueSkillId, ...u.skillIds]) {
         const sk = this.bundle.skills.find(x => x.id === sid);
         if (!sk) continue;
+        if (sk.dataStatus?.procRate) out.push({ owner: g.name.ko, name: sk.name.ko, kind: '임시 자료', note: `발동률 ${sk.dataStatus.procRate}` });
         const eng = sk.engine as any;
         const approxClauses = sk.clauses.filter(c => c.status === 'approx' || c.status === 'missing');
         if (!eng) out.push({ owner: g.name.ko, name: sk.name.ko, kind: '미구현', note: '엔진 정의 없음 — 효과 없이 시뮬' });
@@ -306,13 +314,13 @@ export class Simulator {
   }
 
   /** 티어덱 → DeckSpec */
-  tierDeckSpec(tierDeckId: string, formation = '기형진'): DeckSpec {
+  tierDeckSpec(tierDeckId: string, formation?: string): DeckSpec {
     const td = this.bundle.tierDecks.find(t => t.id === tierDeckId);
     if (!td) throw new Error(`티어덱 없음: ${tierDeckId}`);
     return {
       name: `${td.tier} ${td.name}`,
-      formation,
-      units: td.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(id => !id.startsWith('?')), manualId: u.manualId })),
+      formation: formation || td.formation || '기형진',
+      units: td.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(id => !id.startsWith('?')), manualId: u.manualId, ...(u.unitType ? { unitType: u.unitType } : {}) })),
     };
   }
 }

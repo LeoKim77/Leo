@@ -47,7 +47,7 @@ import { buildQueue } from '../packages/data-tools/src/verification.ts';
 describe('검증 전투 짜기', () => {
   const queue = buildQueue(b as any);
   it('전부 보유하면 모든 대기 항목을 담고, 부대마다 무장·전법이 겹치지 않는다', () => {
-    const p = planVerification(b, queue, { generals: allG, skills: allS });
+    const p = planVerification(b, queue, { generals: allG, skills: allS }, { maxBattles: 60 });
     expect(p.covered).toBe(p.total);
     for (const bt of p.battles) {
       expect(bt.units.length).toBeLessThanOrEqual(3);

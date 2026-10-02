@@ -16,6 +16,10 @@ export interface SkillEvidence {
   rollOk: number;
   rollPSum: number;
   rollPMin: number;
+  /** 전투 중 발동률 증감을 뺀 전법 자체 발동률의 최저값 */
+  rollBaseMin: number;
+  /** 딸린 효과(#n)별 턴당 최대 발동 수 — "이 효과는 매 턴 최대 N회" 처럼 한 절에만 걸린 상한 판정용 */
+  maxPerTurnById: Record<string, number>;
   damage: Record<string, number>;
   heals: number;
   statuses: Record<string, number>;
@@ -25,7 +29,7 @@ export interface SkillEvidence {
 }
 
 function emptyEvidence(): SkillEvidence {
-  return { battles: 0, fired: 0, firedByPhase: {}, firedByTurn: {}, slotByPhase: {}, slotByTurn: {}, rolls: 0, rollOk: 0, rollPSum: 0, rollPMin: 1, damage: {}, heals: 0, statuses: {}, targetChecks: { ok: 0, bad: 0, examples: [] }, maxPerTurn: 0, phaseExamples: [] };
+  return { battles: 0, fired: 0, firedByPhase: {}, firedByTurn: {}, slotByPhase: {}, slotByTurn: {}, rolls: 0, rollOk: 0, rollPSum: 0, rollPMin: 1, rollBaseMin: 1, maxPerTurnById: {}, damage: {}, heals: 0, statuses: {}, targetChecks: { ok: 0, bad: 0, examples: [] }, maxPerTurn: 0, phaseExamples: [] };
 }
 
 export interface EngineRuleTally { checked: number; violations: number; examples: string[]; soft?: number; softExamples?: string[] }
@@ -50,7 +54,8 @@ export class EvidenceCollector {
 
   private ev(rawId: string) {
     // "전법id#2" 처럼 딸린 효과는 원래 전법으로 합산한다 (금병법 m-…#n 도 마찬가지)
-    const id = rawId.split('#')[0];
+    // 다른 무장에게 부여한 효과(전법id>이름)도 원래 전법으로 합산한다
+    const id = rawId.split('#')[0].split('>')[0];
     let e = this.bySkill.get(id);
     if (!e) { e = emptyEvidence(); this.bySkill.set(id, e); }
     return e;
@@ -117,6 +122,7 @@ export class EvidenceCollector {
             e.rolls++; if (t.ok) e.rollOk++;
             e.rollPSum += t.p as number;
             e.rollPMin = Math.min(e.rollPMin, t.p as number);
+            e.rollBaseMin = Math.min(e.rollBaseMin, (t.base ?? t.p) as number);
           }
           if (t.kind === '액티브') {
             const k = `${id}:${t.unit}:${t.turn}`;
@@ -141,7 +147,7 @@ export class EvidenceCollector {
           const k = `${id}:${u}:${t.turn}`;
           const n = (firesPerTurn.get(k) || 0) + 1;
           firesPerTurn.set(k, n);
-          if (t.turn > 0) e.maxPerTurn = Math.max(e.maxPerTurn, n);
+          if (t.turn > 0) { e.maxPerTurn = Math.max(e.maxPerTurn, n); e.maxPerTurnById[id] = Math.max(e.maxPerTurnById[id] || 0, n); }
           const exp = this.expectations.get(id);
           const st = curStatuses.get(u) || [];
           if (t.kind === '액티브' && t.via === 'slot' && t.phase === 'action') {
@@ -267,11 +273,13 @@ export function judgeSkill(exp: Expectation, e: SkillEvidence | undefined, hasEn
     const obs = e.rollOk / e.rolls;
     const pMean = e.rollPSum / e.rolls;
     const pMin = e.rollPMin;
+    // 원문 비교는 전투 중 증감(공성계·화공 등 발동률 디버프)을 뺀 전법 자체 발동률로 한다
+    const baseMin = e.rollBaseMin;
     const sd = Math.sqrt(Math.max(pMean * (1 - pMean), 1e-6) / e.rolls);
     const z = (obs - pMean) / sd;
     const ev = [`판정 ${e.rolls}회 · 성공 ${e.rollOk}회 · 실측 ${(obs * 100).toFixed(1)}%`, `엔진 판정 확률 평균 ${(pMean * 100).toFixed(1)}% (최저 ${(pMin * 100).toFixed(1)}%)`, `원문 ${exp.procRate != null ? (exp.procRate * 100).toFixed(1) + '%' : '-'}`];
     if (Math.abs(z) > 3.5) out.push(chk('D04-proc', 'fail', `실측 발동률이 판정 확률과 통계적으로 다릅니다 (z=${z.toFixed(1)})`, ev));
-    else if (exp.procRate != null && pMin + 0.001 < exp.procRate) out.push(chk('D04-proc', 'fail', `엔진이 원문(${(exp.procRate * 100).toFixed(1)}%)보다 낮은 확률(${(pMin * 100).toFixed(1)}%)로 판정합니다.`, ev));
+    else if (exp.procRate != null && baseMin + 0.001 < exp.procRate) out.push(chk('D04-proc', 'fail', `엔진이 원문(${(exp.procRate * 100).toFixed(1)}%)보다 낮은 확률(${(baseMin * 100).toFixed(1)}%)로 판정합니다.`, ev));
     else out.push(chk('D04-proc', 'pass', `실측 ${(obs * 100).toFixed(1)}% / 기대 ${(pMean * 100).toFixed(1)}%`, ev));
   } else if (exp.kind === '액티브' || exp.kind === '추격') out.push(chk('D04-proc', 'skip', `판정 표본 부족 (${e.rolls}회)`));
 
@@ -297,7 +305,11 @@ export function judgeSkill(exp: Expectation, e: SkillEvidence | undefined, hasEn
   }
 
   // D07 턴당 상한
-  if (exp.perTurnLimit != null && e.fired) {
+  if (exp.perTurnLimit != null && e.fired && exp.perTurnLimitScoped && Object.keys(e.maxPerTurnById).length > 1) {
+    // "이 효과는 매 턴 최대 N회" — 상한은 그 절(딸린 효과)에만 걸린다
+    const okPart = Object.entries(e.maxPerTurnById).find(([, n]) => n <= exp.perTurnLimit!);
+    out.push(okPart ? chk('D07-limit', 'pass', `상한이 걸린 효과 ${okPart[0]} 턴당 최대 ${okPart[1]}회 (상한 ${exp.perTurnLimit})`) : chk('D07-limit', 'fail', `턴당 최대 ${exp.perTurnLimit}회인데 모든 효과가 상한을 넘음 ${JSON.stringify(e.maxPerTurnById)}`));
+  } else if (exp.perTurnLimit != null && e.fired) {
     out.push(e.maxPerTurn > exp.perTurnLimit ? chk('D07-limit', 'fail', `턴당 최대 ${exp.perTurnLimit}회인데 ${e.maxPerTurn}회 발동`) : chk('D07-limit', 'pass', `턴당 최대 ${e.maxPerTurn}회 (상한 ${exp.perTurnLimit})`));
   }
   return out;
@@ -328,7 +340,10 @@ export function buildAuditPlan(sim: Simulator, bundle: GameBundle, opts: { tierS
   // 티어덱에 없는 무장(고유 전법) — 티어덱의 한 자리를 그 무장으로 바꾼다
   for (const g of bundle.generals) {
     if (covered.has(g.uniqueSkillId)) continue;
-    const host = decks[k % n].spec;
+    // 고유 전법이 아군의 추격 전법에 반응하면(진궁 등) 추격 전법이 있는 티어덱에 넣어야 효과가 관측된다
+    const uText = bundle.skills.find(x => x.id === g.uniqueSkillId)?.text || '';
+    const hasPursuit = (d: typeof decks[number]) => d.spec.units.some(u => u.skillIds.some(id => bundle.skills.find(x => x.id === id)?.kind === '추격'));
+    const host = (/추격 전법을?\s*발동(?:한)?\s*후/.test(uText) ? [...decks.slice(k % n), ...decks].find(hasPursuit) : undefined)?.spec || decks[k % n].spec;
     const slot = host.units.findIndex(u => bundle.generals.find(x => x.id === u.generalId)?.row === g.row);
     const idx = slot >= 0 ? slot : 0;
     const units = host.units.map((u, j) => (j === idx ? { generalId: g.id, skillIds: u.skillIds } : u));

@@ -1,6 +1,6 @@
 // 도감 — 시즌별 무장·전법. 원문 절마다 엔진 반영 상태를 색으로 보여주고, 감사 결과를 붙인다.
 import { h, mount, lv, select } from '../dom.ts';
-import { app, inSeason, skillById, generalById, skillAudit, ko, loadDecklab } from '../state.ts';
+import { app, inSeason, skillById, generalById, skillAudit, ko, loadDecklab, tentative, laterSeasonWithData, setSeason, seasonLabel } from '../state.ts';
 import { hBars } from '../charts.ts';
 import type { Skill, General } from '@cheonha/engine';
 
@@ -29,6 +29,7 @@ function draw(root: HTMLElement) {
         return h('div', { class: `list-row ${selId === g.id ? 'sel' : ''}`, onclick: () => { selId = g.id; location.hash = `#/codex?kind=general&id=${g.id}`; } },
           h('span', { class: 'name' }, g.name.ko),
           h('span', { class: 'badge' }, g.faction), h('span', { class: 'badge' }, g.unitType),
+          tentative(g.dataStatus).length ? h('span', { class: 'badge tmp', title: tentative(g.dataStatus).map(x => x.join(': ')).join('\n') }, '임시') : null,
           h('span', { class: 'muted', style: { marginLeft: 'auto', fontSize: '12px' } }, g.season),
           u && audit(u.id) ? lv(audit(u.id)!, '') : null);
       })
@@ -36,6 +37,7 @@ function draw(root: HTMLElement) {
         h('span', { class: 'name' }, s.name.ko),
         h('span', { class: 'badge' }, s.kind),
         s.isUnique ? h('span', { class: 'badge gold' }, '고유') : null,
+        tentative(s.dataStatus).length ? h('span', { class: 'badge tmp', title: tentative(s.dataStatus).map(x => x.join(': ')).join('\n') }, '임시') : null,
         h('span', { class: 'muted', style: { marginLeft: 'auto', fontSize: '12px' } }, s.season),
         audit(s.id) ? lv(audit(s.id)!, '') : null)),
   );
@@ -45,7 +47,10 @@ function draw(root: HTMLElement) {
     ? (kind === 'general' ? generalDetail(sel as General) : skillDetail(sel as Skill))
     : h('div', { class: 'panel empty' }, '왼쪽에서 항목을 고르세요.'));
 
+  const later = laterSeasonWithData();
   mount(root, 
+    later ? h('div', { class: 'notice' }, `${seasonLabel(later)} 신규 무장·전법이 들어와 있습니다. `,
+      h('button', { class: 'btn small', onclick: () => setSeason(later) }, `${seasonLabel(later)}까지 보기`)) : null,
     h('div', { class: 'section-head' },
       h('h2', null, '도감'),
       h('span', { class: 'sub' }, `${app.season}까지 출시 · 무장 ${generals.length} · 전법 ${skills.length}`)),
@@ -66,8 +71,17 @@ export function clauseView(s: Skill) {
     h('div', { style: { fontSize: '15px' } }, s.clauses.map((c, i) => [h('span', { class: `clause ${c.status}`, title: `${label[c.status]}${c.reviewed ? ' · 검토: ' + c.reviewed : c.impl?.length ? ' · ' + c.impl.join(', ') : ''}` }, c.text), i < s.clauses.length - 1 ? ' / ' : ''])),
     h('div', { class: 'legend' },
       h('span', null, h('i', { style: { background: 'var(--clause-ok)' } }), '엔진 반영'),
+      h('span', null, h('i', { style: { background: 'var(--clause-approx)' } }), '근사 반영'),
       h('span', null, h('i', { style: { background: 'var(--clause-note)' } }), '수식어·특수'),
       h('span', null, h('i', { style: { background: 'var(--clause-missing)' } }), '미반영')));
+}
+
+/** 임시값·추정값 안내 — 공개 자료(공식 사이트·게임 캡처)를 받으면 교체된다 */
+export function dataNote(ds?: Record<string, string>) {
+  const t = tentative(ds);
+  if (!t.length) return null;
+  return h('div', { class: 'datanote' }, '△ 아직 공개 자료가 없어 임시값·추정값을 쓰는 항목 — 시뮬 결과에 근사로 표시됩니다.',
+    h('ul', null, t.map(([k, v]) => h('li', null, `${k}: ${v}`))));
 }
 
 export function auditChecks(id: string) {
@@ -98,7 +112,8 @@ function skillDetail(s: Skill) {
         h('dt', null, '발동 확률'), h('dd', null, s.procRateText || '-'),
         s.name.zhTW ? [h('dt', null, '원어'), h('dd', null, `${s.name.zhTW}${s.name.aliases?.length ? ' · ' + s.name.aliases.join(', ') : ''}`)] : null,
         owner ? [h('dt', null, '고유 무장'), h('dd', null, h('a', { href: `#/codex?kind=general&id=${owner.id}` }, owner.name.ko))] : null,
-        h('dt', null, '엔진'), h('dd', null, eng ? (eng.overrideNote ? `v1.12b 정의 + 검수 수정 (${eng.overrideNote.date}: ${eng.overrideNote.reason})` : 'v1.12b 정의') : h('span', { style: { color: 'var(--fail)' } }, '정의 없음 — 전투에서 효과 없음'))),
+        h('dt', null, '엔진'), h('dd', null, eng ? (eng.authored ? `직접 작성 정의 · ${eng.authoredStatus === 'approx' ? '근사' : '원문대로'}${eng.authoredNote ? ' — ' + eng.authoredNote : ''}` : eng.overrideNote ? `v1.12b 정의 + 검수 수정 (${eng.overrideNote.date}: ${eng.overrideNote.reason})` : 'v1.12b 정의') : h('span', { style: { color: 'var(--fail)' } }, '정의 없음 — 전투에서 효과 없음'))),
+      dataNote(s.dataStatus),
       h('h3', { style: { fontSize: '15px', margin: '12px 0 6px' } }, '원문 (한국판, 10레벨)'),
       clauseView(s),
       s.overseasText ? h('div', { class: 'dim', style: { fontSize: '13.5px', marginTop: '8px' } }, h('b', null, '해외 자료: '), ko(s.overseasText)) : overseas),
@@ -116,22 +131,24 @@ function generalDetail(g: General) {
     h('div', { class: 'panel' },
       h('div', { class: 'section-head' }, h('h2', null, g.name.ko),
         h('span', null, h('span', { class: 'badge' }, g.faction), h('span', { class: 'badge' }, g.unitType), h('span', { class: 'badge' }, g.row), g.role ? h('span', { class: 'badge' }, g.role) : null, h('span', { class: 'badge gold' }, g.season))),
-      h('div', { class: 'sub' }, `${g.name.zhTW || ''} · 50레벨 기준 스탯`),
+      h('div', { class: 'sub' }, `${g.name.zhTW || ''} · 50레벨 기준 스탯${g.dataStatus?.stats && /임시/.test(g.dataStatus.stats) ? ' (임시값 — 실제 능력치 아님)' : ''}`),
+      dataNote(g.dataStatus),
       h('div', { class: 'statbars' }, hBars(stats, { max: 300, labelWidth: 44, width: 360 }))),
     u ? h('div', { class: 'panel' },
       h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '16px' } }, `고유 전법 · ${u.name.ko}`), h('span', null, h('span', { class: 'badge' }, u.kind), h('span', { class: 'badge' }, u.procRateText || ''), skillAudit(u.id) ? lv(skillAudit(u.id)!.worst) : null)),
       clauseView(u),
+      dataNote(u.dataStatus),
       u.overseasText ? h('div', { class: 'dim', style: { fontSize: '13.5px', marginTop: '8px' } }, h('b', null, '해외 자료: '), ko(u.overseasText)) : null,
       h('details', { style: { marginTop: '10px' } }, h('summary', null, '감사 결과'), auditChecks(u.id))) : null,
     g.manuals.length ? h('div', { class: 'panel' }, h('h3', { style: { fontSize: '15px', marginBottom: '6px' } }, '금병법'),
       g.manuals.map(m => {
         const ma = app.audit?.manuals?.find(x => x.id === m.id);
-        const st = { ok: ['pass', '원문대로'], approx: ['warn', '근사'], unsupported: ['skip', '미지원'], missing: ['fail', '정의 없음'] }[m.status || 'missing'] as [string, string];
+        const st = ((m as any).textUnknown && m.status === 'missing' ? ['warn', '원문 미확인'] : { ok: ['pass', '원문대로'], approx: ['warn', '근사'], unsupported: ['skip', '미지원'], missing: ['fail', '정의 없음'] }[m.status || 'missing']) as [string, string];
         return h('div', { style: { marginBottom: '8px' } },
           h('b', null, `〈${m.name}〉 `), lv(st[0], st[1]),
           ma?.sample?.fired ? h('span', { class: 'muted', style: { fontSize: '12px' } }, ` 감사 ${ma.sample.battles}판 · 발동 ${ma.sample.fired}회`) : null,
-          h('div', { class: 'dim' }, m.text),
-          m.note ? h('div', { class: 'muted', style: { fontSize: '12.5px' } }, m.note) : null);
+          h('div', { class: 'dim' }, (m as any).textUnknown ? '원문 미확인 — 티어덱 시트에 이름만 있습니다.' : m.text),
+          m.note && !(m as any).textUnknown ? h('div', { class: 'muted', style: { fontSize: '12.5px' } }, m.note) : null);
       }),
       h('div', { class: 'muted', style: { fontSize: '12.5px' } }, '시뮬에는 금병법만 반영합니다(덱마다 1개 선택). 그 밖의 세팅 병법은 개인 선택이라 제외합니다.')) : null,
     bonds.length ? h('div', { class: 'panel' }, h('h3', { style: { fontSize: '15px', marginBottom: '6px' } }, '인연'),

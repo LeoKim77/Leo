@@ -5,7 +5,7 @@ import { winBar, troopLines, hBars, SIDE_A, SIDE_B } from '../charts.ts';
 import { call } from '../sim-client.ts';
 import type { DeckSpec, MonteCarloResult } from '@cheonha/engine';
 
-interface SideState { mode: 'tier' | 'custom'; tierId: string; formation: string; units: Array<{ generalId: string; skillIds: [string, string]; manualId?: string }> }
+interface SideState { mode: 'tier' | 'custom'; tierId: string; formation: string; units: Array<{ generalId: string; skillIds: [string, string]; manualId?: string; unitType?: string }> }
 const blankUnits = () => [0, 1, 2].map(() => ({ generalId: '', skillIds: ['', ''] as [string, string], manualId: undefined as string | undefined }));
 const sides: Record<'A' | 'B', SideState> = {
   A: { mode: 'tier', tierId: '', formation: '기형진', units: blankUnits() },
@@ -32,6 +32,8 @@ export function setSimCustom(side: 'A' | 'B', spec: DeckSpec) {
 export function setSimDeck(side: 'A' | 'B', d: { tierId: string }) {
   sides[side].mode = 'tier';
   sides[side].tierId = d.tierId;
+  const td = app.bundle.tierDecks.find(t => t.id === d.tierId);
+  if (td?.formation) sides[side].formation = td.formation;   // 시트에 적힌 진형
   mcResult = null; battle = null;
 }
 
@@ -39,9 +41,9 @@ function specOf(side: 'A' | 'B'): DeckSpec {
   const s = sides[side];
   if (s.mode === 'tier') {
     const td = app.bundle.tierDecks.find(t => t.id === s.tierId) || app.bundle.tierDecks[side === 'A' ? 0 : 1];
-    return { name: `${td.tier} ${td.name}`, formation: s.formation, units: td.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(x => !x.startsWith('?')), manualId: u.manualId })) };
+    return { name: `${td.tier} ${td.name}`, formation: s.formation, units: td.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(x => !x.startsWith('?')), manualId: u.manualId, ...(u.unitType ? { unitType: u.unitType } : {}) })) };
   }
-  return { name: '직접 편성', formation: s.formation, units: s.units.filter(u => u.generalId).map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(Boolean), manualId: u.manualId })) };
+  return { name: '직접 편성', formation: s.formation, units: s.units.filter(u => u.generalId).map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(Boolean), manualId: u.manualId, ...(u.unitType ? { unitType: u.unitType } : {}) })) };
 }
 const deckName = (side: 'A' | 'B') => specOf(side).name || side;
 
@@ -73,12 +75,12 @@ function deckEditor(side: 'A' | 'B', redraw: () => void) {
       h('span', null,
         h('button', { class: `chip ${s.mode === 'tier' ? 'on' : ''}`, onclick: () => { s.mode = 'tier'; redraw(); } }, '티어덱'),
         ' ',
-        h('button', { class: `chip ${s.mode === 'custom' ? 'on' : ''}`, onclick: () => { if (s.mode === 'tier') { const sp = specOf(side); s.units = blankUnits(); sp.units.forEach((u, i) => { s.units[i] = { generalId: u.generalId, skillIds: [u.skillIds[0] || '', u.skillIds[1] || ''], manualId: u.manualId }; }); } s.mode = 'custom'; redraw(); } }, '직접 편성'))),
+        h('button', { class: `chip ${s.mode === 'custom' ? 'on' : ''}`, onclick: () => { if (s.mode === 'tier') { const sp = specOf(side); s.units = blankUnits(); sp.units.forEach((u, i) => { s.units[i] = { generalId: u.generalId, skillIds: [u.skillIds[0] || '', u.skillIds[1] || ''], manualId: u.manualId, unitType: u.unitType }; }); } s.mode = 'custom'; redraw(); } }, '직접 편성'))),
     s.mode === 'tier'
-      ? h('div', null, select(tierOpts, s.tierId, v => { s.tierId = v; redraw(); }, { style: { width: '100%' } }),
+      ? h('div', null, select(tierOpts, s.tierId, v => { s.tierId = v; const td = b.tierDecks.find(t => t.id === v); if (td?.formation) s.formation = td.formation; redraw(); }, { style: { width: '100%' } }),
         h('div', { class: 'sub', style: { marginTop: '6px' } }, specOf(side).units.map(u => `${generalById(u.generalId)?.name.ko}${manualLabel(u.generalId, u.manualId)}`).join(' · ')))
       : h('div', null, s.units.map((u, i) => h('div', { class: 'unit-row' },
-        select(genOpts, u.generalId, v => { u.generalId = v; redraw(); }),
+        select(genOpts, u.generalId, v => { u.generalId = v; u.unitType = undefined; redraw(); }),
         select(skillOpts, u.skillIds[0], v => { u.skillIds[0] = v; }),
         select(skillOpts, u.skillIds[1], v => { u.skillIds[1] = v; }),
         manualSelect(u))),
@@ -151,7 +153,7 @@ export function renderSim(root: HTMLElement) {
     busy = ''; redraw();
   };
   mount(root, 
-    h('div', { class: 'section-head' }, h('h2', null, '전투 시뮬레이션'), h('span', { class: 'sub' }, '엔진 v1.12b 이식 + 감사 수정(FIX-001~003) + 금병법 · 세팅 병법·장비·건물 기술은 미반영')),
+    h('div', { class: 'section-head' }, h('h2', null, '전투 시뮬레이션'), h('span', { class: 'sub' }, '엔진 v1.12b 이식 + 수정(FIX-001~003) · 기능 추가(FEAT-001~004) + 금병법 · 세팅 병법·장비·건물 기술은 미반영')),
     h('div', { class: 'grid cols-2' }, deckEditor('A', redraw), deckEditor('B', redraw)),
     h('div', { class: 'toolbar', style: { marginTop: '12px' } },
       h('label', { class: 'sub' }, '판 수 ', h('input', { type: 'number', min: 20, max: 5000, step: 100, value: runs, style: { width: '90px' }, onchange: (e: Event) => { runs = Math.max(20, Math.min(5000, +(e.target as HTMLInputElement).value || 500)); } })),

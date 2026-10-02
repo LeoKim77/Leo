@@ -22,6 +22,7 @@
   --clause-ok: rgba(63, 166, 107, .18);
   --clause-note: rgba(154, 162, 173, .14);
   --clause-missing: rgba(229, 83, 75, .22);
+  --clause-approx: rgba(212, 160, 23, .22);
   --radius: 10px;
 }
 * { box-sizing: border-box; }
@@ -96,7 +97,8 @@ textarea { width: 100%; min-height: 90px; }
 @media (max-width: 760px) { .split { grid-template-columns: 1fr; } .split .list { max-height: 40vh; } }
 .clause { display: inline; padding: 1px 3px; border-radius: 4px; line-height: 1.9; }
 .clause.ok { background: var(--clause-ok); }
-.clause.note, .clause.special, .clause.approx { background: var(--clause-note); }
+.clause.note, .clause.special { background: var(--clause-note); }
+.clause.approx { background: var(--clause-approx); text-decoration: underline dotted rgba(212, 160, 23, .8); text-underline-offset: 3px; }
 .clause.missing { background: var(--clause-missing); text-decoration: underline wavy rgba(229, 83, 75, .7); text-underline-offset: 3px; }
 .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: var(--text-dim); margin: 6px 0 2px; }
 .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; }
@@ -143,3 +145,10 @@ details summary { cursor: pointer; color: var(--text-dim); }
 
 .file-list { margin: 6px 0 0; padding-left: 18px; font-size: 13px; columns: 2 280px; }
 .file-list li { word-break: break-all; }
+
+/* 임시값·추정값 표시 (S3 등 공개 자료가 아직 없는 항목) */
+.badge.tmp { color: var(--warn); border-color: rgba(212, 160, 23, .5); }
+.badge.tmp::before { content: '△ '; }
+.datanote { font-size: 13px; color: var(--warn); background: rgba(212, 160, 23, .08); border: 1px solid rgba(212, 160, 23, .3); border-radius: 8px; padding: 6px 10px; margin: 6px 0; }
+.datanote ul { margin: 4px 0 0 18px; padding: 0; color: var(--text-dim); }
+.hl { box-shadow: inset 0 -2px 0 var(--warn); }

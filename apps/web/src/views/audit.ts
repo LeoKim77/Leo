@@ -49,10 +49,25 @@ function planSection(redraw: () => void) {
 }
 
 /** 전보 녹화 검증 대기 목록 (R-007) */
-function verificationSection() {
-  const items = ((app.bundle as any).verification || []) as Array<{ id: string; kind: string; title: string; assumption: string; howToVerify: string; status: string; result?: string }>;
+type VItem = { id: string; kind: string; title: string; assumption: string; howToVerify: string; status: string; result?: string };
+
+/** 전투 없이 게임 정보 화면 캡처(또는 공식 사이트)로 채울 자료 — 신규 시즌 카드의 임시값 */
+function captureSection() {
+  const items = (((app.bundle as any).verification || []) as VItem[]).filter(i => i.kind === 'capture');
   if (!items.length) return null;
-  const kinds: Record<string, string> = { manual: '금병법', skill: '전법', clause: '원문 절', engine: '엔진 가정' };
+  const pending = items.filter(i => i.status === 'pending');
+  return h('details', { class: 'panel', style: { marginBottom: '12px' } },
+    h('summary', null, h('b', null, '캡처로 채울 자료'), ` — 대기 ${pending.length}개 (신규 카드의 능력치·병종·이름·원문 등)`),
+    h('div', { class: 'sub', style: { margin: '6px 0' } }, '전투 없이 무장·전법 정보 화면 캡처 한 장이면 됩니다. 공식 사이트를 읽을 수 있게 되면 그쪽에서 먼저 채웁니다. 그전까지는 임시값으로 시뮬하고 결과에 표시합니다.'),
+    h('div', { class: 'table-wrap' }, h('table', null,
+      h('thead', null, h('tr', null, h('th', null, '항목'), h('th', null, '지금 쓰는 값'))),
+      h('tbody', null, pending.map(i => h('tr', null, h('td', null, i.title), h('td', { style: { fontSize: '13px' } }, i.assumption)))))));
+}
+
+function verificationSection() {
+  const items = (((app.bundle as any).verification || []) as VItem[]).filter(i => i.kind !== 'capture');
+  if (!items.length) return null;
+  const kinds: Record<string, string> = { manual: '금병법', skill: '전법', clause: '원문 절', engine: '엔진 가정', rate: '발동률' };
   const lvOf: Record<string, [string, string]> = { pending: ['warn', '대기'], verified: ['pass', '확인'], rejected: ['fail', '불일치'] };
   const pending = items.filter(i => i.status === 'pending').length;
   return h('details', { class: 'panel', style: { marginBottom: '12px' }, open: true },
@@ -103,6 +118,7 @@ export function renderAudit(root: HTMLElement) {
       stackedLevels(fails.map(x => ({ label: x.title, pass: x.pass, warn: x.warn, fail: x.fail, skip: x.skip })))),
     planSection(redraw),
     verificationSection(),
+    captureSection(),
     r.manuals?.length ? h('details', { class: 'panel', style: { marginBottom: '12px' } },
       h('summary', null, `금병법 ${r.manuals.length}개 — 원문대로 ${r.manuals.filter(m => m.status === 'ok').length} · 근사 ${r.manuals.filter(m => m.status === 'approx').length} · 미지원 ${r.manuals.filter(m => m.status === 'unsupported').length}`),
       h('div', { class: 'table-wrap', style: { marginTop: '8px' } }, h('table', null,

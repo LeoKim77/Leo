@@ -8,7 +8,7 @@ const gen = (name: string) => b.generals.find(g => g.name.ko === name)!;
 
 describe('금병법 (R-003)', () => {
   it('엑셀의 모든 금병법에 엔진 정의가 연결된다', () => {
-    const missing = b.generals.flatMap(g => g.manuals.filter(m => m.status === 'missing').map(m => `${g.name.ko}〈${m.name}〉`));
+    const missing = b.generals.flatMap(g => g.manuals.filter(m => m.status === 'missing' && !(m as any).textUnknown).map(m => `${g.name.ko}〈${m.name}〉`));
     expect(missing).toEqual([]);
   });
 

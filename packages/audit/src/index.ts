@@ -122,6 +122,7 @@ function auditManual(g: GameBundle['generals'][number], m: NonNullable<GameBundl
   checks.push(st === 'ok' ? mchk('M01-def', 'pass', '원문대로 정의')
     : st === 'approx' ? mchk('M01-def', 'warn', `근사 반영 — ${m.note || ''}`)
     : st === 'unsupported' ? mchk('M01-def', 'warn', `미지원 — 시뮬에서 제외. ${m.note || ''}`)
+    : (m as any).textUnknown ? mchk('M01-def', 'warn', '원문 미확인 — 이름만 알려진 금병법(자료 받으면 정의)')
     : mchk('M01-def', 'fail', '엔진 정의 없음'));
   const parts = m.engine?.parts || [];
   const evs = [collector.bySkill.get(m.id!)].filter(Boolean) as NonNullable<ReturnType<typeof collector.bySkill.get>>[];

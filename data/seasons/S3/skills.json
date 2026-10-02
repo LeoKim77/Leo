@@ -1,0 +1,1360 @@
+[
+  {
+    "id": "u-cao-chun",
+    "name": {
+      "ko": "조순 고유 전법"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "cao-chun",
+    "season": "S3",
+    "kind": "지휘",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 후, 아군 기병 및 창병이 일반 공격을 한 뒤 자신이 가하는 피해가 5% 증가합니다(가장 높은 속성의 영향을 받음). 이 효과는 최대 6회 중첩됩니다. 3턴부터, 아군 기병 및 창병이 행동할 때 추가로 적군 무작위 단일 대상에게 140%의 병기 피해를 입힙니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "kind": "원문으로 추정",
+      "name": "이름 미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "u-yu-ji",
+    "name": {
+      "ko": "풍급우회",
+      "zhTW": "風急雨晦"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "yu-ji",
+    "season": "S3",
+    "overseasSeason": "문정 2",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "적군 전체에게 120%의 책략 피해를 입히고, 홍수 상태를 부여합니다. 지속시간은 2턴입니다. 동시에 자신과 무작위 아군 1명(같은 열 우선)이 아래 효과 중 1~2개를 획득합니다. 각 무장은 독립적으로 판정합니다. 자신의 병력을 회복합니다. 치료율 200%(지력의 영향을 받음). 기궁 상태에 면역됩니다. 지속시간 1턴. 액티브 전법 발동률이 10% 증가합니다. 지속시간 1턴.",
+    "overseasText": "적군 전체에 120% 책략 피해를 주고 2턴 동안 홍수를 부여합니다. 자신과 같은 열의 아군은 병력 200% 회복, 1턴 전법 봉쇄 면역, 액티브 발동률 10% 상승 중 2개 효과를 얻습니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E4%BA%8E%E5%90%89/"
+      }
+    ]
+  },
+  {
+    "id": "u-guan-yinping",
+    "name": {
+      "ko": "호소생위",
+      "zhTW": "虎嘯生威"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "guan-yinping",
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 중, 매 턴 처음으로 액티브 전법을 발동한 후 40% 확률(무력의 영향을 받음)로 적군 무작위 2명에게 260%의 병기 피해를 입히고, 대상에게 허약 상태를 부여합니다. 지속시간은 1턴입니다.",
+    "overseasText": "매 턴 처음으로 액티브 전법을 발동한 뒤 40% 확률로 무작위 적군 2명에게 260% 병기 피해를 주고 1턴 동안 허약을 부여합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E5%85%B3%E9%93%B6%E5%B1%8F/"
+      }
+    ]
+  },
+  {
+    "id": "u-zuo-ci",
+    "name": {
+      "ko": "운행우시",
+      "zhTW": "雲行雨施"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zuo-ci",
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 시, 자신이 운신 10중첩을 획득합니다. 피해를 받을 때 해당 피해가 20% 감소합니다(추가로 지력과 운신 중첩 수의 영향을 받음). 아군 2명이 확률 판정으로 인해 액티브 전법 발동에 실패했을 때, 50% 확률(지력의 영향을 받음)로 운신 1중첩을 소모하여 해당 액티브 전법의 발동 여부를 다시 판정합니다.",
+    "overseasText": "전투 시작 시 구름 10중첩을 얻습니다. 자신이 받는 피해가 20% 감소하고 구름 수에 따라 추가로 감소합니다. 아군의 액티브 전법이 발동에 실패하면 50% 확률로 구름 1중첩을 소모해 다시 판정합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E5%B7%A6%E6%85%88/"
+      }
+    ]
+  },
+  {
+    "id": "u-xun-you",
+    "name": {
+      "ko": "순유 고유 전법"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "xun-you",
+    "season": "S3",
+    "kind": "액티브",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "적군 무작위 2명에게 220%의 책략 피해를 입히고, 무작위 이상 상태 1종을 부여합니다. 이때 대상이 아직 보유하지 않은 이상 상태를 우선적으로 부여합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "kind": "원문으로 추정",
+      "procRate": "임시값(같은 종류 고유 전법 중앙값 60%)",
+      "name": "이름 미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "u-bu-lianshi",
+    "name": {
+      "ko": "보연사 고유 전법"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "bu-lianshi",
+    "season": "S3",
+    "kind": "액티브",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "아군 2명에게 2턴 동안 안정 효과를 부여합니다. 안정 효과: 책략 피해 20% 증가(지력의 영향을 받음). 매 턴 행동 전에 병력을 회복합니다. 치료율 300%(지력의 영향을 받음).",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "kind": "원문으로 추정",
+      "procRate": "임시값(같은 종류 고유 전법 중앙값 60%)",
+      "name": "이름 미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "u-jiang-wei",
+    "name": {
+      "ko": "구벌중원",
+      "zhTW": "九伐中原"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "jiang-wei",
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "kind": "지휘",
+    "trait": "문무",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 종료 시 1~3회 토벌을 실시합니다. 토벌 시 적군 무작위 2명에게 40%의 병기 피해와 책략 피해를 입힙니다. 아군 전체가 피해를 가할 때마다 해당 턴의 토벌 피해 계수가 5% 증가하며, 최대 9회까지 증가합니다. 토벌이 누적 3회 발동하면 적군 중 병력이 가장 낮은 단일 대상에게 도주병을 발생시킵니다(지력과 무력의 영향을 받음).",
+    "overseasText": "매 턴 종료 시 3회의 토벌을 얻습니다. 토벌마다 무작위 적군 2명에게 각각 40% 병기 피해와 책략 피해를 주며, 아군이 피해를 줄 때마다 이번 전법의 피해 계수가 5% 상승해 최대 9회 중첩됩니다. 토벌이 3회면 병력이 가장 낮은 적에게 이반을 부여합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E5%A7%9C%E7%BB%B4/"
+      }
+    ]
+  },
+  {
+    "id": "u-ma-teng",
+    "name": {
+      "ko": "웅거서량",
+      "zhTW": "雄踞西涼"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "ma-teng",
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 후 첫 3턴 동안, 아군 2명의 추격 전법 피해가 20% 증가합니다(통솔의 영향을 받음). 또한 해당 무장들이 매 턴 행동 종료 시 50% 확률(통솔의 영향을 받음)로 일반 공격을 1회 추가로 실시합니다. 각 무장은 독립적으로 판정합니다.",
+    "overseasText": "첫 3턴 동안 무작위 아군 2명의 추격 전법 피해가 20% 상승합니다. 해당 아군은 행동 종료 시 50% 확률로 추가 일반 공격을 1회 합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E9%A9%AC%E8%85%BE/"
+      }
+    ]
+  },
+  {
+    "id": "u-yuan-shu",
+    "name": {
+      "ko": "참호천자",
+      "zhTW": "僭號天子"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "yuan-shu",
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 후 첫 4턴 동안, 아군 전체의 통솔이 80 증가합니다(통솔의 영향을 받음). 이 효과로 증가한 통솔은 매 턴 종료 시 15씩 감소합니다. 또한 4턴 시작 시, 아군 중 통솔이 가장 높은 무장이 옥새를 획득합니다. 옥새 효과: 가하는 피해가 15% 증가합니다(통솔의 영향을 받음). 자신의 행동 종료 시, 적군 전체에게 160%의 병기 피해를 입힙니다(옥새 보유자의 통솔 영향을 받음).",
+    "overseasText": "첫 4턴 동안 아군 전체의 통솔이 80 상승하고 턴 종료마다 15씩 감소합니다. 4턴에 통솔이 가장 높은 아군이 옥새를 얻어 주는 피해가 15% 증가하며, 행동 종료 시 적군 전체에 160% 병기 피해를 줍니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E8%A2%81%E6%9C%AF/"
+      }
+    ]
+  },
+  {
+    "id": "u-wang-yi",
+    "name": {
+      "ko": "교책인봉",
+      "zhTW": "巧策引鋒"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "wang-yi",
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "kind": "패시브",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신이 일반 공격을 하거나 추격 전법을 발동한 후, 40% 확률(지력의 영향을 받음)로 적군 무작위 2명에게 100%의 책략 피해를 입힙니다. 또한 대상이 받는 피해를 4% 증가시킵니다(지력의 영향을 받음). 이 효과는 최대 4회 중첩되며, 전투 종료 시까지 지속됩니다.",
+    "overseasText": "일반 공격 또는 추격 전법 발동 후 40% 확률로 무작위 적군 2명에게 100% 책략 피해를 주고, 받는 피해를 4% 증가시킵니다. 전투 중 최대 4회 중첩됩니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E7%8E%8B%E5%BC%82/"
+      }
+    ]
+  },
+  {
+    "id": "u-zhang-ning",
+    "name": {
+      "ko": "태평여향",
+      "zhTW": "太平餘響"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhang-ning",
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "kind": "지휘",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "아군 전체가 액티브 전법을 성공적으로 발동한 후, 자신이 80% 확률로 적군 무작위 2명에게 140%의 책략 피해를 입힙니다. 이 효과가 1회 발동할 때마다 해당 턴의 발동 확률이 10% 감소합니다. 적군이 요술 상태일 경우, 가한 피해량의 40%(지력의 영향을 받음)만큼 아군 중 병력이 가장 낮은 단일 대상의 병력을 회복합니다.",
+    "overseasText": "아군이 액티브 전법을 발동한 뒤 80% 확률로 무작위 적군 2명에게 140% 책략 피해를 줍니다. 같은 턴에 반복될 때마다 발동률이 10% 감소합니다. 요술 상태인 적에게 준 피해의 40%만큼 병력이 가장 낮은 아군을 회복합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E5%BC%A0%E5%AE%81/"
+      }
+    ]
+  },
+  {
+    "id": "u-zhu-jun",
+    "name": {
+      "ko": "위사필궐",
+      "zhTW": "圍師必闕"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhu-jun",
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.7,
+    "procRateText": "70%",
+    "text": "적군 무작위 2명의 통솔을 26 탈취합니다(지력의 영향을 받음). 탈취한 통솔은 자신과 아군 중 통솔이 가장 높은 무장에게 균등하게 부여되며, 2턴 동안 지속됩니다. 이후 대상에게 180%의 책략 피해를 입힙니다(추가로 통솔 차이의 영향을 받음).",
+    "overseasText": "무작위 적군 2명에게서 통솔 26을 빼앗아 자신과 통솔이 가장 높은 아군에게 균등하게 나눠 2턴 지속시키고, 이어서 두 대상에게 180% 책략 피해를 줍니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E6%9C%B1%E5%84%81/"
+      }
+    ]
+  },
+  {
+    "id": "u-huangfu-song",
+    "name": {
+      "ko": "평란정반",
+      "zhTW": "平亂定叛"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "huangfu-song",
+    "season": "S3",
+    "overseasSeason": "S1",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신이 받는 피해가 12% 감소합니다(통솔의 영향을 받음). 매 턴 처음으로 피해를 받은 후 군령 1개를 획득합니다. 군령 효과: 아군 전체의 통솔이 25 증가하며, 중첩 가능합니다. 군령은 최대 10개까지 보유할 수 있습니다. 자신의 통솔이 60 증가할 때마다 군령 1개를 추가로 획득합니다. 처음으로 군령 10중첩을 보유하게 되면 적군 전체에게 260%의 병기 피해를 입힙니다(추가로 통솔 차이의 영향을 받음).",
+    "overseasText": "자신의 통솔이 60 증가한다. 피해를 받은 뒤 50% 확률로 공격자가 주는 피해를 10% 낮춰 2턴 지속시키며 최대 4회 중첩된다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%9A%87%E7%94%AB%E5%B5%A9"
+      }
+    ]
+  },
+  {
+    "id": "u-zhang-zhao",
+    "name": {
+      "ko": "장소 고유 전법"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhang-zhao",
+    "season": "S3",
+    "kind": "액티브",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "아군 무작위 2명의 디버프 상태 2종을 해제하고, 병력을 회복합니다. 치료율: 180%(지력의 영향을 받음). 또한 적군 전체가 가하는 피해를 24% 감소시킵니다(지력의 영향을 받음). 지속시간은 2턴입니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "kind": "원문으로 추정",
+      "procRate": "임시값(같은 종류 고유 전법 중앙값 60%)",
+      "name": "이름 미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "u-zhang-chunhua",
+    "name": {
+      "ko": "장춘화 고유 전법"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhang-chunhua",
+    "season": "S3",
+    "kind": "지휘",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "아군 중 지력이 가장 높은 단일 무장이 일반 공격을 한 후, 대상에게 70%의 책략 피해를 입힙니다(추가로 심계 중첩 수의 영향을 받음). 또한 20% 확률(지력의 영향을 받음)로 심계 1중첩을 획득합니다. 심계 효과: 책략 피해가 3% 증가하며, 최대 10중첩까지 보유할 수 있습니다. 매 턴 지력이 가장 높은 단일 무장이 행동한 후 일반 공격을 1회 추가로 실시합니다. 단, 심계가 6중첩 미만일 경우 이 추가 일반 공격으로는 추격 전법을 발동할 수 없습니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "kind": "원문으로 추정",
+      "name": "이름 미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "u-sp-zhuge-liang",
+    "name": {
+      "ko": "성라기포",
+      "zhTW": "星羅棋布"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "sp-zhuge-liang",
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "아군 전체가 받는 책략 피해가 10% 감소합니다(지력의 영향을 받으며, 자신에게 적용되는 효과는 30% 증가). 전투 시작 전에 성라기포를 부여하여 진형 효과를 70% 강화합니다(지력의 영향을 받음). 또한 진형 종류에 따라 기국 버프를 획득합니다.",
+    "overseasText": "아군 전체가 받는 책략 피해가 10% 감소하며 자신에게는 효과가 30% 증가합니다. 진형 전법 효과가 70% 상승하고 전투 시작 시 전용 기판 효과를 부여합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/SP%E8%AF%B8%E8%91%9B%E4%BA%AE/"
+      }
+    ]
+  },
+  {
+    "id": "u-romance-yuan-shao",
+    "name": {
+      "ko": "사세삼공",
+      "zhTW": "四世三公"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "romance-yuan-shao",
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "kind": "액티브",
+    "trait": "문무",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "아군 중 무력·지력·선공이 각각 가장 높은 장수가 적군 중 해당 능력치가 가장 낮은 대상에게 각각 100% 병기 피해와 책략 피해를 줍니다. 해당 피해가 회심 또는 묘책을 발동하면 대상에게 통솔의 영향을 받는 도망병을 추가합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "해외 자료 번역(deck-lab) — 한국판 문구 확인 필요",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://news.17173.com/content/07012025/095404991.shtml"
+      }
+    ]
+  },
+  {
+    "id": "u-romance-gongsun-zan",
+    "name": {
+      "ko": "북강질봉",
+      "zhTW": "北疆疾鋒"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "romance-gongsun-zan",
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "kind": "추격",
+    "trait": "문무",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "일반 공격 후 무작위 적군 2명의 무력과 지력을 각각 16 빼앗아 2턴 동안 유지하며 최대 2회 중첩합니다. 이어 두 대상에게 각각 140% 병기 피해와 책략 피해를 주며 양측의 선공 차이에 추가 영향을 받습니다. 대상이 방패병이면 이번 피해가 15% 증가합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "해외 자료 번역(deck-lab) — 한국판 문구 확인 필요",
+      "name": "한자 독음(deck-lab) — 한국판 이름 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://news.17173.com/content/07012025/095404991.shtml"
+      }
+    ]
+  },
+  {
+    "id": "loyal-civil-military",
+    "name": {
+      "ko": "문무의 충신",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S3",
+    "grade": "미확인",
+    "kind": "추격",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "일반 공격 후, 적군 중 지력이 가장 낮은 단일 대상에게 160%의 책략 피해를 입히고, 적군 중 통솔이 가장 낮은 단일 대상에게 160%의 병기 피해를 입힙니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "kind": "원문으로 추정",
+      "procRate": "임시값(같은 종류 전법 중앙값 40%)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "talent-under-heaven",
+    "name": {
+      "ko": "천하의인재",
+      "aliases": [
+        "천하의 인재"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "grade": "미확인",
+    "kind": "액티브",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "1턴 준비 후, 적군 전체에게 260%의 책략 피해를 입힙니다. 또한 80% 확률로 대상에게 무작위 제어 상태 1종을 부여합니다. 지속시간은 2턴입니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "kind": "원문으로 추정",
+      "procRate": "임시값(같은 종류 전법 중앙값 50%)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "wash-marrow",
+    "name": {
+      "ko": "신체개조",
+      "zhTW": "洗筋伐髓",
+      "aliases": [
+        "세근벌수"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 시작 시, 자신이 가하는 피해가 10% 증가합니다. 최대 3회 중첩되며, 전투 종료 시까지 지속됩니다. 매 턴 행동 시 55% 확률로 자신이 아래 효과를 획득합니다. 각 효과는 독립적으로 판정됩니다. 자신의 병력을 회복합니다. 치료율 200%(가장 높은 속성의 영향을 받음). 받는 피해가 20% 감소합니다. 지속시간은 1턴입니다.",
+    "overseasText": "턴 시작 시 주는 피해가 10% 상승하며 최대 3회 중첩됩니다. 행동 시 55% 확률로 병력을 200% 회복하고, 별도 55% 확률로 받는 피해가 20% 감소해 1턴 지속됩니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%B4%97%E7%AD%8B%E4%BC%90%E9%AB%93"
+      }
+    ]
+  },
+  {
+    "id": "fold-charge",
+    "name": {
+      "ko": "침략방어",
+      "zhTW": "折衝禦侮",
+      "aliases": [
+        "절충어모"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 후 첫 3턴 동안, 아군 무작위 2명이 받는 피해가 24% 감소합니다(지력의 영향을 받음). 또한 4턴 시작 시, 아군 전체의 병력을 회복합니다. 치료율: 360%(지력의 영향을 받음).",
+    "overseasText": "전투 시작 후 첫 3턴 동안 무작위 아군 2명이 받는 피해가 24% 감소합니다(지력 영향). 4턴 시작 시 아군 전체 병력을 회복합니다(치료율 360%, 지력 영향).",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%8A%98%E8%A1%9D%E7%A6%A6%E4%BE%AE"
+      }
+    ]
+  },
+  {
+    "id": "ten-ambush",
+    "name": {
+      "ko": "사방의매복",
+      "zhTW": "十面埋伏",
+      "aliases": [
+        "사방의 매복",
+        "십면매복"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "적군 전체에게 150%의 병기 피해를 입히고, 75% 확률로 군량 고갈 상태를 부여합니다. 지속시간은 1턴입니다.",
+    "overseasText": "적군 전체에 150% 병기 피해를 주고 75% 확률로 단량을 부여해 1턴 지속시킵니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%8D%81%E9%9D%A2%E5%9F%8B%E4%BC%8F"
+      }
+    ]
+  },
+  {
+    "id": "plot-strategy",
+    "name": {
+      "ko": "지략운용",
+      "zhTW": "運智鋪謀",
+      "aliases": [
+        "운지포모"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "일반 공격 후, 책략 피해가 7% 증가합니다. 최대 5회 중첩됩니다. 책략 피해를 가한 후, 50% 확률로 적군 무작위 단일 대상에게 일반 공격을 1회 실시합니다. 이 효과는 매 턴 최대 1회 발동합니다.",
+    "overseasText": "일반 공격 후 자신의 책략 피해가 7% 상승하며 최대 5회 중첩됩니다. 책략 피해를 준 뒤 50% 확률로 무작위 적군 1명을 일반 공격하며 턴마다 1회 발동합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%81%8B%E6%99%BA%E9%8B%AA%E8%AC%80"
+      }
+    ]
+  },
+  {
+    "id": "blunt-edge",
+    "name": {
+      "ko": "기선제압",
+      "zhTW": "挫銳折鋒",
+      "aliases": [
+        "좌예절봉"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 후 첫 3턴 동안, 적군 중 무력이 가장 높은 단일 대상이 가하는 병기 피해가 25% 감소합니다(통솔의 영향을 받음). 또한 적군 중 지력이 가장 높은 단일 대상이 가하는 책략 피해가 25% 감소합니다(통솔의 영향을 받음).",
+    "overseasText": "첫 3턴 동안 적군 중 무력이 가장 높은 장수가 주는 병기 피해와 지력이 가장 높은 장수가 주는 책략 피해가 각각 25% 감소합니다(통솔 영향).",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%8C%AB%E9%8A%B3%E6%8A%98%E9%8B%92"
+      }
+    ]
+  },
+  {
+    "id": "break-thousand-army",
+    "name": {
+      "ko": "천군격파",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S3",
+    "grade": "미확인",
+    "kind": "추격",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "일반 공격 후, 적군 무작위 2명에게 180%의 책략 피해를 입힙니다. 또한 35% 확률(지력의 영향을 받음)로 해당 피해가 추가로 20% 증가합니다. 각 대상은 독립적으로 판정됩니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "kind": "원문으로 추정",
+      "procRate": "임시값(같은 종류 전법 중앙값 40%)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "step-camp",
+    "name": {
+      "ko": "보보위영",
+      "zhTW": "步步為營",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 시작 시, 60% 확률로 자신과 무작위 아군 1명이 받는 피해가 24% 감소합니다(통솔의 영향을 받음). 지속시간은 1턴입니다. 이 효과의 발동 확률은 매 턴 10%씩 증가하며, 각 무장은 독립적으로 판정합니다.",
+    "overseasText": "매 턴 시작 시 60% 확률로 자신과 무작위 아군 1명이 받는 피해가 24% 감소해 1턴 지속됩니다(통솔 영향). 발동률은 매 턴 10%씩 상승하며 장수별로 판정합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%AD%A5%E6%AD%A5%E7%82%BA%E7%87%9F"
+      }
+    ]
+  },
+  {
+    "id": "empty-city",
+    "name": {
+      "ko": "공성계",
+      "zhTW": "空城計",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "전투 시작 후 첫 3턴 동안, 적군과 아군 전체의 액티브 전법 발동률이 14% 감소합니다(지력의 영향을 받음). 4턴 시작 시, 아군 중 지력이 가장 높은 단일 무장이 가하는 책략 피해가 16% 증가하고(지력의 영향을 받음), 아군 중 지력이 가장 낮은 단일 무장이 받는 책략 피해가 16% 감소합니다(지력의 영향을 받음).",
+    "overseasText": "첫 3턴 동안 양측 전체의 액티브 전법 발동률이 14% 감소합니다(지력 영향). 4턴부터 아군 최고 지력 장수의 책략 피해가 16% 상승하고 최저 지력 장수가 받는 책략 피해는 16% 감소합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%A9%BA%E5%9F%8E%E8%A8%88"
+      }
+    ]
+  },
+  {
+    "id": "break-spear-edge",
+    "name": {
+      "ko": "병기 파괴",
+      "zhTW": "斷戈奪鋒",
+      "aliases": [
+        "병기파괴",
+        "단과탈봉"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "적군 무작위 2명에게 220%의 병기 피해를 입히고, 75% 확률로 무장해제 상태를 부여합니다. 지속시간은 1턴입니다.",
+    "overseasText": "무작위 적군 2명에게 220% 병기 피해를 주고 75% 확률로 무장해제를 부여해 1턴 지속시킵니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%96%B7%E6%88%88%E5%A5%AA%E9%8B%92"
+      }
+    ]
+  },
+  {
+    "id": "yellow-heaven",
+    "name": {
+      "ko": "황천의 선동",
+      "zhTW": "黃天惑心",
+      "aliases": [
+        "황천의선동",
+        "황천혹심"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.55,
+    "procRateText": "55%",
+    "text": "적군 전체에게 140%의 책략 피해를 입히고, 요술 상태를 부여합니다. 지속시간은 2턴입니다. 대상이 이미 요술 상태를 보유하고 있다면, 추가로 대상이 가하는 피해를 16% 감소시킵니다. 지속시간은 1턴입니다.",
+    "overseasText": "적군 전체에 140% 책략 피해와 요술을 부여해 2턴 지속시킵니다. 이미 요술 상태라면 주는 피해를 16% 더 낮춰 1턴 지속시킵니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%BB%83%E5%A4%A9%E6%83%91%E5%BF%83"
+      }
+    ]
+  },
+  {
+    "id": "plan-after",
+    "name": {
+      "ko": "용의주도",
+      "zhTW": "謀而後動",
+      "aliases": [
+        "모이후동"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "추격",
+    "trait": "책략",
+    "procRate": 0.75,
+    "procRateText": "75%",
+    "text": "일반 공격 후, 적군 전체에게 40%의 책략 피해를 입힙니다. 또한 50% 확률(지력의 영향을 받음)로 용의주도를 추가로 1회 발동합니다. 이 추가 발동은 다시 연쇄 발동되지 않습니다. 용의주도의 피해 계수는 매 턴 12%씩 증가합니다.",
+    "overseasText": "일반 공격 후 적군 전체에 40% 책략 피해를 줍니다. 50% 확률로 1회 추가 발동하며, 피해 계수는 매 턴 12%씩 상승합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E8%AC%80%E8%80%8C%E5%BE%8C%E5%8B%95"
+      }
+    ]
+  },
+  {
+    "id": "scorn-myriad",
+    "name": {
+      "ko": "만군 멸시",
+      "aliases": [
+        "만군멸시"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "grade": "미확인",
+    "kind": "추격",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "일반 공격 후, 적군 전체에게 140%의 병기 피해를 입힙니다. 짝수 턴에 발동할 경우, 추가로 적군 중 병력이 가장 낮은 단일 대상에게 100%의 병기 피해를 입힙니다. 만약 직전 턴에 이 전법이 발동하지 않았다면, 이번 전법의 피해가 50% 증가합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)",
+      "kind": "원문으로 추정",
+      "procRate": "임시값(같은 종류 전법 중앙값 40%)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "punish-past",
+    "name": {
+      "ko": "훗날의 교훈",
+      "zhTW": "懲前毖後",
+      "aliases": [
+        "훗날의교훈",
+        "징전비후"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 시작 시, 적군 무작위 2명에게 90%의 책략 피해를 입힙니다(추가로 아군 전체의 누적 치료량의 영향을 받음). 매 턴 종료 시, 아군 전열의 병력을 회복합니다. 치료율: 50%(지력의 영향을 받음).",
+    "overseasText": "매 턴 시작 시 무작위 적군 2명에게 90% 책략 피해를 주며 전군 누적 치료량의 영향을 받습니다. 턴 종료 시 아군 전열의 병력을 회복합니다(치료율 50%, 지력 영향).",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%87%B2%E5%89%8D%E6%AF%96%E5%BE%8C"
+      }
+    ]
+  },
+  {
+    "id": "divine-change",
+    "name": {
+      "ko": "뛰어난 응변",
+      "zhTW": "神略制變",
+      "aliases": [
+        "뛰어난응변",
+        "신략제변"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "첫 4턴에 발동할 경우, 아군 무작위 2명의 병력을 회복합니다. 치료율: 110%(지력의 영향을 받음). 후반 4턴에 발동할 경우, 적군 무작위 2명에게 160%의 책략 피해를 입힙니다.",
+    "overseasText": "첫 4턴에는 무작위 아군 2명의 병력을 회복하고(치료율 110%, 지력 영향), 이후 4턴에는 무작위 적군 2명에게 160% 책략 피해를 줍니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "한국어 시트 원문(10레벨 환산)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%A5%9E%E7%95%A5%E5%88%B6%E8%AE%8A"
+      }
+    ]
+  },
+  {
+    "id": "same-boat",
+    "name": {
+      "ko": "일심협력",
+      "zhTW": "同舟共濟",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "S3",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "치유",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 행동 시 자신과 무작위 아군 1명의 병력을 회복합니다(치료율 50%, 지력·통솔 영향).",
+    "clauses": [],
+    "dataStatus": {
+      "text": "해외 자료 번역(deck-lab), 한국판 문구 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E5%90%8C%E8%88%9F%E5%85%B1%E6%BF%9F"
+      }
+    ]
+  },
+  {
+    "id": "golden-fortress",
+    "name": {
+      "ko": "금성의 철벽",
+      "zhTW": "金城湯池",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "S3",
+    "grade": "전설",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "턴 시작 시 아군 전체가 80% 확률로 저항 1중첩(피해 1회 무효)을 얻습니다. 확률은 매 턴 12%씩 감소합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "해외 자료 번역(deck-lab) — 2레벨 수치 1개를 10레벨로 환산, 한국판 문구 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E9%87%91%E5%9F%8E%E6%B9%AF%E6%B1%A0"
+      }
+    ]
+  },
+  {
+    "id": "blazing-sky",
+    "name": {
+      "ko": "맹렬한 화염",
+      "zhTW": "烈火張天",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "S3",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "문무",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "적군 전체에 화공 상태를 부여해 2턴 지속시키고, 각각 50%의 책략 피해와 병기 피해를 줍니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "해외 자료 번역(deck-lab), 한국판 문구 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%83%88%E7%81%AB%E5%BC%B5%E5%A4%A9"
+      }
+    ]
+  },
+  {
+    "id": "see-truth",
+    "name": {
+      "ko": "허실 간파",
+      "zhTW": "明其虛實",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "S3",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "무작위 적군 2명의 지력과 통솔을 20만큼 빼앗아 2턴 지속시키고(지력 영향), 140% 책략 피해를 줍니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "해외 자료 번역(deck-lab) — 2레벨 수치 2개를 10레벨로 환산, 한국판 문구 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%98%8E%E5%85%B6%E8%99%9B%E5%AF%A6"
+      }
+    ]
+  },
+  {
+    "id": "prepare-armor",
+    "name": {
+      "ko": "병력 강화",
+      "zhTW": "繕甲厲兵",
+      "aliases": [
+        "병력강화"
+      ]
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "S3",
+    "grade": "전설",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 반격률이 50% 상승합니다. 일반 공격에 성공하면 자신이 받는 병기 피해가 5% 감소하며 2턴 지속, 최대 4회 중첩됩니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "해외 자료 번역(deck-lab) — 2레벨 수치 2개를 10레벨로 환산, 한국판 문구 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E7%B9%95%E7%94%B2%E5%8E%B2%E5%85%B5"
+      }
+    ]
+  },
+  {
+    "id": "charge-change",
+    "name": {
+      "ko": "기민한 전술",
+      "zhTW": "沖銳巧變",
+      "aliases": []
+    },
+    "isUnique": false,
+    "season": "S3",
+    "overseasSeason": "S3",
+    "grade": "전설",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "무작위 적군 1명에게 360% 병기 피해를 주고, 자신이 다음에 사용하는 준비형 전법의 준비 턴을 일정 횟수 생략합니다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "해외 자료 번역(deck-lab), 한국판 문구 확인 필요"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/tactics/%E6%B2%96%E9%8A%B3%E5%B7%A7%E8%AE%8A"
+      }
+    ]
+  }
+]

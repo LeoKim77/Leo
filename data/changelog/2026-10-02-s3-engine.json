@@ -1,0 +1,25 @@
+{
+  "id": "2026-10-02-s3-engine",
+  "date": "2026-10-02",
+  "season": "S3",
+  "category": "엔진",
+  "title": "S3 전법 엔진 정의 40개 + FEAT-004 · 감사 보완",
+  "body": "S3 신규 전법 22개와 고유 전법 18개를 엔진에 정의했습니다(원문대로 7 · 근사 33). 근사 항목은 전보 검증 대기 목록에 자동으로 들어갔습니다.\n- FEAT-004: 지력이 가장 낮은 아군 대상(공성계), '직전 턴에 발동하지 않았으면 피해 증가'(만군 멸시), 전법별 마지막 발동 턴 기록.\n- 미지원(자료·메커니즘 필요): SP 제갈량 성라기포의 진형 강화·기국 버프, 황보숭 군령 10중첩 피해, 장녕 요술 대상 회복, 우길 기궁 면역, 기민한 전술 준비 턴 생략.\n- 감사 보완: 발동률 실측(D04)은 전투 중 발동률 증감(공성계 등)을 뺀 전법 자체 확률로 비교, '이 효과는 매 턴 최대 N회'는 그 절에만 적용, 부여 효과(전법>이름)를 원래 전법으로 합산, 아군 추격에 반응하는 고유 전법은 추격 전법이 있는 덱에서 감사.\n- 검증 대기 목록에 '발동률'(전보로 확인)·'캡처'(정보 화면으로 확인) 항목을 추가했습니다. 전부 보유 시 17판으로 전투 항목 134개를 모두 볼 수 있습니다.\n감사: 실패 8(기존 7 — 주태·법정·방통 미지원 메커니즘 — + 성라기포), 테스트 30개 통과.\n참고: 현재 엔진은 8턴 종료 시 남은 병력이 많은 쪽을 승리로 칩니다(v1.12b 방식).",
+  "refs": [],
+  "author": "Claude",
+  "files": [
+    ".gitignore",
+    "data/audit/latest.json",
+    "data/engine/authored.json",
+    "data/verification/queue.json",
+    "packages/audit/src/dynamic.ts",
+    "packages/audit/src/expect.ts",
+    "packages/audit/src/index.ts",
+    "packages/data-tools/src/verification.ts",
+    "packages/engine/src/index.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/recommender/src/verify-plan.ts",
+    "tests/manuals.test.ts",
+    "tests/recommender.test.ts"
+  ]
+}

@@ -133,10 +133,21 @@ export interface FullBundle extends GameBundle {
   engineGenerals: Record<string, { gender?: 'M' | 'F'; legacyStats?: Record<string, number> }>;
 }
 
+/** 시즌 시트에서 가져온 층(data/seasons/<시즌>/<종류>.json)을 엑셀 원본 뒤에 붙인다. 같은 id 는 엑셀이 우선 */
+export function withSeasonLayers<T extends { id: string }>(base: T[], file: 'generals' | 'skills' | 'tier-decks'): T[] {
+  const dir = join(DATA, 'seasons');
+  if (!existsSync(dir)) return base;
+  const out = [...base];
+  for (const season of readdirSync(dir).sort()) {
+    for (const item of readJson<T[]>(join(dir, season, `${file}.json`), [])) if (!out.some(x => x.id === item.id)) out.push(item);
+  }
+  return out;
+}
+
 export function buildBundle(): FullBundle {
   const seasonsFile = readJson<{ current: string; seasons: SeasonInfo[] }>(join(DATA, 'common', 'seasons.json'));
-  const generals = applyPatches('generals', readJson<any[]>(join(KR, 'generals.json')));
-  const skills = applyPatches('skills', readJson<Skill[]>(join(KR, 'skills.json')));
+  const generals = applyPatches('generals', withSeasonLayers(readJson<any[]>(join(KR, 'generals.json')), 'generals'));
+  const skills = applyPatches('skills', withSeasonLayers(readJson<Skill[]>(join(KR, 'skills.json')), 'skills'));
   const engSkills = readJson<Record<string, any>>(join(DATA, 'engine', 'skills.json'));
   const engGenerals = readJson<Record<string, any>>(join(DATA, 'engine', 'generals.json'));
   const engBonds = readJson<Record<string, any>>(join(DATA, 'engine', 'bonds.json'));
@@ -150,7 +161,7 @@ export function buildBundle(): FullBundle {
     (g.manuals || []).forEach((m: any, i: number) => {
       m.id = `m-${g.id}-${i + 1}`;
       const def = (manualDefs[g.id] || []).find((d: any) => squashName(d.name) === squashName(m.name));
-      if (!def) { m.status = 'missing'; return; }
+      if (!def) { m.status = 'missing'; if (m.textUnknown) m.note = '원문 미확인 — 티어덱 시트에 이름만 있음'; return; }
       m.status = def.status;
       if (def.note) m.note = def.note;
       m.engine = { parts: def.parts, static: def.static, unit: def.unit, uniquePatch: def.uniquePatch };
@@ -199,13 +210,13 @@ export function buildBundle(): FullBundle {
     skills,
     bonds,
     formations,
-    tierDecks: applyPatches('tier-decks', readJson<any[]>(join(KR, 'tier-decks.json'))).map(t => ({
+    tierDecks: applyPatches('tier-decks', withSeasonLayers(readJson<any[]>(join(KR, 'tier-decks.json')), 'tier-decks')).map(t => ({
       ...t,
       units: t.units.map((u: any) => {
         // 세팅 병법 칸에 적힌 이름이 그 무장의 금병법이면 그것을, 아니면 시뮬 가능한 첫 금병법을 쓴다
         const g = generals.find(x => x.id === u.generalId);
         const ms = (g?.manuals || []) as any[];
-        const named = u.manualSlots.flat().map(squashName);
+        const named = [...(u.goldManuals || []), ...u.manualSlots.flat()].map(squashName);
         const pick = ms.find(m => named.includes(squashName(m.name))) || ms.find(m => m.status === 'ok' || m.status === 'approx') || ms[0];
         return pick ? { ...u, manualId: pick.id } : u;
       }),

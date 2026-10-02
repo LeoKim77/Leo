@@ -6,3 +6,4 @@ dist/
 .env.*
 apps/web/public/data/
 apps/web/dist-standalone/
+*.tsbuildinfo

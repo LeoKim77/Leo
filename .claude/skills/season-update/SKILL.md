@@ -8,7 +8,11 @@ description: 천하결전 시뮬레이터에 새 시즌·무장·전법·밸런�
 입력 종류별로 처리하고, 마지막에 항상 **검증 → 게시판 → 배포**를 한다.
 
 ## 1. 입력 받기
-- **구글 스프레드시트 주소**: Google Drive 커넥터로 읽는다(시트별 표). 열 구성이 엑셀 DB 와 같으면 `.xlsx` 로 내려받아 `npx tsx packages/data-tools/src/import-excel.ts <파일>`. 다르면 MCP `data_patch` 로 항목별 반영.
+- **구글 스프레드시트 주소** (복사·다운로드가 막힌 공유 시트도 '보기'만 되면 됨):
+  1. `NODE_USE_ENV_PROXY=1 npx tsx packages/data-tools/src/import-gsheet.ts "<주소>" [탭 이름 일부…]` → `data/sources/gsheet/<시트id>/<gid>.json` (병합 칸 채움, 색칠 칸 기록). 네트워크 허용 도메인에 `docs.google.com`, `*.googleusercontent.com` 필요.
+  2. 시즌 도감·티어덱 시트면 `data/seasons/<시즌>/name-map.json`(시트 이름 → id·한자·deck-lab id, 사람이 검토)을 만들거나 새 이름을 추가하고 `npx tsx packages/data-tools/src/import-season.ts <시즌>` → `data/seasons/<시즌>/{generals,skills,tier-decks}.json`. 시트 수치 "Lv1 → Lv2" 는 10레벨(Lv1×2)로 환산된다. 번들은 엑셀 원본 뒤에 시즌 층을 붙인다(같은 id 는 엑셀 우선).
+  3. 공개 자료가 없는 값(능력치·병종·배치·발동률·이름)은 임시값 + `dataStatus` 로 남는다 → 검증 대기 목록의 `capture`(캡처로 확인)·`rate`(발동률) 항목. 캡처·공식 자료를 받으면 `data/seasons/<시즌>/name-map.json` 또는 MCP `data_patch` 로 채우고 `dataStatus` 를 지운다.
+  - 열 구성이 엑셀 DB 와 같은 시트는 `.xlsx` 로 받아 `import-excel.ts` 를 써도 된다.
 - **엑셀 DB 새 판**: `data/sources/` 에 넣고 `import-excel.ts` 실행. `git diff data/kr` 로 바뀐 무장·전법·수치를 확인한다.
 - **인게임 캡처·녹화**: 화면의 원문(전법 설명, 스탯, 발동 확률)을 읽어 MCP `data_patch` 로 반영. 원문은 한국판 그대로 옮긴다.
 - **전보 녹화**: MCP `verification_list` 에서 관련 항목을 찾아 대조하고 `verification_resolve` 로 확인/불일치를 기록한다. 불일치면 엔진 정의를 고친다(아래 3).

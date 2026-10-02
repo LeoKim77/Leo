@@ -67,3 +67,25 @@ export function ko(text: string): string {
   for (const m of map) if (out.includes(m.from)) out = out.split(m.from).join(m.to);
   return out;
 }
+
+/** 임시값·추정값 항목 (공개 자료 대기) — dataStatus 에서 '임시·미확인·추정·확인 필요' 인 것 */
+export const DATA_FIELD: Record<string, string> = { stats: '능력치', unitType: '병종', row: '배치', faction: '진영', name: '이름', kind: '전법 종류', text: '원문', procRate: '발동률' };
+export function tentative(ds?: Record<string, string>): Array<[string, string]> {
+  return Object.entries(ds || {}).filter(([, v]) => /임시|미확인|추정|확인 필요|번역/.test(v)).map(([k, v]) => [DATA_FIELD[k] || k, v]);
+}
+/** 지금 고른 시즌보다 뒤 시즌 자료가 있으면 그 시즌 id */
+export function laterSeasonWithData(): string | undefined {
+  const order = (x: string) => parseInt(x.replace(/\D/g, '') || '0', 10);
+  const later = app.bundle.seasons.map(x => x.id).filter(id => order(id) > order(app.season));
+  return later.find(id => app.bundle.tierDecks.some(t => t.season === id) || app.bundle.generals.some(g => g.season === id));
+}
+/** 화면 안 버튼에서 시즌 바꾸기 — 상단 선택 상자도 맞추고 지금 화면을 다시 그린다 */
+export function setSeason(id: string) {
+  app.season = id;
+  const sel = document.getElementById('season-select') as HTMLSelectElement | null;
+  if (sel) sel.value = id;
+  window.dispatchEvent(new HashChangeEvent('hashchange'));
+}
+export function seasonLabel(id: string) {
+  return app.bundle.seasons.find(s => s.id === id)?.label || id;
+}

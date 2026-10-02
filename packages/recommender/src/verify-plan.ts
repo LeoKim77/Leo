@@ -22,7 +22,7 @@ export interface VerifyPlan {
   total: number;
 }
 
-const ENGINE_FIRST: Record<string, number> = { engine: 0, manual: 1, skill: 2, clause: 3 };
+const ENGINE_FIRST: Record<string, number> = { engine: 0, manual: 1, skill: 2, rate: 3, clause: 4 };
 
 export function planVerification(bundle: GameBundle, queue: VerifyItem[], owned: { generals: string[]; skills: string[] }, opts: { maxBattles?: number } = {}): VerifyPlan {
   const ownG = new Set(owned.generals), ownS = new Set(owned.skills);
@@ -46,7 +46,8 @@ export function planVerification(bundle: GameBundle, queue: VerifyItem[], owned:
   };
   const ownedNeed = (n: Need) => (!n.generalId || ownG.has(n.generalId)) && (!n.skillId || ownS.has(n.skillId));
 
-  const pending = queue.filter(q => q.status === 'pending').sort((a, b) => (ENGINE_FIRST[a.kind] ?? 9) - (ENGINE_FIRST[b.kind] ?? 9));
+  // capture(정보 화면 캡처로 확인) 항목은 전투가 필요 없어 계획에서 뺀다
+  const pending = queue.filter(q => q.status === 'pending' && q.kind !== 'capture').sort((a, b) => (ENGINE_FIRST[a.kind] ?? 9) - (ENGINE_FIRST[b.kind] ?? 9));
   const blocked: VerifyPlan['blocked'] = [];
   const todo: Array<{ it: VerifyItem; needs: Need[] }> = [];
   for (const it of pending) {
@@ -58,7 +59,7 @@ export function planVerification(bundle: GameBundle, queue: VerifyItem[], owned:
 
   const battles: PlannedBattle[] = [];
   const left = new Set(todo.map((_, i) => i));
-  const maxBattles = opts.maxBattles ?? 12;
+  const maxBattles = opts.maxBattles ?? 20;
 
   // 덱이 need 를 만족하는가
   const sat = (units: PlannedUnit[], n: Need) => {

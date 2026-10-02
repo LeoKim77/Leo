@@ -22,6 +22,8 @@ export const ENGINE_FIXES = [
     detail: '다른 무장에게 전법처럼 동작하는 효과를 부여(grants), 추격이 아닌 "일반 공격 후" 계기(afterBasic), 전열 우선 대상(random_ally_front).' },
   { id: 'FIX-003', date: '2026-10-02', found: '감사 D06', title: '피해 확률을 대상마다 따로 판정하던 문제',
     detail: '"N% 확률로 (대상)에게 피해" 를 발동 1회에 한 번만 판정하도록 고침. 문과 무·광풍의 분노·일인천군. 상태 부여 확률은 기존처럼 대상별 판정.' },
+  { id: 'FEAT-004', date: '2026-10-02', found: 'S3 신규 전법 반영', title: 'S3 전법용 대상·조건 추가',
+    detail: '지력이 가장 낮은 아군 대상(lowest_intel_ally, 공성계), 직전 턴에 발동하지 않았으면 피해 증가(idleBonus, 만군 멸시), 전법별 마지막 발동 턴 기록.' },
 ];
 export function createLegacyEngine(gameData) {
 let __rng = Math.random;
@@ -323,6 +325,7 @@ function selectTargets(unit, targetCodes, allUnits) {
     case 'highest_command_ally': result = [maxBy(allies, u => u.stats.통솔)]; break;
     case 'highest_control_ally': result = [maxBy(allies, u => u.stats.통솔)]; break;
     case 'lowest_hp_ally': result = [minBy(allies, u => u.troops)]; break;
+    case 'lowest_intel_ally': result = [minBy(allies, u => u.stats.지력)]; break;   // FEAT-004
     case 'lowest_hp_enemy': result = [minBy(enemies, u => u.troops)]; break;
     default: result = [weightedPickByPosition(enemies)];
   }
@@ -890,6 +893,7 @@ function applySkillEffects(unit, skill, allUnits, coeffs, log, turn, contrib, ev
   }
   finally {
     __skillStack.pop(); __invStack.pop();
+    (unit._lastCast = unit._lastCast || {})[skill.id] = turn;   // FEAT-004
     // 금병법 등 "액티브/추격 전법 발동 후" 반응형 효과 (FEAT-001)
     if ((skill.type === '액티브' || skill.type === '추격') && !skill.isManual && unit.alive) emitCastEvent({ caster: unit, skill }, allUnits, coeffs, log, turn, contrib);
   }
@@ -1056,6 +1060,8 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         }
         ratio *= 1 + (ss.per || 0) * attacker._stacks[ss.key];
       }
+      // FEAT-004: "직전 턴에 이 전법이 발동하지 않았다면 피해 N% 증가" (만군 멸시)
+      if (d.idleBonus && (unit._lastCast || {})[skill.id] !== turn - 1) ratio *= 1 + d.idleBonus;
       if (d.scaleBy) {
         let n = 0;
         if (d.scaleBy.kind === 'targetAbnormal') n = abnormalCount(t);
@@ -1342,6 +1348,13 @@ function procRateOf(skill, unit) {
   if (unit && skill.isUnique && unit.uniqueProcAdd) base += unit.uniqueProcAdd; // FEAT-001 (고유 전법 발동률 +N%)
   return clamp(base, 0, 1);
 }
+// 감사용: 전투 중 증감(액티브 발동률 버프·디버프)을 빼고 전법 자체의 발동률
+function procBaseOf(skill, unit) {
+  const m = (skill.procRate || '100%').match(/(\d+(?:\.\d+)?)%/g);
+  let base = m ? parseFloat(m[m.length - 1]) / 100 : 1;
+  if (unit && skill.isUnique && unit.uniqueProcAdd) base += unit.uniqueProcAdd;
+  return clamp(base, 0, 1);
+}
 
 // ---------- 턴 처리 ----------
 // 반격 (용어 시트 22번): 일반 공격을 받은 후, 일정 확률로 공격자에게 강력한 일반 공격 1회 시전.
@@ -1600,7 +1613,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
       if (!unit.alive) return;   // FIX-001
       const __p = procRateOf(skill, unit);
       const rolled = __rng() < __p;
-      __T({ e: 'roll', unit: unit.id, skill: skill.id, kind: '액티브', p: __p, ok: rolled });
+      __T({ e: 'roll', unit: unit.id, skill: skill.id, kind: '액티브', p: __p, base: procBaseOf(skill, unit), ok: rolled });
       if (!rolled) {
         log.push(`${turn}턴: [${unit.name}]이(가) 확률로 인해 전법【${skill.name}】을(를) 발동하지 못했습니다.`);
       }
@@ -1749,7 +1762,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
     if (!(unit.alive && !blockBasic && basicAttackTarget)) return;
     const __p = procRateOf(skill, unit);
     const __ok = __rng() < __p;
-    __T({ e: 'roll', unit: unit.id, skill: skill.id, kind: '추격', p: __p, ok: __ok });
+    __T({ e: 'roll', unit: unit.id, skill: skill.id, kind: '추격', p: __p, base: procBaseOf(skill, unit), ok: __ok });
     if (!__ok) {
       log.push(`${turn}턴: [${unit.name}]이(가) 확률로 인해 전법【${skill.name}】을(를) 발동하지 못했습니다.`);
     } else {

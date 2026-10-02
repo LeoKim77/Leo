@@ -24,6 +24,8 @@ export interface Expectation {
   /** 피해 대상 수 (전법에 피해 절이 하나뿐일 때만) */
   damageTargets?: number | 'all';
   perTurnLimit?: number;
+  /** "이 효과는 매 턴 최대 N회" — 상한이 앞 절에만 걸림 */
+  perTurnLimitScoped?: boolean;
   conditional: boolean;
 }
 
@@ -113,5 +115,6 @@ export function deriveExpectation(skill: Skill): Expectation {
 
   const lim = text.match(/(?:매 턴|턴마다)\s*최대\s*(\d+)회|매 턴\s*(\d+)회\s*발동될 수/);
   if (lim) exp.perTurnLimit = +(lim[1] || lim[2]);
+  if (lim && /이 효과는\s*(?:매 턴|턴마다)\s*최대/.test(text)) exp.perTurnLimitScoped = true;
   return exp;
 }
