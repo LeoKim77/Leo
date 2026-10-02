@@ -1,4 +1,4 @@
-# 천하결전 덱 연구소 — 작업 안내
+# 삼국지 천하결전 무한무투 — 작업 안내
 
 삼국지 천하결전 덱 전투 시뮬레이터. 목표는 **실제 게임과 가장 가까운 전투 재현**이다.
 시즌은 약 2개월마다 바뀌고 무장·고유 전법·전법이 계속 추가된다. 사용자는 공유 구글 시트 주소나
@@ -21,7 +21,7 @@
 pnpm test                 # 엔진 동등성·감사·금병법·추천·데이터 무결성
 pnpm audit                # 전체 규칙 감사 (~30초) → data/audit/latest.json
 pnpm build:bundle         # 웹 데이터
-pnpm build:standalone     # 단일 HTML → apps/web/dist-standalone/cheonha-lab(.artifact).html
+pnpm build:standalone     # 단일 HTML → apps/web/dist-standalone/muhanmutu(.artifact).html
 ```
 
 ## 시즌·데이터 업데이트 절차

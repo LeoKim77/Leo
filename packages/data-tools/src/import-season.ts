@@ -8,6 +8,7 @@
 // - 시트에 없는 종류·발동률은 deck-lab 에서 채우고, 그것도 없으면 원문으로 추정해 dataStatus 에 '추정'으로 남긴다.
 // - 능력치·병종·배치는 아직 공개 자료가 없으면 임시값을 넣고 dataStatus 로 표시한다(시뮬 결과에 근사로 표기됨).
 import { join } from 'node:path';
+import { readdirSync } from 'node:fs';
 import { DATA, SOURCES, KR, readJson, writeJson } from './paths.ts';
 import { normalizeKo } from './terms.ts';
 
@@ -41,7 +42,7 @@ const CATEGORY: Record<string, string> = { 모략: '책략', 병인: '병기', �
 const RATE = (t?: string) => (t ? +t.replace('%', '') / 100 : undefined);
 
 interface NameMap {
-  sheet: { id: string; codexGid: string; tierGid: string; label: string };
+  sheet: { id: string; codexGid?: string; tierGid: string; label: string };
   generals: Array<any>;
   skills: Array<any>;
   manualMarks: { prefix: string; placeholders: string[] };
@@ -51,7 +52,8 @@ export function importSeason(season: string) {
   const dir = join(DATA, 'seasons', season);
   const map = readJson<NameMap>(join(dir, 'name-map.json'));
   const gdir = join(SOURCES, 'gsheet', map.sheet.id);
-  const codex = readJson<any>(join(gdir, `${map.sheet.codexGid}.json`));
+  // 도감 탭이 없는 시즌(티어덱만 갱신)도 있다
+  const codex = map.sheet.codexGid ? readJson<any>(join(gdir, `${map.sheet.codexGid}.json`)) : { rows: [], fetchedAt: '' };
   const tier = readJson<any>(join(gdir, `${map.sheet.tierGid}.json`));
   const cat = readJson<any>(join(DATA, 'reference', 'decklab', 'catalog.json'));
   const termMap = readJson<any>(join(DATA, 'common', 'term-map.json')).mappings;
@@ -170,7 +172,7 @@ export function importSeason(season: string) {
       // 이름은 한국어 시트 표기. deck-lab 이름은 한자 독음이라 별칭으로만 둔다
       name: { ko: e.ko || e.sheet, zhTW: dt?.original, aliases: [...new Set([...(e.aliases || []), ...(dt && dt.name !== e.sheet ? [dt.name] : [])])] },
       isUnique: false,
-      season,
+      season: e.season || season,
       overseasSeason: dt?.season,
       grade: cat.tacticRarities?.[e.decklab] || '미확인',
       kind,
@@ -186,8 +188,11 @@ export function importSeason(season: string) {
   }
 
   // ── 티어덱 격자 ──
-  const allGenerals = [...krGenerals, ...generals];
-  const allSkills = [...krSkills, ...skills];
+  // 다른 시즌 층에 이미 있는 카드도 이름으로 찾는다 (예: S2 티어덱이 S3 시트에서 들어온 전법을 씀)
+  const otherLayer = (file: string) => readdirSync(join(DATA, 'seasons')).filter(x => x !== season)
+    .flatMap(x => readJson<any[]>(join(DATA, 'seasons', x, file), []));
+  const allGenerals = [...krGenerals, ...generals, ...otherLayer('generals.json')];
+  const allSkills = [...krSkills, ...skills, ...otherLayer('skills.json')];
   const resolveGeneral = (cell: string) => {
     const troop = cell.match(/\((궁병|기병|창병|방패병)\)/)?.[1];
     const base = squash(cell.replace(/\(.*?\)/g, ''));
@@ -205,40 +210,69 @@ export function importSeason(season: string) {
   const fills: Record<string, string> = tier.fills;
   const tierDecks: any[] = [];
   const unresolved: string[] = [];
+  const TITLE = /^(T[\d.]+[+-]?)\s*(.+)$/;
+  const prefix = map.manualMarks.prefix;
+  const split = (c: string) => c.split(/[\/+]/).map(x => x.trim()).filter(x => x && x !== '-');
+  // 병종 칸 "중방패병-전환" → 병종 (전환 표시가 있으면 덱에서 병종을 바꾼 것)
+  const troopOf = (c: string) => {
+    const t = c.split('/')[0].trim();
+    const kind = /방패/.test(t) ? '방패병' : /궁/.test(t) ? '궁병' : /창|찬/.test(t) ? '창병' : /기병/.test(t) ? '기병' : undefined;
+    return { text: t, kind, converted: /전환/.test(t) };
+  };
   for (let start = 0; start < R.length; start++) {
     for (let base = 0; base + 3 < (R[start]?.length || 0); base += 5) {
       const title = R[start][base];
-      const m = title?.match(/^(T[\d.]+[+-]?)\s*(.+)$/);
+      const m = title?.match(TITLE);
       if (!m || R[start - 1]?.[base] === title) continue;   // 병합된 제목 칸 아래 줄은 건너뛴다
-      const at = (off: number, k: number) => (R[start + off]?.[base + k] || '').trim();
+      const cell = (r: number, k: number) => (R[r]?.[base + k] || '').trim();
+      // 첫 열의 줄 이름(전법·대체전법·병종·병종특화·병법·장비·장비특기·탈것특기·스텟)으로 칸을 찾는다 — 시즌마다 줄 구성이 다르다
+      const rows: Array<{ r: number; label: string }> = [];
+      for (let r = start + 4; r < R.length; r++) {
+        const label = cell(r, 0).replace(/\s+/g, '');
+        if (!label || TITLE.test(label) || label.startsWith('출처')) break;
+        rows.push({ r, label });
+      }
+      const rowsOf = (re: RegExp) => rows.filter(x => re.test(x.label));
       const highlight: Array<{ field: string; unit: number; color: string }> = [];
-      const FIELDS: Record<number, string> = { 2: '무장', 4: '전법1', 5: '전법2', 6: '병법1', 7: '병법2', 8: '병법3', 9: '장비', 10: '장비 특성', 11: '탈것 특성', 12: '능력치 분배' };
+      const fieldRows: Array<[number, string]> = [[start + 2, '무장'], ...rowsOf(/^전법$/).map((x, i): [number, string] => [x.r, `전법${i + 1}`]),
+        ...rowsOf(/^병법$/).map((x, i): [number, string] => [x.r, `병법${i + 1}`]),
+        ...rows.filter(x => !/^(전법|병법)$/.test(x.label)).map((x): [number, string] => [x.r, x.label === '스텟' ? '능력치 분배' : x.label])];
+      const one = (re: RegExp, k: number) => { const x = rowsOf(re)[0]; return x ? cell(x.r, k) : ''; };
       const units = [1, 2, 3].map(k => {
-        for (const [off, field] of Object.entries(FIELDS)) {
-          const color = fills[`${start + +off},${base + k}`];
+        for (const [r, field] of fieldRows) {
+          const color = fills[`${r},${base + k}`];
           if (color) highlight.push({ field, unit: k - 1, color });
         }
-        const { g, troop } = resolveGeneral(at(2, k));
-        if (!g) unresolved.push(`무장 ${at(2, k)} (${m[2]})`);
-        const slots = [at(4, k), at(5, k)].map(c => c.split('/').map(s => s.trim()).filter(Boolean));
-        const picked = slots.map(alts => alts.map(a => {
-          const s = resolveSkill(a);
-          if (!s) unresolved.push(`전법 ${a} (${m[2]})`);
-          return s;
-        }));
-        const manualCells = [at(6, k), at(7, k), at(8, k)];
+        const gCells = cell(start + 2, k).split('/').map(x => x.trim()).filter(Boolean);
+        const { g, troop } = resolveGeneral(gCells[0] || '');
+        if (!g) unresolved.push(`무장 ${cell(start + 2, k)} (${m[2]})`);
+        // "아무 치료 전법"·"치료 계열 전법" 처럼 고르게 둔 칸은 이름만 남긴다
+        const resolveAll = (names: string[]) => names.filter(a => !/대체\s*없음/.test(a)).map(a => {
+          if (/아무|계열 전법|^\S+ 전법$/.test(a) && !resolveSkill(a)) return { name: a, id: undefined as string | undefined, free: true };
+          const sk = resolveSkill(a.replace(/\+$/, ''));
+          if (!sk) unresolved.push(`전법 ${a} (${m[2]})`);
+          return { name: a, id: sk?.id as string | undefined };
+        });
+        const slots = rowsOf(/^전법$/).map(x => resolveAll(split(cell(x.r, k))));
+        const swaps = resolveAll(split(one(/^대체전법$/, k)));
+        const manualCells = rowsOf(/^병법$/).map(x => cell(x.r, k));
+        const tr = troopOf(one(/^병종$/, k));
+        const unitType = troop || (tr.converted ? tr.kind : undefined);
         return {
-          generalId: g?.id || `?${at(2, k)}`,
-          generalName: g?.name.ko || at(2, k),
-          ...(troop ? { unitType: troop } : {}),
-          statPriority: at(12, k),
-          skillIds: picked.map(p => p[0]?.id).filter(Boolean),
-          skillNames: slots.map(a => a[0]),
-          skillAlternatives: slots.map((alts, i) => alts.slice(1).map((a, j) => ({ name: a, id: picked[i][j + 1]?.id })).filter(x => x.name)),
-          manualSlots: manualCells.map(c => c.split('/').map(s => s.trim().replace(new RegExp(`^${map.manualMarks.prefix}`), '')).filter(Boolean)),
-          goldManuals: manualCells.flatMap(c => c.split('/').map(s => s.trim())).filter(s => s.startsWith(map.manualMarks.prefix)).map(s => s.slice(map.manualMarks.prefix.length)),
-          statCombo: at(9, k),
-          gear: { trait: at(10, k), mount: at(11, k) },
+          generalId: g?.id || `?${gCells[0] || ''}`,
+          generalName: g?.name.ko || gCells[0] || '',
+          ...(gCells.length > 1 ? { generalAlternatives: gCells.slice(1) } : {}),
+          ...(unitType ? { unitType } : {}),
+          statPriority: one(/^스텟$/, k),
+          skillIds: slots.map(p => p[0]?.id).filter(Boolean),
+          skillNames: slots.map(p => p[0]?.name || ''),
+          skillAlternatives: slots.map(p => p.slice(1)),
+          ...(swaps.length ? { swapSkills: swaps } : {}),
+          manualSlots: manualCells.map(c => c.split('/').map(x => x.trim().replace(new RegExp(`^${prefix}`), '')).filter(Boolean)),
+          goldManuals: manualCells.flatMap(c => c.split('/').map(x => x.trim())).filter(x => x.startsWith(prefix)).map(x => x.slice(prefix.length)),
+          statCombo: one(/^장비$/, k),
+          ...(tr.text ? { troop: { type: tr.text, spec: one(/^병종특화$/, k) } } : {}),
+          gear: { trait: one(/^장비특[성기]$/, k), mount: one(/^탈것특[성기]$/, k) },
         };
       });
       tierDecks.push({
@@ -246,8 +280,8 @@ export function importSeason(season: string) {
         season,
         tier: m[1],
         name: m[2].trim(),
-        note: at(1, 0),
-        formation: at(3, 0),
+        note: cell(start + 1, 0) === '-' ? '' : cell(start + 1, 0),
+        formation: cell(start + 3, 0),
         units,
         highlight,
         source: { kind: 'gsheet', label: map.sheet.label, url: `https://docs.google.com/spreadsheets/d/${map.sheet.id}/edit?gid=${map.sheet.tierGid}`, note: `가져온 때 ${tier.fetchedAt.slice(0, 10)}` },

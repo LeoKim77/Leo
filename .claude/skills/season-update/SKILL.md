@@ -35,6 +35,6 @@ MCP `board_post` (분류: 신규 무장/신규 전법/밸런스 조정/티어덱
 
 ## 5. 배포
 1. `pnpm build:standalone`
-2. Artifact 도구로 `apps/web/dist-standalone/cheonha-lab.artifact.html` 을 **기존 주소(`data/common/site.json` 의 artifactUrl)에 다시 게시**한다(새 주소를 만들지 않는다).
-3. 사용자가 원하면 `cheonha-lab.html` 도 파일로 보낸다(로컬 실행용).
+2. Artifact 도구로 `apps/web/dist-standalone/muhanmutu.artifact.html` 을 **기존 주소(`data/common/site.json` 의 artifactUrl)에 다시 게시**한다(새 주소를 만들지 않는다).
+3. 사용자가 원하면 `muhanmutu.html` 도 파일로 보낸다(로컬 실행용).
 4. 커밋·푸시.

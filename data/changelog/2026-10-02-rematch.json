@@ -1,0 +1,23 @@
+{
+  "id": "2026-10-02-rematch",
+  "date": "2026-10-02",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "8턴 무승부 → 생존 무장끼리 재교전 (R-009)",
+  "body": "사용자 확인 규칙 R-009: 8턴이 끝나도 양쪽이 살아 있으면 무승부이고, 전사한 무장을 뺀 남은 무장끼리 다시 싸움을 붙입니다.\n- 엔진 FEAT-005: 예전(v1.12b)에는 8턴 후 남은 병력이 많은 쪽을 승리로 쳤습니다. 이제는 생존 무장의 병력·부상병을 이어받아 새 교전을 시작하고, 한쪽이 전멸할 때까지 반복합니다(상한 10차, 넘으면 무승부).\n- 재교전 때 진형·진영·인연·금병법·전투 시작 효과는 남은 무장 기준으로 다시 적용하고, 턴도 1턴부터 다시 셉니다. 이 부분은 전보 확인 대기 목록에 올렸습니다.\n- 전보는 턴 번호가 이어집니다(2차 교전 1턴 = 9턴). 시뮬 결과에 '판당 교전 N차'가 표시됩니다.\n- 예: S2 태황유 vs 조감초는 평균 2.1차 교전·14.4턴, 조감초가 98% 승.\n- R-010: 한국 서버는 아직 시즌2 — 기본 시즌 S2 유지.\n감사 실패 8(기존 미지원 메커니즘), 테스트 31개 통과.",
+  "refs": [],
+  "author": "Claude",
+  "files": [
+    "apps/mcp-server/src/server.ts",
+    "apps/web/src/compute.ts",
+    "apps/web/src/views/sim.ts",
+    "data/audit/latest.json",
+    "data/common/confirmed-rules.json",
+    "data/verification/engine-assumptions.json",
+    "data/verification/queue.json",
+    "packages/engine/src/index.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/recommender/src/verify-plan.ts",
+    "tests/simulator.test.ts"
+  ]
+}

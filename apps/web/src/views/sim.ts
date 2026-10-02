@@ -111,7 +111,8 @@ function resultView() {
     h('div', { class: 'tiles' },
       h('div', { class: 'tile' }, h('div', { class: 'k' }, '내 덱 승률'), h('div', { class: 'v', style: { color: SIDE_A } }, pct(m.winRateA))),
       h('div', { class: 'tile' }, h('div', { class: 'k' }, '상대 승률'), h('div', { class: 'v', style: { color: SIDE_B } }, pct(m.winRateB))),
-      h('div', { class: 'tile' }, h('div', { class: 'k' }, '평균 턴'), h('div', { class: 'v' }, m.avgTurns.toFixed(2), h('small', null, ' 턴'))),
+      h('div', { class: 'tile' }, h('div', { class: 'k' }, '평균 턴'), h('div', { class: 'v' }, m.avgTurns.toFixed(2), h('small', null, ' 턴')),
+        m.avgRounds && m.avgRounds > 1.001 ? h('div', { class: 'sub', title: '8턴 무승부면 생존 무장끼리 다시 싸운다(R-009)' }, `판당 교전 ${m.avgRounds.toFixed(2)}차`) : null),
       h('div', { class: 'tile' }, h('div', { class: 'k' }, '시뮬'), h('div', { class: 'v' }, fmt(m.runs), h('small', null, ` 판 · 시드 ${m.seed}`)))),
     approxNotice(m),
     h('div', { class: 'panel' }, h('h3', { style: { fontSize: '15px', marginBottom: '8px' } }, '승패'), winBar(m.winA, m.draw, m.winB, [deckName('A'), deckName('B')])),
@@ -129,7 +130,7 @@ function battleView() {
   const bad = a.skills.filter((s: any) => s.worst === 'fail' || s.worst === 'warn');
   return h('div', { class: 'grid cols-2' },
     h('div', { class: 'panel' },
-      h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '15px' } }, `전보 — ${battle.winner === 'A' ? '내 덱 승' : battle.winner === 'B' ? '상대 승' : '무승부'} (${battle.turns}턴)`), h('span', { class: 'sub' }, `시드 ${battle.seed}`)),
+      h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '15px' } }, `전보 — ${battle.winner === 'A' ? '내 덱 승' : battle.winner === 'B' ? '상대 승' : '무승부'} (${battle.turns}턴${(battle as any).rounds > 1 ? ` · ${(battle as any).rounds}차 교전` : ''})`), h('span', { class: 'sub' }, `시드 ${battle.seed}`)),
       h('div', { class: 'log' }, lines.map(l => /── \d+번째 턴 ──|── 포진 ──/.test(l) ? h('div', { class: 'turn' }, l.replace(/^\d+턴: /, '')) : h('div', null, l.replace(/^\d+턴: /, ''))))),
     h('div', { class: 'panel' },
       h('h3', { style: { fontSize: '15px', marginBottom: '8px' } }, '이 전투의 규칙 감사'),

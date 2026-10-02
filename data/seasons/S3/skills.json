@@ -1159,7 +1159,7 @@
       "aliases": []
     },
     "isUnique": false,
-    "season": "S3",
+    "season": "S2",
     "overseasSeason": "S3",
     "grade": "전설",
     "kind": "지휘",
@@ -1193,7 +1193,7 @@
       "aliases": []
     },
     "isUnique": false,
-    "season": "S3",
+    "season": "S2",
     "overseasSeason": "S3",
     "grade": "전설",
     "kind": "지휘",
@@ -1227,7 +1227,7 @@
       "aliases": []
     },
     "isUnique": false,
-    "season": "S3",
+    "season": "S2",
     "overseasSeason": "S3",
     "grade": "전설",
     "kind": "액티브",
@@ -1261,7 +1261,7 @@
       "aliases": []
     },
     "isUnique": false,
-    "season": "S3",
+    "season": "S2",
     "overseasSeason": "S3",
     "grade": "전설",
     "kind": "액티브",
@@ -1297,7 +1297,7 @@
       ]
     },
     "isUnique": false,
-    "season": "S3",
+    "season": "S2",
     "overseasSeason": "S3",
     "grade": "전설",
     "kind": "패시브",
@@ -1331,7 +1331,7 @@
       "aliases": []
     },
     "isUnique": false,
-    "season": "S3",
+    "season": "S2",
     "overseasSeason": "S3",
     "grade": "전설",
     "kind": "액티브",

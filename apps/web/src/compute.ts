@@ -35,6 +35,7 @@ function mergeMc(parts: MonteCarloResult[], seed: string): MonteCarloResult {
   return {
     runs, winA, winB, draw, winRateA: winA / runs, winRateB: winB / runs,
     avgTurns: parts.reduce((a, p) => a + p.avgTurns * p.runs, 0) / runs,
+    avgRounds: parts.reduce((a, p) => a + (p.avgRounds ?? 1) * p.runs, 0) / runs,
     contribution: mergeContrib('contribution'), contributionB: mergeContrib('contributionB'),
     troopCurveAll: [...curve.entries()].sort((a, b) => a[0] - b[0]).map(([turn, e]) => ({ turn, A: e.A / e.n, B: e.B / e.n })),
     seed,

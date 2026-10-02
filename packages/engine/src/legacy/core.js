@@ -22,6 +22,8 @@ export const ENGINE_FIXES = [
     detail: '다른 무장에게 전법처럼 동작하는 효과를 부여(grants), 추격이 아닌 "일반 공격 후" 계기(afterBasic), 전열 우선 대상(random_ally_front).' },
   { id: 'FIX-003', date: '2026-10-02', found: '감사 D06', title: '피해 확률을 대상마다 따로 판정하던 문제',
     detail: '"N% 확률로 (대상)에게 피해" 를 발동 1회에 한 번만 판정하도록 고침. 문과 무·광풍의 분노·일인천군. 상태 부여 확률은 기존처럼 대상별 판정.' },
+  { id: 'FEAT-005', date: '2026-10-02', found: '사용자 확인 R-009', title: '8턴 무승부 → 생존 무장 재교전',
+    detail: '8턴이 끝나도 양쪽이 살아 있으면 남은 병력으로 승패를 가리던 방식(v1.12b)을 버리고, 전사 무장을 뺀 생존 무장끼리 병력·부상병을 이어받아 다시 전투한다. 한쪽 전멸까지 반복(상한 10차).' },
   { id: 'FEAT-004', date: '2026-10-02', found: 'S3 신규 전법 반영', title: 'S3 전법용 대상·조건 추가',
     detail: '지력이 가장 낮은 아군 대상(lowest_intel_ally, 공성계), 직전 턴에 발동하지 않았으면 피해 증가(idleBonus, 만군 멸시), 전법별 마지막 발동 턴 기록.' },
 ];
@@ -29,13 +31,14 @@ export function createLegacyEngine(gameData) {
 let __rng = Math.random;
 let __traceFn = null;
 let __turn = 0;
+let __turnOffset = 0;   // FEAT-005: 재교전의 전보·추적 턴 번호를 앞 교전 뒤에 잇는다
 let __phase = 'battleStart';
 const __skillStack = [];
 const __invStack = [];
 let __invSeq = 0;
 function __T(ev) {
   if (!__traceFn) return;
-  ev.turn = __turn; ev.phase = __phase;
+  ev.turn = __turn > 0 ? __turn + __turnOffset : 0; ev.phase = __phase;   // 재교전의 포진 단계도 0턴
   if (ev.inv == null && __invStack.length) ev.inv = __invStack[__invStack.length - 1];
   __traceFn(ev);
 }
@@ -74,7 +77,7 @@ function __T(ev) {
 //   ※ C는 그대로 1.44 유지. 실전 역산값 2.3~2.7에는 병법·장비·도시기술이 포함돼 있어
 //     "청정" 기준과 직접 비교할 수 없다.
 let DEBUG_DAMAGE_LOG = false; // 계산 내역 상세 로그 (UI 토글)
-const DEFAULT_COEFFS = { Clin: 2.726, kDef: 1.574, kDefIntel: 1.28, floorRate: 0.01, counterRatio: 0.5, damageVariance: 0.01, C: 1.44, beta: 0.45, defRatio: 0.4, critMult: 1.5, baseCrit: 0,   /* v1.12: 녹화 4판의 아군 타격 40여 건에서 기본 회심이 한 번도 없었음 → 기본 회심·묘책 0 */ statScaleWeight: 0.00285, durationMode: 'holder',
+const DEFAULT_COEFFS = { Clin: 2.726, kDef: 1.574, kDefIntel: 1.28, floorRate: 0.01, counterRatio: 0.5, damageVariance: 0.01, C: 1.44, beta: 0.45, defRatio: 0.4, critMult: 1.5, baseCrit: 0,   /* v1.12: 녹화 4판의 아군 타격 40여 건에서 기본 회심이 한 번도 없었음 → 기본 회심·묘책 0 */ statScaleWeight: 0.00285, durationMode: 'holder', drawRule: 'rematch', maxRounds: 10,   /* R-009 8턴 무승부 → 생존 무장 재교전 */
   // ── v1.12 실측 공식 (하후돈덱 2판 + 조운덱 2판, 공격자·피격자 툴팁 확보 표본) ──
   P0: 414, Pa: 1.07, Pd: 1.63, betaP: 0.47,   // 병기: (414 + 1.07×무력 − 1.63×통솔×(1−관통)) × (병력/10000)^0.47 — 10건 RMS 3.1%
   Ma: 1.73, betaM: 0.40,                      // 책략: 1.73 × 지력 × (병력/10000)^0.40 — 방어 스탯 영향 미미, 독립 검증 ±1%
@@ -1931,9 +1934,13 @@ function simulateOneBattle(armyA, armyB, coeffs) {
     if (winner) break;
   }
   if (!winner) {
-    const aTroops = units.filter(u => u.side === 'A').reduce((s, u) => s + u.troops, 0);
-    const bTroops = units.filter(u => u.side === 'B').reduce((s, u) => s + u.troops, 0);
-    winner = aTroops === bTroops ? 'draw' : (aTroops > bTroops ? 'A' : 'B');
+    // 8턴 만기: 양쪽 모두 생존 → 무승부(R-009). 재교전 여부는 simulateBattle 이 정한다.
+    // 재교전을 쓰지 않는 호출(drawRule 'troops')만 예전처럼 남은 병력으로 승패를 가린다.
+    if ((coeffs.drawRule || DEFAULT_COEFFS.drawRule) === 'troops') {
+      const aTroops = units.filter(u => u.side === 'A').reduce((s, u) => s + u.troops, 0);
+      const bTroops = units.filter(u => u.side === 'B').reduce((s, u) => s + u.troops, 0);
+      winner = aTroops === bTroops ? 'draw' : (aTroops > bTroops ? 'A' : 'B');
+    } else winner = 'timeout';
   }
   // for 루프가 정상 종료되면 turn이 MAX_TURN+1이 된 상태이므로 실제 진행 턴으로 되돌린다.
   // (8턴 만기 전투가 "9턴"으로 보고되던 버그)
@@ -1941,6 +1948,53 @@ function simulateOneBattle(armyA, armyB, coeffs) {
   __T({ e: 'end', winner, turns: actualTurns });
   return { snapshots: battleState.snapshots,
     winner, turns: actualTurns, log, contrib, troopHistory, units };
+}
+
+// ============================================================
+// FEAT-005 재교전 (사용자 확인 R-009)
+// 8턴이 끝나도 양쪽 모두 살아 있으면 무승부 → 병력이 0이 되어 전사한 무장을 빼고
+// 남은 무장끼리 새 전투를 시작한다. 병력·부상병은 이어받고, 진형·진영·인연·전투 시작 효과는
+// 남은 무장 기준으로 다시 적용된다(rebuildFn 이 부대를 새로 만든다). 한쪽이 전멸할 때까지 반복,
+// coeffs.maxRounds(기본 10)를 넘으면 무승부.
+// ============================================================
+function simulateBattle(armyA, armyB, coeffs, rebuildFn) {
+  let res = simulateOneBattle(armyA, armyB, coeffs);
+  if (res.winner !== 'timeout') return { ...res, rounds: 1 };
+  const maxRounds = coeffs.maxRounds || DEFAULT_COEFFS.maxRounds;
+  const log = [...res.log], troopHistory = [...res.troopHistory], contrib = { ...res.contrib, __counts: { ...(res.contrib.__counts || {}) } };
+  const fallen = res.units.filter(u => !u.alive || u.troops <= 0);
+  let turns = res.turns, round = 1;
+  while (res.winner === 'timeout' && rebuildFn && round < maxRounds) {
+    round++;
+    const prev = res.units;
+    const aliveIds = side => prev.filter(u => u.side === side && u.alive && u.troops > 0).map(u => u.generalId);
+    const [na, nb] = rebuildFn(aliveIds('A'), aliveIds('B'));
+    [...na, ...nb].forEach(u => {
+      const p = prev.find(x => x.side === u.side && x.generalId === u.generalId);
+      if (!p) return;
+      u.id = p.id;   // 전보·감사에서 같은 무장을 같은 id 로 본다
+      u.troops = p.troops; u.wounded = p.wounded || 0;
+      u.dmgDealt = p.dmgDealt; u.healDone = p.healDone;
+    });
+    const offset = turns;
+    log.push(`${offset}턴: ── 8턴 무승부 → ${round}차 교전 (생존 무장끼리 다시 전투: ` +
+      `${na.map(u => u.name).join('·')} vs ${nb.map(u => u.name).join('·')}) ──`);
+    __turnOffset = offset;
+    try { res = simulateOneBattle(na, nb, coeffs); } finally { __turnOffset = 0; }
+    // 전보 턴 번호를 앞 교전 뒤에 잇는다 (2차 교전 1턴 = ${offset + 1}턴)
+    res.log.forEach(l => log.push(l.replace(/^(\d+)턴:/, (m, n) => `${+n + offset}턴:`)));
+    res.troopHistory.forEach(p => troopHistory.push({ ...p, turn: p.turn + offset }));
+    Object.entries(res.contrib).forEach(([k, v]) => {
+      if (k === '__counts') Object.entries(v).forEach(([sk, n]) => { contrib.__counts[sk] = (contrib.__counts[sk] || 0) + n; });
+      else contrib[k] = (contrib[k] || 0) + v;
+    });
+    fallen.push(...res.units.filter(u => !u.alive || u.troops <= 0));
+    turns += res.turns;
+  }
+  const winner = res.winner === 'timeout' ? 'draw' : res.winner;
+  if (res.winner === 'timeout') log.push(`${turns}턴: ── ${round}차 교전까지 결판이 나지 않아 무승부 ──`);
+  const units = [...res.units.filter(u => u.alive && u.troops > 0), ...fallen.filter((u, i, arr) => arr.findIndex(x => x.side === u.side && x.generalId === u.generalId) === i)];
+  return { snapshots: res.snapshots, winner, turns, log, contrib, troopHistory, units, rounds: round };
 }
 
 // ============================================================
@@ -1967,7 +2021,7 @@ function buildArmyFn(baseArmyA, baseArmyB, cloneFn) {
   return () => [cloneFn(baseArmyA, 'A'), cloneFn(baseArmyB, 'B')];
 }
 
-function runMonteCarlo(freshArmyPairFn, coeffs, runs) {
+function runMonteCarlo(freshArmyPairFn, coeffs, runs, rebuildFn) {
   const results = [];
   const skillContribA = {}; // skillId -> total value (아군)
   const procCountA = {}; const procCountB = {}; // skillId -> 총 발동 횟수
@@ -1977,13 +2031,14 @@ function runMonteCarlo(freshArmyPairFn, coeffs, runs) {
   const troopCurvesLose = [];
   const earlySkillFlagsWin = []; // Set per run when A wins
   const earlySkillFlagsLose = [];
-  let winA = 0, winB = 0, draw = 0, turnSum = 0;
+  let winA = 0, winB = 0, draw = 0, turnSum = 0, roundSum = 0;
 
   for (let i = 0; i < runs; i++) {
     const [armyA, armyB] = freshArmyPairFn();
     const myUnitNames = new Set(armyA.map(u => u.name));
-    const res = simulateOneBattle(armyA, armyB, coeffs);
+    const res = simulateBattle(armyA, armyB, coeffs, rebuildFn);
     results.push(res);
+    roundSum += res.rounds || 1;
     turnSum += res.turns;
     if (res.winner === 'A') winA++; else if (res.winner === 'B') winB++; else draw++;
 
@@ -2054,6 +2109,7 @@ function runMonteCarlo(freshArmyPairFn, coeffs, runs) {
     runs, winA, winB, draw,
     winRateA: winA / runs, winRateB: winB / runs,
     avgTurns: turnSum / runs,
+    avgRounds: roundSum / runs,
     contribution,
     contributionB,
     decisiveFactors,
@@ -2257,7 +2313,7 @@ return {
   setTrace: (f) => { __traceFn = f; },
   setSkillLevel: (lv) => { SKILL_LEVEL = lv; },
   skillTiming, effStat, hasStatus, selectTargets, mergeActionOrder,
-  DEFAULT_COEFFS, buildUnit, simulateOneBattle, procRateOf,
+  DEFAULT_COEFFS, buildUnit, simulateOneBattle, simulateBattle, procRateOf,
   getDebugDamageLog: () => DEBUG_DAMAGE_LOG,
   setDebugDamageLog: (v) => { DEBUG_DAMAGE_LOG = !!v; },
   runMonteCarlo, profileDeck, recommendCounters, findActiveBonds, applyBondBonuses,

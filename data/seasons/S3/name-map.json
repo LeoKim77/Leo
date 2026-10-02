@@ -43,12 +43,12 @@
     { "sheet": "만군 멸시", "aliases": ["만군멸시"], "id": "scorn-myriad", "kind": "추격", "kindInferred": true },
     { "sheet": "훗날의 교훈", "aliases": ["훗날의교훈"], "id": "punish-past", "decklab": "punish-past" },
     { "sheet": "뛰어난 응변", "aliases": ["뛰어난응변"], "id": "divine-change", "decklab": "divine-change" },
-    { "sheet": "일심협력", "id": "same-boat", "decklab": "same-boat", "textFrom": "decklab" },
-    { "sheet": "금성의 철벽", "id": "golden-fortress", "decklab": "golden-fortress", "textFrom": "decklab" },
-    { "sheet": "맹렬한 화염", "id": "blazing-sky", "decklab": "blazing-sky", "textFrom": "decklab" },
-    { "sheet": "허실 간파", "id": "see-truth", "decklab": "see-truth", "textFrom": "decklab" },
-    { "sheet": "병력 강화", "aliases": ["병력강화"], "id": "prepare-armor", "decklab": "prepare-armor", "textFrom": "decklab" },
-    { "sheet": "기민한 전술", "id": "charge-change", "decklab": "charge-change", "textFrom": "decklab" }
+    { "sheet": "일심협력", "id": "same-boat", "decklab": "same-boat", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" },
+    { "sheet": "금성의 철벽", "id": "golden-fortress", "decklab": "golden-fortress", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" },
+    { "sheet": "맹렬한 화염", "id": "blazing-sky", "decklab": "blazing-sky", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" },
+    { "sheet": "허실 간파", "id": "see-truth", "decklab": "see-truth", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" },
+    { "sheet": "병력 강화", "aliases": ["병력강화"], "id": "prepare-armor", "decklab": "prepare-armor", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" },
+    { "sheet": "기민한 전술", "id": "charge-change", "decklab": "charge-change", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" }
   ],
   "textFixes": [
     { "from": "용의주도을", "to": "용의주도를", "note": "시트 조사 오타" }

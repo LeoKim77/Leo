@@ -50,7 +50,10 @@ export function planVerification(bundle: GameBundle, queue: VerifyItem[], owned:
   const pending = queue.filter(q => q.status === 'pending' && q.kind !== 'capture').sort((a, b) => (ENGINE_FIRST[a.kind] ?? 9) - (ENGINE_FIRST[b.kind] ?? 9));
   const blocked: VerifyPlan['blocked'] = [];
   const todo: Array<{ it: VerifyItem; needs: Need[] }> = [];
+  // 특정 카드가 필요 없는 엔진 가정(재교전 등)은 아무 전투에서나 보인다 → 첫 전투에 붙인다
+  const anyBattle = pending.filter(it => it.kind === 'engine' && !needsOf(it).length);
   for (const it of pending) {
+    if (anyBattle.includes(it)) continue;
     const needs = needsOf(it);
     const ok = needs.filter(ownedNeed);
     if (ok.length) todo.push({ it, needs: ok });
@@ -126,5 +129,7 @@ export function planVerification(bundle: GameBundle, queue: VerifyItem[], owned:
     for (const i of via.keys()) left.delete(i);
   }
   for (const i of left) blocked.push({ id: todo[i].it.id, title: todo[i].it.title, needs: ['전투 수 한도 초과'] });
-  return { battles, blocked, covered: todo.length - left.size, total: pending.length };
+  if (battles.length) battles[0].items.push(...anyBattle.map(it => ({ id: it.id, title: it.title, howToVerify: it.howToVerify, via: '아무 전투' })));
+  else anyBattle.forEach(it => blocked.push({ id: it.id, title: it.title, needs: ['아무 전투나 녹화하면 확인 가능'] }));
+  return { battles, blocked, covered: todo.length - left.size + (battles.length ? anyBattle.length : 0), total: pending.length };
 }

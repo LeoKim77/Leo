@@ -1,0 +1,20 @@
+{
+  "id": "2026-10-02-site-title",
+  "date": "2026-10-02",
+  "season": "S2",
+  "category": "기타",
+  "title": "사이트 이름을 '삼국지 천하결전 무한무투'로 변경",
+  "body": "사이트 제목을 '삼국지 천하결전 무한무투'로 바꿨습니다. 화면 머리말·브라우저 탭·README·설계 문서·사이트 설정·MCP 표시 이름·단일 파일 이름(muhanmutu.html)까지 바꿨고, 아티팩트 주소는 그대로입니다. 브라우저에 저장된 보유 목록은 그대로 유지됩니다.",
+  "refs": [],
+  "author": "Claude",
+  "files": [
+    ".claude/skills/season-update/SKILL.md",
+    "CLAUDE.md",
+    "README.md",
+    "apps/web/index.html",
+    "apps/web/src/styles.css",
+    "data/common/site.json",
+    "docs/DESIGN.md",
+    "packages/data-tools/src/build-standalone.ts"
+  ]
+}

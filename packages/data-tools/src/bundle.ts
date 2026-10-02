@@ -137,9 +137,12 @@ export interface FullBundle extends GameBundle {
 export function withSeasonLayers<T extends { id: string }>(base: T[], file: 'generals' | 'skills' | 'tier-decks'): T[] {
   const dir = join(DATA, 'seasons');
   if (!existsSync(dir)) return base;
-  const out = [...base];
+  let out = [...base];
   for (const season of readdirSync(dir).sort()) {
-    for (const item of readJson<T[]>(join(dir, season, `${file}.json`), [])) if (!out.some(x => x.id === item.id)) out.push(item);
+    const items = readJson<T[]>(join(dir, season, `${file}.json`), []);
+    // 티어덱은 시즌 시트가 최신이다 — 그 시즌의 엑셀 티어덱을 시트 판으로 바꾼다
+    if (file === 'tier-decks' && items.length) out = out.filter(x => (x as any).season !== season);
+    for (const item of items) if (!out.some(x => x.id === item.id)) out.push(item);
   }
   return out;
 }

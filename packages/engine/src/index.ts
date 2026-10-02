@@ -53,6 +53,8 @@ export interface SimOptions {
 export interface BattleResult {
   winner: 'A' | 'B' | 'draw';
   turns: number;
+  /** 교전 수 — 8턴 무승부면 생존 무장끼리 재교전 (R-009) */
+  rounds?: number;
   log: string[];
   trace?: TraceEvent[];
   troopHistory: Array<{ turn: number; A: number; B: number }>;
@@ -69,6 +71,8 @@ export interface MonteCarloResult {
   winRateA: number;
   winRateB: number;
   avgTurns: number;
+  /** 판당 평균 교전 수 (8턴 무승부면 생존 무장끼리 재교전, R-009) */
+  avgRounds?: number;
   contribution: Array<{ id: string; name: string; value: number; pct: number; procs: number; procsPerRun: number }>;
   contributionB: MonteCarloResult['contribution'];
   troopCurveAll: Array<{ turn: number; A: number; B: number }>;
@@ -251,9 +255,9 @@ export class Simulator {
     const trace: TraceEvent[] = [];
     this.engine.setTrace(opt.trace ? (ev: TraceEvent) => trace.push(ev) : null);
     try {
-      const res = this.engine.simulateOneBattle(this.buildArmy(a, 'A'), this.buildArmy(b, 'B'), this.coeffs);
+      const res = this.engine.simulateBattle(this.buildArmy(a, 'A'), this.buildArmy(b, 'B'), this.coeffs, this.rebuild(a, b));
       return {
-        winner: res.winner, turns: res.turns, log: res.log, troopHistory: res.troopHistory,
+        winner: res.winner, turns: res.turns, rounds: res.rounds, log: res.log, troopHistory: res.troopHistory,
         trace: opt.trace ? trace : undefined,
         units: res.units.map((u: any) => ({ id: u.id, side: u.side, name: u.name, generalId: u.generalId, troops: u.troops, maxTroops: u.maxTroops, dmgDealt: u.dmgDealt, healDone: u.healDone })),
       };
@@ -262,16 +266,22 @@ export class Simulator {
     }
   }
 
+  /** 재교전(R-009): 생존 무장만으로 부대를 다시 만든다 — 진형·진영·인연·금병법은 남은 무장 기준으로 다시 적용 */
+  private rebuild(a: DeckSpec, b: DeckSpec) {
+    const only = (d: DeckSpec, ids: string[]): DeckSpec => ({ ...d, units: d.units.filter(u => ids.includes(u.generalId)) });
+    return (aIds: string[], bIds: string[]) => [this.buildArmy(only(a, aIds), 'A'), this.buildArmy(only(b, bIds), 'B')];
+  }
+
   /** 몬테카를로. 시드가 같으면 결과도 같다 */
   monteCarlo(a: DeckSpec, b: DeckSpec, opt: { runs?: number; seed?: string | number } = {}): MonteCarloResult {
     const runs = opt.runs ?? 500;
     const seed = String(opt.seed ?? Date.now());
     this.engine.setRng(createRng(seed));
     this.engine.setTrace(null);
-    const mc = this.engine.runMonteCarlo(() => [this.buildArmy(a, 'A'), this.buildArmy(b, 'B')], this.coeffs, runs);
+    const mc = this.engine.runMonteCarlo(() => [this.buildArmy(a, 'A'), this.buildArmy(b, 'B')], this.coeffs, runs, this.rebuild(a, b));
     return {
       runs: mc.runs, winA: mc.winA, winB: mc.winB, draw: mc.draw,
-      winRateA: mc.winRateA, winRateB: mc.winRateB, avgTurns: mc.avgTurns,
+      winRateA: mc.winRateA, winRateB: mc.winRateB, avgTurns: mc.avgTurns, avgRounds: mc.avgRounds,
       contribution: mc.contribution, contributionB: mc.contributionB,
       troopCurveAll: mc.troopCurveAll, seed,
       approx: { A: this.approxIn(a), B: this.approxIn(b) },

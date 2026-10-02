@@ -16,17 +16,20 @@ function unitRow(t: TierDeck, u: TierDeckUnit, i: number, own: { g: Set<string>;
   return h('tr', null,
     h('td', { style: { width: '92px', verticalAlign: 'top' } },
       h('a', { href: `#/codex?kind=general&id=${u.generalId}`, style: { color: dim(own.g.has(u.generalId)) }, ...hlAttrs(marked(t, i, '무장')) }, u.generalName),
+      u.generalAlternatives?.length ? h('div', { class: 'muted', style: { fontSize: '12px' } }, `또는 ${u.generalAlternatives.join(', ')}`) : null,
       u.unitType ? h('div', null, h('span', { class: 'badge', title: '덱에서 병종 변경' }, `→ ${u.unitType}`)) : null,
       tmp.length ? h('div', null, h('span', { class: 'badge tmp', title: tmp.map(x => x.join(': ')).join('\n') }, '임시 자료')) : null),
     h('td', null,
+      u.skillNames.length > u.skillIds.length ? h('span', { class: 'badge tmp', title: '시트에 특정 전법 대신 종류만 적힌 칸 — 시뮬에서는 빈 칸' }, u.skillNames.find((n, k) => !u.skillIds[k] || skillById(u.skillIds[k])?.name.ko !== n) || '자유 칸') : null,
       u.skillIds.map((sid, k) => h('span', hlAttrs(marked(t, i, `전법${k + 1}`)),
         h('a', { href: `#/codex?kind=skill&id=${sid}`, class: 'badge', style: { color: dim(own.s.has(sid)) } }, skillById(sid)?.name.ko || u.skillNames[k]),
         u.skillAlternatives?.[k]?.length ? h('span', { class: 'muted', style: { fontSize: '12px', marginRight: '6px' } }, `또는 ${u.skillAlternatives[k].map(a => a.name).join(', ')}`) : null)),
+      u.swapSkills?.length ? h('div', { class: 'muted', style: { fontSize: '12.5px' } }, `대체 전법 ${u.swapSkills.map(a => a.name).join(', ')}`) : null,
       h('div', { class: 'muted', style: { fontSize: '12.5px' } },
         m ? `금병법〈${m.name}〉${m.status === 'unsupported' ? '(미지원)' : m.status === 'missing' ? '(원문 미확인 — 시뮬 제외)' : ''} · ` : '',
         u.manualSlots.flat().every(x => x === '연의') ? '연의 무장 — 병법 칸 없음' : `세팅 병법 ${u.manualSlots.map(s => s.join('/')).join(' · ')}`),
       h('div', { class: 'muted', style: { fontSize: '12.5px' } },
-        [u.statCombo && `장비 ${u.statCombo}`, u.gear?.trait && `장비 특성 ${u.gear.trait}`, u.gear?.mount && `탈것 ${u.gear.mount}`].filter(Boolean).join(' · '),
+        [u.troop?.type && `병종 ${u.troop.type}${u.troop.spec ? ` (${u.troop.spec})` : ''}`, u.statCombo && `장비 ${u.statCombo}`, u.gear?.trait && `장비 특성 ${u.gear.trait}`, u.gear?.mount && `탈것 ${u.gear.mount}`].filter(Boolean).join(' · '),
         u.statPriority ? [' · ', h('span', hlAttrs(marked(t, i, '능력치 분배')), `능력치 ${u.statPriority}`)] : null)));
 }
 

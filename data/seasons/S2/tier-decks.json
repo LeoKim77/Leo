@@ -1,0 +1,3392 @@
+[
+  {
+    "id": "tier-s2-01",
+    "season": "S2",
+    "tier": "T0.3",
+    "name": "조원마",
+    "note": "마초는 기병 형태를 유지 시 미러전에서 더 좋음. 조감초가 나오기 전까지 매우 강함",
+    "formation": "기형진",
+    "units": [
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "지력",
+        "skillIds": [
+          "avoid-edge",
+          "support-selfless"
+        ],
+        "skillNames": [
+          "허점공략",
+          "전력지원"
+        ],
+        "skillAlternatives": [
+          [
+            {
+              "name": "고요한제압",
+              "id": "calm"
+            }
+          ],
+          [
+            {
+              "name": "청낭치료",
+              "id": "qingnang"
+            }
+          ]
+        ],
+        "swapSkills": [
+          {
+            "name": "청풍질주",
+            "id": "fresh-breeze"
+          }
+        ],
+        "manualSlots": [
+          [
+            "기임"
+          ],
+          [
+            "비전"
+          ],
+          [
+            "병령"
+          ]
+        ],
+        "goldManuals": [],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중방패병",
+          "spec": "굳건한 태세"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림/만상/질주"
+        }
+      },
+      {
+        "generalId": "yuan-shao",
+        "generalName": "원소",
+        "unitType": "방패병",
+        "statPriority": "통솔",
+        "skillIds": [
+          "direct-world",
+          "armor-edge"
+        ],
+        "skillNames": [
+          "천하평론",
+          "결사의 다짐"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "팔방전",
+            "id": "all-directions"
+          },
+          {
+            "name": "강철의 의지",
+            "id": "no-hardship"
+          }
+        ],
+        "manualSlots": [
+          [
+            "세가"
+          ],
+          [
+            "적용"
+          ],
+          [
+            "선용"
+          ]
+        ],
+        "goldManuals": [
+          "세가"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중방패병-전환",
+          "spec": "굳건한 태세"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림/만상/질주"
+        }
+      },
+      {
+        "generalId": "ma-chao",
+        "generalName": "마초",
+        "statPriority": "선공 +25, 나머지 무력",
+        "skillIds": [
+          "break-hardship",
+          "overwhelming-win"
+        ],
+        "skillNames": [
+          "요새함락",
+          "연전연승"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "파죽지세",
+            "id": "break-through"
+          },
+          {
+            "name": "예리한통찰",
+            "id": "unstoppable"
+          },
+          {
+            "name": "퇴로매복",
+            "id": "ambushes"
+          }
+        ],
+        "manualSlots": [
+          [
+            "철기"
+          ],
+          [
+            "승전"
+          ],
+          [
+            "구전"
+          ]
+        ],
+        "goldManuals": [
+          "철기"
+        ],
+        "statCombo": "무력 / 선공",
+        "troop": {
+          "type": "경기병",
+          "spec": "기병돌진"
+        },
+        "gear": {
+          "trait": "신위 연마",
+          "mount": "천운 투영"
+        }
+      }
+    ],
+    "highlight": [
+      {
+        "field": "병법1",
+        "unit": 0,
+        "color": "#ffff00"
+      }
+    ],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-02",
+    "season": "S2",
+    "tier": "T0.5",
+    "name": "주순악",
+    "note": "조원마 때문에 2등으로 밀렸지만, 주태 덱을 쓸어버리데는 아주 좋다.",
+    "formation": "언월진",
+    "units": [
+      {
+        "generalId": "zhou-yu",
+        "generalName": "주유",
+        "statPriority": "지력 1위",
+        "skillIds": [
+          "overwhelming-win",
+          "strong-wind"
+        ],
+        "skillNames": [
+          "연전연승",
+          "광풍의 분노"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "충신의 기재",
+            "id": "best-strategy"
+          }
+        ],
+        "manualSlots": [
+          [
+            "화계"
+          ],
+          [
+            "요적"
+          ],
+          [
+            "탈계"
+          ]
+        ],
+        "goldManuals": [
+          "화계"
+        ],
+        "statCombo": "지력 / 선공",
+        "troop": {
+          "type": "석궁병",
+          "spec": "후방와해"
+        },
+        "gear": {
+          "trait": "신위 영광",
+          "mount": "도화 투영"
+        }
+      },
+      {
+        "generalId": "xun-yu",
+        "generalName": "순욱",
+        "unitType": "방패병",
+        "statPriority": "지력 2위",
+        "skillIds": [
+          "avoid-edge",
+          "qingnang"
+        ],
+        "skillNames": [
+          "허점공략",
+          "청낭치료"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "청풍질주",
+            "id": "fresh-breeze"
+          }
+        ],
+        "manualSlots": [
+          [
+            "복한"
+          ],
+          [
+            "정시"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "복한"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중방패병-전환",
+          "spec": "확고한 정비"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "도화"
+        }
+      },
+      {
+        "generalId": "yue-jin",
+        "generalName": "악진",
+        "statPriority": "선공",
+        "skillIds": [
+          "all-directions",
+          "blazing-sky"
+        ],
+        "skillNames": [
+          "팔방전",
+          "맹렬한화염"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "측면공격",
+            "id": "swift-flank"
+          },
+          {
+            "name": "화공전술",
+            "id": "fire-camp"
+          }
+        ],
+        "manualSlots": [
+          [
+            "합모"
+          ],
+          [
+            "병교"
+          ],
+          [
+            "호세"
+          ]
+        ],
+        "goldManuals": [],
+        "statCombo": "통솔 / 선공",
+        "troop": {
+          "type": "중기병",
+          "spec": "철마금과"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "도화 신속"
+        }
+      }
+    ],
+    "highlight": [
+      {
+        "field": "탈것특기",
+        "unit": 0,
+        "color": "#ffff00"
+      },
+      {
+        "field": "탈것특기",
+        "unit": 1,
+        "color": "#ffff00"
+      },
+      {
+        "field": "탈것특기",
+        "unit": 2,
+        "color": "#ffff00"
+      }
+    ],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-03",
+    "season": "S2",
+    "tier": "T0.5-",
+    "name": "여진악",
+    "note": "시즌 2에서 가장 잘 살아남은 악진 체계. 조금씩 지속적으로 깎아먹는 방식이라 주태를 크게 두려워하지 않으며, 그야말로 도박덱의 왕",
+    "formation": "언월진",
+    "units": [
+      {
+        "generalId": "lü-bu",
+        "generalName": "여포",
+        "statPriority": "선공 230 찍고 나머지 무력",
+        "skillIds": [
+          "iron-cavalry",
+          "speed-first"
+        ],
+        "skillNames": [
+          "철기병 돌격",
+          "신속전개"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "천군소탕",
+            "id": "sweep-army"
+          }
+        ],
+        "manualSlots": [
+          [
+            "도발"
+          ],
+          [
+            "질투"
+          ],
+          [
+            "질전"
+          ]
+        ],
+        "goldManuals": [
+          "도발"
+        ],
+        "statCombo": "무력 / 선공",
+        "troop": {
+          "type": "경기병",
+          "spec": "용맹한 용사"
+        },
+        "gear": {
+          "trait": "신위 연마",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "chen-gong",
+        "generalName": "진궁",
+        "statPriority": "통솔",
+        "skillIds": [
+          "armor-edge",
+          "sacrifice"
+        ],
+        "skillNames": [
+          "결사의 다짐",
+          "정의의 희생"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "고요한제압",
+            "id": "calm"
+          },
+          {
+            "name": "금성의철벽",
+            "id": "golden-fortress"
+          }
+        ],
+        "manualSlots": [
+          [
+            "논무"
+          ],
+          [
+            "호세"
+          ],
+          [
+            "적용"
+          ]
+        ],
+        "goldManuals": [
+          "논무"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장궁병",
+          "spec": "공수 겸비"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "yue-jin",
+        "generalName": "악진",
+        "statPriority": "선공",
+        "skillIds": [
+          "all-directions",
+          "no-hardship"
+        ],
+        "skillNames": [
+          "팔방전",
+          "강철의 의지"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "측면공격",
+            "id": "swift-flank"
+          },
+          {
+            "name": "유현정책",
+            "id": "know-people"
+          }
+        ],
+        "manualSlots": [
+          [
+            "동등"
+          ],
+          [
+            "병령"
+          ],
+          [
+            "선용"
+          ]
+        ],
+        "goldManuals": [
+          "동등"
+        ],
+        "statCombo": "통솔 / 선공",
+        "troop": {
+          "type": "중기병",
+          "spec": "철마금과"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "질주 신속"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-04",
+    "season": "S2",
+    "tier": "T0.5",
+    "name": "태황유",
+    "note": "저돌파는 하지 마라! 고돌파가 저돌파를 찍어누르는 덱이다.",
+    "formation": "안형진",
+    "units": [
+      {
+        "generalId": "zhou-yu",
+        "generalName": "주유",
+        "statPriority": "지력",
+        "skillIds": [
+          "overwhelming-win",
+          "best-strategy"
+        ],
+        "skillNames": [
+          "연전연승",
+          "충신의 기재"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "예리한통찰",
+            "id": "unstoppable"
+          },
+          {
+            "name": "광풍의분노",
+            "id": "strong-wind"
+          }
+        ],
+        "manualSlots": [
+          [
+            "화계"
+          ],
+          [
+            "요적"
+          ],
+          [
+            "탈계"
+          ]
+        ],
+        "goldManuals": [
+          "화계"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "석궁병",
+          "spec": "후방와해"
+        },
+        "gear": {
+          "trait": "신위 영광",
+          "mount": "도화 투영"
+        }
+      },
+      {
+        "generalId": "zhou-tai",
+        "generalName": "주태",
+        "unitType": "궁병",
+        "statPriority": "통솔",
+        "skillIds": [
+          "solid-defense",
+          "taxation"
+        ],
+        "skillNames": [
+          "난공불락",
+          "세금 과징수"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "허점공략",
+            "id": "avoid-edge"
+          },
+          {
+            "name": "지혜의바람",
+            "id": "spring-breeze"
+          }
+        ],
+        "manualSlots": [
+          [
+            "역전"
+          ],
+          [
+            "호세"
+          ],
+          [
+            "병령"
+          ]
+        ],
+        "goldManuals": [
+          "역전"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장궁병-전환",
+          "spec": "치밀한 계획"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "도화"
+        }
+      },
+      {
+        "generalId": "huang-gai",
+        "generalName": "황개",
+        "statPriority": "선공",
+        "skillIds": [
+          "divine-aid",
+          "direct-world"
+        ],
+        "skillNames": [
+          "신의가호",
+          "천하평론"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "맹렬한화염",
+            "id": "blazing-sky"
+          }
+        ],
+        "manualSlots": [
+          [
+            "귀모"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [],
+        "statCombo": "통솔 / 선공",
+        "troop": {
+          "type": "검방패병",
+          "spec": "백전백승"
+        },
+        "gear": {
+          "trait": "선방 결단",
+          "mount": "질주 신속"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-05",
+    "season": "S2",
+    "tier": "T0.5",
+    "name": "조감초",
+    "note": "거의 모두가 한 부대씩 쓰는 덱이며, 장서각이 있어야만 운용할 수 있다.",
+    "formation": "추형진",
+    "units": [
+      {
+        "generalId": "diao-chan",
+        "generalName": "초선",
+        "unitType": "창병",
+        "statPriority": "조운보다 선공 높게, 나머지 통솔",
+        "skillIds": [
+          "golden-fortress",
+          "supply-cut"
+        ],
+        "skillNames": [
+          "금성의 철벽",
+          "보급차단"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "전쟁종식",
+            "id": "forge-armor"
+          },
+          {
+            "name": "백전불태",
+            "id": "hundred-battles"
+          }
+        ],
+        "manualSlots": [
+          [
+            "장서각"
+          ],
+          [
+            "장서각"
+          ],
+          [
+            "장서각"
+          ]
+        ],
+        "goldManuals": [],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장창병-전환",
+          "spec": "초지일관"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "zhao-yun",
+        "generalName": "조운",
+        "unitType": "창병",
+        "statPriority": "무력, 선공 최저",
+        "skillIds": [
+          "brave-three-armies",
+          "prepare-armor"
+        ],
+        "skillNames": [
+          "용맹한 삼군",
+          "병력강화"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "예리한통찰",
+            "id": "unstoppable"
+          },
+          {
+            "name": "찬란한위명",
+            "id": "famous"
+          },
+          {
+            "name": "요새함락",
+            "id": "break-hardship"
+          },
+          {
+            "name": "파죽지세",
+            "id": "break-through"
+          }
+        ],
+        "manualSlots": [
+          [
+            "신용"
+          ],
+          [
+            "승민"
+          ],
+          [
+            "구전"
+          ]
+        ],
+        "goldManuals": [
+          "신용"
+        ],
+        "statCombo": "무력 / 통솔",
+        "troop": {
+          "type": "단창병-전환",
+          "spec": "초지일관"
+        },
+        "gear": {
+          "trait": "신위 연마",
+          "mount": "천운 민첩"
+        }
+      },
+      {
+        "generalId": "gan-furen",
+        "generalName": "감부인",
+        "unitType": "창병",
+        "statPriority": "조운보다 선공 높게, 나머지 지력",
+        "skillIds": [
+          "same-boat",
+          "light-support"
+        ],
+        "skillNames": [
+          "일심협력",
+          "경무장"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "지혜의바람",
+            "id": "spring-breeze"
+          },
+          {
+            "name": "전쟁종식",
+            "id": "forge-armor"
+          }
+        ],
+        "manualSlots": [
+          [
+            "한녀"
+          ],
+          [
+            "적용"
+          ],
+          [
+            "기예"
+          ]
+        ],
+        "goldManuals": [
+          "한녀"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장창병-전환",
+          "spec": "초지일관"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      }
+    ],
+    "highlight": [
+      {
+        "field": "병법1",
+        "unit": 0,
+        "color": "#ffff00"
+      },
+      {
+        "field": "병법2",
+        "unit": 0,
+        "color": "#ffff00"
+      },
+      {
+        "field": "병법3",
+        "unit": 0,
+        "color": "#ffff00"
+      },
+      {
+        "field": "능력치 분배",
+        "unit": 0,
+        "color": "#ffff00"
+      },
+      {
+        "field": "능력치 분배",
+        "unit": 2,
+        "color": "#ffff00"
+      }
+    ],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-06",
+    "season": "S2",
+    "tier": "T0.5-",
+    "name": "조순사",
+    "note": "태원마에게 너무 강하게 카운터당하지만, 그 외 덱을 상대할 때는 큰 문제가 없다.",
+    "formation": "기형진",
+    "units": [
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "지력",
+        "skillIds": [
+          "avoid-edge",
+          "calm"
+        ],
+        "skillNames": [
+          "허점공략",
+          "고요한 제압"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "금성의 철벽",
+            "id": "golden-fortress"
+          }
+        ],
+        "manualSlots": [
+          [
+            "상권"
+          ],
+          [
+            "합모"
+          ],
+          [
+            "병령"
+          ]
+        ],
+        "goldManuals": [
+          "상권"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중방패병",
+          "spec": "굳건한 태세"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "약수"
+        }
+      },
+      {
+        "generalId": "xun-yu",
+        "generalName": "순욱",
+        "unitType": "방패병",
+        "statPriority": "지력 2위, 나머지 통솔",
+        "skillIds": [
+          "odd-even",
+          "qingnang"
+        ],
+        "skillNames": [
+          "음과 양",
+          "청낭치료"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "청풍질주",
+            "id": "fresh-breeze"
+          },
+          {
+            "name": "전장의 노래",
+            "id": "sing-wine"
+          }
+        ],
+        "manualSlots": [
+          [
+            "복한"
+          ],
+          [
+            "정시"
+          ],
+          [
+            "원도"
+          ]
+        ],
+        "goldManuals": [
+          "복한"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중방패병-전환",
+          "spec": "확고한 정비"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "약수"
+        }
+      },
+      {
+        "generalId": "sima-yi",
+        "generalName": "사마의",
+        "statPriority": "선공 +10~20, 지력 1위",
+        "skillIds": [
+          "see-truth",
+          "five-thunder"
+        ],
+        "skillNames": [
+          "허실간파",
+          "청천벽력"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "화공전술",
+            "id": "fire-camp"
+          },
+          {
+            "name": "출기불의",
+            "id": "unexpected"
+          },
+          {
+            "name": "음과 양",
+            "id": "odd-even"
+          }
+        ],
+        "manualSlots": [
+          [
+            "여심"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "귀모"
+          ]
+        ],
+        "goldManuals": [],
+        "statCombo": "지력 / 선공",
+        "troop": {
+          "type": "검방패병",
+          "spec": "백전백승"
+        },
+        "gear": {
+          "trait": "신위 영광",
+          "mount": "천운 투영"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-07",
+    "season": "S2",
+    "tier": "T0.8",
+    "name": "태원마",
+    "note": "한때의 왕좌에서 내려온 덱.",
+    "formation": "기형진",
+    "units": [
+      {
+        "generalId": "yuan-shao",
+        "generalName": "원소",
+        "statPriority": "마초보다 선공 1 낮게, 나머지 통솔",
+        "skillIds": [
+          "avoid-edge",
+          "direct-world"
+        ],
+        "skillNames": [
+          "허점공략",
+          "천하평론"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "세가"
+          ],
+          [
+            "적용"
+          ],
+          [
+            "선용"
+          ]
+        ],
+        "goldManuals": [
+          "세가"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장궁병",
+          "spec": "공수 겸비"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "zhou-tai",
+        "generalName": "주태",
+        "unitType": "궁병",
+        "statPriority": "통솔",
+        "skillIds": [
+          "solid-defense",
+          "taxation"
+        ],
+        "skillNames": [
+          "난공불락",
+          "세금 과징수"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "고요한 제압",
+            "id": "calm"
+          },
+          {
+            "name": "지혜의 바람",
+            "id": "spring-breeze"
+          }
+        ],
+        "manualSlots": [
+          [
+            "역전"
+          ],
+          [
+            "비전"
+          ],
+          [
+            "기임"
+          ]
+        ],
+        "goldManuals": [
+          "역전"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장궁병-전환",
+          "spec": "치밀한 계획"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "ma-chao",
+        "generalName": "마초",
+        "unitType": "궁병",
+        "statPriority": "선공 최소 +20, 나머지 무력",
+        "skillIds": [
+          "overwhelming-win",
+          "break-hardship"
+        ],
+        "skillNames": [
+          "연전연승",
+          "요새함락"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "예리한 통찰",
+            "id": "unstoppable"
+          },
+          {
+            "name": "파죽지세",
+            "id": "break-through"
+          }
+        ],
+        "manualSlots": [
+          [
+            "철기"
+          ],
+          [
+            "시리"
+          ],
+          [
+            "구전"
+          ]
+        ],
+        "goldManuals": [
+          "철기"
+        ],
+        "statCombo": "무력 / 선공",
+        "troop": {
+          "type": "석궁병-전환",
+          "spec": "날카로운 화살"
+        },
+        "gear": {
+          "trait": "신위 연마",
+          "mount": "천운 투영"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-08",
+    "season": "S2",
+    "tier": "T0.5-",
+    "name": "쌍황육",
+    "note": "표준적인 중속 책사 덱. 환경이 복잡해지면서 이득이…",
+    "formation": "기형진",
+    "units": [
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "지력",
+        "skillIds": [
+          "avoid-edge",
+          "qingnang"
+        ],
+        "skillNames": [
+          "허점공략",
+          "청낭치료"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "아무 치료 전법",
+            "free": true
+          }
+        ],
+        "manualSlots": [
+          [
+            "상권"
+          ],
+          [
+            "병령"
+          ],
+          [
+            "합모"
+          ]
+        ],
+        "goldManuals": [
+          "상권"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중방패병",
+          "spec": "굳건한 태세"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "lu-xun",
+        "generalName": "육손",
+        "unitType": "방패병",
+        "statPriority": "지력",
+        "skillIds": [
+          "hide-light",
+          "see-truth"
+        ],
+        "skillNames": [
+          "도광양회",
+          "허실간파"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "신의 가호",
+            "id": "divine-aid"
+          },
+          {
+            "name": "출기불의",
+            "id": "unexpected"
+          }
+        ],
+        "manualSlots": [
+          [
+            "분영"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "분영"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "검방패병-전환",
+          "spec": "백전백승"
+        },
+        "gear": {
+          "trait": "신위 영광",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "sun-quan",
+        "generalName": "손권",
+        "unitType": "방패병",
+        "statPriority": "선공",
+        "skillIds": [
+          "blazing-sky",
+          "foresight"
+        ],
+        "skillNames": [
+          "맹렬한 화염",
+          "예측의 신"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "화공전술",
+            "id": "fire-camp"
+          },
+          {
+            "name": "속수무책",
+            "id": "helpless"
+          }
+        ],
+        "manualSlots": [
+          [
+            "한기"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "한기"
+        ],
+        "statCombo": "지력 / 선공",
+        "troop": {
+          "type": "검방패병-전환",
+          "spec": "철벽방어"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      }
+    ],
+    "highlight": [
+      {
+        "field": "병종",
+        "unit": 1,
+        "color": "#ffff00"
+      },
+      {
+        "field": "병종특화",
+        "unit": 1,
+        "color": "#ffff00"
+      },
+      {
+        "field": "병종",
+        "unit": 2,
+        "color": "#ffff00"
+      },
+      {
+        "field": "병종특화",
+        "unit": 2,
+        "color": "#ffff00"
+      }
+    ],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-09",
+    "season": "S2",
+    "tier": "T0.8",
+    "name": "노손육",
+    "note": "전형적인 공존덱. 모든 장수를 보유하지 않은 유저도 주력으로 사용할 수 있다.",
+    "formation": "기형진",
+    "units": [
+      {
+        "generalId": "lu-su",
+        "generalName": "노숙",
+        "unitType": "기병",
+        "statPriority": "선공",
+        "skillIds": [
+          "avoid-edge",
+          "foresight"
+        ],
+        "skillNames": [
+          "허점공략",
+          "예측의 신"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "세금과징수",
+            "id": "taxation"
+          },
+          {
+            "name": "견고한방어",
+            "id": "stone-wall"
+          },
+          {
+            "name": "속수무책",
+            "id": "helpless"
+          }
+        ],
+        "manualSlots": [
+          [
+            "치국"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "치국"
+        ],
+        "statCombo": "지력 / 선공",
+        "troop": {
+          "type": "중기병-전환",
+          "spec": "용맹한 용사"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "lu-xun",
+        "generalName": "육손",
+        "unitType": "방패병",
+        "statPriority": "지력",
+        "skillIds": [
+          "hide-light",
+          "see-truth"
+        ],
+        "skillNames": [
+          "도광양회",
+          "허실간파"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "신의가호",
+            "id": "divine-aid"
+          },
+          {
+            "name": "출기불의",
+            "id": "unexpected"
+          }
+        ],
+        "manualSlots": [
+          [
+            "분영"
+          ],
+          [
+            "귀모"
+          ],
+          [
+            "탈계"
+          ]
+        ],
+        "goldManuals": [
+          "분영"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "검방패병-전환",
+          "spec": "백전백승"
+        },
+        "gear": {
+          "trait": "신위 영광",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "sun-quan",
+        "generalName": "손권",
+        "statPriority": "지력",
+        "skillIds": [
+          "blazing-sky"
+        ],
+        "skillNames": [
+          "치료 계열 전법",
+          "맹렬한 화염"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "화공전술",
+            "id": "fire-camp"
+          },
+          {
+            "name": "치료 전법",
+            "free": true
+          }
+        ],
+        "manualSlots": [
+          [
+            "한기"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "한기"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장궁병",
+          "spec": "공수 겸비"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-10",
+    "season": "S2",
+    "tier": "T0.8",
+    "name": "노손관",
+    "note": "육손과 사마의를 상대할 수 있지만, 속공덱은 절대 만나면 안 된다.",
+    "formation": "기형진",
+    "units": [
+      {
+        "generalId": "lu-su",
+        "generalName": "노숙",
+        "unitType": "기병",
+        "statPriority": "선공",
+        "skillIds": [
+          "avoid-edge",
+          "foresight"
+        ],
+        "skillNames": [
+          "허점공략",
+          "예측의 신"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "세금 과징수",
+            "id": "taxation"
+          },
+          {
+            "name": "견고한 방어",
+            "id": "stone-wall"
+          },
+          {
+            "name": "속수무책",
+            "id": "helpless"
+          }
+        ],
+        "manualSlots": [
+          [
+            "치국"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "치국"
+        ],
+        "statCombo": "지력 / 선공",
+        "troop": {
+          "type": "중기병-전환",
+          "spec": "용맹한 용사"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "guan-yu",
+        "generalName": "관우",
+        "statPriority": "무력",
+        "skillIds": [
+          "charge-change",
+          "flood-seven"
+        ],
+        "skillNames": [
+          "기민한전술",
+          "칠군수몰"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "왕예"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "왕예"
+        ],
+        "statCombo": "무력 / 선공",
+        "troop": {
+          "type": "경기병",
+          "spec": "용맹한 용사"
+        },
+        "gear": {
+          "trait": "신위 연마",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "sun-quan",
+        "generalName": "손권",
+        "statPriority": "지력",
+        "skillIds": [
+          "fresh-breeze",
+          "all-directions"
+        ],
+        "skillNames": [
+          "청풍질주",
+          "팔방전"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "측면 공격",
+            "id": "swift-flank"
+          },
+          {
+            "name": "치료 전법",
+            "free": true
+          }
+        ],
+        "manualSlots": [
+          [
+            "한기"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "한기"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장궁병",
+          "spec": "공수 겸비"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-11",
+    "season": "S2",
+    "tier": "T0.8",
+    "name": "답설기",
+    "note": "주태에게 너무 강하게 카운터당한다. 전장에 주태가 많아 운용하기 어렵다.",
+    "formation": "구행진",
+    "units": [
+      {
+        "generalId": "ma-yunlu",
+        "generalName": "마운록",
+        "statPriority": "선공 230, 나머지 무력",
+        "skillIds": [
+          "unstoppable",
+          "iron-cavalry"
+        ],
+        "skillNames": [
+          "예리한 통찰",
+          "철기병 돌격"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "질투"
+          ],
+          [
+            "질전"
+          ],
+          [
+            "풍속"
+          ]
+        ],
+        "goldManuals": [
+          "풍속"
+        ],
+        "statCombo": "무력 / 선공",
+        "troop": {
+          "type": "경기병",
+          "spec": "기병돌진"
+        },
+        "gear": {
+          "trait": "신위 연마",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "yue-jin",
+        "generalName": "악진",
+        "statPriority": "선공",
+        "skillIds": [
+          "speed-first",
+          "no-hardship"
+        ],
+        "skillNames": [
+          "신속전개",
+          "강철의 의지"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "동등"
+          ],
+          [
+            "병령"
+          ],
+          [
+            "선용"
+          ]
+        ],
+        "goldManuals": [
+          "동등"
+        ],
+        "statCombo": "통솔 / 선공",
+        "troop": {
+          "type": "장창병",
+          "spec": "초지일관"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "질주 신속"
+        }
+      },
+      {
+        "generalId": "zhen-luo",
+        "generalName": "견희",
+        "statPriority": "지력",
+        "skillIds": [
+          "avoid-edge",
+          "sacrifice"
+        ],
+        "skillNames": [
+          "허점 공략",
+          "정의의 희생"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "하권"
+          ],
+          [
+            "병령"
+          ],
+          [
+            "적용"
+          ]
+        ],
+        "goldManuals": [
+          "하권"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장궁병",
+          "spec": "공수 겸비"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-12",
+    "season": "S2",
+    "tier": "T0.8",
+    "name": "대금연",
+    "note": "주태에게 너무 강하게 카운터당한다. 전장에 주태가 많아 운용하기 어렵다.",
+    "formation": "언월진",
+    "units": [
+      {
+        "generalId": "xiahou-yuan",
+        "generalName": "하후연",
+        "unitType": "궁병",
+        "statPriority": "선공 2위, 나머지 무력",
+        "skillIds": [
+          "iron-cavalry",
+          "speed-first"
+        ],
+        "skillNames": [
+          "철기병 돌격",
+          "신속전개"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "천리 기습",
+            "id": "thousand-raid"
+          },
+          {
+            "name": "천군소탕",
+            "id": "sweep-army"
+          }
+        ],
+        "manualSlots": [
+          [
+            "신속"
+          ],
+          [
+            "승전"
+          ],
+          [
+            "구전"
+          ]
+        ],
+        "goldManuals": [
+          "신속"
+        ],
+        "statCombo": "무력 / 선공",
+        "troop": {
+          "type": "석궁병-전환",
+          "spec": "완전한 사격"
+        },
+        "gear": {
+          "trait": "신위 연마",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "da-qiao",
+        "generalName": "대교",
+        "statPriority": "지력",
+        "skillIds": [
+          "armor-edge",
+          "sacrifice"
+        ],
+        "skillNames": [
+          "결사의 다짐",
+          "정의의 희생"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "허점 공략",
+            "id": "avoid-edge"
+          },
+          {
+            "name": "고요한 제압",
+            "id": "calm"
+          }
+        ],
+        "manualSlots": [
+          [
+            "상사문부"
+          ],
+          [
+            "적용"
+          ],
+          [
+            "비전"
+          ]
+        ],
+        "goldManuals": [
+          "상사문부"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장창병",
+          "spec": "초지일관"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림/유룡"
+        }
+      },
+      {
+        "generalId": "yue-jin",
+        "generalName": "악진",
+        "statPriority": "선공 1위",
+        "skillIds": [
+          "all-directions",
+          "no-hardship"
+        ],
+        "skillNames": [
+          "팔방전",
+          "강철의 의지"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "측면 공격",
+            "id": "swift-flank"
+          },
+          {
+            "name": "유현정책",
+            "id": "know-people"
+          }
+        ],
+        "manualSlots": [
+          [
+            "동등"
+          ],
+          [
+            "병령"
+          ],
+          [
+            "선용"
+          ]
+        ],
+        "goldManuals": [
+          "동등"
+        ],
+        "statCombo": "통솔 / 선공",
+        "troop": {
+          "type": "중기병",
+          "spec": "철마금과"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "질주 신속"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-13",
+    "season": "S2",
+    "tier": "T0.8",
+    "name": "구태위",
+    "note": "장점은 여포와 조운을 상대할 수 있다는 점. 단점은 미러전에 약하고 육손에게 불리하다는 점이다.",
+    "formation": "기형진",
+    "units": [
+      {
+        "generalId": "xiahou-dun",
+        "generalName": "하후돈",
+        "statPriority": "통솔",
+        "skillIds": [
+          "taxation",
+          "support-selfless"
+        ],
+        "skillNames": [
+          "세금 과징수",
+          "전력지원"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "견고한 방어",
+            "id": "stone-wall"
+          }
+        ],
+        "manualSlots": [
+          [
+            "위협"
+          ],
+          [
+            "분치"
+          ],
+          [
+            "수토"
+          ]
+        ],
+        "goldManuals": [
+          "위협"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중기병",
+          "spec": "철마금과"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "약수"
+        }
+      },
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "지력",
+        "skillIds": [
+          "ready",
+          "qingnang"
+        ],
+        "skillNames": [
+          "준비완료",
+          "청낭치료"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "백전불태",
+            "id": "hundred-battles"
+          },
+          {
+            "name": "치료 전법",
+            "free": true
+          }
+        ],
+        "manualSlots": [
+          [
+            "상권"
+          ],
+          [
+            "합모"
+          ],
+          [
+            "병령"
+          ]
+        ],
+        "goldManuals": [
+          "상권"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중방패병",
+          "spec": "굳건한 태세"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "약수"
+        }
+      },
+      {
+        "generalId": "sima-yi",
+        "generalName": "사마의",
+        "unitType": "창병",
+        "statPriority": "선공 +10~20, 나머지 지력",
+        "skillIds": [
+          "see-truth",
+          "five-thunder"
+        ],
+        "skillNames": [
+          "허실간파",
+          "청천벽력"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "맹렬한 화염",
+            "id": "blazing-sky"
+          },
+          {
+            "name": "출기불의",
+            "id": "unexpected"
+          },
+          {
+            "name": "음과 양",
+            "id": "odd-even"
+          }
+        ],
+        "manualSlots": [
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ],
+          [
+            "귀모"
+          ]
+        ],
+        "goldManuals": [],
+        "statCombo": "지력 / 선공",
+        "troop": {
+          "type": "단창병-전환",
+          "spec": "완전무장"
+        },
+        "gear": {
+          "trait": "신위 영광",
+          "mount": "천운 투영"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-14",
+    "season": "S2",
+    "tier": "T0.8-",
+    "name": "대금마",
+    "note": "주태에게 너무 강하게 카운터당하고, 전장에 주태가 많아 운용하기 어렵다. 사마의는 상대하기 좋다.",
+    "formation": "언월진",
+    "units": [
+      {
+        "generalId": "ma-chao",
+        "generalName": "마초",
+        "statPriority": "선공 230, 나머지 무력",
+        "skillIds": [
+          "break-hardship",
+          "iron-cavalry"
+        ],
+        "skillNames": [
+          "요새함락",
+          "철기병돌격"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "파죽지세",
+            "id": "break-through"
+          },
+          {
+            "name": "퇴로 매복",
+            "id": "ambushes"
+          }
+        ],
+        "manualSlots": [
+          [
+            "철기"
+          ],
+          [
+            "승전"
+          ],
+          [
+            "시리"
+          ]
+        ],
+        "goldManuals": [
+          "철기"
+        ],
+        "statCombo": "무력 / 선공",
+        "troop": {
+          "type": "경기병",
+          "spec": "기병돌진"
+        },
+        "gear": {
+          "trait": "신위 연마",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "da-qiao",
+        "generalName": "대교",
+        "statPriority": "지력",
+        "skillIds": [
+          "armor-edge",
+          "sacrifice"
+        ],
+        "skillNames": [
+          "결사의 다짐",
+          "정의의 희생"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "허점 공략",
+            "id": "avoid-edge"
+          }
+        ],
+        "manualSlots": [
+          [
+            "상사문부"
+          ],
+          [
+            "비전"
+          ],
+          [
+            "적용"
+          ]
+        ],
+        "goldManuals": [
+          "상사문부"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장창병",
+          "spec": "초지일관"
+        },
+        "gear": {
+          "trait": "선방 영광",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "yue-jin",
+        "generalName": "악진",
+        "statPriority": "선공",
+        "skillIds": [
+          "no-hardship",
+          "direct-world"
+        ],
+        "skillNames": [
+          "강철의 의지",
+          "천하평론"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "동등"
+          ],
+          [
+            "병령"
+          ],
+          [
+            "선용"
+          ]
+        ],
+        "goldManuals": [
+          "동등"
+        ],
+        "statCombo": "통솔 / 선공",
+        "troop": {
+          "type": "중기병",
+          "spec": "철마금과"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "질주 신속"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-15",
+    "season": "S2",
+    "tier": "T1",
+    "name": "조감관",
+    "note": "",
+    "formation": "추행진",
+    "units": [
+      {
+        "generalId": "guan-yu",
+        "generalName": "관우",
+        "statPriority": "무력",
+        "skillIds": [
+          "charge-change",
+          "flood-seven"
+        ],
+        "skillNames": [
+          "기민한 전술",
+          "칠군수몰"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "왕예"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "왕예"
+        ],
+        "statCombo": "무력 / 선공",
+        "troop": {
+          "type": "경기병",
+          "spec": "용맹한 용사"
+        },
+        "gear": {
+          "trait": "신위 연마",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "zhao-yun",
+        "generalName": "조운",
+        "statPriority": "무력",
+        "skillIds": [
+          "prepare-armor",
+          "brave-three-armies"
+        ],
+        "skillNames": [
+          "병력강화",
+          "용맹한 삼군"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "예리한통찰",
+            "id": "unstoppable"
+          },
+          {
+            "name": "팔방전",
+            "id": "all-directions"
+          },
+          {
+            "name": "요새함락",
+            "id": "break-hardship"
+          },
+          {
+            "name": "파죽지세",
+            "id": "break-through"
+          }
+        ],
+        "manualSlots": [
+          [
+            "신용"
+          ],
+          [
+            "승민"
+          ],
+          [
+            "구전"
+          ]
+        ],
+        "goldManuals": [
+          "신용"
+        ],
+        "statCombo": "무력 / 통솔",
+        "troop": {
+          "type": "경기병",
+          "spec": "여유만만"
+        },
+        "gear": {
+          "trait": "신위 연마",
+          "mount": "천운 민첩"
+        }
+      },
+      {
+        "generalId": "gan-furen",
+        "generalName": "감부인",
+        "statPriority": "지력",
+        "skillIds": [
+          "golden-fortress",
+          "supply-cut"
+        ],
+        "skillNames": [
+          "금성의 철벽",
+          "보급차단"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "전쟁 종식",
+            "id": "forge-armor"
+          },
+          {
+            "name": "청풍질주",
+            "id": "fresh-breeze"
+          },
+          {
+            "name": "백전불태",
+            "id": "hundred-battles"
+          },
+          {
+            "name": "일심협력",
+            "id": "same-boat"
+          }
+        ],
+        "manualSlots": [
+          [
+            "한녀"
+          ],
+          [
+            "금고"
+          ],
+          [
+            "선용"
+          ]
+        ],
+        "goldManuals": [
+          "한녀"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장궁병",
+          "spec": "전우동심"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-16",
+    "season": "S2",
+    "tier": "T0.8",
+    "name": "태황육",
+    "note": "더 이상 추천하지 않으며, 후반에는 그래도 사용할 수 있다.",
+    "formation": "언월진",
+    "units": [
+      {
+        "generalId": "lu-xun",
+        "generalName": "육손",
+        "unitType": "방패병",
+        "statPriority": "지력",
+        "skillIds": [
+          "hide-light",
+          "see-truth"
+        ],
+        "skillNames": [
+          "도광양회",
+          "허실간파"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "신의 가호",
+            "id": "divine-aid"
+          },
+          {
+            "name": "출기불의",
+            "id": "unexpected"
+          }
+        ],
+        "manualSlots": [
+          [
+            "분영"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "분영"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "검방패병-전환",
+          "spec": "백전백승"
+        },
+        "gear": {
+          "trait": "신위 영광",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "zhou-tai",
+        "generalName": "주태",
+        "unitType": "궁병",
+        "statPriority": "통솔",
+        "skillIds": [
+          "solid-defense",
+          "taxation"
+        ],
+        "skillNames": [
+          "난공불락",
+          "세금 과징수"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "허점 공략",
+            "id": "avoid-edge"
+          },
+          {
+            "name": "지혜의 바람",
+            "id": "spring-breeze"
+          }
+        ],
+        "manualSlots": [
+          [
+            "역전"
+          ],
+          [
+            "호세"
+          ],
+          [
+            "병령"
+          ]
+        ],
+        "goldManuals": [
+          "역전"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장궁병-전환",
+          "spec": "치밀한 계획"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "선공 1위, 나머지 지력",
+        "skillIds": [
+          "fresh-breeze",
+          "fire-camp"
+        ],
+        "skillNames": [
+          "청풍질주",
+          "화공전술"
+        ],
+        "skillAlternatives": [
+          [
+            {
+              "name": "청낭치료",
+              "id": "qingnang"
+            }
+          ],
+          []
+        ],
+        "swapSkills": [
+          {
+            "name": "아무 화공 전법",
+            "free": true
+          },
+          {
+            "name": "아무 치료 전법",
+            "free": true
+          }
+        ],
+        "manualSlots": [
+          [
+            "상권"
+          ],
+          [
+            "병령"
+          ],
+          [
+            "합모"
+          ]
+        ],
+        "goldManuals": [
+          "상권"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중방패병",
+          "spec": "굳건한 태세"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-17",
+    "season": "S2",
+    "tier": "T1",
+    "name": "황황제",
+    "note": "",
+    "formation": "추형진",
+    "units": [
+      {
+        "generalId": "huang-yueying",
+        "generalName": "황월영",
+        "statPriority": "선공·지력 반반",
+        "skillIds": [
+          "use-talent",
+          "supply-cut"
+        ],
+        "skillNames": [
+          "적재적소",
+          "보급차단"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "장서각"
+          ],
+          [
+            "장서각"
+          ],
+          [
+            "장서각"
+          ]
+        ],
+        "goldManuals": [],
+        "statCombo": "지력 / 선공",
+        "troop": {
+          "type": "장궁병",
+          "spec": "공수 겸비"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "zhuge-liang",
+        "generalName": "제갈량",
+        "statPriority": "지력",
+        "skillIds": [
+          "overwhelming-win",
+          "best-strategy"
+        ],
+        "skillNames": [
+          "연전연승",
+          "충신의 기재"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "출사"
+          ],
+          [
+            "탈계"
+          ],
+          [
+            "시리"
+          ]
+        ],
+        "goldManuals": [
+          "출사"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "석궁병",
+          "spec": "후방와해"
+        },
+        "gear": {
+          "trait": "신위 영광",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "huang-gai",
+        "generalName": "황개",
+        "statPriority": "선공",
+        "skillIds": [
+          "divine-aid",
+          "direct-world"
+        ],
+        "skillNames": [
+          "신의가호",
+          "천하평론"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "귀모"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [],
+        "statCombo": "통솔 / 선공",
+        "troop": {
+          "type": "검방패병",
+          "spec": "백전백승"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "질주 신속"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-18",
+    "season": "S2",
+    "tier": "T1",
+    "name": "가태위",
+    "note": "한때 명함 유저의 새로운덱이자 전장의 골칫덩어리였지만, 환경이 바뀌면서 성능과 평가가 내려갔다.",
+    "formation": "기형진",
+    "units": [
+      {
+        "generalId": "jia-xu",
+        "generalName": "가후",
+        "statPriority": "통솔",
+        "skillIds": [
+          "taxation",
+          "support-selfless"
+        ],
+        "skillNames": [
+          "세금 과징수",
+          "전력지원"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "궤도"
+          ],
+          [
+            "수토"
+          ],
+          [
+            "피험"
+          ]
+        ],
+        "goldManuals": [
+          "궤도"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장궁병",
+          "spec": "전우동심"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "약수"
+        }
+      },
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "지력",
+        "skillIds": [
+          "ready",
+          "avoid-edge"
+        ],
+        "skillNames": [
+          "준비완료",
+          "허점공략"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "상권"
+          ],
+          [
+            "합모"
+          ],
+          [
+            "병령"
+          ]
+        ],
+        "goldManuals": [
+          "상권"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중방패병",
+          "spec": "굳건한 태세"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "약수"
+        }
+      },
+      {
+        "generalId": "sima-yi",
+        "generalName": "사마의",
+        "unitType": "창병",
+        "statPriority": "선공 +10~20,나머지 지력",
+        "skillIds": [
+          "see-truth",
+          "five-thunder"
+        ],
+        "skillNames": [
+          "허실간파",
+          "청천벽력"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "대략"
+          ],
+          [
+            "기지"
+          ],
+          [
+            "귀모"
+          ]
+        ],
+        "goldManuals": [
+          "대략"
+        ],
+        "statCombo": "지력 / 선공",
+        "troop": {
+          "type": "단창병-전환",
+          "spec": "완전무장"
+        },
+        "gear": {
+          "trait": "신위 영광",
+          "mount": "천운 투영"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-19",
+    "season": "S2",
+    "tier": "T1.2",
+    "name": "주태 육손 + X",
+    "note": "주태·육손에 아무 보조 장수를 넣어도 사용할 수 있다.",
+    "formation": "일자진",
+    "units": [
+      {
+        "generalId": "lu-su",
+        "generalName": "노숙",
+        "generalAlternatives": [
+          "손권",
+          "서성"
+        ],
+        "unitType": "기병",
+        "statPriority": "선공",
+        "skillIds": [
+          "fire-camp",
+          "foresight"
+        ],
+        "skillNames": [
+          "화공전술",
+          "예측의 신"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "치국"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "치국"
+        ],
+        "statCombo": "지력 / 선공",
+        "troop": {
+          "type": "중기병-전환",
+          "spec": "용맹한 용사"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "lu-xun",
+        "generalName": "육손",
+        "statPriority": "지력",
+        "skillIds": [
+          "hide-light",
+          "see-truth"
+        ],
+        "skillNames": [
+          "도광양회",
+          "허실간파"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "분량"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "goldManuals": [
+          "분량"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "석궁병",
+          "spec": "후방와해"
+        },
+        "gear": {
+          "trait": "신위 영광",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "zhou-tai",
+        "generalName": "주태",
+        "statPriority": "통솔",
+        "skillIds": [
+          "solid-defense",
+          "taxation"
+        ],
+        "skillNames": [
+          "난공불락",
+          "세금 과징수"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "불굴"
+          ],
+          [
+            "병정"
+          ],
+          [
+            "병령"
+          ]
+        ],
+        "goldManuals": [
+          "불굴"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "장궁병",
+          "spec": "치밀한 계획"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-20",
+    "season": "S2",
+    "tier": "T1.2",
+    "name": "조감태",
+    "note": "",
+    "formation": "추형진",
+    "units": [
+      {
+        "generalId": "zhou-tai",
+        "generalName": "주태",
+        "statPriority": "통솔",
+        "skillIds": [
+          "golden-fortress",
+          "same-boat"
+        ],
+        "skillNames": [
+          "금성의 철벽",
+          "일심협력"
+        ],
+        "skillAlternatives": [
+          [],
+          [
+            {
+              "name": "지혜의 바람",
+              "id": "spring-breeze"
+            }
+          ]
+        ],
+        "manualSlots": [
+          [
+            "불굴"
+          ],
+          [
+            "병정"
+          ],
+          [
+            "병령"
+          ]
+        ],
+        "goldManuals": [
+          "불굴"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중기병",
+          "spec": "적진돌격"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "zhao-yun",
+        "generalName": "조운",
+        "statPriority": "무력",
+        "skillIds": [
+          "unstoppable",
+          "break-hardship"
+        ],
+        "skillNames": [
+          "예리한 통찰",
+          "요새함락"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "신용"
+          ],
+          [
+            "승민"
+          ],
+          [
+            "구전"
+          ]
+        ],
+        "goldManuals": [
+          "신용"
+        ],
+        "statCombo": "무력 / 통솔",
+        "troop": {
+          "type": "경기병",
+          "spec": "여유만만"
+        },
+        "gear": {
+          "trait": "신위 연마",
+          "mount": "천운 민첩"
+        }
+      },
+      {
+        "generalId": "gan-furen",
+        "generalName": "감부인",
+        "unitType": "기병",
+        "statPriority": "지력",
+        "skillIds": [
+          "direct-world",
+          "hundred-battles"
+        ],
+        "skillNames": [
+          "천하평론",
+          "백전불태"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "한녀"
+          ],
+          [
+            "금고"
+          ],
+          [
+            "선용"
+          ]
+        ],
+        "goldManuals": [
+          "한녀"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중기병-전환",
+          "spec": "여유만만"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  },
+  {
+    "id": "tier-s2-21",
+    "season": "S2",
+    "tier": "T1.2",
+    "name": "서주후",
+    "note": "",
+    "formation": "기형진",
+    "units": [
+      {
+        "generalId": "xu-sheng",
+        "generalName": "서성",
+        "statPriority": "통솔",
+        "skillIds": [
+          "forge-armor",
+          "strong-wind"
+        ],
+        "skillNames": [
+          "전쟁 종식",
+          "광풍의 분노"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "의성"
+          ],
+          [
+            "병령"
+          ],
+          [
+            "대파"
+          ]
+        ],
+        "goldManuals": [
+          "의성"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "중방패병",
+          "spec": "굳건한 태세"
+        },
+        "gear": {
+          "trait": "선방 철벽",
+          "mount": "군림"
+        }
+      },
+      {
+        "generalId": "zhou-yu",
+        "generalName": "주유",
+        "statPriority": "지력",
+        "skillIds": [
+          "overwhelming-win",
+          "odd-even"
+        ],
+        "skillNames": [
+          "연전연승",
+          "음과 양"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "요적"
+          ],
+          [
+            "시리"
+          ],
+          [
+            "탈계"
+          ]
+        ],
+        "goldManuals": [],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "석궁병",
+          "spec": "후방와해"
+        },
+        "gear": {
+          "trait": "신위 영광",
+          "mount": "천운 투영"
+        }
+      },
+      {
+        "generalId": "jia-xu",
+        "generalName": "가후",
+        "statPriority": "지력",
+        "skillIds": [
+          "fire-camp",
+          "calamity"
+        ],
+        "skillNames": [
+          "화공전술",
+          "재해 이용"
+        ],
+        "skillAlternatives": [
+          [],
+          []
+        ],
+        "manualSlots": [
+          [
+            "궤도"
+          ],
+          [
+            "탈계"
+          ],
+          [
+            "요적"
+          ]
+        ],
+        "goldManuals": [
+          "궤도"
+        ],
+        "statCombo": "지력 / 통솔",
+        "troop": {
+          "type": "석궁병",
+          "spec": "후방와해"
+        },
+        "gear": {
+          "trait": "선방 영광",
+          "mount": "천운 투영"
+        }
+      }
+    ],
+    "highlight": [],
+    "source": {
+      "kind": "gsheet",
+      "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)",
+      "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=1811908888",
+      "note": "가져온 때 2026-10-02"
+    }
+  }
+]

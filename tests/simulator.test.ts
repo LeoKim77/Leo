@@ -31,3 +31,27 @@ describe('Simulator (한국판 데이터)', () => {
     expect(l1).not.toBe(l2);
   });
 });
+
+describe('8턴 무승부 재교전 (R-009)', () => {
+  const s2 = bundle.tierDecks.filter(t => t.season === 'S2');
+  const d = (n: string) => sim.tierDeckSpec(s2.find(t => t.name === n)!.id);
+  it('8턴이 끝나도 양쪽이 살아 있으면 생존 무장끼리 다시 싸워 한쪽이 전멸할 때까지 간다', () => {
+    let found = false;
+    for (let i = 0; i < 40 && !found; i++) {
+      const r = sim.simulate(d('태황유'), d('조감초'), { seed: `rm-${i}`, trace: true });
+      if ((r.rounds || 1) < 2) continue;
+      found = true;
+      expect(r.turns).toBeGreaterThan(8);
+      expect(r.log.some(l => /2차 교전/.test(l))).toBe(true);
+      if (r.winner !== 'draw') {
+        const loser = r.winner === 'A' ? 'B' : 'A';
+        expect(r.units.filter(u => u.side === loser).every(u => u.troops <= 0)).toBe(true);
+      }
+      // 2차 교전 부대에는 1차에서 전사한 무장이 없다
+      const battles = r.trace!.filter(t => t.e === 'battle') as any[];
+      const deadAfter1 = new Set(r.trace!.filter(t => t.e === 'damage' && (t as any).after <= 0 && t.turn <= 8).map(t => (t as any).dst));
+      for (const u of battles[1].units) expect(deadAfter1.has(u.id)).toBe(false);
+    }
+    expect(found).toBe(true);
+  });
+});

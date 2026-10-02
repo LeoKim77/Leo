@@ -140,7 +140,13 @@ export interface TierDeckUnit {
   /** 덱에서 바꾼 병종 (시트의 "좌자(궁병)") */
   unitType?: string;
   /** 전법 칸마다 적힌 대안 ("보보위영/허점공략") */
-  skillAlternatives?: Array<Array<{ name: string; id?: string }>>;
+  skillAlternatives?: Array<Array<{ name: string; id?: string; free?: boolean }>>;
+  /** 덱 전체 '대체전법' 줄 — 어느 칸이든 바꿔 넣을 수 있는 전법 */
+  swapSkills?: Array<{ name: string; id?: string; free?: boolean }>;
+  /** 무장 칸의 대안 ("노숙/손권/서성") */
+  generalAlternatives?: string[];
+  /** 시트의 병종(세부 병종·전환)·병종특화 — 세부 병종은 시뮬 미반영 */
+  troop?: { type: string; spec?: string };
   /** '금·' 표시된 금병법 이름 */
   goldManuals?: string[];
   gear?: { trait?: string; mount?: string };
