@@ -46,7 +46,8 @@ v1.12b는 한 파일(525KB) 안에 데이터·엔진·UI가 모두 들어 있다
 | 게임 정보 반영 | 완료 — 엑셀 위에 덮어쓰는 패치 층 | `data/patches/`, MCP `data_patch` |
 | MCP 서버 | 완료 — 도구 14개, `.mcp.json` 등록 | `apps/mcp-server/` |
 | 웹 | 완료 — 게시판·도감·티어덱·보유·시뮬·감사·해외 자료 | `apps/web/` |
-| 덱 추천(1~5덱) | 미착수 (P6) | — |
+| 덱 추천(1~5덱) | 완료 — 티어덱 충족·대체 + 무장·전법 중복 불가 빔 서치 + 메타 시뮬 검증 | `packages/recommender/` · 웹 '덱 추천' · MCP `deck_recommend` |
+| 전보 검증 대기 | 근사 해석 55개 분류(R-007), 확인/불일치 기록 | `data/verification/` · MCP `verification_*` |
 | 효과 언어(AST) 엔진 | 미착수 — 현재는 v1.12b 효과 형식 | — |
 | S2 신규 전법 23개 | 완료 — 원문대로 6 · 근사 15 · 미지원 2 (주태·법정) | `data/engine/authored.json` |
 | 금병법 | 완료 — 72개 중 원문대로 48 · 근사 19 · 미지원 5. 덱마다 1개 선택 (R-003: 세팅 병법은 개인 선택이라 제외) | `data/engine/manuals.json` |

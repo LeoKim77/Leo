@@ -19,6 +19,16 @@ let busy = '';
 let progress = 0;
 let error = '';
 
+/** 추천 등에서 만든 덱을 직접 편성 칸에 넣는다 */
+export function setSimCustom(side: 'A' | 'B', spec: DeckSpec) {
+  const s = sides[side];
+  s.mode = 'custom';
+  s.formation = spec.formation || s.formation;
+  s.units = blankUnits();
+  spec.units.forEach((u, i) => { s.units[i] = { generalId: u.generalId, skillIds: [u.skillIds[0] || '', u.skillIds[1] || ''], manualId: u.manualId }; });
+  mcResult = null; battle = null;
+}
+
 export function setSimDeck(side: 'A' | 'B', d: { tierId: string }) {
   sides[side].mode = 'tier';
   sides[side].tierId = d.tierId;

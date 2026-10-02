@@ -1,6 +1,7 @@
 // 시뮬·감사는 화면이 멈추지 않게 Web Worker 에서 돌린다
 import { Simulator, type DeckSpec, type GameBundle, type MonteCarloResult } from '@cheonha/engine';
 import { runAudit, auditSingleBattle } from '@cheonha/audit';
+import { Recommender } from '@cheonha/recommender';
 
 let bundle: GameBundle | null = null;
 let sim: Simulator | null = null;
@@ -9,7 +10,8 @@ type Msg =
   | { type: 'init'; bundle: GameBundle }
   | { type: 'mc'; id: number; a: DeckSpec; b: DeckSpec; runs: number; seed: string }
   | { type: 'battle'; id: number; a: DeckSpec; b: DeckSpec; seed: string }
-  | { type: 'audit'; id: number; skillIds: string[] };
+  | { type: 'audit'; id: number; skillIds: string[] }
+  | { type: 'recommend'; id: number; owned: { generals: string[]; skills: string[] }; count: number; allowGeneralSub: boolean; alternatives: any[]; validateRuns: number };
 
 function mergeMc(parts: MonteCarloResult[], seed: string): MonteCarloResult {
   const runs = parts.reduce((a, p) => a + p.runs, 0);
@@ -61,6 +63,13 @@ self.onmessage = (ev: MessageEvent<Msg>) => {
       const { trace, ...rest } = r;
       void trace;
       (self as any).postMessage({ id: m.id, type: 'result', result: { ...rest, audit } });
+    } else if (m.type === 'recommend') {
+      const r = new Recommender(bundle).recommend({
+        owned: m.owned, count: m.count, allowGeneralSub: m.allowGeneralSub, alternatives: m.alternatives,
+        validate: m.validateRuns > 0 ? { opponents: 3, runs: m.validateRuns, candidates: 6 } : undefined,
+        onProgress: (done, total) => (self as any).postMessage({ id: m.id, type: 'progress', done, total }),
+      });
+      (self as any).postMessage({ id: m.id, type: 'result', result: r });
     } else if (m.type === 'audit') {
       const r = runAudit(bundle, { onlySkillIds: m.skillIds, tierSeeds: 12, extraSeeds: 30, onProgress: (done, total) => (self as any).postMessage({ id: m.id, type: 'progress', done, total }) });
       (self as any).postMessage({ id: m.id, type: 'result', result: r });

@@ -12,6 +12,7 @@ import { join } from 'node:path';
 import { existsSync } from 'node:fs';
 import { Simulator, type DeckSpec } from '@cheonha/engine';
 import { runAudit, type AuditReport } from '@cheonha/audit';
+import { Recommender } from '@cheonha/recommender';
 import { buildBundle, loadChangelog, type FullBundle, type PatchKind } from '../../../packages/data-tools/src/bundle.ts';
 import { DATA, ROOT, readJson, writeJson } from '../../../packages/data-tools/src/paths.ts';
 import { normalizeKo } from '../../../packages/data-tools/src/terms.ts';
@@ -314,6 +315,34 @@ server.registerTool('data_patch', {
   const post = announce ? postBoard({ ...announce, refs: [realId], source: note }) : null;
   invalidate();
   return text({ patched: { kind, id: realId, fields: normalized }, termNotes, boardPost: post, next: 'bundle_rebuild → audit_skill 로 확인 후 커밋하세요.' });
+});
+
+server.registerTool('deck_recommend', {
+  title: '덱 추천 (1~5덱)',
+  description: '보유 무장·전법으로 티어덱 기준 1~5덱을 추천한다. 전법은 전체 1회(R-006), 무장도 한 부대에만. 메타 덱 상대 시뮬로 검증해 고른다.',
+  inputSchema: {
+    generals: z.array(z.string()).describe('보유 무장 이름/id. ["전체"] 면 전부 보유로 가정'),
+    skills: z.array(z.string()).describe('보유 전법 이름/id (고유 전법 제외). ["전체"] 면 전부'),
+    count: z.number().int().min(1).max(5).optional(),
+    allowGeneralSub: z.boolean().optional(),
+    validateRuns: z.number().int().min(0).max(200).optional().describe('메타 상대당 시뮬 판 수 (0=검증 생략, 기본 30)'),
+  },
+}, async ({ generals, skills, count, allowGeneralSub, validateRuns }) => {
+  const { bundle } = ctx();
+  const gs = generals.length === 1 && generals[0] === '전체' ? bundle.generals.map(g => g.id) : generals.map(x => findGeneral(x)?.id).filter(Boolean) as string[];
+  const ss = skills.length === 1 && skills[0] === '전체' ? bundle.skills.filter(s => !s.isUnique).map(s => s.id) : skills.map(x => findSkill(x)?.id).filter(Boolean) as string[];
+  const alternatives = readJson<any>(join(DATA, 'reference', 'decklab', 'decks.json')).tacticAlternativeAssessments;
+  const runs = validateRuns ?? 30;
+  const r = new Recommender(bundle).recommend({ owned: { generals: gs, skills: ss }, count: count ?? 5, allowGeneralSub, alternatives, validate: runs ? { opponents: 3, runs, candidates: 6 } : undefined });
+  const name = (id: string) => bundle.generals.find(g => g.id === id)?.name.ko || bundle.skills.find(s => s.id === id)?.name.ko || id;
+  return text({
+    notes: r.unusedNotes,
+    decks: r.decks.map((d, i) => ({
+      rank: i + 1, tierDeck: `${d.tier} ${d.name}`, fidelity: Math.round(d.fidelity * 100) + '%', metaWinRate: d.validation ? Math.round(d.validation.avgWinRate * 100) + '%' : null,
+      units: d.units.map(u => ({ general: name(u.generalId), skills: u.skillIds.map(name), manual: bundle.generals.find(g => g.id === u.generalId)?.manuals.find(m => m.id === u.manualId)?.name, substitutions: u.subs, empty: u.missing })),
+      vsMeta: d.validation?.opponents.map(o => `${o.name} ${Math.round(o.winRate * 100)}%`),
+    })),
+  });
 });
 
 server.registerTool('verification_list', {

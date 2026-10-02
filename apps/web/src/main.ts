@@ -6,6 +6,7 @@ import { renderCodex } from './views/codex.ts';
 import { renderTierDecks } from './views/tierdecks.ts';
 import { renderRoster } from './views/roster.ts';
 import { renderSim } from './views/sim.ts';
+import { renderRecommend } from './views/recommend.ts';
 import { renderAudit } from './views/audit.ts';
 import { renderOverseas } from './views/overseas.ts';
 
@@ -14,6 +15,7 @@ const TABS: Array<[string, string, (root: HTMLElement, p: URLSearchParams) => vo
   ['codex', '도감', renderCodex],
   ['tier', '티어덱', renderTierDecks],
   ['roster', '보유', renderRoster],
+  ['recommend', '덱 추천', renderRecommend],
   ['sim', '시뮬레이션', renderSim],
   ['audit', '감사', renderAudit],
   ['overseas', '해외 자료', renderOverseas],

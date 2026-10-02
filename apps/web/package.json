@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "@cheonha/engine": "workspace:*",
-    "@cheonha/audit": "workspace:*"
+    "@cheonha/audit": "workspace:*",
+    "@cheonha/recommender": "workspace:*"
   },
   "devDependencies": {
     "vite": "^7.1.0"

@@ -26,6 +26,7 @@ writeJson(join(outDir, 'reference-decklab.json'), {
   decks: decks.decks,
   aiDecks: decks.aiDecks,
   verifiedCounters: matchups.verifiedCounters,
+  tacticAlternatives: decks.tacticAlternativeAssessments.filter((a: any) => a.rating !== '미평가').map((a: any) => ({ requiredTacticId: a.requiredTacticId, alternativeTacticId: a.alternativeTacticId, rating: a.rating })),
 });
 
 // 최근 감사 결과도 웹에 함께 싣는다
