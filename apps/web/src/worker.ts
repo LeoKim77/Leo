@@ -35,6 +35,7 @@ function mergeMc(parts: MonteCarloResult[], seed: string): MonteCarloResult {
     contribution: mergeContrib('contribution'), contributionB: mergeContrib('contributionB'),
     troopCurveAll: [...curve.entries()].sort((a, b) => a[0] - b[0]).map(([turn, e]) => ({ turn, A: e.A / e.n, B: e.B / e.n })),
     seed,
+    approx: parts[0]?.approx,
   };
 }
 

@@ -57,6 +57,8 @@ export interface BattleResult {
   units: Array<{ id: string; side: string; name: string; generalId: string; troops: number; maxTroops: number; dmgDealt: number; healDone: number }>;
 }
 
+export interface ApproxEffect { owner: string; name: string; kind: '근사' | '일부 미반영' | '미구현'; note: string }
+
 export interface MonteCarloResult {
   runs: number;
   winA: number;
@@ -69,6 +71,8 @@ export interface MonteCarloResult {
   contributionB: MonteCarloResult['contribution'];
   troopCurveAll: Array<{ turn: number; A: number; B: number }>;
   seed: string;
+  /** 근사·미반영 효과 (A·B 덱별) — 결과 신뢰도 표시용 */
+  approx?: { A: ApproxEffect[]; B: ApproxEffect[] };
 }
 
 const legacyPosition = (row: string): Position => (row === '후열' ? 'back' : row === '전열' ? 'front' : 'mid');
@@ -267,6 +271,7 @@ export class Simulator {
       winRateA: mc.winRateA, winRateB: mc.winRateB, avgTurns: mc.avgTurns,
       contribution: mc.contribution, contributionB: mc.contributionB,
       troopCurveAll: mc.troopCurveAll, seed,
+      approx: { A: this.approxIn(a), B: this.approxIn(b) },
     };
   }
 
@@ -277,6 +282,27 @@ export class Simulator {
     const usable = (m?: Manual) => !!m && (m.status === 'ok' || m.status === 'approx');
     const chosen = manualId ? ms.find(m => m.id === manualId) : ms.find(usable);
     return usable(chosen) ? chosen! : null;
+  }
+
+  /** 이 덱에 들어간 근사 효과 (전보 녹화 검증 대기, R-007) */
+  approxIn(deck: DeckSpec): ApproxEffect[] {
+    const out: ApproxEffect[] = [];
+    for (const u of deck.units) {
+      const g = this.bundle.generals.find(x => x.id === u.generalId);
+      if (!g) continue;
+      for (const sid of [g.uniqueSkillId, ...u.skillIds]) {
+        const sk = this.bundle.skills.find(x => x.id === sid);
+        if (!sk) continue;
+        const eng = sk.engine as any;
+        const approxClauses = sk.clauses.filter(c => c.status === 'approx' || c.status === 'missing');
+        if (!eng) out.push({ owner: g.name.ko, name: sk.name.ko, kind: '미구현', note: '엔진 정의 없음 — 효과 없이 시뮬' });
+        else if (eng.authoredStatus === 'approx') out.push({ owner: g.name.ko, name: sk.name.ko, kind: '근사', note: eng.authoredNote || '' });
+        else if (approxClauses.length) out.push({ owner: g.name.ko, name: sk.name.ko, kind: approxClauses.some(c => c.status === 'missing') ? '일부 미반영' : '근사', note: approxClauses.map(c => c.text).slice(0, 2).join(' / ') });
+      }
+      const m = this.pickManual(g, u.manualId);
+      if (m?.status === 'approx') out.push({ owner: g.name.ko, name: `금병법〈${m.name}〉`, kind: '근사', note: m.note || '' });
+    }
+    return out;
   }
 
   /** 티어덱 → DeckSpec */

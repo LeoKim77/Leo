@@ -82,6 +82,15 @@ function deckEditor(side: 'A' | 'B', redraw: () => void) {
   );
 }
 
+/** 근사·미반영 효과가 섞인 결과임을 알린다 (R-007: 전보 녹화로 검증 대기) */
+function approxNotice(m: MonteCarloResult) {
+  const list = [...(m.approx?.A || []).map(x => ({ ...x, side: '내 덱' })), ...(m.approx?.B || []).map(x => ({ ...x, side: '상대' }))];
+  if (!list.length) return h('div', { class: 'notice' }, lv('pass', '검증된 효과만'), ' 이 대전의 무장·전법·금병법은 모두 원문대로 구현된 효과입니다.');
+  return h('details', { class: 'notice' },
+    h('summary', null, lv('warn', `근사 효과 ${list.length}개 포함`), ' — 전보 녹화로 검증 대기 중인 효과가 결과에 섞여 있습니다'),
+    h('div', { style: { marginTop: '6px' } }, list.map(x => h('div', { style: { fontSize: '13px' } }, h('span', { class: 'badge' }, x.side), h('b', null, `${x.owner} ${x.name}`), ` (${x.kind}) `, h('span', { class: 'muted' }, x.note)))));
+}
+
 function resultView() {
   if (!mcResult) return null;
   const m = mcResult;
@@ -92,6 +101,7 @@ function resultView() {
       h('div', { class: 'tile' }, h('div', { class: 'k' }, '상대 승률'), h('div', { class: 'v', style: { color: SIDE_B } }, pct(m.winRateB))),
       h('div', { class: 'tile' }, h('div', { class: 'k' }, '평균 턴'), h('div', { class: 'v' }, m.avgTurns.toFixed(2), h('small', null, ' 턴'))),
       h('div', { class: 'tile' }, h('div', { class: 'k' }, '시뮬'), h('div', { class: 'v' }, fmt(m.runs), h('small', null, ` 판 · 시드 ${m.seed}`)))),
+    approxNotice(m),
     h('div', { class: 'panel' }, h('h3', { style: { fontSize: '15px', marginBottom: '8px' } }, '승패'), winBar(m.winA, m.draw, m.winB, [deckName('A'), deckName('B')])),
     h('div', { class: 'panel' }, h('h3', { style: { fontSize: '15px', marginBottom: '8px' } }, '턴별 평균 병력'), troopLines(m.troopCurveAll, [deckName('A'), deckName('B')])),
     h('div', { class: 'grid cols-2' },

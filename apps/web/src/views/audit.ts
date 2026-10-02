@@ -13,6 +13,25 @@ let q = '';
 let open = '';
 let busy = '';
 
+/** 전보 녹화 검증 대기 목록 (R-007) */
+function verificationSection() {
+  const items = ((app.bundle as any).verification || []) as Array<{ id: string; kind: string; title: string; assumption: string; howToVerify: string; status: string; result?: string }>;
+  if (!items.length) return null;
+  const kinds: Record<string, string> = { manual: '금병법', skill: '전법', clause: '원문 절', engine: '엔진 가정' };
+  const lvOf: Record<string, [string, string]> = { pending: ['warn', '대기'], verified: ['pass', '확인'], rejected: ['fail', '불일치'] };
+  const pending = items.filter(i => i.status === 'pending').length;
+  return h('details', { class: 'panel', style: { marginBottom: '12px' }, open: true },
+    h('summary', null, h('b', null, '전보 녹화 검증 대기'), ` — ${items.length}개 중 대기 ${pending} · 확인 ${items.filter(i => i.status === 'verified').length} · 불일치 ${items.filter(i => i.status === 'rejected').length}`),
+    h('div', { class: 'sub', style: { margin: '6px 0' } }, '근사로 처리한 해석입니다. 해당 전투의 전보 녹화를 올려 주시면 Claude 가 대조해 확인/불일치를 기록합니다(MCP verification_resolve).'),
+    h('div', { class: 'table-wrap' }, h('table', null,
+      h('thead', null, h('tr', null, h('th', null, '상태'), h('th', null, '분류'), h('th', null, '항목'), h('th', null, '가정 · 확인 방법'))),
+      h('tbody', null, items.map(i => h('tr', null,
+        h('td', null, lv(...lvOf[i.status])),
+        h('td', null, h('span', { class: 'badge' }, kinds[i.kind] || i.kind)),
+        h('td', null, i.title),
+        h('td', { style: { fontSize: '13px' } }, h('div', null, i.assumption), h('div', { class: 'muted' }, `확인: ${i.howToVerify}`), i.result ? h('div', { class: 'dim' }, `결과: ${i.result}`) : null)))))));
+}
+
 export function renderAudit(root: HTMLElement) {
   const r = app.audit;
   if (!r) { mount(root, h('div', { class: 'empty' }, '감사 결과가 없습니다. 저장소에서 pnpm audit 을 실행하세요.')); return; }
@@ -47,6 +66,7 @@ export function renderAudit(root: HTMLElement) {
     h('div', { class: 'panel', style: { marginBottom: '12px' } }, h('h3', { style: { fontSize: '15px', marginBottom: '4px' } }, '규칙별 결과 (전법·무장 항목 수)'),
       h('div', { class: 'chart-legend' }, (['pass', 'warn', 'fail', 'skip'] as const).map(k => h('span', null, lv(k)))),
       stackedLevels(fails.map(x => ({ label: x.title, pass: x.pass, warn: x.warn, fail: x.fail, skip: x.skip })))),
+    verificationSection(),
     r.manuals?.length ? h('details', { class: 'panel', style: { marginBottom: '12px' } },
       h('summary', null, `금병법 ${r.manuals.length}개 — 원문대로 ${r.manuals.filter(m => m.status === 'ok').length} · 근사 ${r.manuals.filter(m => m.status === 'approx').length} · 미지원 ${r.manuals.filter(m => m.status === 'unsupported').length}`),
       h('div', { class: 'table-wrap', style: { marginTop: '8px' } }, h('table', null,

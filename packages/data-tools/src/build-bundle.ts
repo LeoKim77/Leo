@@ -3,8 +3,11 @@ import { join } from 'node:path';
 import { existsSync, copyFileSync } from 'node:fs';
 import { ROOT, DATA, readJson, writeJson } from './paths.ts';
 import { buildBundle } from './bundle.ts';
+import { buildQueue } from './verification.ts';
 
-const bundle = buildBundle();
+const bundle: any = buildBundle();
+bundle.verification = buildQueue(bundle);
+bundle.confirmedRules = readJson<any>(join(DATA, 'common', 'confirmed-rules.json')).rules;
 const outDir = join(ROOT, 'apps', 'web', 'public', 'data');
 writeJson(join(outDir, 'bundle.json'), bundle);
 
@@ -29,5 +32,5 @@ writeJson(join(outDir, 'reference-decklab.json'), {
 const auditSrc = join(DATA, 'audit', 'latest.json');
 if (existsSync(auditSrc)) copyFileSync(auditSrc, join(outDir, 'audit.json'));
 
-const cov = bundle.skills.flatMap(s => s.clauses).reduce<Record<string, number>>((m, c) => { m[c.status] = (m[c.status] || 0) + 1; return m; }, {});
+const cov = (bundle.skills as any[]).flatMap((s: any) => s.clauses).reduce((m: Record<string, number>, c: any) => { m[c.status] = (m[c.status] || 0) + 1; return m; }, {} as Record<string, number>);
 console.log(`bundle ${bundle.dataVersion}: 무장 ${bundle.generals.length}, 전법 ${bundle.skills.length}, 절 상태`, cov);

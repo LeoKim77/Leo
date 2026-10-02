@@ -1,0 +1,631 @@
+{
+  "note": "전보 녹화 검증 대기 목록 (R-007). status: pending=대기, verified=전보로 확인, rejected=틀림(수정 필요). MCP verification_resolve 로 판정을 기록한다.",
+  "items": [
+    {
+      "id": "V-manual-m-liu-bei-2",
+      "kind": "manual",
+      "refs": [
+        "liu-bei",
+        "u-liu-bei"
+      ],
+      "title": "유비 금병법〈인의론〉",
+      "assumption": "치유폭 +12%만 반영(지력 영향 미반영). \"우군 4회 치유마다 정신 회복\"은 미지원",
+      "howToVerify": "유비이(가) 〈인의론〉을 장착한 전보에서 원문 효과(\"치유폭이 12% 증가하며,(지력의 영향 받음), 우군을 4회 치유할 때마다 랜덤 우군 단일 목표가 1턴 동안…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-zhuge-liang-1",
+      "kind": "manual",
+      "refs": [
+        "zhuge-liang",
+        "u-zhuge-liang"
+      ],
+      "title": "제갈량 금병법〈출사표〉",
+      "assumption": "\"홀수/짝수 턴에\"를 턴 시작 시 1턴 지속으로 해석",
+      "howToVerify": "제갈량이(가) 〈출사표〉을 장착한 전보에서 원문 효과(\"홀수 턴에 랜덤 적군 2명이 받는 피해가 12% 증가한다. 짝수 턴에 랜덤 아군 2명이 받는 피해가 12% …\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-ma-chao-2",
+      "kind": "manual",
+      "refs": [
+        "ma-chao",
+        "u-ma-chao"
+      ],
+      "title": "마초 금병법〈마술〉",
+      "assumption": "기병 돌격 추격 피해 +180%(계수 ×2.8), 매 턴 1회",
+      "howToVerify": "마초이(가) 〈마술〉을 장착한 전보에서 원문 효과(\"회심 피해가 15% 증가하고, 고유 전법-기병 돌격의 추격 피해가 180% 증가하지만, 추격 피해는 매턴 1…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-zhou-yu-1",
+      "kind": "manual",
+      "refs": [
+        "zhou-yu",
+        "u-zhou-yu"
+      ],
+      "title": "주유 금병법〈화계〉",
+      "assumption": "기지 효과 = 랜덤 적군 2명 60% 책략 피해. \"공격으로\" 조건은 화공 부여 전체로 근사",
+      "howToVerify": "주유이(가) 〈화계〉을 장착한 전보에서 원문 효과(\"적군이 공격으로 화공 상태로 될 경우, 35% 확률로 '기지' 효과 발동(턴당 최대 2회 발동, 고유 전법 …\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-diao-chan-1",
+      "kind": "manual",
+      "refs": [
+        "diao-chan",
+        "u-diao-chan"
+      ],
+      "title": "초선 금병법〈상련〉",
+      "assumption": "턴 종료 시 1턴 = 다음 턴 행동까지 유지로 해석",
+      "howToVerify": "초선이(가) 〈상련〉을 장착한 전보에서 원문 효과(\"매 턴 종료 시, 1턴 동안 무력이 가장 높은 우군의 방어 관통이 9% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-diao-chan-2",
+      "kind": "manual",
+      "refs": [
+        "diao-chan",
+        "u-diao-chan"
+      ],
+      "title": "초선 금병법〈화수〉",
+      "assumption": "턴 종료 시 1턴 = 다음 턴 행동까지 유지로 해석",
+      "howToVerify": "초선이(가) 〈화수〉을 장착한 전보에서 원문 효과(\"매 턴 종료 시, 1턴 동안 무력이 가장 높은 우군의 연타율이 30% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-gan-ning-1",
+      "kind": "manual",
+      "refs": [
+        "gan-ning",
+        "u-gan-ning"
+      ],
+      "title": "감녕 금병법〈산림탈기〉",
+      "assumption": "\"일반 공격 전 60% 확률로 랜덤 적군에게 주는 책략 피해 +30%\"는 대상 지정 증폭이라 미지원",
+      "howToVerify": "감녕이(가) 〈산림탈기〉을 장착한 전보에서 원문 효과(\"자신이 받는 병기 피해가 5% 감소하며, 회유와 5% 증가한다. 일반 공격 전, 60% 확률로 랜덤 적군 단…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-xiahou-dun-1",
+      "kind": "manual",
+      "refs": [
+        "xiahou-dun",
+        "u-xiahou-dun"
+      ],
+      "title": "하후돈 금병법〈위협〉",
+      "assumption": "강렬 피해 감소 30% → 40%(+10%p로 해석, ×1.1 이면 33%)",
+      "howToVerify": "하후돈이(가) 〈위협〉을 장착한 전보에서 원문 효과(\"고유 전법 강렬의 피해 감소 효과가 10% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-zhen-luo-1",
+      "kind": "manual",
+      "refs": [
+        "zhen-luo",
+        "u-zhen-luo"
+      ],
+      "title": "견희 금병법〈낙신부 상권〉",
+      "assumption": "낙수의 여신 대상 → 지력 최고 우군, 회복 +10%",
+      "howToVerify": "견희이(가) 〈낙신부 상권〉을 장착한 전보에서 원문 효과(\"고유 전법 바람과 눈꽃의 낙수의 여신 효과가 지력이 가장 높은 단일 목표를 우선적으로 선택하고, 낙수의 여신…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-zhen-luo-2",
+      "kind": "manual",
+      "refs": [
+        "zhen-luo",
+        "u-zhen-luo"
+      ],
+      "title": "견희 금병법〈낙신부 하권〉",
+      "assumption": "낙수의 여신 대상 → 무력 최고 우군, 회복 +10%",
+      "howToVerify": "견희이(가) 〈낙신부 하권〉을 장착한 전보에서 원문 효과(\"고유 전법 바람과 눈꽃의 낙수의 여신 효과가 무력이 가장 높은 단일 목표를 우선적으로 선택하고, 낙수의 여신…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-huang-yueying-1",
+      "kind": "manual",
+      "refs": [
+        "huang-yueying",
+        "u-huang-yueying"
+      ],
+      "title": "황월영 금병법〈기관술〉",
+      "assumption": "조롱 시전자가 통솔 최고 우군이 아니라 황월영으로 처리됨",
+      "howToVerify": "황월영이(가) 〈기관술〉을 장착한 전보에서 원문 효과(\"매 턴 시작 시, 통솔이 가장 높은 우군이 35% 확률로 적군 전체를 조롱한다.…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-xun-yu-1",
+      "kind": "manual",
+      "refs": [
+        "xun-yu",
+        "u-xun-yu"
+      ],
+      "title": "순욱 금병법〈북한〉",
+      "assumption": "묘책 피해 +10%는 회심/묘책 공용 피해 증가로 근사",
+      "howToVerify": "순욱이(가) 〈북한〉을 장착한 전보에서 원문 효과(\"지력이 가장 높은 아군 단일 목표의 묘책 확률이 6% 증가하며, 묘책 피해가 10% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-xiahou-yuan-1",
+      "kind": "manual",
+      "refs": [
+        "xiahou-yuan",
+        "u-xiahou-yuan"
+      ],
+      "title": "하후연 금병법〈신속〉",
+      "assumption": "선공 영향 미반영",
+      "howToVerify": "하후연이(가) 〈신속〉을 장착한 전보에서 원문 효과(\"회심 피해가 12% 증가(선공의 영향 받음)한다.…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-xu-shu-1",
+      "kind": "manual",
+      "refs": [
+        "xu-shu",
+        "u-xu-shu"
+      ],
+      "title": "서서 금병법〈장검행〉",
+      "assumption": "\"무력이 지력의 25%만큼 증가\"는 부대 편성 시 계산, \"책략 피해 후 다음 병기 피해 +40%\"는 미지원",
+      "howToVerify": "서서이(가) 〈장검행〉을 장착한 전보에서 원문 효과(\"전투 시작 시, 자신의 무력이 지력의 25%만큼 증가하며, 책략 피해를 준 후, 다음에 주는 병기 피해가 4…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-xu-sheng-1",
+      "kind": "manual",
+      "refs": [
+        "xu-sheng",
+        "u-xu-sheng"
+      ],
+      "title": "서성 금병법〈의성〉",
+      "assumption": "\"홍수 상태인 적의 피해 8% 감소\"는 미지원",
+      "howToVerify": "서성이(가) 〈의성〉을 장착한 전보에서 원문 효과(\"전투 1번째 턴에 랜덤 적군 2명에게 2턴 동안 지속되는 홍수 상태를 부여하며, 전체 아군이 피해를 받을 때…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-li-ru-1",
+      "kind": "manual",
+      "refs": [
+        "li-ru",
+        "u-li-ru"
+      ],
+      "title": "이유 금병법〈비호〉",
+      "assumption": "방어 2스택 중 1스택만 쌓임(엔진의 같은 상태 갱신 규칙)",
+      "howToVerify": "이유이(가) 〈비호〉을 장착한 전보에서 원문 효과(\"전투 시작 시, 자신이 2스택의 방어를 획득하며, 우군 2명의 회유와 심리 공격이 6% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-sun-ce-2",
+      "kind": "manual",
+      "refs": [
+        "sun-ce",
+        "u-sun-ce"
+      ],
+      "title": "손책 금병법〈무구〉",
+      "assumption": "무력 영향 미반영",
+      "howToVerify": "손책이(가) 〈무구〉을 장착한 전보에서 원문 효과(\"액티브 전법 발동 후, 40% 확률(무력의 영향을 받음)로 랜덤 적군 단일 목표에게 2턴 동안 지속되는 공포…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-cheng-pu-1",
+      "kind": "manual",
+      "refs": [
+        "cheng-pu",
+        "u-cheng-pu"
+      ],
+      "title": "정보 금병법〈호신〉",
+      "assumption": "통솔 영향 미반영",
+      "howToVerify": "정보이(가) 〈호신〉을 장착한 전보에서 원문 효과(\"자신의 병력이 최초로 50% 미만이 되면 자신의 병력을 회복하며(치유율 200%, 지력과 통솔의 영향 받음)…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-zhang-liang-1",
+      "kind": "manual",
+      "refs": [
+        "zhang-liang",
+        "u-zhang-liang"
+      ],
+      "title": "장량 금병법〈태평도법〉",
+      "assumption": "\"1번째 턴 괴술 발동 후 랜덤 적 1명 능력 소진\"은 미지원",
+      "howToVerify": "장량이(가) 〈태평도법〉을 장착한 전보에서 원문 효과(\"고유 전법 괴술, 회유 및 피신 확률 8% 증가, 1번째 턴에 괴술 발동 후 랜덤 적군 1명이 1턴 동안 능…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-sun-jian-1",
+      "kind": "manual",
+      "refs": [
+        "sun-jian",
+        "u-sun-jian"
+      ],
+      "title": "손견 금병법〈무열〉",
+      "assumption": "통솔 영향 미반영",
+      "howToVerify": "손견이(가) 〈무열〉을 장착한 전보에서 원문 효과(\"자신이 받는 병기 피해가 8% 감소(통솔의 영향 받음)한다.…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-yue-jin-1",
+      "kind": "manual",
+      "refs": [
+        "yue-jin",
+        "u-yue-jin"
+      ],
+      "title": "악진 금병법〈동등〉",
+      "assumption": "\"같은 열\" 조건 미반영",
+      "howToVerify": "악진이(가) 〈동등〉을 장착한 전보에서 원문 효과(\"자신 및 같은 열의 랜덤 우군 단일 목표가 받는 책략 피해가 6%감소한다.…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-armor-edge",
+      "kind": "skill",
+      "refs": [
+        "armor-edge"
+      ],
+      "title": "결사의 다짐",
+      "assumption": "결사 회복의 \"목표의 지력과 통솔 영향\"은 받은 무장의 지력으로 계산(통솔 미반영)",
+      "howToVerify": "【결사의 다짐】이(가) 발동한 전보에서 근사 항목(결사 회복의 \"목표의 지력과 통솔 영향\"은 받은 무장의 지력으로 계산(통솔 미반영))을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-armor-edge-1",
+      "kind": "clause",
+      "refs": [
+        "armor-edge"
+      ],
+      "title": "결사의 다짐 — \"자신의 병력을 회복하며(치유율 80%, 목표의 지력과 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【결사의 다짐】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-choose-momentum-0",
+      "kind": "clause",
+      "refs": [
+        "choose-momentum"
+      ],
+      "title": "인재 기용 — \"3번째 턴부터 우군 2명은 매 턴 80% 확률로 다음 …\"",
+      "assumption": "확정 회심/묘책 1회. 우군 2명 매 턴 80%",
+      "howToVerify": "【인재 기용】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-choose-momentum-1",
+      "kind": "clause",
+      "refs": [
+        "choose-momentum"
+      ],
+      "title": "인재 기용 — \"해당 회심 또는 묘책 피해가 40% 증가한다…\"",
+      "assumption": "회심/묘책 피해 +40%를 1턴 버프로",
+      "howToVerify": "【인재 기용】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-ambushes-0",
+      "kind": "clause",
+      "refs": [
+        "ambushes"
+      ],
+      "title": "퇴로 매복 — \"랜덤 적군 단일 목표에게 100%~140%의 병기 피해…\"",
+      "assumption": "4회 타격 구현. 100~140% 무작위 폭은 140% 고정",
+      "howToVerify": "【퇴로 매복】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-strategize-3",
+      "kind": "clause",
+      "refs": [
+        "strategize"
+      ],
+      "title": "전략 계획 — \"선공이 25 감소한다(지력의 영향 받음)…\"",
+      "assumption": "지력 영향 반영(infMult)",
+      "howToVerify": "【전략 계획】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-break-hardship",
+      "kind": "skill",
+      "refs": [
+        "break-hardship"
+      ],
+      "title": "요새 함락",
+      "assumption": "\"행동 종료 시\" 피해를 행동 시작 슬롯(액티브 전)에서 처리",
+      "howToVerify": "【요새 함락】이(가) 발동한 전보에서 근사 항목(\"행동 종료 시\" 피해를 행동 시작 슬롯(액티브 전)에서 처리)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-break-hardship-1",
+      "kind": "clause",
+      "refs": [
+        "break-hardship"
+      ],
+      "title": "요새 함락 — \"매 턴 행동 종료 시 랜덤 적군 2명에게 110% 병기…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【요새 함락】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-solid-defense",
+      "kind": "skill",
+      "refs": [
+        "solid-defense"
+      ],
+      "title": "난공불락",
+      "assumption": "\"도발\"=조롱. 통솔 영향 미반영, 확률은 대상별 판정(R-004)",
+      "howToVerify": "【난공불락】이(가) 발동한 전보에서 근사 항목(\"도발\"=조롱. 통솔 영향 미반영, 확률은 대상별 판정(R-004))을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-solid-defense-1",
+      "kind": "clause",
+      "refs": [
+        "solid-defense"
+      ],
+      "title": "난공불락 — \"2턴부터 매 턴 시작 시 60% 확률로 랜덤 적군 2명…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【난공불락】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-hide-light",
+      "kind": "skill",
+      "refs": [
+        "hide-light"
+      ],
+      "title": "도광양회",
+      "assumption": "지력 영향 미반영",
+      "howToVerify": "【도광양회】이(가) 발동한 전보에서 근사 항목(지력 영향 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-hide-light-0",
+      "kind": "clause",
+      "refs": [
+        "hide-light"
+      ],
+      "title": "도광양회 — \"고유 액티브 전법 발동률이 6% 상승합니다(지력 영향)…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【도광양회】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-strike-gap",
+      "kind": "skill",
+      "refs": [
+        "strike-gap"
+      ],
+      "title": "틈새 공략",
+      "assumption": "\"이미 혼란이면 대상 측 우군에게 100%\"는 미지원",
+      "howToVerify": "【틈새 공략】이(가) 발동한 전보에서 근사 항목(\"이미 혼란이면 대상 측 우군에게 100%\"는 미지원)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-use-talent",
+      "kind": "skill",
+      "refs": [
+        "use-talent"
+      ],
+      "title": "적재적소",
+      "assumption": "지력 영향 미반영",
+      "howToVerify": "【적재적소】이(가) 발동한 전보에서 근사 항목(지력 영향 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-use-talent-0",
+      "kind": "clause",
+      "refs": [
+        "use-talent"
+      ],
+      "title": "적재적소 — \"지력이 가장 높은 우군 1명이 받는 피해를 25% 감소…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【적재적소】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-dong-zhuo-0",
+      "kind": "clause",
+      "refs": [
+        "u-dong-zhuo"
+      ],
+      "title": "압도적 권력 — \"매 턴 행동 시, 전체 적군과 우군의 통솔을 20포인트…\"",
+      "assumption": "적군 통솔 감소만 구현. 우군 통솔 탈취·자신 가산은 미지원",
+      "howToVerify": "【압도적 권력】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-sima-yi",
+      "kind": "skill",
+      "refs": [
+        "u-sima-yi"
+      ],
+      "title": "매의 응시 (고유)",
+      "assumption": "포진 상태 자체의 효과는 미지원. 포석 수(발동마다 1 + 50%로 1, 최대 8)에 따른 피해 계수 증가만 반영",
+      "howToVerify": "【매의 응시】이(가) 발동한 전보에서 근사 항목(포진 상태 자체의 효과는 미지원. 포석 수(발동마다 1 + 50%로 1, 최대 8)에 따른 피해 계수 증가만 반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-yue-jin",
+      "kind": "skill",
+      "refs": [
+        "u-yue-jin"
+      ],
+      "title": "선봉정신 (고유)",
+      "assumption": "선공 영향·\"첫 2턴 전열이면 30% 증가\" 미반영",
+      "howToVerify": "【선봉정신】이(가) 발동한 전보에서 근사 항목(선공 영향·\"첫 2턴 전열이면 30% 증가\" 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-zhang-liao",
+      "kind": "skill",
+      "refs": [
+        "u-zhang-liao"
+      ],
+      "title": "바람방랑자 (고유)",
+      "assumption": "손실 병력 영향, 전열 시 피해 전달 미지원",
+      "howToVerify": "【바람방랑자】이(가) 발동한 전보에서 근사 항목(손실 병력 영향, 전열 시 피해 전달 미지원)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-jia-xu",
+      "kind": "skill",
+      "refs": [
+        "u-jia-xu"
+      ],
+      "title": "현묘한계책 (고유)",
+      "assumption": "90% 판정이 대상별, \"우군이 이미 혼란이면 회복\" 미지원",
+      "howToVerify": "【현묘한계책】이(가) 발동한 전보에서 근사 항목(90% 판정이 대상별, \"우군이 이미 혼란이면 회복\" 미지원)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-gan-furen",
+      "kind": "skill",
+      "refs": [
+        "u-gan-furen"
+      ],
+      "title": "황심의 가호 (고유)",
+      "assumption": "\"2~3명\"을 2명으로, 지력 영향 미반영",
+      "howToVerify": "【황심의 가호】이(가) 발동한 전보에서 근사 항목(\"2~3명\"을 2명으로, 지력 영향 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-gan-furen-0",
+      "kind": "clause",
+      "refs": [
+        "u-gan-furen"
+      ],
+      "title": "황심의 가호 — \"매 턴 시작 시, 60% 확률(지력의 영향 받음)로 2…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【황심의 가호】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-lu-xun",
+      "kind": "skill",
+      "refs": [
+        "u-lu-xun"
+      ],
+      "title": "화소연영 (고유)",
+      "assumption": "연소 상태(지속 피해)는 미지원. 화공 부여 후 화공 보유 적에게 220% 책략 피해",
+      "howToVerify": "【화소연영】이(가) 발동한 전보에서 근사 항목(연소 상태(지속 피해)는 미지원. 화공 부여 후 화공 보유 적에게 220% 책략 피해)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-chen-gong",
+      "kind": "skill",
+      "refs": [
+        "u-chen-gong"
+      ],
+      "title": "지략전 (고유)",
+      "assumption": "추격 연계 피해의 공격자를 진궁으로 처리, 목표 무력 영향 미반영",
+      "howToVerify": "【지략전】이(가) 발동한 전보에서 근사 항목(추격 연계 피해의 공격자를 진궁으로 처리, 목표 무력 영향 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-pang-tong",
+      "kind": "skill",
+      "refs": [
+        "u-pang-tong"
+      ],
+      "title": "연환계 (고유)",
+      "assumption": "「연환」(피해 분산) 미지원. 간파 +20%만 반영",
+      "howToVerify": "【연환계】이(가) 발동한 전보에서 근사 항목(「연환」(피해 분산) 미지원. 간파 +20%만 반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-tian-feng",
+      "kind": "skill",
+      "refs": [
+        "u-tian-feng"
+      ],
+      "title": "지략 방어 (고유)",
+      "assumption": "최고 속성 영향 미반영",
+      "howToVerify": "【지략 방어】이(가) 발동한 전보에서 근사 항목(최고 속성 영향 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-gongsun-zan",
+      "kind": "skill",
+      "refs": [
+        "u-gongsun-zan"
+      ],
+      "title": "국경의 장수 (고유)",
+      "assumption": "선공 영향·선공 차이 영향 미반영",
+      "howToVerify": "【국경의 장수】이(가) 발동한 전보에서 근사 항목(선공 영향·선공 차이 영향 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-FIX-002-shared-targets",
+      "kind": "engine",
+      "refs": [
+        "loot-fire",
+        "civil-martial",
+        "night-raid"
+      ],
+      "title": "한 전법 안 여러 피해의 대상 공유",
+      "assumption": "대상이 따로 적히지 않은 피해 항목('책략과 병기 피해', '추가로 …')은 같은 발동 안에서 같은 대상을 맞힌다.",
+      "howToVerify": "방화범·문과 무·야습 전보에서 두 종류 피해(또는 추가 피해)가 같은 무장에게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-FIX-003-damage-chance",
+      "kind": "engine",
+      "refs": [
+        "civil-martial",
+        "strong-wind"
+      ],
+      "title": "피해 확률은 발동 1회에 한 번 판정",
+      "assumption": "'N% 확률로 (대상들)에게 피해'는 대상마다가 아니라 한 번만 판정한다.",
+      "howToVerify": "문과 무·광풍의 분노 전보에서 확률 피해가 대상 2명에게 항상 함께 들어가는지(한 명만 맞는 경우가 없는지) 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-turnend-one-turn",
+      "kind": "engine",
+      "refs": [
+        "u-diao-chan"
+      ],
+      "title": "'턴 종료 시 1턴 동안' 지속",
+      "assumption": "턴 종료 시 1턴 동안 효과는 다음 턴의 보유자 행동이 끝날 때까지 유지된다.",
+      "howToVerify": "초선 금병법 상련·화수 전보에서 효과가 다음 턴 무력 최고 우군의 공격에 적용되는지, 언제 사라지는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-pct-increase-additive",
+      "kind": "engine",
+      "refs": [
+        "u-xiahou-dun",
+        "u-zhou-cang"
+      ],
+      "title": "'효과 N% 증가'의 해석",
+      "assumption": "고유 전법 수치를 'N% 증가'시키는 금병법은 %p 덧셈으로 처리(예: 강렬 피해 감소 30% → 40%).",
+      "howToVerify": "하후돈(위협)·주창(충렬) 전보 툴팁에서 실제 수치가 30→40(덧셈)인지 30→33(곱셈)인지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-holder-duration",
+      "kind": "engine",
+      "refs": [],
+      "title": "지속 턴 = 보유자 행동 기준 (v1.12b 잠정 W05)",
+      "assumption": "버프·디버프의 남은 턴은 보유자가 행동할 때 줄어든다.",
+      "howToVerify": "2턴 지속 상태가 몇 번째 행동 뒤에 사라지는지 전보에서 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-stat-influence",
+      "kind": "engine",
+      "refs": [],
+      "title": "'(스탯)의 영향 받음' 계수 (v1.12b 잠정 W08)",
+      "assumption": "효과 × (1 + (스탯 − 100) × 0.285%)",
+      "howToVerify": "같은 전법을 지력이 다른 두 무장이 쓴 전보에서 수치 비율 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-guard-stack-refresh",
+      "kind": "engine",
+      "refs": [
+        "u-li-ru"
+      ],
+      "title": "방어 상태 중첩",
+      "assumption": "같은 발동에서 방어 2스택을 부여해도 1스택만 쌓인다(같은 상태 갱신 규칙).",
+      "howToVerify": "이유 금병법 비호 전보에서 전투 시작 시 방어가 몇 스택인지 확인",
+      "status": "pending"
+    }
+  ]
+}

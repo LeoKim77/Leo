@@ -1,0 +1,68 @@
+{
+  "note": "엔진 차원의 가정·해석. 전보 녹화로 검증한다. 각 항목은 검증 대기 목록(queue.json)으로 들어간다.",
+  "items": [
+    {
+      "key": "FIX-002-shared-targets",
+      "title": "한 전법 안 여러 피해의 대상 공유",
+      "assumption": "대상이 따로 적히지 않은 피해 항목('책략과 병기 피해', '추가로 …')은 같은 발동 안에서 같은 대상을 맞힌다.",
+      "howToVerify": "방화범·문과 무·야습 전보에서 두 종류 피해(또는 추가 피해)가 같은 무장에게 찍히는지 확인",
+      "refs": [
+        "loot-fire",
+        "civil-martial",
+        "night-raid"
+      ]
+    },
+    {
+      "key": "FIX-003-damage-chance",
+      "title": "피해 확률은 발동 1회에 한 번 판정",
+      "assumption": "'N% 확률로 (대상들)에게 피해'는 대상마다가 아니라 한 번만 판정한다.",
+      "howToVerify": "문과 무·광풍의 분노 전보에서 확률 피해가 대상 2명에게 항상 함께 들어가는지(한 명만 맞는 경우가 없는지) 확인",
+      "refs": [
+        "civil-martial",
+        "strong-wind"
+      ]
+    },
+    {
+      "key": "turnend-one-turn",
+      "title": "'턴 종료 시 1턴 동안' 지속",
+      "assumption": "턴 종료 시 1턴 동안 효과는 다음 턴의 보유자 행동이 끝날 때까지 유지된다.",
+      "howToVerify": "초선 금병법 상련·화수 전보에서 효과가 다음 턴 무력 최고 우군의 공격에 적용되는지, 언제 사라지는지 확인",
+      "refs": [
+        "u-diao-chan"
+      ]
+    },
+    {
+      "key": "pct-increase-additive",
+      "title": "'효과 N% 증가'의 해석",
+      "assumption": "고유 전법 수치를 'N% 증가'시키는 금병법은 %p 덧셈으로 처리(예: 강렬 피해 감소 30% → 40%).",
+      "howToVerify": "하후돈(위협)·주창(충렬) 전보 툴팁에서 실제 수치가 30→40(덧셈)인지 30→33(곱셈)인지 확인",
+      "refs": [
+        "u-xiahou-dun",
+        "u-zhou-cang"
+      ]
+    },
+    {
+      "key": "holder-duration",
+      "title": "지속 턴 = 보유자 행동 기준 (v1.12b 잠정 W05)",
+      "assumption": "버프·디버프의 남은 턴은 보유자가 행동할 때 줄어든다.",
+      "howToVerify": "2턴 지속 상태가 몇 번째 행동 뒤에 사라지는지 전보에서 확인",
+      "refs": []
+    },
+    {
+      "key": "stat-influence",
+      "title": "'(스탯)의 영향 받음' 계수 (v1.12b 잠정 W08)",
+      "assumption": "효과 × (1 + (스탯 − 100) × 0.285%)",
+      "howToVerify": "같은 전법을 지력이 다른 두 무장이 쓴 전보에서 수치 비율 확인",
+      "refs": []
+    },
+    {
+      "key": "guard-stack-refresh",
+      "title": "방어 상태 중첩",
+      "assumption": "같은 발동에서 방어 2스택을 부여해도 1스택만 쌓인다(같은 상태 갱신 규칙).",
+      "howToVerify": "이유 금병법 비호 전보에서 전투 시작 시 방어가 몇 스택인지 확인",
+      "refs": [
+        "u-li-ru"
+      ]
+    }
+  ]
+}

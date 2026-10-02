@@ -15,6 +15,7 @@ import { runAudit, type AuditReport } from '@cheonha/audit';
 import { buildBundle, loadChangelog, type FullBundle, type PatchKind } from '../../../packages/data-tools/src/bundle.ts';
 import { DATA, ROOT, readJson, writeJson } from '../../../packages/data-tools/src/paths.ts';
 import { normalizeKo } from '../../../packages/data-tools/src/terms.ts';
+import { buildQueue, loadQueue, resolveItem } from '../../../packages/data-tools/src/verification.ts';
 
 let cache: { bundle: FullBundle; sim: Simulator } | null = null;
 function ctx() {
@@ -315,6 +316,37 @@ server.registerTool('data_patch', {
   return text({ patched: { kind, id: realId, fields: normalized }, termNotes, boardPost: post, next: 'bundle_rebuild → audit_skill 로 확인 후 커밋하세요.' });
 });
 
+server.registerTool('verification_list', {
+  title: '전보 검증 대기 목록',
+  description: '근사 처리한 금병법·전법·엔진 가정 중 전보 녹화로 확인해야 할 항목 (R-007). 사용자가 전보를 올리면 이 목록과 대조한다.',
+  inputSchema: { status: z.enum(['pending', 'verified', 'rejected']).optional(), ref: z.string().optional().describe('무장·전법 이름 또는 id 로 좁히기') },
+}, async ({ status, ref }) => {
+  buildQueue({ ...ctx().bundle });
+  let items = loadQueue();
+  if (status) items = items.filter(i => i.status === status);
+  if (ref) {
+    const ids = new Set([findGeneral(ref)?.id, findGeneral(ref)?.uniqueSkillId, findSkill(ref)?.id].filter(Boolean) as string[]);
+    items = items.filter(i => i.refs.some(r => ids.has(r)) || i.title.includes(ref));
+  }
+  return text({ total: items.length, items });
+});
+
+server.registerTool('verification_resolve', {
+  title: '전보 검증 결과 기록',
+  description: '전보 녹화로 확인한 결과를 기록한다. rejected 면 엔진 정의를 고쳐야 한다(고친 뒤 audit_skill). announce 로 게시판 글을 함께 남길 수 있다.',
+  inputSchema: {
+    id: z.string(), status: z.enum(['verified', 'rejected']), result: z.string().describe('전보에서 본 내용'),
+    announce: z.boolean().optional(),
+  },
+}, async ({ id, status, result, announce }) => {
+  try {
+    const it = resolveItem(id, status, result);
+    const post = announce ? postBoard({ title: `[전보 검증] ${it.title} — ${status === 'verified' ? '확인' : '불일치'}`, body: `가정: ${it.assumption}\n전보 결과: ${result}`, category: '전투 규칙', refs: it.refs.filter(r => ctx().bundle.skills.some(s => s.id === r) || ctx().bundle.generals.some(g => g.id === r)), source: '전보 녹화' }) : null;
+    invalidate();
+    return text({ resolved: it, boardPost: post });
+  } catch (e: any) { return fail(e.message); }
+});
+
 server.registerTool('bundle_rebuild', {
   title: '웹 데이터 다시 만들기',
   description: 'data/ 변경을 웹(apps/web/public/data/bundle.json)에 반영한다.',
@@ -322,7 +354,8 @@ server.registerTool('bundle_rebuild', {
 }, async () => {
   invalidate();
   const { bundle } = ctx();
-  writeJson(join(ROOT, 'apps', 'web', 'public', 'data', 'bundle.json'), bundle);
+  const out: any = { ...bundle, verification: buildQueue(bundle), confirmedRules: readJson<any>(join(DATA, 'common', 'confirmed-rules.json')).rules };
+  writeJson(join(ROOT, 'apps', 'web', 'public', 'data', 'bundle.json'), out);
   return text({ dataVersion: bundle.dataVersion, generals: bundle.generals.length, skills: bundle.skills.length, posts: bundle.changelog.length });
 });
 
