@@ -14,7 +14,8 @@ export interface SkillEvidence {
   slotByTurn: Record<number, number>;
   rolls: number;
   rollOk: number;
-  rollPs: number[];
+  rollPSum: number;
+  rollPMin: number;
   damage: Record<string, number>;
   heals: number;
   statuses: Record<string, number>;
@@ -24,7 +25,7 @@ export interface SkillEvidence {
 }
 
 function emptyEvidence(): SkillEvidence {
-  return { battles: 0, fired: 0, firedByPhase: {}, firedByTurn: {}, slotByPhase: {}, slotByTurn: {}, rolls: 0, rollOk: 0, rollPs: [], damage: {}, heals: 0, statuses: {}, targetChecks: { ok: 0, bad: 0, examples: [] }, maxPerTurn: 0, phaseExamples: [] };
+  return { battles: 0, fired: 0, firedByPhase: {}, firedByTurn: {}, slotByPhase: {}, slotByTurn: {}, rolls: 0, rollOk: 0, rollPSum: 0, rollPMin: 1, damage: {}, heals: 0, statuses: {}, targetChecks: { ok: 0, bad: 0, examples: [] }, maxPerTurn: 0, phaseExamples: [] };
 }
 
 export interface EngineRuleTally { checked: number; violations: number; examples: string[]; soft?: number; softExamples?: string[] }
@@ -112,7 +113,8 @@ export class EvidenceCollector {
           const e = this.ev(id);
           if (t.kind === '액티브' || t.kind === '추격') {
             e.rolls++; if (t.ok) e.rollOk++;
-            if (e.rollPs.length < 2000) e.rollPs.push(t.p as number);
+            e.rollPSum += t.p as number;
+            e.rollPMin = Math.min(e.rollPMin, t.p as number);
           }
           if (t.kind === '액티브') {
             const k = `${id}:${t.unit}:${t.turn}`;
@@ -261,8 +263,8 @@ export function judgeSkill(exp: Expectation, e: SkillEvidence | undefined, hasEn
   // D04 발동 확률
   if ((exp.kind === '액티브' || exp.kind === '추격') && e.rolls >= 30) {
     const obs = e.rollOk / e.rolls;
-    const pMean = e.rollPs.reduce((a, b) => a + b, 0) / e.rollPs.length;
-    const pMin = Math.min(...e.rollPs);
+    const pMean = e.rollPSum / e.rolls;
+    const pMin = e.rollPMin;
     const sd = Math.sqrt(Math.max(pMean * (1 - pMean), 1e-6) / e.rolls);
     const z = (obs - pMean) / sd;
     const ev = [`판정 ${e.rolls}회 · 성공 ${e.rollOk}회 · 실측 ${(obs * 100).toFixed(1)}%`, `엔진 판정 확률 평균 ${(pMean * 100).toFixed(1)}% (최저 ${(pMin * 100).toFixed(1)}%)`, `원문 ${exp.procRate != null ? (exp.procRate * 100).toFixed(1) + '%' : '-'}`];

@@ -97,6 +97,29 @@ export function setPath(obj: any, path: string, value: unknown) {
   cur[keys[keys.length - 1]] = value;
 }
 
+export interface PatchItem { date: string; note?: string; source?: string; create?: boolean; fields: Record<string, unknown> }
+export type PatchKind = 'generals' | 'skills' | 'tier-decks' | 'bonds';
+
+/** data/patches/<kind>.json 을 원본 배열에 적용한다. create=true 면 새 항목으로 추가 */
+export function applyPatches<T extends { id: string }>(kind: PatchKind, list: T[]): T[] {
+  const file = readJson<{ items: Record<string, PatchItem[]> }>(join(DATA, 'patches', `${kind}.json`), { items: {} });
+  const out = [...list];
+  for (const [id, patches] of Object.entries(file.items || {})) {
+    for (const p of patches) {
+      let item = out.find(x => x.id === id);
+      if (!item) {
+        if (!p.create) continue;
+        item = { id } as T;
+        out.push(item);
+      }
+      for (const [path, v] of Object.entries(p.fields)) setPath(item, path, v);
+      const anyItem = item as any;
+      anyItem.sources = [...(anyItem.sources || []), { kind: 'manual', label: `게임 확인 ${p.date}`, note: p.note || p.source }];
+    }
+  }
+  return out;
+}
+
 export function loadChangelog(): ChangelogEntry[] {
   const dir = join(DATA, 'changelog');
   if (!existsSync(dir)) return [];
@@ -112,8 +135,8 @@ export interface FullBundle extends GameBundle {
 
 export function buildBundle(): FullBundle {
   const seasonsFile = readJson<{ current: string; seasons: SeasonInfo[] }>(join(DATA, 'common', 'seasons.json'));
-  const generals = readJson<any[]>(join(KR, 'generals.json'));
-  const skills = readJson<Skill[]>(join(KR, 'skills.json'));
+  const generals = applyPatches('generals', readJson<any[]>(join(KR, 'generals.json')));
+  const skills = applyPatches('skills', readJson<Skill[]>(join(KR, 'skills.json')));
   const engSkills = readJson<Record<string, any>>(join(DATA, 'engine', 'skills.json'));
   const engGenerals = readJson<Record<string, any>>(join(DATA, 'engine', 'generals.json'));
   const engBonds = readJson<Record<string, any>>(join(DATA, 'engine', 'bonds.json'));
@@ -132,7 +155,7 @@ export function buildBundle(): FullBundle {
     if (eng) s.engine = eng;
     s.clauses = buildClauses(s.text, eng?.clauses);
   }
-  const bonds = readJson<any[]>(join(KR, 'bonds.json')).map(b => ({ ...b, engine: engBonds[b.id] }));
+  const bonds = applyPatches('bonds', readJson<any[]>(join(KR, 'bonds.json'))).map(b => ({ ...b, engine: engBonds[b.id] }));
   const formations: Formation[] = readJson<Formation[]>(join(KR, 'formations.json')).map(f => ({
     ...f,
     engine: { effects: f.traits.flatMap(parseFormationTrait), legacy: engFormations[f.name] },
@@ -147,7 +170,7 @@ export function buildBundle(): FullBundle {
     skills,
     bonds,
     formations,
-    tierDecks: readJson(join(KR, 'tier-decks.json')),
+    tierDecks: applyPatches('tier-decks', readJson<any[]>(join(KR, 'tier-decks.json'))),
     glossary: readJson(join(KR, 'glossary.json')),
     termMap: readJson<any>(join(DATA, 'common', 'term-map.json')).mappings,
     changelog: loadChangelog(),
