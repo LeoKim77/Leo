@@ -22,6 +22,12 @@ export const ENGINE_FIXES = [
     detail: '다른 무장에게 전법처럼 동작하는 효과를 부여(grants), 추격이 아닌 "일반 공격 후" 계기(afterBasic), 전열 우선 대상(random_ally_front).' },
   { id: 'FIX-003', date: '2026-10-02', found: '감사 D06', title: '피해 확률을 대상마다 따로 판정하던 문제',
     detail: '"N% 확률로 (대상)에게 피해" 를 발동 1회에 한 번만 판정하도록 고침. 문과 무·광풍의 분노·일인천군. 상태 부여 확률은 기존처럼 대상별 판정.' },
+  { id: 'FEAT-006', date: '2026-10-03', found: '전보 녹화 (주태·조운·악진 vs 토지 수비군)', title: '진형 칸에 따른 전열·후열',
+    detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
+  { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
+    detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FEAT-008', date: '2026-10-03', found: '전보 녹화 (요새 함락·결사의 다짐)', title: '행동 종료 시점, 회복 기준 능력치',
+    detail: '"행동 종료 시" 효과를 일반 공격·추격 뒤에 처리하는 단계(actionEnd) 추가. 회복량이 지력 대신 통솔 등을 따르는 전법(결사 회복 215~297, 주태 통솔 315)에 기준 능력치 지정.' },
   { id: 'FEAT-005', date: '2026-10-02', found: '사용자 확인 R-009', title: '8턴 무승부 → 생존 무장 재교전',
     detail: '8턴이 끝나도 양쪽이 살아 있으면 남은 병력으로 승패를 가리던 방식(v1.12b)을 버리고, 전사 무장을 뺀 생존 무장끼리 병력·부상병을 이어받아 다시 전투한다. 한쪽 전멸까지 반복(상한 10차).' },
   { id: 'FEAT-004', date: '2026-10-02', found: 'S3 신규 전법 반영', title: 'S3 전법용 대상·조건 추가',
@@ -458,6 +464,20 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
     dmg = reduced;
   }
 
+  // FEAT-007 대신 받기(주태 불굴의 의지): 보호 상태인 우군이 현재 병력의 일정 비율보다 큰 피해를 받기 직전,
+  //   확률로 보호자가 그 피해를 줄여서 대신 받는다 (전보: "[주태]이(가) [악진] 대신 피해를 받습니다.")
+  const gd = defender._guard;
+  if (gd && gd.by.alive && gd.by !== defender && dmg > defender.troops * gd.cfg.threshold
+      && (gd.count[turnNo] || 0) < gd.cfg.perTurn && __rng() < gd.cfg.chance) {
+    gd.count[turnNo] = (gd.count[turnNo] || 0) + 1;
+    const g = gd.by;
+    const shared = Math.max(1, Math.round(dmg * (1 - gd.cfg.cut)));
+    if (log) log.push(`${turnNo}턴:   [${g.name}]이(가) [${defender.name}] 대신 피해를 받습니다.`);
+    __T({ e: 'guard', src: g.id, dst: defender.id, amount: shared, skill: gd.skill });
+    applyGuardedLoss(g, attacker, shared, dmgType, dmgTag, crit, coeffs, log, turnNo);
+    return { dmg: 0, crit, guarded: true };
+  }
+  dmg = unyieldingCheck(defender, dmg, log, turnNo);
   defender.troops = Math.max(0, defender.troops - dmg);
   __T({ e: 'damage', src: attacker.id, dst: defender.id, amount: dmg, dmgType, tag: dmgTag, crit: !!crit, skill: __skillStack[__skillStack.length - 1] || null, after: defender.troops });
   defender.wounded = (defender.wounded || 0) + Math.round(dmg * (coeffs.woundedRate != null ? coeffs.woundedRate : DEFAULT_COEFFS.woundedRate));   // v1.12 W43
@@ -497,7 +517,27 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   return { dmg, crit };
 }
 
-function calcHeal(caster, target, ratio, coeffs) {
+// FEAT-007 불굴: 보호자 자신이 곧 사망할 때 생존한 우군이 있으면 치명적 피해 1회 면역(발동마다 다음 확률 −10%p)
+function unyieldingCheck(u, dmg, log, turnNo) {
+  const uy = u._unyielding;
+  if (!uy || dmg < u.troops || !u._allies || !u._allies.some(a => a !== u && a.alive)) return dmg;
+  const p = Math.max(0, 1 - uy.decay * uy.n);
+  if (__rng() >= p) return dmg;
+  uy.n++;
+  if (log) log.push(`${turnNo}턴:   [${u.name}]이(가) 「불굴」로 치명적인 피해를 면역합니다.`);
+  __T({ e: 'status', src: u.id, dst: u.id, status: '불굴', dur: 0, refreshed: false, skill: uy.skill });
+  return 0;
+}
+function applyGuardedLoss(g, attacker, amount, dmgType, dmgTag, crit, coeffs, log, turnNo) {
+  amount = unyieldingCheck(g, amount, log, turnNo);
+  g.troops = Math.max(0, g.troops - amount);
+  __T({ e: 'damage', src: attacker.id, dst: g.id, amount, dmgType, tag: dmgTag, crit: !!crit, skill: __skillStack[__skillStack.length - 1] || null, after: g.troops, guarded: true });
+  g.wounded = (g.wounded || 0) + Math.round(amount * (coeffs.woundedRate != null ? coeffs.woundedRate : DEFAULT_COEFFS.woundedRate));
+  if (log) log.push(`${turnNo}턴:   [${g.name}]은(는) [${attacker.name}]의 피해로 병력이 ${amount}(${g.troops}) 손실됐습니다.`);
+  if (g.troops <= 0) g.alive = false;
+}
+
+function calcHeal(caster, target, ratio, coeffs, healStat) {
   // 공격 스케일과 비슷한 크기로 맞춤 (근사): 지력 기반, maxTroops 비례가 아님
   // maxTroops 비례로 하면 통솔 높은 탱커 대상 고비율 회복기가 비현실적으로 강력해짐
   // ① 기초 회복 = C × 시전자 지력 × 유효치유율 × HEAL_SCALE
@@ -509,7 +549,8 @@ function calcHeal(caster, target, ratio, coeffs) {
   //   이는 무력 계수로 설명하기엔 과도해서(지력 가중치의 18배 필요) 별도 구조로 추정된다
   //   — "일반 공격 후" 발동이라 공격 피해량 연동(흡혈)일 가능성. 미해결, 표본 추가 필요.
   //   회복량은 시전자 병력에 비례하지 않는다. beta 미적용.
-  const casterInt = effStat(caster, '지력');
+  // healStat: 회복량이 지력 대신 다른 능력치를 따르는 경우 (FEAT-008, 결사의 다짐 '결사' → 통솔, 전보 확인)
+  const casterInt = effStat(caster, healStat || '지력');
   const w = coeffs && coeffs.healStatW != null ? coeffs.healStatW : HEAL_STAT_W;   // v1.11: 회복은 검증된 기존 가중치 유지 (민감도 분석용으로 계수화)
   const effRatio = Math.max(0, ratio + (casterInt - 100) * w);
   // v1.12 W44(잠정): 회복 = 시전자 지력 × 유효치유율. 시전자 병력과 무관(평화의 기운 3턴 327 vs 예측 339).
@@ -1147,7 +1188,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       if (!t.alive || t.troops <= 0) return;   // 쓰러진 대상은 회복 불가(부활 없음)
       if (h.chance != null && __rng() >= h.chance) return;
       const ratio = lvVal(h.min, h.max);
-      const { heal: healed, doubled, healMult, effRatio } = calcHeal(healer, t, ratio, coeffs);
+      const { heal: healed, doubled, healMult, effRatio } = calcHeal(healer, t, ratio, coeffs, h.stat);
       healer.healDone += healed;
       value += healed * 0.6; // 치유 가치는 피해 대비 가중치 낮춰서 기여도 산정
       log.push(`${turn}턴: [${healer.name}]이(가) 【${skill.name}】의 「${skill.name}」 효과를 발동합니다.` +
@@ -1329,6 +1370,19 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     });
   });
 
+  // FEAT-007 보호 상태 부여: 보호자가 다음에 행동을 마칠 때까지 우군을 보호한다
+  if (eff.guardAllies) {
+    const cfg = eff.guardAllies;
+    unit._allies = allUnits.filter(a => a.side === unit.side);
+    if (cfg.unyielding && !unit._unyielding) unit._unyielding = { decay: cfg.unyielding.decay, n: 0, skill: skill.id };
+    unit._allies.forEach(a => {
+      if (a === unit || !a.alive) return;
+      a._guard = { by: unit, cfg, count: (a._guard && a._guard.by === unit) ? a._guard.count : {}, skill: skill.id };
+      log.push(`${turn}턴:   [${a.name}]의 「${skill.name}」 효과가 발동했습니다.`);
+      __T({ e: 'status', src: unit.id, dst: a.id, status: skill.name, dur: 1, refreshed: false, skill: skill.id });
+    });
+    unit._guarding = true;
+  }
   if (!(skill.id in contrib)) contrib[skill.id] = 0;
   contrib[skill.id] += value;
   // 발동 횟수도 함께 집계한다 (기여도 0%인데 자주 터지는 버프성 전법을 구분하기 위함)
@@ -1776,6 +1830,19 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
     }
   });
   unit.inBasicPhase = false; // 일반공격/추격 단계 종료
+  // FEAT-008 행동 종료 시: 일반 공격·추격까지 끝난 뒤 발동하는 지휘·패시브 (요새 함락 등, 전보 확인)
+  if (unit.alive) {
+    __phase = 'actionEnd';
+    unit.skills.filter(s => (s.type === '지휘' || s.type === '패시브') && !s.trigger && s._timing === 'actionEnd' && (!s.onlyTurns || s.onlyTurns.includes(turn))).forEach(skill => {
+      if (!unit.alive) return;
+      applySkillEffects(unit, skill, allUnits, coeffs, log, turn, contrib);
+    });
+  }
+  // FEAT-007: 보호자의 행동이 끝나면 우군의 보호 상태가 사라진다 (전보: 주태 행동 뒤 「불굴의 의지」 효과가 사라졌습니다)
+  if (unit._guarding) {
+    unit._guarding = false;
+    allUnits.forEach(a => { if (a._guard && a._guard.by === unit) { delete a._guard; log.push(`${turn}턴:   [${a.name}]의 보호 상태가 사라졌습니다.`); } });
+  }
 }
 
 // ---------- 전체 전투 시뮬레이션 (1판) ----------

@@ -81,7 +81,6 @@ export interface MonteCarloResult {
   approx?: { A: ApproxEffect[]; B: ApproxEffect[] };
 }
 
-const legacyPosition = (row: string): Position => (row === '후열' ? 'back' : row === '전열' ? 'front' : 'mid');
 
 /** GameBundle → v1.12b GAME_DATA 형태 */
 export function toLegacyGameData(bundle: GameBundle & { engineGenerals?: Record<string, any> }, opts: SimOptions = {}) {
@@ -182,6 +181,7 @@ export class Simulator {
     const formation = this.data.formations.find(f => f.name === deck.formation) || this.data.formations.find(f => f.name === '기형진') || this.data.formations[0];
     const manualsUsed: Array<{ unit: any; manual: Manual }> = [];
     const skillStatics: Array<{ unit: any; name: string; st: any }> = [];
+    const slotPos = this.slotPositions(deck, formation);
     const units = deck.units.map((u, idx) => {
       const g0 = this.generalById.get(u.generalId);
       const g = g0 && u.unitType ? { ...g0, unitType: u.unitType } : g0;
@@ -210,7 +210,7 @@ export class Simulator {
         raw: manual!.text,
         isManual: true,
       }));
-      const unit = E.buildUnit(g, [...skills, ...skillParts, ...manualSkills], uskill, formation, u.position || legacyPosition(g.position), side, idx);
+      const unit = E.buildUnit(g, [...skills, ...skillParts, ...manualSkills], uskill, formation, u.position || slotPos[idx], side, idx);
       for (const sk of [uskill, ...skills].filter(Boolean) as any[]) {
         if (sk.unit?.uniqueProcAddDelta) unit.uniqueProcAdd = (unit.uniqueProcAdd || 0) + sk.unit.uniqueProcAddDelta;
         if (sk.static) skillStatics.push({ unit, name: sk.name, st: sk.static });
@@ -286,6 +286,26 @@ export class Simulator {
       troopCurveAll: mc.troopCurveAll, seed,
       approx: { A: this.approxIn(a), B: this.approxIn(b) },
     };
+  }
+
+  /**
+   * 진형 칸에 따른 전열·후열 (FEAT-006, 전보 2026-10-03 확인).
+   * 기형진: 첫 칸만 전열(주태 받는 피해 −6%), 나머지는 후열(조운·악진 주는 피해 +12%).
+   * 일자진: 셋 다 전열(대교·손책·견희 모두 받는 피해 −8%).
+   * 안형진·방원진(전열·중군 피격률이 같음)은 두 칸이 전열로 가정 — 검증 대기.
+   * 전열 칸에는 배치 성향이 전열인 무장이 먼저 들어가고, 같으면 덱 순서를 따른다.
+   */
+  slotPositions(deck: DeckSpec, formation: { hitRate?: Record<string, number> }): Position[] {
+    const hr = formation?.hitRate || { front: 0.6, mid: 0.2, back: 0.2 };
+    const slots: Position[] = ['front',
+      hr.mid > hr.back || hr.mid >= hr.front ? 'mid' : 'back',
+      hr.back >= hr.front ? 'mid' : 'back'];
+    const pref = (row: string) => (row === '전열' ? 0 : row === '후열' ? 2 : 1);
+    const order = deck.units.map((u, i) => ({ i, p: pref(String(this.generalById.get(u.generalId)?.position ?? '')) }))
+      .sort((a, b) => a.p - b.p || a.i - b.i);
+    const out: Position[] = [];
+    order.forEach((o, k) => { out[o.i] = slots[Math.min(k, 2)]; });
+    return out;
   }
 
   /** 덱에 지정한 금병법 → 없으면 시뮬 가능한 첫 금병법. 미지원·정의 없음은 장착하지 않는다 */

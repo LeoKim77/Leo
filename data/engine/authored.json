@@ -57,9 +57,8 @@
    ]
   },
   "break-hardship": {
-   "status": "approx",
-   "note": "\"행동 종료 시\" 피해를 행동 시작 슬롯(액티브 전)에서 처리",
-   "_timing": "action",
+   "status": "ok",
+   "_timing": "actionEnd",
    "effects": {
     "damage": [
      {
@@ -651,8 +650,29 @@
    ]
   },
   "u-zhou-tai": {
-   "status": "unsupported",
-   "note": "피해 대신 받기·치명상 면역(불굴)은 엔진에 없는 메커니즘"
+   "status": "approx",
+   "note": "전보(2026-10-03)로 확인한 구조: 매 턴 시작 시 우군에게 「불굴의 의지」를 걸고 주태 행동 종료 시 해제, 그동안 현재 병력 10% 초과 피해를 80% 확률로 50% 줄여 대신 받음(우군당 턴 3회). 확률·감소율의 통솔 영향은 미반영",
+   "_timing": "turnStart",
+   "effects": {
+    "damage": [],
+    "heal": [],
+    "buffs": [],
+    "statMods": [],
+    "statusEffects": [],
+    "targets": [],
+    "guardAllies": {
+     "threshold": 0.1,
+     "chance": 0.8,
+     "perTurn": 3,
+     "cut": 0.5,
+     "unyielding": {
+      "decay": 0.1
+     }
+    }
+   },
+   "approxHints": [
+    "통솔의 영향"
+   ]
   },
   "u-chen-gong": {
    "status": "approx",
@@ -868,7 +888,7 @@
   "armor-edge": {
    "replace": true,
    "status": "approx",
-   "note": "결사 회복의 \"목표의 지력과 통솔 영향\"은 받은 무장의 지력으로 계산(통솔 미반영)",
+   "note": "결사 회복은 받은 무장의 통솔 기준(전보: 주태 통솔 315 → 회복 297, 252 → 218 — 엔진 예측은 약 12% 높음, 지력 영향 미반영)",
    "_timing": "battleStart",
    "effects": {
     "damage": [],
@@ -899,7 +919,8 @@
          {
           "min": 0.8,
           "max": 0.8,
-          "target": "self"
+          "target": "self",
+          "stat": "통솔"
          }
         ],
         "buffs": [],
@@ -1529,7 +1550,7 @@
   },
   "u-ma-teng": {
    "status": "approx",
-   "note": "추가 일반 공격을 \"행동 종료 시\" 대신 행동 시작(패시브 순서)에서 처리. 통솔 영향 미반영",
+   "note": "추가 일반 공격을 행동 종료 시 처리. 통솔 영향 미반영",
    "_timing": "battleStart",
    "effects": {
     "damage": [],
@@ -1555,7 +1576,7 @@
       "duration": 3,
       "skill": {
        "type": "패시브",
-       "_timing": "action",
+       "_timing": "actionEnd",
        "effects": {
         "damage": [
          {
@@ -1584,7 +1605,7 @@
   },
   "u-yuan-shu": {
    "status": "approx",
-   "note": "통솔 영향 미반영. 옥새의 \"행동 종료 시\" 피해를 행동 시작(패시브 순서)에서 처리. 옥새 보유자는 4턴 시작 시 통솔 기준으로 1회 결정",
+   "note": "통솔 영향 미반영. 옥새 피해는 행동 종료 시 처리. 옥새 보유자는 4턴 시작 시 통솔 기준으로 1회 결정",
    "_timing": "battleStart",
    "effects": {
     "damage": [],
@@ -1701,7 +1722,7 @@
         "target": "tag:y",
         "skill": {
          "type": "패시브",
-         "_timing": "action",
+         "_timing": "actionEnd",
          "effects": {
           "damage": [
            {
