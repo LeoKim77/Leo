@@ -74,4 +74,29 @@ describe('전법 정의 수정 (S09·FEAT-003)', () => {
     expect(결사).toBeGreaterThan(20);
     expect(다짐).toBeGreaterThan(5);
   });
+
+  it('일반 공격 전 금병법(감녕〈산림탈기〉)은 평타 직전에 책략 피해를 준다 (FEAT-010)', () => {
+    const one = (n: string, m: string) => ({ formation: '기형진', units: [{ generalId: gen(n).id, skillIds: [], manualId: m === 'none' ? 'none' : gen(n).manuals.find(x => x.name === m)!.id }] });
+    const a = one('감녕', '산림탈기');
+    const e = one('조조', 'none');
+    const logs = [1, 2, 3, 4, 5].map(seed => sim.simulate(a, e, { seed }).log.join('\n'));
+    expect(logs.some(l => l.includes('금병법〈산림탈기〉'))).toBe(true);
+  });
+
+  it('방통〈책략〉은 게임 확인 패치로 들어오고 미지원으로 표시된다', () => {
+    const m = gen('방통').manuals.find(x => x.name === '책략')!;
+    expect(m.status).toBe('unsupported');
+  });
 });
+
+describe('진형 (R-013 정정)', () => {
+  it('진형 효과가 기본으로 켜져 있고 언월진은 두 칸 전열이다', () => {
+    const f = b.formations.find(x => x.name === '언월진')!;
+    expect(f.hitRate).toEqual({ front: 0.4, mid: 0.4, back: 0.2 });
+    const units = sim.buildArmy({ formation: '언월진', units: ['조조', '전위', '순욱'].map(n => ({ generalId: gen(n).id, skillIds: [] })) }, 'A');
+    expect(units.map((u: any) => u.position).filter((p: string) => p !== 'back').length).toBe(2);
+    const [k] = sim.buildArmy({ formation: '추형진', units: [{ generalId: gen('전위').id, skillIds: [] }] }, 'A');
+    expect(k.mods.주는피해).toBeGreaterThanOrEqual(0.16 - 1e-9);
+  });
+});
+

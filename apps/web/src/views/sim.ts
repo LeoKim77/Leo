@@ -154,7 +154,7 @@ export function renderSim(root: HTMLElement) {
     busy = ''; redraw();
   };
   mount(root, 
-    h('div', { class: 'section-head' }, h('h2', null, '전투 시뮬레이션'), h('span', { class: 'sub' }, '엔진 v1.12b 이식 + 수정(FIX-001~003) · 기능 추가(FEAT-001~004) + 금병법 · 진형·병종·장비·건물 기술·일반 병법·부상병은 제외(R-011~R-016)')),
+    h('div', { class: 'section-head' }, h('h2', null, '전투 시뮬레이션'), h('span', { class: 'sub' }, '엔진 v1.12b 이식 + 수정(FIX-001~003) · 기능 추가(FEAT-001~004) + 금병법 · 진형(전열·후열 피격률·특성) 반영 · 병종·장비·건물 기술·일반 병법·부상병은 제외(R-011~R-016)')),
     h('div', { class: 'grid cols-2' }, deckEditor('A', redraw), deckEditor('B', redraw)),
     h('div', { class: 'toolbar', style: { marginTop: '12px' } },
       h('label', { class: 'sub' }, '판 수 ', h('input', { type: 'number', min: 20, max: 5000, step: 100, value: runs, style: { width: '90px' }, onchange: (e: Event) => { runs = Math.max(20, Math.min(5000, +(e.target as HTMLInputElement).value || 500)); } })),

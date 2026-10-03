@@ -26,8 +26,10 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FEAT-010', date: '2026-10-03', found: '금병법 미리보기 캡처 (감녕〈산림탈기〉)', title: '일반 공격 전 시점',
+    detail: '"일반 공격 전, N% 확률로 …" 효과를 평타 직전에 처리하는 단계(beforeBasic) 추가. 위협·공포 등으로 평타를 못 하면 발동하지 않는다.' },
   { id: 'FEAT-009', date: '2026-10-03', found: '사용자 확인 R-011~R-016', title: '시뮬 범위: 개인 선택·공통 변수 제외',
-    detail: '진형 효과(능력치·피격률), 병종 효과(상성·병종 강화·병종 전환), 부상병 회복 상한을 기본으로 끈다(계수 formationEffects·troopEffects·woundedCap). 건물 기술·장비·일반 병법은 원래 미반영. 무장 배치와 전법 배치에 따른 계수에 집중.' },
+    detail: '병종 효과(상성·병종 강화·병종 전환), 부상병 회복 상한을 기본으로 끈다(계수 troopEffects·woundedCap). 진형 효과(전열·후열 피격률·진형 특성)는 R-013 정정(2026-10-03)으로 기본 반영(formationEffects). 건물 기술·장비·일반 병법은 원래 미반영. 무장 배치와 전법 배치에 따른 계수에 집중.' },
   { id: 'FEAT-008', date: '2026-10-03', found: '전보 녹화 (요새 함락·결사의 다짐)', title: '행동 종료 시점, 회복 기준 능력치',
     detail: '"행동 종료 시" 효과를 일반 공격·추격 뒤에 처리하는 단계(actionEnd) 추가. 회복량이 지력 대신 통솔 등을 따르는 전법(결사 회복 215~297, 주태 통솔 315)에 기준 능력치 지정.' },
   { id: 'FEAT-005', date: '2026-10-02', found: '사용자 확인 R-009', title: '8턴 무승부 → 생존 무장 재교전',
@@ -85,7 +87,7 @@ function __T(ev) {
 //   ※ C는 그대로 1.44 유지. 실전 역산값 2.3~2.7에는 병법·장비·도시기술이 포함돼 있어
 //     "청정" 기준과 직접 비교할 수 없다.
 let DEBUG_DAMAGE_LOG = false; // 계산 내역 상세 로그 (UI 토글)
-const DEFAULT_COEFFS = { Clin: 2.726, kDef: 1.574, kDefIntel: 1.28, floorRate: 0.01, counterRatio: 0.5, damageVariance: 0.01, C: 1.44, beta: 0.45, defRatio: 0.4, critMult: 1.5, baseCrit: 0,   /* v1.12: 녹화 4판의 아군 타격 40여 건에서 기본 회심이 한 번도 없었음 → 기본 회심·묘책 0 */ statScaleWeight: 0.00285, durationMode: 'holder', drawRule: 'rematch', maxRounds: 10, troopEffects: false, formationEffects: false, woundedCap: false,   /* R-011~R-016 시뮬 범위: 병종·진형·부상병 제외 */   /* R-009 8턴 무승부 → 생존 무장 재교전 */
+const DEFAULT_COEFFS = { Clin: 2.726, kDef: 1.574, kDefIntel: 1.28, floorRate: 0.01, counterRatio: 0.5, damageVariance: 0.01, C: 1.44, beta: 0.45, defRatio: 0.4, critMult: 1.5, baseCrit: 0,   /* v1.12: 녹화 4판의 아군 타격 40여 건에서 기본 회심이 한 번도 없었음 → 기본 회심·묘책 0 */ statScaleWeight: 0.00285, durationMode: 'holder', drawRule: 'rematch', maxRounds: 10, troopEffects: false, formationEffects: true, woundedCap: false,   /* R-011~R-016 시뮬 범위: 병종·부상병 제외, 진형은 반영(R-013 정정) */   /* R-009 8턴 무승부 → 생존 무장 재교전 */
   // ── v1.12 실측 공식 (하후돈덱 2판 + 조운덱 2판, 공격자·피격자 툴팁 확보 표본) ──
   P0: 414, Pa: 1.07, Pd: 1.63, betaP: 0.47,   // 병기: (414 + 1.07×무력 − 1.63×통솔×(1−관통)) × (병력/10000)^0.47 — 10건 RMS 3.1%
   Ma: 1.73, betaM: 0.40,                      // 책략: 1.73 × 지력 × (병력/10000)^0.40 — 방어 스탯 영향 미미, 독립 검증 ±1%
@@ -1716,6 +1718,15 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
         log.push(`${turn}턴:   [${unit.name}]의 「축력」이(가) ${unit._charge}스택 중첩됐습니다. (공격 불가 보상)`);
       }
     }
+  }
+  // FEAT-010 일반 공격 전: 평타를 할 수 있을 때 그 직전에 발동하는 지휘·패시브 (감녕 금병법〈산림탈기〉 등)
+  if (unit.alive && !blockBasic) {
+    unit.skills.filter(s => (s.type === '지휘' || s.type === '패시브') && !s.trigger && s._timing === 'beforeBasic').forEach(skill => {
+      if (!unit.alive || !allUnits.some(u => u.alive && u.side !== unit.side)) return;
+      if (skill.chance != null && __rng() >= skill.chance) return;
+      __phase = 'beforeBasic';
+      applySkillEffects(unit, skill, allUnits, coeffs, log, turn, contrib);
+    });
   }
   if (unit.alive && !blockBasic) {
     const enemies = allUnits.filter(u => u.alive && u.side !== unit.side);

@@ -98,7 +98,7 @@ export function setPath(obj: any, path: string, value: unknown) {
 }
 
 export interface PatchItem { date: string; note?: string; source?: string; create?: boolean; fields: Record<string, unknown> }
-export type PatchKind = 'generals' | 'skills' | 'tier-decks' | 'bonds';
+export type PatchKind = 'generals' | 'skills' | 'tier-decks' | 'bonds' | 'formations';
 
 /** data/patches/<kind>.json 을 원본 배열에 적용한다. create=true 면 새 항목으로 추가 */
 export function applyPatches<T extends { id: string }>(kind: PatchKind, list: T[]): T[] {
@@ -199,7 +199,7 @@ export function buildBundle(): FullBundle {
     }
   }
   const bonds = applyPatches('bonds', readJson<any[]>(join(KR, 'bonds.json'))).map(b => ({ ...b, engine: engBonds[b.id] }));
-  const formations: Formation[] = readJson<Formation[]>(join(KR, 'formations.json')).map(f => ({
+  const formations: Formation[] = applyPatches('formations', readJson<Formation[]>(join(KR, 'formations.json'))).map(f => ({
     ...f,
     engine: { effects: f.traits.flatMap(parseFormationTrait), legacy: engFormations[f.name] },
   }));

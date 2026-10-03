@@ -289,7 +289,7 @@ server.registerTool('data_patch', {
   title: '게임 정보 반영',
   description: '사용자가 게임에서 확인한 정보(스탯, 전법 원문·발동률, 신규 무장/전법, 티어덱)를 엑셀 원본 위에 덮어쓴다. fields 키는 점 경로(예: "stats.무력", "text", "procRate"). announce=true 면 게시판 글도 함께 남긴다.',
   inputSchema: {
-    kind: z.enum(['generals', 'skills', 'tier-decks', 'bonds']),
+    kind: z.enum(['generals', 'skills', 'tier-decks', 'bonds', 'formations']),
     id: z.string().describe('id 또는 이름. 새 항목이면 새 id'),
     fields: z.record(z.unknown()),
     note: z.string().describe('무엇을 어디서 확인했는지'),

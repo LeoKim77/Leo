@@ -178,7 +178,7 @@ export class Simulator {
 
   buildArmy(deck: DeckSpec, side: 'A' | 'B') {
     const E = this.engine;
-    // R-013: 진형 효과는 기본 제외 — 피격률 균등·효과 없음. 위치(전열 우선 대상 등)는 첫 칸 전열로 둔다
+    // R-013(2026-10-03 정정): 진형 효과 반영 — 진형 칸별 전열·후열 피격률과 진형 특성. formationEffects=false 면 피격률 균등·효과 없음
     const realFormation = this.data.formations.find(f => f.name === deck.formation) || this.data.formations.find(f => f.name === '기형진') || this.data.formations[0];
     const useFormation = !!this.coeffs.formationEffects;
     const formation = useFormation ? realFormation : { ...realFormation, name: '진형 없음', traits: [], effects: [], hitRate: { front: 1, mid: 1, back: 1 } };

@@ -276,7 +276,7 @@
      "effects.damage.0.max": 1.68,
      "trigger.maxPerTurn": 1
     },
-    "note": "기병 돌격 추격 피해 +180%(계수 ×2.8), 매 턴 1회"
+    "note": "기병 돌격의 척살 피해 +180%(계수 ×2.8), 척살은 매 턴 1회"
    }
   ],
   "guo-jia": [
@@ -348,7 +348,7 @@
       }
      }
     ],
-    "note": "기지 효과 = 랜덤 적군 2명 60% 책략 피해. \"공격으로\" 조건은 화공 부여 전체로 근사"
+    "note": "기지 효과 = 랜덤 적군 2명 60% 책략 피해(근사). 게임 원문: 적군이 화공 상태를 부여 받을 때마다 판정"
    }
   ],
   "sun-shangxiang": [
@@ -716,15 +716,35 @@
   "gan-ning": [
    {
     "name": "산림탈기",
-    "status": "approx",
-    "parts": [],
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [
+        {
+         "dmgType": "책략",
+         "min": 0.3,
+         "max": 0.3,
+         "target": "random_enemy_1"
+        }
+       ],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "beforeBasic",
+      "chance": 0.6
+     }
+    ],
     "static": {
      "mods": {
       "받는병기피해": -0.05,
       "회유": 0.05
      }
     },
-    "note": "\"일반 공격 전 60% 확률로 랜덤 적군에게 주는 책략 피해 +30%\"는 대상 지정 증폭이라 미지원"
+    "note": "게임 원문(2026-10-03 미리보기): 일반 공격 전 60% 확률로 랜덤 적군 1명에게 30% 책략 피해. 엑셀 원문(\"주는 책략 피해 30% 증가\")은 오기"
    },
    {
     "name": "겁술",
@@ -842,7 +862,7 @@
     "status": "ok",
     "parts": [],
     "unit": {
-     "uniqueProcAdd": 1.0
+     "uniqueProcAdd": 1
     },
     "uniquePatch": {
      "effects.statusEffects.0.chance": 0.12,
@@ -1323,7 +1343,7 @@
        "statMods": [],
        "statusEffects": [
         {
-         "name": "공포",
+         "name": "위협",
          "target": "random_enemy_1",
          "duration": 2
         }
@@ -1339,7 +1359,7 @@
       }
      }
     ],
-    "note": "무력 영향 미반영"
+    "note": "무력 영향 미반영. 부여 상태는 위협(게임 원문, 엑셀은 공포로 오기)"
    }
   ],
   "cheng-yu": [
@@ -1699,6 +1719,14 @@
       "_timing": "battleStart"
      }
     ]
+   }
+  ],
+  "pang-tong": [
+   {
+    "name": "책략",
+    "status": "unsupported",
+    "parts": [],
+    "note": "고유 전법 연환계의 「연환」(피해 전달)이 엔진 미지원이라 이 금병법도 시뮬 제외"
    }
   ]
  }

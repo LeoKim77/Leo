@@ -229,7 +229,7 @@ export function judgeSkill(exp: Expectation, e: SkillEvidence | undefined, hasEn
   const slotTotal = Object.values(e.slotByPhase).reduce((a, b) => a + b, 0);
   const allowed: Record<string, string[]> = {
     battleStart: ['battleStart'], turnStart: ['turnStart'], turnEnd: ['turnEnd'],
-    action: ['action', 'actionEnd'], pursuit: ['pursuit', 'basic'],
+    action: ['action', 'actionEnd', 'beforeBasic'], pursuit: ['pursuit', 'basic'],
   };
   const allow = allowed[exp.timing] && [...allowed[exp.timing], ...(exp.alsoTimings || []).flatMap(t => allowed[t] || [])];
   if (exp.timing === 'pursuit') {
