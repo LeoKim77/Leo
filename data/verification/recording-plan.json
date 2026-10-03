@@ -1,0 +1,242 @@
+{
+  "date": "2026-10-03",
+  "note": "역재현 검증용 녹화 덱 (사용자 보유 기준). 매 턴 툴팁 + 전보 스크롤.",
+  "battles": [
+    {
+      "no": 1,
+      "title": "지력 판 — 책략 계수·지력 영향·회복 공식",
+      "formation": "기형진",
+      "units": [
+        [
+          "조조",
+          [
+            "천하평론",
+            "화공전술"
+          ],
+          "맹덕신서 상권"
+        ],
+        [
+          "화타",
+          [
+            "청낭 치료",
+            "평화의 기운"
+          ]
+        ],
+        [
+          "황월영",
+          [
+            "전장의 노래",
+            "화검"
+          ],
+          "천공비록"
+        ]
+      ],
+      "deck": {
+        "formation": "기형진",
+        "units": [
+          {
+            "generalId": "cao-cao",
+            "skillIds": [
+              "direct-world",
+              "fire-camp"
+            ],
+            "manualId": "m-cao-cao-1"
+          },
+          {
+            "generalId": "hua-tuo",
+            "skillIds": [
+              "qingnang",
+              "rest-army"
+            ],
+            "manualId": "none"
+          },
+          {
+            "generalId": "huang-yueying",
+            "skillIds": [
+              "sing-wine",
+              "fire-feather"
+            ],
+            "manualId": "m-huang-yueying-2"
+          }
+        ]
+      }
+    },
+    {
+      "no": 2,
+      "title": "통솔 판 — 통솔 영향(동탁이 매 턴 통솔을 깎아 같은 전법이 다른 통솔에서 반복)·병기 계수",
+      "formation": "기형진",
+      "units": [
+        [
+          "동탁",
+          [
+            "파죽지세",
+            "견고한 방어"
+          ],
+          "왕신"
+        ],
+        [
+          "황개",
+          [
+            "지혜의 바람",
+            "듬직한 자태"
+          ]
+        ],
+        [
+          "우금",
+          [
+            "측면 공격",
+            "전력 지원"
+          ]
+        ]
+      ],
+      "deck": {
+        "formation": "기형진",
+        "units": [
+          {
+            "generalId": "dong-zhuo",
+            "skillIds": [
+              "break-through",
+              "stone-wall"
+            ],
+            "manualId": "m-dong-zhuo-1"
+          },
+          {
+            "generalId": "huang-gai",
+            "skillIds": [
+              "spring-breeze",
+              "valiant-form"
+            ],
+            "manualId": "none"
+          },
+          {
+            "generalId": "yu-jin",
+            "skillIds": [
+              "swift-flank",
+              "support-selfless"
+            ],
+            "manualId": "none"
+          }
+        ]
+      }
+    },
+    {
+      "no": 3,
+      "title": "탱커 판 — 주태 불굴의 의지·역전, 난공불락, 전열 피격률",
+      "formation": "기형진",
+      "units": [
+        [
+          "주태",
+          [
+            "난공불락",
+            "맹렬한 화염"
+          ],
+          "역전"
+        ],
+        [
+          "하후돈",
+          [
+            "허실 간파",
+            "인재 기용"
+          ],
+          "위협"
+        ],
+        [
+          "감부인",
+          [
+            "금성의 철벽",
+            "병력 강화"
+          ],
+          "한녀전"
+        ]
+      ],
+      "deck": {
+        "formation": "기형진",
+        "units": [
+          {
+            "generalId": "zhou-tai",
+            "skillIds": [
+              "solid-defense",
+              "blazing-sky"
+            ],
+            "manualId": "m-zhou-tai-2"
+          },
+          {
+            "generalId": "xiahou-dun",
+            "skillIds": [
+              "see-truth",
+              "choose-momentum"
+            ],
+            "manualId": "m-xiahou-dun-1"
+          },
+          {
+            "generalId": "gan-furen",
+            "skillIds": [
+              "golden-fortress",
+              "prepare-armor"
+            ],
+            "manualId": "m-gan-furen-1"
+          }
+        ]
+      }
+    },
+    {
+      "no": 4,
+      "title": "S2 신규 전법 판 — 한국판 수치·선봉정신·화소연영·지력 영향(전략 계획)",
+      "formation": "기형진",
+      "units": [
+        [
+          "악진",
+          [
+            "일심협력",
+            "기민한 전술"
+          ]
+        ],
+        [
+          "육손",
+          [
+            "전략 계획",
+            "틈새 공략"
+          ],
+          "분량"
+        ],
+        [
+          "초선",
+          [
+            "퇴로 매복",
+            "원문사극"
+          ],
+          "상련"
+        ]
+      ],
+      "deck": {
+        "formation": "기형진",
+        "units": [
+          {
+            "generalId": "yue-jin",
+            "skillIds": [
+              "same-boat",
+              "charge-change"
+            ],
+            "manualId": "none"
+          },
+          {
+            "generalId": "lu-xun",
+            "skillIds": [
+              "strategize",
+              "strike-gap"
+            ],
+            "manualId": "m-lu-xun-1"
+          },
+          {
+            "generalId": "diao-chan",
+            "skillIds": [
+              "ambushes",
+              "gate-halberd"
+            ],
+            "manualId": "m-diao-chan-1"
+          }
+        ]
+      }
+    }
+  ]
+}
