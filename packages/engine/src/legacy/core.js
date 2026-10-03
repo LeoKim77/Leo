@@ -2459,7 +2459,7 @@ return {
   setRng: (f) => { __rng = f; },
   setTrace: (f) => { __traceFn = f; },
   setSkillLevel: (lv) => { SKILL_LEVEL = lv; },
-  skillTiming, effStat, hasStatus, selectTargets, mergeActionOrder,
+  skillTiming, effStat, hasStatus, selectTargets, mergeActionOrder, calcDamage, calcHeal,
   DEFAULT_COEFFS, buildUnit, simulateOneBattle, simulateBattle, procRateOf,
   getDebugDamageLog: () => DEBUG_DAMAGE_LOG,
   setDebugDamageLog: (v) => { DEBUG_DAMAGE_LOG = !!v; },

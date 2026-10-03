@@ -9,6 +9,7 @@
     "test": "vitest run",
     "typecheck": "tsc -b --noEmit 2>/dev/null || tsc -p tsconfig.json --noEmit",
     "audit": "pnpm --filter @cheonha/audit run audit",
+    "replay:check": "tsx packages/data-tools/src/replay-check.ts",
     "dev": "pnpm --filter @cheonha/web dev",
     "build": "pnpm build:bundle && pnpm --filter @cheonha/web build",
     "mcp": "pnpm --filter @cheonha/mcp-server start",

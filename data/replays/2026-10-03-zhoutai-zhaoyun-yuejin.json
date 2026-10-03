@@ -4,31 +4,223 @@
   "season": "S2",
   "source": "사용자 전보 화면 녹화 3개 (구글 드라이브) — 한 전투를 포진~1턴 / 2~5턴 / 6~8턴으로 나눠 찍음",
   "battle": {
-    "ally": { "formation": "기형진", "units": [
-      { "generalId": "zhou-tai", "slot": 1, "skills": ["all-directions", "armor-edge"], "manualsSeen": ["역전", "저력(일반 병법)"] },
-      { "generalId": "zhao-yun", "slot": 2, "skills": ["break-hardship", "solid-defense"], "manualsSeen": ["구전(일반 병법)"] },
-      { "generalId": "yue-jin", "slot": 3, "skills": ["civil-martial", "hide-light"], "manualsSeen": ["저력(일반 병법)"] }
-    ] },
-    "enemy": { "name": "LV12 토지 수비군 (NPC, 무장당 최대 병력 16,000)", "formation": "일자진", "units": ["da-qiao", "sun-ce", "zhen-luo"] },
+    "ally": {
+      "formation": "기형진",
+      "units": [
+        {
+          "generalId": "zhou-tai",
+          "slot": 1,
+          "skills": [
+            "all-directions",
+            "armor-edge"
+          ],
+          "manualsSeen": [
+            "역전",
+            "저력(일반 병법)"
+          ]
+        },
+        {
+          "generalId": "zhao-yun",
+          "slot": 2,
+          "skills": [
+            "break-hardship",
+            "solid-defense"
+          ],
+          "manualsSeen": [
+            "구전(일반 병법)"
+          ]
+        },
+        {
+          "generalId": "yue-jin",
+          "slot": 3,
+          "skills": [
+            "civil-martial",
+            "hide-light"
+          ],
+          "manualsSeen": [
+            "저력(일반 병법)"
+          ]
+        }
+      ]
+    },
+    "enemy": {
+      "name": "LV12 토지 수비군 (NPC, 무장당 최대 병력 16,000)",
+      "formation": "일자진",
+      "units": [
+        "da-qiao",
+        "sun-ce",
+        "zhen-luo"
+      ]
+    },
     "result": "8턴 무승부 (재교전 장면 없음)",
-    "summary": { "allyLoss": 4752, "enemyLoss": 5952, "allyTroopsEnd": { "zhao-yun": 6155, "yue-jin": 5655 } }
+    "summary": {
+      "allyLoss": 4752,
+      "enemyLoss": 5952,
+      "allyTroopsEnd": {
+        "zhao-yun": 6155,
+        "yue-jin": 5655
+      }
+    }
   },
   "tooltips": [
-    { "turn": 1, "unit": "zhao-yun", "stats": { "무력": 270, "지력": 166, "통솔": 331.04, "선공": 235.2 }, "troops": 10000, "mods": { "주는피해": 0.4861, "받는피해": -0.2629, "받는병기피해": -0.03, "받는책략피해": -0.107, "피신": 0.4565, "회심": 0.2 } },
-    { "turn": 1, "unit": "sun-ce", "stats": { "무력": 261.97, "지력": 142.8, "통솔": 236.3, "선공": 197.92 }, "troops": 14149, "maxTroops": 16000, "mods": { "주는피해": 0.25, "받는피해": -0.0478 } },
-    { "turn": 1, "unit": "zhou-tai", "stats": { "지력": 108, "통솔": 315, "선공": 155 }, "troops": 9628, "mods": { "주는피해": 0.05, "받는피해": 0.09, "받는병기피해": -0.2711, "받는책략피해": -0.0785 } },
-    { "turn": 2, "unit": "yue-jin", "stats": { "지력": 115, "통솔": 205.5, "선공": 309.6 }, "troops": 9411, "mods": { "주는피해": 0.237, "주는책략피해": 0.16, "받는피해": -0.0561, "받는책략피해": -0.1337, "고유액티브발동률": 0.083 } },
-    { "turn": 2, "unit": "zhen-luo", "stats": { "무력": 34.12, "지력": 232.05, "통솔": 184.8, "선공": 132.82 }, "troops": 14546, "maxTroops": 16000, "mods": { "받는피해": -0.08 } },
-    { "turn": 3, "unit": "da-qiao", "stats": { "무력": 42.52, "지력": 223.12, "통솔": 211.62, "선공": 118.65 }, "troops": 14949, "maxTroops": 16000, "mods": { "주는피해": -0.15, "받는피해": -0.08 } }
+    {
+      "turn": 1,
+      "unit": "zhao-yun",
+      "stats": {
+        "무력": 270,
+        "지력": 166,
+        "통솔": 331.04,
+        "선공": 235.2
+      },
+      "troops": 10000,
+      "mods": {
+        "주는피해": 0.4861,
+        "받는피해": -0.2629,
+        "받는병기피해": -0.03,
+        "받는책략피해": -0.107,
+        "피신": 0.4565,
+        "회심": 0.2
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "sun-ce",
+      "stats": {
+        "무력": 261.97,
+        "지력": 142.8,
+        "통솔": 236.3,
+        "선공": 197.92
+      },
+      "troops": 14149,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.25,
+        "받는피해": -0.0478
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "zhou-tai",
+      "stats": {
+        "지력": 108,
+        "통솔": 315,
+        "선공": 155
+      },
+      "troops": 9628,
+      "mods": {
+        "주는피해": 0.05,
+        "받는피해": 0.09,
+        "받는병기피해": -0.2711,
+        "받는책략피해": -0.0785
+      }
+    },
+    {
+      "turn": 2,
+      "unit": "yue-jin",
+      "stats": {
+        "지력": 115,
+        "통솔": 205.5,
+        "선공": 309.6
+      },
+      "troops": 9411,
+      "mods": {
+        "주는피해": 0.237,
+        "주는책략피해": 0.16,
+        "받는피해": -0.0561,
+        "받는책략피해": -0.1337,
+        "고유액티브발동률": 0.083
+      }
+    },
+    {
+      "turn": 2,
+      "unit": "zhen-luo",
+      "stats": {
+        "무력": 34.12,
+        "지력": 232.05,
+        "통솔": 184.8,
+        "선공": 132.82
+      },
+      "troops": 14546,
+      "maxTroops": 16000,
+      "mods": {
+        "받는피해": -0.08
+      }
+    },
+    {
+      "turn": 3,
+      "unit": "da-qiao",
+      "stats": {
+        "무력": 42.52,
+        "지력": 223.12,
+        "통솔": 211.62,
+        "선공": 118.65
+      },
+      "troops": 14949,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": -0.15,
+        "받는피해": -0.08
+      }
+    }
   ],
   "damageSamples": [
-    { "turn": 1, "attacker": "zhao-yun", "defender": "sun-ce", "kind": "일반 공격", "dmgType": "병기", "ratio": 1.0, "observed": 455, "engineEstimate": 450, "note": "조운 무력 270·주는 피해 +48.61%, 손책 통솔 236.3·받는 피해 −4.78%, 조운 병력 10,000" },
-    { "turn": 1, "attacker": "zhao-yun", "defender": "sun-ce", "kind": "요새 함락", "dmgType": "병기", "ratio": 1.1, "observed": 523, "engineEstimate": 506 },
-    { "turn": 1, "attacker": "zhao-yun", "defender": "zhen-luo", "kind": "요새 함락", "dmgType": "병기", "ratio": 1.1, "observed": 581, "note": "견희 통솔 184.8(포진 기준) 이면 예측 619, 204.8 이면 569" }
+    {
+      "turn": 1,
+      "attacker": "zhao-yun",
+      "defender": "sun-ce",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 455,
+      "engineEstimate": 450,
+      "note": "조운 무력 270·주는 피해 +48.61%, 손책 통솔 236.3·받는 피해 −4.78%, 조운 병력 10,000"
+    },
+    {
+      "turn": 1,
+      "attacker": "zhao-yun",
+      "defender": "sun-ce",
+      "kind": "요새 함락",
+      "dmgType": "병기",
+      "ratio": 1.1,
+      "observed": 523,
+      "engineEstimate": 506
+    },
+    {
+      "turn": 1,
+      "attacker": "zhao-yun",
+      "defender": "zhen-luo",
+      "kind": "요새 함락",
+      "dmgType": "병기",
+      "ratio": 1.1,
+      "observed": 581,
+      "note": "견희 통솔 184.8(포진 기준) 이면 예측 619, 204.8 이면 569"
+    }
   ],
   "healSamples": [
-    { "turn": 1, "healer": "zhou-tai", "skill": "결사의 다짐-결사", "ratio": 0.8, "observed": 297, "healerStats": { "지력": 108, "통솔": 315 } },
-    { "turn": 6, "healer": "zhou-tai", "skill": "결사의 다짐-결사", "ratio": 0.8, "observed": 218, "healerStats": { "지력": 76.84, "통솔": 252.68 } }
+    {
+      "turn": 1,
+      "healer": "zhou-tai",
+      "skill": "결사의 다짐-결사",
+      "ratio": 0.8,
+      "observed": 297,
+      "healerStats": {
+        "지력": 108,
+        "통솔": 315
+      },
+      "healStat": "통솔"
+    },
+    {
+      "turn": 6,
+      "healer": "zhou-tai",
+      "skill": "결사의 다짐-결사",
+      "ratio": 0.8,
+      "observed": 218,
+      "healerStats": {
+        "지력": 76.84,
+        "통솔": 252.68
+      },
+      "healStat": "통솔"
+    }
   ],
   "mechanics": [
     "주태 불굴의 의지: 매 턴 시작에 아군에게 보호 상태 → 주태 행동 종료 시 해제. 보호 중 '[주태]이(가) [X] 대신 피해를 받습니다'",

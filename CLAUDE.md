@@ -30,5 +30,10 @@ pnpm build:bundle         # 웹 데이터
 pnpm build:standalone     # 단일 HTML → apps/web/dist-standalone/muhanmutu(.artifact).html
 ```
 
+## 계수 검증 방법 (역재현 우선)
+녹화 영상이 오면 전투를 그대로 재현해 숫자를 맞춘다: 양쪽 무장·전법·진형을 전보대로 세팅하고, 툴팁에 찍힌 스탯·병력·증감을
+그 턴 상태로 덮어쓴 뒤, 전보의 피해·회복·효과 수치 한 건씩을 엔진 공식으로 다시 계산해 비교한다(`data/replays/*.json`,
+`pnpm replay:check`). 발동·대상·피신 같은 확률 결과는 전보 그대로 고정하고 숫자만 엔진에 맡긴다. 오차가 큰 항목이 고칠 계수다.
+
 ## 시즌·데이터 업데이트 절차
 `.claude/skills/season-update/SKILL.md` 를 따른다.
