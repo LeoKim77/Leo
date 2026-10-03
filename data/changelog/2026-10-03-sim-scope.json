@@ -15,5 +15,6 @@
     "data/verification/queue.json",
     "packages/engine/src/index.ts",
     "packages/engine/src/legacy/core.js"
-  ]
+  ],
+  "commit": "23f887500c96"
 }
