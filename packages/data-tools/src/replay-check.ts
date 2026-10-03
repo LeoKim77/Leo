@@ -10,7 +10,9 @@ import { Simulator } from '../../engine/src/index.ts';
 
 type Mods = Record<string, number>;
 interface Tooltip { turn: number; unit: string; stats?: Record<string, number>; troops?: number; maxTroops?: number; mods?: Mods }
-interface DamageSample { turn: number; attacker: string; defender: string; kind: string; dmgType: '병기' | '책략'; ratio: number; observed: number; crit?: boolean; tag?: string; note?: string }
+/** at: 그 순간 툴팁과 달라진 값(병력·능력치·증감) — 전보 줄의 괄호 수치로 채운다 */
+type At = Record<string, { troops?: number; stats?: Record<string, number>; mods?: Mods }>;
+interface DamageSample { turn: number; attacker: string; defender: string; kind: string; dmgType: '병기' | '책략'; ratio: number; observed: number; crit?: boolean; tag?: string; note?: string; at?: At }
 /** "(스탯)의 영향 받음" 표본: 원문 기본값과 전보에 실제로 찍힌 값, 그 순간 시전자(또는 목표)의 해당 스탯 */
 interface InfluenceSample { turn: number; skill: string; caster: string; base: number; observed: number; stat: string; statValue: number; note?: string }
 interface HealSample { turn: number; healer: string; target?: string; skill: string; ratio: number; observed: number; healStat?: string; healerStats?: Record<string, number> }
@@ -42,7 +44,7 @@ export function checkReplay(r: Replay, coeffs: Record<string, unknown> = {}, sim
     return u;
   };
   // 그 턴(없으면 가장 가까운 턴)의 툴팁을 무장에 덮어쓴다
-  const apply = (gid: string, turn: number) => {
+  const apply = (gid: string, turn: number, at?: At) => {
     const u = byGeneral(gid);
     const tips = r.tooltips.filter(t => t.unit === gid).sort((x, y) => Math.abs(x.turn - turn) - Math.abs(y.turn - turn) || x.turn - y.turn);
     const tip = tips[0];
@@ -54,13 +56,15 @@ export function checkReplay(r: Replay, coeffs: Record<string, unknown> = {}, sim
       if (tip.troops != null) u.troops = tip.troops;
       if (tip.maxTroops != null) u.maxTroops = tip.maxTroops;
     }
+    const o = at?.[gid];
+    if (o) { Object.assign(u.stats, o.stats || {}); Object.assign(u.mods, o.mods || {}); if (o.troops != null) u.troops = o.troops; }
     u.mods.피신 = 0; u.mods.회심 = 0; u.mods.묘책 = 0; u.alive = true;
     return { u, snap: tip ? `${tip.turn}턴 툴팁${tip.turn !== turn ? '(다른 턴)' : ''}${tip.stats ? '' : ' 스탯 없음'}` : '툴팁 없음' };
   };
   const rows: CheckRow[] = [];
   const crit = Number((sim as any).coeffs.critMult ?? 1.5);
   for (const s of r.damageSamples || []) {
-    const A = apply(s.attacker, s.turn), D = apply(s.defender, s.turn);
+    const A = apply(s.attacker, s.turn, s.at), D = apply(s.defender, s.turn, s.at);
     const tag = s.tag || (s.kind === '일반 공격' ? 'basic' : 'active');
     const { dmg } = E.calcDamage(A.u, D.u, s.ratio, s.dmgType, (sim as any).coeffs, null, s.turn, tag);
     const predicted = Math.round(dmg * (s.crit ? crit : 1));

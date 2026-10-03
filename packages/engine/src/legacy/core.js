@@ -26,6 +26,8 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FIX-005', date: '2026-10-03', found: '전보 녹화 (조황화 무승부 이후 교전)', title: '재교전 최대 병력',
+    detail: '8턴 무승부 뒤 재교전은 남은 병력이 그대로 최대 병력이 되고(손책 13,967/13,967) 부상병은 넘어가지 않는다. 포진 효과(진형·병법·지휘 전법)는 처음부터 다시 걸린다.' },
   { id: 'FIX-004', date: '2026-10-03', found: '금병법 원문 대조 (이유〈비호〉 "방어 2스택")', title: '방어 스택 중첩',
     detail: '방어는 1회 소모형 스택(최대 2)인데 같은 상태 갱신 규칙에 걸려 1스택만 쌓이던 문제를 고침.' },
   { id: 'FEAT-015', date: '2026-10-03', found: '금병법 원문 대조', title: '책략 후 병기 증가·홍수 상대 피해 감소·상태 시전자 지정',
@@ -99,10 +101,13 @@ function __T(ev) {
 //   ※ C는 그대로 1.44 유지. 실전 역산값 2.3~2.7에는 병법·장비·도시기술이 포함돼 있어
 //     "청정" 기준과 직접 비교할 수 없다.
 let DEBUG_DAMAGE_LOG = false; // 계산 내역 상세 로그 (UI 토글)
-const DEFAULT_COEFFS = { Clin: 2.726, kDef: 1.574, kDefIntel: 1.28, floorRate: 0.01, counterRatio: 0.5, damageVariance: 0.01, C: 1.44, beta: 0.45, defRatio: 0.4, critMult: 1.5, baseCrit: 0,   /* v1.12: 녹화 4판의 아군 타격 40여 건에서 기본 회심이 한 번도 없었음 → 기본 회심·묘책 0 */ statScaleWeight: 0.00285, durationMode: 'holder', drawRule: 'rematch', maxRounds: 10, troopEffects: false, formationEffects: true, woundedCap: false,   /* R-011~R-016 시뮬 범위: 병종·부상병 제외, 진형은 반영(R-013 정정) */   /* R-009 8턴 무승부 → 생존 무장 재교전 */
+const DEFAULT_COEFFS = { Clin: 2.726, kDef: 1.574, kDefIntel: 1.28, floorRate: 0.01, counterRatio: 0.5, damageVariance: 0.01, C: 1.44, beta: 0.45, defRatio: 0.4, critMult: 1.5, baseCrit: 0,   /* v1.12: 녹화 4판의 아군 타격 40여 건에서 기본 회심이 한 번도 없었음 → 기본 회심·묘책 0 */ statScaleWeight: 0.0021,   /* 2026-10-03 전보: 목우유마·난세의 간웅·전략 계획 실측으로 0.285%→0.21%/스탯 */ durationMode: 'holder', drawRule: 'rematch', maxRounds: 10, troopEffects: false, formationEffects: true, woundedCap: false,   /* R-011~R-016 시뮬 범위: 병종·부상병 제외, 진형은 반영(R-013 정정) */   /* R-009 8턴 무승부 → 생존 무장 재교전 */
   // ── v1.12 실측 공식 (하후돈덱 2판 + 조운덱 2판, 공격자·피격자 툴팁 확보 표본) ──
-  P0: 414, Pa: 1.07, Pd: 1.63, betaP: 0.47,   // 병기: (414 + 1.07×무력 − 1.63×통솔×(1−관통)) × (병력/10000)^0.47 — 10건 RMS 3.1%
-  Ma: 1.73, betaM: 0.40,                      // 책략: 1.73 × 지력 × (병력/10000)^0.40 — 방어 스탯 영향 미미, 독립 검증 ±1%
+  // ── 2026-10-03 전보 역재현(조황화 훈련소 전투 25건 + 조운덱 3건) 재추정 ──
+  //   v1.12 값(414/1.07/1.63/0.47, 책략 1.73/0.40)은 고무력 공격자 표본만으로 맞춰져 저무력 공격(화타 무력 49.5 → 손책 168,
+  //   엔진 81)과 고통솔 피격을 크게 틀렸다(병기 RMS 37%, 책략 29%). 새 값: 병기 13.6%, 책략 7.3%. 표본 추가로 계속 보정.
+  P0: 250, Pa: 0.8, Pd: 0.6, betaP: 0.15,     // 병기: (250 + 0.8×무력 − 0.6×통솔×(1−관통)) × (병력/10000)^0.15
+  Ma: 1.4, betaM: 0.25,                       // 책략: 1.4 × 지력 × (병력/10000)^0.25 (5건)
   counterBonus: 0.15,                         // 병종 상성: 방패>궁, 궁>창, 창>기, 기>방패 — 피해 +15%
   woundedRate: 0.85 };                        // 손실 병력 중 부상병 비율(실측 0.847~0.849). 회복은 부상병 수가 상한
 // ============================================================
@@ -1967,7 +1972,7 @@ function simulateOneBattle(armyA, armyB, coeffs) {
   // ---- 포진 단계에서 "전투 시작 시" 1회성 지휘/패시브 발동 ----
   // 실제 전보에서도 "1번째 턴" 표시보다 앞에 찍힌다.
   __turn = 0; __phase = 'battleStart';
-  __T({ e: 'battle', units: units.map(u => ({ id: u.id, side: u.side, name: u.name, generalId: u.generalId, skills: u.skills.map(s => s.id) })) });
+  __T({ e: 'battle', units: units.map(u => ({ id: u.id, side: u.side, name: u.name, generalId: u.generalId, troops: u.troops, maxTroops: u.maxTroops, skills: u.skills.map(s => s.id) })) });
   const startOrder = units.filter(u => u.alive).sort((a, b) => effStat(b, '선공') - effStat(a, '선공'));
   ['지휘', '패시브'].forEach(type => {
     startOrder.forEach(u => {
@@ -2120,7 +2125,8 @@ function simulateBattle(armyA, armyB, coeffs, rebuildFn) {
       const p = prev.find(x => x.side === u.side && x.generalId === u.generalId);
       if (!p) return;
       u.id = p.id;   // 전보·감사에서 같은 무장을 같은 id 로 본다
-      u.troops = p.troops; u.wounded = p.wounded || 0;
+      // FIX-005 전보 확인(조황화 무승부 이후): 재교전은 남은 병력이 새 최대 병력이 되고 부상병은 넘어가지 않는다
+      u.troops = p.troops; u.maxTroops = p.troops; u.wounded = 0;
       u.dmgDealt = p.dmgDealt; u.healDone = p.healDone;
     });
     const offset = turns;

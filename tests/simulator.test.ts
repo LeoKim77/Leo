@@ -51,6 +51,8 @@ describe('8턴 무승부 재교전 (R-009)', () => {
       const battles = r.trace!.filter(t => t.e === 'battle') as any[];
       const deadAfter1 = new Set(r.trace!.filter(t => t.e === 'damage' && (t as any).after <= 0 && t.turn <= 8).map(t => (t as any).dst));
       for (const u of battles[1].units) expect(deadAfter1.has(u.id)).toBe(false);
+      // FIX-005: 재교전은 남은 병력이 그대로 최대 병력이 된다 (전보: 손책 13,967/13,967)
+      for (const u of battles[1].units) expect(u.maxTroops).toBe(u.troops);
     }
     expect(found).toBe(true);
   });
