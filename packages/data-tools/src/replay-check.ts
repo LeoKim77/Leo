@@ -9,13 +9,19 @@ import { DATA, readJson } from './paths.ts';
 import { Simulator } from '../../engine/src/index.ts';
 
 type Mods = Record<string, number>;
+/**
+ * 전법 승품 보너스(효과 수치 배율 +%). 사용자 확인: 승품 1 ≈ +2.4%(천하평론), 2 ≈ +4.8%(화공전술), 4 = +12%(전장의 노래 상세 화면 145.6%/17.92).
+ * 3·5 는 미확인 — 2→4 사이를 직선으로, 5 는 4→5 를 같은 폭(+3.6%p)으로 잡은 잠정값. 시뮬 기본은 승품 0(R-017).
+ */
+export const GRADE_BONUS: Record<number, number> = { 0: 0, 1: 0.024, 2: 0.048, 3: 0.084, 4: 0.12, 5: 0.156 };
+const gradeMult = (g?: number) => 1 + (GRADE_BONUS[g ?? 0] ?? 0);
 interface Tooltip { turn: number; unit: string; stats?: Record<string, number>; troops?: number; maxTroops?: number; mods?: Mods }
 /** at: 그 순간 툴팁과 달라진 값(병력·능력치·증감) — 전보 줄의 괄호 수치로 채운다 */
 type At = Record<string, { troops?: number; stats?: Record<string, number>; mods?: Mods }>;
-interface DamageSample { turn: number; attacker: string; defender: string; kind: string; dmgType: '병기' | '책략'; ratio: number; observed: number; crit?: boolean; tag?: string; note?: string; at?: At }
+interface DamageSample { grade?: number; turn: number; attacker: string; defender: string; kind: string; dmgType: '병기' | '책략'; ratio: number; observed: number; crit?: boolean; tag?: string; note?: string; at?: At }
 /** "(스탯)의 영향 받음" 표본: 원문 기본값과 전보에 실제로 찍힌 값, 그 순간 시전자(또는 목표)의 해당 스탯 */
 interface InfluenceSample { turn: number; skill: string; caster: string; base: number; observed: number; stat: string; statValue: number; note?: string }
-interface HealSample { turn: number; healer: string; target?: string; skill: string; ratio: number; observed: number; healStat?: string; healerStats?: Record<string, number> }
+interface HealSample { grade?: number; turn: number; healer: string; target?: string; skill: string; ratio: number; observed: number; healStat?: string; healerStats?: Record<string, number> }
 export interface Replay {
   id: string; date: string; season: string;
   battle: { ally: { formation: string; units: Array<{ generalId: string; skills?: string[] }> }; enemy: { formation: string; units: string[] } };
@@ -66,7 +72,7 @@ export function checkReplay(r: Replay, coeffs: Record<string, unknown> = {}, sim
   for (const s of r.damageSamples || []) {
     const A = apply(s.attacker, s.turn, s.at), D = apply(s.defender, s.turn, s.at);
     const tag = s.tag || (s.kind === '일반 공격' ? 'basic' : 'active');
-    const { dmg } = E.calcDamage(A.u, D.u, s.ratio, s.dmgType, (sim as any).coeffs, null, s.turn, tag);
+    const { dmg } = E.calcDamage(A.u, D.u, s.ratio * gradeMult(s.grade), s.dmgType, (sim as any).coeffs, null, s.turn, tag);
     const predicted = Math.round(dmg * (s.crit ? crit : 1));
     rows.push({ kind: 'damage', turn: s.turn, label: `${A.u.name}→${D.u.name} ${s.kind} ${Math.round(s.ratio * 100)}% ${s.dmgType}`, observed: s.observed, predicted, errPct: (predicted - s.observed) / s.observed, snapshot: `${A.snap} / ${D.snap}` });
   }
@@ -75,7 +81,7 @@ export function checkReplay(r: Replay, coeffs: Record<string, unknown> = {}, sim
     if (s.healerStats) Object.assign(H.u.stats, s.healerStats);
     const T = s.target ? apply(s.target, s.turn).u : H.u;
     T.troops = 1; T.wounded = T.maxTroops;   // 회복 상한에 걸리지 않게
-    const { heal } = E.calcHeal(H.u, T, s.ratio, (sim as any).coeffs, s.healStat);
+    const { heal } = E.calcHeal(H.u, T, s.ratio * gradeMult(s.grade), (sim as any).coeffs, s.healStat);
     rows.push({ kind: 'heal', turn: s.turn, label: `${H.u.name} ${s.skill} 치유율 ${Math.round(s.ratio * 100)}%${s.healStat ? ` (${s.healStat} 기준)` : ''}`, observed: s.observed, predicted: heal, errPct: (heal - s.observed) / s.observed, snapshot: s.healerStats ? '표본에 적힌 시전자 스탯' : H.snap });
   }
   // 스탯 영향: 기본값 × (1 + (스탯 − 100) × statScaleWeight) — v1.12b 잠정식(W08)

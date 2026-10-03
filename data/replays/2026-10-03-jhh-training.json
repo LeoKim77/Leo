@@ -2,7 +2,7 @@
   "id": "2026-10-03-jhh-training",
   "date": "2026-10-03",
   "season": "S2",
-  "source": "사용자 전보 녹화 '조황화' 5개(포진~2턴/2~4턴/5~6턴/7~8턴/무승부 이후 2턴), 구글 드라이브. 상대 훈련소 NPC(LV12 토지 수비군 표기, 최대 병력 16,000). 아군 세 번째 전법(화공전술·평화의 기운·화검) 레벨 9",
+  "source": "사용자 전보 녹화 '조황화' 5개(포진~2턴/2~4턴/5~6턴/7~8턴/무승부 이후 2턴), 구글 드라이브. 상대 훈련소 NPC(LV12 토지 수비군 표기, 최대 병력 16,000). 아군 세 번째 전법(화공전술·평화의 기운·화검) 레벨 9. 전법 승품: 전장의 노래 4·화검 5·평화의 기운 3·청풍 질주 1·마비산 1·천하평론 1·화공전술 2 (사용자 확인, 전장의 노래 상세 화면: 치유율 145.6%·통솔 17.92 = 원문 ×1.12)",
   "battle": {
     "ally": {
       "formation": "기형진",
@@ -485,7 +485,7 @@
       "turn": 2,
       "attacker": "huang-yueying",
       "defender": "sun-ce",
-      "kind": "화검(Lv9)",
+      "kind": "화검(Lv9·승품5)",
       "dmgType": "병기",
       "ratio": 1.4167,
       "observed": 356,
@@ -502,13 +502,14 @@
         "sun-ce": {
           "troops": 15733
         }
-      }
+      },
+      "grade": 5
     },
     {
       "turn": 2,
       "attacker": "huang-yueying",
       "defender": "da-qiao",
-      "kind": "화검(Lv9)",
+      "kind": "화검(Lv9·승품5)",
       "dmgType": "병기",
       "ratio": 1.4167,
       "observed": 428,
@@ -519,13 +520,14 @@
             "주는피해": 0.205
           }
         }
-      }
+      },
+      "grade": 5
     },
     {
       "turn": 2,
       "attacker": "huang-yueying",
       "defender": "zhen-luo",
-      "kind": "화검(Lv9)",
+      "kind": "화검(Lv9·승품5)",
       "dmgType": "병기",
       "ratio": 1.4167,
       "observed": 393,
@@ -539,7 +541,8 @@
         "zhen-luo": {
           "troops": 15506
         }
-      }
+      },
+      "grade": 5
     },
     {
       "turn": 2,
@@ -706,6 +709,95 @@
           "troops": 7784
         }
       }
+    },
+    {
+      "turn": 3,
+      "attacker": "cao-cao",
+      "defender": "da-qiao",
+      "kind": "화공전술(Lv9·승품2) 전체 공격",
+      "dmgType": "책략",
+      "ratio": 0.7556,
+      "grade": 2,
+      "observed": 346,
+      "at": {
+        "cao-cao": {
+          "troops": 6968,
+          "stats": {
+            "무력": 92.68,
+            "통솔": 196.6,
+            "선공": 92.18,
+            "지력": 203.68
+          },
+          "mods": {
+            "주는피해": 0.4789,
+            "받는피해": -0.3063,
+            "받는책략피해": -0.05,
+            "주는액티브피해": 0.05
+          }
+        },
+        "da-qiao": {
+          "stats": {
+            "지력": 223.12
+          }
+        }
+      },
+      "note": "피해 숫자 일부가 가려져 조조 심리 공격 회복(10.68%)으로 복원 ±5"
+    },
+    {
+      "turn": 3,
+      "attacker": "cao-cao",
+      "defender": "zhen-luo",
+      "kind": "화공전술(Lv9·승품2) 전체 공격",
+      "dmgType": "책략",
+      "ratio": 0.7556,
+      "grade": 2,
+      "observed": 408,
+      "at": {
+        "cao-cao": {
+          "troops": 7005,
+          "stats": {
+            "무력": 92.68,
+            "통솔": 196.6,
+            "선공": 92.18,
+            "지력": 198.68
+          },
+          "mods": {
+            "주는피해": 0.4789,
+            "받는피해": -0.3063,
+            "받는책략피해": -0.05,
+            "주는액티브피해": 0.05
+          }
+        }
+      },
+      "note": "피해 숫자 일부가 가려져 조조 심리 공격 회복(10.68%)으로 복원 ±5"
+    },
+    {
+      "turn": 3,
+      "attacker": "cao-cao",
+      "defender": "sun-ce",
+      "kind": "화공전술(Lv9·승품2) 전체 공격",
+      "dmgType": "책략",
+      "ratio": 0.7556,
+      "grade": 2,
+      "observed": 318,
+      "at": {
+        "cao-cao": {
+          "troops": 7049,
+          "stats": {
+            "무력": 92.68,
+            "통솔": 196.6,
+            "선공": 92.18,
+            "지력": 193.68
+          },
+          "mods": {
+            "주는피해": 0.4789,
+            "받는피해": -0.3063,
+            "받는책략피해": -0.05,
+            "주는액티브피해": 0.05
+          }
+        }
+      },
+      "note": "피해 숫자 일부가 가려져 조조 심리 공격 회복(10.68%)으로 복원 ±5"
     }
   ],
   "healSamples": [
@@ -713,23 +805,25 @@
       "turn": 1,
       "healer": "hua-tuo",
       "target": "cao-cao",
-      "skill": "평화의 기운(Lv9)",
+      "skill": "평화의 기운(Lv9·승품3)",
       "ratio": 0.85,
       "observed": 324,
       "healerStats": {
         "지력": 277.5
-      }
+      },
+      "grade": 3
     },
     {
       "turn": 1,
       "healer": "hua-tuo",
       "target": "cao-cao",
-      "skill": "마비산",
+      "skill": "마비산(승품1)",
       "ratio": 2.4,
       "observed": 808,
       "healerStats": {
         "지력": 277.5
-      }
+      },
+      "grade": 1
     },
     {
       "turn": 2,
@@ -746,34 +840,37 @@
       "turn": 2,
       "healer": "hua-tuo",
       "target": "cao-cao",
-      "skill": "청풍 질주",
+      "skill": "청풍 질주(승품1)",
       "ratio": 1.8,
       "observed": 610,
       "healerStats": {
         "지력": 277.5
-      }
+      },
+      "grade": 1
     },
     {
       "turn": 2,
       "healer": "huang-yueying",
       "target": "cao-cao",
-      "skill": "전장의 노래",
+      "skill": "전장의 노래(승품4)",
       "ratio": 1.3,
       "observed": 492,
       "healerStats": {
         "지력": 282
-      }
+      },
+      "grade": 4
     },
     {
       "turn": 2,
       "healer": "hua-tuo",
       "target": "cao-cao",
-      "skill": "평화의 기운(Lv9)",
+      "skill": "평화의 기운(Lv9·승품3)",
       "ratio": 0.85,
       "observed": 323,
       "healerStats": {
         "지력": 277.5
-      }
+      },
+      "grade": 3
     }
   ],
   "influenceSamples": [
@@ -823,15 +920,6 @@
       "statValue": 223.12
     },
     {
-      "turn": 2,
-      "skill": "전장의 노래 통솔 증가",
-      "caster": "황월영",
-      "base": 16,
-      "observed": 17.92,
-      "stat": "지력",
-      "statValue": 282
-    },
-    {
       "turn": 1,
       "skill": "마비산 받는 피해 감소",
       "caster": "화타",
@@ -840,5 +928,17 @@
       "stat": "지력",
       "statValue": 277.5
     }
+  ],
+  "grades": {
+    "sing-wine": 4,
+    "fire-feather": 5,
+    "rest-army": 3,
+    "fresh-breeze": 1,
+    "u-hua-tuo": 1,
+    "direct-world": 1,
+    "fire-camp": 2
+  },
+  "explained": [
+    "전장의 노래 통솔 17.92 = 16 × 1.12 (승품 4) — 지력 영향 아님. 전법 상세 화면으로 확인"
   ]
 }
