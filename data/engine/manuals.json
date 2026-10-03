@@ -1728,6 +1728,143 @@
     "parts": [],
     "note": "고유 전법 연환계의 「연환」(피해 전달)이 엔진 미지원이라 이 금병법도 시뮬 제외"
    }
+  ],
+  "gan-furen": [
+   {
+    "name": "한녀전",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "피신": 0.14
+     }
+    }
+   }
+  ],
+  "zhang-liao": [
+   {
+    "name": "기전",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "row": "front",
+     "mods": {
+      "회유": 0.12,
+      "주는피해": 0.05
+     }
+    },
+    "note": "진형 칸이 전열일 때만 적용"
+   }
+  ],
+  "lu-xun": [
+   {
+    "name": "분량",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [
+        {
+         "name": "군량 고갈",
+         "target": "trigger_target",
+         "duration": 2
+        }
+       ],
+       "targets": []
+      },
+      "trigger": {
+       "event": "debuff",
+       "role": "ally_side",
+       "statusName": "화공",
+       "chance": 0.5,
+       "maxPerTurn": 9
+      },
+      "onlyTurns": [
+       1,
+       2,
+       3
+      ]
+     }
+    ],
+    "note": "우리 편이 적에게 화공을 부여할 때마다 50% 판정(1~3턴)"
+   },
+   {
+    "name": "분영",
+    "status": "approx",
+    "parts": [],
+    "static": {
+     "mods": {
+      "심리공격": 0.05
+     }
+    },
+    "note": "심리 공격 +5%만 반영. 연소 상태가 엔진 미지원이라 \"연소 시 최고 속성 5% 추가 감소\"는 제외"
+   }
+  ],
+  "zhou-tai": [
+   {
+    "name": "불굴",
+    "status": "ok",
+    "parts": [
+     {
+      "_timing": "battleStart",
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "받는병기피해",
+         "min": -0.06,
+         "max": -0.06,
+         "target": "self",
+         "duration": 999,
+         "maxStacks": 1
+        },
+        {
+         "stat": "받는병기피해",
+         "min": -0.06,
+         "max": -0.06,
+         "target": "random_same_row_ally",
+         "duration": 999,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      }
+     }
+    ],
+    "note": "자신 + 같은 열(전열/후열) 랜덤 우군 1명. 같은 열 우군이 없으면 자신만"
+   },
+   {
+    "name": "역전",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "_guardReversal": {
+      "bonus": 0.2,
+      "healRatio": 0.5
+     }
+    },
+    "note": "대신 받아 준 우군의 다음 피해 +20%, 그 피해의 50%만큼 주태 회복(전보: 회복 177~222)"
+   }
+  ],
+  "zou-shi": [
+   {
+    "name": "세속",
+    "status": "approx",
+    "parts": [],
+    "uniquePatch": {
+     "parts.1.effects.heal.0.min": 1.68,
+     "parts.1.effects.heal.0.max": 1.68,
+     "_keepTiming": true
+    },
+    "note": "회복 계수 140% → 168%(×1.2). 눈짓의 지력 영향은 공식 미확인이라 미반영"
+   }
   ]
  }
 }

@@ -26,6 +26,8 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FEAT-011', date: '2026-10-03', found: '금병법 미리보기 캡처 (주태·육손)', title: '역전·같은 열 우군·턴 한정 디버프 계기',
+    detail: '주태〈역전〉: 대신 받아 준 우군의 다음 피해 +20%, 그 피해의 50%만큼 보호자 회복. 〈불굴〉용 같은 열 랜덤 우군 대상. 육손〈분량〉용 "첫 N턴 동안" 디버프 계기 턴 제한.' },
   { id: 'FEAT-010', date: '2026-10-03', found: '금병법 미리보기 캡처 (감녕〈산림탈기〉)', title: '일반 공격 전 시점',
     detail: '"일반 공격 전, N% 확률로 …" 효과를 평타 직전에 처리하는 단계(beforeBasic) 추가. 위협·공포 등으로 평타를 못 하면 발동하지 않는다.' },
   { id: 'FEAT-009', date: '2026-10-03', found: '사용자 확인 R-011~R-016', title: '시뮬 범위: 개인 선택·공통 변수 제외',
@@ -323,6 +325,7 @@ function selectTargets(unit, targetCodes, allUnits) {
     case 'random_enemy_n': result = weightedShuffleByPosition(enemies, 2); break;
     case 'random_ally_n': result = shuffle(allies).slice(0, 2); break;
     case 'random_ally_front': { const fr = allies.filter(u => u.position === 'front'); result = [pick(fr.length ? fr : allies)]; break; }   // FEAT-003 전열 우선
+    case 'random_same_row_ally': { const row = x => (x.position === 'back' ? 'back' : 'front'); result = shuffle(allies.filter(u => u !== unit && row(u) === row(unit))).slice(0, 1); break; }   // FEAT-011 같은 열 우군(자신 제외)
     case 'random_ally_1': result = shuffle(allies.filter(u => u !== unit)).slice(0, 1); break;   // FEAT-001: 랜덤 우군 단일(자신 제외)
     case 'random_enemy_1': result = [weightedPickByPosition(enemies)]; break;
     case 'lowest_control_enemy': result = [minBy(enemies, u => u.stats.통솔)]; break;
@@ -438,6 +441,9 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   // 우리 실측에서도 회복량이 182/181처럼 1% 안팎으로 흔들렸다.
   dmg *= (1 - coeffs.damageVariance) + __rng() * (2 * coeffs.damageVariance);
   dmg = Math.max(1, Math.round(dmg));
+  // FEAT-011 역전(주태 금병법): 보호자가 대신 받아 준 우군의 다음 피해 증가
+  const rv = attacker._reversal;
+  if (rv) dmg = Math.max(1, Math.round(dmg * (1 + rv.bonus)));
   if (DEBUG_DAMAGE_LOG && log) {
     log.push(`${turnNo}턴:   └[계산] ATK ${ATK.toFixed(1)} / DEF ${DEF.toFixed(1)} / 전법계수 ${(ratio*100).toFixed(1)}% ` +
       `→ 기초 ${base.toFixed(1)} × 주는피해 ${outMult.toFixed(3)} × 받는피해 ${inMult.toFixed(3)}` +
@@ -479,10 +485,20 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
     if (log) log.push(`${turnNo}턴:   [${g.name}]이(가) [${defender.name}] 대신 피해를 받습니다.`);
     __T({ e: 'guard', src: g.id, dst: defender.id, amount: shared, skill: gd.skill });
     applyGuardedLoss(g, attacker, shared, dmgType, dmgTag, crit, coeffs, log, turnNo);
+    if (g._guardReversal && g.alive) defender._reversal = { by: g, bonus: g._guardReversal.bonus, healRatio: g._guardReversal.healRatio };
     return { dmg: 0, crit, guarded: true };
   }
   dmg = unyieldingCheck(defender, dmg, log, turnNo);
   defender.troops = Math.max(0, defender.troops - dmg);
+  if (rv) {
+    delete attacker._reversal;
+    const g = rv.by;
+    if (g.alive) {
+      const before = g.troops;
+      g.troops = Math.min(g.maxTroops, g.troops + Math.round(dmg * rv.healRatio * (1 + (g.mods.받는회복량 || 0)) * accumStatus(g, 'healReceivedMult', 'mult')));
+      if (log) log.push(`${turnNo}턴:   [${g.name}]이(가) 「역전」으로 병력을 ${g.troops - before}(${g.troops}) 회복했습니다.`);
+    }
+  }
   __T({ e: 'damage', src: attacker.id, dst: defender.id, amount: dmg, dmgType, tag: dmgTag, crit: !!crit, skill: __skillStack[__skillStack.length - 1] || null, after: defender.troops });
   defender.wounded = (defender.wounded || 0) + Math.round(dmg * (coeffs.woundedRate != null ? coeffs.woundedRate : DEFAULT_COEFFS.woundedRate));   // v1.12 W43
   if (defender.troops <= 0) defender.alive = false;
@@ -689,6 +705,7 @@ function emitDebuffEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       // '이상 상태'만 보는 트리거(주유 기지의 승리)는 기본 디버프에는 반응하지 않는다.
       if (t.abnormalOnly && !ctx.abnormal) return;
       if (t.statusName && t.statusName !== ctx.statusName) return;   // FEAT-001: 특정 상태 부여에만 반응
+      if (skill.onlyTurns && !skill.onlyTurns.includes(turn)) return;   // FEAT-011: "첫 3턴 동안" 등
       if (!rollTrigger(u, skill)) return;
       applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { caster, target });
     });

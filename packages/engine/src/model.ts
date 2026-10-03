@@ -61,7 +61,7 @@ export interface Manual {
 
 export interface ManualEngine {
   parts?: Array<Record<string, unknown>>;
-  static?: { mods?: Record<string, number>; stats?: Record<string, number> };
+  static?: { mods?: Record<string, number>; stats?: Record<string, number>; row?: 'front' | 'back' };
   unit?: Record<string, unknown>;
   uniquePatch?: Record<string, unknown>;
 }

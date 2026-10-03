@@ -89,6 +89,39 @@ describe('전법 정의 수정 (S09·FEAT-003)', () => {
   });
 });
 
+describe('사용자 확인 금병법 (2026-10-03)', () => {
+  const unit = (n: string, m: string) => ({ generalId: gen(n).id, skillIds: [] as string[], manualId: gen(n).manuals.find(x => x.name === m)!.id });
+  it('엑셀에 없던 금병법이 들어온다', () => {
+    expect(gen('감부인').manuals.map(m => m.name)).toEqual(['한녀전']);
+    expect(gen('장료').manuals.map(m => m.name)).toEqual(['기전']);
+    expect(gen('육손').manuals.map(m => m.name)).toEqual(['분량', '분영']);
+    expect(gen('주태').manuals.map(m => m.name)).toEqual(['불굴', '역전']);
+    expect(gen('추씨').manuals.map(m => m.name)).toEqual(['세속']);
+  });
+  it('장료〈기전〉은 전열일 때만 회유·주는 피해가 붙는다', () => {
+    const [front] = sim.buildArmy({ formation: '기형진', units: [unit('장료', '기전')] }, 'A');
+    expect(front.mods.회유).toBeGreaterThanOrEqual(0.12 - 1e-9);
+    const back = sim.buildArmy({ formation: '기형진', units: [{ generalId: gen('조조').id, skillIds: [] }, { generalId: gen('전위').id, skillIds: [] }, unit('장료', '기전')] }, 'A')
+      .find((u: any) => u.name === '장료');
+    if (back.position === 'back') expect(back.mods.회유 || 0).toBeLessThan(0.12);
+  });
+  it('추씨〈세속〉은 고유 전법 회복 계수를 1.2배로 하고 전투 시작 시점은 유지한다', () => {
+    const [u] = sim.buildArmy({ formation: '기형진', units: [unit('추씨', '세속')] }, 'A');
+    const us = u.skills.find((s: any) => s.isUnique);
+    expect(us._timing).toBe('battleStart');
+    const part = u.skills.find((s: any) => s.isPart && s.onlyTurns?.includes(4));
+    expect(part.effects.heal[0].min).toBeCloseTo(1.68, 5);
+  });
+  it('주태〈역전〉: 대신 받은 뒤 우군의 다음 피해와 주태 회복이 전보에 나온다', () => {
+    const t = gen('주태'), z = gen('조운'), y = gen('악진');
+    const a = { formation: '기형진', units: [{ ...unit('주태', '역전'), skillIds: [] }, { generalId: z.id, skillIds: [] }, { generalId: y.id, skillIds: [] }] };
+    const e = { formation: '기형진', units: ['손책', '대교', '견희'].map(n => ({ generalId: gen(n).id, skillIds: [] })) };
+    const logs = [1, 2, 3, 4, 5, 6].map(seed => sim.simulate(a, e, { seed }).log.join('\n'));
+    expect(t).toBeTruthy();
+    expect(logs.some(l => l.includes('「역전」으로 병력을'))).toBe(true);
+  });
+});
+
 describe('진형 (R-013 정정)', () => {
   it('진형 효과가 기본으로 켜져 있고 언월진은 두 칸 전열이다', () => {
     const f = b.formations.find(x => x.name === '언월진')!;

@@ -197,8 +197,8 @@ export class Simulator {
       // 금병법이 고유 전법을 고치면 이 무장에게만 사본을 만들어 적용한다
       if (uskill && eng?.uniquePatch) {
         uskill = structuredClone(uskill);
-        for (const [path, v] of Object.entries(eng.uniquePatch)) setPath(uskill, path, v);
-        delete uskill._timing;
+        for (const [path, v] of Object.entries(eng.uniquePatch)) if (path !== '_keepTiming') setPath(uskill, path, v);
+        if (!eng.uniquePatch._keepTiming) delete uskill._timing;
       }
       // 전법 정의에 딸린 추가 효과(parts) — 한 전법에 계기가 둘 이상일 때 (S2 연전연승 등)
       const skillParts = [uskill, ...skills].filter(Boolean).flatMap((sk: any) => (sk.parts || []).map((part: any, i: number) => ({
@@ -243,7 +243,10 @@ export class Simulator {
       const st = manual.engine?.static;
       const from = (manual.engine?.unit as any)?.statFromStat;
       const parts: string[] = [];
-      for (const [k, v] of Object.entries(st?.mods || {})) { unit.mods[k] = (unit.mods[k] || 0) + v; parts.push(`${k} ${v > 0 ? '+' : ''}${Math.round(v * 1000) / 10}%`); }
+      // st.row: "자신이 전열이면" 처럼 진형 칸에 따라 붙는 증감 (장료〈기전〉)
+      const rowOk = !st?.row || (st.row === 'back') === (unit.position === 'back');
+      if (!rowOk) parts.push(`${st.row === 'back' ? '후열' : '전열'} 조건 불충족`);
+      if (rowOk) for (const [k, v] of Object.entries(st?.mods || {})) { unit.mods[k] = (unit.mods[k] || 0) + v; parts.push(`${k} ${v > 0 ? '+' : ''}${Math.round(v * 1000) / 10}%`); }
       for (const [k, v] of Object.entries(st?.stats || {})) { unit.stats[k] = (unit.stats[k] || 0) + v; parts.push(`${k} ${v > 0 ? '+' : ''}${v}`); }
       if (from) { const add = unit.stats[from.from] * from.ratio; unit.stats[from.stat] += add; parts.push(`${from.stat} +${add.toFixed(1)}`); }
       prepLog.push(`0턴: [${unit.name}] 금병법〈${manual.name}〉 장착${manual.status === 'approx' ? ' (근사)' : ''}${parts.length ? ' — ' + parts.join(', ') : ''}`);
