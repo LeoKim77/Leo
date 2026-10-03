@@ -18,6 +18,7 @@ function unitRow(t: TierDeck, u: TierDeckUnit, i: number, own: { g: Set<string>;
       h('a', { href: `#/codex?kind=general&id=${u.generalId}`, style: { color: dim(own.g.has(u.generalId)) }, ...hlAttrs(marked(t, i, '무장')) }, u.generalName),
       u.generalAlternatives?.length ? h('div', { class: 'muted', style: { fontSize: '12px' } }, `또는 ${u.generalAlternatives.join(', ')}`) : null,
       u.unitType ? h('div', null, h('span', { class: 'badge', title: '덱에서 병종 변경' }, `→ ${u.unitType}`)) : null,
+      g?.notInKr ? h('div', null, h('span', { class: 'badge tmp', title: '사용자 확인: 한국 서버에 없는 무장 — 덱 추천에서 제외' }, '한국 서버 미출시')) : null,
       tmp.length ? h('div', null, h('span', { class: 'badge tmp', title: tmp.map(x => x.join(': ')).join('\n') }, '임시 자료')) : null),
     h('td', null,
       u.skillNames.length > u.skillIds.length ? h('span', { class: 'badge tmp', title: '시트에 특정 전법 대신 종류만 적힌 칸 — 시뮬에서는 빈 칸' }, u.skillNames.find((n, k) => !u.skillIds[k] || skillById(u.skillIds[k])?.name.ko !== n) || '자유 칸') : null,

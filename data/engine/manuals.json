@@ -1648,7 +1648,7 @@
   "yue-jin": [
    {
     "name": "동등",
-    "status": "approx",
+    "status": "ok",
     "parts": [
      {
       "effects": {
@@ -1667,7 +1667,7 @@
          "stat": "받는책략피해",
          "min": -0.06,
          "max": -0.06,
-         "target": "random_ally_1",
+         "target": "random_same_row_ally",
          "duration": 999,
          "maxStacks": 1
         }
@@ -1679,7 +1679,7 @@
       "_timing": "battleStart"
      }
     ],
-    "note": "\"같은 열\" 조건 미반영"
+    "note": "자신 + 같은 열(전열/후열) 랜덤 우군 1명 (FEAT-011 대상)"
    }
   ],
   "xu-chu": [
@@ -1864,6 +1864,138 @@
      "_keepTiming": true
     },
     "note": "회복 계수 140% → 168%(×1.2). 눈짓의 지력 영향은 공식 미확인이라 미반영"
+   }
+  ],
+  "chen-gong": [
+   {
+    "name": "논무",
+    "status": "ok",
+    "parts": [
+     {
+      "_timing": "battleStart",
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": [],
+       "grants": [
+        {
+         "key": "논무",
+         "target": "highest_power_ally",
+         "skill": {
+          "trigger": {
+           "event": "cast",
+           "castType": "추격",
+           "role": "self",
+           "maxPerTurn": 9
+          },
+          "effects": {
+           "damage": [],
+           "heal": [],
+           "buffs": [
+            {
+             "stat": "추격전법피해",
+             "min": 0.02,
+             "max": 0.02,
+             "target": "self",
+             "duration": 999,
+             "maxStacks": 10
+            }
+           ],
+           "statMods": [],
+           "statusEffects": [],
+           "targets": []
+          }
+         }
+        }
+       ]
+      }
+     }
+    ],
+    "note": "전투 시작 시 무력 최고 우군에게 부여, 추격 발동마다 추격 전법 피해 +2%(최대 10회)"
+   }
+  ],
+  "ma-yunlu": [
+   {
+    "name": "풍속통의",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "allyTypeHighestPct": {
+      "unitType": "기병",
+      "pct": 0.05
+     }
+    },
+    "note": "무장 기본 병종이 기병인 아군(자신 포함)의 최고 속성 +5%"
+   }
+  ],
+  "fa-zheng": [
+   {
+    "name": "문도",
+    "status": "ok",
+    "parts": [
+     {
+      "_timing": "battleStart",
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "주는병기피해",
+         "min": -0.1,
+         "max": -0.1,
+         "target": "all_enemy",
+         "duration": 4,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      }
+     }
+    ]
+   }
+  ],
+  "tian-feng": [
+   {
+    "name": "권략",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "uniqueProcAdd": 0.1
+    },
+    "note": "지략 방어 발동률 60% → 70%"
+   }
+  ],
+  "gongsun-zan": [
+   {
+    "name": "서좌",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "추격발동률": 0.07
+     }
+    }
+   },
+   {
+    "name": "백마의종",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "_evadeGrowth": {
+      "ratio": 0.02,
+      "max": 8,
+      "stats": [
+       "무력",
+       "지력"
+      ]
+     }
+    },
+    "note": "피신 시점의 선공 기준"
    }
   ]
  }

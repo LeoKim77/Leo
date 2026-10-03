@@ -189,19 +189,6 @@
       "priority": 18
     },
     {
-      "id": "V-manual-m-yue-jin-1",
-      "kind": "manual",
-      "refs": [
-        "yue-jin",
-        "u-yue-jin"
-      ],
-      "title": "악진 금병법〈동등〉",
-      "assumption": "\"같은 열\" 조건 미반영",
-      "howToVerify": "악진이(가) 〈동등〉을 장착한 전보에서 원문 효과(\"자신 및 같은 열의 랜덤 우군 단일 목표가 받는 책략 피해가 6%감소한다.…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 17
-    },
-    {
       "id": "V-skill-u-yue-jin",
       "kind": "skill",
       "refs": [
@@ -798,18 +785,6 @@
       "priority": 3
     },
     {
-      "id": "V-skill-u-sima-yi",
-      "kind": "skill",
-      "refs": [
-        "u-sima-yi"
-      ],
-      "title": "매의 응시 (고유)",
-      "assumption": "포진 상태 자체의 효과는 미지원. 포석 수(발동마다 1 + 50%로 1, 최대 8)에 따른 피해 계수 증가만 반영",
-      "howToVerify": "【매의 응시】이(가) 발동한 전보에서 근사 항목(포진 상태 자체의 효과는 미지원. 포석 수(발동마다 1 + 50%로 1, 최대 8)에 따른 피해 계수 증가만 반영)을 확인",
-      "status": "pending",
-      "priority": 3
-    },
-    {
       "id": "V-skill-u-romance-yuan-shao",
       "kind": "skill",
       "refs": [
@@ -927,18 +902,6 @@
       "title": "압도적 권력 — \"매 턴 행동 시, 전체 적군과 우군의 통솔을 20포인트…\"",
       "assumption": "적군 통솔 감소만 구현. 우군 통솔 탈취·자신 가산은 미지원",
       "howToVerify": "【압도적 권력】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 2
-    },
-    {
-      "id": "V-skill-u-jia-xu",
-      "kind": "skill",
-      "refs": [
-        "u-jia-xu"
-      ],
-      "title": "현묘한계책 (고유)",
-      "assumption": "90% 판정이 대상별, \"우군이 이미 혼란이면 회복\" 미지원",
-      "howToVerify": "【현묘한계책】이(가) 발동한 전보에서 근사 항목(90% 판정이 대상별, \"우군이 이미 혼란이면 회복\" 미지원)을 확인",
       "status": "pending",
       "priority": 2
     },

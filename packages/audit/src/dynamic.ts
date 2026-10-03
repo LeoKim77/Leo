@@ -179,6 +179,13 @@ export class EvidenceCollector {
           if ((t.after as number) <= 0) dead.add(dst);
           break;
         }
+        case 'guard':
+        case 'resist': {
+          // 보호자가 대신 받았거나(주태) 저항으로 무효화된 타격도 '대상이 된 것'으로 센다
+          const inv = invInfo.get(t.inv as number);
+          if (inv && sideOf(t.dst as string) !== sideOf(inv.unit)) inv.dsts.add(t.dst as string);
+          break;
+        }
         case 'evade': {
           // 피신으로 무효화된 타격도 '대상이 된 것'으로 센다
           const inv = invInfo.get(t.inv as number);

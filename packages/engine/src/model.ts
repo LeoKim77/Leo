@@ -44,6 +44,8 @@ export interface General {
   manuals: Manual[];
   /** 아직 공개 자료가 없어 임시값·추정값을 쓴 항목 (예: stats: '임시값') */
   dataStatus?: Record<string, string>;
+  /** 한국 서버에 없는 무장 (사용자 확인) */
+  notInKr?: boolean;
   sources: SourceRef[];
 }
 

@@ -249,6 +249,12 @@ export class Simulator {
       if (rowOk) for (const [k, v] of Object.entries(st?.mods || {})) { unit.mods[k] = (unit.mods[k] || 0) + v; parts.push(`${k} ${v > 0 ? '+' : ''}${Math.round(v * 1000) / 10}%`); }
       for (const [k, v] of Object.entries(st?.stats || {})) { unit.stats[k] = (unit.stats[k] || 0) + v; parts.push(`${k} ${v > 0 ? '+' : ''}${v}`); }
       if (from) { const add = unit.stats[from.from] * from.ratio; unit.stats[from.stat] += add; parts.push(`${from.stat} +${add.toFixed(1)}`); }
+      // 아군 병종별 최고 속성 증가 (마운록〈풍속통의〉 "아군 기병의 최고 속성 5%")
+      const boost = (manual.engine?.unit as any)?.allyTypeHighestPct;
+      if (boost) for (const a of units.filter((x: any) => x.side === unit.side && x.unitType === boost.unitType)) {
+        const k = (['무력', '지력', '통솔', '선공'] as const).reduce((m, x) => (a.stats[x] > a.stats[m] ? x : m), '무력' as string);
+        const add = a.stats[k] * boost.pct; a.stats[k] += add; parts.push(`${a.name} ${k} +${add.toFixed(1)}`);
+      }
       prepLog.push(`0턴: [${unit.name}] 금병법〈${manual.name}〉 장착${manual.status === 'approx' ? ' (근사)' : ''}${parts.length ? ' — ' + parts.join(', ') : ''}`);
     }
     units.forEach((u: any) => { u.prepLog = prepLog; });

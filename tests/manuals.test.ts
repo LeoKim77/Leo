@@ -122,6 +122,31 @@ describe('사용자 확인 금병법 (2026-10-03)', () => {
   });
 });
 
+describe('사용자 확인 금병법 2차 (2026-10-03)', () => {
+  const unit = (n: string, m?: string) => ({ generalId: gen(n).id, skillIds: [] as string[], manualId: m ? gen(n).manuals.find(x => x.name === m)!.id : 'none' });
+  it('마운록〈풍속통의〉는 기병 아군의 최고 속성을 5% 올린다', () => {
+    const deckOf = (m?: string) => ({ formation: '기형진', units: [unit('마운록', m), unit('공손찬'), unit('제갈량')] });
+    const on = sim.buildArmy(deckOf('풍속통의'), 'A'), off = sim.buildArmy(deckOf(), 'A');
+    const gz = (us: any[]) => us.find(u => u.name === '공손찬');
+    const k = (['무력', '지력', '통솔', '선공'] as const).reduce((m, x) => (gz(off).stats[x] > gz(off).stats[m] ? x : m), '무력' as '무력' | '지력' | '통솔' | '선공');
+    expect(gz(on).stats[k] / gz(off).stats[k]).toBeCloseTo(1.05, 3);
+  });
+  it('전풍〈권략〉은 고유 전법 발동률 +10%', () => {
+    const [u] = sim.buildArmy({ formation: '기형진', units: [unit('전풍', '권략')] }, 'A');
+    expect(u.uniqueProcAdd).toBeCloseTo(0.1, 5);
+  });
+  it('공손찬〈백마의종〉은 피신할 때마다 무력·지력이 오른다', () => {
+    const a = { formation: '기형진', units: [unit('공손찬', '백마의종')] };
+    const e = { formation: '기형진', units: [unit('조조'), unit('전위'), unit('순욱')] };
+    const logs = [1, 2, 3, 4, 5, 6, 7, 8].map(seed => sim.simulate(a, e, { seed }).log.join('\n'));
+    expect(logs.some(l => l.includes('피신 후 성장'))).toBe(true);
+  });
+  it('사마의·가후는 한국 서버 미출시로 표시된다', () => {
+    expect((gen('사마의') as any).notInKr).toBe(true);
+    expect((gen('가후') as any).notInKr).toBe(true);
+  });
+});
+
 describe('진형 (R-013 정정)', () => {
   it('진형 효과가 기본으로 켜져 있고 언월진은 두 칸 전열이다', () => {
     const f = b.formations.find(x => x.name === '언월진')!;

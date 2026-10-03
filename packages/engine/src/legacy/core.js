@@ -26,6 +26,8 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FEAT-012', date: '2026-10-03', found: '금병법 미리보기 캡처 (공손찬·마운록)', title: '피신 후 성장·아군 병종별 최고 속성 증가',
+    detail: '공손찬〈백마의종〉: 피신할 때마다 무력·지력이 선공의 2%만큼 증가(최대 8회). 마운록〈풍속통의〉: 아군 중 기병 무장의 최고 속성 +5%(무장 기본 병종 기준, R-015에 따라 병종 전환은 보지 않음).' },
   { id: 'FEAT-011', date: '2026-10-03', found: '금병법 미리보기 캡처 (주태·육손)', title: '역전·같은 열 우군·턴 한정 디버프 계기',
     detail: '주태〈역전〉: 대신 받아 준 우군의 다음 피해 +20%, 그 피해의 50%만큼 보호자 회복. 〈불굴〉용 같은 열 랜덤 우군 대상. 육손〈분량〉용 "첫 N턴 동안" 디버프 계기 턴 제한.' },
   { id: 'FEAT-010', date: '2026-10-03', found: '금병법 미리보기 캡처 (감녕〈산림탈기〉)', title: '일반 공격 전 시점',
@@ -454,6 +456,14 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   if (!hasStatus(attacker, '백발백중') && __rng() < clamp(defender.mods.피신 || 0, 0, 0.9)) {
     if (log) log.push(`${turnNo}턴:   [${defender.name}]이(가) 「피신」에 성공하여 피해를 무효화했습니다.`);
     __T({ e: 'evade', src: attacker.id, dst: defender.id, skill: __skillStack[__skillStack.length - 1] || null });
+    // FEAT-012 피신 후 성장(공손찬〈백마의종〉): 피신할 때마다 무력·지력 +선공×ratio, 최대 max회
+    const eg = defender._evadeGrowth;
+    if (eg && (defender._evadeGrowthN || 0) < eg.max) {
+      defender._evadeGrowthN = (defender._evadeGrowthN || 0) + 1;
+      const add = defender.stats.선공 * eg.ratio;
+      (eg.stats || ['무력', '지력']).forEach(k => { defender.stats[k] = (defender.stats[k] || 0) + add; });
+      if (log) log.push(`${turnNo}턴:   [${defender.name}]의 무력·지력이 ${add.toFixed(2)} 증가했습니다. (피신 후 성장 ${defender._evadeGrowthN}/${eg.max})`);
+    }
     return { dmg: 0, crit: false, evaded: true };
   }
   
@@ -462,6 +472,7 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   if (resistIdx >= 0) {
     defender.statuses.splice(resistIdx, 1);
     if (log) log.push(`${turnNo}턴:   [${defender.name}]이(가) 「저항」으로 이번 피해를 무효화했습니다.`);
+    __T({ e: 'resist', src: attacker.id, dst: defender.id, skill: __skillStack[__skillStack.length - 1] || null });
     return { dmg: 0, crit: false, resisted: true };
   }
   // 방어 스택: 1스택 소모해 70~90% 감소 (기본 80% ± 난수, 무장 스탯과 무관한 시스템 고정값).

@@ -133,7 +133,8 @@ export class Recommender {
 
   recommend(input: RecommendInput): RecommendResult {
     this.alt = new Map((input.alternatives || []).map(a => [`${a.requiredTacticId}>${a.alternativeTacticId}`, a]));
-    const ownG = new Set(input.owned.generals), ownS = new Set(input.owned.skills);
+    // 한국 서버에 없는 무장(notInKr)은 보유 목록에 있어도 쓰지 않는다
+    const ownG = new Set(input.owned.generals.filter(id => !(this.gById.get(id) as any)?.notInKr)), ownS = new Set(input.owned.skills);
     const count = Math.max(1, Math.min(5, input.count));
     const allowGSub = input.allowGeneralSub !== false;
     const decks = this.bundle.tierDecks;

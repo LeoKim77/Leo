@@ -91,6 +91,9 @@ export function buildQueue(bundle: any): VerificationItem[] {
     const p = Math.max(0, ...refs.map(uses));
     if (p) it.priority = p;
   }
+  // 한국 서버에 없는 무장(notInKr)과 그 고유 전법은 녹화할 수 없으므로 목록에서 뺀다
+  const absent = new Set(bundle.generals.filter((g: any) => g.notInKr).flatMap((g: any) => [g.id, g.uniqueSkillId]));
+  for (let i = items.length - 1; i >= 0; i--) if (items[i].refs.length && items[i].refs.every(r => absent.has(r) || !r)) items.splice(i, 1);
   items.sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0));
   writeJson(FILE, { note: '전보 녹화 검증 대기 목록 (R-007). status: pending=대기, verified=전보로 확인, rejected=틀림(수정 필요). priority 가 높을수록 먼저 녹화. MCP verification_resolve 로 판정을 기록한다.', items });
   return items;
