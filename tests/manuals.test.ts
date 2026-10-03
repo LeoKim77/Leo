@@ -141,9 +141,12 @@ describe('사용자 확인 금병법 2차 (2026-10-03)', () => {
     const logs = [1, 2, 3, 4, 5, 6, 7, 8].map(seed => sim.simulate(a, e, { seed }).log.join('\n'));
     expect(logs.some(l => l.includes('피신 후 성장'))).toBe(true);
   });
-  it('사마의·가후는 한국 서버 미출시로 표시된다', () => {
-    expect((gen('사마의') as any).notInKr).toBe(true);
-    expect((gen('가후') as any).notInKr).toBe(true);
+  it('사마의〈대략〉: 포석이 처음 4스택이 되면 아군 전체를 회복한다', () => {
+    const a = { formation: '기형진', units: [unit('사마의', '대략'), unit('조조'), unit('전위')] };
+    const e = { formation: '기형진', units: [unit('손책'), unit('대교'), unit('견희')] };
+    const logs = [1, 2, 3, 4, 5, 6].map(seed => sim.simulate(a, e, { seed }).log.join('\n'));
+    expect(logs.some(l => l.includes('처음으로 4스택이 되어'))).toBe(true);
+    expect(gen('사마의').manuals.map(m => m.name)).toEqual(['대략']);
   });
 });
 

@@ -26,6 +26,8 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FEAT-013', date: '2026-10-03', found: '금병법 미리보기 캡처 (사마의〈대략〉)', title: '스택 문턱 회복',
+    detail: '사마의〈대략〉: 매의 응시의 포석이 처음으로 4스택·8스택이 될 때 아군 전체 회복(치유율 80%, 지력 영향).' },
   { id: 'FEAT-012', date: '2026-10-03', found: '금병법 미리보기 캡처 (공손찬·마운록)', title: '피신 후 성장·아군 병종별 최고 속성 증가',
     detail: '공손찬〈백마의종〉: 피신할 때마다 무력·지력이 선공의 2%만큼 증가(최대 8회). 마운록〈풍속통의〉: 아군 중 기병 무장의 최고 속성 +5%(무장 기본 병종 기준, R-015에 따라 병종 전환은 보지 않음).' },
   { id: 'FEAT-011', date: '2026-10-03', found: '금병법 미리보기 캡처 (주태·육손)', title: '역전·같은 열 우군·턴 한정 디버프 계기',
@@ -1136,6 +1138,21 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
           attacker._stacksInv = __invStack[__invStack.length - 1];
           let n = (attacker._stacks[ss.key] || 0) + (ss.gain || 1) + (ss.bonusChance && __rng() < ss.bonusChance ? 1 : 0);
           attacker._stacks[ss.key] = Math.min(n, ss.max || 99);
+          // FEAT-013 스택 문턱 회복(사마의〈대략〉): 처음으로 포석 4/8스택이 되면 아군 전체 회복
+          const sh = attacker._stackHeal;
+          if (sh && sh.key === ss.key) {
+            attacker._stackHealDone = attacker._stackHealDone || {};
+            sh.thresholds.forEach(th => {
+              if (attacker._stackHealDone[th] || attacker._stacks[ss.key] < th) return;
+              attacker._stackHealDone[th] = true;
+              log.push(`${turn}턴: [${attacker.name}]의 「${ss.key}」이(가) 처음으로 ${th}스택이 되어 금병법 효과로 아군 전체를 회복합니다.`);
+              allUnits.filter(a => a.alive && a.troops > 0 && a.side === attacker.side).forEach(a => {
+                const { heal: healed } = calcHeal(attacker, a, sh.ratio, coeffs);
+                attacker.healDone += healed;
+                log.push(`${turn}턴:   [${a.name}]이(가) 병력을 ${healed}(${a.troops}) 회복했습니다.`);
+              });
+            });
+          }
         }
         ratio *= 1 + (ss.per || 0) * attacker._stacks[ss.key];
       }
