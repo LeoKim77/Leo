@@ -249,6 +249,9 @@ export class Simulator {
       if (rowOk) for (const [k, v] of Object.entries(st?.mods || {})) { unit.mods[k] = (unit.mods[k] || 0) + v; parts.push(`${k} ${v > 0 ? '+' : ''}${Math.round(v * 1000) / 10}%`); }
       for (const [k, v] of Object.entries(st?.stats || {})) { unit.stats[k] = (unit.stats[k] || 0) + v; parts.push(`${k} ${v > 0 ? '+' : ''}${v}`); }
       if (from) { const add = unit.stats[from.from] * from.ratio; unit.stats[from.stat] += add; parts.push(`${from.stat} +${add.toFixed(1)}`); }
+      // 서성〈의성〉: 아군 전원에게 "홍수 상태 적의 피해 감소" 표식
+      const ward = (manual.engine?.unit as any)?.floodWard;
+      if (ward) for (const a of units.filter((x: any) => x.side === unit.side)) a._floodWard = { by: unit, value: ward };
       // 아군 병종별 최고 속성 증가 (마운록〈풍속통의〉 "아군 기병의 최고 속성 5%")
       const boost = (manual.engine?.unit as any)?.allyTypeHighestPct;
       if (boost) for (const a of units.filter((x: any) => x.side === unit.side && x.unitType === boost.unitType)) {

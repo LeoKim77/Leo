@@ -135,15 +135,6 @@
       ]
     },
     {
-      "key": "guard-stack-refresh",
-      "title": "방어 상태 중첩",
-      "assumption": "같은 발동에서 방어 2스택을 부여해도 1스택만 쌓인다(같은 상태 갱신 규칙).",
-      "howToVerify": "이유 금병법 비호 전보에서 전투 시작 시 방어가 몇 스택인지 확인",
-      "refs": [
-        "u-li-ru"
-      ]
-    },
-    {
       "key": "rematch-reset",
       "title": "재교전 때 무엇이 이어지고 무엇이 초기화되는가 (R-009)",
       "refs": [],

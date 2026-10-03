@@ -55,7 +55,8 @@ export function planVerification(bundle: GameBundle, queue: VerifyItem[], owned:
     const season = g?.season ?? sById.get(r)?.season;
     return !!season && !!live && order(season) > order(live);
   };
-  const pending = queue.filter(q => q.status === 'pending' && q.kind !== 'capture' && !(q.refs.length && q.refs.every(future))).sort((a, b) => (ENGINE_FIRST[a.kind] ?? 9) - (ENGINE_FIRST[b.kind] ?? 9) || (b.priority ?? 0) - (a.priority ?? 0));
+  // 금병법은 미리보기 원문 그대로 시뮬에 넣는다(사용자 지정 2026-10-03) — 금병법 확인만을 위한 녹화는 짜지 않는다
+  const pending = queue.filter(q => q.status === 'pending' && q.kind !== 'capture' && q.kind !== 'manual' && !(q.refs.length && q.refs.every(future))).sort((a, b) => (ENGINE_FIRST[a.kind] ?? 9) - (ENGINE_FIRST[b.kind] ?? 9) || (b.priority ?? 0) - (a.priority ?? 0));
   const blocked: VerifyPlan['blocked'] = [];
   const todo: Array<{ it: VerifyItem; needs: Need[] }> = [];
   // 특정 카드가 필요 없는 엔진 가정(재교전 등)은 아무 전투에서나 보인다 → 첫 전투에 붙인다

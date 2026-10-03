@@ -26,6 +26,10 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FIX-004', date: '2026-10-03', found: '금병법 원문 대조 (이유〈비호〉 "방어 2스택")', title: '방어 스택 중첩',
+    detail: '방어는 1회 소모형 스택(최대 2)인데 같은 상태 갱신 규칙에 걸려 1스택만 쌓이던 문제를 고침.' },
+  { id: 'FEAT-015', date: '2026-10-03', found: '금병법 원문 대조', title: '책략 후 병기 증가·홍수 상대 피해 감소·상태 시전자 지정',
+    detail: '서서〈장검행〉 책략 피해 후 다음 병기 피해 +40%. 서성〈의성〉 홍수 상태 적이 주는 피해 −8%(서성 생존 중). 황월영〈기관술〉 조롱 시전자를 통솔 최고 우군으로.' },
   { id: 'FEAT-014', date: '2026-10-03', found: '금병법 미리보기 캡처 (조조〈맹덕신서 하권〉)', title: '최고 속성 증감',
     detail: '능력치 증감 대상으로 "최고 속성"(적용 시점의 무력·지력·통솔·선공 중 최댓값) 지원. 맹덕신서 하권: 아군 전원이 일반 공격 직전마다 최고 속성 +8(최대 3중첩).' },
   { id: 'FEAT-013', date: '2026-10-03', found: '금병법 미리보기 캡처 (사마의〈대략〉)', title: '스택 문턱 회복',
@@ -450,6 +454,12 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   // FEAT-011 역전(주태 금병법): 보호자가 대신 받아 준 우군의 다음 피해 증가
   const rv = attacker._reversal;
   if (rv) dmg = Math.max(1, Math.round(dmg * (1 + rv.bonus)));
+  // FEAT-015 서서〈장검행〉: 책략 피해를 준 뒤 다음 병기 피해 증가
+  const np = dmgType === '병기' ? attacker._nextPhysBonus : 0;
+  if (np) dmg = Math.max(1, Math.round(dmg * (1 + np)));
+  // FEAT-015 서성〈의성〉: 피해를 준 상대가 홍수 상태면 아군이 받는 피해 감소 (서성 생존 중)
+  const fw = defender._floodWard;
+  if (fw && fw.by.alive && hasStatus(attacker, '홍수')) dmg = Math.max(1, Math.round(dmg * (1 - fw.value)));
   if (DEBUG_DAMAGE_LOG && log) {
     log.push(`${turnNo}턴:   └[계산] ATK ${ATK.toFixed(1)} / DEF ${DEF.toFixed(1)} / 전법계수 ${(ratio*100).toFixed(1)}% ` +
       `→ 기초 ${base.toFixed(1)} × 주는피해 ${outMult.toFixed(3)} × 받는피해 ${inMult.toFixed(3)}` +
@@ -505,6 +515,8 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   }
   dmg = unyieldingCheck(defender, dmg, log, turnNo);
   defender.troops = Math.max(0, defender.troops - dmg);
+  if (np) delete attacker._nextPhysBonus;
+  if (dmgType === '책략' && attacker._strategyThenPhys) attacker._nextPhysBonus = attacker._strategyThenPhys;
   if (rv) {
     delete attacker._reversal;
     const g = rv.by;
@@ -1360,6 +1372,8 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     else if (se.target && resolveSpecial(se.target)) targets = resolveSpecial(se.target);
     else if (se.target) targets = selectTargets(unit, [se.target], allUnits);
     else targets = selectTargets(unit, targetCodes, allUnits);
+    // FEAT-015 시전자 지정: "통솔이 가장 높은 우군이 … 조롱한다" (황월영〈기관술〉) — 조롱의 강제 공격 대상이 그 우군
+    const caster = se.caster ? (selectTargets(unit, [se.caster], allUnits)[0] || unit) : unit;
     targets.forEach(t => {
       if (se.condition && !evalCondition(se.condition, { attacker: unit, target: t, self: unit })) return;
       if (se.chance != null && __rng() >= se.chance) return;
@@ -1386,11 +1400,12 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       //   실제 전보: "[손권]의 「조롱」 효과가 갱신됐습니다" → "[손권]이(가) 정신 회복을(를)
       //   보유하여, 조롱이(가) 잠시 무효화됩니다" — 부여 로그가 먼저 찍힌다.
       //   따라서 statuses에는 넣되 isControlSuppressed()가 효과만 억제한다(제어 7종 전부).
-      const exist = t.statuses.find(s => s.name === se.name);
+      // FIX-004 방어는 스택형(1회 소모)이라 최대 2스택까지 따로 쌓인다 — 같은 상태 갱신 규칙에서 제외
+      const exist = se.name === '방어' ? null : t.statuses.find(s => s.name === se.name);
       if (exist) {
-        if (dur > exist.remain) { exist.remain = dur; exist.casterId = unit.id; exist.casterName = unit.name; }
+        if (dur > exist.remain) { exist.remain = dur; exist.casterId = caster.id; exist.casterName = caster.name; }
       } else {
-        t.statuses.push({ name: se.name, remain: dur, casterId: unit.id, casterName: unit.name, srcSkill: skill.name });
+        t.statuses.push({ name: se.name, remain: dur, casterId: caster.id, casterName: caster.name, srcSkill: skill.name });
       }
       __T({ e: 'status', src: unit.id, dst: t.id, status: se.name, dur, refreshed: already, skill: skill.id });
       if (CONTROL_DEBUFFS.includes(se.name) && hasStatus(t, '정신 회복')) {

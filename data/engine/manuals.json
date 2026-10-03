@@ -885,7 +885,7 @@
   "huang-yueying": [
    {
     "name": "기관술",
-    "status": "approx",
+    "status": "ok",
     "parts": [
      {
       "effects": {
@@ -898,7 +898,8 @@
          "name": "조롱",
          "target": "all_enemy",
          "chance": 0.35,
-         "duration": 1
+         "duration": 1,
+         "caster": "highest_command_ally"
         }
        ],
        "targets": []
@@ -906,7 +907,7 @@
       "_timing": "turnStart"
      }
     ],
-    "note": "조롱 시전자가 통솔 최고 우군이 아니라 황월영으로 처리됨"
+    "note": "조롱 시전자 = 통솔 최고 우군(FEAT-015)"
    },
    {
     "name": "천공비록",
@@ -1023,16 +1024,17 @@
   "xu-shu": [
    {
     "name": "장검행",
-    "status": "approx",
+    "status": "ok",
     "parts": [],
     "unit": {
      "statFromStat": {
       "stat": "무력",
       "from": "지력",
       "ratio": 0.25
-     }
+     },
+     "_strategyThenPhys": 0.4
     },
-    "note": "\"무력이 지력의 25%만큼 증가\"는 부대 편성 시 계산, \"책략 피해 후 다음 병기 피해 +40%\"는 미지원"
+    "note": "무력 +지력×25%(편성 시), 책략 피해 후 다음 병기 피해 +40%(FEAT-015)"
    },
    {
     "name": "문공",
@@ -1059,7 +1061,7 @@
   "xu-sheng": [
    {
     "name": "의성",
-    "status": "approx",
+    "status": "ok",
     "parts": [
      {
       "effects": {
@@ -1082,7 +1084,10 @@
       ]
      }
     ],
-    "note": "\"홍수 상태인 적의 피해 8% 감소\"는 미지원"
+    "note": "홍수 상태 적이 아군에게 주는 피해 −8%, 서성 생존 중(FEAT-015)",
+    "unit": {
+     "floodWard": 0.08
+    }
    }
   ],
   "cai-wenji": [
@@ -1130,7 +1135,7 @@
   "li-ru": [
    {
     "name": "비호",
-    "status": "approx",
+    "status": "ok",
     "parts": [
      {
       "effects": {
@@ -1172,7 +1177,7 @@
       "_timing": "battleStart"
      }
     ],
-    "note": "방어 2스택 중 1스택만 쌓임(엔진의 같은 상태 갱신 규칙)"
+    "note": "방어 2스택(FIX-004)"
    }
   ],
   "pang-de": [

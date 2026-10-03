@@ -772,19 +772,6 @@
       "priority": 3
     },
     {
-      "id": "V-manual-m-xu-sheng-1",
-      "kind": "manual",
-      "refs": [
-        "xu-sheng",
-        "u-xu-sheng"
-      ],
-      "title": "서성 금병법〈의성〉",
-      "assumption": "\"홍수 상태인 적의 피해 8% 감소\"는 미지원",
-      "howToVerify": "서성이(가) 〈의성〉을 장착한 전보에서 원문 효과(\"전투 1번째 턴에 랜덤 적군 2명에게 2턴 동안 지속되는 홍수 상태 부여. 전체 아군이 피해를 받을 때, 피…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 3
-    },
-    {
       "id": "V-skill-u-sima-yi",
       "kind": "skill",
       "refs": [
@@ -855,19 +842,6 @@
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending",
       "priority": 3
-    },
-    {
-      "id": "V-manual-m-xu-shu-1",
-      "kind": "manual",
-      "refs": [
-        "xu-shu",
-        "u-xu-shu"
-      ],
-      "title": "서서 금병법〈장검행〉",
-      "assumption": "\"무력이 지력의 25%만큼 증가\"는 부대 편성 시 계산, \"책략 피해 후 다음 병기 피해 +40%\"는 미지원",
-      "howToVerify": "서서이(가) 〈장검행〉을 장착한 전보에서 원문 효과(\"전투 시작 시, 자신의 무력이 지력의 25%만큼 증가하며, 책략 피해를 준 후, 다음에 주는 병기 피해가 4…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 2
     },
     {
       "id": "V-clause-strategize-3",
@@ -1096,19 +1070,6 @@
       "title": "견희 금병법〈낙신부 하권〉",
       "assumption": "낙수의 여신 대상 → 무력 최고 우군, 회복 +10%",
       "howToVerify": "견희이(가) 〈낙신부 하권〉을 장착한 전보에서 원문 효과(\"고유 전법 바람과 눈꽃의 낙수의 여신 효과가 무력이 가장 높은 단일 목표를 우선적으로 선택하고, 낙수의 여신…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-manual-m-huang-yueying-1",
-      "kind": "manual",
-      "refs": [
-        "huang-yueying",
-        "u-huang-yueying"
-      ],
-      "title": "황월영 금병법〈기관술〉",
-      "assumption": "조롱 시전자가 통솔 최고 우군이 아니라 황월영으로 처리됨",
-      "howToVerify": "황월영이(가) 〈기관술〉을 장착한 전보에서 원문 효과(\"매 턴 시작 시, 통솔이 가장 높은 우군이 35% 확률로 적군 전체를 조롱한다.…\")가 실제로 어떻게 찍히는지 확인",
       "status": "pending",
       "priority": 1
     },
@@ -1664,18 +1625,6 @@
       "title": "초선 금병법〈화수〉",
       "assumption": "턴 종료 시 1턴 = 다음 턴 행동까지 유지로 해석",
       "howToVerify": "초선이(가) 〈화수〉을 장착한 전보에서 원문 효과(\"매 턴 종료 시, 1턴 동안 무력이 가장 높은 우군의 연타율이 30% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-manual-m-li-ru-1",
-      "kind": "manual",
-      "refs": [
-        "li-ru",
-        "u-li-ru"
-      ],
-      "title": "이유 금병법〈비호〉",
-      "assumption": "방어 2스택 중 1스택만 쌓임(엔진의 같은 상태 갱신 규칙)",
-      "howToVerify": "이유이(가) 〈비호〉을 장착한 전보에서 원문 효과(\"전투 시작 시, 자신이 2스택의 방어를 획득하며, 우군 2명의 회유와 심리 공격이 6% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
       "status": "pending"
     },
     {
@@ -2278,17 +2227,6 @@
       "status": "verified",
       "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 문과 무 한 번에 대교·손책 두 명이 병기·책략 피해를 각각 받음(472/378, 486/460).",
       "resolvedAt": "2026-10-03"
-    },
-    {
-      "id": "V-engine-guard-stack-refresh",
-      "kind": "engine",
-      "refs": [
-        "u-li-ru"
-      ],
-      "title": "방어 상태 중첩",
-      "assumption": "같은 발동에서 방어 2스택을 부여해도 1스택만 쌓인다(같은 상태 갱신 규칙).",
-      "howToVerify": "이유 금병법 비호 전보에서 전투 시작 시 방어가 몇 스택인지 확인",
-      "status": "pending"
     },
     {
       "id": "V-engine-rematch-reset",
