@@ -178,13 +178,17 @@ export class Simulator {
 
   buildArmy(deck: DeckSpec, side: 'A' | 'B') {
     const E = this.engine;
-    const formation = this.data.formations.find(f => f.name === deck.formation) || this.data.formations.find(f => f.name === '기형진') || this.data.formations[0];
+    // R-013: 진형 효과는 기본 제외 — 피격률 균등·효과 없음. 위치(전열 우선 대상 등)는 첫 칸 전열로 둔다
+    const realFormation = this.data.formations.find(f => f.name === deck.formation) || this.data.formations.find(f => f.name === '기형진') || this.data.formations[0];
+    const useFormation = !!this.coeffs.formationEffects;
+    const formation = useFormation ? realFormation : { ...realFormation, name: '진형 없음', traits: [], effects: [], hitRate: { front: 1, mid: 1, back: 1 } };
     const manualsUsed: Array<{ unit: any; manual: Manual }> = [];
     const skillStatics: Array<{ unit: any; name: string; st: any }> = [];
-    const slotPos = this.slotPositions(deck, formation);
+    const slotPos = this.slotPositions(deck, useFormation ? formation : { hitRate: { front: 0.6, mid: 0.2, back: 0.2 } });
     const units = deck.units.map((u, idx) => {
       const g0 = this.generalById.get(u.generalId);
-      const g = g0 && u.unitType ? { ...g0, unitType: u.unitType } : g0;
+      // R-015: 병종 전환(덱별 병종 바꾸기)은 병종 효과를 켤 때만
+      const g = g0 && u.unitType && this.coeffs.troopEffects ? { ...g0, unitType: u.unitType } : g0;
       if (!g) throw new Error(`무장 없음: ${u.generalId}`);
       const skills = u.skillIds.map(id => this.skillById.get(id)).filter(Boolean);
       let uskill = this.uniqueById.get(g.uniqueSkillId);
@@ -223,8 +227,8 @@ export class Simulator {
       return unit;
     });
     const prepLog: string[] = [];
-    E.applyFormationEffects(units, prepLog);
-    E.applyTeamCompositionBonuses(units, prepLog);
+    if (useFormation) E.applyFormationEffects(units, prepLog);
+    E.applyTeamCompositionBonuses(units, prepLog, { troopEffects: !!this.coeffs.troopEffects });
     E.applyBondBonuses(units, this.data.bonds, prepLog);
     E.applyLoadoutSynergies(units);
     // 전법의 고정 증감 (예: 난공불락 "통솔 15% 상승")

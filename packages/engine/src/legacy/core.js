@@ -26,6 +26,8 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FEAT-009', date: '2026-10-03', found: '사용자 확인 R-011~R-016', title: '시뮬 범위: 개인 선택·공통 변수 제외',
+    detail: '진형 효과(능력치·피격률), 병종 효과(상성·병종 강화·병종 전환), 부상병 회복 상한을 기본으로 끈다(계수 formationEffects·troopEffects·woundedCap). 건물 기술·장비·일반 병법은 원래 미반영. 무장 배치와 전법 배치에 따른 계수에 집중.' },
   { id: 'FEAT-008', date: '2026-10-03', found: '전보 녹화 (요새 함락·결사의 다짐)', title: '행동 종료 시점, 회복 기준 능력치',
     detail: '"행동 종료 시" 효과를 일반 공격·추격 뒤에 처리하는 단계(actionEnd) 추가. 회복량이 지력 대신 통솔 등을 따르는 전법(결사 회복 215~297, 주태 통솔 315)에 기준 능력치 지정.' },
   { id: 'FEAT-005', date: '2026-10-02', found: '사용자 확인 R-009', title: '8턴 무승부 → 생존 무장 재교전',
@@ -83,7 +85,7 @@ function __T(ev) {
 //   ※ C는 그대로 1.44 유지. 실전 역산값 2.3~2.7에는 병법·장비·도시기술이 포함돼 있어
 //     "청정" 기준과 직접 비교할 수 없다.
 let DEBUG_DAMAGE_LOG = false; // 계산 내역 상세 로그 (UI 토글)
-const DEFAULT_COEFFS = { Clin: 2.726, kDef: 1.574, kDefIntel: 1.28, floorRate: 0.01, counterRatio: 0.5, damageVariance: 0.01, C: 1.44, beta: 0.45, defRatio: 0.4, critMult: 1.5, baseCrit: 0,   /* v1.12: 녹화 4판의 아군 타격 40여 건에서 기본 회심이 한 번도 없었음 → 기본 회심·묘책 0 */ statScaleWeight: 0.00285, durationMode: 'holder', drawRule: 'rematch', maxRounds: 10,   /* R-009 8턴 무승부 → 생존 무장 재교전 */
+const DEFAULT_COEFFS = { Clin: 2.726, kDef: 1.574, kDefIntel: 1.28, floorRate: 0.01, counterRatio: 0.5, damageVariance: 0.01, C: 1.44, beta: 0.45, defRatio: 0.4, critMult: 1.5, baseCrit: 0,   /* v1.12: 녹화 4판의 아군 타격 40여 건에서 기본 회심이 한 번도 없었음 → 기본 회심·묘책 0 */ statScaleWeight: 0.00285, durationMode: 'holder', drawRule: 'rematch', maxRounds: 10, troopEffects: false, formationEffects: false, woundedCap: false,   /* R-011~R-016 시뮬 범위: 병종·진형·부상병 제외 */   /* R-009 8턴 무승부 → 생존 무장 재교전 */
   // ── v1.12 실측 공식 (하후돈덱 2판 + 조운덱 2판, 공격자·피격자 툴팁 확보 표본) ──
   P0: 414, Pa: 1.07, Pd: 1.63, betaP: 0.47,   // 병기: (414 + 1.07×무력 − 1.63×통솔×(1−관통)) × (병력/10000)^0.47 — 10건 RMS 3.1%
   Ma: 1.73, betaM: 0.40,                      // 책략: 1.73 × 지력 × (병력/10000)^0.40 — 방어 스탯 영향 미미, 독립 검증 ±1%
@@ -379,7 +381,7 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   }
   // 병종 상성 (+15%)
   const COUNTER = { '방패병': '궁병', '궁병': '창병', '창병': '기병', '기병': '방패병' };
-  if (attacker.unitType && COUNTER[attacker.unitType] === defender.unitType) base *= 1 + cf('counterBonus');
+  if (cf('troopEffects') && attacker.unitType && COUNTER[attacker.unitType] === defender.unitType) base *= 1 + cf('counterBonus');   // R-015: 병종 효과 제외가 기본
   base = Math.max(base, 1);
   // 주는피해와 받는피해는 '일반 피해 범주' 안에서 합연산으로 상쇄된다.
   // ── v1.11 W11·W13·W14: 주는 쪽과 받는 쪽을 분리한 곱 구조(잠정) ──
@@ -575,7 +577,9 @@ function calcHeal(caster, target, ratio, coeffs, healStat) {
   // ⑥ 최대 병력 초과분은 버려짐(오버힐)
   heal = Math.min(heal, target.maxTroops - target.troops);
   // v1.12 W43: 회복은 부상병 수가 상한
-  heal = Math.min(heal, Math.max(0, target.wounded || 0));
+  // R-011: 부상병을 따로 두지 않는다 — 기본은 잃은 병력까지 회복 (woundedCap=true 면 v1.12 부상병 상한)
+  const cap = (coeffs && coeffs.woundedCap) ? (target.wounded || 0) : (target.maxTroops - target.troops);
+  heal = Math.min(heal, Math.max(0, cap));
   if (!target.alive || target.troops <= 0) return { heal: 0, doubled: false, healMult, effRatio };
   target.troops += heal;
   __T({ e: 'heal', src: caster.id, dst: target.id, amount: heal, doubled, skill: __skillStack[__skillStack.length - 1] || null });
@@ -2286,7 +2290,7 @@ function applyLoadoutSynergies(units) {
 //   즉 매칭 안 된 세 번째 무장도 함께 버프를 받는 "팀 단위" 보너스임 (개별 무장 버프 아님).
 // 병종: 용어탭에 정확한 수치가 있으나 "팀 전체 적용"인지 "해당 병종 무장에만 적용"인지는
 //   확인된 자료가 없어 병종 무장 본인에게만 적용하는 쪽으로 우선 구현함 (불확실 — 검증 필요).
-function applyTeamCompositionBonuses(units, log) {
+function applyTeamCompositionBonuses(units, log, opts) {
   const sides = [...new Set(units.map(u => u.side))];
   sides.forEach(side => {
     const teamUnits = units.filter(u => u.side === side);
@@ -2322,7 +2326,7 @@ function applyTeamCompositionBonuses(units, log) {
     };
     let topType = null, topTypeN = 0;
     Object.entries(typeCounts).forEach(([t, n]) => { if (n > topTypeN) { topTypeN = n; topType = t; } });
-    const rule = UNIT_TYPE_RULES[topType];
+    const rule = opts && opts.troopEffects ? UNIT_TYPE_RULES[topType] : null;   // R-015: 병종 강화 제외가 기본
     if (rule && topTypeN >= 2) {
       const tier = topTypeN >= 3 ? rule[3] : rule[2];
       if (log) log.push(`0턴: [${teamUnits[0].name}] 부대에서 병종 강화 효과를 획득했습니다. (${topType} ${topTypeN}명)`);
