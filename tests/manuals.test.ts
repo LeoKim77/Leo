@@ -141,6 +141,14 @@ describe('사용자 확인 금병법 2차 (2026-10-03)', () => {
     const logs = [1, 2, 3, 4, 5, 6, 7, 8].map(seed => sim.simulate(a, e, { seed }).log.join('\n'));
     expect(logs.some(l => l.includes('피신 후 성장'))).toBe(true);
   });
+  it('조조〈맹덕신서 하권〉: 아군이 일반 공격 직전마다 최고 속성 +8 (최대 3중첩)', () => {
+    const a = { formation: '기형진', units: [unit('조조', '맹덕신서 하권'), unit('전위'), unit('허저')] };
+    const e = { formation: '기형진', units: [unit('손책'), unit('대교'), unit('주유')] };
+    const log = sim.simulate(a, e, { seed: 1 }).log.join('\n');
+    expect(log).toMatch(/\[전위\]의 【무력】이\(가\) 8\.00/);
+    expect(gen('견희').position ?? (gen('견희') as any).row).toBe('균형');
+  });
+
   it('사마의〈대략〉: 포석이 처음 4스택이 되면 아군 전체를 회복한다', () => {
     const a = { formation: '기형진', units: [unit('사마의', '대략'), unit('조조'), unit('전위')] };
     const e = { formation: '기형진', units: [unit('손책'), unit('대교'), unit('견희')] };

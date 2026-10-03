@@ -26,6 +26,8 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FEAT-014', date: '2026-10-03', found: '금병법 미리보기 캡처 (조조〈맹덕신서 하권〉)', title: '최고 속성 증감',
+    detail: '능력치 증감 대상으로 "최고 속성"(적용 시점의 무력·지력·통솔·선공 중 최댓값) 지원. 맹덕신서 하권: 아군 전원이 일반 공격 직전마다 최고 속성 +8(최대 3중첩).' },
   { id: 'FEAT-013', date: '2026-10-03', found: '금병법 미리보기 캡처 (사마의〈대략〉)', title: '스택 문턱 회복',
     detail: '사마의〈대략〉: 매의 응시의 포석이 처음으로 4스택·8스택이 될 때 아군 전체 회복(치유율 80%, 지력 영향).' },
   { id: 'FEAT-012', date: '2026-10-03', found: '금병법 미리보기 캡처 (공손찬·마운록)', title: '피신 후 성장·아군 병종별 최고 속성 증가',
@@ -1041,13 +1043,15 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       const cap = sm.maxStacks != null ? sm.maxStacks : 1;
       const srcId = skill.id + ':stat:' + sm.stat;
       const existing = t.statBuffs.filter(x => x.srcId === srcId);
+      // FEAT-014 "최고 속성": 적용 시점에 대상의 무력·지력·통솔·선공 중 가장 높은 능력치
+      const sk = sm.stat === '최고속성' ? ['무력', '지력', '통솔', '선공'].reduce((m, k) => ((t.stats[k] || 0) > (t.stats[m] || 0) ? k : m), '무력') : sm.stat;
       if (existing.length >= cap) {
         existing[0].remain = dur;
       } else {
-        t.stats[sm.stat] = Math.max(0, (t.stats[sm.stat] || 0) + amt);
-        t.statBuffs.push({ stat: sm.stat, value: amt, remain: dur, srcId });
+        t.stats[sk] = Math.max(0, (t.stats[sk] || 0) + amt);
+        t.statBuffs.push({ stat: sk, value: amt, remain: dur, srcId });
         if (cap > 1) log.push(`${turn}턴:   [${t.name}]의 「${skill.name}」이(가) ${existing.length + 1}스택 중첩됐습니다.`);
-        log.push(`${turn}턴:   [${t.name}]의 【${sm.stat}】이(가) ${Math.abs(amt).toFixed(2)}(${(t.stats[sm.stat]||0).toFixed(2)}) ${amt >= 0 ? '증가' : '감소'}했습니다.`);
+        log.push(`${turn}턴:   [${t.name}]의 【${sk}】이(가) ${Math.abs(amt).toFixed(2)}(${(t.stats[sk]||0).toFixed(2)}) ${amt >= 0 ? '증가' : '감소'}했습니다.`);
       }
     });
   });

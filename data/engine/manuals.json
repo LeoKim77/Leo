@@ -52,37 +52,47 @@
    },
    {
     "name": "맹덕신서 하권",
-    "status": "ok",
+    "status": "approx",
     "parts": [
      {
+      "_timing": "battleStart",
       "effects": {
        "damage": [],
        "heal": [],
-       "buffs": [
-        {
-         "stat": "반격확률",
-         "min": 0.1,
-         "max": 0.1,
-         "target": "highest_command_ally",
-         "duration": 999,
-         "maxStacks": 1
-        },
-        {
-         "stat": "주는일반공격피해",
-         "min": 0.1,
-         "max": 0.1,
-         "target": "highest_power_ally",
-         "duration": 999,
-         "maxStacks": 1
-        }
-       ],
+       "buffs": [],
        "statMods": [],
        "statusEffects": [],
-       "targets": []
-      },
-      "_timing": "battleStart"
+       "targets": [],
+       "grants": [
+        {
+         "key": "맹덕신서",
+         "target": "all_ally",
+         "skill": {
+          "_timing": "beforeBasic",
+          "effects": {
+           "damage": [],
+           "heal": [],
+           "buffs": [],
+           "statMods": [
+            {
+             "stat": "최고속성",
+             "min": 8,
+             "max": 8,
+             "target": "self",
+             "duration": 1,
+             "maxStacks": 3
+            }
+           ],
+           "statusEffects": [],
+           "targets": []
+          }
+         }
+        }
+       ]
+      }
      }
-    ]
+    ],
+    "note": "게임 원문(2026-10-03): 아군 전원 일반 공격 직전마다 최고 속성 +8, 3중첩, 턴 종료까지. 지력 영향 미반영, \"턴 종료까지\"는 다음 자기 행동 전까지로 근사"
    }
   ],
   "sun-quan": [
