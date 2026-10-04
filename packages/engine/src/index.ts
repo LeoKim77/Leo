@@ -37,7 +37,7 @@ export interface DeckSpec {
 
 /** 감사(audit)용 구조화 기록 한 건 */
 export interface TraceEvent {
-  e: 'battle' | 'turn' | 'action' | 'skill' | 'roll' | 'damage' | 'evade' | 'heal' | 'status' | 'blocked' | 'basic' | 'end';
+  e: 'battle' | 'turn' | 'action' | 'skill' | 'roll' | 'damage' | 'evade' | 'heal' | 'status' | 'blocked' | 'basic' | 'end' | 'guard' | 'resist';
   turn: number;
   phase: string;
   [k: string]: unknown;
@@ -50,12 +50,19 @@ export interface SimOptions {
   coeffs?: Record<string, unknown>;
 }
 
+/** 전보 툴팁 — stats 는 [무력, 지력, 통솔, 선공], mods 는 [이름, 값], statuses 는 [이름, 남은 턴, 시전자], buffs 는 [능력치, 값, 남은 턴] */
+export interface UnitSnap { side: string; troops: number; maxTroops: number; wounded: number; alive: boolean; stats: number[]; mods: Array<[string, number]>; statuses: Array<[string, number, string]>; buffs: Array<[string, number, number]> }
+
 export interface BattleResult {
   winner: 'A' | 'B' | 'draw';
   turns: number;
   /** 교전 수 — 8턴 무승부면 생존 무장끼리 재교전 (R-009) */
   rounds?: number;
   log: string[];
+  /** FEAT-016: 전보 줄마다 그 줄에 나온 무장의 그 순간 상태 (detail 옵션일 때) */
+  lineSnaps?: Array<Record<string, UnitSnap> | null>;
+  /** 이 전투에 근사·미반영으로 들어간 효과 (무장별) */
+  approx?: { A: ApproxEffect[]; B: ApproxEffect[] };
   trace?: TraceEvent[];
   troopHistory: Array<{ turn: number; A: number; B: number }>;
   units: Array<{ id: string; side: string; name: string; generalId: string; troops: number; maxTroops: number; dmgDealt: number; healDone: number }>;
@@ -265,20 +272,24 @@ export class Simulator {
   }
 
   /** 한 판. trace=true 면 감사용 구조화 기록을 함께 돌려준다 */
-  simulate(a: DeckSpec, b: DeckSpec, opt: { seed?: string | number; trace?: boolean } = {}): BattleResult {
+  simulate(a: DeckSpec, b: DeckSpec, opt: { seed?: string | number; trace?: boolean; detail?: boolean } = {}): BattleResult {
     const seed = opt.seed ?? `${Date.now()}-${Math.random()}`;
     this.engine.setRng(createRng(seed));
     const trace: TraceEvent[] = [];
     this.engine.setTrace(opt.trace ? (ev: TraceEvent) => trace.push(ev) : null);
+    this.engine.setDetail(!!opt.detail);
     try {
       const res = this.engine.simulateBattle(this.buildArmy(a, 'A'), this.buildArmy(b, 'B'), this.coeffs, this.rebuild(a, b));
       return {
         winner: res.winner, turns: res.turns, rounds: res.rounds, log: res.log, troopHistory: res.troopHistory,
         trace: opt.trace ? trace : undefined,
+        lineSnaps: opt.detail ? res.lineSnaps : undefined,
+        approx: opt.detail ? { A: this.approxIn(a), B: this.approxIn(b) } : undefined,
         units: res.units.map((u: any) => ({ id: u.id, side: u.side, name: u.name, generalId: u.generalId, troops: u.troops, maxTroops: u.maxTroops, dmgDealt: u.dmgDealt, healDone: u.healDone })),
       };
     } finally {
       this.engine.setTrace(null);
+      this.engine.setDetail(false);
     }
   }
 

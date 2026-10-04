@@ -26,6 +26,8 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FEAT-016', date: '2026-10-04', found: '사용자 제안 (게임 전보 툴팁)', title: '전보 줄마다 무장 상태 툴팁',
+    detail: '단일 전투에서 전보 한 줄이 찍힐 때마다 그 줄에 나온 무장의 능력치·병력·부상병·증감·상태이상·능력치 버프(남은 턴)를 함께 남긴다. 게임 전보처럼 이름을 누르면 그 순간의 툴팁을 볼 수 있어 역검증·미반영 효과 찾기에 쓴다.' },
   { id: 'FIX-005', date: '2026-10-03', found: '전보 녹화 (조황화 무승부 이후 교전)', title: '재교전 최대 병력',
     detail: '8턴 무승부 뒤 재교전은 남은 병력이 그대로 최대 병력이 되고(손책 13,967/13,967) 부상병은 넘어가지 않는다. 포진 효과(진형·병법·지휘 전법)는 처음부터 다시 걸린다.' },
   { id: 'FIX-004', date: '2026-10-03', found: '금병법 원문 대조 (이유〈비호〉 "방어 2스택")', title: '방어 스택 중첩',
@@ -55,6 +57,7 @@ export function createLegacyEngine(gameData) {
 let __rng = Math.random;
 let __traceFn = null;
 let __turn = 0;
+let __detail = false;   // FEAT-016: 전보 줄마다 그 순간 무장 상태(툴팁)를 남긴다 — 단일 전투에서만 켬
 let __turnOffset = 0;   // FEAT-005: 재교전의 전보·추적 턴 번호를 앞 교전 뒤에 잇는다
 let __phase = 'battleStart';
 const __skillStack = [];
@@ -1633,6 +1636,28 @@ function captureSnapshot(unit, battleState, turn) {
   };
 }
 
+// FEAT-016 전보 툴팁: 그 줄이 찍히는 순간의 무장 상태 (게임 전보에서 무장 이름을 누르면 나오는 툴팁과 같은 항목)
+function snapUnit(u) {
+  const mods = [];
+  SNAP_MODS.forEach(([k, label]) => { const v = u.mods[k] || 0; if (Math.abs(v) > 1e-9) mods.push([label, Math.round(v * 10000) / 10000]); });
+  const sup = isControlSuppressed(u);
+  return {
+    side: u.side, troops: u.troops, maxTroops: u.maxTroops, wounded: Math.round(u.wounded || 0), alive: u.alive && u.troops > 0,
+    stats: ['무력', '지력', '통솔', '선공'].map(k => Math.round(effStat(u, k) * 100) / 100),
+    mods,
+    statuses: u.statuses.map(st => [st.name + (sup && CONTROL_DEBUFFS.includes(st.name) ? '(무효화)' : ''), st.remain, st.casterName || '']),
+    buffs: (u.statBuffs || []).filter(b => b.remain > 0).map(b => [b.stat, Math.round(b.value * 100) / 100, b.remain]),
+  };
+}
+function snapLine(line, units) {
+  const out = {};
+  for (const m of String(line).matchAll(/\[([^\]]+)\]/g)) {
+    const u = units.find(x => x.name === m[1]);
+    if (u && !out[u.name]) out[u.name] = snapUnit(u);
+  }
+  return Object.keys(out).length ? out : null;
+}
+
 function logUnitSnapshot(unit, log, turn) {
   const st = ['무력','지력','통솔','선공']
     .map(k => `${k} ${effStat(unit, k).toFixed(2)}`).join(' / ');
@@ -1834,6 +1859,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
       unit.dmgDealt += dmg;
       log[basicLineIdx] = (crit ? `${turn}턴:   [${unit.name}] 회심 발동. 회심 피해는 ${Math.round(coeffs.critMult * 100)}%입니다.\n` : '')
         + `${turn}턴:   [${target.name}]의 병력이 ${dmg}(${target.troops}) 손실됐습니다.`;
+      if (log._resnap) log._resnap(basicLineIdx);
       // 피해 전달 전법(일인천군·강습): 방금 낸 일반 공격 피해를 다른 대상에게 그대로 전달
       unit.skills.forEach(sk => {
         const tr = sk.transfer;
@@ -1884,6 +1910,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
         unit.dmgDealt += extra.dmg;
         log[extraIdx] = (extra.crit ? `${turn}턴:   [${unit.name}] 회심 발동. 회심 피해는 ${Math.round(coeffs.critMult * 100)}%입니다.\n` : '')
           + `${turn}턴:   [${target.name}]의 병력이 ${extra.dmg}(${target.troops}) 손실됐습니다.`;
+      if (log._resnap) log._resnap(extraIdx);
         maybeCounterAttack(target, unit, coeffs, log, allUnits, turn, contrib);
       }
       // 허저 백병 혈전: 아군 전체 일반공격 누적 카운트, 4의 배수마다 팀 전체 방어관통 소폭 증가
@@ -1937,6 +1964,12 @@ function simulateOneBattle(armyA, armyB, coeffs) {
   const contrib = {};
   const troopHistory = [];
   const battleState = { basicAttackCount: { A: 0, B: 0 }, snapshots: {}, _sideOf: {} };
+  const lineSnaps = [];
+  if (__detail) {
+    const rawPush = Array.prototype.push;
+    log.push = function (...ls) { ls.forEach(l => lineSnaps.push(snapLine(l, units))); return rawPush.apply(this, ls); };
+    log._resnap = i => { lineSnaps[i] = snapLine(log[i], units); };
+  }
   units.forEach(u => { battleState._sideOf[u.name] = u.side; }); // 허저 백병혈전 등 팀 단위 누적 카운트
 
   // ---- 준비(포진) 단계 로그 ----
@@ -2099,8 +2132,8 @@ function simulateOneBattle(armyA, armyB, coeffs) {
   // (8턴 만기 전투가 "9턴"으로 보고되던 버그)
   const actualTurns = Math.min(turn, MAX_TURN);
   __T({ e: 'end', winner, turns: actualTurns });
-  return { snapshots: battleState.snapshots,
-    winner, turns: actualTurns, log, contrib, troopHistory, units };
+  return { snapshots: battleState.snapshots, lineSnaps: __detail ? lineSnaps : null,
+    winner, turns: actualTurns, log: __detail ? [...log] : log, contrib, troopHistory, units };
 }
 
 // ============================================================
@@ -2112,8 +2145,9 @@ function simulateOneBattle(armyA, armyB, coeffs) {
 // ============================================================
 function simulateBattle(armyA, armyB, coeffs, rebuildFn) {
   let res = simulateOneBattle(armyA, armyB, coeffs);
-  if (res.winner !== 'timeout') return { ...res, rounds: 1 };
+  if (res.winner !== 'timeout') return { ...res, rounds: 1 };   // lineSnaps 는 res 에 그대로 실림
   const maxRounds = coeffs.maxRounds || DEFAULT_COEFFS.maxRounds;
+  const lineSnaps = res.lineSnaps ? [...res.lineSnaps] : null;
   const log = [...res.log], troopHistory = [...res.troopHistory], contrib = { ...res.contrib, __counts: { ...(res.contrib.__counts || {}) } };
   const fallen = res.units.filter(u => !u.alive || u.troops <= 0);
   let turns = res.turns, round = 1;
@@ -2131,12 +2165,14 @@ function simulateBattle(armyA, armyB, coeffs, rebuildFn) {
       u.dmgDealt = p.dmgDealt; u.healDone = p.healDone;
     });
     const offset = turns;
+    if (lineSnaps) lineSnaps.push(null);
     log.push(`${offset}턴: ── 8턴 무승부 → ${round}차 교전 (생존 무장끼리 다시 전투: ` +
       `${na.map(u => u.name).join('·')} vs ${nb.map(u => u.name).join('·')}) ──`);
     __turnOffset = offset;
     try { res = simulateOneBattle(na, nb, coeffs); } finally { __turnOffset = 0; }
     // 전보 턴 번호를 앞 교전 뒤에 잇는다 (2차 교전 1턴 = ${offset + 1}턴)
     res.log.forEach(l => log.push(l.replace(/^(\d+)턴:/, (m, n) => `${+n + offset}턴:`)));
+    if (lineSnaps) lineSnaps.push(...(res.lineSnaps || res.log.map(() => null)));
     res.troopHistory.forEach(p => troopHistory.push({ ...p, turn: p.turn + offset }));
     Object.entries(res.contrib).forEach(([k, v]) => {
       if (k === '__counts') Object.entries(v).forEach(([sk, n]) => { contrib.__counts[sk] = (contrib.__counts[sk] || 0) + n; });
@@ -2146,9 +2182,9 @@ function simulateBattle(armyA, armyB, coeffs, rebuildFn) {
     turns += res.turns;
   }
   const winner = res.winner === 'timeout' ? 'draw' : res.winner;
-  if (res.winner === 'timeout') log.push(`${turns}턴: ── ${round}차 교전까지 결판이 나지 않아 무승부 ──`);
+  if (res.winner === 'timeout') { log.push(`${turns}턴: ── ${round}차 교전까지 결판이 나지 않아 무승부 ──`); if (lineSnaps) lineSnaps.push(null); }
   const units = [...res.units.filter(u => u.alive && u.troops > 0), ...fallen.filter((u, i, arr) => arr.findIndex(x => x.side === u.side && x.generalId === u.generalId) === i)];
-  return { snapshots: res.snapshots, winner, turns, log, contrib, troopHistory, units, rounds: round };
+  return { snapshots: res.snapshots, lineSnaps, winner, turns, log, contrib, troopHistory, units, rounds: round };
 }
 
 // ============================================================
@@ -2465,6 +2501,7 @@ return {
   ENGINE_FIXES,
   setRng: (f) => { __rng = f; },
   setTrace: (f) => { __traceFn = f; },
+  setDetail: (v) => { __detail = !!v; },
   setSkillLevel: (lv) => { SKILL_LEVEL = lv; },
   skillTiming, effStat, hasStatus, selectTargets, mergeActionOrder, calcDamage, calcHeal,
   DEFAULT_COEFFS, buildUnit, simulateOneBattle, simulateBattle, procRateOf,

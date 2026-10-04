@@ -125,13 +125,42 @@ function resultView() {
 
 function battleView() {
   if (!battle) return null;
-  const lines: string[] = battle.log.filter((l: string) => !/└\[상태\]|└\[계산\]/.test(l));
+  // FEAT-016: 전보 줄마다 그 순간 무장 상태 — 이름을 누르면 게임 전보 툴팁처럼 보인다
+  const rows = (battle.log as string[]).map((l, i) => ({ l, i })).filter(x => !/└\[상태\]|└\[계산\]|^\d+턴:\s+(무력|지력|\[상태이상\]|[가-힣]+ -?\d)/.test(x.l));
+  const snaps: any[] = battle.lineSnaps || [];
+  const tip = h('div', { class: 'snap-tip' }, h('span', { class: 'dim' }, '전보의 무장 이름을 누르면 그 순간의 능력치·병력·증감·상태가 여기에 고정됩니다.'));
+  const approxOf = (name: string) => [...(battle.approx?.A || []), ...(battle.approx?.B || [])].filter((x: any) => x.owner === name);
+  const showSnap = (name: string, i: number) => {
+    const sn = snaps[i]?.[name];
+    if (!sn) return;
+    const pct = (v: number) => `${v > 0 ? '+' : ''}${(v * 100).toFixed(2)}%`;
+    const ax = approxOf(name);
+    mount(tip,
+      h('div', { class: 'snap-head' }, h('b', { style: { color: sn.side === 'A' ? 'var(--side-a, #6aa9ff)' : 'var(--side-b, #ff7a7a)' } }, name), ` · ${(battle.log[i].match(/^(\d+)턴/) || [])[1] || 0}턴 그 줄 시점`, sn.alive ? '' : ' · 전사'),
+      h('div', { class: 'snap-grid' },
+        ...['무력', '지력', '통솔', '선공'].map((k, j) => h('div', null, h('span', { class: 'dim' }, k), ' ', h('b', null, sn.stats[j].toFixed(2)))),
+        h('div', null, h('span', { class: 'dim' }, '병력'), ' ', h('b', null, `${sn.troops.toLocaleString()} / ${sn.maxTroops.toLocaleString()}`)),
+        h('div', null, h('span', { class: 'dim' }, '부상병'), ' ', h('b', null, sn.wounded.toLocaleString()))),
+      sn.mods.length ? h('div', { class: 'snap-sec' }, sn.mods.map((m: any) => h('div', null, `${m[0]}: `, h('b', null, pct(m[1]))))) : h('div', { class: 'snap-sec dim' }, '증감 없음'),
+      sn.buffs.length ? h('div', { class: 'snap-sec' }, sn.buffs.map((b: any) => h('div', null, `${b[0]} ${b[1] > 0 ? '+' : ''}${b[1]} · ${b[2]}턴`))) : null,
+      sn.statuses.length ? h('div', { class: 'snap-sec' }, sn.statuses.map((st: any) => h('div', null, `[${st[0]}] ${st[1]}턴${st[2] ? ' — ' + st[2] : ''}`))) : null,
+      ax.length ? h('div', { class: 'snap-sec warn' }, h('div', { class: 'dim' }, '이 무장의 근사·미반영 효과'), ax.map((x: any) => h('div', null, `${x.kind} · ${x.name}${x.note ? ': ' + x.note : ''}`))) : null);
+  };
+  const lineEl = (l: string, i: number) => {
+    const text = l.replace(/^\d+턴: /, '');
+    if (!snaps[i]) return text;
+    return text.split(/(\[[^\]]+\])/).map(part => {
+      const m = part.match(/^\[([^\]]+)\]$/);
+      return m && snaps[i][m[1]] ? h('a', { class: 'snap-name', href: 'javascript:void 0', onclick: () => showSnap(m[1], i) }, part) : part;
+    });
+  };
   const a = battle.audit;
   const bad = a.skills.filter((s: any) => s.worst === 'fail' || s.worst === 'warn');
   return h('div', { class: 'grid cols-2' },
     h('div', { class: 'panel' },
       h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '15px' } }, `전보 — ${battle.winner === 'A' ? '내 덱 승' : battle.winner === 'B' ? '상대 승' : '무승부'} (${battle.turns}턴${(battle as any).rounds > 1 ? ` · ${(battle as any).rounds}차 교전` : ''})`), h('span', { class: 'sub' }, `시드 ${battle.seed}`)),
-      h('div', { class: 'log' }, lines.map(l => /── \d+번째 턴 ──|── 포진 ──/.test(l) ? h('div', { class: 'turn' }, l.replace(/^\d+턴: /, '')) : h('div', null, l.replace(/^\d+턴: /, ''))))),
+      snaps.length ? tip : null,
+      h('div', { class: 'log' }, rows.map(({ l, i }) => /── \d+번째 턴 ──|── 포진 ──/.test(l) ? h('div', { class: 'turn' }, l.replace(/^\d+턴: /, '')) : h('div', null, lineEl(l, i))))),
     h('div', { class: 'panel' },
       h('h3', { style: { fontSize: '15px', marginBottom: '8px' } }, '이 전투의 규칙 감사'),
       h('table', null, h('tbody', null, a.engineRules.map((r: any) => h('tr', null, h('td', { style: { width: '74px' } }, lv(r.level)), h('td', null, h('div', null, r.title), h('div', { class: 'dim', style: { fontSize: '12.5px' } }, r.message), r.evidence?.length ? h('div', { class: 'muted', style: { fontSize: '12px' } }, r.evidence.slice(0, 3).join(' / ')) : null))))),
@@ -154,7 +183,7 @@ export function renderSim(root: HTMLElement) {
     busy = ''; redraw();
   };
   mount(root, 
-    h('div', { class: 'section-head' }, h('h2', null, '전투 시뮬레이션'), h('span', { class: 'sub' }, '엔진 v1.12b 이식 + 수정(FIX-001~003) · 기능 추가(FEAT-001~004) + 금병법 · 진형(전열·후열 피격률·특성) 반영 · 병종·장비·건물 기술·일반 병법·부상병은 제외(R-011~R-016)')),
+    h('div', { class: 'section-head' }, h('h2', null, '전투 시뮬레이션'), h('span', { class: 'sub' }, '엔진 v1.12b 이식 + 수정(FIX-001~005) · 기능 추가(FEAT-001~016) + 금병법 · 전보의 무장 이름을 누르면 그 순간 툴팁 · 진형(전열·후열 피격률·특성) 반영 · 병종·장비·건물 기술·일반 병법·부상병은 제외(R-011~R-016)')),
     h('div', { class: 'grid cols-2' }, deckEditor('A', redraw), deckEditor('B', redraw)),
     h('div', { class: 'toolbar', style: { marginTop: '12px' } },
       h('label', { class: 'sub' }, '판 수 ', h('input', { type: 'number', min: 20, max: 5000, step: 100, value: runs, style: { width: '90px' }, onchange: (e: Event) => { runs = Math.max(20, Math.min(5000, +(e.target as HTMLInputElement).value || 500)); } })),

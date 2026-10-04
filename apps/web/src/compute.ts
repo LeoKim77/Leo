@@ -61,7 +61,7 @@ export function handle(m: Msg, post: Post) {
       }
       post({ id: m.id, type: 'result', result: mergeMc(parts, m.seed) });
     } else if (m.type === 'battle') {
-      const r = sim.simulate(m.a, m.b, { seed: m.seed, trace: true });
+      const r = sim.simulate(m.a, m.b, { seed: m.seed, trace: true, detail: true });
       const audit = auditSingleBattle(bundle, r.trace!);
       const { trace, ...rest } = r;
       void trace;

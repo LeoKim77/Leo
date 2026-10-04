@@ -45,7 +45,7 @@ button, select, input, textarea { font: inherit; color: inherit; }
 .tab-btn:hover { color: var(--text); }
 .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
 
-select, input[type=text], input[type=number], textarea { background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px; }
+select, input[type=text], input[type=number], textarea { background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px; max-width: 100%; }
 textarea { width: 100%; min-height: 90px; }
 .btn { background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 7px 14px; cursor: pointer; }
 .btn:hover { border-color: var(--gold); }
@@ -121,6 +121,12 @@ tr.click { cursor: pointer; } tr.click:hover td { background: var(--panel-2); }
 @media (max-width: 560px) { .unit-row { grid-template-columns: 1fr 1fr; } }
 .unit-row select { width: 100%; min-width: 0; }
 .log { max-height: 460px; overflow: auto; font-size: 13px; line-height: 1.6; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px; white-space: pre-wrap; }
+.snap-tip { position: sticky; top: 0; z-index: 2; background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; margin-bottom: 8px; font-size: 13px; line-height: 1.55; }
+.snap-tip .snap-head { margin-bottom: 4px; }
+.snap-tip .snap-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px 10px; }
+.snap-tip .snap-sec { border-top: 1px dashed var(--border); margin-top: 5px; padding-top: 4px; display: flex; flex-wrap: wrap; gap: 2px 12px; }
+.snap-tip .snap-sec.warn { color: var(--warn); }
+.log .snap-name { color: inherit; text-decoration: underline dotted; cursor: pointer; }
 .log .turn { color: var(--gold); font-weight: 700; margin-top: 6px; }
 .progress { height: 6px; background: var(--panel-2); border-radius: 3px; overflow: hidden; }
 .progress > div { height: 100%; background: var(--gold); width: 0; transition: width .2s; }

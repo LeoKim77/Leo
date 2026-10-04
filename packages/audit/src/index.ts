@@ -161,7 +161,8 @@ export function auditSingleBattle(bundle: GameBundle, trace: TraceEvent[]) {
     evidence: [...r.examples, ...(r.softExamples || [])],
   }));
   // 이 판에서 발동한 전법별: 원문 시점과 다른 단계에서 발동한 횟수
-  const skills = [...collector.bySkill.entries()].filter(([, e]) => e.fired > 0).map(([id, e]) => {
+  // 기대치가 없는 id(금병법이 부여한 효과 'x>key' 등)는 건너뛴다 — 전체 감사와 같은 기준
+  const skills = [...collector.bySkill.entries()].filter(([id, e]) => e.fired > 0 && expectations.has(id)).map(([id, e]) => {
     const s = bundle.skills.find(x => x.id === id);
     const checks = judgeSkill(expectations.get(id)!, e, !!s?.engine, s?.text || '').filter(c => ['D02-phase', 'D03-turns', 'D05-effects', 'D06-targets', 'D07-limit'].includes(c.rule));
     return { id, name: s?.name.ko || id, fired: e.fired, checks, worst: worstOf(checks.map(c => c.level)) };

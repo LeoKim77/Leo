@@ -57,3 +57,19 @@ describe('8턴 무승부 재교전 (R-009)', () => {
     expect(found).toBe(true);
   });
 });
+
+describe('전보 툴팁 (FEAT-016)', () => {
+  it('detail 옵션이면 전보 줄마다 그 줄에 나온 무장의 그 순간 상태가 붙는다', () => {
+    const s2 = bundle.tierDecks.filter(t => t.season === 'S2');
+    const d = (i: number) => sim.tierDeckSpec(s2[i].id);
+    const r = sim.simulate(d(0), d(1), { seed: 'snap', detail: true });
+    expect(r.lineSnaps!.length).toBe(r.log.length);
+    const i = r.log.findIndex(l => /병력이 \d+\(\d+\) 손실/.test(l));
+    const m = r.log[i].match(/\[([^\]]+)\]의 병력이 \d+\((\d+)\)/)!;
+    expect(r.lineSnaps![i]![m[1]].troops).toBe(+m[2]);
+    expect(r.lineSnaps![i]![m[1]].stats.length).toBe(4);
+    const plain = sim.simulate(d(0), d(1), { seed: 'snap' });
+    expect(plain.lineSnaps).toBeUndefined();
+    expect(plain.log).toEqual(r.log);   // 툴팁을 켜도 전투 결과는 같다
+  });
+});
