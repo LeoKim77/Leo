@@ -834,6 +834,140 @@
           }
         }
       }
+    },
+    {
+      "turn": 3,
+      "kind": "천하평론(승품1)",
+      "ratio": 0.8,
+      "grade": 1,
+      "attacker": "cao-cao",
+      "defender": "da-qiao",
+      "observed": 206,
+      "dmgType": "병기",
+      "at": {
+        "cao-cao": {
+          "troops": 6900,
+          "stats": {
+            "무력": 92.68,
+            "지력": 208.68,
+            "통솔": 196.6
+          },
+          "mods": {
+            "주는피해": 0.4789,
+            "주는액티브피해": 0.05
+          }
+        },
+        "da-qiao": {
+          "troops": 15901
+        }
+      },
+      "note": "회유 22 ÷ 10.68%"
+    },
+    {
+      "turn": 3,
+      "kind": "천하평론(승품1)",
+      "ratio": 0.8,
+      "grade": 1,
+      "attacker": "cao-cao",
+      "defender": "sun-ce",
+      "observed": 178,
+      "dmgType": "병기",
+      "at": {
+        "cao-cao": {
+          "troops": 6900,
+          "stats": {
+            "무력": 92.68,
+            "지력": 208.68,
+            "통솔": 196.6
+          },
+          "mods": {
+            "주는피해": 0.4789,
+            "주는액티브피해": 0.05
+          }
+        },
+        "sun-ce": {
+          "troops": 15797
+        }
+      },
+      "note": "회유 19 ÷ 10.68%"
+    },
+    {
+      "turn": 3,
+      "kind": "천하평론(승품1)",
+      "ratio": 0.8,
+      "grade": 1,
+      "attacker": "hua-tuo",
+      "defender": "da-qiao",
+      "observed": 541,
+      "dmgType": "책략",
+      "at": {
+        "hua-tuo": {
+          "troops": 7555,
+          "stats": {
+            "지력": 277.5
+          },
+          "mods": {
+            "주는피해": 0.5489,
+            "주는액티브피해": 0.05
+          }
+        },
+        "da-qiao": {
+          "troops": 15695
+        }
+      },
+      "note": "병력 15,695→15,154"
+    },
+    {
+      "turn": 3,
+      "kind": "천하평론(승품1)",
+      "ratio": 0.8,
+      "grade": 1,
+      "attacker": "hua-tuo",
+      "defender": "zhen-luo",
+      "observed": 510,
+      "dmgType": "책략",
+      "at": {
+        "hua-tuo": {
+          "troops": 7555,
+          "stats": {
+            "지력": 277.5
+          },
+          "mods": {
+            "주는피해": 0.5489,
+            "주는액티브피해": 0.05
+          }
+        },
+        "zhen-luo": {
+          "troops": 14586
+        }
+      },
+      "note": "병력 14,586→14,076 (화타는 위국의 왕과 무관)"
+    },
+    {
+      "turn": 3,
+      "kind": "천하평론(승품1)",
+      "ratio": 0.8,
+      "grade": 1,
+      "attacker": "hua-tuo",
+      "defender": "sun-ce",
+      "observed": 518,
+      "dmgType": "책략",
+      "at": {
+        "hua-tuo": {
+          "troops": 7555,
+          "stats": {
+            "지력": 272.5
+          },
+          "mods": {
+            "주는피해": 0.5489,
+            "주는액티브피해": 0.05
+          }
+        },
+        "sun-ce": {
+          "troops": 15619
+        }
+      },
+      "note": "병력 15,619→15,101"
     }
   ],
   "healSamples": [
@@ -975,7 +1109,8 @@
     "fire-camp": 2
   },
   "explained": [
-    "전장의 노래 통솔 17.92 = 16 × 1.12 (승품 4) — 지력 영향 아님. 전법 상세 화면으로 확인"
+    "전장의 노래 통솔 17.92 = 16 × 1.12 (승품 4) — 지력 영향 아님. 전법 상세 화면으로 확인",
+    "재교전 최대 병력 = 남은 병력 재확인: 대교 11,724, 견희 11,742 (FIX-005)"
   ],
   "groupSamples": [
     {
@@ -1051,6 +1186,86 @@
               "지력": 127.8
             }
           }
+        }
+      ]
+    },
+    {
+      "turn": 3,
+      "attacker": "cao-cao",
+      "kind": "천하평론",
+      "dmgType": "병기",
+      "ratio": 0.8,
+      "grade": 1,
+      "attackerAt": {
+        "troops": 6900,
+        "stats": {
+          "무력": 92.68,
+          "지력": 208.68,
+          "통솔": 196.6
+        },
+        "mods": {
+          "주는피해": 0.4789,
+          "주는액티브피해": 0.05
+        }
+      },
+      "note": "3턴, 조조 툴팁 있음. 견희 제외(R-018)",
+      "hits": [
+        {
+          "defender": "da-qiao",
+          "observed": 206
+        },
+        {
+          "defender": "sun-ce",
+          "observed": 178
+        }
+      ]
+    },
+    {
+      "turn": 10,
+      "attacker": "cao-cao",
+      "kind": "천하평론(재교전)",
+      "dmgType": "병기",
+      "ratio": 0.8,
+      "grade": 1,
+      "attackerAt": {
+        "stats": {
+          "무력": 92.68
+        }
+      },
+      "note": "무승부 이후 교전. 회유 회복량으로 복원: 26→243(대교, 병력 차 237), 20→187(손책). 견희 제외(R-018)",
+      "hits": [
+        {
+          "defender": "da-qiao",
+          "observed": 237,
+          "at": {
+            "troops": 11460
+          }
+        },
+        {
+          "defender": "sun-ce",
+          "observed": 187,
+          "at": {
+            "troops": 13549
+          }
+        }
+      ]
+    },
+    {
+      "turn": 10,
+      "attacker": "hua-tuo",
+      "kind": "천하평론(재교전)",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "grade": 1,
+      "note": "병력 차: 손책 13,362→13,030(332), 대교 11,223→10,873(350)",
+      "hits": [
+        {
+          "defender": "sun-ce",
+          "observed": 332
+        },
+        {
+          "defender": "da-qiao",
+          "observed": 350
         }
       ]
     }
