@@ -10,11 +10,12 @@ import { Simulator } from '../../engine/src/index.ts';
 
 type Mods = Record<string, number>;
 /**
- * 전법 승품 보너스(효과 수치 배율 +%). 사용자 확인: 승품 1 ≈ +2.4%(천하평론), 2 ≈ +4.8%(화공전술), 4 = +12%(전장의 노래 상세 화면 145.6%/17.92).
- * 3·5 는 미확인 — 2→4 사이를 직선으로, 5 는 4→5 를 같은 폭(+3.6%p)으로 잡은 잠정값. 시뮬 기본은 승품 0(R-017).
+ * 전법 승품 보너스: 1단계당 효과 수치 +3% (곱). 사용자 전법 상세 화면 4장으로 확인(2026-10-04):
+ * 화공전술 승품2 80→84.8%(+6%), 평화의 기운 3 90→98.1%(+9%), 전장의 노래 4 130→145.6%(+12%), 화검 5 150→172.5%(+15%).
+ * 시뮬 기본은 승품 0(R-017).
  */
-export const GRADE_BONUS: Record<number, number> = { 0: 0, 1: 0.024, 2: 0.048, 3: 0.084, 4: 0.12, 5: 0.156 };
-const gradeMult = (g?: number) => 1 + (GRADE_BONUS[g ?? 0] ?? 0);
+export const GRADE_STEP = 0.03;
+const gradeMult = (g?: number) => 1 + GRADE_STEP * (g ?? 0);
 interface Tooltip { turn: number; unit: string; stats?: Record<string, number>; troops?: number; maxTroops?: number; mods?: Mods }
 /** at: 그 순간 툴팁과 달라진 값(병력·능력치·증감) — 전보 줄의 괄호 수치로 채운다 */
 type At = Record<string, { troops?: number; stats?: Record<string, number>; mods?: Mods }>;

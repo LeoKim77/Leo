@@ -52,16 +52,6 @@
       "resolvedAt": "2026-10-03"
     },
     {
-      "id": "V-engine-grade-bonus",
-      "kind": "engine",
-      "refs": [],
-      "title": "전법 승품 1단계당 효과 증가폭",
-      "assumption": "승품 1 +2.4%(천하평론), 2 +4.8%(화공전술), 4 +12%(전장의 노래 상세 화면). 3 은 +8.4%, 5 는 +15.6% 로 잠정(직선 보간·연장). 전법마다 다를 수 있음. 시뮬 기본은 승품 0(R-017)이라 역검증 보정에만 쓰인다.",
-      "howToVerify": "승품 3(평화의 기운)·승품 5(화검) 전법 상세 화면 캡처 1장씩 — 원문 수치와 비교하면 바로 확정",
-      "priority": 75,
-      "status": "pending"
-    },
-    {
       "id": "V-engine-formation-hit-decay",
       "kind": "engine",
       "refs": [],
