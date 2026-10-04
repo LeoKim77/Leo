@@ -33,7 +33,7 @@ export const ENGINE_FIXES = [
   { id: 'FIX-011', date: '2026-10-04', found: '공용 규칙 R-029', title: '지휘 효과는 시전자 전사 즉시 소멸',
     detail: '지휘 전법 효과(증감·능력치·상태)에 시전자를 기록해 두고, 시전자가 전사하는 즉시(피해·탈주병·피해 전달 직후) 전장에서 지운다. 예전엔 턴 종료 때 전법 id 로 지워, 그 턴 남은 행동 동안 죽은 무장의 지휘가 남았고 적이 같은 전법을 가졌으면 적의 효과까지 지워졌다.' },
   { id: 'FEAT-020', date: '2026-10-04', found: '공용 규칙 R-028·R-031·R-032', title: '대상 선정 공용 규칙',
-    detail: '"자신을 제외한 전체 적군과 우군"(all_except_self), "자신과 랜덤 우군 단일 목표"(self_and_random_ally_1) 대상 추가 — 자신·우군 혼합 대상이 자신에게만 걸리던 4개 전법 수정(허점 공략·강동 제패·정의의 희생·천재지변). "가장 높은/낮은 ○○"은 상태 감소까지 반영한 현재 스탯으로. 혼란은 여러 명 대상도 적+아군(자신 제외) 풀에서 같은 인원수를 비복원 추출.' },
+    detail: '"자신을 제외한 전체 적군과 우군"(all_except_self), "자신과 랜덤 우군 단일 목표"(self_and_random_ally_1) 대상 추가 — 자신·우군 혼합 대상이 자신에게만 걸리던 4개 전법 수정(허점 공략·강동 제패·정의의 희생·재해 이용). "가장 높은/낮은 ○○"은 상태 감소까지 반영한 현재 스탯으로. 혼란은 여러 명 대상도 적+아군(자신 제외) 풀에서 같은 인원수를 비복원 추출.' },
   { id: 'FEAT-021', date: '2026-10-04', found: '공용 규칙 R-030·R-033', title: '연쇄 트리거 1회·디버프 제거 FIFO·반격 배율',
     detail: '한 행동(전법 1회·일반 공격 1회)에서 시작된 연쇄 안에서 트리거 전법은 무장마다 각 1회만. 디버프 제거는 먼저 걸린 것부터(원문이 제어 우선이면 controlFirst). 반격 피해는 전법이 피해율을 주면 그 값(mods.반격배율), 없으면 50%.' },
   { id: 'FEAT-018', date: '2026-10-04', found: '공용 규칙 R-022·R-023·R-024 (사용자 제공 자료)', title: '행동 순서 = 선공 + 난수 ±35 전체 정렬, 준비 단계는 배치 순',
@@ -388,13 +388,16 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
   switch (code) {
     case 'all_enemy': result = enemies; break;
     case 'all_ally': result = allies; break;
-    // R-028: "자신을 제외한 전체 적군과 우군" (천재지변 등)
+    // "자신을 제외한 전체 적군과 아군" (재해 이용)
     case 'all_except_self': result = allUnits.filter(u => u.alive && u !== unit); break;
     // R-028: "자신과 랜덤 우군 단일 목표" — 자신 + 자신을 뺀 우군 1명 (예전엔 자신만 또는 자신 포함 2명 무작위)
     case 'self_and_random_ally_1': result = [unit, ...shuffle(allies.filter(u => u !== unit)).slice(0, 1)]; break;
     // FIX-007(R-020): 전법의 '랜덤 적군'은 진형 피격률과 무관하게 살아 있는 적 전체에서 균등 무작위 (피격률은 일반 공격 대상에만)
     case 'random_enemy_n': result = shuffle(enemies).slice(0, 2); break;
     case 'random_ally_n': result = shuffle(allies).slice(0, 2); break;
+    // R-034 '우군' = 자신 제외 (게임 전법 문구 확인). '아군' 코드(*_ally)는 자신 포함
+    case 'random_friend_n': result = shuffle(allies.filter(u => u !== unit)).slice(0, 2); break;
+    case 'all_friend': result = allies.filter(u => u !== unit); break;
     // FEAT-017 "랜덤 2~3명": 매 시전 2명 또는 3명을 같은 확률로 고른다 (원문 그대로)
     case 'random_enemy_2to3': result = shuffle(enemies).slice(0, __rng() < 0.5 ? 2 : 3); break;
     case 'random_ally_2to3': result = shuffle(allies).slice(0, __rng() < 0.5 ? 2 : 3); break;
@@ -436,7 +439,7 @@ const SINGLE_TARGET_CODES = new Set(['random_enemy_1', 'random_ally_1', 'random_
   'lowest_control_enemy', 'lowest_power_enemy', 'lowest_intel_enemy', 'lowest_speed_enemy', 'lowest_combined_enemy', 'lowest_hp_enemy',
   'highest_power_enemy', 'highest_intel_enemy', 'highest_speed_ally', 'highest_combined_ally', 'highest_power_ally', 'highest_intel_ally',
   'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally']);
-const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
+const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'random_friend_n', 'all_friend', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
 function shuffle(a) { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(__rng() * (i + 1));[b[i], b[j]] = [b[j], b[i]]; } return b; }
 function minBy(arr, fn) { return arr.length ? arr.reduce((a, b) => (fn(a) <= fn(b) ? a : b)) : null; }
 function maxBy(arr, fn) { return arr.length ? arr.reduce((a, b) => (fn(a) >= fn(b) ? a : b)) : null; }
@@ -1350,7 +1353,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       // 회복은 반드시 아군 대상. targetCodes에 적군 코드가 섞여 있으면(예: 둔전령은
       // "전체 적군과 아군이 주는 피해 감소" + "전체 아군 회복"이 한 문장에 있어
       // targets가 ['all_enemy','all_ally']로 잡힘) 아군 코드만 골라 써야 한다.
-      const allyCodes = targetCodes.filter(c => c.includes('ally') || c === 'self');
+      const allyCodes = targetCodes.filter(c => c.includes('ally') || c.includes('friend') || c === 'self');
       targets = selectTargets(unit, allyCodes.length ? allyCodes : ['lowest_hp_ally'], allUnits);
       if (!statusFlag(unit, 'randomizeTarget')) targets = targets.filter(t => t.side === unit.side);   // 혼란이면 적도 회복할 수 있다(R-032)
       if (!targets.length) targets = selectTargets(unit, ['lowest_hp_ally'], allUnits);

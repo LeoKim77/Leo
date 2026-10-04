@@ -127,9 +127,10 @@
     "support-selfless": {
       "date": "2026-10-04",
       "found": "확률 순서 감사 S10 (사용자 지적: 난공불락)",
-      "reason": "원문 'N% 확률로 [대상]에게 …' — 확률이 대상 앞이라 시전 1회 판정, 성공 시 대상 전원(R-021). 대상마다 따로 굴리던 것을 고침",
+      "reason": "원문 'N% 확률로 [대상]에게 …' — 확률이 대상 앞이라 시전 1회 판정, 성공 시 대상 전원(R-021). 대상마다 따로 굴리던 것을 고침 / 게임 문구 '우군 2명' = 자신 제외(R-034)",
       "set": {
-        "effects.heal.0.chanceOnce": true
+        "effects.heal.0.chanceOnce": true,
+        "effects.heal.0.target": "random_friend_n"
       }
     },
     "u-zhou-cang": {
@@ -182,6 +183,24 @@
       "reason": "'자신을 제외한 전체 적군과 우군에게 140% 책략 피해' — 적군에게만 주던 피해를 자신 뺀 전장 전원으로",
       "set": {
         "effects.damage.0.target": "all_except_self"
+      }
+    },
+    "ready": {
+      "date": "2026-10-04",
+      "found": "사용자 게임 캡처 (전법 검색 '우군'·'아군', 2026-10-04) — R-034",
+      "reason": "게임 문구 '우군 2명' = 자신 제외",
+      "set": {
+        "effects.targets.0": "random_friend_n"
+      }
+    },
+    "choose-momentum": {
+      "date": "2026-10-04",
+      "found": "사용자 게임 캡처 (전법 검색 '우군'·'아군', 2026-10-04) — R-034",
+      "reason": "게임 문구 '우군 2명' = 자신 제외",
+      "set": {
+        "effects.targets.0": "random_friend_n",
+        "effects.buffs.0.target": "random_friend_n",
+        "effects.buffs.1.target": "random_friend_n"
       }
     }
   }
