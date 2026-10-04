@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-04T19:14:11.466Z",
+  "generatedAt": "2026-10-04T19:21:27.016Z",
   "dataVersion": "S2.2026-10-04",
   "engine": "v1.12b-port",
   "battles": 6132,
   "summary": {
-    "pass": 2256,
+    "pass": 2259,
     "warn": 68,
     "fail": 1,
     "skip": 35
@@ -45,7 +45,7 @@
     {
       "rule": "D06-targets",
       "title": "대상 수",
-      "pass": 37,
+      "pass": 40,
       "warn": 0,
       "fail": 0,
       "skip": 0
@@ -1270,6 +1270,12 @@
             "회복 0회",
             "상태 {\"홍수\":10699,\"무장 해제\":5059,\"침묵\":5182}"
           ]
+        },
+        {
+          "rule": "D06-targets",
+          "title": "대상 수",
+          "level": "pass",
+          "message": "대상 수 일치 3879/3975"
         }
       ],
       "sample": {
@@ -11237,6 +11243,12 @@
             "회복 0회",
             "상태 {}"
           ]
+        },
+        {
+          "rule": "D06-targets",
+          "title": "대상 수",
+          "level": "pass",
+          "message": "대상 수 일치 456/456"
         }
       ],
       "sample": {
@@ -13031,6 +13043,12 @@
             "회복 0회",
             "상태 {\"공포\":828}"
           ]
+        },
+        {
+          "rule": "D06-targets",
+          "title": "대상 수",
+          "level": "pass",
+          "message": "대상 수 일치 816/828"
         }
       ],
       "sample": {

@@ -105,8 +105,10 @@ export function deriveExpectation(skill: Skill): Expectation {
   if (dmgPhrases.length === 1 && !multiHit) {
     const full = text.slice(0, text.search(/피해를\s*(?:준|주)/));
     // 대상 표현은 같은 절(쉼표·마침표 뒤)에서만 찾는다 — 앞 절의 "우군 단일 목표" 를 피해 대상으로 잘못 읽지 않게 (폐월)
+    //   단, 그 절에 '~에게' 대상이 없으면 앞 절의 대상을 이어받는다 ("적군 전체에게 홍수를 부여하고, 260% 피해" — 칠군수몰)
     const cut = Math.max(full.lastIndexOf(', '), full.lastIndexOf('. '), full.lastIndexOf('며 '));
-    const before = cut >= 0 ? full.slice(cut + 1) : full;
+    const clause = cut >= 0 ? full.slice(cut + 1) : full;
+    const before = /에게/.test(clause) ? clause : full;
     // 피해 문구 바로 앞에서 가장 가까운 대상 표현을 쓴다 ("전체 적군과 우군이 … 랜덤 적군 2명에게 … 피해" → 2명)
     const cands: Array<[number, number | 'all']> = [];
     for (const m of before.matchAll(/전체 적군|적군 전체/g)) cands.push([m.index!, 'all']);
