@@ -35,7 +35,7 @@ export const ENGINE_FIXES = [
   { id: 'FEAT-020', date: '2026-10-04', found: '공용 규칙 R-028·R-031·R-032', title: '대상 선정 공용 규칙',
     detail: '"자신을 제외한 전체 적군과 우군"(all_except_self), "자신과 랜덤 우군 단일 목표"(self_and_random_ally_1) 대상 추가 — 자신·우군 혼합 대상이 자신에게만 걸리던 4개 전법 수정(허점 공략·강동 제패·정의의 희생·재해 이용). "가장 높은/낮은 ○○"은 상태 감소까지 반영한 현재 스탯으로. 혼란은 여러 명 대상도 적+아군(자신 제외) 풀에서 같은 인원수를 비복원 추출.' },
   { id: 'FEAT-021', date: '2026-10-04', found: '공용 규칙 R-030·R-033', title: '연쇄 트리거 1회·디버프 제거 FIFO·반격 배율',
-    detail: '한 행동(전법 1회·일반 공격 1회)에서 시작된 연쇄 안에서 트리거 전법은 무장마다 각 1회만. 디버프 제거는 먼저 걸린 것부터(원문이 제어 우선이면 controlFirst). 반격 피해는 전법이 피해율을 주면 그 값(mods.반격배율), 없으면 50%.' },
+    detail: '트리거 연쇄는 모두 발동하되 자기 효과로 자기 재발동만 금지(초선차전 → 초선차전 X). 턴당 횟수는 원문 상한(초선차전 5·기지의 승리 4 등)만, 상한 없는 트리거는 확률만(예전 기본 1회 폐기). 디버프 제거는 먼저 걸린 것부터(원문이 제어 우선이면 controlFirst). 반격 피해는 전법이 피해율을 주면 그 값(mods.반격배율), 없으면 50%.' },
   { id: 'FEAT-018', date: '2026-10-04', found: '공용 규칙 R-022·R-023·R-024 (사용자 제공 자료)', title: '행동 순서 = 선공 + 난수 ±35 전체 정렬, 준비 단계는 배치 순',
     detail: '같은 편 선공 순 고정 + 양 편 선두 병합(0.5+차/140 확률, v1.12 W31 잠정)을 버리고, 매 턴 생존 무장 전원 선공 + 균등 난수(−35~+35)로 양 편 구분 없이 정렬. 선공 차 70 초과는 여전히 확정 선행. 동률은 전열 → 아군 → 배치 순. 전투 시작 지휘·패시브는 선공과 무관하게 배치 순(아군 1 → 적군 1 → 아군 2 …).' },
   { id: 'FEAT-019', date: '2026-10-04', found: '공용 규칙 R-026 (사용자 제공 자료)', title: '혼란·조롱이 단일 대상 전법에도 적용',
@@ -739,31 +739,29 @@ function calcHeal(caster, target, ratio, coeffs, healStat) {
 // 매 턴 시작 시 unit.triggerCounts를 초기화하고, 사건 발생 시 조건에 맞는
 // 트리거 보유자를 찾아 확률 판정 후 재발동시킨다.
 // ============================================================
-// R-033 연쇄 트리거(무한 연쇄 방지): 트리거로 발동한 효과가 만든 사건으로는, 그 연쇄에서 이미 발동한 트리거 전법이 다시 발동하지 않는다
-//   (A → B → C 각 1회). 행동이 직접 만든 사건(광역 타격 3건 등)은 사건마다 따로 판정하고, 원문의 '매 턴 최대 N회'가 상한이다.
-//   예: 초선차전이 자기 피해로 자기를 다시 발동하던 자가 연쇄(턴당 5회까지)는 막고, 천하평론 3명 타격에는 3번 판정.
-let __chainFired = new Set(), __chainDepth = 0;
-function newChain() { if (!__chainDepth) __chainFired = new Set(); }
-function runTriggered(fn) { __chainDepth++; try { return fn(); } finally { __chainDepth--; } }
+// R-033 연쇄 트리거: 트리거끼리의 연쇄는 모두 발동한다(고육지계 → 제갈량 공격 → 초선차전).
+//   막는 것은 '자기 효과로 자기 재발동'뿐 — 지금 실행 중인 전법(연쇄의 조상 포함)과 같은 무장·같은 전법은 다시 발동하지 않는다
+//   (초선차전 피해로 초선차전 재발동 X). 횟수 제한은 각 전법 원문의 '매 턴 최대 N회'(trigger.maxPerTurn)로만 한다.
+const __castStack = [];   // [무장 id:전법 id] — applySkillEffects 진입/종료
 function rollTrigger(unit, skill) {
   const t = skill.trigger;
-  if (__chainFired.has(unit.id + ':' + skill.id)) return false;
+  if (__castStack.includes(unit.id + ':' + skill.id)) return false;   // R-033 자기 재발동 금지
   const used = unit.triggerCounts[skill.id] || 0;
-  if (used >= (t.maxPerTurn || 1)) return false;
+  // R-033: 턴당 횟수는 원문 상한(maxPerTurn)만 적용. 원문에 상한이 없으면 제한 없음(확률만) — 예전 기본 1회(v1.12b)는 근거 없음
+  const cap = t.maxPerTurn != null ? t.maxPerTurn : Infinity;
+  if (used >= cap) return false;
   unit.battleTriggerCounts = unit.battleTriggerCounts || {};
   if (t.maxPerBattle != null && (unit.battleTriggerCounts[skill.id] || 0) >= t.maxPerBattle) return false;
   if (t.condition && !evalCondition(t.condition, { self: unit, target: unit, attacker: unit })) return false;
   const __ok = __rng() < (t.chance != null ? t.chance : 1);
-  __T({ e: 'roll', unit: unit.id, skill: skill.id, kind: 'trigger', p: t.chance != null ? t.chance : 1, ok: __ok, used, max: t.maxPerTurn || 1 });
+  __T({ e: 'roll', unit: unit.id, skill: skill.id, kind: 'trigger', p: t.chance != null ? t.chance : 1, ok: __ok, used, max: cap });
   if (!__ok) return false;
   unit.triggerCounts[skill.id] = used + 1;
   unit.battleTriggerCounts[skill.id] = (unit.battleTriggerCounts[skill.id] || 0) + 1;
-  __chainFired.add(unit.id + ':' + skill.id);
   return true;
 }
 
 function emitDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
-  newChain();   // R-033: 행동이 직접 만든 사건(타격 1건·디버프 1건)마다 새 연쇄. 트리거 효과 안(연쇄 깊이>0)에서는 이어진다
   const { attacker, defender, dmgType, crit, isBasic } = ctx;
   allUnits.forEach(u => {
     if (!u.alive) return;
@@ -813,7 +811,7 @@ function emitDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       if (t.filterDmgType && t.filterDmgType !== dmgType) return;
       if (t.requireCrit && !crit) return;
       if (!rollTrigger(u, skill)) return;
-      runTriggered(() => applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender }));
+      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender });
     });
   });
 }
@@ -830,7 +828,6 @@ function isDebuffMod(key, amt) {
 }
 
 function emitDebuffEvent(ctx, allUnits, coeffs, log, turn, contrib) {
-  newChain();   // R-033: 행동이 직접 만든 사건(타격 1건·디버프 1건)마다 새 연쇄. 트리거 효과 안(연쇄 깊이>0)에서는 이어진다
   const { caster, target } = ctx;
   allUnits.forEach(u => {
     if (!u.alive) return;
@@ -844,7 +841,7 @@ function emitDebuffEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       if (t.statusName && t.statusName !== ctx.statusName) return;   // FEAT-001: 특정 상태 부여에만 반응
       if (skill.onlyTurns && !skill.onlyTurns.includes(turn)) return;   // FEAT-011: "첫 3턴 동안" 등
       if (!rollTrigger(u, skill)) return;
-      runTriggered(() => applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { caster, target }));
+      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { caster, target });
     });
   });
 }
@@ -865,14 +862,13 @@ function dealDamage(attacker, defender, ratio, dmgType, coeffs, log, allUnits, t
 }
 
 function emitEvadeEvent(ctx, allUnits, coeffs, log, turn, contrib) {
-  newChain();   // R-033: 행동이 직접 만든 사건(타격 1건·디버프 1건)마다 새 연쇄. 트리거 효과 안(연쇄 깊이>0)에서는 이어진다
   const { evader, attacker } = ctx;
   if (!evader.alive) return;
   evader.skills.forEach(skill => {
     const t = skill.trigger;
     if (!t || t.event !== 'evade') return;
     if (!rollTrigger(evader, skill)) return;
-    runTriggered(() => applySkillEffects(evader, skill, allUnits, coeffs, log, turn, contrib, { attacker: evader, defender: attacker }));
+    applySkillEffects(evader, skill, allUnits, coeffs, log, turn, contrib, { attacker: evader, defender: attacker });
   });
 }
 
@@ -1086,10 +1082,9 @@ function oppositeGenderCount(unit, allUnits) {
 
 // ---------- 효과 실행 ----------
 function applySkillEffects(unit, skill, allUnits, coeffs, log, turn, contrib, eventCtx) {
-  if (!__chainDepth && !__skillStack.length) newChain();   // R-033 새 행동 = 새 연쇄
   const __inv = ++__invSeq;
   __T({ e: 'skill', inv: __inv, unit: unit.id, skill: skill.id, kind: skill.type, via: eventCtx ? 'event' : 'slot' });
-  __skillStack.push(skill.id);
+  __skillStack.push(skill.id); __castStack.push(unit.id + ':' + skill.id);
   __invStack.push(__inv);
   try {
     if (skill.statusFirst && skill.effects && (skill.effects.statusEffects || []).length) {   // FEAT-002
@@ -1100,14 +1095,13 @@ function applySkillEffects(unit, skill, allUnits, coeffs, log, turn, contrib, ev
     return __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contrib, eventCtx);
   }
   finally {
-    __skillStack.pop(); __invStack.pop();
+    __skillStack.pop(); __invStack.pop(); __castStack.pop();
     (unit._lastCast = unit._lastCast || {})[skill.id] = turn;   // FEAT-004
     // 금병법 등 "액티브/추격 전법 발동 후" 반응형 효과 (FEAT-001)
     if ((skill.type === '액티브' || skill.type === '추격') && !skill.isManual && unit.alive) emitCastEvent({ caster: unit, skill }, allUnits, coeffs, log, turn, contrib);
   }
 }
 function emitCastEvent(ctx, allUnits, coeffs, log, turn, contrib) {
-  newChain();   // R-033: 행동이 직접 만든 사건(타격 1건·디버프 1건)마다 새 연쇄. 트리거 효과 안(연쇄 깊이>0)에서는 이어진다
   const { caster, skill: cast } = ctx;
   allUnits.forEach(u => {
     if (!u.alive) return;
@@ -1123,7 +1117,7 @@ function emitCastEvent(ctx, allUnits, coeffs, log, turn, contrib) {
         if (!ok) return;
       }
       if (!rollTrigger(u, skill)) return;
-      runTriggered(() => applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker: caster, defender: null, caster }));
+      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker: caster, defender: null, caster });
     });
   });
 }
@@ -1979,7 +1973,6 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
       log.push(`${turn}턴: [${unit.name}]이(가) [${target.name}]에게 일반 공격을 발동했습니다.`);
       const basicLineIdx = log.length;
       log.push('');
-      newChain();
       const { dmg, crit, evaded } = dealDamage(unit, target, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
       if (!evaded) basicLanded = true;   // FIX-009(R-027): 피신당한 일반 공격 뒤에는 추격 판정이 없다
       unit.dmgDealt += dmg;
@@ -2019,7 +2012,6 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
           unit._pursuitDoneThisHit = {}; unit._basicSeq = (unit._basicSeq || 0) + 1;
           log.push(`${turn}턴: [${unit.name}]이(가) [${t2.name}]에게 일반 공격을 발동했습니다. (축력)`);
           const idx2 = log.length; log.push('');
-          newChain();
           const ex = dealDamage(unit, t2, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
           if (!ex.evaded) basicLanded = true;
           unit.dmgDealt += ex.dmg;
@@ -2035,7 +2027,6 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
         const extraIdx = log.length;
         log.push('');
         unit._pursuitDoneThisHit = {}; unit._basicSeq = (unit._basicSeq || 0) + 1;   // 연격도 별도의 일반 공격 → 판정 기회 새로 부여
-        newChain();
         const extra = dealDamage(unit, target, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
         if (!extra.evaded) basicLanded = true;
         unit.dmgDealt += extra.dmg;
@@ -2175,7 +2166,6 @@ function simulateOneBattle(armyA, armyB, coeffs) {
       if (!st.length) return;
       const n = Math.min(st.length, 5);
       const caster = units.find(x => x.id === st[0].casterId) || u;
-      newChain();
       const res = dealDamage(caster, u, 0.6 * n, '책략', coeffs, log, units, turn, contrib, false, 'dot');
       caster.dmgDealt += res.dmg;
       log.push(`${turn}턴: [${u.name}]이(가) 「짐독」 ${n}스택으로 병력이 ${res.dmg}(${u.troops}) 손실됐습니다.`);

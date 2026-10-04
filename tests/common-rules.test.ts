@@ -88,3 +88,23 @@ describe('공용 규칙: 지휘 효과 즉시 소멸 (R-029)', () => {
     expect(t.buffs.length).toBe(0); expect(t.mods.받는피해).toBeCloseTo(0);
   });
 });
+
+describe('공용 규칙: 연쇄 트리거 (R-033)', () => {
+  it('초선차전은 원문대로 턴당 최대 5회', async () => {
+    const { buildBundle } = await import('../packages/data-tools/src/bundle.ts');
+    const { Simulator } = await import('../packages/engine/src/index.ts');
+    const b: any = buildBundle(); const sim = new Simulator(b);
+    const td = (n: string) => sim.tierDeckSpec(b.tierDecks.find((t: any) => t.name === n).id);
+    let maxTurn = 0;
+    for (let i = 0; i < 40; i++) {
+      const r = sim.simulate(td('대황노'), td('충의궁'), { seed: 'chain' + i, trace: true });
+      const per: Record<string, number> = {}; let cur = '';
+      for (const e of r.trace as any[]) {
+        if (e.e === 'turn') cur = String(e.turn ?? Math.random());
+        if (e.e === 'skill' && e.skill === 'u-zhuge-liang' && e.via === 'event') { const k = cur + e.unit; per[k] = (per[k] || 0) + 1; maxTurn = Math.max(maxTurn, per[k]); }
+      }
+    }
+    expect(maxTurn).toBeLessThanOrEqual(5);
+    expect(maxTurn).toBeGreaterThan(0);
+  });
+});
