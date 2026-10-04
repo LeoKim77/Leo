@@ -1,6 +1,6 @@
 // 청룡 출격 · 고유 전법 · 패시브 100%
 // 원문: 자신이 병기 피해를 준 후, 75% 확률로 용의 포효 발동: 목표에게 2턴 동안 지속되는 위협을(를) 부여하며, 목표가 위협 상태면 목표에게 100%의 병기 피해를 주는 것으로 변경된다. 매 턴 용의 포효가 4회 발동될 수 있다.
-// 원문 절 구현: ok / ok / missing
+// 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "청룡 출격",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "'목표가 이미 위협이면 위협 대신 100% 병기 피해' 분기 구현 (예전엔 피해·위협을 둘 다, 위협은 랜덤 적에게)"
+    }
+  ],
   clauses: [
     {
       "text": "자신이 병기 피해를 준 후, 75% 확률로 용의 포효 발동: 목표에게 2턴 동안 지속되는 위협을(를) 부여하며",
@@ -28,7 +34,7 @@ export default defineSkill({
     },
     {
       "text": "매 턴 용의 포효가 4회 발동될 수 있다",
-      "status": "missing"
+      "status": "ok"
     }
   ],
   def: {
@@ -43,15 +49,16 @@ export default defineSkill({
           "dmgType": "병기",
           "min": 0.5,
           "max": 1,
-          "target": "trigger_defender"
+          "target": "tag:t"
         }
       ],
       "statusEffects": [
-        "위협"
+        {
+          "name": "위협",
+          "target": "tag:t",
+          "duration": 2
+        }
       ],
-      "heal": [],
-      "buffs": [],
-      "statMods": [],
       "targets": []
     },
     "trigger": {
@@ -93,9 +100,10 @@ export default defineSkill({
     ]
   },
   run(c) {
-    // 「목표가 위협 상태면 목표에게 100%의 병기 피해를 주는 것으로 변경된다」
-    c.damage(0);   // 병기 50%→100%, 대상 trigger_defender
     // 「자신이 병기 피해를 준 후, 75% 확률로 용의 포효 발동: 목표에게 2턴 동안 지속되는 위협을(를) 부여하며」
-    c.status(0);   // 위협
+    const t = c.tag('t', c.eventCtx && c.eventCtx.defender && c.eventCtx.defender.alive ? [c.eventCtx.defender] : []);
+    if (!t.length) return;
+    // 「목표가 위협 상태면 목표에게 100%의 병기 피해를 주는 것으로 변경된다」
+    if (c.has(t[0], '위협')) c.damage(0); else c.status(0);
   },
 });

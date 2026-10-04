@@ -1,6 +1,6 @@
 // 기병 돌격 · 고유 전법 · 패시브 100%
 // 원문: 자신의 회심 확률이 45% 증가하며, 회심 피해를 준 후, 목표에게 추격 피해 발동: 통솔을 무시하는 60%의 병기 피해(회심 발동 불가)를 1회 준다. 목표가 디버프 상태를 보유한 경우, 추격 피해가 20% 증가하며, 추격 피해는 매 턴 5회 발동될 수 있다.
-// 원문 절 구현: ok / ok / missing / missing
+// 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "기병 돌격",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "추격 피해: 통솔 무시·회심 불가 구현, 중복 회심 버프 제거"
+    }
+  ],
   clauses: [
     {
       "text": "자신의 회심 확률이 45% 증가하며",
@@ -26,11 +32,11 @@ export default defineSkill({
     },
     {
       "text": "목표가 디버프 상태를 보유한 경우, 추격 피해가 20% 증가하며",
-      "status": "missing"
+      "status": "ok"
     },
     {
       "text": "추격 피해는 매 턴 5회 발동될 수 있다",
-      "status": "missing"
+      "status": "ok"
     }
   ],
   def: {
@@ -52,19 +58,13 @@ export default defineSkill({
               "who": "target"
             },
             "mult": 0.2
-          }
+          },
+          "ignoreDef": true,
+          "noCrit": true
         }
       ],
       "heal": [],
-      "buffs": [
-        {
-          "stat": "회심",
-          "min": 0.225,
-          "max": 0.45,
-          "target": "self",
-          "duration": 999
-        }
-      ],
+      "buffs": [],
       "statMods": [],
       "statusEffects": [],
       "targets": []
@@ -128,8 +128,7 @@ export default defineSkill({
   },
   run(c) {
     // 「회심 피해를 준 후, 목표에게 추격 피해 발동: 통솔을 무시하는 60%의 병기 피해(회심 발동 불가)를 1회 준다」
-    c.damage(0);   // 병기 30%→60%, 대상 trigger_defender
-    // 「자신의 회심 확률이 45% 증가하며」
-    c.buff(0);   // 회심 +22.5%→45%, 대상 self, 전투 종료까지
+    // 「목표가 디버프 상태를 보유한 경우, 추격 피해가 20% 증가하며」
+    c.damage(0);   // 목표에게 병기 60%(통솔 무시·회심 불가), 디버프 보유 시 +20%, 매 턴 5회
   },
 });

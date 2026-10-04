@@ -8,6 +8,12 @@ export default defineSkill({
   name: "포위 돌파",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "받는 피해 증가 2턴(예전 1턴), 받는 피해 증가 → 피해 순서, '첫 턴 발동 시 준비 불필요' 구현"
+    }
+  ],
   clauses: [
     {
       "text": "1턴 동안 준비 후 2턴 동안 랜덤 적군 단일 목표가 받는 피해를 30% 증가시키며",
@@ -52,7 +58,7 @@ export default defineSkill({
           "stat": "받는피해",
           "min": 0.15,
           "max": 0.3,
-          "duration": 1,
+          "duration": 2,
           "maxStacks": 1
         }
       ],
@@ -86,12 +92,13 @@ export default defineSkill({
         ],
         "status": "ok"
       }
-    ]
+    ],
+    "noPrepOnTurn1": true
   },
   run(c) {
-    // 「해당 목표에게 440%의 병기 피해를 준다」
-    c.damage(0);   // 병기 220%→440%
     // 「1턴 동안 준비 후 2턴 동안 랜덤 적군 단일 목표가 받는 피해를 30% 증가시키며」
-    c.buff(0);   // 받는피해 +15%→30%, 1턴, 최대 1중첩
+    c.buff(0);   // 랜덤 적 1명(피해와 같은 대상)
+    c.damage(0);
+    // 「해당 전법은 첫 턴 발동 시 준비할 필요 없다」
   },
 });

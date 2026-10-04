@@ -1,6 +1,6 @@
 // 찬란한 위명 · 전법 · 액티브 27.5%~ 50%
 // 원문: 2턴 동안 자신의 회유이(가) 30% 증가한다. 이후 랜덤 적군 2명에게 220%의 병기 피해를 준다.
-// 원문 절 구현: missing / ok
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,10 +8,16 @@ export default defineSkill({
   name: "찬란한 위명",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 순서: 회유 +30% 먼저, 이후 피해"
+    }
+  ],
   clauses: [
     {
       "text": "2턴 동안 자신의 회유이(가) 30% 증가한다",
-      "status": "missing"
+      "status": "ok"
     },
     {
       "text": "이후 랜덤 적군 2명에게 220%의 병기 피해를 준다",
@@ -69,8 +75,9 @@ export default defineSkill({
     ]
   },
   run(c) {
+    // 「2턴 동안 자신의 회유이(가) 30% 증가한다」
+    c.buff(0);
     // 「이후 랜덤 적군 2명에게 220%의 병기 피해를 준다」
-    c.damage(0);   // 병기 110%→220%
-    c.buff(0);   // 회유 +30%, 대상 self, 2턴, 최대 1중첩
+    c.damage(0);
   },
 });

@@ -8,6 +8,12 @@ export default defineSkill({
   name: "형주 분할",
   kind: "액티브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "'적군과 우군 전체의 랜덤 목표 4개'(자신 제외) 무장 해제 1턴, 우군이면 받는 피해 −20%, 적군이면 +20%(지력 영향) — 예전엔 랜덤 적 1명에게만"
+    }
+  ],
   clauses: [
     {
       "text": "적군과 우군 전체의 랜덤 목표 4개에게 1턴 동안 지속되는 무장 해제을(를) 부여한다",
@@ -40,29 +46,54 @@ export default defineSkill({
     "legacyProcRate": "45%",
     "raw": "적군과 아군 전체의 랜덤 목표 4개에게 1턴 동안 지속되는 무장 해제을(를) 부여한다. 아군 목표가 선택되면 1턴 동안 목표가 받는 피해가 10%→20% 감소한다(지력의 영향 받음). 적군 목표가 선택되면 1턴 동안 목표가 받는 피해가 10%→20% 증가한다(지력의 영향 받음).",
     "effects": {
-      "damage": [],
-      "heal": [],
+      "statusEffects": [
+        {
+          "name": "무장 해제",
+          "target": "tag:four",
+          "duration": 1
+        }
+      ],
       "buffs": [
         {
           "stat": "받는피해",
           "min": -0.1,
           "max": -0.2,
+          "target": "tag:four",
           "duration": 1,
-          "maxStacks": 1
+          "maxStacks": 1,
+          "inf": {
+            "stats": [
+              "지력"
+            ],
+            "who": "self"
+          },
+          "condition": {
+            "type": "side",
+            "who": "target",
+            "is": "ally"
+          }
         },
         {
           "stat": "받는피해",
           "min": 0.1,
           "max": 0.2,
+          "target": "tag:four",
           "duration": 1,
-          "maxStacks": 1
+          "maxStacks": 1,
+          "inf": {
+            "stats": [
+              "지력"
+            ],
+            "who": "self"
+          },
+          "condition": {
+            "type": "side",
+            "who": "target",
+            "is": "enemy"
+          }
         }
       ],
-      "statMods": [],
-      "targets": [],
-      "statusEffects": [
-        "무장 해제"
-      ]
+      "targets": []
     },
     "clauses": [
       {
@@ -91,10 +122,12 @@ export default defineSkill({
     ]
   },
   run(c) {
-    // 「우군 목표가 선택되면 1턴 동안 목표가 받는 피해가 20% 감소한다(지력의 영향 받음)」
-    c.buff(0);   // 받는피해 -10%→-20%, 1턴, 최대 1중첩
-    c.buff(1);   // 받는피해 +10%→20%, 1턴, 최대 1중첩
+    c.tag('four', c.targets('random_all_4'));
     // 「적군과 우군 전체의 랜덤 목표 4개에게 1턴 동안 지속되는 무장 해제을(를) 부여한다」
-    c.status(0);   // 무장 해제
+    c.status(0);
+    // 「우군 목표가 선택되면 1턴 동안 목표가 받는 피해가 20% 감소한다(지력의 영향 받음)」
+    c.buff(0);
+    // 「적군 목표가 선택되면 1턴 동안 목표가 받는 피해가 20% 증가한다(지력의 영향 받음)」
+    c.buff(1);
   },
 });

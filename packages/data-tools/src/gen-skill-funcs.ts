@@ -7,7 +7,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildBundle } from './bundle.ts';
 
-const DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'engine', 'src', 'skills');
+export const DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'engine', 'src', 'skills');
 const RESERVED = new Set(['index', 'types']);
 const ORDER = ['statMods', 'damage', 'heal', 'buffs', 'dispel', 'statusEffects', 'grants'] as const;
 const CALL: Record<string, string> = { statMods: 'statMod', damage: 'damage', heal: 'heal', buffs: 'buff', dispel: 'dispel', statusEffects: 'status', grants: 'grant' };
@@ -56,15 +56,18 @@ function renderRun(def: any, clauses: any[]): string {
 
 const json = (v: any) => JSON.stringify(v, null, 2).replace(/\n/g, '\n  ');
 
-function render(s: any): string {
+/** 번들의 전법(s) → 파일 내용. 손본 파일을 다시 쓸 때는 extra 로 def·clauses·revised·runBody 를 넘긴다 */
+export function render(s: any, extra: { def?: any; clauses?: any[]; revised?: any[]; runBody?: string } = {}): string {
   // def.clauses 는 v1.12b 절 분석(엔진이 '(○○의 영향 받음)' 연결에 씀)이라 그대로 둔다. 한국판 절 구현 상태는 아래 clauses
-  const def = s.engine ? structuredClone(s.engine) : null;
-  const clauses = (s.clauses || []).map((c: any) => ({ text: c.text, status: c.status, ...(c.impl?.length ? { impl: c.impl } : {}), ...(c.reviewed ? { reviewed: c.reviewed } : {}) }));
+  const def = extra.def !== undefined ? extra.def : (s.engine ? structuredClone(s.engine) : null);
+  if (def) delete def.fn;
+  const clauses = extra.clauses || (s.clauses || []).map((c: any) => ({ text: c.text, status: c.status, ...(c.impl?.length ? { impl: c.impl } : {}), ...(c.reviewed ? { reviewed: c.reviewed } : {}) }));
   const head = [
     `// ${s.name.ko} · ${s.isUnique ? '고유 전법' : '전법'} · ${s.kind}${s.procRateText ? ' ' + s.procRateText : ''}`,
     `// 원문: ${s.text || '(원문 없음)'}`,
     `// 원문 절 구현: ${clauses.map((c: any) => c.status).join(' / ') || '-'}`,
   ].join('\n');
+  const runBody = extra.runBody != null ? extra.runBody.replace(/^\n+|\s+$/g, '') : (def ? renderRun(def, clauses) : '');
   return `${head}
 import { defineSkill } from './types.ts';
 
@@ -73,13 +76,13 @@ export default defineSkill({
   name: ${JSON.stringify(s.name.ko)},
   kind: ${JSON.stringify(s.kind)},
   isUnique: ${!!s.isUnique},
-${s.engineStatus ? `  engineStatus: ${json(s.engineStatus)},\n` : ''}  clauses: ${json(clauses)},
+${s.engineStatus ? `  engineStatus: ${json(s.engineStatus)},\n` : ''}${extra.revised?.length ? `  revised: ${json(extra.revised)},\n` : ''}  clauses: ${json(clauses)},
   def: ${json(def)},
-${def ? `  run(c) {\n${renderRun(def, clauses)}\n  },\n` : ''}});
+${def ? `  run(c) {\n${runBody}\n  },\n` : ''}});
 `;
 }
 
-function writeIndex() {
+export function writeIndex() {
   const ids = readdirSync(DIR).filter(f => f.endsWith('.ts') && !RESERVED.has(f.slice(0, -3))).map(f => f.slice(0, -3)).sort();
   const lines = ['// 자동 생성 — pnpm gen:skills (전법 함수 파일 목록)', "import type { SkillModule } from './types.ts';"];
   ids.forEach((id, i) => lines.push(`import m${i} from './${id}.ts';`));

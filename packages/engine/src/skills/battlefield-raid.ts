@@ -8,6 +8,12 @@ export default defineSkill({
   name: "순간 돌습",
   kind: "추격",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "'목표' = 일반 공격 목표 (예전엔 통솔 감소·피해가 랜덤 적에게)"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 후, 2턴 동안 목표의 통솔을 30포인트 감소시키며",
@@ -31,27 +37,24 @@ export default defineSkill({
     "legacyProcRate": "40%",
     "raw": "일반 공격 후, 2턴 동안 목표의 통솔을 15→30포인트 감소시키며, 이후 해당 목표에게 125%→250%의 병기 피해를 준다.",
     "effects": {
-      "damage": [
-        {
-          "dmgType": "병기",
-          "min": 1.25,
-          "max": 2.5
-        }
-      ],
-      "heal": [],
-      "buffs": [],
       "statMods": [
         {
           "stat": "통솔",
           "min": -15,
           "max": -30,
-          "target": "tag:main",
+          "target": "trigger_defender",
           "duration": 2,
           "maxStacks": 1
         }
       ],
-      "targets": [],
-      "statusEffects": []
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.25,
+          "max": 2.5,
+          "target": "trigger_defender"
+        }
+      ]
     },
     "clauses": [
       {
@@ -77,8 +80,8 @@ export default defineSkill({
   },
   run(c) {
     // 「일반 공격 후, 2턴 동안 목표의 통솔을 30포인트 감소시키며」
-    c.statMod(0);   // 통솔 -15→-30, 대상 tag:main, 2턴, 최대 1중첩
+    c.statMod(0);   // 통솔 -15→-30, 대상 trigger_defender, 2턴, 최대 1중첩
     // 「이후 해당 목표에게 250%의 병기 피해를 준다」
-    c.damage(0);   // 병기 125%→250%
+    c.damage(0);   // 병기 125%→250%, 대상 trigger_defender
   },
 });

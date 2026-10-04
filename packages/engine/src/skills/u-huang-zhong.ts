@@ -1,6 +1,6 @@
 // 전장 평정 · 고유 전법 · 추격 55%
 // 원문: 일반 공격 후, 2턴 동안 공격 목표의 선공과 무력을 24 감소시킨다(무력의 영향 받음). 이후 디버프 상태를 보유한 적군 목표에게 180%의 병기 피해를 준다.
-// 원문 절 구현: missing / ok
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,10 +8,16 @@ export default defineSkill({
   name: "전장 평정",
   kind: "추격",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "능력치 감소에 무력 영향 반영"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 후, 2턴 동안 공격 목표의 선공과 무력을 24 감소시킨다(무력의 영향 받음)",
-      "status": "missing"
+      "status": "ok"
     },
     {
       "text": "이후 디버프 상태를 보유한 적군 목표에게 180%의 병기 피해를 준다",
@@ -48,14 +54,26 @@ export default defineSkill({
           "min": -24,
           "max": -24,
           "target": "trigger_defender",
-          "duration": 2
+          "duration": 2,
+          "inf": {
+            "stats": [
+              "무력"
+            ],
+            "who": "self"
+          }
         },
         {
           "stat": "무력",
           "min": -24,
           "max": -24,
           "target": "trigger_defender",
-          "duration": 2
+          "duration": 2,
+          "inf": {
+            "stats": [
+              "무력"
+            ],
+            "who": "self"
+          }
         }
       ],
       "statusEffects": [],

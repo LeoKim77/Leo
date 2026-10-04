@@ -8,6 +8,12 @@ export default defineSkill({
   name: "기풍당당",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "'후열 우선' 대상, 폭풍 2턴, '목표가 폭풍이면 선공 −25(2턴)' 구현"
+    }
+  ],
   clauses: [
     {
       "text": "랜덤 적군 단일 목표에게 240%의 병기 피해(후열 우선 선택)를 주며",
@@ -42,17 +48,35 @@ export default defineSkill({
         {
           "dmgType": "병기",
           "min": 1.2,
-          "max": 2.4
+          "max": 2.4,
+          "target": "random_enemy_back_first",
+          "tag": "m"
         }
       ],
-      "heal": [],
-      "buffs": [],
-      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "폭풍",
+          "target": "tag:m",
+          "duration": 2
+        }
+      ],
+      "statMods": [
+        {
+          "stat": "선공",
+          "min": -25,
+          "max": -25,
+          "target": "tag:m",
+          "duration": 2,
+          "maxStacks": 1,
+          "condition": {
+            "type": "hasStatus",
+            "who": "target",
+            "status": "폭풍"
+          }
+        }
+      ],
       "targets": [
         "random_enemy_1"
-      ],
-      "statusEffects": [
-        "폭풍"
       ]
     },
     "clauses": [
@@ -81,8 +105,9 @@ export default defineSkill({
   },
   run(c) {
     // 「랜덤 적군 단일 목표에게 240%의 병기 피해(후열 우선 선택)를 주며」
-    c.damage(0);   // 병기 120%→240%
-    // 「2턴 동안 지속되는 폭풍을(를) 부여한다」
-    c.status(0);   // 폭풍
+    c.damage(0);
+    c.status(0);
+    // 「목표가 폭풍 상태면 2턴 동안 추가로 목표의 선공을 25포인트 감소시킨다」
+    c.statMod(0);
   },
 });

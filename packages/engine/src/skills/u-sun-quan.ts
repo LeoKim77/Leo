@@ -1,6 +1,6 @@
 // 강동 호거 · 고유 전법 · 지휘 100%
 // 원문: 자신이 액티브 전법을 학습할 때마다 전체 우군의 액티브 전법 발동률이 7% 증가하고, 받는 병기 피해가 5% 감소한다. 자신이 액티브 전법이 아닌 전법을 학습할 때마다 전체 우군의 28% 연타 확률이 증가하고, 받는 책략 피해가 5%(모든 효과는 자신의 최고 속성 영향을 받음) 감소한다.
-// 원문 절 구현: special / special / special / special
+// 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,31 +8,37 @@ export default defineSkill({
   name: "강동 호거",
   kind: "지휘",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음) · 최고 속성/무력 영향 반영(FEAT-024)"
+    }
+  ],
   clauses: [
     {
       "text": "자신이 액티브 전법을 학습할 때마다 전체 우군의 액티브 전법 발동률이 7% 증가하고",
-      "status": "special",
+      "status": "ok",
       "impl": [
         "special:loadout_count_buff"
       ]
     },
     {
       "text": "받는 병기 피해가 5% 감소한다",
-      "status": "special",
+      "status": "ok",
       "impl": [
         "special:loadout_count_buff"
       ]
     },
     {
       "text": "자신이 액티브 전법이 아닌 전법을 학습할 때마다 전체 우군의 28% 연타 확률이 증가하고",
-      "status": "special",
+      "status": "ok",
       "impl": [
         "special:loadout_count_buff"
       ]
     },
     {
       "text": "받는 책략 피해가 5%(모든 효과는 자신의 최고 속성 영향을 받음) 감소한다",
-      "status": "special",
+      "status": "ok",
       "impl": [
         "special:loadout_count_buff"
       ]

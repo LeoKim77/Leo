@@ -8,6 +8,12 @@ export default defineSkill({
   name: "양책 수립",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "지력 +20을 자신에게 (예전엔 적에게 걸렸다)"
+    }
+  ],
   clauses: [
     {
       "text": "2턴 동안 자신의 지력이 20포인트 증가하며",
@@ -46,7 +52,8 @@ export default defineSkill({
           "min": 10,
           "max": 20,
           "duration": 2,
-          "maxStacks": 1
+          "maxStacks": 1,
+          "target": "self"
         }
       ],
       "targets": [
@@ -74,7 +81,7 @@ export default defineSkill({
   },
   run(c) {
     // 「2턴 동안 자신의 지력이 20포인트 증가하며」
-    c.statMod(0);   // 지력 10→20, 2턴, 최대 1중첩
+    c.statMod(0);   // 지력 10→20, 대상 self, 2턴, 최대 1중첩
     // 「랜덤 적군 2명에게 160%의 책략 피해를 준다」
     c.damage(0);   // 책략 80%→160%
   },

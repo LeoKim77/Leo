@@ -1,6 +1,6 @@
 // 인재 기용 · 전법 · 지휘 100%
 // 원문: 3번째 턴부터 우군 2명은 매 턴 80% 확률로 다음 피해에 회심 또는 묘책(이)가 반드시 발동되며, 해당 회심 또는 묘책 피해가 40% 증가한다.
-// 원문 절 구현: approx / approx
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,15 +8,21 @@ export default defineSkill({
   name: "인재 기용",
   kind: "지휘",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "확정 회심과 회심 피해 +40%를 같은 대상의 같은 1회 피해에 묶음(예전엔 따로 뽑은 대상에게 1턴 회심피해)"
+    }
+  ],
   clauses: [
     {
       "text": "3번째 턴부터 우군 2명은 매 턴 80% 확률로 다음 피해에 회심 또는 묘책(이)가 반드시 발동되며",
-      "status": "approx",
+      "status": "ok",
       "reviewed": "확정 회심/묘책 1회. 우군 2명 매 턴 80%"
     },
     {
       "text": "해당 회심 또는 묘책 피해가 40% 증가한다",
-      "status": "approx",
+      "status": "ok",
       "reviewed": "회심/묘책 피해 +40%를 1턴 버프로"
     }
   ],
@@ -35,15 +41,9 @@ export default defineSkill({
           "min": 1,
           "max": 1,
           "chance": 0.8,
-          "target": "random_friend_n"
-        },
-        {
-          "stat": "회심피해",
-          "min": 0.2,
-          "max": 0.4,
           "target": "random_friend_n",
-          "duration": 1,
-          "maxStacks": 1
+          "cap": 1,
+          "critBonus": 0.4
         }
       ],
       "statMods": [],
@@ -80,8 +80,8 @@ export default defineSkill({
     }
   },
   run(c) {
-    // (원문 절 매핑 없음)
-    c.buff(0);   // 확정회심 +100%, 대상 random_friend_n, 확률 80%
-    c.buff(1);   // 회심피해 +20%→40%, 대상 random_friend_n, 1턴, 최대 1중첩
+    // 「3번째 턴부터 우군 2명은 매 턴 80% 확률로 다음 피해에 회심 또는 묘책(이)가 반드시 발동되며」
+    // 「해당 회심 또는 묘책 피해가 40% 증가한다」
+    c.buff(0);   // 우군 2명(자신 제외), 대상마다 80%: 다음 피해 회심·묘책 확정 + 그 피해 +40%
   },
 });

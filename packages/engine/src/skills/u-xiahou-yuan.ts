@@ -1,6 +1,6 @@
 // 신속기습 · 고유 전법 · 패시브 100%
 // 원문: 매 턴 행동 시, 1턴 동안 자신의 무력 수치가 선공 수치의 40% 만큼 증가한다. 자신보다 선공이 낮은 적군 1명 당 1스택의 신속을 획득한다: 1턴 동안 주는 피해와 회심 확률이 5% 증가하며(선공의 영향 받음), 해당 적군에게 30%의 병기 피해를 준다.
-// 원문 절 구현: missing / ok / ok
+// 원문 절 구현: ok / approx / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,14 +8,20 @@ export default defineSkill({
   name: "신속기습",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "무력 = 선공 × 40% (매 행동 1턴, 그 순간 선공 기준 — 예전엔 고정 93.8), 신속 1스택당 주는 피해·회심 +5% (예전 3%)"
+    }
+  ],
   clauses: [
     {
       "text": "매 턴 행동 시, 1턴 동안 자신의 무력 수치가 선공 수치의 40% 만큼 증가한다",
-      "status": "missing"
+      "status": "ok"
     },
     {
       "text": "자신보다 선공이 낮은 적군 1명 당 1스택의 신속을 획득한다: 1턴 동안 주는 피해와 회심 확률이 5% 증가하며(선공의 영향 받음)",
-      "status": "ok",
+      "status": "approx",
       "impl": [
         "buffs[0].countScale",
         "buffs[1].countScale"
@@ -39,9 +45,14 @@ export default defineSkill({
       "statMods": [
         {
           "stat": "무력",
-          "min": 46.900000000000006,
-          "max": 93.80000000000001,
-          "target": "self"
+          "min": 0,
+          "max": 0,
+          "target": "self",
+          "duration": 1,
+          "fromStat": {
+            "stat": "선공",
+            "ratio": 0.4
+          }
         }
       ],
       "damage": [
@@ -65,12 +76,14 @@ export default defineSkill({
           "stat": "주는피해",
           "min": 0,
           "max": 0,
+          "target": "self",
+          "duration": 1,
           "countScale": {
             "statCompare": {
               "stat": "선공",
               "op": "<"
             },
-            "perCount": 0.03
+            "perCount": 0.05
           }
         },
         {
@@ -126,11 +139,11 @@ export default defineSkill({
     ]
   },
   run(c) {
-    // (원문 절 매핑 없음)
-    c.statMod(0);   // 무력 46.900000000000006→93.80000000000001, 대상 self
+    // 「매 턴 행동 시, 1턴 동안 자신의 무력 수치가 선공 수치의 40% 만큼 증가한다」
+    c.statMod(0);
+    // 「자신보다 선공이 낮은 적군 1명 당 1스택의 신속을 획득한다: 1턴 동안 주는 피해와 회심 확률이 5% 증가하며(선공의 영향 받음)」
+    c.buff(0); c.buff(1);   // 선공 영향은 미반영(근사)
     // 「해당 적군에게 30%의 병기 피해를 준다」
-    c.damage(0);   // 병기 15%→30%, 대상 all_enemy, 조건 statCompareUnits
-    c.buff(0);   // 주는피해 0%
-    c.buff(1);   // 회심 0%, 대상 self, 1턴
+    c.damage(0);
   },
 });

@@ -8,6 +8,12 @@ export default defineSkill({
   name: "적진 교란",
   kind: "추격",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "'공격 목표'에게 피해·혼란 1턴 (예전엔 랜덤 적)"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 후, 공격 목표에게 220%의 병기 피해를 주며",
@@ -35,16 +41,18 @@ export default defineSkill({
         {
           "dmgType": "병기",
           "min": 1.1,
-          "max": 2.2
+          "max": 2.2,
+          "target": "trigger_defender"
         }
       ],
-      "heal": [],
-      "buffs": [],
-      "statMods": [],
-      "targets": [],
       "statusEffects": [
-        "혼란"
-      ]
+        {
+          "name": "혼란",
+          "target": "trigger_defender",
+          "duration": 1
+        }
+      ],
+      "targets": []
     },
     "clauses": [
       {
@@ -70,8 +78,8 @@ export default defineSkill({
   },
   run(c) {
     // 「일반 공격 후, 공격 목표에게 220%의 병기 피해를 주며」
-    c.damage(0);   // 병기 110%→220%
+    c.damage(0);   // 병기 110%→220%, 대상 trigger_defender
     // 「1턴 동안 지속되는 혼란을(를) 부여한다」
-    c.status(0);   // 혼란
+    c.status(0);   // 혼란, 대상 trigger_defender, 1턴
   },
 });

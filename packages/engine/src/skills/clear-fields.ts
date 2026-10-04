@@ -8,6 +8,12 @@ export default defineSkill({
   name: "청야 전술",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "조롱을 '적군 전체'에게 (예전엔 랜덤 적 1명)"
+    }
+  ],
   clauses: [
     {
       "text": "적군 전체를 조롱하며",
@@ -47,7 +53,10 @@ export default defineSkill({
         "self"
       ],
       "statusEffects": [
-        "조롱"
+        {
+          "name": "조롱",
+          "target": "all_enemy"
+        }
       ]
     },
     "clauses": [
@@ -71,6 +80,6 @@ export default defineSkill({
     // 「2턴 동안 자신의 통솔이 36포인트 증가한다」
     c.statMod(0);   // 통솔 18→36, 2턴, 최대 1중첩
     // 「적군 전체를 조롱하며」
-    c.status(0);   // 조롱
+    c.status(0);   // 조롱, 대상 all_enemy
   },
 });

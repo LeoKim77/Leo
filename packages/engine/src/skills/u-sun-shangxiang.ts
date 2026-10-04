@@ -1,6 +1,6 @@
 // 궁희 · 고유 전법 · 추격 65%
 // 원문: 일반 공격 후, 랜덤 적군 단일 목표에게 320%의 병기 피해를 주며, 적에 이성이 1명 있을 때마다 해당 피해 계수가 50% 증가하고, 75% 확률로 후열 목표를 우선적으로 선택한다.
-// 원문 절 구현: ok / missing / ok
+// 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "궁희",
   kind: "추격",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "발동률을 원문 65%로(예전 75%), '75% 확률로 후열 목표 우선' 구현"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 후, 랜덤 적군 단일 목표에게 320%의 병기 피해를 주며",
@@ -19,7 +25,7 @@ export default defineSkill({
     },
     {
       "text": "적에 이성이 1명 있을 때마다 해당 피해 계수가 50% 증가하고",
-      "status": "missing"
+      "status": "ok"
     },
     {
       "text": "75% 확률로 후열 목표를 우선적으로 선택한다",
@@ -42,7 +48,7 @@ export default defineSkill({
           "dmgType": "병기",
           "min": 1.6,
           "max": 3.2,
-          "target": "random_enemy_1",
+          "target": "tag:t",
           "scaleBy": {
             "kind": "oppositeGender",
             "per": 0.5,
@@ -60,7 +66,7 @@ export default defineSkill({
     "trigger": {
       "event": "damage",
       "role": "dealt",
-      "chance": 0.75
+      "chance": 0.65
     },
     "clauses": [
       {
@@ -92,7 +98,10 @@ export default defineSkill({
     ]
   },
   run(c) {
+    // 「75% 확률로 후열 목표를 우선적으로 선택한다」
+    c.tag('t', c.targets(c.chance(0.75) ? 'random_enemy_back_first' : 'random_enemy_1'));
     // 「일반 공격 후, 랜덤 적군 단일 목표에게 320%의 병기 피해를 주며」
-    c.damage(0);   // 병기 160%→320%, 대상 random_enemy_1
+    // 「적에 이성이 1명 있을 때마다 해당 피해 계수가 50% 증가하고」
+    c.damage(0);
   },
 });

@@ -1,6 +1,6 @@
 // 천군 소탕 · 전법 · 추격 45%
 // 원문: 일반 공격 후, 전체 적군에게 120%의 병기 피해를 준다. 시전 성공 후, 추격 전법피해가 8%증가하고, 최대 5회 중첩되며, 전투종료까지 지속된다.
-// 원문 절 구현: ok / ok / note / note
+// 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "천군 소탕",
   kind: "추격",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 후, 전체 적군에게 120%의 병기 피해를 준다",
@@ -25,11 +31,11 @@ export default defineSkill({
     },
     {
       "text": "최대 5회 중첩되며",
-      "status": "note"
+      "status": "ok"
     },
     {
       "text": "전투종료까지 지속된다",
-      "status": "note"
+      "status": "ok"
     }
   ],
   def: {

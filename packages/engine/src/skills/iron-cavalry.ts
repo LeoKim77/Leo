@@ -8,6 +8,12 @@ export default defineSkill({
   name: "철기병 돌격",
   kind: "추격",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "'해당 목표' = 일반 공격 목표 (예전엔 랜덤 적), 회심 +20% → 피해 순서"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 후, 2턴 동안 자신의 회심 확률이 20% 증가하며",
@@ -46,7 +52,8 @@ export default defineSkill({
           "turnScale": {
             "perTurn": -0.25,
             "mode": "mult"
-          }
+          },
+          "target": "trigger_defender"
         }
       ],
       "heal": [],
@@ -96,9 +103,10 @@ export default defineSkill({
     ]
   },
   run(c) {
-    // 「이후 해당 목표에게 400%의 병기 피해를 준다」
-    c.damage(0);   // 병기 200%→400%
     // 「일반 공격 후, 2턴 동안 자신의 회심 확률이 20% 증가하며」
-    c.buff(0);   // 회심 +10%→20%, 대상 self, 2턴, 최대 1중첩
+    c.buff(0);
+    // 「이후 해당 목표에게 400%의 병기 피해를 준다」
+    // 「발동 여부와 상관없이 해당 피해 계수가 매 턴 25% 감소한다」
+    c.damage(0);
   },
 });

@@ -1,6 +1,6 @@
 // 고대의 악래 · 고유 전법 · 패시브 100%
 // 원문: 자신의 반격 확률이 60% 증가하며, 자신이 피해를 받은 후, 2턴 동안 자신의 반격 피해가 20%, 통솔이 20포인트 증가한다. 5회 중첩될 수 있다.
-// 원문 절 구현: ok / missing / ok / note
+// 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "고대의 악래",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "자신의 반격 확률이 60% 증가하며",
@@ -18,7 +24,7 @@ export default defineSkill({
     },
     {
       "text": "자신이 피해를 받은 후, 2턴 동안 자신의 반격 피해가 20%",
-      "status": "missing"
+      "status": "ok"
     },
     {
       "text": "통솔이 20포인트 증가한다",
@@ -29,7 +35,7 @@ export default defineSkill({
     },
     {
       "text": "5회 중첩될 수 있다",
-      "status": "note"
+      "status": "ok"
     }
   ],
   def: {

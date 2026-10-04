@@ -1,6 +1,6 @@
 // 청천벽력 · 전법 · 액티브 50%
 // 원문: 1턴 동안 준비 후 랜덤 적군 단일 목표에게 160%의 책략 피해를 주며, 총 5회 시전한다. 홍수 상태인 목표를 명중할 때마다 해당 피해가 40% 증가한다.
-// 원문 절 구현: ok / note / ok
+// 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "청천벽력",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "1턴 동안 준비 후 랜덤 적군 단일 목표에게 160%의 책략 피해를 주며",
@@ -23,7 +29,7 @@ export default defineSkill({
     },
     {
       "text": "총 5회 시전한다",
-      "status": "note"
+      "status": "ok"
     },
     {
       "text": "홍수 상태인 목표를 명중할 때마다 해당 피해가 40% 증가한다",

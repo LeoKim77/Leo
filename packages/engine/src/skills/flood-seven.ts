@@ -8,6 +8,12 @@ export default defineSkill({
   name: "칠군수몰",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 순서: 홍수 2턴 → 260% → 침묵/무장 해제 중 1가지 1턴 (예전엔 피해 뒤 홍수, 무장 해제 2턴)"
+    }
+  ],
   clauses: [
     {
       "text": "1턴 동안 준비 후 적군 전체에게 2턴 동안 지속되는 홍수을(를) 부여하고",
@@ -54,12 +60,18 @@ export default defineSkill({
       ],
       "statusEffects": [
         {
+          "name": "홍수",
+          "target": "all_enemy",
+          "duration": 2
+        },
+        {
           "oneOf": [
             "무장 해제",
             "침묵"
-          ]
-        },
-        "홍수"
+          ],
+          "target": "all_enemy",
+          "duration": 1
+        }
       ]
     },
     "prepTurns": 1,
@@ -94,11 +106,11 @@ export default defineSkill({
     }
   },
   run(c) {
-    // 「260%의 병기 피해를 주며」
-    c.damage(0);   // 병기 130%→260%
-    // 「1턴 동안 지속되는 침묵 또는 무장 해제 중 한 가지를 부여한다」
-    c.status(0);   // 무장 해제/침묵
     // 「1턴 동안 준비 후 적군 전체에게 2턴 동안 지속되는 홍수을(를) 부여하고」
-    c.status(1);   // 홍수
+    c.status(0);
+    // 「260%의 병기 피해를 주며」
+    c.damage(0);
+    // 「1턴 동안 지속되는 침묵 또는 무장 해제 중 한 가지를 부여한다」
+    c.status(1);
   },
 });

@@ -38,6 +38,10 @@ export const ENGINE_FIXES = [
     detail: '트리거 연쇄는 모두 발동하되 자기 효과로 자기 재발동만 금지(초선차전 → 초선차전 X). 턴당 횟수는 원문 상한(초선차전 5·기지의 승리 4 등)만, 상한 없는 트리거는 확률만(예전 기본 1회 폐기). 디버프 제거는 먼저 걸린 것부터(원문이 제어 우선이면 controlFirst). 반격 피해는 전법이 피해율을 주면 그 값(mods.반격배율), 없으면 50%.' },
   { id: 'FIX-012', date: '2026-10-04', found: '전보 캡처 (충신의 기재 4스택, 2026-10-04)', title: '중첩 효과 선입선출',
     detail: '스택마다 지속을 따로 갖고 먼저 쌓인 것부터 만료된다. 상한(N중첩)에서 또 발동하면 가장 오래된 스택을 빼고 새 스택을 넣는다(수치 그대로, "N스택 중첩됐습니다" 표기). 예전엔 상한에서 맨 앞 스택만 제자리 갱신해, 다음 발동 때도 같은(이미 가장 새로운) 스택을 다시 갱신하는 문제가 있었다.' },
+  { id: 'FIX-013', date: '2026-10-04', found: '보유 전법 140개 원문 대조 (함수화 후 1차 보정)', title: '공용 대상·조건 버그',
+    detail: '① 대상이 안 적힌 효과는 한 시전 안에서 같은 대상을 공유(R-044) — 예전엔 효과마다 새로 뽑아 "랜덤 2명의 A와 B"가 서로 다른 무장에게 갔다. ② "디버프 상태 보유" 조건이 방어·피신 같은 기능성 상태까지 셌다. ③ "이상 상태 개수"도 기능성 상태 포함. ④ 대상이 자신뿐인 회복이 병력 최저 아군에게 갔다(지혜의 바람·충성과 용맹·전쟁 조달). ⑤ 능력치 증감의 턴 조건(turnCond)이 무시됐다.' },
+  { id: 'FEAT-024', date: '2026-10-04', found: '보유 전법 140개 원문 대조', title: '전법 함수 부품 추가',
+    detail: '대상 묶기(c.tag), 후열·전열 우선/전열 아군/전장 랜덤 4명/이번 턴 나를 때린 무장 대상, 피해 무작위 계수(100%~140%)·조건 배수·통솔 무시·회심 불가·피해 전달(방금 피해 × 비율), 능력치=다른 스탯 × 비율, 턴 종료까지 지속, 확정 회심 1회분 + 회심 피해 증가, 준비 생략(포위 돌파 첫 턴·기민한 전술·황천), 도사(법정)·연환(방통) 표식, 피해를 받기 직전 트리거(서성·전력 지원), 공격자 위치별·이성 받는 피해(고진양번·폐월), 이상 상태 개수만큼 부여 확률 증가, 대상 편 조건, "무력 또는 통솔 중 높은 쪽" 영향, 손권 최고 속성·허저 무력 영향.' },
   { id: 'FEAT-023', date: '2026-10-04', found: '사용자 요청 (전법별 함수화)', title: '전법 함수 구조',
     detail: '전법 하나 = 파일 하나(packages/engine/src/skills/<id>.ts, 194개). 파일의 run(c)이 공용 부품(c.damage·c.heal·c.buff·c.status·c.statMod·c.dispel·c.grant·c.guard·c.targets·c.chance)을 원문 순서대로 부른다. 효과 해석기를 부품 함수로 나눴고, 함수 실행 = 예전 고정 순서 실행(티어덱 3,422판 전보 동일). 파일이 정본 — JSON 원천은 생성용(pnpm gen:skills).' },
   { id: 'FEAT-022', date: '2026-10-04', found: '공용 규칙 R-042 (사용자 확인)', title: '짐독 피해 = 부여 시점 스냅샷',
@@ -86,7 +90,8 @@ let __rng = Math.random;
 let __traceFn = null;
 let __turn = 0;
 let __detail = false;   // FEAT-016: 전보 줄마다 그 순간 무장 상태(툴팁)를 남긴다 — 단일 전투에서만 켬
-let __turnOffset = 0;   // FEAT-005: 재교전의 전보·추적 턴 번호를 앞 교전 뒤에 잇는다
+let __turnOffset = 0;
+let __dmgOpts = null;   // FEAT-024 이번 피해 한 건의 옵션(통솔 무시·회심 불가)   // FEAT-005: 재교전의 전보·추적 턴 번호를 앞 교전 뒤에 잇는다
 let __phase = 'battleStart';
 const __skillStack = [];
 const __invStack = [];
@@ -168,7 +173,8 @@ function infMult(inf, self, target, coeffs) {
   const u = inf.who === 'target' && target ? target : self;
   if (!u) return 1;
   const vals = inf.stats.map(st => infStatValue(u, st));
-  const v = vals.reduce((a, b) => a + b, 0) / vals.length;
+  // 여러 스탯: 기본은 평균(가중치 미상, 검증 대기). mode 'max' 는 "무력 또는 통솔 중 높은 수치의 영향"
+  const v = inf.mode === 'max' ? Math.max(...vals) : vals.reduce((a, b) => a + b, 0) / vals.length;
   const w = coeffs && coeffs.statScaleWeight != null ? coeffs.statScaleWeight : DEFAULT_COEFFS.statScaleWeight;
   return Math.max(0, 1 + (v - 100) * w);
 }
@@ -402,6 +408,13 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
     case 'random_enemy_n': result = shuffle(enemies).slice(0, 2); break;
     case 'random_ally_n': result = shuffle(allies).slice(0, 2); break;
     // R-034 '우군' = 자신 제외 (게임 전법 문구 확인). '아군' 코드(*_ally)는 자신 포함
+    // FEAT-024 대상 코드
+    case 'random_ally_one': result = [pick(allies)]; break;   // "랜덤 아군 단일 목표"(자신 포함)
+    case 'front_allies': result = allies.filter(u => u.position !== 'back'); break;   // "전열 아군 전체"
+    case 'random_enemy_back_first': { const bk = enemies.filter(u => u.position === 'back'); result = [pick(bk.length ? bk : enemies)]; break; }   // "후열 우선"
+    case 'random_enemy_front_first': { const fr = enemies.filter(u => u.position !== 'back'); result = [pick(fr.length ? fr : enemies)]; break; }   // "전열 우선"
+    case 'random_all_4': result = shuffle(allUnits.filter(u => u.alive && u !== unit)).slice(0, 4); break;   // "적군과 우군 전체의 랜덤 목표 4개"
+    case 'damaged_me_this_turn': result = allUnits.filter(u => u.alive && u.side !== unit.side && ((unit._hitBy || {})[__turn] || []).includes(u.id)); break;   // "이번 턴에 나에게 피해를 준 목표"
     case 'random_friend_n': result = shuffle(allies.filter(u => u !== unit)).slice(0, 2); break;
     case 'all_friend': result = allies.filter(u => u !== unit); break;
     // FEAT-017 "랜덤 2~3명": 매 시전 2명 또는 3명을 같은 확률로 고른다 (원문 그대로)
@@ -441,11 +454,11 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
   return (Array.isArray(result) ? result : [result]).filter(Boolean);
 }
 // FEAT-019: 혼란·조롱이 적용되는 단일 대상 코드 (그 밖에 모르는 코드는 기본값 '랜덤 적 1명'으로 처리되므로 단일로 본다)
-const SINGLE_TARGET_CODES = new Set(['random_enemy_1', 'random_ally_1', 'random_ally_front', 'random_same_row_ally',
+const SINGLE_TARGET_CODES = new Set(['random_enemy_1', 'random_ally_1', 'random_ally_one', 'random_enemy_back_first', 'random_enemy_front_first', 'random_ally_front', 'random_same_row_ally',
   'lowest_control_enemy', 'lowest_power_enemy', 'lowest_intel_enemy', 'lowest_speed_enemy', 'lowest_combined_enemy', 'lowest_hp_enemy',
   'highest_power_enemy', 'highest_intel_enemy', 'highest_speed_ally', 'highest_combined_ally', 'highest_power_ally', 'highest_intel_ally',
   'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally']);
-const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'random_friend_n', 'all_friend', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
+const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'random_friend_n', 'all_friend', 'front_allies', 'random_all_4', 'damaged_me_this_turn', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
 function shuffle(a) { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(__rng() * (i + 1));[b[i], b[j]] = [b[j], b[i]]; } return b; }
 function minBy(arr, fn) { return arr.length ? arr.reduce((a, b) => (fn(a) <= fn(b) ? a : b)) : null; }
 function maxBy(arr, fn) { return arr.length ? arr.reduce((a, b) => (fn(a) >= fn(b) ? a : b)) : null; }
@@ -474,7 +487,7 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   let base;
   if (dmgType === '병기') {
     const pierce = clamp(attacker.mods.방어관통 || 0, 0, 0.9);
-    const DEF = effStat(defender, '통솔') * (1 - pierce);
+    const DEF = (__dmgOpts && __dmgOpts.ignoreDef) ? 0 : effStat(defender, '통솔') * (1 - pierce);
     const tf = Math.pow(Math.max(attacker.troops, 1) / 10000, cf('betaP'));
     base = ratio * tf * Math.max(cf('P0') + cf('Pa') * ATK - cf('Pd') * DEF, 1);
   } else {
@@ -506,9 +519,12 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   } else if (dmgTag === 'pursuit') {
     kindMod = defender.mods.받는추격피해 || 0;
   }
+  // FEAT-024 공격자에 따라 달라지는 받는 피해: 고진양번(전열/후열 공격자), 폐월(이성 공격자) — 받는 피해 범주에 더한다
+  const byRow = attacker.position === 'back' ? (defender.mods.후열공격받는피해 || 0) : (defender.mods.전열공격받는피해 || 0);
+  const byGender = attacker.gender && defender.gender && attacker.gender !== defender.gender ? (defender.mods.이성받는피해 || 0) : 0;
   const outMult = Math.max(0, (1 + outShared) * (1 + outKindMod));
   const inMult = Math.max(0.1,
-    (1 + (defender.mods.받는피해 || 0) + statusIn)
+    (1 + (defender.mods.받는피해 || 0) + statusIn + byRow + byGender)
     * (1 + typeMod)
     * (1 + kindMod));
   let dmg = base * outMult * inMult;
@@ -520,16 +536,19 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   let crit = false;
   // 확정 회심: "다음 피해에 회심/묘책이 반드시 발동" (인재 기용, 견희 낙수의 여신).
   // 1회 소모형이므로 사용 즉시 차감한다. 견희 쪽은 "일반 공격이 아닌 피해"로 한정된다.
-  let forcedCrit = false;
-  if (attacker.guaranteedCrit > 0 && !(attacker.guaranteedCritNonBasicOnly && ratio === 1.0)) {
+  let forcedCrit = false, forcedBonus = 0;
+  const __noCrit = !!(__dmgOpts && __dmgOpts.noCrit);
+  if (!__noCrit && attacker.guaranteedCrit > 0 && !(attacker.guaranteedCritNonBasicOnly && ratio === 1.0)) {
     attacker.guaranteedCrit--;
     forcedCrit = true;
+    forcedBonus = attacker.guaranteedCritBonus || 0;
+    if (attacker.guaranteedCrit <= 0) attacker.guaranteedCritBonus = 0;
   }
-  if (forcedCrit || __rng() < clamp(critChance, 0, 0.95)) {
+  if (forcedCrit || (!__noCrit && __rng() < clamp(critChance, 0, 0.95))) {
     // 요술: 회심/묘책 피해 15% 감소
     // 회심 배율 = 기본 1.5배 + 「회심/묘책 피해 증가」 mod (인재 기용 +40% 등).
     // 요술 등 회심피해 감소 상태이상은 증가분에만 적용된다.
-    const critBonus = (coeffs.critMult - 1) + (attacker.mods.회심피해 || 0);
+    const critBonus = (coeffs.critMult - 1) + (attacker.mods.회심피해 || 0) + forcedBonus;
     const critMult = 1 + critBonus * accumStatus(attacker, 'critDamageMult', 'mult');
     dmg *= critMult;
     crit = true;
@@ -603,6 +622,7 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   dmg = unyieldingCheck(defender, dmg, log, turnNo);
   const lossReal = Math.min(dmg, defender.troops);
   defender.troops = Math.max(0, defender.troops - dmg);
+  if (dmg > 0) { defender._hitBy = defender._hitBy || {}; (defender._hitBy[turnNo] = defender._hitBy[turnNo] || []).push(attacker.id); }   // FEAT-024 이번 턴에 나를 때린 무장(폐월)
   if (np) delete attacker._nextPhysBonus;
   if (dmgType === '책략' && attacker._strategyThenPhys) attacker._nextPhysBonus = attacker._strategyThenPhys;
   if (rv) {
@@ -769,7 +789,7 @@ function rollTrigger(unit, skill) {
 }
 
 function emitDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
-  const { attacker, defender, dmgType, crit, isBasic } = ctx;
+  const { attacker, defender, dmgType, crit, isBasic, dmg } = ctx;
   allUnits.forEach(u => {
     if (!u.alive) return;
     u.skills.forEach(skill => {
@@ -818,7 +838,7 @@ function emitDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       if (t.filterDmgType && t.filterDmgType !== dmgType) return;
       if (t.requireCrit && !crit) return;
       if (!rollTrigger(u, skill)) return;
-      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender });
+      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender, dmg });
     });
   });
 }
@@ -856,6 +876,8 @@ function emitDebuffEvent(ctx, allUnits, coeffs, log, turn, contrib) {
 // calcDamage + 연계 트리거 발동을 함께 처리하는 진입점 (모든 데미지는 이 함수를 거친다)
 // isBasic: 이번 피해가 "일반 공격"(또는 그 연타)에서 나온 것인지 여부. 추격 전법 발동 조건 판정에 쓰인다.
 function dealDamage(attacker, defender, ratio, dmgType, coeffs, log, allUnits, turn, contrib, isBasic, dmgTag) {
+  // FEAT-024 "피해를 받기 직전" 트리거(서성 백리의성·전력 지원) — 계산 전에 발동해 이번 피해에 적용된다
+  if (allUnits) emitPreDamageEvent({ attacker, defender, dmgType, isBasic: !!isBasic }, allUnits, coeffs, log, turn, contrib);
   const result = calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turn, dmgTag || (isBasic ? 'basic' : 'active'));
   if (allUnits && allUnits.some(u => !u.alive && !u._auraCleared)) sweepDeadAuras(allUnits, log, turn);   // R-029 전사 즉시
   if (result.resisted) return result;   // 저항으로 무효 — 피격·회피 연계 없음
@@ -863,9 +885,64 @@ function dealDamage(attacker, defender, ratio, dmgType, coeffs, log, allUnits, t
     // 피신 성공 이벤트 — 칠진칠출(조운)의 '용담'처럼 회피에 반응하는 전법용
     emitEvadeEvent({ evader: defender, attacker }, allUnits, coeffs, log, turn, contrib);
   } else {
-    emitDamageEvent({ attacker, defender, dmgType, crit: result.crit, isBasic: !!isBasic }, allUnits, coeffs, log, turn, contrib);
+    emitDamageEvent({ attacker, defender, dmgType, crit: result.crit, isBasic: !!isBasic, dmg: result.dmg }, allUnits, coeffs, log, turn, contrib);
+    if (allUnits && result.dmg > 0) resolveDamageMarks(attacker, defender, result.dmg, !!isBasic, allUnits, coeffs, log, turn, contrib);
   }
   return result;
+}
+
+// FEAT-024 피해를 받기 직전 트리거 — trigger.event 'pre_damage', role 'taken'(자신) / 'ally_taken'(우군 누구든)
+function emitPreDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
+  const { attacker, defender } = ctx;
+  allUnits.forEach(u => {
+    if (!u.alive) return;
+    u.skills.forEach(skill => {
+      const t = skill.trigger;
+      if (!t || t.event !== 'pre_damage') return;
+      if (t.role === 'taken' && u !== defender) return;
+      if (t.role === 'ally_taken' && defender.side !== u.side) return;
+      if (t.turnCond && !turnMatches(t.turnCond, turn)) return;
+      if (!rollTrigger(u, skill)) return;
+      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender });
+    });
+  });
+}
+
+// FEAT-024 피해를 받은 뒤 처리되는 표식: 도사(법정 간파력), 연환(방통 연환계)
+function resolveDamageMarks(attacker, defender, dmg, isBasic, allUnits, coeffs, log, turn, contrib) {
+  // 도사: "다음에 일반 공격 외의 다른 피해를 받은 후, 공격자의 병력을 회복시키며(치유율 80%, 지력의 영향), 추가로 법정으로부터 120% 책략 피해"
+  const mi = isBasic ? -1 : defender.statuses.findIndex(st => st.name === '도사');
+  if (mi >= 0) {
+    const st = defender.statuses.splice(mi, 1)[0];
+    const caster = allUnits.find(u => u.id === st.casterId);
+    const d = st.data || {};
+    if (caster && caster.alive) {
+      log.push(`${turn}턴:   [${defender.name}]의 「도사」 효과가 발동합니다.`);
+      if (attacker.alive) {
+        const before = attacker.troops;
+        calcHeal(caster, attacker, d.heal || 0.8, coeffs);
+        log.push(`${turn}턴:   [${attacker.name}]이(가) 「도사」로 병력을 ${attacker.troops - before}(${attacker.troops}) 회복했습니다.`);
+      }
+      if (defender.alive) {
+        const r = dealDamage(caster, defender, d.dmg || 1.2, '책략', coeffs, log, allUnits, turn, contrib, false, 'active');
+        caster.dmgDealt += r.dmg;
+        log.push(`${turn}턴:   [${defender.name}]은(는) [${caster.name}]의 「도사」 피해로 병력이 ${r.dmg}(${defender.troops}) 손실됐습니다.`);
+      }
+    }
+  }
+  // 연환: "피해를 받으면 우군 2명이 25%(지력의 영향)의 피해 전달을 받는다" — 전달 피해는 다시 전달되지 않는다
+  const ln = defender.statuses.find(st => st.name === '연환');
+  if (ln) {
+    const caster = allUnits.find(u => u.id === ln.casterId);
+    const d = ln.data || {};
+    const friends = shuffle(allUnits.filter(u => u.alive && u.side === defender.side && u !== defender)).slice(0, 2);
+    if (friends.length) {
+      const ratio = (d.ratio || 0.25) * (caster ? infMult({ stats: ['지력'], who: 'self' }, caster, null, coeffs) : 1);
+      log.push(`${turn}턴:   [${defender.name}]의 「연환」으로 우군이 피해를 나눠 받습니다.`);
+      dealTransferDamage(caster || attacker, friends, dmg, ratio, { id: ln.srcSkillId || 'u-pang-tong', name: '연환' }, log, turn, contrib);
+      sweepDeadAuras(allUnits, log, turn);
+    }
+  }
 }
 
 function emitEvadeEvent(ctx, allUnits, coeffs, log, turn, contrib) {
@@ -955,6 +1032,10 @@ const STATUS_DEF = {
   '시해': { grantsPoisonStack: 0.5 },
   '위협': { inDamageAdd: 0.10 },
   '요술': { critDamageMult: 0.85 },   // 회심/묘책 피해 15% 감소
+  // FEAT-024 전법 고유 표식
+  '황천': { prepSkip: true },   // 장각: 준비 전법 발동 시 50% 확률로 준비를 1턴 건너뜀
+  '도사': { mark: true },       // 법정: 다음에 일반 공격 외 피해를 받은 후 → 공격자 회복 + 법정의 책략 피해
+  '연환': { mark: true },       // 방통: 피해를 받으면 우군 2명이 피해 전달을 받음
 };
 
 function isControlSuppressed(unit) { return hasStatus(unit, '정신 회복'); }
@@ -1026,7 +1107,7 @@ function evalCondition(cond, ctx) {
     }
     case 'hasAnyDebuff': { // "디버프 상태를 보유한 경우" 처럼 특정 이름을 명시하지 않는 범용 디버프 체크
       const u = resolveWho(cond.who, ctx);
-      result = u ? u.statuses.length > 0 : false;
+      result = u ? hasAnyDebuffState(u) : false;   // FIX-013: 방어·피신 같은 기능성 상태는 디버프가 아니다(이상 12종 + 기본 디버프)
       break;
     }
     case 'statCompareSelf': { // 같은 유닛의 두 스탯 비교 (예: 서서 - 목표 무력 vs 목표 지력)
@@ -1058,6 +1139,11 @@ function evalCondition(cond, ctx) {
       result = u ? u.troops < u.maxTroops * cond.ratio : false;
       break;
     }
+    case 'side': {   // FEAT-024: 대상이 시전자 편('ally')인지 적('enemy')인지 — 노숙 형주 분할
+      const u = resolveWho(cond.who, ctx);
+      result = !!u && !!ctx.self && ((u.side === ctx.self.side) === (cond.is === 'ally'));
+      break;
+    }
     case 'gender': {
       const u = resolveWho(cond.who, ctx);
       result = u ? u.gender === cond.value : false;
@@ -1079,8 +1165,15 @@ function turnMatches(cond, turn) {
   return true;
 }
 // 대상이 보유한 "이상 상태" 개수 (기문둔갑 등 개수 비례 스케일용)
-function abnormalCount(unit) {
-  return unit.statuses.filter(s => STATUS_DEF[s.name]).length;
+function abnormalCount(unit, except) {
+  // FIX-013: 이상 상태 12종만 센다(방어·피신·정신 회복 같은 기능성 상태 제외). except: "기타 이상 상태"에서 뺄 이름
+  return new Set(unit.statuses.filter(s => SPECIAL_DEBUFFS.includes(s.name) && !(except || []).includes(s.name)).map(s => s.name)).size;
+}
+// 디버프 상태 개수: 이상 상태 12종 + 전법이 건 기본 디버프(주는 피해 감소·받는 피해 증가·속성 감소 등)
+function debuffCount(unit) {
+  const ab = new Set(unit.statuses.filter(s => SPECIAL_DEBUFFS.includes(s.name)).map(s => s.name)).size;
+  const basic = new Set([...(unit.buffs || []).filter(b => isBasicDebuff(b.stat, b.value)).map(b => b.srcId), ...(unit.statBuffs || []).filter(b => b.value < 0).map(b => b.srcId)]).size;
+  return ab + basic;
 }
 // 적군 중 시전자와 성별이 다른(이성) 인원 수 (궁희 등)
 function oppositeGenderCount(unit, allUnits) {
@@ -1134,6 +1227,10 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
   let value = 0;
   const tags = {}; // 같은 스킬 내에서 앞서 정한 대상을 뒤 효과가 재사용하기 위한 태그 저장소
   let __sharedDmgTargets = null; // FIX-002
+  // R-044·FIX-013: 대상이 따로 적히지 않은 효과는 한 시전 안에서 같은 대상을 공유한다(같은 대상 코드면 한 번만 뽑는다).
+  //   예) "랜덤 아군 2명의 디버프 제거 + 회복", "랜덤 적군 2명에게 피해 + 군량 고갈" — 예전엔 효과마다 대상을 새로 뽑았다.
+  const __defCache = {};
+  const defTargets = codes => { const k = codes.join('|'); return __defCache[k] || (__defCache[k] = selectTargets(unit, codes, allUnits)); };
   const __chanceRolls = {};       // FIX-003
   // FIX-008(R-021): "N% 확률로 [대상]에게 …" 는 시전 1회에 한 번 판정하고, 성공하면 대상 전원에게 효과가 들어간다.
   //   같은 확률 값을 쓰는 항목(조롱 및 위협 등)은 같은 판정을 공유한다.
@@ -1149,16 +1246,19 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
   }
 
   const doStatMod = sm => {
+    if (sm.turnCond && !turnMatches(sm.turnCond, turn)) return;   // FIX-013 (서성 4턴 등 — 예전엔 무시됐다)
     let targets;
     if (sm.target === 'self') targets = [unit];
     else if (sm.target && resolveSpecial(sm.target)) targets = resolveSpecial(sm.target);
     else if (sm.target) targets = selectTargets(unit, [sm.target], allUnits);
-    else targets = selectTargets(unit, targetCodes, allUnits);
+    else targets = defTargets(targetCodes);
     if (sm.tag) tags[sm.tag] = targets;   // FEAT-002
     targets.forEach(t => {
       if (sm.condition && !evalCondition(sm.condition, { attacker: unit, target: t, self: unit })) return;
       if (!passChance(sm)) return;
       let amt = lvVal(sm.min, sm.max);
+      // FEAT-024 fromStat: "무력이 선공 수치의 40% 만큼 증가" — 적용 순간의 다른 스탯 × 비율 (하후연)
+      if (sm.fromStat) amt = effStat(sm.fromStat.who === 'target' ? t : unit, sm.fromStat.stat) * sm.fromStat.ratio;
       if (sm.inf) amt *= infMult(sm.inf, unit, t, coeffs);   // v1.11 W08·W09
       // 턴별 감쇠/증폭 (예: 동탁 압도적 권력 — 통솔 탈취량이 매 턴 10% 감소)
       if (sm.turnScale) {
@@ -1183,7 +1283,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         if (cap > 1) { log.push(`${turn}턴: [${unit.name}]이(가) 【${skill.name}】「${skill.name}」 효과를 발동합니다.`); log.push(`${turn}턴:   [${t.name}]의 「${skill.name}」이(가) ${cap}스택 중첩됐습니다.`); }
       } else {
         t.stats[sk] = Math.max(0, (t.stats[sk] || 0) + amt);
-        t.statBuffs.push({ stat: sk, value: amt, remain: dur, srcId, aura: skill.type === '지휘' ? unit.id : null });
+        t.statBuffs.push({ stat: sk, value: amt, remain: dur, srcId, aura: skill.type === '지휘' ? unit.id : null, untilTurnEnd: !!sm.untilTurnEnd });
         if (cap > 1) log.push(`${turn}턴:   [${t.name}]의 「${skill.name}」이(가) ${existing.length + 1}스택 중첩됐습니다.`);
         log.push(`${turn}턴:   [${t.name}]의 【${sk}】이(가) ${Math.abs(amt).toFixed(2)}(${(t.stats[sk]||0).toFixed(2)}) ${amt >= 0 ? '증가' : '감소'}했습니다.`);
       }
@@ -1207,7 +1307,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       //   ("랜덤 적군 2명에게 책략과 병기 피해", "추가로 …" — v1.12b 는 항목마다 대상을 다시 뽑았다)
       targets = __sharedDmgTargets;
     } else {
-      targets = selectTargets(unit, targetCodes, allUnits).filter(t => t.side !== unit.side || statusFlag(unit, 'randomizeTarget'));   // 혼란이면 아군도 맞을 수 있다(FEAT-019)
+      targets = defTargets(targetCodes).filter(t => t.side !== unit.side || statusFlag(unit, 'randomizeTarget'));   // 혼란이면 아군도 맞을 수 있다(FEAT-019)
       if (!targets.length) targets = selectTargets(unit, ['random_enemy_1'], allUnits);
       __sharedDmgTargets = targets;
     }
@@ -1233,6 +1333,15 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         }
       }
       let ratio = lvVal(d.min, d.max);
+      // FEAT-024 randRange: "100%~140%의 병기 피해" — 타격마다 그 범위에서 무작위 계수 (퇴로 매복)
+      if (d.randRange) ratio = randRange(d.randRange[0], d.randRange[1]);
+      // FEAT-024 bonusMult: 전법 함수가 정한 조건부 배수 (서황 "이미 침묵이거나 병력이 가장 낮으면 30% 증가")
+      if (d.bonusMult) ratio *= d.bonusMult;
+      // FEAT-024 transferOfEvent: "피해를 준 후 그 피해의 N%를 피해 전달" (장료) — 계산 없이 방금 피해 × 비율
+      if (d.transferOfEvent) {
+        if (eventCtx && eventCtx.dmg > 0) { dealTransferDamage(attacker, [t], eventCtx.dmg, d.transferOfEvent, skill, log, turn, contrib); sweepDeadAuras(allUnits, log, turn); }
+        return;
+      }
       // 스탯 영향 계수 (statScale): "(추가로 통솔의 영향 받음)" 유형.
       //   중문 커뮤니티 자료가 제시한 모델 — 배율(%) += (시전자 스탯 - 100) x 가중치.
       //   가중치 0.0012(통솔 1당 0.12%p)는 강렬 실측 3표본에 적용했을 때 병력계수 beta가
@@ -1298,7 +1407,8 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       if (d.idleBonus && (unit._lastCast || {})[skill.id] !== turn - 1) ratio *= 1 + d.idleBonus;
       if (d.scaleBy) {
         let n = 0;
-        if (d.scaleBy.kind === 'targetAbnormal') n = abnormalCount(t);
+        if (d.scaleBy.kind === 'targetAbnormal') n = abnormalCount(t, d.scaleBy.except);
+        else if (d.scaleBy.kind === 'targetDebuff') n = debuffCount(t);
         else if (d.scaleBy.kind === 'oppositeGender') n = oppositeGenderCount(attacker, allUnits);
         n = Math.min(n, d.scaleBy.cap != null ? d.scaleBy.cap : 99);
         ratio *= (1 + d.scaleBy.per * n);
@@ -1310,8 +1420,10 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       // (실제 전보: 여포 일반공격 → 원문사극 → 천군소탕 → 상대 맞받아침 → 반격 → 무력대비 보너스)
       const asBasic = !!d.asBasicAttack;
       if (asBasic) { attacker.inBasicPhase = true; attacker._pursuitDoneThisHit = {}; attacker._basicSeq = (attacker._basicSeq || 0) + 1; }
-      const { dmg, crit } = dealDamage(attacker, t, ratio, d.dmgType, coeffs, log, allUnits, turn, contrib,
-        asBasic, asBasic ? 'basic' : tag);
+      __dmgOpts = (d.ignoreDef || d.noCrit) ? { ignoreDef: !!d.ignoreDef, noCrit: !!d.noCrit } : null;   // FEAT-024 통솔 무시·회심 불가
+      let dmg, crit;
+      try { ({ dmg, crit } = dealDamage(attacker, t, ratio, d.dmgType, coeffs, log, allUnits, turn, contrib,
+        asBasic, asBasic ? 'basic' : tag)); } finally { __dmgOpts = null; }
       if (asBasic) attacker.inBasicPhase = false;
       attacker.dmgDealt += dmg;
       value += dmg;
@@ -1351,6 +1463,8 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     let targets;
     if (h.target === 'self') {
       targets = [healer];
+    } else if (h.target && resolveSpecial(h.target)) {
+      targets = resolveSpecial(h.target);   // FEAT-024 tag:·trigger_defender 등
     } else if (h.target) {
       targets = selectTargets(healer, [h.target], allUnits);
     } else {
@@ -1358,7 +1472,9 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       // "전체 적군과 아군이 주는 피해 감소" + "전체 아군 회복"이 한 문장에 있어
       // targets가 ['all_enemy','all_ally']로 잡힘) 아군 코드만 골라 써야 한다.
       const allyCodes = targetCodes.filter(c => c.includes('ally') || c.includes('friend') || c === 'self');
-      targets = selectTargets(unit, allyCodes.length ? allyCodes : ['lowest_hp_ally'], allUnits);
+      // FIX-013: 대상이 '자신'뿐인 회복(지혜의 바람·충성과 용맹·전쟁 조달)은 자신을 회복한다 — 예전엔 'self' 가 랜덤 적군 코드로 바뀐 뒤
+      //   아군 필터에 걸려 '병력이 가장 낮은 아군'으로 대체됐다
+      targets = allyCodes.length && allyCodes.every(c => c === 'self') ? [unit] : defTargets(allyCodes.length ? allyCodes : ['lowest_hp_ally']);
       if (!statusFlag(unit, 'randomizeTarget')) targets = targets.filter(t => t.side === unit.side);   // 혼란이면 적도 회복할 수 있다(R-032)
       if (!targets.length) targets = selectTargets(unit, ['lowest_hp_ally'], allUnits);
     }
@@ -1398,7 +1514,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     if (b.target === 'self') targets = [unit];
     else if (b.target && resolveSpecial(b.target)) targets = resolveSpecial(b.target);
     else if (b.target) targets = selectTargets(unit, [b.target], allUnits);
-    else targets = targetCodes.includes('self') ? [unit] : selectTargets(unit, targetCodes, allUnits);
+    else targets = targetCodes.includes('self') ? [unit] : defTargets(targetCodes);
     if (b.tag) tags[b.tag] = targets;   // FEAT-002
     targets.forEach(t => {
       if (b.condition && !evalCondition(b.condition, { attacker: unit, target: t, self: unit })) return;
@@ -1417,10 +1533,12 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         }
         amt += b.countScale.perCount * count;
       }
+      if (b.stat === '준비생략') { t._prepSkipNext = (t._prepSkipNext || 0) + 1; return; }   // FEAT-024 기민한 전술: 다음 준비형 전법 준비 생략
       if (b.stat === '확정회심') { // 스탯 누적이 아니라 1회 소모 카운터
         targets.forEach(() => {});
-        t.guaranteedCrit = (t.guaranteedCrit || 0) + 1;
+        t.guaranteedCrit = Math.min(b.cap != null ? b.cap : Infinity, (t.guaranteedCrit || 0) + 1);   // FEAT-024 cap: "다음 피해에" 1회분만
         if (b.nonBasicOnly) t.guaranteedCritNonBasicOnly = true;
+        if (b.critBonus) t.guaranteedCritBonus = b.critBonus;   // FEAT-024 "해당 회심 피해가 40% 증가" (인재 기용)
         return;
       }
       const key = b.stat.replace(/이|가|을|를/g, '');
@@ -1449,7 +1567,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
           amt = scaled;
         }
         t.mods[key] = (t.mods[key] || 0) + amt;
-        t.buffs.push({ stat: key, value: amt, remain: dur, srcId, aura: skill.type === '지휘' ? unit.id : null });
+        t.buffs.push({ stat: key, value: amt, remain: dur, srcId, aura: skill.type === '지휘' ? unit.id : null, untilTurnEnd: !!b.untilTurnEnd });
         // 기본 디버프(주는피해↓·받는피해↑ 등)도 '디버프' 트리거를 발생시킨다.
         // 단 '이상 상태' 트리거(주유 기지의 승리)는 여기서 발동하지 않는다(abnormal:false).
         if (t.side !== unit.side && isBasicDebuff(key, amt)) {
@@ -1495,12 +1613,14 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     if (se.target === 'self') targets = [unit];
     else if (se.target && resolveSpecial(se.target)) targets = resolveSpecial(se.target);
     else if (se.target) targets = selectTargets(unit, [se.target], allUnits);
-    else targets = selectTargets(unit, targetCodes, allUnits);
+    else targets = defTargets(targetCodes);
     // FEAT-015 시전자 지정: "통솔이 가장 높은 우군이 … 조롱한다" (황월영〈기관술〉) — 조롱의 강제 공격 대상이 그 우군
     const caster = se.caster ? (selectTargets(unit, [se.caster], allUnits, true)[0] || unit) : unit;
     targets.forEach(t => {
       if (se.condition && !evalCondition(se.condition, { attacker: unit, target: t, self: unit })) return;
-      if (!passChance(se)) return;
+      // FEAT-024 chanceScaleBy: "목표의 기타 이상 상태 하나 당 부여 확률 8% 증가(최대 5회)" (기문둔갑)
+      const seC = se.chanceScaleBy ? { ...se, chance: (se.chance || 0) + se.chanceScaleBy.per * Math.min(abnormalCount(t, se.chanceScaleBy.except), se.chanceScaleBy.cap != null ? se.chanceScaleBy.cap : 99) } : se;
+      if (!passChance(seC)) return;
       // 용어 시트 24번: 방어는 최대 2스택까지만 보유한다.
       if (se.name === '방어' && t.statuses.filter(s => s.name === '방어').length >= 2) return;
       const already = t.statuses.some(s => s.name === se.name);
@@ -1531,7 +1651,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         if (dur > exist.remain) { exist.remain = dur; exist.casterId = caster.id; exist.casterName = caster.name; }
       } else {
         t.statuses.push({ name: se.name, remain: dur, casterId: caster.id, casterName: caster.name, srcSkill: skill.name, aura: skill.type === '지휘' ? unit.id : null,
-          ...(se.name === '짐독' ? { snapInt: effStat(unit, '지력'), snapTroops: unit.troops } : {}) });   // R-042 지속 피해는 부여 시점 스탯 스냅샷
+          ...(se.name === '짐독' ? { snapInt: effStat(unit, '지력'), snapTroops: unit.troops } : {}), ...(se.data ? { data: se.data } : {}) });   // R-042 지속 피해는 부여 시점 스탯 스냅샷
       }
       __T({ e: 'status', src: unit.id, dst: t.id, status: se.name, dur, refreshed: already, skill: skill.id });
       if (CONTROL_DEBUFFS.includes(se.name) && hasStatus(t, '정신 회복')) {
@@ -1598,6 +1718,12 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       has: (u, name) => hasStatus(u, name),
       chance: p => __rng() < p,
       stat: (u, k) => effStat(u, k),
+      // FEAT-024 대상 묶기: c.tag('main', 무장 배열) 후 항목 target 에 'tag:main'
+      tag: (name, us) => { tags[name] = (us || []).filter(Boolean); return tags[name]; },
+      tagged: name => tags[name] || [],
+      pick: arr => (arr && arr.length ? pick(arr) : null),
+      friendsOf: u => allUnits.filter(x => x.alive && x.side === u.side && x !== u),
+      enemiesOf: u => allUnits.filter(x => x.alive && x.side !== u.side),
     };
     skill.run(api);
   } else {
@@ -1939,7 +2065,15 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
       }
       if (rolled) {
         log.push(`${turn}턴: [${unit.name}]이(가) 전법 [${skill.name}]을(를) 발동했습니다.`);
+        // FEAT-024 준비 생략: 포위 돌파 "첫 턴 발동 시 준비 불필요", 기민한 전술(다음 준비형 전법 1회), 장각 황천(50%)
+        let skipPrep = false;
         if (skill.prepTurns) {
+          if (skill.noPrepOnTurn1 && turn === 1 && __turnOffset === 0) skipPrep = '첫 턴';
+          else if ((unit._prepSkipNext || 0) > 0) { unit._prepSkipNext--; skipPrep = '기민한 전술'; }
+          else if (statusFlag(unit, 'prepSkip') && __rng() < 0.5) skipPrep = '황천';
+          if (skipPrep) log.push(`${turn}턴: [${unit.name}]이(가) 「${skipPrep}」 효과로 【${skill.name}】 준비를 건너뜁니다.`);
+        }
+        if (skill.prepTurns && !skipPrep) {
           // 발동 판정에는 성공했으나 준비가 필요한 전법 → 예약만 하고 이번 턴엔 효과 없음
           unit.pendingSkills.push({ skill, fireOnTurn: turn + skill.prepTurns });
           log.push(`${turn}턴: [${unit.name}]이(가) 【${skill.name}】 발동 준비 중입니다.`);
@@ -2085,8 +2219,11 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
         if (battleState.basicAttackCount[unit.side] % 4 === 0) {
           const hasHook = allUnits.some(u => u.alive && u.side === unit.side && u.skills.some(sk => sk.special === 'team_basic_attack_stack'));
           if (hasHook) {
-            allUnits.filter(u => u.alive && u.side === unit.side).forEach(u => { u.mods.방어관통 = (u.mods.방어관통 || 0) + 0.015; });
-            log.push(`${turn}턴: [백병 혈전] 아군 일반공격 누적 ${battleState.basicAttackCount[unit.side]}회 달성 — 전체 방어관통 소폭 증가`);
+            // FEAT-024 원문 "방어 관통 2% 증가(무력의 영향 받음)" — 허저의 무력으로 배율 (예전 1.5% 고정)
+            const xu = allUnits.find(u => u.side === unit.side && u.skills.some(sk => sk.special === 'team_basic_attack_stack'));
+            const inc = 0.02 * (xu ? infMult({ stats: ['무력'], who: 'self' }, xu, null, coeffs) : 1);
+            allUnits.filter(u => u.alive && u.side === unit.side).forEach(u => { u.mods.방어관통 = (u.mods.방어관통 || 0) + inc; });
+            log.push(`${turn}턴: [백병 혈전] 아군 일반공격 누적 ${battleState.basicAttackCount[unit.side]}회 달성 — 전체 방어관통 증가`);
           }
         }
       }
@@ -2252,6 +2389,11 @@ function simulateOneBattle(armyA, armyB, coeffs) {
       if (!aAliveE || !bAliveE) winner = aAliveE ? 'A' : (bAliveE ? 'B' : 'draw');
     }
     sweepDeadAuras(units, log, turn);   // 안전망 — 실제 제거는 전사 즉시(R-029)
+    // FEAT-024 "턴 종료까지 지속" 효과는 턴 종료 처리 뒤 사라진다 (황월영 목우유마·동탁 통솔 탈취 반환)
+    units.forEach(u => {
+      u.buffs = u.buffs.filter(b => { if (!b.untilTurnEnd) return true; u.mods[b.stat] = (u.mods[b.stat] || 0) - b.value; return false; });
+      u.statBuffs = u.statBuffs.filter(b => { if (!b.untilTurnEnd) return true; u.stats[b.stat] = Math.max(0, (u.stats[b.stat] || 0) - b.value); return false; });
+    });
 
     // 버프/상태 잔여 턴 감소 — 전략판 규칙에 맞춰 '턴 종료'에서 처리한다.
     // (지속피해 정산은 별도 구현 없음: 천하결전의 홍수/화공/폭풍은 스탯 감소형이라 틱 데미지가 없다)
@@ -2541,11 +2683,13 @@ function applyLoadoutSynergies(units) {
     const activeN = learned.filter(s => s.type === '액티브').length;
     const otherN = learned.filter(s => s.type !== '액티브').length;
     const allies = units.filter(x => x.side === u.side);
+    // FEAT-024 "(모든 효과는 자신의 최고 속성 영향을 받음)" — 원문대로 손권의 최고 속성으로 배율
+    const k = infMult({ stats: ['최고'], who: 'self' }, u, null, null);
     allies.forEach(a => {
-      a.mods.액티브발동률 = (a.mods.액티브발동률 || 0) + 0.07 * activeN;
-      a.mods.받는병기피해 = (a.mods.받는병기피해 || 0) - 0.05 * activeN;
-      a.mods.연타확률 = (a.mods.연타확률 || 0) + 0.28 * otherN;
-      a.mods.받는책략피해 = (a.mods.받는책략피해 || 0) - 0.05 * otherN;
+      a.mods.액티브발동률 = (a.mods.액티브발동률 || 0) + 0.07 * activeN * k;
+      a.mods.받는병기피해 = (a.mods.받는병기피해 || 0) - 0.05 * activeN * k;
+      a.mods.연타확률 = (a.mods.연타확률 || 0) + 0.28 * otherN * k;
+      a.mods.받는책략피해 = (a.mods.받는책략피해 || 0) - 0.05 * otherN * k;
     });
   });
 }

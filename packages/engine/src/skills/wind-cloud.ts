@@ -8,6 +8,12 @@ export default defineSkill({
   name: "구름과 바람",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "'목표가 폭풍이면 피해 +25%', '자신이 폭풍이면 피신 +10%' 조건 구현, 원문에 없는 폭풍 부여 제거"
+    }
+  ],
   clauses: [
     {
       "text": "랜덤 적군 2명에게 180%의 병기 피해를 주며",
@@ -43,26 +49,35 @@ export default defineSkill({
         {
           "dmgType": "병기",
           "min": 0.9,
-          "max": 1.8
+          "max": 1.8,
+          "target": "random_enemy_n",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "폭풍"
+            },
+            "mult": 0.25
+          }
         }
       ],
-      "heal": [],
       "buffs": [
         {
           "stat": "피신",
           "min": 0.05,
           "max": 0.1,
+          "target": "self",
           "duration": 2,
-          "maxStacks": 1
+          "maxStacks": 1,
+          "condition": {
+            "type": "hasStatus",
+            "who": "self",
+            "status": "폭풍"
+          }
         }
       ],
-      "statMods": [],
       "targets": [
-        "random_enemy_n",
-        "self"
-      ],
-      "statusEffects": [
-        "폭풍"
+        "random_enemy_n"
       ]
     },
     "clauses": [
@@ -92,10 +107,8 @@ export default defineSkill({
   },
   run(c) {
     // 「랜덤 적군 2명에게 180%의 병기 피해를 주며」
-    c.damage(0);   // 병기 90%→180%
+    c.damage(0);   // 병기 90%→180%, 대상 random_enemy_n
     // 「자신이 폭풍 상태면 2턴 동안 자신의 피신 확률이 10% 증가한다」
-    c.buff(0);   // 피신 +5%→10%, 2턴, 최대 1중첩
-    // 「목표가 폭풍 상태면 이번 피해가 25% 증가한다」
-    c.status(0);   // 폭풍
+    c.buff(0);   // 피신 +5%→10%, 대상 self, 2턴, 최대 1중첩, 조건 hasStatus
   },
 });

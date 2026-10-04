@@ -8,6 +8,12 @@ export default defineSkill({
   name: "침착한 지휘",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "통솔 +30은 전투 시작 상시(예전엔 피격 때 2턴), 무장 해제는 '공격자'에게 2턴(예전엔 랜덤 적), 받는 피해 증가에 통솔 영향"
+    }
+  ],
   clauses: [
     {
       "text": "자신의 통솔이 30포인트 증가한다",
@@ -38,35 +44,32 @@ export default defineSkill({
     "legacyProcRate": "100%",
     "raw": "자신의 통솔이 15→30포인트 증가한다. 매 턴 처음 피해를 받은 후, 랜덤 적군 2명이 받는 피해가 5%→10% 증가하며(통솔의 영향 받음), 30%→60% 확률로 공격자에게 2턴 동안 지속되는 무장 해제 효과를 부여한다.",
     "effects": {
-      "damage": [],
-      "heal": [],
       "buffs": [
         {
           "stat": "받는피해",
           "min": 0.05,
           "max": 0.1,
           "duration": 2,
-          "maxStacks": 1
+          "maxStacks": 1,
+          "target": "random_enemy_n",
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
+          }
         }
-      ],
-      "statMods": [
-        {
-          "stat": "통솔",
-          "min": 15,
-          "max": 30,
-          "duration": 2,
-          "maxStacks": 1
-        }
-      ],
-      "targets": [
-        "random_enemy_n",
-        "self"
       ],
       "statusEffects": [
         {
           "name": "무장 해제",
-          "chance": 0.6
+          "target": "trigger_attacker",
+          "chance": 0.6,
+          "duration": 2
         }
+      ],
+      "targets": [
+        "random_enemy_n"
       ]
     },
     "chanceFixed": true,
@@ -108,14 +111,29 @@ export default defineSkill({
       "role": "taken",
       "chance": 1,
       "maxPerTurn": 1
-    }
+    },
+    "parts": [
+      {
+        "_timing": "battleStart",
+        "effects": {
+          "statMods": [
+            {
+              "stat": "통솔",
+              "min": 30,
+              "max": 30,
+              "target": "self",
+              "duration": 999,
+              "maxStacks": 1
+            }
+          ]
+        }
+      }
+    ]
   },
   run(c) {
-    // 「자신의 통솔이 30포인트 증가한다」
-    c.statMod(0);   // 통솔 15→30, 2턴, 최대 1중첩
     // 「매 턴 처음 피해를 받은 후, 랜덤 적군 2명이 받는 피해가 10% 증가하며(통솔의 영향 받음)」
-    c.buff(0);   // 받는피해 +5%→10%, 2턴, 최대 1중첩
+    c.buff(0);   // 받는피해 +5%→10%, 대상 random_enemy_n, 2턴, 최대 1중첩
     // 「60% 확률로 공격자에게 2턴 동안 지속되는 무장 해제 효과를 부여한다」
-    c.status(0);   // 무장 해제, 확률 60%
+    c.status(0);   // 무장 해제, 대상 trigger_attacker, 확률 60%, 2턴
   },
 });

@@ -1,6 +1,6 @@
 // 신의 가호 · 전법 · 패시브 100%
 // 원문: 액티브 전법 발동률이 8% 증가하며, 액티브 전법 피해가 15% 증가한다.
-// 원문 절 구현: ok / missing
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "신의 가호",
   kind: "패시브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "액티브 전법 발동률이 8% 증가하며",
@@ -18,7 +24,7 @@ export default defineSkill({
     },
     {
       "text": "액티브 전법 피해가 15% 증가한다",
-      "status": "missing"
+      "status": "ok"
     }
   ],
   def: {

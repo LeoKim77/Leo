@@ -1,6 +1,6 @@
 // 요새 함락 · 전법 · 패시브 100%
 // 원문: 자신의 회심 확률이 20% 상승합니다. 매 턴 행동 종료 시 랜덤 적군 2명에게 110% 병기 피해를 줍니다.
-// 원문 절 구현: ok / approx
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -12,6 +12,12 @@ export default defineSkill({
     "status": "ok",
     "source": "authored"
   },
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "자신의 회심 확률이 20% 상승합니다",
@@ -19,7 +25,7 @@ export default defineSkill({
     },
     {
       "text": "매 턴 행동 종료 시 랜덤 적군 2명에게 110% 병기 피해를 줍니다",
-      "status": "approx"
+      "status": "ok"
     }
   ],
   def: {

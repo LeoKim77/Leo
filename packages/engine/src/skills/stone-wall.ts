@@ -8,6 +8,12 @@ export default defineSkill({
   name: "견고한 방어",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "조롱을 '적군 전체'에게 (예전엔 랜덤 적 1명)"
+    }
+  ],
   clauses: [
     {
       "text": "적군 전체를 조롱하고",
@@ -47,7 +53,10 @@ export default defineSkill({
         "self"
       ],
       "statusEffects": [
-        "조롱"
+        {
+          "name": "조롱",
+          "target": "all_enemy"
+        }
       ]
     },
     "clauses": [
@@ -71,6 +80,6 @@ export default defineSkill({
     // 「2턴 동안 자신이 받는 피해가 30% 감소한다」
     c.buff(0);   // 받는피해 -15%→-30%, 2턴, 최대 1중첩
     // 「적군 전체를 조롱하고」
-    c.status(0);   // 조롱
+    c.status(0);   // 조롱, 대상 all_enemy
   },
 });

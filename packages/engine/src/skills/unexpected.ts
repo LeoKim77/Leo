@@ -1,6 +1,6 @@
 // 출기불의 · 전법 · 액티브 55%
 // 원문: 랜덤 적군 단일 목표에게 350%의 책략 피해를 주며, 목표가 디버프 상태를 보유한 경우, 이번 피해 수치가 25% 증가한다.
-// 원문 절 구현: ok / missing
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "출기불의",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "랜덤 적군 단일 목표에게 350%의 책략 피해를 주며",
@@ -18,7 +24,7 @@ export default defineSkill({
     },
     {
       "text": "목표가 디버프 상태를 보유한 경우, 이번 피해 수치가 25% 증가한다",
-      "status": "missing"
+      "status": "ok"
     }
   ],
   def: {

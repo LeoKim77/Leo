@@ -13,6 +13,12 @@ export default defineSkill({
     "note": "지력 영향 미반영",
     "source": "authored"
   },
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "책략 피해 증가 중첩 상한 제거(원문 '전투 종료까지 중첩')"
+    }
+  ],
   clauses: [
     {
       "text": "고유 액티브 전법 발동률이 6% 상승합니다(지력 영향)",
@@ -35,7 +41,7 @@ export default defineSkill({
           "max": 0.08,
           "target": "self",
           "duration": 999,
-          "maxStacks": 8
+          "maxStacks": 99
         }
       ],
       "statMods": [],
@@ -52,6 +58,6 @@ export default defineSkill({
   },
   run(c) {
     // (원문 절 매핑 없음)
-    c.buff(0);   // 주는책략피해 +8%, 대상 self, 전투 종료까지, 최대 8중첩
+    c.buff(0);   // 주는책략피해 +8%, 대상 self, 전투 종료까지, 최대 99중첩
   },
 });

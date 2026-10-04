@@ -8,6 +8,12 @@ export default defineSkill({
   name: "평화의 기운",
   kind: "패시브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "대상: 전열 아군 전체 (예전엔 병력 최저 아군 1명)"
+    }
+  ],
   clauses: [
     {
       "text": "매 턴 종료 시, 전열 아군 전체의 병력을 회복한다(치유율 90%, 지력의 영향 받음)",
@@ -28,7 +34,8 @@ export default defineSkill({
       "heal": [
         {
           "min": 0.45,
-          "max": 0.9
+          "max": 0.9,
+          "target": "front_allies"
         }
       ],
       "buffs": [],
@@ -58,6 +65,6 @@ export default defineSkill({
   },
   run(c) {
     // 「매 턴 종료 시, 전열 아군 전체의 병력을 회복한다(치유율 90%, 지력의 영향 받음)」
-    c.heal(0);   // 치유율 45%→90%
+    c.heal(0);   // 치유율 45%→90%, 대상 front_allies
   },
 });

@@ -8,6 +8,12 @@ export default defineSkill({
   name: "난세의 간웅",
   kind: "지휘",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "피해 받은 '통솔 최고 우군'이 자신을 회복 (예전엔 조조가 조조를 회복), 중복 버프 제거"
+    }
+  ],
   clauses: [
     {
       "text": "전투 시작 시, 전체 우군이 받는 피해가 14% 감소하며(지력의 영향 받음)",
@@ -48,35 +54,9 @@ export default defineSkill({
           "min": 0.2,
           "max": 0.4,
           "actor": "self",
-          "target": "self"
+          "target": "trigger_defender"
         }
       ],
-      "damage": [],
-      "buffs": [
-        {
-          "stat": "받는피해",
-          "min": -0.07,
-          "max": -0.14,
-          "target": "all_ally",
-          "duration": 999
-        },
-        {
-          "stat": "회유",
-          "min": 0.03,
-          "max": 0.06,
-          "target": "all_ally",
-          "duration": 999
-        },
-        {
-          "stat": "심리공격",
-          "min": 0.03,
-          "max": 0.06,
-          "target": "all_ally",
-          "duration": 999
-        }
-      ],
-      "statMods": [],
-      "statusEffects": [],
       "targets": []
     },
     "trigger": {
@@ -159,11 +139,6 @@ export default defineSkill({
   },
   run(c) {
     // 「통솔이 가장 높은 우군 단일 목표가 피해를 받을 때마다 30% 확률로 자신의 병력을 회복한다(치유율 40%, 지력과 통솔의 영향 받음)」
-    c.heal(0);   // 치유율 20%→40%, 대상 self, 공격자 self
-    // 「전투 시작 시, 전체 우군이 받는 피해가 14% 감소하며(지력의 영향 받음)」
-    c.buff(0);   // 받는피해 -7%→-14%, 대상 all_ally, 전투 종료까지
-    // 「6%의 회유와(과) 심리 공격을(를) 획득한다(지력의 영향 받음)」
-    c.buff(1);   // 회유 +3%→6%, 대상 all_ally, 전투 종료까지
-    c.buff(2);   // 심리공격 +3%→6%, 대상 all_ally, 전투 종료까지
+    c.heal(0);   // 치유율 20%→40%, 대상 trigger_defender, 공격자 self
   },
 });

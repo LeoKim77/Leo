@@ -8,6 +8,12 @@ export default defineSkill({
   name: "마비산",
   kind: "지휘",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "정신 회복 1턴(예전 2턴)"
+    }
+  ],
   clauses: [
     {
       "text": "턴 종료 시, 병력이 가장 낮은 우군 단일 목표가 받는 피해가 16% 감소하며(지력의 영향 받음)",
@@ -60,7 +66,10 @@ export default defineSkill({
         "random_ally_n"
       ],
       "statusEffects": [
-        "정신 회복"
+        {
+          "name": "정신 회복",
+          "duration": 1
+        }
       ]
     },
     "clauses": [
@@ -108,6 +117,6 @@ export default defineSkill({
     // 「턴 종료 시, 병력이 가장 낮은 우군 단일 목표가 받는 피해가 16% 감소하며(지력의 영향 받음)」
     c.buff(0);   // 받는피해 -8%→-16%, 1턴, 최대 1중첩
     // 「1턴 동안 해당 목표에게 정신 회복을(를) 부여한다」
-    c.status(0);   // 정신 회복
+    c.status(0);   // 정신 회복, 1턴
   },
 });

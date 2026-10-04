@@ -1,6 +1,6 @@
 // 파죽지세 · 전법 · 액티브 27.5%~ 50%
 // 원문: 2턴 동안 자신의 회심 확률이 20% 증가한다. 전체 적군에게 140%의 병기 피해를 준다.
-// 원문 절 구현: missing / ok
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,10 +8,16 @@ export default defineSkill({
   name: "파죽지세",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 순서: 회심 +20% 먼저, 그다음 피해 (예전엔 피해 뒤에 회심 버프)"
+    }
+  ],
   clauses: [
     {
       "text": "2턴 동안 자신의 회심 확률이 20% 증가한다",
-      "status": "missing"
+      "status": "ok"
     },
     {
       "text": "전체 적군에게 140%의 병기 피해를 준다",
@@ -69,8 +75,9 @@ export default defineSkill({
     ]
   },
   run(c) {
+    // 「2턴 동안 자신의 회심 확률이 20% 증가한다」
+    c.buff(0);
     // 「전체 적군에게 140%의 병기 피해를 준다」
-    c.damage(0);   // 병기 70%→140%
-    c.buff(0);   // 회심 +20%, 대상 self, 2턴, 최대 1중첩
+    c.damage(0);
   },
 });

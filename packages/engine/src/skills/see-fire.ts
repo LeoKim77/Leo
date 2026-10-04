@@ -8,6 +8,12 @@ export default defineSkill({
   name: "예리한 판단",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "'랜덤 아군 단일 목표' 1명 회복 + 그 목표에게 정신 회복 2턴 (예전엔 2명 회복)"
+    }
+  ],
   clauses: [
     {
       "text": "랜덤 아군 단일 목표의 병력을 회복시키고(치유율 260%, 지력의 영향 받음)",
@@ -31,21 +37,22 @@ export default defineSkill({
     "legacyProcRate": "50%",
     "raw": "랜덤 아군 단일 목표의 병력을 회복시키고(치유율 130%→260%, 지력의 영향 받음), 해당 목표에게 2턴 동안 정신 회복을(를) 부여한다.",
     "effects": {
-      "damage": [],
       "heal": [
         {
           "min": 1.3,
-          "max": 2.6
+          "max": 2.6,
+          "target": "tag:one"
         }
       ],
-      "buffs": [],
-      "statMods": [],
-      "targets": [
-        "random_ally_n",
-        "random_ally_n"
-      ],
       "statusEffects": [
-        "정신 회복"
+        {
+          "name": "정신 회복",
+          "target": "tag:one",
+          "duration": 2
+        }
+      ],
+      "targets": [
+        "random_ally_one"
       ]
     },
     "clauses": [
@@ -71,9 +78,10 @@ export default defineSkill({
     ]
   },
   run(c) {
+    c.tag('one', c.targets('random_ally_one'));
     // 「랜덤 아군 단일 목표의 병력을 회복시키고(치유율 260%, 지력의 영향 받음)」
-    c.heal(0);   // 치유율 130%→260%
+    c.heal(0);
     // 「해당 목표에게 2턴 동안 정신 회복을(를) 부여한다」
-    c.status(0);   // 정신 회복
+    c.status(0);
   },
 });

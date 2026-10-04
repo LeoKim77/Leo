@@ -1,6 +1,6 @@
 // 수전의 제왕 · 고유 전법 · 패시브 100%
 // 원문: 일반 공격 피해가 150% 증가하며, 일반 공격 전, 2턴 동안 자신의 무력이 12포인트 증가한다. 4회 중첩될 수 있다.
-// 원문 절 구현: ok / ok / note
+// 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "수전의 제왕",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "무력 +12(4중첩)를 '일반 공격 전'에만 (예전엔 매 행동 시작), 일반 공격 피해 +150%는 전투 시작 상시"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 피해가 150% 증가하며",
@@ -23,7 +29,7 @@ export default defineSkill({
     },
     {
       "text": "4회 중첩될 수 있다",
-      "status": "note"
+      "status": "ok"
     }
   ],
   def: {
@@ -33,31 +39,19 @@ export default defineSkill({
     "legacyProcRate": "100%",
     "raw": "일반 공격 피해가 75%→150% 증가하며, 일반 공격 전, 2턴 동안 자신의 무력이 6→12포인트 증가한다. 4회 중첩될 수 있다.",
     "effects": {
-      "damage": [],
-      "heal": [],
-      "buffs": [
-        {
-          "stat": "주는일반공격피해",
-          "min": 0.75,
-          "max": 1.5,
-          "target": "self",
-          "duration": 999,
-          "maxStacks": 1
-        }
-      ],
       "statMods": [
         {
           "stat": "무력",
           "min": 6,
           "max": 12,
+          "target": "self",
           "duration": 2,
           "maxStacks": 4
         }
       ],
       "targets": [
         "self"
-      ],
-      "statusEffects": []
+      ]
     },
     "clauses": [
       {
@@ -82,11 +76,28 @@ export default defineSkill({
         "impl": [],
         "status": "NOTE"
       }
+    ],
+    "_timing": "beforeBasic",
+    "parts": [
+      {
+        "_timing": "battleStart",
+        "effects": {
+          "buffs": [
+            {
+              "stat": "주는일반공격피해",
+              "min": 0.75,
+              "max": 1.5,
+              "target": "self",
+              "duration": 999,
+              "maxStacks": 1
+            }
+          ]
+        }
+      }
     ]
   },
   run(c) {
     // 「일반 공격 전, 2턴 동안 자신의 무력이 12포인트 증가한다」
-    c.statMod(0);   // 무력 6→12, 2턴, 최대 4중첩
-    c.buff(0);   // 주는일반공격피해 +75%→150%, 대상 self, 전투 종료까지, 최대 1중첩
+    c.statMod(0);   // 무력 6→12, 대상 self, 2턴, 최대 4중첩
   },
 });

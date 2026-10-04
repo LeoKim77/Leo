@@ -8,6 +8,12 @@ export default defineSkill({
   name: "강습",
   kind: "패시브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "매 행동마다 나가던 80% 피해 제거 — 원문은 일반 공격 피해 전달만(엔진 일반 공격 처리)"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 후, 랜덤 적군 단일 목표에게 이번 일반 공격 80%의 피해 전달을(를) 준다",
@@ -22,20 +28,7 @@ export default defineSkill({
     "legacyProcRate": "100%",
     "raw": "일반 공격 후, 랜덤 적군 단일 목표에게 이번 일반 공격 40%→80%의 피해 전달을(를) 준다.",
     "effects": {
-      "damage": [
-        {
-          "dmgType": "병기",
-          "min": 0.4,
-          "max": 0.8
-        }
-      ],
-      "heal": [],
-      "buffs": [],
-      "statMods": [],
-      "targets": [
-        "random_enemy_1"
-      ],
-      "statusEffects": []
+      "targets": []
     },
     "manualOverride": true,
     "clauses": [
@@ -57,7 +50,6 @@ export default defineSkill({
     }
   },
   run(c) {
-    // (원문 절 매핑 없음)
-    c.damage(0);   // 병기 40%→80%
+    // 실행할 효과 없음 (상시 효과·트리거·특수 처리만 있는 전법)
   },
 });

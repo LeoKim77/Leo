@@ -1,6 +1,6 @@
 // 정의의 희생 · 전법 · 지휘 100%
 // 원문: 전투 시작 후 2턴 동안 전체 아군의 연타 확률이 30% 증가하며, 2턴 동안 무력이 가장 높은 아군 단일 목표가 정신 회복을(를) 획득하고, 자신이 무장해제을(를) 획득한다.
-// 원문 절 구현: ok / ok / missing
+// 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "정의의 희생",
   kind: "지휘",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "전투 시작 후 2턴 동안 전체 아군의 연타 확률이 30% 증가하며",
@@ -25,7 +31,7 @@ export default defineSkill({
     },
     {
       "text": "자신이 무장해제을(를) 획득한다",
-      "status": "missing"
+      "status": "ok"
     }
   ],
   def: {

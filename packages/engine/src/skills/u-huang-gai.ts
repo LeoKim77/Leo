@@ -8,6 +8,12 @@ export default defineSkill({
   name: "고육지계",
   kind: "액티브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "받는 피해 감소 2턴·통솔 영향 먼저, 화공은 피해를 준 같은 2명에게 2턴"
+    }
+  ],
   clauses: [
     {
       "text": "2턴 동안 자신이 받는 피해가 30% 감소한다(통솔의 영향 받음)",
@@ -45,6 +51,21 @@ export default defineSkill({
     "legacyProcRate": "50%",
     "raw": "2턴 동안 자신이 받는 피해가 15%→30% 감소한다(통솔의 영향 받음). 지력이 가장 높은 우군이 자신에게 30%→60%의 병기 피해를 주며, 랜덤 적군 2명에게 110%→220%의 책략 피해를 주고, 2턴 동안 지속되는 화공을(를) 부여한다.",
     "effects": {
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.15,
+          "max": -0.3,
+          "target": "self",
+          "duration": 2,
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
+          }
+        }
+      ],
       "damage": [
         {
           "dmgType": "병기",
@@ -57,26 +78,16 @@ export default defineSkill({
           "dmgType": "책략",
           "min": 1.1,
           "max": 2.2,
-          "target": "random_enemy_n"
+          "target": "tag:two"
         }
       ],
-      "heal": [],
-      "buffs": [
-        {
-          "stat": "받는피해",
-          "min": -0.15,
-          "max": -0.3,
-          "target": "self"
-        }
-      ],
-      "statMods": [],
       "statusEffects": [
         {
           "name": "화공",
-          "target": "random_enemy_n"
+          "target": "tag:two",
+          "duration": 2
         }
-      ],
-      "targets": []
+      ]
     },
     "specialApplied": true,
     "clauses": [
@@ -111,13 +122,14 @@ export default defineSkill({
     ]
   },
   run(c) {
-    // 「지력이 가장 높은 우군이 자신에게 60%의 병기 피해를 주며」
-    c.damage(0);   // 병기 30%→60%, 대상 self, 공격자 highest_intel_ally
-    // 「랜덤 적군 2명에게 220%의 책략 피해를 주고」
-    c.damage(1);   // 책략 110%→220%, 대상 random_enemy_n
     // 「2턴 동안 자신이 받는 피해가 30% 감소한다(통솔의 영향 받음)」
-    c.buff(0);   // 받는피해 -15%→-30%, 대상 self
+    c.buff(0);
+    // 「지력이 가장 높은 우군이 자신에게 60%의 병기 피해를 주며」
+    c.damage(0);
+    // 「랜덤 적군 2명에게 220%의 책략 피해를 주고」
+    c.tag('two', c.targets('random_enemy_n'));
+    c.damage(1);
     // 「2턴 동안 지속되는 화공을(를) 부여한다」
-    c.status(0);   // 화공, 대상 random_enemy_n
+    c.status(0);
   },
 });

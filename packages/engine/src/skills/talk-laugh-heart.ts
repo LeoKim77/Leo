@@ -1,6 +1,6 @@
 // 독설가 · 전법 · 패시브 100%
 // 원문: 적군이 디버프 상태를 받으면 60% 확률로 랜덤 적군 단일 목표에게 110%의 책략 피해를 주며, 매 턴 최대 2회 발동된다.
-// 원문 절 구현: ok / note
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "독설가",
   kind: "패시브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "적군이 디버프 상태를 받으면 60% 확률로 랜덤 적군 단일 목표에게 110%의 책략 피해를 주며",
@@ -19,7 +25,7 @@ export default defineSkill({
     },
     {
       "text": "매 턴 최대 2회 발동된다",
-      "status": "note"
+      "status": "ok"
     }
   ],
   def: {

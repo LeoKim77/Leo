@@ -8,6 +8,12 @@ export default defineSkill({
   name: "강동 제패",
   kind: "액티브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "회복이 무력 영향"
+    }
+  ],
   clauses: [
     {
       "text": "적군 랜덤 2명에게 250%의 병기 피해를 주고",
@@ -43,7 +49,8 @@ export default defineSkill({
         {
           "min": 0.325,
           "max": 0.65,
-          "target": "self_and_random_ally_1"
+          "target": "self_and_random_ally_1",
+          "stat": "무력"
         }
       ],
       "buffs": [],

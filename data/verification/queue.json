@@ -175,6 +175,46 @@
       "status": "pending"
     },
     {
+      "id": "V-engine-pangtong-chain",
+      "kind": "engine",
+      "refs": [],
+      "title": "방통 연환계 — \"전체에 연환\" 대상",
+      "assumption": "적군 전체로 해석(1턴, 홀수 턴 시작). 전달 피해 25%는 방통 지력 영향",
+      "howToVerify": "연환이 걸린 무장 이름(적군만인지 아군도인지) — 전보",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-charge-change-skip",
+      "kind": "engine",
+      "refs": [],
+      "title": "기민한 전술 — \"준비 턴을 일정 횟수 생략\"",
+      "assumption": "다음 준비형 전법 1회 준비 생략으로 해석",
+      "howToVerify": "기민한 전술 발동 뒤 준비형 전법(포위 돌파·방화범 등)이 몇 번 바로 발동하는지",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-diaochan-retaliate",
+      "kind": "engine",
+      "refs": [],
+      "title": "초선 폐월 — \"이번 턴에 초선에게 피해를 준 목표\"",
+      "assumption": "그 턴에 초선을 때린 적 전원에게 각 1회 60%로 해석",
+      "howToVerify": "턴 종료 때 폐월 피해 줄이 몇 명에게 찍히는지",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-fazheng-mark",
+      "kind": "engine",
+      "refs": [],
+      "title": "법정 간파력 — 도사 지속",
+      "assumption": "지속 턴 표기가 없어 발동(일반 공격 외 피해)될 때까지 유지로 처리. 법정 전사 시 발동 안 함",
+      "howToVerify": "도사가 걸린 적의 툴팁 [도사] N턴 표기, 법정 전사 후 발동 여부",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
       "id": "V-skill-armor-edge",
       "kind": "skill",
       "refs": [
@@ -201,32 +241,6 @@
       "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 위와 같음 — 회복량이 통솔 영향을 크게 받음.",
       "resolvedAt": "2026-10-03",
       "priority": 18
-    },
-    {
-      "id": "V-skill-u-yue-jin",
-      "kind": "skill",
-      "refs": [
-        "u-yue-jin"
-      ],
-      "title": "선봉정신 (고유)",
-      "assumption": "선공 영향·\"첫 2턴 전열이면 30% 증가\" 미반영",
-      "howToVerify": "【선봉정신】이(가) 발동한 전보에서 근사 항목(선공 영향·\"첫 2턴 전열이면 30% 증가\" 미반영)을 확인",
-      "status": "pending",
-      "priority": 17
-    },
-    {
-      "id": "V-clause-break-hardship-1",
-      "kind": "clause",
-      "refs": [
-        "break-hardship"
-      ],
-      "title": "요새 함락 — \"매 턴 행동 종료 시 랜덤 적군 2명에게 110% 병기…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【요새 함락】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "rejected",
-      "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 위와 같음.",
-      "resolvedAt": "2026-10-03",
-      "priority": 16
     },
     {
       "id": "V-engine-FIX-003-damage-chance",
@@ -786,6 +800,30 @@
       "priority": 3
     },
     {
+      "id": "V-clause-u-xiahou-yuan-1",
+      "kind": "clause",
+      "refs": [
+        "u-xiahou-yuan"
+      ],
+      "title": "신속기습 — \"자신보다 선공이 낮은 적군 1명 당 1스택의 신속을 획…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【신속기습】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 3
+    },
+    {
+      "id": "V-clause-u-xu-sheng-0",
+      "kind": "clause",
+      "refs": [
+        "u-xu-sheng"
+      ],
+      "title": "백리의성 — \"전투 시작 후 4턴 동안 전체 우군이 피해를 받기 직전…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【백리의성】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 3
+    },
+    {
       "id": "V-skill-u-sima-yi",
       "kind": "skill",
       "refs": [
@@ -858,20 +896,6 @@
       "priority": 3
     },
     {
-      "id": "V-clause-strategize-3",
-      "kind": "clause",
-      "refs": [
-        "strategize"
-      ],
-      "title": "전략 계획 — \"선공이 25 감소한다(지력의 영향 받음)…\"",
-      "assumption": "지력 영향 반영(infMult)",
-      "howToVerify": "【전략 계획】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "verified",
-      "result": "조황화 녹화: 대교 전략 계획 네 능력치 31.15 감소(지력 223.12) — 스탯 영향 0.21%/스탯 식과 +1%",
-      "resolvedAt": "2026-10-04",
-      "priority": 2
-    },
-    {
       "id": "V-skill-use-talent",
       "kind": "skill",
       "refs": [
@@ -892,18 +916,6 @@
       "title": "적재적소 — \"지력이 가장 높은 우군 1명이 받는 피해를 25% 감소…\"",
       "assumption": "근사 반영",
       "howToVerify": "【적재적소】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 2
-    },
-    {
-      "id": "V-clause-u-dong-zhuo-0",
-      "kind": "clause",
-      "refs": [
-        "u-dong-zhuo"
-      ],
-      "title": "압도적 권력 — \"매 턴 행동 시, 전체 적군과 우군의 통솔을 20포인트…\"",
-      "assumption": "적군 통솔 감소만 구현. 우군 통솔 탈취·자신 가산은 미지원",
-      "howToVerify": "【압도적 권력】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending",
       "priority": 2
     },
@@ -988,18 +1000,6 @@
       "title": "웅거서량 — \"또한 해당 무장들이 매 턴 행동 종료 시 50% 확률(…\"",
       "assumption": "근사 반영",
       "howToVerify": "【웅거서량】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 2
-    },
-    {
-      "id": "V-skill-charge-change",
-      "kind": "skill",
-      "refs": [
-        "charge-change"
-      ],
-      "title": "기민한 전술",
-      "assumption": "해외 번역문 기준. 준비 턴 생략 미지원",
-      "howToVerify": "【기민한 전술】이(가) 발동한 전보에서 근사 항목(해외 번역문 기준. 준비 턴 생략 미지원)을 확인",
       "status": "pending",
       "priority": 2
     },
@@ -1680,47 +1680,14 @@
       "status": "pending"
     },
     {
-      "id": "V-clause-choose-momentum-0",
+      "id": "V-clause-war-sustains-war-1",
       "kind": "clause",
       "refs": [
-        "choose-momentum"
+        "war-sustains-war"
       ],
-      "title": "인재 기용 — \"3번째 턴부터 우군 2명은 매 턴 80% 확률로 다음 …\"",
-      "assumption": "확정 회심/묘책 1회. 우군 2명 매 턴 80%",
-      "howToVerify": "【인재 기용】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-clause-choose-momentum-1",
-      "kind": "clause",
-      "refs": [
-        "choose-momentum"
-      ],
-      "title": "인재 기용 — \"해당 회심 또는 묘책 피해가 40% 증가한다…\"",
-      "assumption": "회심/묘책 피해 +40%를 1턴 버프로",
-      "howToVerify": "【인재 기용】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-clause-ambushes-0",
-      "kind": "clause",
-      "refs": [
-        "ambushes"
-      ],
-      "title": "퇴로 매복 — \"랜덤 적군 단일 목표에게 100%~140%의 병기 피해…\"",
-      "assumption": "4회 타격 구현. 100~140% 무작위 폭은 140% 고정",
-      "howToVerify": "【퇴로 매복】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-skill-strike-gap",
-      "kind": "skill",
-      "refs": [
-        "strike-gap"
-      ],
-      "title": "틈새 공략",
-      "assumption": "\"이미 혼란이면 대상 측 우군에게 100%\"는 미지원",
-      "howToVerify": "【틈새 공략】이(가) 발동한 전보에서 근사 항목(\"이미 혼란이면 대상 측 우군에게 100%\"는 미지원)을 확인",
+      "title": "전쟁 조달 — \"일반 공격 후, 자신의 병력을 회복한다(치유율 110%…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【전쟁 조달】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending"
     },
     {
@@ -1735,6 +1702,17 @@
       "status": "pending"
     },
     {
+      "id": "V-clause-u-zhang-liao-1",
+      "kind": "clause",
+      "refs": [
+        "u-zhang-liao"
+      ],
+      "title": "바람방랑자 — \"매 턴 시작시, 60%확률(이미 손실된 병력의 영향 받…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【바람방랑자】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
       "id": "V-skill-u-pang-tong",
       "kind": "skill",
       "refs": [
@@ -1743,6 +1721,17 @@
       "title": "연환계 (고유)",
       "assumption": "「연환」(피해 분산) 미지원. 간파 +20%만 반영",
       "howToVerify": "【연환계】이(가) 발동한 전보에서 근사 항목(「연환」(피해 분산) 미지원. 간파 +20%만 반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-pang-tong-2",
+      "kind": "clause",
+      "refs": [
+        "u-pang-tong"
+      ],
+      "title": "연환계 — \"연환: 피해를 받으면 우군 2명이 25%(지력의 영향 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【연환계】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending"
     },
     {

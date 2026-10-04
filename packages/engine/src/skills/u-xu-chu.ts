@@ -1,6 +1,6 @@
 // 백병 혈전 · 고유 전법 · 패시브 100%
 // 원문: 전투 시작 시, 자신의 선공과 무력이 20포인트 증가하며, 연타 확률이 100% 증가하고, 통솔이 15포인트 감소한다. 우군 전체가 일반 공격을 4회 누적 시전할 때마다, 우군 전체의 방어 관통이(가) 2% 증가한다(무력의 영향 받음).
-// 원문 절 구현: ok / ok / ok / special / special
+// 원문 절 구현: ok / ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "백병 혈전",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음) · 최고 속성/무력 영향 반영(FEAT-024)"
+    }
+  ],
   clauses: [
     {
       "text": "전투 시작 시, 자신의 선공과 무력이 20포인트 증가하며",
@@ -33,14 +39,14 @@ export default defineSkill({
     },
     {
       "text": "우군 전체가 일반 공격을 4회 누적 시전할 때마다",
-      "status": "special",
+      "status": "ok",
       "impl": [
         "special:team_basic_attack_stack"
       ]
     },
     {
       "text": "우군 전체의 방어 관통이(가) 2% 증가한다(무력의 영향 받음)",
-      "status": "special",
+      "status": "ok",
       "impl": [
         "special:team_basic_attack_stack"
       ]

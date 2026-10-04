@@ -8,6 +8,12 @@ export default defineSkill({
   name: "전장의 노래",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "회복과 통솔 +16이 같은 랜덤 아군 2명에게"
+    }
+  ],
   clauses: [
     {
       "text": "랜덤 아군 2명의 병력을 회복시키며(치유율 130%, 지력의 영향 받음) 2턴 동안 통솔을 16포인트 증가시킨다",
@@ -25,29 +31,26 @@ export default defineSkill({
     "legacyProcRate": "65%",
     "raw": "랜덤 아군 2명의 병력을 회복시키며(치유율 65%→130%, 지력의 영향 받음) 2턴 동안 통솔을 8→16포인트 증가시킨다.",
     "effects": {
-      "damage": [],
       "heal": [
         {
           "min": 0.65,
-          "max": 1.3
+          "max": 1.3,
+          "target": "tag:two"
         }
       ],
-      "buffs": [],
       "statMods": [
         {
           "stat": "통솔",
           "min": 8,
           "max": 16,
-          "target": "random_ally_n",
+          "target": "tag:two",
           "duration": 2,
           "maxStacks": 1
         }
       ],
       "targets": [
-        "random_ally_n",
         "random_ally_n"
-      ],
-      "statusEffects": []
+      ]
     },
     "clauses": [
       {
@@ -67,8 +70,8 @@ export default defineSkill({
     ]
   },
   run(c) {
+    c.tag('two', c.targets('random_ally_n'));
     // 「랜덤 아군 2명의 병력을 회복시키며(치유율 130%, 지력의 영향 받음) 2턴 동안 통솔을 16포인트 증가시킨다」
-    c.statMod(0);   // 통솔 8→16, 대상 random_ally_n, 2턴, 최대 1중첩
-    c.heal(0);   // 치유율 65%→130%
+    c.heal(0); c.statMod(0);
   },
 });

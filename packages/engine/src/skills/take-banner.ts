@@ -8,6 +8,12 @@ export default defineSkill({
   name: "압도적 승리",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 순서: 220% → 군량 고갈 2턴 → '군량 고갈이면' 추가 80%"
+    }
+  ],
   clauses: [
     {
       "text": "통솔이 가장 낮은 적군 단일 목표에게 220%의 병기 피해를 주며",
@@ -64,7 +70,8 @@ export default defineSkill({
       "statusEffects": [
         {
           "name": "군량 고갈",
-          "target": "tag:main"
+          "target": "tag:main",
+          "duration": 2
         }
       ],
       "targets": []
@@ -103,9 +110,10 @@ export default defineSkill({
   },
   run(c) {
     // 「통솔이 가장 낮은 적군 단일 목표에게 220%의 병기 피해를 주며」
-    c.damage(0);   // 병기 110%→220%, 대상 lowest_control_enemy
-    c.damage(1);   // 병기 40%→80%, 대상 tag:main, 조건 hasStatus
+    c.damage(0);
     // 「2턴 동안 지속되는 군량 고갈을(를) 부여한다」
-    c.status(0);   // 군량 고갈, 대상 tag:main
+    c.status(0);
+    // 「목표가 군량 고갈 상태를 보유한 경우, 추가로 80%의 병기 피해를 준다」
+    c.damage(1);
   },
 });

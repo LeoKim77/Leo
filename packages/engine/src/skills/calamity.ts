@@ -8,6 +8,12 @@ export default defineSkill({
   name: "재해 이용",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "상태 부여를 원문대로 '적군 목표가 화공이면 40% 혼란 / 홍수면 40% 무장 해제 / 폭풍이면 40% 침묵'(각 1턴) — 예전엔 적 전원에게 6가지 상태를 무조건 부여"
+    }
+  ],
   clauses: [
     {
       "text": "자신을 제외한 전체 적군과 아군에게 140%의 책략 피해를 준다",
@@ -64,12 +70,39 @@ export default defineSkill({
         "self"
       ],
       "statusEffects": [
-        "폭풍",
-        "무장 해제",
-        "침묵",
-        "혼란",
-        "화공",
-        "홍수"
+        {
+          "name": "혼란",
+          "target": "all_enemy",
+          "chance": 0.4,
+          "duration": 1,
+          "condition": {
+            "type": "hasStatus",
+            "who": "target",
+            "status": "화공"
+          }
+        },
+        {
+          "name": "무장 해제",
+          "target": "all_enemy",
+          "chance": 0.4,
+          "duration": 1,
+          "condition": {
+            "type": "hasStatus",
+            "who": "target",
+            "status": "홍수"
+          }
+        },
+        {
+          "name": "침묵",
+          "target": "all_enemy",
+          "chance": 0.4,
+          "duration": 1,
+          "condition": {
+            "type": "hasStatus",
+            "who": "target",
+            "status": "폭풍"
+          }
+        }
       ]
     },
     "clauses": [
@@ -113,17 +146,12 @@ export default defineSkill({
   },
   run(c) {
     // 「자신을 제외한 전체 적군과 아군에게 140%의 책략 피해를 준다」
-    c.damage(0);   // 책략 70%→140%, 대상 all_except_self
-    // 「적군 목표가 폭풍 상태면 40% 확률로 1턴 동안 지속되는 침묵을(를) 부여한다」
-    c.status(0);   // 폭풍
-    // 「적군 목표가 홍수 상태면 40% 확률로 1턴 동안 지속되는 무장 해제를(를) 부여한다」
-    c.status(1);   // 무장 해제
-    // 「적군 목표가 폭풍 상태면 40% 확률로 1턴 동안 지속되는 침묵을(를) 부여한다」
-    c.status(2);   // 침묵
+    c.damage(0);
     // 「적군 목표가 화공 상태면 40% 확률로 1턴 동안 지속되는 혼란을(를) 부여한다」
-    c.status(3);   // 혼란
-    c.status(4);   // 화공
+    c.status(0);
     // 「적군 목표가 홍수 상태면 40% 확률로 1턴 동안 지속되는 무장 해제를(를) 부여한다」
-    c.status(5);   // 홍수
+    c.status(1);
+    // 「적군 목표가 폭풍 상태면 40% 확률로 1턴 동안 지속되는 침묵을(를) 부여한다」
+    c.status(2);
   },
 });

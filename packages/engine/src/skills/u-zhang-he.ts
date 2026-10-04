@@ -1,6 +1,6 @@
 // 적진 돌파 · 고유 전법 · 액티브 60%
 // 원문: 자신의 방어 관통이(가) 5% 증가하며, 전투 종료까지 지속되고, 4회 중첩될 수 있다. 이후 랜덤 적군 2명에게 220%의 병기 피해를 주며, 65% 확률로 1턴 동안 지속되는 무장 해제을(를) 부여한다. 목표가 이미 무장 해제 상태면 이번 피해가 30% 증가한다.
-// 원문 절 구현: ok / note / note / ok / ok / ok
+// 원문 절 구현: ok / ok / ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "적진 돌파",
   kind: "액티브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "자신의 방어 관통이(가) 5% 증가하며",
@@ -18,11 +24,11 @@ export default defineSkill({
     },
     {
       "text": "전투 종료까지 지속되고",
-      "status": "note"
+      "status": "ok"
     },
     {
       "text": "4회 중첩될 수 있다",
-      "status": "note"
+      "status": "ok"
     },
     {
       "text": "이후 랜덤 적군 2명에게 220%의 병기 피해를 주며",

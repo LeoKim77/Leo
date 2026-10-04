@@ -1,6 +1,6 @@
 // 충신의 기재 · 전법 · 패시브 100%
 // 원문: 자신의 묘책이(가) 24% 증가한다(지력의 영향 받음). 책략 피해를 준 후, 50% 확률로 2턴 동안 자신의 지력이 10포인트 증가하며, 4회 중첩될 수 있다.
-// 원문 절 구현: ok / ok / note
+// 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "충신의 기재",
   kind: "패시브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "자신의 묘책이(가) 24% 증가한다(지력의 영향 받음)",
@@ -26,7 +32,7 @@ export default defineSkill({
     },
     {
       "text": "4회 중첩될 수 있다",
-      "status": "note"
+      "status": "ok"
     }
   ],
   def: {

@@ -1,6 +1,6 @@
 // 원문사극 · 전법 · 추격 70%
 // 원문: 일반 공격 후, 목표에게 220%의 병기 피해를 부여한다. 자신이 후열이면 75% 확률로 2턴 동안 자신의 액티브 전법 발동률이 10% 증가하며, 3회 중첩할 수 있다.
-// 원문 절 구현: ok / ok / note
+// 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "원문사극",
   kind: "추격",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "발동 확률을 원문 70%로 (예전 75% — 후열 버프 확률과 섞임)"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 후, 목표에게 220%의 병기 피해를 부여한다",
@@ -26,7 +32,7 @@ export default defineSkill({
     },
     {
       "text": "3회 중첩할 수 있다",
-      "status": "note"
+      "status": "ok"
     }
   ],
   def: {
@@ -70,7 +76,7 @@ export default defineSkill({
     "trigger": {
       "event": "damage",
       "role": "dealt",
-      "chance": 0.75
+      "chance": 0.7
     },
     "procRateFixed": true,
     "clauses": [

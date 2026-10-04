@@ -1,6 +1,6 @@
 // 기지의 승리 · 고유 전법 · 지휘 100%
 // 원문: 전투 중, 전체 적군과 우군이 이상 상태 효과를 받으면 자신이 70% 확률로 기지 발동: 랜덤 적군 2명에게 즉시 60%의 책략 피해를 준다. 매 턴 기지는 최대 4회 발동되며, 기지 총 4회 발동 후, 전체 우군의 병력을 회복한다(치유율 40%, 지력의 영향 받음).
-// 원문 절 구현: ok / missing / ok
+// 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "기지의 승리",
   kind: "지휘",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "전투 중, 전체 적군과 우군이 이상 상태 효과를 받으면 자신이 70% 확률로 기지 발동: 랜덤 적군 2명에게 즉시 60%의 책략 피해를 준다",
@@ -19,7 +25,7 @@ export default defineSkill({
     },
     {
       "text": "매 턴 기지는 최대 4회 발동되며",
-      "status": "missing"
+      "status": "ok"
     },
     {
       "text": "기지 총 4회 발동 후, 전체 우군의 병력을 회복한다(치유율 40%, 지력의 영향 받음)",

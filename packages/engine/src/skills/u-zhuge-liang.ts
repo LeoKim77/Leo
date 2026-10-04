@@ -1,6 +1,6 @@
 // 초선차전 · 고유 전법 · 지휘 100%
 // 원문: 자신의 심리 공격이(가) 24% 증가하며, 자신이 피해를 주거나 받으면 50% 확률로 랜덤 적군 단일 목표에게 80%의 책략 피해를 주고, 매 턴 5회 발동될 수 있다.
-// 원문 절 구현: ok / ok / note
+// 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "초선차전",
   kind: "지휘",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "자신의 심리 공격이(가) 24% 증가하며",
@@ -26,7 +32,7 @@ export default defineSkill({
     },
     {
       "text": "매 턴 5회 발동될 수 있다",
-      "status": "note"
+      "status": "ok"
     }
   ],
   def: {

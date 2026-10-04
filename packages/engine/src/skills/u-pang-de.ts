@@ -1,6 +1,6 @@
 // 필사의 돌격 · 고유 전법 · 패시브 100%
 // 원문: 전투 3번째, 5번째 턴에 자신이 행동 시, 2턴 동안 전체 적군의 통솔과 지력을 30포인트 감소시킨다(무력의 영향 받음). 이어서 340%의 병기 피해를 준다.
-// 원문 절 구현: missing / ok / ok
+// 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,10 +8,16 @@ export default defineSkill({
   name: "필사의 돌격",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "능력치 감소에 무력 영향 반영"
+    }
+  ],
   clauses: [
     {
       "text": "전투 3번째",
-      "status": "missing"
+      "status": "ok"
     },
     {
       "text": "5번째 턴에 자신이 행동 시, 2턴 동안 전체 적군의 통솔과 지력을 30포인트 감소시킨다(무력의 영향 받음)",
@@ -52,7 +58,13 @@ export default defineSkill({
           "max": -30,
           "target": "all_enemy",
           "duration": 2,
-          "maxStacks": 1
+          "maxStacks": 1,
+          "inf": {
+            "stats": [
+              "무력"
+            ],
+            "who": "self"
+          }
         },
         {
           "stat": "지력",
@@ -60,7 +72,13 @@ export default defineSkill({
           "max": -30,
           "target": "all_enemy",
           "duration": 2,
-          "maxStacks": 1
+          "maxStacks": 1,
+          "inf": {
+            "stats": [
+              "무력"
+            ],
+            "who": "self"
+          }
         }
       ],
       "targets": [

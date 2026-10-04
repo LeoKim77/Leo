@@ -1,6 +1,6 @@
 // 무쌍의 용사 · 고유 전법 · 액티브 22%~ 40%
 // 원문: 전체 적군과 서로 1회의 일반 공격을 진행한다(서로 일반 공격 진행 시 자신의 무장 해제 상태 면역). 자신의 무력 수치가 목표보다 높으면 추가로 100%의 병기 피해를 준다.
-// 원문 절 구현: missing / ok
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,10 +8,16 @@ export default defineSkill({
   name: "무쌍의 용사",
   kind: "액티브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "전체 적군과 서로 1회의 일반 공격을 진행한다(서로 일반 공격 진행 시 자신의 무장 해제 상태 면역)",
-      "status": "missing"
+      "status": "ok"
     },
     {
       "text": "자신의 무력 수치가 목표보다 높으면 추가로 100%의 병기 피해를 준다",

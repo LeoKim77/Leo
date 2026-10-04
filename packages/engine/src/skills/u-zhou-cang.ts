@@ -8,6 +8,12 @@ export default defineSkill({
   name: "충성과 용맹",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "회복 대상을 자신으로(예전엔 병력 최저 아군), 조롱·위협이 같은 랜덤 적 2명에게"
+    }
+  ],
   clauses: [
     {
       "text": "매 턴 행동 시 자신의 병력을 회복한다(치유율 200%, 지력과 통솔의 영향 받음)",
@@ -32,30 +38,32 @@ export default defineSkill({
     "legacyProcRate": "100%",
     "raw": "매 턴 행동 시 자신의 병력을 회복한다(치유율 100%→200%, 지력과 통솔의 영향 받음). 22.5%→45% 확률로 랜덤 적군 2명에게 2턴 동안 지속되는 조롱 및 위협 상태를 부여한다.",
     "effects": {
-      "damage": [],
       "heal": [
         {
           "min": 1,
-          "max": 2
+          "max": 2,
+          "target": "self"
         }
-      ],
-      "buffs": [],
-      "statMods": [],
-      "targets": [
-        "random_enemy_n",
-        "self"
       ],
       "statusEffects": [
         {
           "name": "위협",
+          "target": "tag:two",
           "chance": 0.45,
-          "chanceOnce": true
+          "chanceOnce": true,
+          "duration": 2
         },
         {
           "name": "조롱",
+          "target": "tag:two",
           "chance": 0.45,
-          "chanceOnce": true
+          "chanceOnce": true,
+          "duration": 2
         }
+      ],
+      "targets": [
+        "random_enemy_n",
+        "self"
       ]
     },
     "chanceFixed": true,
@@ -89,9 +97,9 @@ export default defineSkill({
   },
   run(c) {
     // 「매 턴 행동 시 자신의 병력을 회복한다(치유율 200%, 지력과 통솔의 영향 받음)」
-    c.heal(0);   // 치유율 100%→200%
+    c.heal(0);
     // 「45% 확률로 랜덤 적군 2명에게 2턴 동안 지속되는 조롱 및 위협 상태를 부여한다」
-    c.status(0);   // 위협, 확률 45%(1회 판정)
-    c.status(1);   // 조롱, 확률 45%(1회 판정)
+    c.tag('two', c.targets('random_enemy_n'));
+    c.status(1); c.status(0);   // 45% 판정 1번 공유
   },
 });

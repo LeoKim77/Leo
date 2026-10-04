@@ -1,6 +1,6 @@
 // 칠진칠출 · 고유 전법 · 패시브 100%
 // 원문: 자신의 피신 확률이 35% 증가하며, 피신 성공 후, 용담 발동: 랜덤 적군 2명에게 즉시 90%의 병기 피해를 주며, 현재 턴에서 다음 용담의 피해 계수가 10% 감소한다. 용담은 매 턴 7회 발동될 수 있다.
-// 원문 절 구현: ok / ok / missing / missing
+// 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "칠진칠출",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-04",
+      "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    }
+  ],
   clauses: [
     {
       "text": "자신의 피신 확률이 35% 증가하며",
@@ -26,11 +32,11 @@ export default defineSkill({
     },
     {
       "text": "현재 턴에서 다음 용담의 피해 계수가 10% 감소한다",
-      "status": "missing"
+      "status": "ok"
     },
     {
       "text": "용담은 매 턴 7회 발동될 수 있다",
-      "status": "missing"
+      "status": "ok"
     }
   ],
   def: {
