@@ -1,127 +1,85 @@
 {
-  "date": "2026-10-03",
-  "note": "역재현 검증용 녹화 덱 (사용자 보유 기준). 매 턴 툴팁 + 전보 스크롤.",
+  "date": "2026-10-04",
+  "note": "남은 검증 항목(공용 규칙 잠정·계수·보유 무장 고유 전법·금병법)을 보유 무장 21명으로 7판에 묶음. 상대는 훈련소 NPC 로 충분. 진형 기형진, 무장 무승급·전법 승품은 있는 그대로(역재현 때 되돌림).",
+  "howToRecord": [
+    "포진(0턴) 전보부터 끝까지 스크롤 녹화",
+    "매 턴 시작 때 아군·적군 6명 툴팁(스탯·병력·증감·효과) — 최소 1·3·5턴",
+    "전투 결과 → 통계 화면(전법별 발동 횟수·피해)"
+  ],
+  "captures": [
+    "무장 고유 전법 문구의 '아군'/'우군' — 무장 상세 화면 캡처(R-034, 녹화 불필요)"
+  ],
   "battles": [
     {
       "no": 1,
-      "title": "지력 판 — 책략 계수·지력 영향·회복 공식",
+      "title": "책략·연쇄 판",
       "formation": "기형진",
       "units": [
         [
-          "조조",
+          "주유",
           [
-            "천하평론",
+            "재해 이용",
             "화공전술"
           ],
-          "맹덕신서 상권"
+          "화계"
         ],
         [
-          "화타",
+          "제갈량",
           [
-            "청낭 치료",
-            "평화의 기운"
-          ]
-        ],
-        [
-          "황월영",
-          [
-            "전장의 노래",
-            "화검"
+            "방화범",
+            "독설가"
           ],
-          "천공비록"
+          "출사표"
+        ],
+        [
+          "육손",
+          [
+            "충신의 기재",
+            "예측의 신"
+          ],
+          "분영"
         ]
+      ],
+      "checks": [
+        "혼란: 화공 상태 적에게 방화범 혼란 → 혼란 걸린 NPC의 일반 공격·단일·광역 전법 대상(아군을 때리는지) (R-026·R-032)",
+        "트리거 연쇄: 기지의 승리·초선차전·독설가 턴당 횟수와 자기 재발동 없음 (R-033)",
+        "충신의 기재 스택 선입선출 (R-035)",
+        "주유〈화계〉·제갈량〈출사표〉·육손〈분영〉·화소연영 원문 실행",
+        "책략 계수(지력·병력) 역재현 표본"
       ],
       "deck": {
         "formation": "기형진",
         "units": [
           {
-            "generalId": "cao-cao",
+            "generalId": "zhou-yu",
             "skillIds": [
-              "direct-world",
+              "calamity",
               "fire-camp"
             ],
-            "manualId": "m-cao-cao-1"
+            "manualId": "m-zhou-yu-1"
           },
           {
-            "generalId": "hua-tuo",
+            "generalId": "zhuge-liang",
             "skillIds": [
-              "qingnang",
-              "rest-army"
+              "loot-fire",
+              "talk-laugh-heart"
             ],
-            "manualId": "none"
+            "manualId": "m-zhuge-liang-1"
           },
           {
-            "generalId": "huang-yueying",
+            "generalId": "lu-xun",
             "skillIds": [
-              "sing-wine",
-              "fire-feather"
+              "best-strategy",
+              "foresight"
             ],
-            "manualId": "m-huang-yueying-2"
+            "manualId": "m-lu-xun-2"
           }
         ]
       }
     },
     {
       "no": 2,
-      "title": "통솔 판 — 통솔 영향(동탁이 매 턴 통솔을 깎아 같은 전법이 다른 통솔에서 반복)·병기 계수",
-      "formation": "기형진",
-      "units": [
-        [
-          "동탁",
-          [
-            "파죽지세",
-            "견고한 방어"
-          ],
-          "왕신"
-        ],
-        [
-          "황개",
-          [
-            "지혜의 바람",
-            "듬직한 자태"
-          ]
-        ],
-        [
-          "우금",
-          [
-            "측면 공격",
-            "전력 지원"
-          ]
-        ]
-      ],
-      "deck": {
-        "formation": "기형진",
-        "units": [
-          {
-            "generalId": "dong-zhuo",
-            "skillIds": [
-              "break-through",
-              "stone-wall"
-            ],
-            "manualId": "m-dong-zhuo-1"
-          },
-          {
-            "generalId": "huang-gai",
-            "skillIds": [
-              "spring-breeze",
-              "valiant-form"
-            ],
-            "manualId": "none"
-          },
-          {
-            "generalId": "yu-jin",
-            "skillIds": [
-              "swift-flank",
-              "support-selfless"
-            ],
-            "manualId": "none"
-          }
-        ]
-      }
-    },
-    {
-      "no": 3,
-      "title": "탱커 판 — 주태 불굴의 의지·역전, 난공불락, 전열 피격률",
+      "title": "탱커·지속 판",
       "formation": "기형진",
       "units": [
         [
@@ -148,6 +106,13 @@
           ],
           "한녀전"
         ]
+      ],
+      "checks": [
+        "주태 불굴의 의지 대신 받기 피해·통솔 영향, 역전",
+        "하후돈〈위협〉 \"효과 N% 증가\"가 덧셈인지 곱셈인지 (툴팁 수치)",
+        "인재 기용 확정 회심 +40% → 회심 배율 (1.5 + 0.4) 확인",
+        "위협·조롱 2턴이 걸린 무장의 행동 몇 번 동안 남는지 (R-025)",
+        "맹렬한 화염·허실 간파·금성의 철벽·병력 강화·황심의 가호 원문 실행"
       ],
       "deck": {
         "formation": "기형진",
@@ -180,63 +145,342 @@
       }
     },
     {
-      "no": 4,
-      "title": "S2 신규 전법 판 — 한국판 수치·선봉정신·화소연영·지력 영향(전략 계획)",
+      "no": 3,
+      "title": "회복·흡혈 판",
       "formation": "기형진",
       "units": [
         [
-          "악진",
+          "조조",
           [
             "일심협력",
-            "기민한 전술"
-          ]
-        ],
-        [
-          "육손",
-          [
-            "전략 계획",
-            "틈새 공략"
+            "강철의 의지"
           ],
-          "분량"
+          "맹덕신서 하권"
         ],
         [
           "초선",
           [
-            "퇴로 매복",
-            "원문사극"
+            "천하평론",
+            "팔방전"
           ],
           "상련"
+        ],
+        [
+          "등애",
+          [
+            "전력 지원",
+            "보급 차단"
+          ],
+          null
         ]
+      ],
+      "checks": [
+        "일심협력·전력 지원 \"지력과 통솔의 영향\" 가중치 — 회복량 + 시전자 지력·통솔 툴팁",
+        "흡혈: 조조 회유·심리 공격, 강철의 의지 회유 20% 회복량",
+        "등애 고유 받는 회복 누적 증가 → 받는 회복 증감 합산 방식",
+        "초선〈상련〉 \"턴 종료 시 1턴 동안\" 지속",
+        "조조 난세의 간웅 0턴 수치(지력 영향 계수), 맹덕신서 하권"
       ],
       "deck": {
         "formation": "기형진",
         "units": [
           {
-            "generalId": "yue-jin",
+            "generalId": "cao-cao",
             "skillIds": [
               "same-boat",
+              "no-hardship"
+            ],
+            "manualId": "m-cao-cao-2"
+          },
+          {
+            "generalId": "diao-chan",
+            "skillIds": [
+              "direct-world",
+              "all-directions"
+            ],
+            "manualId": "m-diao-chan-1"
+          },
+          {
+            "generalId": "deng-ai",
+            "skillIds": [
+              "support-selfless",
+              "supply-cut"
+            ],
+            "manualId": "none"
+          }
+        ]
+      }
+    },
+    {
+      "no": 4,
+      "title": "병기·추격 판",
+      "formation": "기형진",
+      "units": [
+        [
+          "관우",
+          [
+            "퇴로 매복",
+            "기민한 전술"
+          ],
+          null
+        ],
+        [
+          "마초",
+          [
+            "준비 완료",
+            "천군 소탕"
+          ],
+          "마술"
+        ],
+        [
+          "손견",
+          [
+            "원문사극",
+            "철기병 돌격"
+          ],
+          "무열"
+        ]
+      ],
+      "checks": [
+        "관우 탈주병 고정 피해 공식 (무력 × 2.4 − 330)",
+        "준비 완료 주는 피해 누적 → 주는 피해 +100% 상한(툴팁이 100%를 넘을 때 피해가 계속 느는지)",
+        "원문사극·천군 소탕(상한 없는 추격) 평타당 발동",
+        "마초〈마술〉·손견〈무열〉·퇴로 매복·기민한 전술 원문 실행",
+        "병기 계수 역재현 표본"
+      ],
+      "deck": {
+        "formation": "기형진",
+        "units": [
+          {
+            "generalId": "guan-yu",
+            "skillIds": [
+              "ambushes",
               "charge-change"
             ],
             "manualId": "none"
           },
           {
-            "generalId": "lu-xun",
+            "generalId": "ma-chao",
             "skillIds": [
-              "strategize",
-              "strike-gap"
+              "ready",
+              "sweep-army"
             ],
-            "manualId": "m-lu-xun-1"
+            "manualId": "m-ma-chao-2"
           },
           {
-            "generalId": "diao-chan",
+            "generalId": "sun-jian",
             "skillIds": [
-              "ambushes",
-              "gate-halberd"
+              "gate-halberd",
+              "iron-cavalry"
             ],
-            "manualId": "m-diao-chan-1"
+            "manualId": "m-sun-jian-1"
           }
         ]
       }
+    },
+    {
+      "no": 5,
+      "title": "선공·순서 판",
+      "formation": "기형진",
+      "units": [
+        [
+          "장료",
+          [
+            "틈새 공략",
+            "천리기습"
+          ],
+          null
+        ],
+        [
+          "악진",
+          [
+            "문과 무",
+            "도광양회"
+          ],
+          null
+        ],
+        [
+          "하후연",
+          [
+            "신속전개",
+            "투혼의추격"
+          ],
+          "신속"
+        ]
+      ],
+      "checks": [
+        "같은 편끼리 선공 차 40 이내일 때 매 턴 행동 순서가 뒤바뀌는지 (R-022 선공 ±35)",
+        "틈새 공략 혼란 대상 행동",
+        "장료 바람방랑자·악진 선봉정신·하후연〈신속〉 원문 실행"
+      ],
+      "deck": {
+        "formation": "기형진",
+        "units": [
+          {
+            "generalId": "zhang-liao",
+            "skillIds": [
+              "strike-gap",
+              "thousand-raid"
+            ],
+            "manualId": "none"
+          },
+          {
+            "generalId": "yue-jin",
+            "skillIds": [
+              "civil-martial",
+              "hide-light"
+            ],
+            "manualId": "none"
+          },
+          {
+            "generalId": "xiahou-yuan",
+            "skillIds": [
+              "speed-first",
+              "relentless-chase"
+            ],
+            "manualId": "m-xiahou-yuan-1"
+          }
+        ]
+      }
+    },
+    {
+      "no": 6,
+      "title": "책사 지원 판",
+      "formation": "기형진",
+      "units": [
+        [
+          "방통",
+          [
+            "청천벽력",
+            "속수무책"
+          ],
+          null
+        ],
+        [
+          "전풍",
+          [
+            "양책 수립",
+            "청야 전술"
+          ],
+          null
+        ],
+        [
+          "공손찬",
+          [
+            "순간 돌습",
+            "민중 봉기"
+          ],
+          null
+        ]
+      ],
+      "checks": [
+        "방통 연환계·전풍 지략 방어·공손찬 국경의 장수 원문 실행",
+        "피해 난수 폭(같은 조건 반복 피해 비교)"
+      ],
+      "deck": {
+        "formation": "기형진",
+        "units": [
+          {
+            "generalId": "pang-tong",
+            "skillIds": [
+              "five-thunder",
+              "helpless"
+            ],
+            "manualId": "none"
+          },
+          {
+            "generalId": "tian-feng",
+            "skillIds": [
+              "good-plan",
+              "clear-fields"
+            ],
+            "manualId": "none"
+          },
+          {
+            "generalId": "gongsun-zan",
+            "skillIds": [
+              "battlefield-raid",
+              "raise-banner"
+            ],
+            "manualId": "none"
+          }
+        ]
+      }
+    },
+    {
+      "no": 7,
+      "title": "통솔 판",
+      "formation": "기형진",
+      "units": [
+        [
+          "추씨",
+          [
+            "지혜의 바람",
+            "듬직한 자태"
+          ],
+          "세속"
+        ],
+        [
+          "손책",
+          [
+            "압도적 승리",
+            "찬란한 위명"
+          ],
+          "무구"
+        ],
+        [
+          "동탁",
+          [
+            "파죽지세",
+            "견고한 방어"
+          ],
+          null
+        ]
+      ],
+      "checks": [
+        "동탁 압도적 권력이 매 턴 통솔을 깎는 동안 파죽지세 전체 피해 → 통솔 계수(Pd 0.6 vs 1.0 충돌) 대상 비교 표본",
+        "추씨〈세속〉·손책〈무구〉 원문 실행"
+      ],
+      "deck": {
+        "formation": "기형진",
+        "units": [
+          {
+            "generalId": "zou-shi",
+            "skillIds": [
+              "spring-breeze",
+              "valiant-form"
+            ],
+            "manualId": "m-zou-shi-1"
+          },
+          {
+            "generalId": "sun-ce",
+            "skillIds": [
+              "take-banner",
+              "famous"
+            ],
+            "manualId": "m-sun-ce-2"
+          },
+          {
+            "generalId": "dong-zhuo",
+            "skillIds": [
+              "break-through",
+              "stone-wall"
+            ],
+            "manualId": "none"
+          }
+        ]
+      }
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-03",
+      "battles": [
+        "지력 판 — 책략 계수·지력 영향·회복 공식",
+        "통솔 판 — 통솔 영향(동탁이 매 턴 통솔을 깎아 같은 전법이 다른 통솔에서 반복)·병기 계수",
+        "탱커 판 — 주태 불굴의 의지·역전, 난공불락, 전열 피격률",
+        "S2 신규 전법 판 — 한국판 수치·선봉정신·화소연영·지력 영향(전략 계획)"
+      ]
     }
   ]
 }
