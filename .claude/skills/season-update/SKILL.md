@@ -23,12 +23,19 @@ description: 천하결전 시뮬레이터에 새 시즌·무장·전법·밸런�
 - 전법: 유형(지휘/패시브/액티브/추격), 특성, 10레벨 발동 확률, 10레벨 원문.
 - 해외 자료만 있으면 `overseas_lookup` + `term_normalize` 로 한국판 용어로 바꾸고 출처를 남긴다. 한국판 원문이 나오면 덮어쓴다.
 
-## 3. 전투 엔진에 반영 (핵심)
-1. 원문을 절로 나눠 기존 효과 형식으로 표현할 수 있는지 본다 (`data/engine/authored.json` 의 예: 트리거·parts·grants·statusFirst·selfStack).
-2. 없는 메커니즘이면 `packages/engine/src/legacy/core.js` 에 일반화된 기능으로 추가하고 `ENGINE_FIXES` 에 FEAT-번호로 남긴다. 특정 전법 이름으로 분기하지 않는다.
-3. 정의를 `authored.json`(새 전법), `overrides.json`(기존 수정), `manuals.json`(금병법)에 쓴다. 원문대로가 아니면 `status: approx` + `note` → 검증 대기 목록에 자동으로 들어간다.
-4. 확인: `pnpm test` → MCP `audit_skill <전법>` → 필요하면 `sim_battle` 로 전보를 읽어 본다 → `pnpm audit`.
-5. 감사가 찾은 문제(시점·확률·대상 수·효과·레벨 보간)는 오탐인지 엔진 문제인지 전보로 확인한 뒤 고친다.
+## 3. 전투 엔진에 반영 (핵심) — 전법 = 함수 파일
+전법·고유 전법은 하나에 파일 하나: `packages/engine/src/skills/<id>.ts` (**파일이 정본**). 공용 규칙은 `docs/COMMON_RULES.md`·`data/common/confirmed-rules.json`.
+1. **새 전법**: 데이터(`data/kr`·시즌 층·`data/patches`)에 원문이 들어간 뒤 `pnpm gen:skills` → 함수 파일이 없는 전법만 뼈대가 생긴다
+   (JSON 원천 `data/engine/authored.json`·`skills.json`·`overrides.json` 에 정의가 있으면 그걸로, 없으면 `def: null`).
+2. **원문 순서대로 run(c) 작성**: 절마다 원문을 `// 「…」` 주석으로 달고 부품을 부른다.
+   - 부품: `c.damage` `c.heal` `c.buff` `c.status` `c.statMod` `c.dispel` `c.grant` `c.guard` · 대상 `c.targets(코드)` `c.tag(이름, 무장[])` → 항목 `target: 'tag:이름'` · `c.has` `c.chance` `c.stat` `c.pick` `c.friendsOf` `c.enemiesOf` `c.eventCtx`(트리거 사건).
+   - 항목 형식은 `types.ts` 와 기존 파일 참고(조건 `condition`, 확률 `chance`/`chanceOnce`, 턴 조건 `turnCond`, 지속 `duration`/`untilTurnEnd`, 중첩 `maxStacks`, 스탯 영향 `inf`, 조건 배수 `conditionalBonusMult` 등).
+   - 발동 시점·트리거·부속 효과는 `def` 의 `_timing`·`trigger`·`parts` 로. 확률이 대상 앞이면 1회 판정(R-021), '랜덤 N명'은 균등(R-020), 한 절의 대상은 공유(R-044).
+3. **고칠 때**: 수정안 JSON(`{ id: { note, set, unset, clauses, run } }`)을 만들어 `pnpm skill:revise <수정안.json>` → 파일이 다시 쓰이고 `revised` 에 날짜·사유가 쌓인다. 손으로 파일을 고쳐도 되지만 `revised` 는 꼭 남긴다.
+4. 없는 메커니즘이면 `core.js` 에 **일반화된 부품**으로 추가하고 `ENGINE_FIXES` 에 FEAT-번호로. 특정 전법 이름으로 분기하지 않는다. 함수 API 에 새 부품을 노출하면 `types.ts`(SkillApi)도 갱신.
+5. 원문대로가 아니면 해당 절 `status: 'approx'` + 검증 대기(`data/verification/engine-assumptions.json`)에 해석을 남긴다.
+6. 확인: `pnpm test`(전법 함수 구조·동등성 포함) → `pnpm audit` → MCP `sim_battle` 로 전보를 읽어 본다. 감사 문제는 오탐인지 엔진 문제인지 전보로 확인한 뒤 고친다.
+7. 금병법은 아직 `data/engine/manuals.json`(함수화 예정).
 
 ## 4. 게시판
 MCP `board_post` (분류: 신규 무장/신규 전법/밸런스 조정/티어덱/전투 규칙/데이터 수정/엔진/기타). 본문에 무엇이 바뀌었는지, 근사·미지원 항목, 감사 결과를 적는다. `files` 는 생략하면 미커밋 변경 파일이 자동으로 들어간다. 커밋 후에는 해당 글에 `commit` 을 채운다.

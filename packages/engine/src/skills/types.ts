@@ -38,6 +38,14 @@ export interface SkillApi {
   chance(p: number): boolean;
   /** 상태 감소까지 반영한 현재 스탯 */
   stat(u: any, key: '무력' | '지력' | '통솔' | '선공'): number;
+  /** 대상 묶기: c.tag('main', 무장[]) 후 효과 항목에 target: 'tag:main' (같은 절의 여러 효과가 같은 대상을 쓰게) */
+  tag(name: string, units: any[]): any[];
+  tagged(name: string): any[];
+  /** 배열에서 하나 무작위(시드 난수) */
+  pick<T>(arr: T[]): T | null;
+  /** 그 무장의 생존 우군(자신 제외) / 생존 적군 */
+  friendsOf(u: any): any[];
+  enemiesOf(u: any): any[];
 }
 
 export interface SkillClause {

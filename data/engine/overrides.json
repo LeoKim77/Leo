@@ -1,5 +1,5 @@
 {
-  "note": "엔진 효과 정의(data/engine/skills.json, v1.12b 에서 자동 변환)에 덮어쓰는 검수된 수정. import-legacy 를 다시 돌려도 유지된다. set 의 키는 점(.)으로 구분한 경로.",
+  "note": "[2026-10-04 이후] 전법 정의의 정본은 packages/engine/src/skills/<id>.ts 함수 파일이다. 이 파일은 함수 파일을 처음 만들 때(pnpm gen:skills)만 쓰이는 원천 — 여기를 고쳐도 이미 있는 함수 파일에는 반영되지 않는다. 수정은 pnpm skill:revise 로. (예전 설명: 엔진 효과 정의(data/engine/skills.json, v1.12b 에서 자동 변환)에 덮어쓰는 검수된 수정. import-legacy 를 다시 돌려도 유지된다. set 의 키는 점(.)으로 구분한 경로.)",
   "skills": {
     "flood-seven": {
       "date": "2026-10-02",
