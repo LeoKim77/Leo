@@ -38,6 +38,8 @@ export const ENGINE_FIXES = [
     detail: '트리거 연쇄는 모두 발동하되 자기 효과로 자기 재발동만 금지(초선차전 → 초선차전 X). 턴당 횟수는 원문 상한(초선차전 5·기지의 승리 4 등)만, 상한 없는 트리거는 확률만(예전 기본 1회 폐기). 디버프 제거는 먼저 걸린 것부터(원문이 제어 우선이면 controlFirst). 반격 피해는 전법이 피해율을 주면 그 값(mods.반격배율), 없으면 50%.' },
   { id: 'FIX-012', date: '2026-10-04', found: '전보 캡처 (충신의 기재 4스택, 2026-10-04)', title: '중첩 효과 선입선출',
     detail: '스택마다 지속을 따로 갖고 먼저 쌓인 것부터 만료된다. 상한(N중첩)에서 또 발동하면 가장 오래된 스택을 빼고 새 스택을 넣는다(수치 그대로, "N스택 중첩됐습니다" 표기). 예전엔 상한에서 맨 앞 스택만 제자리 갱신해, 다음 발동 때도 같은(이미 가장 새로운) 스택을 다시 갱신하는 문제가 있었다.' },
+  { id: 'FEAT-023', date: '2026-10-04', found: '사용자 요청 (전법별 함수화)', title: '전법 함수 구조',
+    detail: '전법 하나 = 파일 하나(packages/engine/src/skills/<id>.ts, 194개). 파일의 run(c)이 공용 부품(c.damage·c.heal·c.buff·c.status·c.statMod·c.dispel·c.grant·c.guard·c.targets·c.chance)을 원문 순서대로 부른다. 효과 해석기를 부품 함수로 나눴고, 함수 실행 = 예전 고정 순서 실행(티어덱 3,422판 전보 동일). 파일이 정본 — JSON 원천은 생성용(pnpm gen:skills).' },
   { id: 'FEAT-022', date: '2026-10-04', found: '공용 규칙 R-042 (사용자 확인)', title: '짐독 피해 = 부여 시점 스냅샷',
     detail: '짐독 상태에 부여 시점 시전자 지력·병력을 기록해, 매 턴 피해를 그 값으로 계산한다. 예전엔 매 턴 시전자의 현재 스탯을 써서, 시전자가 전사하면 병력 0 기준(피해 약 60% 감소)으로 줄어들었다.' },
   { id: 'FEAT-018', date: '2026-10-04', found: '공용 규칙 R-022·R-023·R-024 (사용자 제공 자료)', title: '행동 순서 = 선공 + 난수 ±35 전체 정렬, 준비 단계는 배치 순',
@@ -1092,10 +1094,10 @@ function applySkillEffects(unit, skill, allUnits, coeffs, log, turn, contrib, ev
   __skillStack.push(skill.id); __castStack.push(unit.id + ':' + skill.id);
   __invStack.push(__inv);
   try {
-    if (skill.statusFirst && skill.effects && (skill.effects.statusEffects || []).length) {   // FEAT-002
+    if (skill.statusFirst && !skill.run && skill.effects && (skill.effects.statusEffects || []).length) {   // FEAT-002
       const eff = skill.effects;
-      __applySkillEffectsImpl(unit, { ...skill, effects: { targets: eff.targets, statusEffects: eff.statusEffects } }, allUnits, coeffs, log, turn, contrib, eventCtx, true);
-      return __applySkillEffectsImpl(unit, { ...skill, effects: { ...eff, statusEffects: [] } }, allUnits, coeffs, log, turn, contrib, eventCtx);
+      __applySkillEffectsImpl(unit, { ...skill, run: null, effects: { targets: eff.targets, statusEffects: eff.statusEffects } }, allUnits, coeffs, log, turn, contrib, eventCtx, true);
+      return __applySkillEffectsImpl(unit, { ...skill, run: null, effects: { ...eff, statusEffects: [] } }, allUnits, coeffs, log, turn, contrib, eventCtx);
     }
     return __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contrib, eventCtx);
   }
@@ -1146,7 +1148,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     return null;
   }
 
-  (eff.statMods || []).forEach(sm => {
+  const doStatMod = sm => {
     let targets;
     if (sm.target === 'self') targets = [unit];
     else if (sm.target && resolveSpecial(sm.target)) targets = resolveSpecial(sm.target);
@@ -1186,10 +1188,10 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         log.push(`${turn}턴:   [${t.name}]의 【${sk}】이(가) ${Math.abs(amt).toFixed(2)}(${(t.stats[sk]||0).toFixed(2)}) ${amt >= 0 ? '증가' : '감소'}했습니다.`);
       }
     });
-  });
+  };
 
   // statMods를 먼저 처리(자기 스탯 강화 후 그 스탯으로 데미지 계산하는 전법들 — 하후연 신속기습 등)
-  (eff.damage || []).forEach(d => {
+  const doDamage = d => {
     // 지시형 문장("무력이 가장 높은 아군이 적에게 피해를 준다") 대응:
     // d.actor가 있으면 그 아군이 실제 공격자(자신의 스탯으로 계산), 없으면 시전자 본인이 공격자.
     const attacker = d.actor && d.actor !== 'self' ? (selectTargets(unit, [d.actor], allUnits, true)[0] || unit) : unit;
@@ -1341,9 +1343,9 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         log.push(`${turn}턴:   [${backTarget.name}]의 병력이 ${back.dmg}(${backTarget.troops}) 손실됐습니다.`);
       }
     });
-  });
+  };
 
-  (eff.heal || []).forEach(h => {
+  const doHeal = h => {
     if (h.turnCond && !turnMatches(h.turnCond, turn)) return;
     const healer = h.actor && h.actor !== 'self' ? (selectTargets(unit, [h.actor], allUnits, true)[0] || unit) : unit;
     let targets;
@@ -1387,9 +1389,9 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       }
       log.push(`${turn}턴:   [${t.name}]이(가) 병력을 ${healed}(${t.troops}) 회복했습니다.`);
     });
-  });
+  };
 
-  (eff.buffs || []).forEach(b => {
+  const doBuff = b => {
     if (b.turnCond && !turnMatches(b.turnCond, turn)) return;
     if (b.chanceAll != null && __rng() >= b.chanceAll) return;   // FEAT-017 효과 전체에 한 번 판정 ("N% 확률로 ~ 2~3명의 …")
     let targets;
@@ -1461,11 +1463,11 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         log.push(`${turn}턴:   [${t.name}]의 【${key}】이(가) ${pct(Math.abs(amt))}(${pct(t.mods[key])}) ${amt >= 0 ? '증가' : '감소'}했습니다.`);
       }
     });
-  });
+  };
 
   // 디버프 제거(dispel): "디버프 상태 N가지를 제거" 유형. 제어/비제어 이상상태를 앞에서부터 N개 걷어낸다.
   // (기능성 버프인 방어·피신 등은 디버프가 아니므로 제거 대상에서 제외)
-  (eff.dispel || []).forEach(dp => {
+  const doDispel = dp => {
     let targets = dp.target === 'self' ? [unit]
       : (resolveSpecial(dp.target) || selectTargets(unit, [dp.target], allUnits));
     targets.forEach(t => {
@@ -1479,9 +1481,9 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       }
       if (removed && log) log.push(`${turn}턴:   [${t.name}]의 디버프 ${removed}가지가 제거되었습니다.`);
     });
-  });
+  };
 
-  (eff.statusEffects || []).forEach(entry => {
+  const doStatus = entry => {
     // oneOf: "A 또는 B 중 한 가지를 부여한다" — 둘 다 걸면 과대평가되므로 매 시전 시 하나만 무작위 선택
     if (entry && entry.oneOf) {
       entry = { ...entry, name: pick(entry.oneOf) };
@@ -1544,10 +1546,10 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         emitDebuffEvent({ caster: unit, target: t, abnormal: true, statusName: se.name }, allUnits, coeffs, log, turn, contrib);
       }
     });
-  });
+  };
 
   // FEAT-003 효과 부여: "~가 결사 획득: 행동 전 …" 처럼 받은 무장이 직접 발동하는 효과
-  (eff.grants || []).forEach(g => {
+  const doGrant = g => {
     let targets;
     if (g.target === 'self') targets = [unit];
     else if (g.target && resolveSpecial(g.target)) targets = resolveSpecial(g.target);
@@ -1562,10 +1564,11 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       log.push(`${turn}턴:   [${t.name}]이(가) 「${g.key}」을(를) 획득했습니다. — ${unit.name}의 【${skill.name}】`);
       __T({ e: 'status', src: unit.id, dst: t.id, status: g.key, dur: g.duration || 999, refreshed: false, skill: skill.id });
     });
-  });
+  };
 
   // FEAT-007 보호 상태 부여: 보호자가 다음에 행동을 마칠 때까지 우군을 보호한다
-  if (eff.guardAllies) {
+  const doGuard = () => {
+    if (!eff.guardAllies) return;
     const cfg = eff.guardAllies;
     unit._allies = allUnits.filter(a => a.side === unit.side);
     if (cfg.unyielding && !unit._unyielding) unit._unyielding = { decay: cfg.unyielding.decay, n: 0, skill: skill.id };
@@ -1576,6 +1579,36 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       __T({ e: 'status', src: unit.id, dst: a.id, status: skill.name, dur: 1, refreshed: false, skill: skill.id });
     });
     unit._guarding = true;
+  };
+  // 전법 함수(packages/engine/src/skills/<id>.ts)가 있으면 그 함수가 부품을 원문 순서대로 호출한다.
+  //   없으면(부여 효과·상시 효과 등 내부 생성 전법) 예전처럼 고정 순서로 실행한다.
+  const itemOf = (list, x) => (typeof x === 'number' ? (list || [])[x] : x);
+  if (typeof skill.run === 'function') {
+    const api = {
+      unit, skill, turn, allUnits, eventCtx, log,
+      statMod: x => doStatMod(itemOf(eff.statMods, x)),
+      damage: x => doDamage(itemOf(eff.damage, x)),
+      heal: x => doHeal(itemOf(eff.heal, x)),
+      buff: x => doBuff(itemOf(eff.buffs, x)),
+      dispel: x => doDispel(itemOf(eff.dispel, x)),
+      status: x => doStatus(itemOf(eff.statusEffects, x)),
+      grant: x => doGrant(itemOf(eff.grants, x)),
+      guard: () => doGuard(),
+      targets: code => selectTargets(unit, [code], allUnits),
+      has: (u, name) => hasStatus(u, name),
+      chance: p => __rng() < p,
+      stat: (u, k) => effStat(u, k),
+    };
+    skill.run(api);
+  } else {
+    (eff.statMods || []).forEach(doStatMod);
+    (eff.damage || []).forEach(doDamage);
+    (eff.heal || []).forEach(doHeal);
+    (eff.buffs || []).forEach(doBuff);
+    (eff.dispel || []).forEach(doDispel);
+    (eff.statusEffects || []).forEach(doStatus);
+    (eff.grants || []).forEach(doGrant);
+    doGuard();
   }
   if (!(skill.id in contrib)) contrib[skill.id] = 0;
   contrib[skill.id] += value;
@@ -1830,7 +1863,7 @@ function applyAlwaysOnOnce(unit, allUnits, coeffs, log, turn, contrib) {
   unit.skills.forEach(skill => {
     if (!skill.trigger || !skill.alwaysOnBuffs || unit._alwaysOnDone[skill.id]) return;
     unit._alwaysOnDone[skill.id] = true;
-    applySkillEffects(unit, { ...skill, effects: { damage: [], heal: [], statMods: [], statusEffects: [], targets: ['self'], buffs: skill.alwaysOnBuffs.map(b => ({ ...b, duration: b.duration != null ? b.duration : 999 })) } },
+    applySkillEffects(unit, { ...skill, run: null, effects: { damage: [], heal: [], statMods: [], statusEffects: [], targets: ['self'], buffs: skill.alwaysOnBuffs.map(b => ({ ...b, duration: b.duration != null ? b.duration : 999 })) } },
       allUnits, coeffs, log, turn, contrib);
   });
 }

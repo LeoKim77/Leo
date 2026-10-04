@@ -1,0 +1,111 @@
+// 흥왕의 위업 · 고유 전법 · 지휘 100%
+// 원문: 전체 우군에게 병기 피해를 준 후, 60% 확률로 병력을 회복한다(치유율 40%, 지력과 통솔의 영향 받음). 책략 피해를 준 후, 60% 확률로 2턴 동안 받는 피해가 14% 감소하며, 2회 중첩될 수 있다.
+// 원문 절 구현: ok / ok / note
+import { defineSkill } from './types.ts';
+
+export default defineSkill({
+  id: "u-cheng-pu",
+  name: "흥왕의 위업",
+  kind: "지휘",
+  isUnique: true,
+  clauses: [
+    {
+      "text": "전체 우군에게 병기 피해를 준 후, 60% 확률로 병력을 회복한다(치유율 40%, 지력과 통솔의 영향 받음)",
+      "status": "ok",
+      "impl": [
+        "heal[0]"
+      ]
+    },
+    {
+      "text": "책략 피해를 준 후, 60% 확률로 2턴 동안 받는 피해가 14% 감소하며",
+      "status": "ok",
+      "impl": [
+        "buffs[0]"
+      ]
+    },
+    {
+      "text": "2회 중첩될 수 있다",
+      "status": "note"
+    }
+  ],
+  def: {
+    "legacyId": "uskill_47",
+    "legacyName": "흥왕의 위업",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전체 아군에게 병기 피해를 준 후, 60% 확률로 병력을 회복한다(치유율 20%→40%, 지력과 통솔의 영향 받음). 책략 피해를 준 후, 60% 확률로 2턴 동안 받는 피해가 7%→14% 감소하며, 2회 중첩될 수 있다.",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.2,
+          "max": 0.4,
+          "chance": 0.6
+        }
+      ],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.07,
+          "max": -0.14,
+          "duration": 2,
+          "maxStacks": 2,
+          "chance": 0.6
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "all_ally"
+      ],
+      "statusEffects": []
+    },
+    "chanceFixed": true,
+    "clauses": [
+      {
+        "text": "전체 아군에게 병기 피해를 준 후",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "60% 확률로 병력을 회복한다(치유율 20%→40%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력과 통솔의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "책략 피해를 준 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "60% 확률로 2턴 동안 받는 피해가 7%→14% 감소",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2회 중첩될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ],
+    "trigger": {
+      "event": "damage",
+      "role": "ally_dealt",
+      "chance": 0.6
+    }
+  },
+  run(c) {
+    // 「전체 우군에게 병기 피해를 준 후, 60% 확률로 병력을 회복한다(치유율 40%, 지력과 통솔의 영향 받음)」
+    c.heal(0);   // 치유율 20%→40%, 확률 60%
+    // 「책략 피해를 준 후, 60% 확률로 2턴 동안 받는 피해가 14% 감소하며」
+    c.buff(0);   // 받는피해 -7%→-14%, 확률 60%, 2턴, 최대 2중첩
+  },
+});

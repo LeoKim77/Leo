@@ -1,5 +1,6 @@
 // 전투 시뮬레이터 공개 API.
 // GameBundle(한국판 데이터 + 엔진 정의) → v1.12b 엔진 형식으로 바꿔 실행한다.
+import { SKILL_MODULES } from './skills/index.ts';
 import { createLegacyEngine } from './legacy/core.js';
 import { createRng } from './rng.ts';
 import type { GameBundle, General, Skill, Manual } from './model.ts';
@@ -44,6 +45,8 @@ export interface TraceEvent {
 }
 
 export interface SimOptions {
+  /** 전법 함수를 쓰지 않고 예전 고정 순서 해석기로 실행(동등성 검사용) */
+  noSkillFns?: boolean;
   /** 무장 스탯 출처: 한국 DB 엑셀(기본) 또는 v1.12b 보정 실험 당시 값 */
   statsSource?: 'kr' | 'legacy';
   skillLevel?: number;
@@ -106,6 +109,8 @@ export function toLegacyGameData(bundle: GameBundle & { engineGenerals?: Record<
       procRate: s.procRateText || eng.legacyProcRate || '100%',
       raw: eng.raw || s.text,
       effects: eng.effects || { damage: [], heal: [], buffs: [], statMods: [], statusEffects: [], targets: [] },
+      // 전법 함수(packages/engine/src/skills/<id>.ts) — 엔진이 효과 실행 순서를 이 함수에 맡긴다
+      run: opts.noSkillFns ? undefined : SKILL_MODULES[s.id]?.run,
       isUnique: s.isUnique,
       usedByGeneral: owner ? owner.name.ko : null,
     };
@@ -203,7 +208,8 @@ export class Simulator {
       const eng = manual?.engine;
       // 금병법이 고유 전법을 고치면 이 무장에게만 사본을 만들어 적용한다
       if (uskill && eng?.uniquePatch) {
-        uskill = structuredClone(uskill);
+        const run = (uskill as any).run;
+        uskill = { ...structuredClone({ ...uskill, run: undefined }), run };   // 함수는 복제하지 않고 그대로 붙인다
         for (const [path, v] of Object.entries(eng.uniquePatch)) if (path !== '_keepTiming') setPath(uskill, path, v);
         if (!eng.uniquePatch._keepTiming) delete uskill._timing;
       }

@@ -3,6 +3,7 @@ import { readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { DATA, KR, readJson } from './paths.ts';
 import type { GameBundle, Skill, Clause, Formation, ChangelogEntry, SeasonInfo } from '../../engine/src/model.ts';
+import { SKILL_MODULES } from '../../engine/src/skills/index.ts';
 
 // ---------- 절 분해 ----------
 // 괄호 안의 쉼표·마침표에서는 자르지 않는다. "전투 시작 시," 같은 짧은 시점 문구는 뒤 절에 붙인다.
@@ -45,7 +46,7 @@ function dice(a: string, b: string) {
   return (2 * n) / (A.size + B.size);
 }
 
-const STATUS_MAP: Record<string, Clause['status']> = { ok: 'ok', NOTE: 'note', MISSING: 'missing', special: 'special' };
+const STATUS_MAP: Record<string, Clause['status']> = { ok: 'ok', NOTE: 'note', MISSING: 'missing', special: 'special', approx: 'approx', note: 'note', missing: 'missing' };
 
 /** 한국판 원문 절마다 v1.12b 절 분석 결과(구현 여부)를 가장 비슷한 절에서 이어받는다 */
 export function buildClauses(text: string, legacyClauses?: Array<{ text: string; impl: string[]; status: string }>): Clause[] {
@@ -147,7 +148,8 @@ export function withSeasonLayers<T extends { id: string }>(base: T[], file: 'gen
   return out;
 }
 
-export function buildBundle(): FullBundle {
+/** fromJson: 전법 함수 파일을 무시하고 JSON 원천(skills.json·overrides·authored)으로만 정의를 만든다 — 함수 파일 생성용 */
+export function buildBundle(opts: { fromJson?: boolean } = {}): FullBundle {
   const seasonsFile = readJson<{ current: string; seasons: SeasonInfo[] }>(join(DATA, 'common', 'seasons.json'));
   const generals = applyPatches('generals', withSeasonLayers(readJson<any[]>(join(KR, 'generals.json')), 'generals'));
   const skills = applyPatches('skills', withSeasonLayers(readJson<Skill[]>(join(KR, 'skills.json')), 'skills'));
@@ -174,6 +176,19 @@ export function buildBundle(): FullBundle {
   const authored = readJson<any>(join(DATA, 'engine', 'authored.json'), { skills: {} }).skills;
   const clauseReview = readJson<any>(join(DATA, 'engine', 'clause-review.json'), { skills: {} }).skills;
   for (const s of skills) {
+    // 전법 함수 파일(packages/engine/src/skills/<id>.ts)이 있으면 그것이 정본이다 — 정의·원문 절 구현 상태 모두 파일에서
+    const mod = opts.fromJson ? undefined : SKILL_MODULES[s.id];
+    if (mod) {
+      if (mod.def) s.engine = { ...mod.def, fn: true } as any;
+      if (mod.engineStatus) (s as any).engineStatus = mod.engineStatus;
+      // 원문 절은 파일의 같은 문장을 그대로 쓰고, 원문이 바뀌어 같은 문장이 없을 때만 가장 비슷한 절에서 이어받는다
+      const fuzzy = buildClauses(s.text, mod.clauses.map(c => ({ text: c.text, impl: c.impl || [], status: c.status })));
+      s.clauses = fuzzy.map(c => {
+        const m = mod.clauses.find(x => x.text === c.text);
+        return m ? { idx: c.idx, text: c.text, status: m.status, ...(m.impl?.length ? { impl: m.impl } : {}), ...(m.reviewed ? { reviewed: m.reviewed } : {}) } : c;
+      });
+      continue;
+    }
     let eng = engSkills[s.id];
     // 직접 작성한 정의: v1.12b 에 없는 전법, 또는 replace=true 로 v1.12b 정의를 대체
     const au = authored[s.id] && (!eng || authored[s.id].replace) ? authored[s.id] : undefined;
