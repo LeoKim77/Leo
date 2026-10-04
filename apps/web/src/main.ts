@@ -1,6 +1,6 @@
 import './styles.css';
 import { h, select } from './dom.ts';
-import { app, loadData } from './state.ts';
+import { app, loadData, syncUserFromCloud } from './state.ts';
 import { renderBoard } from './views/board.ts';
 import { renderCodex } from './views/codex.ts';
 import { renderTierDecks } from './views/tierdecks.ts';
@@ -44,5 +44,7 @@ async function main() {
   sel.replaceWith(select(b.seasons.map(s => ({ value: s.id, label: `${s.label}${s.status === 'live' ? ' (현재)' : s.status === 'upcoming' ? ' (예정)' : ''}` })), app.season, v => { app.season = v; route(); }, { id: 'season-select' }));
   window.addEventListener('hashchange', route);
   route();
+  // 보유 정보는 아티팩트 데이터베이스에서 불러온다 (휴대폰에서 다시 열어도 유지)
+  syncUserFromCloud().then(changed => { if (changed) route(); });
 }
 main();

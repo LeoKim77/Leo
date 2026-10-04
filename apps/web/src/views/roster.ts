@@ -1,6 +1,6 @@
 // 내가 가진 무장·전법 (브라우저에 저장. 배포 후에는 DB 로 옮긴다)
 import { h, mount } from '../dom.ts';
-import { app, inSeason, loadUser, saveUser } from '../state.ts';
+import { app, inSeason, loadUser, saveUser, userStoreStatus } from '../state.ts';
 
 let msg = '';
 let showText = '';
@@ -36,7 +36,7 @@ export function renderRoster(root: HTMLElement) {
 
   mount(root, 
     h('div', { class: 'section-head' }, h('h2', null, '내 보유 무장·전법'),
-      h('span', { class: 'sub' }, `무장 ${ownG.size}/${generals.length} · 전법 ${ownS.size}/${skills.length} · 이 브라우저에 저장`)),
+      h('span', { class: 'sub' }, `무장 ${ownG.size}/${generals.length} · 전법 ${ownS.size}/${skills.length} · ${userStoreStatus === 'cloud' ? '아티팩트에 저장(다시 열어도 유지)' : userStoreStatus === 'cloud-error' ? '아티팩트 저장 실패 — 이 브라우저에만 저장' : '이 브라우저에 저장'}`)),
     h('div', { class: 'toolbar' }, exportBtn,
       h('button', { class: 'btn small', onclick: () => { showPaste = !showPaste; renderRoster(root); } }, '붙여넣기로 불러오기'),
       h('button', { class: 'btn small', onclick: () => importInput.click() }, '파일에서 불러오기'), importInput,

@@ -17,15 +17,56 @@ export interface UserData {
   ownedSkills: string[];
   decks: Array<DeckSpec & { id: string; savedAt: string }>;
 }
+// 보유 무장·전법·내 덱 저장.
+// claude.ai 아티팩트에서는 휴대폰 앱의 브라우저 저장소가 다시 열 때 비워질 수 있어서,
+// 아티팩트 데이터베이스(db 기능, 문서 user/main)에 저장하고 브라우저 저장소는 보조로만 쓴다.
+const EMPTY_USER: UserData = { ownedGenerals: [], ownedSkills: [], decks: [] };
+let memUser: UserData | null = null;
+let dbDoc: any = null;
+let dbTimer: any = null;
+export let userStoreStatus: 'local' | 'cloud' | 'cloud-error' = 'local';
+
 export function loadUser(): UserData {
+  if (memUser) return structuredClone(memUser);
   try {
     const raw = localStorage.getItem(STORE_KEY);
-    if (raw) return { ownedGenerals: [], ownedSkills: [], decks: [], ...JSON.parse(raw) };
+    if (raw) { memUser = { ...EMPTY_USER, ...JSON.parse(raw) }; return structuredClone(memUser!); }
   } catch { /* 저장소 차단 등 */ }
-  return { ownedGenerals: [], ownedSkills: [], decks: [] };
+  return structuredClone(EMPTY_USER);
 }
 export function saveUser(u: UserData) {
+  memUser = structuredClone(u);
   try { localStorage.setItem(STORE_KEY, JSON.stringify(u)); } catch { /* 무시 */ }
+  if (dbDoc) {
+    clearTimeout(dbTimer);
+    dbTimer = setTimeout(() => {
+      dbDoc.set({ ...memUser, savedAt: new Date().toISOString() })
+        .then(() => { userStoreStatus = 'cloud'; })
+        .catch(() => { userStoreStatus = 'cloud-error'; });
+    }, 400);
+  }
+}
+
+/** 아티팩트 데이터베이스에서 보유 정보를 불러온다. 불러오면 true (화면을 다시 그려야 함) */
+export async function syncUserFromCloud(): Promise<boolean> {
+  const c = (window as any).claude;
+  if (!c?.use) return false;
+  try {
+    const db = await Promise.race([c.use('db'), new Promise(r => setTimeout(() => r(null), 12000))]) as any;
+    if (!db) return false;
+    dbDoc = db.doc('user/main');
+    const snap = await dbDoc.get();
+    userStoreStatus = 'cloud';
+    if (snap.exists) {
+      const d = snap.data() || {};
+      memUser = { ...EMPTY_USER, ownedGenerals: d.ownedGenerals || [], ownedSkills: d.ownedSkills || [], decks: d.decks || [] };
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(memUser)); } catch { /* 무시 */ }
+      return true;
+    }
+    // 클라우드에 아직 없으면 이 기기에 있던 것을 올려 둔다
+    if (memUser || localStorage.getItem(STORE_KEY)) saveUser(loadUser());
+    return false;
+  } catch { userStoreStatus = 'cloud-error'; return false; }
 }
 
 /** 단일 파일 빌드는 데이터를 <script type="application/json" id="…"> 로 품고 있다 */
