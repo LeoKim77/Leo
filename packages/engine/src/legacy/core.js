@@ -36,8 +36,8 @@ export const ENGINE_FIXES = [
     detail: '"자신을 제외한 전체 적군과 우군"(all_except_self), "자신과 랜덤 우군 단일 목표"(self_and_random_ally_1) 대상 추가 — 자신·우군 혼합 대상이 자신에게만 걸리던 4개 전법 수정(허점 공략·강동 제패·정의의 희생·재해 이용). "가장 높은/낮은 ○○"은 상태 감소까지 반영한 현재 스탯으로. 혼란은 여러 명 대상도 적+아군(자신 제외) 풀에서 같은 인원수를 비복원 추출.' },
   { id: 'FEAT-021', date: '2026-10-04', found: '공용 규칙 R-030·R-033', title: '연쇄 트리거 1회·디버프 제거 FIFO·반격 배율',
     detail: '트리거 연쇄는 모두 발동하되 자기 효과로 자기 재발동만 금지(초선차전 → 초선차전 X). 턴당 횟수는 원문 상한(초선차전 5·기지의 승리 4 등)만, 상한 없는 트리거는 확률만(예전 기본 1회 폐기). 디버프 제거는 먼저 걸린 것부터(원문이 제어 우선이면 controlFirst). 반격 피해는 전법이 피해율을 주면 그 값(mods.반격배율), 없으면 50%.' },
-  { id: 'FIX-012', date: '2026-10-04', found: '전보 캡처 (충신의 기재 4스택, 2026-10-04)', title: '중첩 효과 지속 공유·상한 후 갱신',
-    detail: '중첩 효과는 한 효과로 지속을 공유한다: 다시 걸릴 때마다 모든 스택의 지속이 새로 시작되고, 상한(N중첩)에 닿으면 수치는 그대로 두고 지속만 갱신하며 "N스택 중첩됐습니다"를 남긴다. 예전엔 가장 오래된 스택 하나만 갱신해 나머지 스택이 따로 만료됐다.' },
+  { id: 'FIX-012', date: '2026-10-04', found: '전보 캡처 (충신의 기재 4스택, 2026-10-04)', title: '중첩 효과 선입선출',
+    detail: '스택마다 지속을 따로 갖고 먼저 쌓인 것부터 만료된다. 상한(N중첩)에서 또 발동하면 가장 오래된 스택을 빼고 새 스택을 넣는다(수치 그대로, "N스택 중첩됐습니다" 표기). 예전엔 상한에서 맨 앞 스택만 제자리 갱신해, 다음 발동 때도 같은(이미 가장 새로운) 스택을 다시 갱신하는 문제가 있었다.' },
   { id: 'FEAT-018', date: '2026-10-04', found: '공용 규칙 R-022·R-023·R-024 (사용자 제공 자료)', title: '행동 순서 = 선공 + 난수 ±35 전체 정렬, 준비 단계는 배치 순',
     detail: '같은 편 선공 순 고정 + 양 편 선두 병합(0.5+차/140 확률, v1.12 W31 잠정)을 버리고, 매 턴 생존 무장 전원 선공 + 균등 난수(−35~+35)로 양 편 구분 없이 정렬. 선공 차 70 초과는 여전히 확정 선행. 동률은 전열 → 아군 → 배치 순. 전투 시작 지휘·패시브는 선공과 무관하게 배치 순(아군 1 → 적군 1 → 아군 2 …).' },
   { id: 'FEAT-019', date: '2026-10-04', found: '공용 규칙 R-026 (사용자 제공 자료)', title: '혼란·조롱이 단일 대상 전법에도 적용',
@@ -1171,10 +1171,10 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       const existing = t.statBuffs.filter(x => x.srcId === srcId);
       // FEAT-014 "최고 속성": 적용 시점에 대상의 무력·지력·통솔·선공 중 가장 높은 능력치
       const sk = sm.stat === '최고속성' ? ['무력', '지력', '통솔', '선공'].reduce((m, k) => ((t.stats[k] || 0) > (t.stats[m] || 0) ? k : m), '무력') : sm.stat;
-      // R-035 중첩 효과는 한 효과로 지속을 공유한다: 다시 걸리면 모든 스택의 지속이 새로 시작되고(갱신), 상한이면 수치는 그대로
-      //   (전보: 충신의 기재 4스택 도달 후에도 발동마다 "4스택 중첩됐습니다"만 찍히고 지력은 +40 에서 멈춤, 2026-10-04 캡처)
-      existing.forEach(x => { x.remain = dur; x._old = false; });
+      // R-035 중첩: 스택마다 자기 지속을 따로 갖는다(먼저 쌓인 것부터 만료). 상한에서 또 발동하면 가장 오래된 스택을 새 스택으로 교체(선입선출)
+      //   — 수치는 그대로, 교체된 스택만 지속이 새로 시작 (사용자 확인 + 충신의 기재 전보 2026-10-04)
       if (existing.length >= cap) {
+        const o = existing[0]; t.statBuffs.splice(t.statBuffs.indexOf(o), 1); o.remain = dur; o._old = false; t.statBuffs.push(o);
         if (cap > 1) { log.push(`${turn}턴: [${unit.name}]이(가) 【${skill.name}】「${skill.name}」 효과를 발동합니다.`); log.push(`${turn}턴:   [${t.name}]의 「${skill.name}」이(가) ${cap}스택 중첩됐습니다.`); }
       } else {
         t.stats[sk] = Math.max(0, (t.stats[sk] || 0) + amt);
@@ -1423,9 +1423,9 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       const cap = b.maxStacks != null ? b.maxStacks : 1;
       const srcId = skill.id + ':' + key;
       const existing = t.buffs.filter(x => x.srcId === srcId);
-      existing.forEach(x => { x.remain = dur; x._old = false; });   // R-035 스택 전체 지속 갱신
       if (existing.length >= cap) {
-        // 상한 도달: 수치는 더 쌓이지 않고 지속만 갱신
+        // R-035 상한 도달: 가장 오래된 스택을 새 스택으로 교체(선입선출) — 수치는 그대로, 그 스택만 지속이 새로 시작
+        const o = existing[0]; t.buffs.splice(t.buffs.indexOf(o), 1); o.remain = dur; o._old = false; t.buffs.push(o);
         if (cap > 1) { log.push(`${turn}턴: [${unit.name}]이(가) 【${skill.name}】의 「${skill.name}」 효과를 발동합니다.`); log.push(`${turn}턴:   [${t.name}]의 「${skill.name}」이(가) ${cap}스택 중첩됐습니다.`); }
       } else {
         // 받는피해 계열의 "감소"는 가산이 아니라 독립 곱연산으로 누적된다.
