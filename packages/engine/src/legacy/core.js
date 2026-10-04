@@ -30,6 +30,12 @@ export const ENGINE_FIXES = [
     detail: '"60% 확률로 랜덤 적군 2~3명을 조롱"을 대상마다 60%씩 따로 굴리던 문제. 원문 순서대로 확률 판정 1번 → 성공하면 대상 전원. 회복·능력치·버프·상태 항목에 chanceOnce 추가, 같은 확률 값은 판정 공유(충성과 용맹 조롱 및 위협). 원문에 "목표마다 개별 판정"이 있으면 대상별(고진양번).' },
   { id: 'FIX-007', date: '2026-10-04', found: '사용자 확인 R-020', title: "전법 '랜덤 적군'은 균등 무작위",
     detail: "전법의 '랜덤 적군 N명'을 진형 피격률로 가중해 뽑던 것(v1.12b)을 살아 있는 적 전체에서 균등 무작위로 바꿈. 진형 피격률은 일반 공격(연타·축력 포함) 대상 선정에만 적용." },
+  { id: 'FIX-011', date: '2026-10-04', found: '공용 규칙 R-029', title: '지휘 효과는 시전자 전사 즉시 소멸',
+    detail: '지휘 전법 효과(증감·능력치·상태)에 시전자를 기록해 두고, 시전자가 전사하는 즉시(피해·탈주병·피해 전달 직후) 전장에서 지운다. 예전엔 턴 종료 때 전법 id 로 지워, 그 턴 남은 행동 동안 죽은 무장의 지휘가 남았고 적이 같은 전법을 가졌으면 적의 효과까지 지워졌다.' },
+  { id: 'FEAT-020', date: '2026-10-04', found: '공용 규칙 R-028·R-031·R-032', title: '대상 선정 공용 규칙',
+    detail: '"자신을 제외한 전체 적군과 우군"(all_except_self), "자신과 랜덤 우군 단일 목표"(self_and_random_ally_1) 대상 추가 — 자신·우군 혼합 대상이 자신에게만 걸리던 4개 전법 수정(허점 공략·강동 제패·정의의 희생·천재지변). "가장 높은/낮은 ○○"은 상태 감소까지 반영한 현재 스탯으로. 혼란은 여러 명 대상도 적+아군(자신 제외) 풀에서 같은 인원수를 비복원 추출.' },
+  { id: 'FEAT-021', date: '2026-10-04', found: '공용 규칙 R-030·R-033', title: '연쇄 트리거 1회·디버프 제거 FIFO·반격 배율',
+    detail: '한 행동(전법 1회·일반 공격 1회)에서 시작된 연쇄 안에서 트리거 전법은 무장마다 각 1회만. 디버프 제거는 먼저 걸린 것부터(원문이 제어 우선이면 controlFirst). 반격 피해는 전법이 피해율을 주면 그 값(mods.반격배율), 없으면 50%.' },
   { id: 'FEAT-018', date: '2026-10-04', found: '공용 규칙 R-022·R-023·R-024 (사용자 제공 자료)', title: '행동 순서 = 선공 + 난수 ±35 전체 정렬, 준비 단계는 배치 순',
     detail: '같은 편 선공 순 고정 + 양 편 선두 병합(0.5+차/140 확률, v1.12 W31 잠정)을 버리고, 매 턴 생존 무장 전원 선공 + 균등 난수(−35~+35)로 양 편 구분 없이 정렬. 선공 차 70 초과는 여전히 확정 선행. 동률은 전열 → 아군 → 배치 순. 전투 시작 지휘·패시브는 선공과 무관하게 배치 순(아군 1 → 적군 1 → 아군 2 …).' },
   { id: 'FEAT-019', date: '2026-10-04', found: '공용 규칙 R-026 (사용자 제공 자료)', title: '혼란·조롱이 단일 대상 전법에도 적용',
@@ -371,17 +377,21 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
   }
   if (!enemies.length) return [];
   const code = targetCodes.find(c => c !== 'self') || 'random_enemy_1';
-  // FEAT-019(R-026): 단일 대상 전법도 혼란·조롱을 따른다 (일반 공격과 같은 규칙)
-  //   혼란: 자신을 뺀 생존 무장 전체(적+아군)에서 무작위 — 피해 전법은 아군을, 회복·버프 전법은 적을 고를 수 있다
-  //   조롱: 적 단일 대상 전법은 나를 조롱한 시전자에게 고정 (혼란이 우선)
-  if (!aux && targetCodes.some(c => c !== 'self') && (SINGLE_TARGET_CODES.has(code) || !KNOWN_TARGET_CODES.has(code))) {
-    if (statusFlag(unit, 'randomizeTarget')) return [pick(allUnits.filter(u => u.alive && u !== unit))];
-    if (!/ally/.test(code)) { const tc = tauntTargetFor(unit, allUnits); if (tc) return [tc]; }
+  const main = !aux && targetCodes.some(c => c !== 'self');
+  // FEAT-019(R-026): 조롱 — 적 단일 대상 전법·일반 공격은 나를 조롱한 시전자에게 고정 (혼란이 우선, 아래)
+  if (main && !statusFlag(unit, 'randomizeTarget') && !/ally/.test(code) && (SINGLE_TARGET_CODES.has(code) || !KNOWN_TARGET_CODES.has(code))) {
+    const tc = tauntTargetFor(unit, allUnits); if (tc) return [tc];
   }
+  // R-031: "가장 높은/낮은 ○○"은 그 순간의 보정 스탯(버프·홍수·화공 등 상태 감소 반영)으로 고른다
+  const S = (u, k) => effStat(u, k);
   let result;
   switch (code) {
     case 'all_enemy': result = enemies; break;
     case 'all_ally': result = allies; break;
+    // R-028: "자신을 제외한 전체 적군과 우군" (천재지변 등)
+    case 'all_except_self': result = allUnits.filter(u => u.alive && u !== unit); break;
+    // R-028: "자신과 랜덤 우군 단일 목표" — 자신 + 자신을 뺀 우군 1명 (예전엔 자신만 또는 자신 포함 2명 무작위)
+    case 'self_and_random_ally_1': result = [unit, ...shuffle(allies.filter(u => u !== unit)).slice(0, 1)]; break;
     // FIX-007(R-020): 전법의 '랜덤 적군'은 진형 피격률과 무관하게 살아 있는 적 전체에서 균등 무작위 (피격률은 일반 공격 대상에만)
     case 'random_enemy_n': result = shuffle(enemies).slice(0, 2); break;
     case 'random_ally_n': result = shuffle(allies).slice(0, 2); break;
@@ -390,27 +400,35 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
     case 'random_ally_2to3': result = shuffle(allies).slice(0, __rng() < 0.5 ? 2 : 3); break;
     case 'random_ally_front': { const fr = allies.filter(u => u.position === 'front'); result = [pick(fr.length ? fr : allies)]; break; }   // FEAT-003 전열 우선
     case 'random_same_row_ally': { const row = x => (x.position === 'back' ? 'back' : 'front'); result = shuffle(allies.filter(u => u !== unit && row(u) === row(unit))).slice(0, 1); break; }   // FEAT-011 같은 열 우군(자신 제외)
-    case 'random_ally_1': result = shuffle(allies.filter(u => u !== unit)).slice(0, 1); break;   // FEAT-001: 랜덤 우군 단일(자신 제외)
+    case 'random_ally_1': result = shuffle(allies.filter(u => u !== unit)).slice(0, 1); break;   // "자신과 무작위 우군 1명"의 그 1명(자신 제외)
     case 'random_enemy_1': result = [pick(enemies)]; break;
-    case 'lowest_control_enemy': result = [minBy(enemies, u => u.stats.통솔)]; break;
-    case 'lowest_power_enemy': result = [minBy(enemies, u => u.stats.무력)]; break;
-    case 'lowest_intel_enemy': result = [minBy(enemies, u => u.stats.지력)]; break;
-    case 'lowest_speed_enemy': result = [minBy(enemies, u => u.stats.선공)]; break;
-    case 'highest_speed_ally': result = [maxBy(allies, u => u.stats.선공)]; break;
-    case 'highest_combined_ally': result = [maxBy(allies, u => u.stats.무력 + u.stats.지력 + u.stats.선공)]; break;
-    case 'lowest_combined_enemy': result = [minBy(enemies, u => u.stats.무력 + u.stats.지력 + u.stats.선공)]; break;
-    case 'highest_power_enemy': result = [maxBy(enemies, u => u.stats.무력)]; break;
-    case 'highest_intel_enemy': result = [maxBy(enemies, u => u.stats.지력)]; break;
-    case 'highest_power_ally': result = [maxBy(allies, u => u.stats.무력)]; break;
-    case 'highest_intel_ally': result = [maxBy(allies, u => u.stats.지력)]; break;
-    case 'highest_command_ally': result = [maxBy(allies, u => u.stats.통솔)]; break;
-    case 'highest_control_ally': result = [maxBy(allies, u => u.stats.통솔)]; break;
+    case 'lowest_control_enemy': result = [minBy(enemies, u => S(u, '통솔'))]; break;
+    case 'lowest_power_enemy': result = [minBy(enemies, u => S(u, '무력'))]; break;
+    case 'lowest_intel_enemy': result = [minBy(enemies, u => S(u, '지력'))]; break;
+    case 'lowest_speed_enemy': result = [minBy(enemies, u => S(u, '선공'))]; break;
+    case 'highest_speed_ally': result = [maxBy(allies, u => S(u, '선공'))]; break;
+    case 'highest_combined_ally': result = [maxBy(allies, u => S(u, '무력') + S(u, '지력') + S(u, '선공'))]; break;
+    case 'lowest_combined_enemy': result = [minBy(enemies, u => S(u, '무력') + S(u, '지력') + S(u, '선공'))]; break;
+    case 'highest_power_enemy': result = [maxBy(enemies, u => S(u, '무력'))]; break;
+    case 'highest_intel_enemy': result = [maxBy(enemies, u => S(u, '지력'))]; break;
+    case 'highest_power_ally': result = [maxBy(allies, u => S(u, '무력'))]; break;
+    case 'highest_intel_ally': result = [maxBy(allies, u => S(u, '지력'))]; break;
+    case 'highest_command_ally': result = [maxBy(allies, u => S(u, '통솔'))]; break;
+    case 'highest_control_ally': result = [maxBy(allies, u => S(u, '통솔'))]; break;
     case 'lowest_hp_ally': result = [minBy(allies, u => u.troops)]; break;
-    case 'lowest_intel_ally': result = [minBy(allies, u => u.stats.지력)]; break;   // FEAT-004
+    case 'lowest_intel_ally': result = [minBy(allies, u => S(u, '지력'))]; break;   // FEAT-004
     case 'lowest_hp_enemy': result = [minBy(enemies, u => u.troops)]; break;
     default: result = [pick(enemies)];
   }
-  // 아군 대상 코드인데 자기 자신 외에 아군이 없는 경우 등 방어적으로 빈 결과를 걸러냄
+  result = (Array.isArray(result) ? result : [result]).filter(Boolean);
+  // FEAT-019·R-032 혼란: 대상 풀이 자신을 뺀 생존 무장 전체(적+아군)로 바뀐다. 원래 뽑힐 인원 수만큼 그 풀에서 비복원 무작위
+  //   (단일 → 1명, 랜덤 2명 → 2명, 전체 적군 → 적 생존 수만큼). "자신과 …"처럼 자신이 명시된 몫은 그대로 둔다.
+  if (main && result.length && statusFlag(unit, 'randomizeTarget')) {
+    const keepSelf = code === 'self_and_random_ally_1';
+    const pool = allUnits.filter(u => u.alive && u !== unit);
+    const n = result.length - (keepSelf ? 1 : 0);
+    result = [...(keepSelf ? [unit] : []), ...shuffle(pool).slice(0, n)];
+  }
   return (Array.isArray(result) ? result : [result]).filter(Boolean);
 }
 // FEAT-019: 혼란·조롱이 적용되는 단일 대상 코드 (그 밖에 모르는 코드는 기본값 '랜덤 적 1명'으로 처리되므로 단일로 본다)
@@ -418,7 +436,7 @@ const SINGLE_TARGET_CODES = new Set(['random_enemy_1', 'random_ally_1', 'random_
   'lowest_control_enemy', 'lowest_power_enemy', 'lowest_intel_enemy', 'lowest_speed_enemy', 'lowest_combined_enemy', 'lowest_hp_enemy',
   'highest_power_enemy', 'highest_intel_enemy', 'highest_speed_ally', 'highest_combined_ally', 'highest_power_ally', 'highest_intel_ally',
   'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally']);
-const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
+const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
 function shuffle(a) { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(__rng() * (i + 1));[b[i], b[j]] = [b[j], b[i]]; } return b; }
 function minBy(arr, fn) { return arr.length ? arr.reduce((a, b) => (fn(a) <= fn(b) ? a : b)) : null; }
 function maxBy(arr, fn) { return arr.length ? arr.reduce((a, b) => (fn(a) >= fn(b) ? a : b)) : null; }
@@ -627,6 +645,22 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   return { dmg, crit };
 }
 
+// FIX-011(R-029) 지휘 전법 = 시전자가 살아 있는 동안만 유지되는 오라. 시전자가 전사하는 즉시 그가 건 지휘 효과
+//   (증감·능력치·상태)를 전장에서 모두 지운다. 예전엔 턴 종료 때 전법 id 로 지워, 그 턴 남은 행동 동안 죽은 무장의 지휘가 남았고
+//   적이 같은 전법을 가졌으면 적의 효과까지 지워졌다.
+function sweepDeadAuras(units, log, turn) {
+  units.forEach(d => {
+    if (d.alive || d._auraCleared) return;
+    d._auraCleared = true;
+    units.forEach(t => {
+      let removed = 0;
+      t.buffs = t.buffs.filter(b => { if (b.aura !== d.id) return true; t.mods[b.stat] = (t.mods[b.stat] || 0) - b.value; removed++; return false; });
+      t.statBuffs = t.statBuffs.filter(b => { if (b.aura !== d.id) return true; t.stats[b.stat] = Math.max(0, (t.stats[b.stat] || 0) - b.value); removed++; return false; });
+      t.statuses = t.statuses.filter(st => { if (st.aura !== d.id) return true; removed++; return false; });
+      if (removed && log && t !== d) log.push(`${turn}턴:   [${d.name}] 전사로 지휘 전법 효과 ${removed}건이 [${t.name}]에게서 사라졌습니다.`);
+    });
+  });
+}
 // FEAT-007 불굴: 보호자 자신이 곧 사망할 때 생존한 우군이 있으면 치명적 피해 1회 면역(발동마다 다음 확률 −10%p)
 function unyieldingCheck(u, dmg, log, turnNo) {
   const uy = u._unyielding;
@@ -702,8 +736,15 @@ function calcHeal(caster, target, ratio, coeffs, healStat) {
 // 매 턴 시작 시 unit.triggerCounts를 초기화하고, 사건 발생 시 조건에 맞는
 // 트리거 보유자를 찾아 확률 판정 후 재발동시킨다.
 // ============================================================
+// R-033 연쇄 트리거(무한 연쇄 방지): 트리거로 발동한 효과가 만든 사건으로는, 그 연쇄에서 이미 발동한 트리거 전법이 다시 발동하지 않는다
+//   (A → B → C 각 1회). 행동이 직접 만든 사건(광역 타격 3건 등)은 사건마다 따로 판정하고, 원문의 '매 턴 최대 N회'가 상한이다.
+//   예: 초선차전이 자기 피해로 자기를 다시 발동하던 자가 연쇄(턴당 5회까지)는 막고, 천하평론 3명 타격에는 3번 판정.
+let __chainFired = new Set(), __chainDepth = 0;
+function newChain() { if (!__chainDepth) __chainFired = new Set(); }
+function runTriggered(fn) { __chainDepth++; try { return fn(); } finally { __chainDepth--; } }
 function rollTrigger(unit, skill) {
   const t = skill.trigger;
+  if (__chainFired.has(unit.id + ':' + skill.id)) return false;
   const used = unit.triggerCounts[skill.id] || 0;
   if (used >= (t.maxPerTurn || 1)) return false;
   unit.battleTriggerCounts = unit.battleTriggerCounts || {};
@@ -714,10 +755,12 @@ function rollTrigger(unit, skill) {
   if (!__ok) return false;
   unit.triggerCounts[skill.id] = used + 1;
   unit.battleTriggerCounts[skill.id] = (unit.battleTriggerCounts[skill.id] || 0) + 1;
+  __chainFired.add(unit.id + ':' + skill.id);
   return true;
 }
 
 function emitDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
+  newChain();   // R-033: 행동이 직접 만든 사건(타격 1건·디버프 1건)마다 새 연쇄. 트리거 효과 안(연쇄 깊이>0)에서는 이어진다
   const { attacker, defender, dmgType, crit, isBasic } = ctx;
   allUnits.forEach(u => {
     if (!u.alive) return;
@@ -767,7 +810,7 @@ function emitDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       if (t.filterDmgType && t.filterDmgType !== dmgType) return;
       if (t.requireCrit && !crit) return;
       if (!rollTrigger(u, skill)) return;
-      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender });
+      runTriggered(() => applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender }));
     });
   });
 }
@@ -784,6 +827,7 @@ function isDebuffMod(key, amt) {
 }
 
 function emitDebuffEvent(ctx, allUnits, coeffs, log, turn, contrib) {
+  newChain();   // R-033: 행동이 직접 만든 사건(타격 1건·디버프 1건)마다 새 연쇄. 트리거 효과 안(연쇄 깊이>0)에서는 이어진다
   const { caster, target } = ctx;
   allUnits.forEach(u => {
     if (!u.alive) return;
@@ -797,7 +841,7 @@ function emitDebuffEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       if (t.statusName && t.statusName !== ctx.statusName) return;   // FEAT-001: 특정 상태 부여에만 반응
       if (skill.onlyTurns && !skill.onlyTurns.includes(turn)) return;   // FEAT-011: "첫 3턴 동안" 등
       if (!rollTrigger(u, skill)) return;
-      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { caster, target });
+      runTriggered(() => applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { caster, target }));
     });
   });
 }
@@ -806,6 +850,7 @@ function emitDebuffEvent(ctx, allUnits, coeffs, log, turn, contrib) {
 // isBasic: 이번 피해가 "일반 공격"(또는 그 연타)에서 나온 것인지 여부. 추격 전법 발동 조건 판정에 쓰인다.
 function dealDamage(attacker, defender, ratio, dmgType, coeffs, log, allUnits, turn, contrib, isBasic, dmgTag) {
   const result = calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turn, dmgTag || (isBasic ? 'basic' : 'active'));
+  if (allUnits && allUnits.some(u => !u.alive && !u._auraCleared)) sweepDeadAuras(allUnits, log, turn);   // R-029 전사 즉시
   if (result.resisted) return result;   // 저항으로 무효 — 피격·회피 연계 없음
   if (result.evaded) {
     // 피신 성공 이벤트 — 칠진칠출(조운)의 '용담'처럼 회피에 반응하는 전법용
@@ -817,13 +862,14 @@ function dealDamage(attacker, defender, ratio, dmgType, coeffs, log, allUnits, t
 }
 
 function emitEvadeEvent(ctx, allUnits, coeffs, log, turn, contrib) {
+  newChain();   // R-033: 행동이 직접 만든 사건(타격 1건·디버프 1건)마다 새 연쇄. 트리거 효과 안(연쇄 깊이>0)에서는 이어진다
   const { evader, attacker } = ctx;
   if (!evader.alive) return;
   evader.skills.forEach(skill => {
     const t = skill.trigger;
     if (!t || t.event !== 'evade') return;
     if (!rollTrigger(evader, skill)) return;
-    applySkillEffects(evader, skill, allUnits, coeffs, log, turn, contrib, { attacker: evader, defender: attacker });
+    runTriggered(() => applySkillEffects(evader, skill, allUnits, coeffs, log, turn, contrib, { attacker: evader, defender: attacker }));
   });
 }
 
@@ -1037,6 +1083,7 @@ function oppositeGenderCount(unit, allUnits) {
 
 // ---------- 효과 실행 ----------
 function applySkillEffects(unit, skill, allUnits, coeffs, log, turn, contrib, eventCtx) {
+  if (!__chainDepth && !__skillStack.length) newChain();   // R-033 새 행동 = 새 연쇄
   const __inv = ++__invSeq;
   __T({ e: 'skill', inv: __inv, unit: unit.id, skill: skill.id, kind: skill.type, via: eventCtx ? 'event' : 'slot' });
   __skillStack.push(skill.id);
@@ -1057,6 +1104,7 @@ function applySkillEffects(unit, skill, allUnits, coeffs, log, turn, contrib, ev
   }
 }
 function emitCastEvent(ctx, allUnits, coeffs, log, turn, contrib) {
+  newChain();   // R-033: 행동이 직접 만든 사건(타격 1건·디버프 1건)마다 새 연쇄. 트리거 효과 안(연쇄 깊이>0)에서는 이어진다
   const { caster, skill: cast } = ctx;
   allUnits.forEach(u => {
     if (!u.alive) return;
@@ -1072,7 +1120,7 @@ function emitCastEvent(ctx, allUnits, coeffs, log, turn, contrib) {
         if (!ok) return;
       }
       if (!rollTrigger(u, skill)) return;
-      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker: caster, defender: null, caster });
+      runTriggered(() => applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker: caster, defender: null, caster }));
     });
   });
 }
@@ -1128,7 +1176,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         existing[0].remain = dur;
       } else {
         t.stats[sk] = Math.max(0, (t.stats[sk] || 0) + amt);
-        t.statBuffs.push({ stat: sk, value: amt, remain: dur, srcId });
+        t.statBuffs.push({ stat: sk, value: amt, remain: dur, srcId, aura: skill.type === '지휘' ? unit.id : null });
         if (cap > 1) log.push(`${turn}턴:   [${t.name}]의 「${skill.name}」이(가) ${existing.length + 1}스택 중첩됐습니다.`);
         log.push(`${turn}턴:   [${t.name}]의 【${sk}】이(가) ${Math.abs(amt).toFixed(2)}(${(t.stats[sk]||0).toFixed(2)}) ${amt >= 0 ? '증가' : '감소'}했습니다.`);
       }
@@ -1304,7 +1352,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       // targets가 ['all_enemy','all_ally']로 잡힘) 아군 코드만 골라 써야 한다.
       const allyCodes = targetCodes.filter(c => c.includes('ally') || c === 'self');
       targets = selectTargets(unit, allyCodes.length ? allyCodes : ['lowest_hp_ally'], allUnits);
-      targets = targets.filter(t => t.side === unit.side);
+      if (!statusFlag(unit, 'randomizeTarget')) targets = targets.filter(t => t.side === unit.side);   // 혼란이면 적도 회복할 수 있다(R-032)
       if (!targets.length) targets = selectTargets(unit, ['lowest_hp_ally'], allUnits);
     }
     // afterProcs: "매 턴 최대 N회 발동되며, N회 발동 후 ~" 유형 (주유 기지의 승리).
@@ -1393,7 +1441,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
           amt = scaled;
         }
         t.mods[key] = (t.mods[key] || 0) + amt;
-        t.buffs.push({ stat: key, value: amt, remain: dur, srcId });
+        t.buffs.push({ stat: key, value: amt, remain: dur, srcId, aura: skill.type === '지휘' ? unit.id : null });
         // 기본 디버프(주는피해↓·받는피해↑ 등)도 '디버프' 트리거를 발생시킨다.
         // 단 '이상 상태' 트리거(주유 기지의 승리)는 여기서 발동하지 않는다(abnormal:false).
         if (t.side !== unit.side && isBasicDebuff(key, amt)) {
@@ -1415,12 +1463,12 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     let targets = dp.target === 'self' ? [unit]
       : (resolveSpecial(dp.target) || selectTargets(unit, [dp.target], allUnits));
     targets.forEach(t => {
+      // R-030 디버프 제거는 먼저 걸린 것부터(FIFO). 원문이 제어 상태 우선이면(dp.controlFirst) 제어 상태부터 먼저.
       let removed = 0;
-      for (let i = t.statuses.length - 1; i >= 0 && removed < (dp.count || 1); i--) {
-        const nm = t.statuses[i].name;
-        if (CONTROL_DEBUFFS.includes(nm) || NON_CONTROL_DEBUFFS.includes(nm)) {
-          t.statuses.splice(i, 1);
-          removed++;
+      const passes = dp.controlFirst ? [CONTROL_DEBUFFS, NON_CONTROL_DEBUFFS] : [[...CONTROL_DEBUFFS, ...NON_CONTROL_DEBUFFS]];
+      for (const names of passes) {
+        for (let i = 0; i < t.statuses.length && removed < (dp.count || 1);) {
+          if (names.includes(t.statuses[i].name)) { t.statuses.splice(i, 1); removed++; } else i++;
         }
       }
       if (removed && log) log.push(`${turn}턴:   [${t.name}]의 디버프 ${removed}가지가 제거되었습니다.`);
@@ -1462,6 +1510,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       // 탈주병은 '상태 부여'가 아니라 즉시 고정 피해다.
       if (se.name === '탈주병') {
         dealDesertionDamage(unit, [t], skill, coeffs, log, turn, contrib);
+        sweepDeadAuras(allUnits, log, turn);
         return;
       }
       // 정신 회복: 제어 상태가 '걸리지 않는' 게 아니라, 걸리되 효과가 무효화된다.
@@ -1473,7 +1522,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       if (exist) {
         if (dur > exist.remain) { exist.remain = dur; exist.casterId = caster.id; exist.casterName = caster.name; }
       } else {
-        t.statuses.push({ name: se.name, remain: dur, casterId: caster.id, casterName: caster.name, srcSkill: skill.name });
+        t.statuses.push({ name: se.name, remain: dur, casterId: caster.id, casterName: caster.name, srcSkill: skill.name, aura: skill.type === '지휘' ? unit.id : null });
       }
       __T({ e: 'status', src: unit.id, dst: t.id, status: se.name, dur, refreshed: already, skill: skill.id });
       if (CONTROL_DEBUFFS.includes(se.name) && hasStatus(t, '정신 회복')) {
@@ -1621,7 +1670,8 @@ function maybeCounterAttack(defender, attacker, coeffs, log, allUnits, turn, con
   // 반격 피해는 평타 100%가 아니라 반격을 부여한 전법의 고유 배율을 따른다.
   // 위기의 결전·고대의 악래 계열은 대체로 30~60% 선이라 기본 0.5로 두고,
   // 「반격피해」 mod(고대의 악래의 +20% 등)를 곱한다.
-  const ratio = (coeffs.counterRatio != null ? coeffs.counterRatio : 0.5)
+  // R-030: 전법이 반격 피해율을 적으면 그 값(mods.반격배율), 없으면 기본 50%
+  const ratio = ((defender.mods.반격배율 || 0) > 0 ? defender.mods.반격배율 : (coeffs.counterRatio != null ? coeffs.counterRatio : 0.5))
     * (1 + (defender.mods.반격피해 || 0));
   const { dmg, crit } = dealDamage(defender, attacker, ratio, '병기', coeffs, log, allUnits, turn, contrib, false, 'basic');
   defender.dmgDealt += dmg;
@@ -1926,6 +1976,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
       log.push(`${turn}턴: [${unit.name}]이(가) [${target.name}]에게 일반 공격을 발동했습니다.`);
       const basicLineIdx = log.length;
       log.push('');
+      newChain();
       const { dmg, crit, evaded } = dealDamage(unit, target, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
       if (!evaded) basicLanded = true;   // FIX-009(R-027): 피신당한 일반 공격 뒤에는 추격 판정이 없다
       unit.dmgDealt += dmg;
@@ -1948,6 +1999,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
         if (!tgts.length) return;
         log.push(`${turn}턴: [${unit.name}]이(가) 【${sk.name}】의 피해 전달을 발동합니다.`);
         dealTransferDamage(unit, tgts, dmg, tr.ratio, sk, log, turn, contrib);
+        sweepDeadAuras(allUnits, log, turn);
       });
       maybeCounterAttack(target, unit, coeffs, log, allUnits, turn, contrib);
       // 완벽한 사격: 평타 성공 후 축력을 전부 소모해 스택 수만큼 추가 평타.
@@ -1964,6 +2016,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
           unit._pursuitDoneThisHit = {}; unit._basicSeq = (unit._basicSeq || 0) + 1;
           log.push(`${turn}턴: [${unit.name}]이(가) [${t2.name}]에게 일반 공격을 발동했습니다. (축력)`);
           const idx2 = log.length; log.push('');
+          newChain();
           const ex = dealDamage(unit, t2, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
           if (!ex.evaded) basicLanded = true;
           unit.dmgDealt += ex.dmg;
@@ -1979,6 +2032,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
         const extraIdx = log.length;
         log.push('');
         unit._pursuitDoneThisHit = {}; unit._basicSeq = (unit._basicSeq || 0) + 1;   // 연격도 별도의 일반 공격 → 판정 기회 새로 부여
+        newChain();
         const extra = dealDamage(unit, target, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
         if (!extra.evaded) basicLanded = true;
         unit.dmgDealt += extra.dmg;
@@ -2118,6 +2172,7 @@ function simulateOneBattle(armyA, armyB, coeffs) {
       if (!st.length) return;
       const n = Math.min(st.length, 5);
       const caster = units.find(x => x.id === st[0].casterId) || u;
+      newChain();
       const res = dealDamage(caster, u, 0.6 * n, '책략', coeffs, log, units, turn, contrib, false, 'dot');
       caster.dmgDealt += res.dmg;
       log.push(`${turn}턴: [${u.name}]이(가) 「짐독」 ${n}스택으로 병력이 ${res.dmg}(${u.troops}) 손실됐습니다.`);
@@ -2154,31 +2209,7 @@ function simulateOneBattle(armyA, armyB, coeffs) {
       const bAliveE = units.some(x => x.side === 'B' && x.alive);
       if (!aAliveE || !bAliveE) winner = aAliveE ? 'A' : (bAliveE ? 'B' : 'draw');
     }
-    // 용어 시트 5번: 지휘 전법은 '무장 전사 시 효과를 잃는다'.
-    // 시전자가 쓰러지면 그가 건 지휘 전법 버프를 모두 걷어낸다.
-    units.forEach(u => {
-      if (u.alive) return;
-      const cmdIds = new Set((u.skills || []).filter(s => s.type === '지휘').map(s => s.id));
-      if (!cmdIds.has(u.uniqueSkill && u.uniqueSkill.type === '지휘' ? u.uniqueSkill.id : null)
-          && u.uniqueSkill && u.uniqueSkill.type === '지휘') cmdIds.add(u.uniqueSkill.id);
-      if (!cmdIds.size || u._cmdCleared) return;
-      u._cmdCleared = true;
-      units.forEach(t => {
-        let removed = 0;
-        // mods/stats에서 해당 버프의 기여분을 되돌린 뒤 목록에서 제거한다
-        t.buffs = t.buffs.filter(b => {
-          if (!cmdIds.has(String(b.srcId || '').split(':')[0])) return true;
-          t.mods[b.stat] = (t.mods[b.stat] || 0) - b.value;
-          removed++; return false;
-        });
-        t.statBuffs = t.statBuffs.filter(b => {
-          if (!cmdIds.has(String(b.srcId || '').split(':')[0])) return true;
-          t.stats[b.stat] = Math.max(0, (t.stats[b.stat] || 0) - b.value);
-          removed++; return false;
-        });
-        if (removed) log.push(`${turn}턴: [${u.name}] 전사로 지휘 전법 효과 ${removed}건이 [${t.name}]에게서 사라졌습니다.`);
-      });
-    });
+    sweepDeadAuras(units, log, turn);   // 안전망 — 실제 제거는 전사 즉시(R-029)
 
     // 버프/상태 잔여 턴 감소 — 전략판 규칙에 맞춰 '턴 종료'에서 처리한다.
     // (지속피해 정산은 별도 구현 없음: 천하결전의 홍수/화공/폭풍은 스탯 감소형이라 틱 데미지가 없다)
@@ -2579,7 +2610,7 @@ return {
   setDetail: (v) => { __detail = !!v; },
   setSkillLevel: (lv) => { SKILL_LEVEL = lv; },
   skillTiming, effStat, hasStatus, selectTargets, mergeActionOrder, calcDamage, calcHeal,
-  tickHolderBuffs, markHolderSeen,
+  tickHolderBuffs, markHolderSeen, sweepDeadAuras,
   DEFAULT_COEFFS, buildUnit, simulateOneBattle, simulateBattle, procRateOf,
   getDebugDamageLog: () => DEBUG_DAMAGE_LOG,
   setDebugDamageLog: (v) => { DEBUG_DAMAGE_LOG = !!v; },

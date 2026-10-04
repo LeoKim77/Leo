@@ -69,6 +69,20 @@
       "resolvedAt": "2026-10-03"
     },
     {
+      "id": "V-engine-ally-self",
+      "kind": "engine",
+      "refs": [
+        "u-cao-cao",
+        "u-xun-yu",
+        "u-cai-wenji"
+      ],
+      "title": "'우군'에 자신 포함 여부 (R-028)",
+      "assumption": "'전체 우군'·'가장 높은 우군'에 자신 포함으로 처리(원문·녹화 근거). 사용자 제안(SLG 표준 = 자신 제외)과 다름",
+      "howToVerify": "순욱 '전체 우군 묘책·간파 +25%'·채문희 '전체 우군 회복'이 시전자 본인에게도 들어가는지 — 본인 툴팁 묘책·간파 / 회복 전보",
+      "priority": 45,
+      "status": "pending"
+    },
+    {
       "id": "V-engine-coef-crit",
       "kind": "engine",
       "refs": [],
@@ -135,6 +149,16 @@
       "howToVerify": "순욱이(가) 〈북한〉을 장착한 전보에서 원문 효과(\"지력이 가장 높은 아군 단일 목표의 묘책 확률이 6% 증가하며, 묘책 피해가 10% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
       "status": "pending",
       "priority": 26
+    },
+    {
+      "id": "V-engine-confuse-multi",
+      "kind": "engine",
+      "refs": [],
+      "title": "혼란 시 여러 명 대상 전법 (R-032)",
+      "assumption": "랜덤 N명·전체 대상도 적+아군 풀에서 같은 인원수 추출",
+      "howToVerify": "혼란 걸린 무장의 광역 전법 대상 — 전보에 아군 피해 줄이 나오는지",
+      "priority": 25,
+      "status": "pending"
     },
     {
       "id": "V-skill-armor-edge",

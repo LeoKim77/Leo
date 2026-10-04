@@ -57,3 +57,34 @@ describe('공용 규칙: 지속 턴 = 걸린 무장의 행동 횟수 (R-025)', (
   it('행동 전에 걸린 1턴 효과는 그 행동 1번', () => expect(run(false)).toBe(1));
   it('이미 행동한 무장에게 걸린 1턴 효과는 다음 행동 1번 (예전엔 0번)', () => expect(run(true)).toBe(1));
 });
+
+describe('공용 규칙: 대상·혼란 (R-028·R-031·R-032)', () => {
+  E.setRng(rng);
+  const team = () => { const a = mk('A0', 100); return { a, all: [a, mk('A1', 100), mk('A2', 100), mk('B0', 100), mk('B1', 100), mk('B2', 100)] }; };
+  it('자신과 랜덤 우군 1명 = 자신 + 자신 아닌 우군 1명', () => {
+    const { a, all } = team();
+    for (let i = 0; i < 50; i++) { const r = E.selectTargets(a, ['self_and_random_ally_1'], all); expect(r.length).toBe(2); expect(r[0]).toBe(a); expect(r[1].side).toBe('A'); expect(r[1]).not.toBe(a); }
+  });
+  it('자신을 제외한 전체 적군과 우군 = 5명', () => { const { a, all } = team(); expect(E.selectTargets(a, ['all_except_self'], all).length).toBe(5); });
+  it('혼란: 랜덤 적 2명 → 자신 뺀 5명 풀에서 2명, 아군만 뽑히는 경우도 있다', () => {
+    const { a, all } = team(); a.statuses.push({ name: '혼란', remain: 2 });
+    let allyOnly = 0;
+    for (let i = 0; i < 600; i++) { const r = E.selectTargets(a, ['random_enemy_n'], all); expect(r.length).toBe(2); expect(r).not.toContain(a); if (r.every((x: any) => x.side === 'A')) allyOnly++; }
+    expect(allyOnly).toBeGreaterThan(0);   // 이론값 1/10
+  });
+  it('혼란: 전체 적군 → 전장 무작위 3명', () => { const { a, all } = team(); a.statuses.push({ name: '혼란', remain: 2 }); expect(E.selectTargets(a, ['all_enemy'], all).length).toBe(3); });
+  it('"통솔이 가장 낮은 적"은 홍수(통솔 −20)까지 반영', () => {
+    const { a, all } = team(); all[3].stats.통솔 = 110; all[4].stats.통솔 = 105; all[5].stats.통솔 = 120; all[5].statuses.push({ name: '홍수', remain: 2 });
+    expect(E.selectTargets(a, ['lowest_control_enemy'], all)[0].id).toBe('B2');
+  });
+});
+
+describe('공용 규칙: 지휘 효과 즉시 소멸 (R-029)', () => {
+  it('시전자가 전사하는 순간 지휘 버프가 사라진다', () => {
+    const c = mk('A0', 100), t = mk('A1', 100);
+    t.mods.받는피해 = -0.2; t.buffs.push({ stat: '받는피해', value: -0.2, remain: 999, srcId: 'x', aura: 'A0' });
+    c.alive = false;
+    E.sweepDeadAuras([c, t], [], 1);
+    expect(t.buffs.length).toBe(0); expect(t.mods.받는피해).toBeCloseTo(0);
+  });
+});

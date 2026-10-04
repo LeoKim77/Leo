@@ -140,6 +140,49 @@
         "effects.statusEffects.0.chanceOnce": true,
         "effects.statusEffects.1.chanceOnce": true
       }
+    },
+    "avoid-edge": {
+      "date": "2026-10-04",
+      "found": "공용 규칙 R-028 대상 정리 (자신과 우군 혼합 대상 점검)",
+      "reason": "'자신과 랜덤 우군 단일 목표' — 대상 코드에 self 가 섞여 버프가 자신에게만 걸리던 것을 자신 + 자신 뺀 우군 1명으로",
+      "set": {
+        "effects.buffs.0.target": "self_and_random_ally_1"
+      }
+    },
+    "u-sun-ce": {
+      "date": "2026-10-04",
+      "found": "공용 규칙 R-028 대상 정리 (자신과 우군 혼합 대상 점검)",
+      "reason": "'적군 랜덤 2명에게 피해, 자신과 랜덤 우군 단일 목표 회복' — 피해가 적 1명에게만, 회복이 자신 포함 2명 무작위로 나가던 것을 원문대로",
+      "set": {
+        "effects.damage.0.target": "random_enemy_n",
+        "effects.heal.0.target": "self_and_random_ally_1"
+      }
+    },
+    "sacrifice": {
+      "date": "2026-10-04",
+      "found": "공용 규칙 R-028 대상 정리 (자신과 우군 혼합 대상 점검)",
+      "reason": "'전체 우군 연타 확률 증가'가 자신에게만, 정신 회복·무장 해제 대상이 뒤섞이던 것을 원문대로: 연타 → 전체 우군, 정신 회복 → 무력 최고 우군, 무장 해제 → 자신 (각 2턴)",
+      "set": {
+        "effects.buffs.0.target": "all_ally",
+        "effects.statusEffects.0": {
+          "name": "무장 해제",
+          "target": "self",
+          "duration": 2
+        },
+        "effects.statusEffects.1": {
+          "name": "정신 회복",
+          "target": "highest_power_ally",
+          "duration": 2
+        }
+      }
+    },
+    "calamity": {
+      "date": "2026-10-04",
+      "found": "공용 규칙 R-028 대상 정리 (자신과 우군 혼합 대상 점검)",
+      "reason": "'자신을 제외한 전체 적군과 우군에게 140% 책략 피해' — 적군에게만 주던 피해를 자신 뺀 전장 전원으로",
+      "set": {
+        "effects.damage.0.target": "all_except_self"
+      }
     }
   }
 }

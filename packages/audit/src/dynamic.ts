@@ -91,7 +91,7 @@ export class EvidenceCollector {
     const basicDamageThisTurn = new Set<string>(); // 일반 공격 판정 피해(전법 속 일반 공격 포함)
     const firesPerTurn = new Map<string, number>(); // `${skill}:${unit}:${turn}`
     const rollsPerTurn = new Map<string, number>();
-    const invInfo = new Map<number, { skill: string; unit: string; turn: number; aliveEnemies: number; dsts: Set<string> }>();
+    const invInfo = new Map<number, { skill: string; unit: string; turn: number; aliveEnemies: number; dsts: Set<string>; confused?: boolean }>();
 
     for (const t of trace) {
       const turnKey = (u: string) => `${t.turn}:${u}`;
@@ -164,7 +164,9 @@ export class EvidenceCollector {
           if (exp && e.phaseExamples.length < 3 && t.via === 'slot') e.phaseExamples.push(`${t.turn}턴 ${t.phase} — [${nameOf(u)}]`);
           const enemySide = sideOf(u) === 'A' ? 'B' : 'A';
           const aliveEnemies = units.filter(x => x.side === enemySide && !dead.has(x.id)).length;
-          invInfo.set(t.inv as number, { skill: id, unit: u, turn: t.turn, aliveEnemies, dsts: new Set() });
+          // R-032: 혼란 상태 시전은 대상 풀이 적+아군으로 바뀌어 적 대상 수가 원문과 달라지는 게 정상 — 대상 수 판정에서 뺀다
+          const confused = st.includes('혼란') && !st.includes('정신 회복');
+          invInfo.set(t.inv as number, { skill: id, unit: u, turn: t.turn, aliveEnemies, dsts: new Set(), confused });
           break;
         }
         case 'damage': {
@@ -206,7 +208,7 @@ export class EvidenceCollector {
     // 대상 수 판정
     for (const inv of invInfo.values()) {
       const exp = this.expectations.get(inv.skill);
-      if (!exp || exp.damageTargets == null || !inv.dsts.size) continue;
+      if (!exp || exp.damageTargets == null || !inv.dsts.size || inv.confused) continue;
       const want = exp.damageTargets === 'all' ? inv.aliveEnemies : Math.min(exp.damageTargets, inv.aliveEnemies);
       const e = this.ev(inv.skill);
       if (inv.dsts.size === want) e.targetChecks.ok++;
