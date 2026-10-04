@@ -50,8 +50,8 @@ export interface SimOptions {
   coeffs?: Record<string, unknown>;
 }
 
-/** 전보 툴팁 — stats 는 [무력, 지력, 통솔, 선공], mods 는 [이름, 값], statuses 는 [이름, 남은 턴, 시전자], buffs 는 [능력치, 값, 남은 턴] */
-export interface UnitSnap { side: string; troops: number; maxTroops: number; wounded: number; alive: boolean; stats: number[]; mods: Array<[string, number]>; statuses: Array<[string, number, string]>; buffs: Array<[string, number, number]> }
+/** 전보 툴팁(게임 툴팁과 같은 항목) — stats 는 [무력, 지력, 통솔, 선공], mods 는 [이름, 값], effects 는 [전법·상태, 남은 턴, 시전자, 시전자 편] */
+export interface UnitSnap { side: string; unitType: string; troops: number; maxTroops: number; wounded: number; dead: number; alive: boolean; stats: number[]; mods: Array<[string, number]>; effects: Array<[string, number, string, string]> }
 
 export interface BattleResult {
   winner: 'A' | 'B' | 'draw';

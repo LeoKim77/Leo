@@ -128,30 +128,41 @@ function battleView() {
   // FEAT-016: 전보 줄마다 그 순간 무장 상태 — 이름을 누르면 게임 전보 툴팁처럼 보인다
   const rows = (battle.log as string[]).map((l, i) => ({ l, i })).filter(x => !/└\[상태\]|└\[계산\]|^\d+턴:\s+(무력|지력|\[상태이상\]|[가-힣]+ -?\d)/.test(x.l));
   const snaps: any[] = battle.lineSnaps || [];
-  const tip = h('div', { class: 'snap-tip' }, h('span', { class: 'dim' }, '전보의 무장 이름을 누르면 그 순간의 능력치·병력·증감·상태가 여기에 고정됩니다.'));
+  // 게임 전보 툴팁과 같은 모양: 누른 이름 옆에 뜨는 검은 상자, 같은 항목·같은 순서
   const approxOf = (name: string) => [...(battle.approx?.A || []), ...(battle.approx?.B || [])].filter((x: any) => x.owner === name);
-  const showSnap = (name: string, i: number) => {
+  const fmt = (v: number) => (Math.round(v * 100) / 100).toFixed(2);
+  const closeTip = () => document.querySelectorAll('.game-tip').forEach(e => e.remove());
+  const showSnap = (name: string, i: number, ev: MouseEvent) => {
+    closeTip();
     const sn = snaps[i]?.[name];
     if (!sn) return;
-    const pct = (v: number) => `${v > 0 ? '+' : ''}${(v * 100).toFixed(2)}%`;
+    const sideColor = (side: string) => (side === 'A' ? 'var(--tip-ally)' : 'var(--tip-enemy)');
     const ax = approxOf(name);
-    mount(tip,
-      h('div', { class: 'snap-head' }, h('b', { style: { color: sn.side === 'A' ? 'var(--side-a, #6aa9ff)' : 'var(--side-b, #ff7a7a)' } }, name), ` · ${(battle.log[i].match(/^(\d+)턴/) || [])[1] || 0}턴 그 줄 시점`, sn.alive ? '' : ' · 전사'),
-      h('div', { class: 'snap-grid' },
-        ...['무력', '지력', '통솔', '선공'].map((k, j) => h('div', null, h('span', { class: 'dim' }, k), ' ', h('b', null, sn.stats[j].toFixed(2)))),
-        h('div', null, h('span', { class: 'dim' }, '병력'), ' ', h('b', null, `${sn.troops.toLocaleString()} / ${sn.maxTroops.toLocaleString()}`)),
-        h('div', null, h('span', { class: 'dim' }, '부상병'), ' ', h('b', null, sn.wounded.toLocaleString()))),
-      sn.mods.length ? h('div', { class: 'snap-sec' }, sn.mods.map((m: any) => h('div', null, `${m[0]}: `, h('b', null, pct(m[1]))))) : h('div', { class: 'snap-sec dim' }, '증감 없음'),
-      sn.buffs.length ? h('div', { class: 'snap-sec' }, sn.buffs.map((b: any) => h('div', null, `${b[0]} ${b[1] > 0 ? '+' : ''}${b[1]} · ${b[2]}턴`))) : null,
-      sn.statuses.length ? h('div', { class: 'snap-sec' }, sn.statuses.map((st: any) => h('div', null, `[${st[0]}] ${st[1]}턴${st[2] ? ' — ' + st[2] : ''}`))) : null,
-      ax.length ? h('div', { class: 'snap-sec warn' }, h('div', { class: 'dim' }, '이 무장의 근사·미반영 효과'), ax.map((x: any) => h('div', null, `${x.kind} · ${x.name}${x.note ? ': ' + x.note : ''}`))) : null);
+    const tipEl = h('div', { class: 'game-tip', onclick: (e: Event) => { e.stopPropagation(); closeTip(); } },
+      sn.unitType ? h('div', null, `병종: ${sn.unitType}`) : null,
+      ['무력', '지력', '통솔', '선공'].map((k, j) => h('div', null, `${k}: ${fmt(sn.stats[j])}`)),
+      h('div', null, `현재 병력: ${sn.troops}`),
+      h('div', null, `최대 병력: ${sn.maxTroops}`),
+      sn.wounded ? h('div', null, `부상병: ${sn.wounded}`) : null,
+      sn.dead ? h('div', null, `사망병: ${sn.dead}`) : null,
+      sn.mods.map((m: any) => h('div', null, `${m[0]}: ${fmt(m[1] * 100)}%`)),
+      sn.effects.map((e: any) => h('div', { style: { color: sideColor(e[3] || sn.side) } }, `[${e[0]}], ${e[1]}턴${e[2] ? '---' + e[2] : ''}`)),
+      ax.length ? h('div', { class: 'game-tip-note' }, '시뮬 참고 · 근사·미반영', ax.map((x: any) => h('div', null, `${x.kind} ${x.name}`))) : null);
+    document.body.appendChild(tipEl);
+    const r = (ev.target as HTMLElement).getBoundingClientRect();
+    const w = tipEl.offsetWidth, hgt = tipEl.offsetHeight;
+    const left = Math.min(Math.max(8, r.left), window.innerWidth - w - 8);
+    const below = r.bottom + 6 + hgt < window.innerHeight;
+    tipEl.style.left = `${left + window.scrollX}px`;
+    tipEl.style.top = `${(below ? r.bottom + 6 : Math.max(8, r.top - hgt - 6)) + window.scrollY}px`;
+    setTimeout(() => document.addEventListener('click', closeTip, { once: true }), 0);
   };
   const lineEl = (l: string, i: number) => {
     const text = l.replace(/^\d+턴: /, '');
     if (!snaps[i]) return text;
     return text.split(/(\[[^\]]+\])/).map(part => {
       const m = part.match(/^\[([^\]]+)\]$/);
-      return m && snaps[i][m[1]] ? h('a', { class: 'snap-name', href: 'javascript:void 0', onclick: () => showSnap(m[1], i) }, part) : part;
+      return m && snaps[i][m[1]] ? h('a', { class: 'snap-name', href: 'javascript:void 0', onclick: (ev: MouseEvent) => { ev.stopPropagation(); showSnap(m[1], i, ev); } }, part) : part;
     });
   };
   const a = battle.audit;
@@ -159,7 +170,7 @@ function battleView() {
   return h('div', { class: 'grid cols-2' },
     h('div', { class: 'panel' },
       h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '15px' } }, `전보 — ${battle.winner === 'A' ? '내 덱 승' : battle.winner === 'B' ? '상대 승' : '무승부'} (${battle.turns}턴${(battle as any).rounds > 1 ? ` · ${(battle as any).rounds}차 교전` : ''})`), h('span', { class: 'sub' }, `시드 ${battle.seed}`)),
-      snaps.length ? tip : null,
+      snaps.length ? h('div', { class: 'sub', style: { marginBottom: '6px' } }, '전보의 무장 이름을 누르면 그 시점의 툴팁이 게임처럼 뜹니다.') : null,
       h('div', { class: 'log' }, rows.map(({ l, i }) => /── \d+번째 턴 ──|── 포진 ──/.test(l) ? h('div', { class: 'turn' }, l.replace(/^\d+턴: /, '')) : h('div', null, lineEl(l, i))))),
     h('div', { class: 'panel' },
       h('h3', { style: { fontSize: '15px', marginBottom: '8px' } }, '이 전투의 규칙 감사'),

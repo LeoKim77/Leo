@@ -26,6 +26,8 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FIX-006', date: '2026-10-04', found: '전보 툴팁 (부상병이 잃은 병력보다 많게 표시)', title: '부상병 집계',
+    detail: '회유·심리 공격·역전 회복이 부상병을 줄이지 않았고, 병력보다 큰 피해도 그대로 부상병에 더해 부상병이 잃은 병력보다 커지던 문제. 회복은 부상병에서 빼고, 부상병은 실제로 잃은 병력의 85%로. 기본 시뮬(R-011, 부상병 상한 꺼짐)의 승패에는 영향 없음.' },
   { id: 'FEAT-016', date: '2026-10-04', found: '사용자 제안 (게임 전보 툴팁)', title: '전보 줄마다 무장 상태 툴팁',
     detail: '단일 전투에서 전보 한 줄이 찍힐 때마다 그 줄에 나온 무장의 능력치·병력·부상병·증감·상태이상·능력치 버프(남은 턴)를 함께 남긴다. 게임 전보처럼 이름을 누르면 그 순간의 툴팁을 볼 수 있어 역검증·미반영 효과 찾기에 쓴다.' },
   { id: 'FIX-005', date: '2026-10-03', found: '전보 녹화 (조황화 무승부 이후 교전)', title: '재교전 최대 병력',
@@ -523,6 +525,7 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
     return { dmg: 0, crit, guarded: true };
   }
   dmg = unyieldingCheck(defender, dmg, log, turnNo);
+  const lossReal = Math.min(dmg, defender.troops);
   defender.troops = Math.max(0, defender.troops - dmg);
   if (np) delete attacker._nextPhysBonus;
   if (dmgType === '책략' && attacker._strategyThenPhys) attacker._nextPhysBonus = attacker._strategyThenPhys;
@@ -532,11 +535,12 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
     if (g.alive) {
       const before = g.troops;
       g.troops = Math.min(g.maxTroops, g.troops + Math.round(dmg * rv.healRatio * (1 + (g.mods.받는회복량 || 0)) * accumStatus(g, 'healReceivedMult', 'mult')));
+      g.wounded = Math.max(0, (g.wounded || 0) - (g.troops - before));
       if (log) log.push(`${turnNo}턴:   [${g.name}]이(가) 「역전」으로 병력을 ${g.troops - before}(${g.troops}) 회복했습니다.`);
     }
   }
   __T({ e: 'damage', src: attacker.id, dst: defender.id, amount: dmg, dmgType, tag: dmgTag, crit: !!crit, skill: __skillStack[__skillStack.length - 1] || null, after: defender.troops });
-  defender.wounded = (defender.wounded || 0) + Math.round(dmg * (coeffs.woundedRate != null ? coeffs.woundedRate : DEFAULT_COEFFS.woundedRate));   // v1.12 W43
+  defender.wounded = (defender.wounded || 0) + Math.round(lossReal * (coeffs.woundedRate != null ? coeffs.woundedRate : DEFAULT_COEFFS.woundedRate));   // v1.12 W43 (FIX-006: 실제로 잃은 병력 기준)
   if (defender.troops <= 0) defender.alive = false;
   // 독살 시해(이유 군주 시해): 짐독 상태인 대상을 때리면 확률로 짐독 1스택 추가
   if (hasStatus(attacker, '시해') && hasStatus(defender, '짐독') && __rng() < 0.5) {
@@ -568,6 +572,7 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
     leech *= healMult;
     const before = attacker.troops;
     attacker.troops = Math.min(attacker.maxTroops, attacker.troops + Math.round(leech));
+    attacker.wounded = Math.max(0, (attacker.wounded || 0) - (attacker.troops - before));   // FIX-006 회유·심리 공격 회복도 부상병에서 나온다
     if (log) log.push(`${turnNo}턴:   [${attacker.name}]이(가) 병력을 ${attacker.troops - before}(${attacker.troops}) 회복했습니다.`);
   }
   return { dmg, crit };
@@ -1597,17 +1602,17 @@ function isBattleStartOnly(skill) {
 // "로그에 없으면 반영 안 된 것"이라는 원칙을 검수 가능하게 만드는 장치다.
 // 툴팁용 구조화 스냅샷 — 로그의 무장 이름을 눌렀을 때 그 시점 상태를 보여주기 위함.
 // battleState.snapshots["<turn>:<이름>"] 에 저장한다.
-const SNAP_MODS = [
+const SNAP_MODS = [   // 게임 툴팁 표기 순서
   ['주는피해','주는 피해'], ['받는피해','받는 피해'],
   ['주는병기피해','주는 병기 피해'], ['받는병기피해','받는 병기 피해'],
   ['주는책략피해','주는 책략 피해'], ['받는책략피해','받는 책략 피해'],
-  ['주는일반공격피해','주는 일반 공격 피해'], ['받는일반공격피해','받는 일반 공격 피해'],
+  ['회유','회유'], ['심리공격','심리 공격'],
   ['주는액티브피해','액티브 전법 피해'], ['받는액티브피해','받는 액티브 전법 피해'],
+  ['주는일반공격피해','주는 일반 공격 피해'], ['받는일반공격피해','받는 일반 공격 피해'],
   ['추격전법피해','추격 전법 피해'], ['받는추격피해','받는 추격 전법 피해'],
   ['회심','회심 확률'], ['묘책','묘책 확률'], ['회심피해','회심/묘책 피해'],
   ['연타확률','연타율'], ['반격확률','반격률'], ['반격피해','반격 피해'],
-  ['피신','피신'], ['회유','회유'], ['심리공격','심리 공격'],
-  ['간파','간파'], ['방어관통','방어 관통'],
+  ['피신','피신'], ['간파','간파'], ['방어관통','방어 관통'],
   ['액티브발동률','액티브 전법 발동률'], ['받는회복량','받는 치유 효과'],
 ];
 function captureSnapshot(unit, battleState, turn) {
@@ -1637,23 +1642,35 @@ function captureSnapshot(unit, battleState, turn) {
 }
 
 // FEAT-016 전보 툴팁: 그 줄이 찍히는 순간의 무장 상태 (게임 전보에서 무장 이름을 누르면 나오는 툴팁과 같은 항목)
-function snapUnit(u) {
+function snapUnit(u, units) {
   const mods = [];
   SNAP_MODS.forEach(([k, label]) => { const v = u.mods[k] || 0; if (Math.abs(v) > 1e-9) mods.push([label, Math.round(v * 10000) / 10000]); });
   const sup = isControlSuppressed(u);
+  const wounded = Math.max(0, Math.min(Math.round(u.wounded || 0), u.maxTroops - u.troops));
+  const sideOf = name => { const c = units.find(x => x.name === name); return c ? c.side : ''; };
+  // 게임 툴팁 끝줄 "[전법], N턴---시전자": 상태이상 + 전법이 건 능력치·증감 효과(같은 전법은 한 줄)
+  const effects = u.statuses.map(st => [st.name + (sup && CONTROL_DEBUFFS.includes(st.name) ? '(무효화)' : ''), st.remain, st.casterName || '', sideOf(st.casterName || '')]);
+  const seen = new Set(effects.map(e => e[0]));
+  [...(u.buffs || []), ...(u.statBuffs || [])].filter(b => b.remain > 0 && b.remain < 90 && b.srcId).forEach(b => {
+    const sid = String(b.srcId).split(':')[0];
+    let owner = null, sk = null;
+    for (const x of units) { const f = x.skills.find(k => k.id === sid); if (f) { owner = x; sk = f; break; } }
+    const name = sk ? String(sk.name).replace(/^금병법〈(.*)〉$/, '병법-<$1>') : sid;
+    if (seen.has(name)) return;
+    seen.add(name);
+    effects.push([name, b.remain, owner ? owner.name : '', owner ? owner.side : '']);
+  });
   return {
-    side: u.side, troops: u.troops, maxTroops: u.maxTroops, wounded: Math.round(u.wounded || 0), alive: u.alive && u.troops > 0,
+    side: u.side, unitType: u.unitType || '', troops: u.troops, maxTroops: u.maxTroops, wounded, dead: Math.max(0, u.maxTroops - u.troops - wounded), alive: u.alive && u.troops > 0,
     stats: ['무력', '지력', '통솔', '선공'].map(k => Math.round(effStat(u, k) * 100) / 100),
-    mods,
-    statuses: u.statuses.map(st => [st.name + (sup && CONTROL_DEBUFFS.includes(st.name) ? '(무효화)' : ''), st.remain, st.casterName || '']),
-    buffs: (u.statBuffs || []).filter(b => b.remain > 0).map(b => [b.stat, Math.round(b.value * 100) / 100, b.remain]),
+    mods, effects,
   };
 }
 function snapLine(line, units) {
   const out = {};
   for (const m of String(line).matchAll(/\[([^\]]+)\]/g)) {
     const u = units.find(x => x.name === m[1]);
-    if (u && !out[u.name]) out[u.name] = snapUnit(u);
+    if (u && !out[u.name]) out[u.name] = snapUnit(u, units);
   }
   return Object.keys(out).length ? out : null;
 }

@@ -121,11 +121,9 @@ tr.click { cursor: pointer; } tr.click:hover td { background: var(--panel-2); }
 @media (max-width: 560px) { .unit-row { grid-template-columns: 1fr 1fr; } }
 .unit-row select { width: 100%; min-width: 0; }
 .log { max-height: 460px; overflow: auto; font-size: 13px; line-height: 1.6; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px; white-space: pre-wrap; }
-.snap-tip { position: sticky; top: 0; z-index: 2; background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; margin-bottom: 8px; font-size: 13px; line-height: 1.55; }
-.snap-tip .snap-head { margin-bottom: 4px; }
-.snap-tip .snap-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px 10px; }
-.snap-tip .snap-sec { border-top: 1px dashed var(--border); margin-top: 5px; padding-top: 4px; display: flex; flex-wrap: wrap; gap: 2px 12px; }
-.snap-tip .snap-sec.warn { color: var(--warn); }
+.game-tip { position: absolute; z-index: 50; background: rgba(8, 9, 11, 0.94); color: #e8e8e8; border-radius: 4px; padding: 10px 14px; font-size: 13.5px; line-height: 1.5; min-width: 170px; max-width: min(320px, calc(100vw - 16px)); box-shadow: 0 6px 20px rgba(0,0,0,.45); font-variant-numeric: tabular-nums; }
+.game-tip-note { margin-top: 6px; padding-top: 5px; border-top: 1px dashed #444; color: #c9a227; font-size: 12px; }
+:root { --tip-ally: #5aa8ff; --tip-enemy: #ff5a5a; }
 .log .snap-name { color: inherit; text-decoration: underline dotted; cursor: pointer; }
 .log .turn { color: var(--gold); font-weight: 700; margin-top: 6px; }
 .progress { height: 6px; background: var(--panel-2); border-radius: 3px; overflow: hidden; }
