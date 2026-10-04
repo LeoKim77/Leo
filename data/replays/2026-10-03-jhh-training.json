@@ -2,7 +2,7 @@
   "id": "2026-10-03-jhh-training",
   "date": "2026-10-03",
   "season": "S2",
-  "source": "사용자 전보 녹화 '조황화' 5개(포진~2턴/2~4턴/5~6턴/7~8턴/무승부 이후 2턴), 구글 드라이브. 상대 훈련소 NPC(LV12 토지 수비군 표기, 최대 병력 16,000). 아군 세 번째 전법(화공전술·평화의 기운·화검) 레벨 9. 전법 승품: 전장의 노래 4·화검 5·평화의 기운 3·청풍 질주 1·마비산 1·천하평론 1·화공전술 2 (사용자 확인, 전법 상세 화면 4장: 승품 1단계당 +3% — 화공전술2 84.8%, 평화의 기운3 98.1%, 전장의 노래4 145.6%, 화검5 172.5%)",
+  "source": "사용자 전보 녹화 '조황화' 5개(포진~2턴/2~4턴/5~6턴/7~8턴/무승부 이후 2턴), 구글 드라이브. 상대 훈련소 NPC(LV12 토지 수비군 표기, 최대 병력 16,000). 아군 전법 전부 Lv10. 상대 NPC 세 번째 전법(대교 최상의 지략·손책 찬란한 위명·견희 청풍 질주) Lv9 (사용자 정정 2026-10-04). 전법 승품: 전장의 노래 4·화검 5·평화의 기운 3·청풍 질주 1·마비산 1·천하평론 1·화공전술 2 (사용자 확인, 전법 상세 화면 4장: 승품 1단계당 +3% — 화공전술2 84.8%, 평화의 기운3 98.1%, 전장의 노래4 145.6%, 화검5 172.5%)",
   "battle": {
     "ally": {
       "formation": "기형진",
@@ -236,9 +236,9 @@
       "turn": 1,
       "attacker": "sun-ce",
       "defender": "hua-tuo",
-      "kind": "찬란한 위명",
+      "kind": "찬란한 위명 Lv9",
       "dmgType": "병기",
-      "ratio": 2.2,
+      "ratio": 2.0778,
       "observed": 884,
       "at": {
         "sun-ce": {
@@ -253,9 +253,9 @@
       "turn": 1,
       "attacker": "sun-ce",
       "defender": "cao-cao",
-      "kind": "찬란한 위명",
+      "kind": "찬란한 위명 Lv9",
       "dmgType": "병기",
-      "ratio": 2.2,
+      "ratio": 2.0778,
       "observed": 729,
       "at": {
         "sun-ce": {
@@ -349,9 +349,9 @@
       "turn": 1,
       "attacker": "da-qiao",
       "defender": "cao-cao",
-      "kind": "최상의 지략",
+      "kind": "최상의 지략 Lv9",
       "dmgType": "책략",
-      "ratio": 3.0,
+      "ratio": 2.8333,
       "observed": 758,
       "at": {
         "cao-cao": {
@@ -389,9 +389,9 @@
       "turn": 2,
       "attacker": "sun-ce",
       "defender": "hua-tuo",
-      "kind": "찬란한 위명",
+      "kind": "찬란한 위명 Lv9",
       "dmgType": "병기",
-      "ratio": 2.2,
+      "ratio": 2.0778,
       "observed": 731,
       "at": {
         "sun-ce": {
@@ -415,9 +415,9 @@
       "turn": 2,
       "attacker": "sun-ce",
       "defender": "cao-cao",
-      "kind": "찬란한 위명",
+      "kind": "찬란한 위명 Lv9",
       "dmgType": "병기",
-      "ratio": 2.2,
+      "ratio": 2.0778,
       "observed": 531,
       "at": {
         "sun-ce": {
@@ -485,9 +485,9 @@
       "turn": 2,
       "attacker": "huang-yueying",
       "defender": "sun-ce",
-      "kind": "화검(Lv9·승품5)",
+      "kind": "화검(승품5)",
       "dmgType": "병기",
-      "ratio": 1.4167,
+      "ratio": 1.5,
       "observed": 356,
       "at": {
         "huang-yueying": {
@@ -509,9 +509,9 @@
       "turn": 2,
       "attacker": "huang-yueying",
       "defender": "da-qiao",
-      "kind": "화검(Lv9·승품5)",
+      "kind": "화검(승품5)",
       "dmgType": "병기",
-      "ratio": 1.4167,
+      "ratio": 1.5,
       "observed": 428,
       "at": {
         "huang-yueying": {
@@ -527,9 +527,9 @@
       "turn": 2,
       "attacker": "huang-yueying",
       "defender": "zhen-luo",
-      "kind": "화검(Lv9·승품5)",
+      "kind": "화검(승품5)",
       "dmgType": "병기",
-      "ratio": 1.4167,
+      "ratio": 1.5,
       "observed": 393,
       "at": {
         "huang-yueying": {
@@ -667,9 +667,9 @@
       "turn": 2,
       "attacker": "da-qiao",
       "defender": "cao-cao",
-      "kind": "최상의 지략(묘책)",
+      "kind": "최상의 지략 Lv9(묘책)",
       "dmgType": "책략",
-      "ratio": 3.0,
+      "ratio": 2.8333,
       "crit": true,
       "observed": 773,
       "at": {
@@ -714,9 +714,9 @@
       "turn": 3,
       "attacker": "cao-cao",
       "defender": "da-qiao",
-      "kind": "화공전술(Lv9·승품2) 전체 공격",
+      "kind": "화공전술(승품2) 전체 공격",
       "dmgType": "책략",
-      "ratio": 0.7556,
+      "ratio": 0.8,
       "grade": 2,
       "observed": 346,
       "at": {
@@ -747,9 +747,9 @@
       "turn": 3,
       "attacker": "cao-cao",
       "defender": "zhen-luo",
-      "kind": "화공전술(Lv9·승품2) 전체 공격",
+      "kind": "화공전술(승품2) 전체 공격",
       "dmgType": "책략",
-      "ratio": 0.7556,
+      "ratio": 0.8,
       "grade": 2,
       "observed": 408,
       "at": {
@@ -775,9 +775,9 @@
       "turn": 3,
       "attacker": "cao-cao",
       "defender": "sun-ce",
-      "kind": "화공전술(Lv9·승품2) 전체 공격",
+      "kind": "화공전술(승품2) 전체 공격",
       "dmgType": "책략",
-      "ratio": 0.7556,
+      "ratio": 0.8,
       "grade": 2,
       "observed": 318,
       "at": {
@@ -803,9 +803,9 @@
       "turn": 5,
       "attacker": "da-qiao",
       "defender": "cao-cao",
-      "kind": "최상의 지략(묘책)",
+      "kind": "최상의 지략 Lv9(묘책)",
       "dmgType": "책략",
-      "ratio": 3.0,
+      "ratio": 2.8333,
       "crit": true,
       "observed": 1206,
       "at": {
@@ -837,8 +837,8 @@
       "turn": 1,
       "healer": "hua-tuo",
       "target": "cao-cao",
-      "skill": "평화의 기운(Lv9·승품3)",
-      "ratio": 0.85,
+      "skill": "평화의 기운(승품3)",
+      "ratio": 0.9,
       "observed": 324,
       "healerStats": {
         "지력": 277.5
@@ -896,8 +896,8 @@
       "turn": 2,
       "healer": "hua-tuo",
       "target": "cao-cao",
-      "skill": "평화의 기운(Lv9·승품3)",
-      "ratio": 0.85,
+      "skill": "평화의 기운(승품3)",
+      "ratio": 0.9,
       "observed": 323,
       "healerStats": {
         "지력": 277.5
@@ -972,5 +972,91 @@
   },
   "explained": [
     "전장의 노래 통솔 17.92 = 16 × 1.12 (승품 4) — 지력 영향 아님. 전법 상세 화면으로 확인"
+  ],
+  "groupSamples": [
+    {
+      "turn": 7,
+      "attacker": "cao-cao",
+      "kind": "천하평론",
+      "dmgType": "병기",
+      "ratio": 0.8,
+      "grade": 1,
+      "attackerAt": {
+        "stats": {
+          "무력": 92.68
+        }
+      },
+      "note": "7~8턴 영상. 피해 숫자가 가려져 조조 회유 회복량(÷10.68%)으로 복원: 25→234, 31→290, 20→187",
+      "hits": [
+        {
+          "defender": "da-qiao",
+          "observed": 234
+        },
+        {
+          "defender": "zhen-luo",
+          "observed": 290
+        },
+        {
+          "defender": "sun-ce",
+          "observed": 187
+        }
+      ]
+    },
+    {
+      "turn": 7,
+      "attacker": "huang-yueying",
+      "kind": "천하평론",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "grade": 1,
+      "note": "황월영 심리 공격 회복량(÷10.68%)으로 복원: 57→534, 53→496, 56→524. 대상 지력 223·217·128 로 달라도 피해는 비슷 → 책략은 방어 스탯 영향 없음",
+      "hits": [
+        {
+          "defender": "da-qiao",
+          "observed": 534
+        },
+        {
+          "defender": "zhen-luo",
+          "observed": 496
+        },
+        {
+          "defender": "sun-ce",
+          "observed": 524,
+          "at": {
+            "stats": {
+              "지력": 127.8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "turn": 7,
+      "attacker": "cao-cao",
+      "kind": "화공전술",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "grade": 2,
+      "note": "조조 심리 공격 회복량으로 복원: 49→459(견희), 41→384(대교), 39→365(손책)",
+      "hits": [
+        {
+          "defender": "zhen-luo",
+          "observed": 459
+        },
+        {
+          "defender": "da-qiao",
+          "observed": 384
+        },
+        {
+          "defender": "sun-ce",
+          "observed": 365,
+          "at": {
+            "stats": {
+              "지력": 127.8
+            }
+          }
+        }
+      ]
+    }
   ]
 }

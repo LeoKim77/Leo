@@ -22,13 +22,18 @@ type At = Record<string, { troops?: number; stats?: Record<string, number>; mods
 interface DamageSample { grade?: number; turn: number; attacker: string; defender: string; kind: string; dmgType: '병기' | '책략'; ratio: number; observed: number; crit?: boolean; tag?: string; note?: string; at?: At }
 /** "(스탯)의 영향 받음" 표본: 원문 기본값과 전보에 실제로 찍힌 값, 그 순간 시전자(또는 목표)의 해당 스탯 */
 interface InfluenceSample { turn: number; skill: string; caster: string; base: number; observed: number; stat: string; statValue: number; note?: string }
+/**
+ * 같은 시전의 여러 대상 비교 표본: 공격자 스탯이 같으므로 대상 간 피해 비율만 비교한다(공격자 툴팁이 없어도 쓸 수 있다).
+ * 통솔(병기)·지력(책략) 방어 계수를 가르는 데 가장 좋은 표본.
+ */
+interface GroupSample { turn: number; attacker: string; kind: string; dmgType: '병기' | '책략'; ratio: number; grade?: number; attackerAt?: { troops?: number; stats?: Record<string, number>; mods?: Mods }; hits: Array<{ defender: string; observed: number; at?: { troops?: number; stats?: Record<string, number>; mods?: Mods } }>; note?: string }
 interface HealSample { grade?: number; turn: number; healer: string; target?: string; skill: string; ratio: number; observed: number; healStat?: string; healerStats?: Record<string, number> }
 export interface Replay {
   id: string; date: string; season: string;
   battle: { ally: { formation: string; units: Array<{ generalId: string; skills?: string[] }> }; enemy: { formation: string; units: string[] } };
-  tooltips: Tooltip[]; damageSamples?: DamageSample[]; healSamples?: HealSample[]; influenceSamples?: InfluenceSample[];
+  tooltips: Tooltip[]; damageSamples?: DamageSample[]; healSamples?: HealSample[]; influenceSamples?: InfluenceSample[]; groupSamples?: GroupSample[];
 }
-export interface CheckRow { kind: 'damage' | 'heal' | 'influence'; turn: number; label: string; observed: number; predicted: number; errPct: number; snapshot: string }
+export interface CheckRow { kind: 'damage' | 'heal' | 'influence' | 'group'; turn: number; label: string; observed: number; predicted: number; errPct: number; snapshot: string }
 
 /** 피해 계산에 쓰이는 증감 항목 — 툴팁에 없으면 0 으로 본다 */
 const DMG_MODS = ['주는피해', '받는피해', '주는병기피해', '받는병기피해', '주는책략피해', '받는책략피해', '주는일반공격피해', '받는일반공격피해',
@@ -85,6 +90,19 @@ export function checkReplay(r: Replay, coeffs: Record<string, unknown> = {}, sim
     const { heal } = E.calcHeal(H.u, T, s.ratio * gradeMult(s.grade), (sim as any).coeffs, s.healStat);
     rows.push({ kind: 'heal', turn: s.turn, label: `${H.u.name} ${s.skill} 치유율 ${Math.round(s.ratio * 100)}%${s.healStat ? ` (${s.healStat} 기준)` : ''}`, observed: s.observed, predicted: heal, errPct: (heal - s.observed) / s.observed, snapshot: s.healerStats ? '표본에 적힌 시전자 스탯' : H.snap });
   }
+  // 같은 시전 여러 대상: 대상별 피해 / 대상 평균 의 비율을 비교한다
+  for (const g of r.groupSamples || []) {
+    const preds = g.hits.map(h => {
+      const A = apply(g.attacker, g.turn, g.attackerAt ? { [g.attacker]: g.attackerAt } : undefined);
+      const D = apply(h.defender, g.turn, h.at ? { [h.defender]: h.at } : undefined);
+      return E.calcDamage(A.u, D.u, g.ratio * gradeMult(g.grade), g.dmgType, (sim as any).coeffs, null, g.turn, 'active').dmg as number;
+    });
+    const mp = preds.reduce((a, b) => a + b, 0) / preds.length, mo = g.hits.reduce((a, h) => a + h.observed, 0) / g.hits.length;
+    g.hits.forEach((h, i) => {
+      const o = h.observed / mo, p = preds[i] / mp;
+      rows.push({ kind: 'group', turn: g.turn, label: `${byGeneral(g.attacker).name} ${g.kind} ${g.dmgType} → ${byGeneral(h.defender).name} (대상 간 비율)`, observed: Math.round(o * 1000) / 1000, predicted: Math.round(p * 1000) / 1000, errPct: (p - o) / o, snapshot: '같은 시전 대상 비교' });
+    });
+  }
   // 스탯 영향: 기본값 × (1 + (스탯 − 100) × statScaleWeight) — v1.12b 잠정식(W08)
   const w = Number((sim as any).coeffs.statScaleWeight);
   for (const s of r.influenceSamples || []) {
@@ -109,6 +127,6 @@ if (process.argv[1]?.endsWith('replay-check.ts')) {
   const replays = loadReplays();
   for (const r of replays) {
     console.log(`\n■ ${r.id}`);
-    for (const x of checkReplay(r)) console.log(`  ${x.kind === 'damage' ? '피해' : x.kind === 'heal' ? '회복' : '스탯 영향'} ${x.turn}턴 ${x.label}: 실측 ${x.observed} / 엔진 ${x.predicted} (${x.errPct >= 0 ? '+' : ''}${(x.errPct * 100).toFixed(1)}%) — ${x.snapshot}`);
+    for (const x of checkReplay(r)) console.log(`  ${x.kind === 'damage' ? '피해' : x.kind === 'heal' ? '회복' : x.kind === 'group' ? '대상 비교' : '스탯 영향'} ${x.turn}턴 ${x.label}: 실측 ${x.observed} / 엔진 ${x.predicted} (${x.errPct >= 0 ? '+' : ''}${(x.errPct * 100).toFixed(1)}%) — ${x.snapshot}`);
   }
 }
