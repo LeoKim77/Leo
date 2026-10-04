@@ -123,6 +123,23 @@
           }
         }
       }
+    },
+    "support-selfless": {
+      "date": "2026-10-04",
+      "found": "확률 순서 감사 S10 (사용자 지적: 난공불락)",
+      "reason": "원문 'N% 확률로 [대상]에게 …' — 확률이 대상 앞이라 시전 1회 판정, 성공 시 대상 전원(R-021). 대상마다 따로 굴리던 것을 고침",
+      "set": {
+        "effects.heal.0.chanceOnce": true
+      }
+    },
+    "u-zhou-cang": {
+      "date": "2026-10-04",
+      "found": "확률 순서 감사 S10",
+      "reason": "원문 'N% 확률로 [대상]에게 …' — 확률이 대상 앞이라 시전 1회 판정, 성공 시 대상 전원(R-021). 대상마다 따로 굴리던 것을 고침 — 조롱 및 위협은 같은 판정 공유",
+      "set": {
+        "effects.statusEffects.0.chanceOnce": true,
+        "effects.statusEffects.1.chanceOnce": true
+      }
     }
   }
 }

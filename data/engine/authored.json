@@ -102,7 +102,7 @@
   },
   "solid-defense": {
    "status": "approx",
-   "note": "\"도발\"=조롱. 대상 랜덤 2~3명(사용자 확인 R-019), 확률은 대상별 판정(R-004). 통솔 영향 미반영",
+   "note": "\"도발\"=조롱. 2턴부터 매 턴 시작 60% 판정 1번 → 성공 시 랜덤 적군 2~3명 전원 조롱(R-021, R-020). 통솔 영향 미반영",
    "_timing": "turnStart",
    "onlyTurns": [
     2,
@@ -123,7 +123,8 @@
       "name": "조롱",
       "target": "random_enemy_2to3",
       "chance": 0.6,
-      "duration": 2
+      "duration": 2,
+      "chanceOnce": true
      }
     ],
     "targets": []
@@ -184,7 +185,8 @@
       "min": 1.5,
       "max": 1.5,
       "target": "random_ally_n",
-      "chance": 0.65
+      "chance": 0.65,
+      "chanceOnce": true
      }
     ],
     "buffs": [],

@@ -85,6 +85,28 @@ export function staticSkillChecks(skill: Skill, bundle: GameBundle, engineTiming
     checks.push(rev.length ? chk('S09-level', 'fail', `1레벨→10레벨 값이 뒤집혀 10레벨 효과가 약하게 적용됩니다`, rev) : chk('S09-level', 'pass', '레벨 보간 정상'));
   }
 
+  // S10 — 확률 판정 순서 (R-021): "N% 확률로 [대상]에게 …" 는 시전 1회 판정.
+  //   원문에 확률이 대상 앞에 있는데 엔진이 여러 대상에게 대상마다 따로 굴리면 실패.
+  if (eng) {
+    const pre = /(\d+(?:\.\d+)?)\s*%\s*확률\s*(?:\([^)]*\))?\s*로\s*(?:\d+턴 동안\s*)?(?:랜덤|전체|적군|아군|우군|모든)/.test(skill.text);
+    const perTargetSaid = /목표마다\s*개별|대상마다\s*(?:개별|따로)/.test(skill.text);
+    if (pre && !perTargetSaid) {
+      const MULTI = /^all_|_n$|2to3/;
+      const bad: string[] = [];
+      for (const part of [eng, ...(eng.parts || [])]) {
+        const ef = part.effects || {};
+        const codes = ef.targets || [];
+        for (const k of ['heal', 'buffs', 'statMods', 'statusEffects']) (ef[k] || []).forEach((x: any, i: number) => {
+          if (!x || typeof x !== 'object' || x.chance == null || x.chanceOnce) return;
+          const tgt = x.target || codes.find((c: string) => c !== 'self') || '';
+          if (MULTI.test(tgt)) bad.push(`${k}[${i}] ${x.name || x.stat || ''} 대상 ${tgt} — 대상마다 ${Math.round(x.chance * 100)}% 따로 판정`);
+        });
+        (ef.damage || []).forEach((x: any, i: number) => { if (x?.chancePerTarget) bad.push(`damage[${i}] 대상마다 따로 판정`); });
+      }
+      checks.push(bad.length ? chk('S10-chance-order', 'fail', '원문은 확률 1번 판정 후 대상 전원인데 엔진은 대상마다 따로 굴립니다', bad) : chk('S10-chance-order', 'pass', '확률 → 대상 순서대로 1회 판정'));
+    }
+  }
+
   // S08
   if (skill.isUnique) {
     const owner = bundle.generals.find(g => g.id === skill.ownerGeneralId);

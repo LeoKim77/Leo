@@ -99,3 +99,24 @@ describe('전법 랜덤 대상은 피격률과 무관 (R-020, FIX-007)', () => {
     for (const k of Object.keys(n)) expect(Math.abs(n[k] / 900 - 1 / 3)).toBeLessThan(0.06);
   });
 });
+
+describe('확률 판정 순서 (R-021, FIX-008)', () => {
+  it('난공불락: 60% 판정에 성공하면 뽑힌 2~3명 전원 조롱, 실패하면 아무도 없음', () => {
+    const E: any = (sim as any).engine;
+    const sk = bundle.skills.find(s => s.name.ko === '난공불락')!;
+    expect((sk.engine as any).effects.statusEffects[0].chanceOnce).toBe(true);
+    // 대상 수 분포: 0명(판정 실패) 또는 2·3명만 나오고 1명은 나오지 않는다
+    const counts: Record<number, number> = {};
+    const g = (n: string) => bundle.generals.find(x => x.name.ko === n)!.id;
+    for (let i = 0; i < 60; i++) {
+      const r = sim.simulate({ formation: '기형진', units: [{ generalId: g('주태'), skillIds: [sk.id] }] } as any,
+        { formation: '기형진', units: ['조조', '전위', '순욱'].map(n => ({ generalId: g(n), skillIds: [] })) } as any, { seed: 'nk' + i, trace: true });
+      const byTurn: Record<string, Set<string>> = {};
+      for (const t of r.trace!) if ((t as any).e === 'status' && (t as any).status === '조롱' && (t as any).skill === sk.id && (t as any).phase === 'turnStart') (byTurn[t.turn] = byTurn[t.turn] || new Set()).add((t as any).dst);
+      for (const s of Object.values(byTurn)) counts[s.size] = (counts[s.size] || 0) + 1;
+    }
+    expect(counts[1] || 0).toBe(0);
+    expect((counts[2] || 0) + (counts[3] || 0)).toBeGreaterThan(0);
+    void E;
+  });
+});

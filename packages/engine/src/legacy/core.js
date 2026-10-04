@@ -26,6 +26,8 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FIX-008', date: '2026-10-04', found: '사용자 확인 R-021 (난공불락)', title: '확률이 대상 앞에 오면 시전 1회 판정',
+    detail: '"60% 확률로 랜덤 적군 2~3명을 조롱"을 대상마다 60%씩 따로 굴리던 문제. 원문 순서대로 확률 판정 1번 → 성공하면 대상 전원. 회복·능력치·버프·상태 항목에 chanceOnce 추가, 같은 확률 값은 판정 공유(충성과 용맹 조롱 및 위협). 원문에 "목표마다 개별 판정"이 있으면 대상별(고진양번).' },
   { id: 'FIX-007', date: '2026-10-04', found: '사용자 확인 R-020', title: "전법 '랜덤 적군'은 균등 무작위",
     detail: "전법의 '랜덤 적군 N명'을 진형 피격률로 가중해 뽑던 것(v1.12b)을 살아 있는 적 전체에서 균등 무작위로 바꿈. 진형 피격률은 일반 공격(연타·축력 포함) 대상 선정에만 적용." },
   { id: 'FEAT-017', date: '2026-10-04', found: '사용자 확인 R-019 (원문 그대로 실행)', title: '랜덤 2~3명·효과 전체 1회 판정',
@@ -1042,6 +1044,10 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
   const tags = {}; // 같은 스킬 내에서 앞서 정한 대상을 뒤 효과가 재사용하기 위한 태그 저장소
   let __sharedDmgTargets = null; // FIX-002
   const __chanceRolls = {};       // FIX-003
+  // FIX-008(R-021): "N% 확률로 [대상]에게 …" 는 시전 1회에 한 번 판정하고, 성공하면 대상 전원에게 효과가 들어간다.
+  //   같은 확률 값을 쓰는 항목(조롱 및 위협 등)은 같은 판정을 공유한다.
+  const passOnce = x => { const k = 'once:' + x.chance; if (!(k in __chanceRolls)) __chanceRolls[k] = __rng() < x.chance; return __chanceRolls[k]; };
+  const passChance = x => x.chance == null || (x.chanceOnce ? passOnce(x) : __rng() < x.chance);
   function resolveSpecial(code) {
     // 연계 발동 시 "방금 그 대상"을 가리키는 특수 코드 (예: 반격은 원래 공격자에게)
     if (code === 'trigger_defender' && eventCtx && eventCtx.defender) return [eventCtx.defender];
@@ -1060,7 +1066,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     if (sm.tag) tags[sm.tag] = targets;   // FEAT-002
     targets.forEach(t => {
       if (sm.condition && !evalCondition(sm.condition, { attacker: unit, target: t, self: unit })) return;
-      if (sm.chance != null && __rng() >= sm.chance) return;
+      if (!passChance(sm)) return;
       let amt = lvVal(sm.min, sm.max);
       if (sm.inf) amt *= infMult(sm.inf, unit, t, coeffs);   // v1.11 W08·W09
       // 턴별 감쇠/증폭 (예: 동탁 압도적 권력 — 통솔 탈취량이 매 턴 10% 감소)
@@ -1275,7 +1281,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     }
     targets.forEach(t => {
       if (!t.alive || t.troops <= 0) return;   // 쓰러진 대상은 회복 불가(부활 없음)
-      if (h.chance != null && __rng() >= h.chance) return;
+      if (!passChance(h)) return;
       const ratio = lvVal(h.min, h.max);
       const { heal: healed, doubled, healMult, effRatio } = calcHeal(healer, t, ratio, coeffs, h.stat);
       healer.healDone += healed;
@@ -1302,7 +1308,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     if (b.tag) tags[b.tag] = targets;   // FEAT-002
     targets.forEach(t => {
       if (b.condition && !evalCondition(b.condition, { attacker: unit, target: t, self: unit })) return;
-      if (b.chance != null && __rng() >= b.chance) return;
+      if (!passChance(b)) return;
       let amt = lvVal(b.min, b.max);
       if (b.inf) amt *= infMult(b.inf, unit, t, coeffs);   // v1.11 W08·W09
       if (b.countScale) {
@@ -1399,7 +1405,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     const caster = se.caster ? (selectTargets(unit, [se.caster], allUnits)[0] || unit) : unit;
     targets.forEach(t => {
       if (se.condition && !evalCondition(se.condition, { attacker: unit, target: t, self: unit })) return;
-      if (se.chance != null && __rng() >= se.chance) return;
+      if (!passChance(se)) return;
       // 용어 시트 24번: 방어는 최대 2스택까지만 보유한다.
       if (se.name === '방어' && t.statuses.filter(s => s.name === '방어').length >= 2) return;
       const already = t.statuses.some(s => s.name === se.name);

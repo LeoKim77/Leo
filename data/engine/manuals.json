@@ -899,7 +899,8 @@
          "target": "all_enemy",
          "chance": 0.35,
          "duration": 1,
-         "caster": "highest_command_ally"
+         "caster": "highest_command_ally",
+         "chanceOnce": true
         }
        ],
        "targets": []
@@ -907,7 +908,7 @@
       "_timing": "turnStart"
      }
     ],
-    "note": "조롱 시전자 = 통솔 최고 우군(FEAT-015)"
+    "note": "35% 판정 1번 → 성공 시 적군 전체 조롱(R-021). 조롱 시전자 = 통솔 최고 우군(FEAT-015)"
    },
    {
     "name": "천공비록",
