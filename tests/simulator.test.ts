@@ -73,3 +73,16 @@ describe('전보 툴팁 (FEAT-016)', () => {
     expect(plain.log).toEqual(r.log);   // 툴팁을 켜도 전투 결과는 같다
   });
 });
+
+describe('원문 그대로 확률 실행 (R-019, FEAT-017)', () => {
+  it('"랜덤 2~3명"은 수백 번 돌리면 2명·3명이 반반에 가깝게 나온다', () => {
+    const E: any = (sim as any).engine;
+    let seed = 7; E.setRng(() => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; });
+    const mk = (id: string, side: string) => ({ id, name: id, side, alive: true, troops: 100, stats: {}, mods: {}, statuses: [], position: 'front', formation: { hitRate: { front: 0.6, mid: 0.2, back: 0.2 } } });
+    const all = [mk('a', 'A'), mk('b1', 'B'), mk('b2', 'B'), mk('b3', 'B')];
+    const n = { 2: 0, 3: 0 } as Record<number, number>;
+    for (let i = 0; i < 600; i++) n[E.selectTargets(all[0], ['random_enemy_2to3'], all).length]++;
+    expect(n[2] / 600).toBeGreaterThan(0.43);
+    expect(n[3] / 600).toBeGreaterThan(0.43);
+  });
+});

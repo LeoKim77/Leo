@@ -26,6 +26,8 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FEAT-017', date: '2026-10-04', found: '사용자 확인 R-019 (원문 그대로 실행)', title: '랜덤 2~3명·효과 전체 1회 판정',
+    detail: '"랜덤 2~3명"을 2명으로 줄이던 근사를 버리고 매 시전 2명/3명을 같은 확률로 고른다(난공불락 조롱, 황심의 가호 피신). "N% 확률로 ~ 여러 명의 능력치 증가"처럼 효과 전체가 한 번에 걸리는 확률은 대상마다가 아니라 한 번만 판정.' },
   { id: 'FIX-006', date: '2026-10-04', found: '전보 툴팁 (부상병이 잃은 병력보다 많게 표시)', title: '부상병 집계',
     detail: '회유·심리 공격·역전 회복이 부상병을 줄이지 않았고, 병력보다 큰 피해도 그대로 부상병에 더해 부상병이 잃은 병력보다 커지던 문제. 회복은 부상병에서 빼고, 부상병은 실제로 잃은 병력의 85%로. 기본 시뮬(R-011, 부상병 상한 꺼짐)의 승패에는 영향 없음.' },
   { id: 'FEAT-016', date: '2026-10-04', found: '사용자 제안 (게임 전보 툴팁)', title: '전보 줄마다 무장 상태 툴팁',
@@ -345,6 +347,9 @@ function selectTargets(unit, targetCodes, allUnits) {
     case 'all_ally': result = allies; break;
     case 'random_enemy_n': result = weightedShuffleByPosition(enemies, 2); break;
     case 'random_ally_n': result = shuffle(allies).slice(0, 2); break;
+    // FEAT-017 "랜덤 2~3명": 매 시전 2명 또는 3명을 같은 확률로 고른다 (원문 그대로)
+    case 'random_enemy_2to3': result = weightedShuffleByPosition(enemies, __rng() < 0.5 ? 2 : 3); break;
+    case 'random_ally_2to3': result = shuffle(allies).slice(0, __rng() < 0.5 ? 2 : 3); break;
     case 'random_ally_front': { const fr = allies.filter(u => u.position === 'front'); result = [pick(fr.length ? fr : allies)]; break; }   // FEAT-003 전열 우선
     case 'random_same_row_ally': { const row = x => (x.position === 'back' ? 'back' : 'front'); result = shuffle(allies.filter(u => u !== unit && row(u) === row(unit))).slice(0, 1); break; }   // FEAT-011 같은 열 우군(자신 제외)
     case 'random_ally_1': result = shuffle(allies.filter(u => u !== unit)).slice(0, 1); break;   // FEAT-001: 랜덤 우군 단일(자신 제외)
@@ -1285,6 +1290,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
 
   (eff.buffs || []).forEach(b => {
     if (b.turnCond && !turnMatches(b.turnCond, turn)) return;
+    if (b.chanceAll != null && __rng() >= b.chanceAll) return;   // FEAT-017 효과 전체에 한 번 판정 ("N% 확률로 ~ 2~3명의 …")
     let targets;
     if (b.target === 'self') targets = [unit];
     else if (b.target && resolveSpecial(b.target)) targets = resolveSpecial(b.target);

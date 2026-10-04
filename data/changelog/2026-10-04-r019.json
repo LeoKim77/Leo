@@ -1,0 +1,21 @@
+{
+  "id": "2026-10-04-r019",
+  "date": "2026-10-04",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "R-019 확률은 원문 그대로 실행 · 랜덤 2~3명 구현",
+  "body": "사용자 확인 R-019: 이 게임은 확률 게임. 확률·랜덤 대상·진형 피격률은 원문 그대로 실행하고, 인게임 전보에 몇 번 나왔는지는 검증하지 않는다. 시뮬 수백 판 통계가 원문 확률에 근접하는지만 확인(감사 D04 발동률·D06 대상 수). 녹화는 전투 로직·계수·구절 실행 확인용.\n- FEAT-017: '랜덤 2~3명'을 2명으로 줄이던 근사 제거 — 매 시전 2명/3명 같은 확률. 난공불락 조롱(사용자 확인: 2~3명, 엑셀은 2명이라 게임 확인 정보로 덮어씀)·황심의 가호 피신. 황심의 가호 60%는 효과 전체 1회 판정.\n- 통계 테스트 추가: 600번 뽑아 2명·3명 비율이 반반 근처인지.\n- 검증 대기에서 확률 관찰 항목 제거: 난공불락 조롱 대상 수, 전열 병력 감소 시 피격률, 피신 발생 빈도. 주태 불굴의 의지는 구조 구현 완료 → 통솔 영향 계수만 남김.",
+  "refs": [],
+  "author": "Claude",
+  "files": [
+    "CLAUDE.md",
+    "data/audit/latest.json",
+    "data/common/confirmed-rules.json",
+    "data/engine/authored.json",
+    "data/patches/skills.json",
+    "data/verification/engine-assumptions.json",
+    "data/verification/queue.json",
+    "packages/engine/src/legacy/core.js",
+    "tests/simulator.test.ts"
+  ]
+}

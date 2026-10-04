@@ -102,7 +102,7 @@
   },
   "solid-defense": {
    "status": "approx",
-   "note": "\"도발\"=조롱. 통솔 영향 미반영, 확률은 대상별 판정(R-004)",
+   "note": "\"도발\"=조롱. 대상 랜덤 2~3명(사용자 확인 R-019), 확률은 대상별 판정(R-004). 통솔 영향 미반영",
    "_timing": "turnStart",
    "onlyTurns": [
     2,
@@ -121,7 +121,7 @@
     "statusEffects": [
      {
       "name": "조롱",
-      "target": "random_enemy_n",
+      "target": "random_enemy_2to3",
       "chance": 0.6,
       "duration": 2
      }
@@ -572,7 +572,7 @@
   },
   "u-gan-furen": {
    "status": "approx",
-   "note": "\"2~3명\"을 2명으로, 지력 영향 미반영",
+   "note": "랜덤 아군 2~3명(원문 그대로), 60% 확률은 효과 전체 1회 판정. 지력 영향 미반영",
    "_timing": "turnStart",
    "effects": {
     "damage": [],
@@ -582,10 +582,10 @@
       "stat": "피신",
       "min": 0.18,
       "max": 0.18,
-      "target": "random_ally_n",
+      "target": "random_ally_2to3",
       "duration": 2,
       "maxStacks": 1,
-      "chance": 0.6
+      "chanceAll": 0.6
      }
     ],
     "statMods": [],
@@ -612,7 +612,7 @@
     }
    ],
    "approxHints": [
-    "2~3명"
+    "지력의 영향"
    ]
   },
   "u-lu-xun": {
