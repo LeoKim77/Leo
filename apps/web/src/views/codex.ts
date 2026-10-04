@@ -16,7 +16,7 @@ export function renderCodex(root: HTMLElement, params: URLSearchParams) {
   draw(root);
 }
 
-function draw(root: HTMLElement) {
+function draw(root: HTMLElement, onlyList = false) {
   const b = app.bundle;
   const generals = b.generals.filter(g => inSeason(g.season) && (faction === '전체' || g.faction === faction) && (!q || g.name.ko.includes(q)));
   const skills = b.skills.filter(s => inSeason(s.season) && (skillKind === '전체' || s.kind === skillKind) && (!q || s.name.ko.includes(q) || s.text.includes(q)));
@@ -42,6 +42,10 @@ function draw(root: HTMLElement) {
         audit(s.id) ? lv(audit(s.id)!, '') : null)),
   );
 
+  // 검색 입력 중에는 목록만 바꾼다 — 입력칸을 다시 그리면 휴대폰 한글 조합이 끊긴다
+  const oldList = root.querySelector('.split > .panel.list');
+  if (onlyList && oldList) { oldList.replaceWith(list); return; }
+
   const sel = kind === 'general' ? generalById(selId) : skillById(selId);
   const detail = h('div', null, sel
     ? (kind === 'general' ? generalDetail(sel as General) : skillDetail(sel as Skill))
@@ -60,7 +64,7 @@ function draw(root: HTMLElement) {
       kind === 'general'
         ? select(['전체', '위', '촉', '오', '군'], faction, v => { faction = v; draw(root); })
         : select(['전체', '지휘', '패시브', '액티브', '추격'], skillKind, v => { skillKind = v; draw(root); }),
-      h('input', { type: 'text', placeholder: '이름·원문 검색', value: q, oninput: (e: Event) => { q = (e.target as HTMLInputElement).value; draw(root); setTimeout(() => (root.querySelector('input[type=text]') as HTMLInputElement)?.focus(), 0); } })),
+      h('input', { type: 'text', placeholder: '이름·원문 검색', value: q, oninput: (e: Event) => { q = (e.target as HTMLInputElement).value; draw(root, true); } })),
     h('div', { class: 'split' }, list, detail),
   );
 }
