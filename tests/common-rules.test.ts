@@ -108,3 +108,19 @@ describe('공용 규칙: 연쇄 트리거 (R-033)', () => {
     expect(maxTurn).toBeGreaterThan(0);
   });
 });
+
+describe('공용 규칙: 중첩 효과 (R-035)', () => {
+  it('충신의 기재: 상한 4스택 이후 발동해도 지력 증가는 최대 +40, 4스택 중첩 표기만 남는다', async () => {
+    const { buildBundle } = await import('../packages/data-tools/src/bundle.ts');
+    const { Simulator } = await import('../packages/engine/src/index.ts');
+    const b: any = buildBundle(); const sim = new Simulator(b);
+    const td = (n: string) => sim.tierDeckSpec(b.tierDecks.find((t: any) => t.name === n).id);
+    let capLines = 0;
+    for (let i = 0; i < 20; i++) {
+      const r = sim.simulate(td('대황노'), td('충의궁'), { seed: 'stack' + i, detail: true });
+      capLines += r.log.filter(l => /「충신의 기재」이\(가\) 4스택 중첩/.test(l)).length;
+      expect(r.log.some(l => /충신의 기재」이\(가\) [5-9]스택/.test(l))).toBe(false);
+    }
+    expect(capLines).toBeGreaterThan(0);
+  });
+});
