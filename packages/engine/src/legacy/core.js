@@ -26,6 +26,8 @@ export const ENGINE_FIXES = [
     detail: '무장 고유 배치 대신 진형 칸으로 전열·후열을 정한다. 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 전열 칸엔 배치 성향이 전열인 무장이 먼저.' },
   { id: 'FEAT-007', date: '2026-10-03', found: '전보 녹화 (주태 불굴의 의지)', title: '대신 받기·불굴(치명 피해 면역)',
     detail: '매 턴 시작 시 보호자가 우군에게 보호 상태를 걸고 자기 행동이 끝나면 해제. 보호 중 현재 병력 10% 초과 피해는 확률로 보호자가 줄여서 대신 받음(우군당 턴 3회). 보호자 사망 직전 우군이 살아 있으면 불굴로 1회 면역(발동마다 −10%p).' },
+  { id: 'FIX-007', date: '2026-10-04', found: '사용자 확인 R-020', title: "전법 '랜덤 적군'은 균등 무작위",
+    detail: "전법의 '랜덤 적군 N명'을 진형 피격률로 가중해 뽑던 것(v1.12b)을 살아 있는 적 전체에서 균등 무작위로 바꿈. 진형 피격률은 일반 공격(연타·축력 포함) 대상 선정에만 적용." },
   { id: 'FEAT-017', date: '2026-10-04', found: '사용자 확인 R-019 (원문 그대로 실행)', title: '랜덤 2~3명·효과 전체 1회 판정',
     detail: '"랜덤 2~3명"을 2명으로 줄이던 근사를 버리고 매 시전 2명/3명을 같은 확률로 고른다(난공불락 조롱, 황심의 가호 피신). "N% 확률로 ~ 여러 명의 능력치 증가"처럼 효과 전체가 한 번에 걸리는 확률은 대상마다가 아니라 한 번만 판정.' },
   { id: 'FIX-006', date: '2026-10-04', found: '전보 툴팁 (부상병이 잃은 병력보다 많게 표시)', title: '부상병 집계',
@@ -345,15 +347,16 @@ function selectTargets(unit, targetCodes, allUnits) {
   switch (code) {
     case 'all_enemy': result = enemies; break;
     case 'all_ally': result = allies; break;
-    case 'random_enemy_n': result = weightedShuffleByPosition(enemies, 2); break;
+    // FIX-007(R-020): 전법의 '랜덤 적군'은 진형 피격률과 무관하게 살아 있는 적 전체에서 균등 무작위 (피격률은 일반 공격 대상에만)
+    case 'random_enemy_n': result = shuffle(enemies).slice(0, 2); break;
     case 'random_ally_n': result = shuffle(allies).slice(0, 2); break;
     // FEAT-017 "랜덤 2~3명": 매 시전 2명 또는 3명을 같은 확률로 고른다 (원문 그대로)
-    case 'random_enemy_2to3': result = weightedShuffleByPosition(enemies, __rng() < 0.5 ? 2 : 3); break;
+    case 'random_enemy_2to3': result = shuffle(enemies).slice(0, __rng() < 0.5 ? 2 : 3); break;
     case 'random_ally_2to3': result = shuffle(allies).slice(0, __rng() < 0.5 ? 2 : 3); break;
     case 'random_ally_front': { const fr = allies.filter(u => u.position === 'front'); result = [pick(fr.length ? fr : allies)]; break; }   // FEAT-003 전열 우선
     case 'random_same_row_ally': { const row = x => (x.position === 'back' ? 'back' : 'front'); result = shuffle(allies.filter(u => u !== unit && row(u) === row(unit))).slice(0, 1); break; }   // FEAT-011 같은 열 우군(자신 제외)
     case 'random_ally_1': result = shuffle(allies.filter(u => u !== unit)).slice(0, 1); break;   // FEAT-001: 랜덤 우군 단일(자신 제외)
-    case 'random_enemy_1': result = [weightedPickByPosition(enemies)]; break;
+    case 'random_enemy_1': result = [pick(enemies)]; break;
     case 'lowest_control_enemy': result = [minBy(enemies, u => u.stats.통솔)]; break;
     case 'lowest_power_enemy': result = [minBy(enemies, u => u.stats.무력)]; break;
     case 'lowest_intel_enemy': result = [minBy(enemies, u => u.stats.지력)]; break;
@@ -370,7 +373,7 @@ function selectTargets(unit, targetCodes, allUnits) {
     case 'lowest_hp_ally': result = [minBy(allies, u => u.troops)]; break;
     case 'lowest_intel_ally': result = [minBy(allies, u => u.stats.지력)]; break;   // FEAT-004
     case 'lowest_hp_enemy': result = [minBy(enemies, u => u.troops)]; break;
-    default: result = [weightedPickByPosition(enemies)];
+    default: result = [pick(enemies)];
   }
   // 아군 대상 코드인데 자기 자신 외에 아군이 없는 경우 등 방어적으로 빈 결과를 걸러냄
   return (Array.isArray(result) ? result : [result]).filter(Boolean);

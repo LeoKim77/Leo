@@ -86,3 +86,16 @@ describe('원문 그대로 확률 실행 (R-019, FEAT-017)', () => {
     expect(n[3] / 600).toBeGreaterThan(0.43);
   });
 });
+
+describe('전법 랜덤 대상은 피격률과 무관 (R-020, FIX-007)', () => {
+  it('기형진 상대로도 랜덤 적군 1명은 세 명이 각 1/3 근처', () => {
+    const E: any = (sim as any).engine;
+    let seed = 11; E.setRng(() => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; });
+    const f = { hitRate: { front: 0.6, mid: 0.2, back: 0.2 } };
+    const mk = (id: string, side: string, position: string) => ({ id, name: id, side, alive: true, troops: 100, stats: {}, mods: {}, statuses: [], position, formation: f });
+    const all = [mk('a', 'A', 'front'), mk('b1', 'B', 'front'), mk('b2', 'B', 'back'), mk('b3', 'B', 'back')];
+    const n: Record<string, number> = { b1: 0, b2: 0, b3: 0 };
+    for (let i = 0; i < 900; i++) n[E.selectTargets(all[0], ['random_enemy_1'], all)[0].id]++;
+    for (const k of Object.keys(n)) expect(Math.abs(n[k] / 900 - 1 / 3)).toBeLessThan(0.06);
+  });
+});
