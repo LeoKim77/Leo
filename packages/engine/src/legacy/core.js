@@ -38,6 +38,8 @@ export const ENGINE_FIXES = [
     detail: '트리거 연쇄는 모두 발동하되 자기 효과로 자기 재발동만 금지(초선차전 → 초선차전 X). 턴당 횟수는 원문 상한(초선차전 5·기지의 승리 4 등)만, 상한 없는 트리거는 확률만(예전 기본 1회 폐기). 디버프 제거는 먼저 걸린 것부터(원문이 제어 우선이면 controlFirst). 반격 피해는 전법이 피해율을 주면 그 값(mods.반격배율), 없으면 50%.' },
   { id: 'FIX-012', date: '2026-10-04', found: '전보 캡처 (충신의 기재 4스택, 2026-10-04)', title: '중첩 효과 선입선출',
     detail: '스택마다 지속을 따로 갖고 먼저 쌓인 것부터 만료된다. 상한(N중첩)에서 또 발동하면 가장 오래된 스택을 빼고 새 스택을 넣는다(수치 그대로, "N스택 중첩됐습니다" 표기). 예전엔 상한에서 맨 앞 스택만 제자리 갱신해, 다음 발동 때도 같은(이미 가장 새로운) 스택을 다시 갱신하는 문제가 있었다.' },
+  { id: 'FEAT-022', date: '2026-10-04', found: '공용 규칙 R-042 (사용자 확인)', title: '짐독 피해 = 부여 시점 스냅샷',
+    detail: '짐독 상태에 부여 시점 시전자 지력·병력을 기록해, 매 턴 피해를 그 값으로 계산한다. 예전엔 매 턴 시전자의 현재 스탯을 써서, 시전자가 전사하면 병력 0 기준(피해 약 60% 감소)으로 줄어들었다.' },
   { id: 'FEAT-018', date: '2026-10-04', found: '공용 규칙 R-022·R-023·R-024 (사용자 제공 자료)', title: '행동 순서 = 선공 + 난수 ±35 전체 정렬, 준비 단계는 배치 순',
     detail: '같은 편 선공 순 고정 + 양 편 선두 병합(0.5+차/140 확률, v1.12 W31 잠정)을 버리고, 매 턴 생존 무장 전원 선공 + 균등 난수(−35~+35)로 양 편 구분 없이 정렬. 선공 차 70 초과는 여전히 확정 선행. 동률은 전열 → 아군 → 배치 순. 전투 시작 지휘·패시브는 선공과 무관하게 배치 순(아군 1 → 적군 1 → 아군 2 …).' },
   { id: 'FEAT-019', date: '2026-10-04', found: '공용 규칙 R-026 (사용자 제공 자료)', title: '혼란·조롱이 단일 대상 전법에도 적용',
@@ -621,7 +623,8 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
       // 짐독은 이유만 부여할 수 있으므로, 기존 스택의 시전자(이유)를 그대로 승계한다
       const src = defender.statuses.find(s => s.name === '짐독');
       defender.statuses.push({ name: '짐독', remain: 2,
-        casterId: src ? src.casterId : attacker.id, casterName: src ? src.casterName : attacker.name });
+        casterId: src ? src.casterId : attacker.id, casterName: src ? src.casterName : attacker.name,
+        snapInt: src ? src.snapInt : effStat(attacker, '지력'), snapTroops: src ? src.snapTroops : attacker.troops });
     }
     if (log) log.push(`${turnNo}턴:   [${defender.name}]의 「짐독」이(가) 1스택 추가됐습니다. (${attacker.name}의 시해)`);
   }
@@ -1525,7 +1528,8 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       if (exist) {
         if (dur > exist.remain) { exist.remain = dur; exist.casterId = caster.id; exist.casterName = caster.name; }
       } else {
-        t.statuses.push({ name: se.name, remain: dur, casterId: caster.id, casterName: caster.name, srcSkill: skill.name, aura: skill.type === '지휘' ? unit.id : null });
+        t.statuses.push({ name: se.name, remain: dur, casterId: caster.id, casterName: caster.name, srcSkill: skill.name, aura: skill.type === '지휘' ? unit.id : null,
+          ...(se.name === '짐독' ? { snapInt: effStat(unit, '지력'), snapTroops: unit.troops } : {}) });   // R-042 지속 피해는 부여 시점 스탯 스냅샷
       }
       __T({ e: 'status', src: unit.id, dst: t.id, status: se.name, dur, refreshed: already, skill: skill.id });
       if (CONTROL_DEBUFFS.includes(se.name) && hasStatus(t, '정신 회복')) {
@@ -2172,7 +2176,13 @@ function simulateOneBattle(armyA, armyB, coeffs) {
       if (!st.length) return;
       const n = Math.min(st.length, 5);
       const caster = units.find(x => x.id === st[0].casterId) || u;
-      const res = dealDamage(caster, u, 0.6 * n, '책략', coeffs, log, units, turn, contrib, false, 'dot');
+      // R-042: 짐독 피해는 부여 시점 시전자 지력·병력 스냅샷으로 계산 — 시전자가 전사해도 그대로 들어간다
+      const snap = st[st.length - 1];
+      const keep = { int: caster.stats.지력, troops: caster.troops };
+      if (snap.snapInt != null) { caster.stats.지력 = snap.snapInt - (effStat(caster, '지력') - caster.stats.지력); caster.troops = snap.snapTroops; }
+      let res;
+      try { res = dealDamage(caster, u, 0.6 * n, '책략', coeffs, log, units, turn, contrib, false, 'dot'); }
+      finally { caster.stats.지력 = keep.int; caster.troops = keep.troops; }
       caster.dmgDealt += res.dmg;
       log.push(`${turn}턴: [${u.name}]이(가) 「짐독」 ${n}스택으로 병력이 ${res.dmg}(${u.troops}) 손실됐습니다.`);
     });
