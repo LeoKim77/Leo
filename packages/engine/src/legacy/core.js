@@ -30,6 +30,14 @@ export const ENGINE_FIXES = [
     detail: '"60% 확률로 랜덤 적군 2~3명을 조롱"을 대상마다 60%씩 따로 굴리던 문제. 원문 순서대로 확률 판정 1번 → 성공하면 대상 전원. 회복·능력치·버프·상태 항목에 chanceOnce 추가, 같은 확률 값은 판정 공유(충성과 용맹 조롱 및 위협). 원문에 "목표마다 개별 판정"이 있으면 대상별(고진양번).' },
   { id: 'FIX-007', date: '2026-10-04', found: '사용자 확인 R-020', title: "전법 '랜덤 적군'은 균등 무작위",
     detail: "전법의 '랜덤 적군 N명'을 진형 피격률로 가중해 뽑던 것(v1.12b)을 살아 있는 적 전체에서 균등 무작위로 바꿈. 진형 피격률은 일반 공격(연타·축력 포함) 대상 선정에만 적용." },
+  { id: 'FEAT-018', date: '2026-10-04', found: '공용 규칙 R-022·R-023·R-024 (사용자 제공 자료)', title: '행동 순서 = 선공 + 난수 ±35 전체 정렬, 준비 단계는 배치 순',
+    detail: '같은 편 선공 순 고정 + 양 편 선두 병합(0.5+차/140 확률, v1.12 W31 잠정)을 버리고, 매 턴 생존 무장 전원 선공 + 균등 난수(−35~+35)로 양 편 구분 없이 정렬. 선공 차 70 초과는 여전히 확정 선행. 동률은 전열 → 아군 → 배치 순. 전투 시작 지휘·패시브는 선공과 무관하게 배치 순(아군 1 → 적군 1 → 아군 2 …).' },
+  { id: 'FEAT-019', date: '2026-10-04', found: '공용 규칙 R-026 (사용자 제공 자료)', title: '혼란·조롱이 단일 대상 전법에도 적용',
+    detail: '혼란: 일반 공격과 단일 대상 전법의 목표를 자신을 뺀 생존 무장 전체(적+아군)에서 무작위로 고른다 — 피해 전법이 아군을, 회복·버프 전법이 적을 고를 수 있다. 조롱: 적 단일 대상 전법도 조롱 시전자에게 고정. 여러 명 대상(전체·랜덤 N명)은 그대로. 혼란이 조롱보다 우선.' },
+  { id: 'FIX-009', date: '2026-10-04', found: '공용 규칙 R-027 (사용자 제공 자료)', title: '피신당한 일반 공격 뒤 추격 없음',
+    detail: '일반 공격이 피신으로 무효가 되면 그 행동의 추격 전법 판정을 하지 않는다(연타·축력 평타 중 하나라도 맞으면 판정). 예전엔 평타를 "했다"는 것만으로 추격을 굴렸다.' },
+  { id: 'FIX-010', date: '2026-10-04', found: '공용 규칙 R-025 (사용자 제공 자료) + 화공 2턴 녹화', title: '지속 턴 = 걸린 무장의 행동 횟수',
+    detail: '"턴 시작 때 있던 효과"를 보유자 행동 시작에 깎던 방식은 이미 행동을 마친 무장에게 건 1턴 효과·턴 종료 시 1턴 효과가 한 번도 적용되지 않았다. 보유자가 행동을 마친 시점에 있던 효과만 다음 행동 시작 때 1 감소 → "N턴 지속" = 걸린 무장의 행동 N번에 영향.' },
   { id: 'FEAT-017', date: '2026-10-04', found: '사용자 확인 R-019 (원문 그대로 실행)', title: '랜덤 2~3명·효과 전체 1회 판정',
     detail: '"랜덤 2~3명"을 2명으로 줄이던 근사를 버리고 매 시전 2명/3명을 같은 확률로 고른다(난공불락 조롱, 황심의 가호 피신). "N% 확률로 ~ 여러 명의 능력치 증가"처럼 효과 전체가 한 번에 걸리는 확률은 대상마다가 아니라 한 번만 판정.' },
   { id: 'FIX-006', date: '2026-10-04', found: '전보 툴팁 (부상병이 잃은 병력보다 많게 표시)', title: '부상병 집계',
@@ -204,8 +212,21 @@ function skillTiming(skill) {
   return r;
 }
 // 페이즈 발동 (턴 시작 / 턴 종료)
+// 동률 2차 기준(R-023): 전열 우선 → 아군(A) 우선 → 배치 순
+const slotIdx = u => parseInt(String(u.id).slice(1), 10) || 0;
+const tieKey = u => (u.position === 'back' ? 1 : 0) * 100 + (u.side === 'A' ? 0 : 10) + slotIdx(u);
 function mergeActionOrder(units, coeffs) {
   const win = (coeffs && coeffs.orderWindow) || 70;   // 선공 차가 이보다 크면 확정 선행 (용어 시트 4번)
+  // FEAT-018(R-022): 매 턴 생존 무장 전원의 선공에 균등 난수 ±35(=창 70의 절반)를 더해 양 편 구분 없이 내림차순 정렬.
+  //   두 무장의 난수 차는 −70~+70 이므로 "선공 차 70 초과 = 확정 선행"(용어 시트 4번)이 그대로 성립한다.
+  if (((coeffs && coeffs.orderMode) || 'noise') === 'noise') {
+    const half = win / 2;
+    return units.filter(u => u.alive)
+      .map(u => ({ u, v: effStat(u, '선공') + (__rng() * 2 - 1) * half }))
+      .sort((a, b) => (b.v - a.v) || (tieKey(a.u) - tieKey(b.u)))
+      .map(x => x.u);
+  }
+  // (예전 v1.12 W31 방식: 같은 편 선공 순 고정 + 양 편 선두 비교 병합 — orderMode 'merge')
   const bySpd = arr => arr.filter(u => u.alive).sort((a, b) => effStat(b, '선공') - effStat(a, '선공'));
   const A = bySpd(units.filter(u => u.side === 'A')), B = bySpd(units.filter(u => u.side === 'B'));
   const out = [];
@@ -232,12 +253,17 @@ function runPhaseSkills(phase, units, coeffs, log, turn, contrib, turnOrder) {
     });
   });
 }
-// 보유자 행동 기준 지속 감소 (W05, 잠정): 이번 턴 이전에 걸린 버프만 행동 직전에 1 감소
+// 보유자 행동 기준 지속 감소 (W05 → FIX-010, R-025)
+//   "N턴 지속" = 걸린 무장의 행동 N번에 영향. 보유자가 행동을 마친 시점에 이미 있던 효과만 다음 행동 시작 때 1 감소한다
+//   (= 행동을 마칠 때마다 −1, 소멸 표기는 다음 행동 시작 — 영상: 화공 2턴이 3턴 행동 시작 때 소멸).
+//   예전엔 "턴 시작 때 있던 것"을 기준으로 깎아, 이미 행동한 무장에게 건 1턴 효과·턴 종료 시 1턴 효과가 한 번도 적용되지 않았다.
 function tickHolderBuffs(u) {
-  // v1.12: 상태(화공·강렬·조롱·침묵 등)도 보유자 행동 시작 때 감소 — 영상에서 화공 2턴이 3턴 행동 시작 때 소멸
   u.statuses = u.statuses.filter(st => { if (!st._old) return true; st.remain--; return st.remain > 0; });
   u.buffs = u.buffs.filter(b => { if (!b._old) return true; b.remain--; if (b.remain <= 0) { u.mods[b.stat] -= b.value; return false; } return true; });
   u.statBuffs = u.statBuffs.filter(b => { if (!b._old) return true; b.remain--; if (b.remain <= 0) { u.stats[b.stat] = Math.max(0, u.stats[b.stat] - b.value); return false; } return true; });
+}
+function markHolderSeen(u) {
+  u.buffs.forEach(b => { b._old = true; }); u.statBuffs.forEach(b => { b._old = true; }); u.statuses.forEach(st => { st._old = true; });
 }
 // 회복 스케일 계수 — 실측 2건으로 보정 (0.5 임의값 → 0.57 → 0.40).
 // 채택 근거: 순욱 [청낭 치료] 로그. 전투 중 실제 지력이 349.12로 로그에 찍혀 있어
@@ -336,7 +362,7 @@ function weightedShuffleByPosition(units, n) {
 }
 
 // ---------- 타겟 선택 ----------
-function selectTargets(unit, targetCodes, allUnits) {
+function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판정·대리 공격자 지정 등 보조 조회(혼란·조롱 미적용)
   const enemies = allUnits.filter(u => u.alive && u.side !== unit.side);
   const allies = allUnits.filter(u => u.alive && u.side === unit.side);
   if (unit.forcedTargetId) {
@@ -345,6 +371,13 @@ function selectTargets(unit, targetCodes, allUnits) {
   }
   if (!enemies.length) return [];
   const code = targetCodes.find(c => c !== 'self') || 'random_enemy_1';
+  // FEAT-019(R-026): 단일 대상 전법도 혼란·조롱을 따른다 (일반 공격과 같은 규칙)
+  //   혼란: 자신을 뺀 생존 무장 전체(적+아군)에서 무작위 — 피해 전법은 아군을, 회복·버프 전법은 적을 고를 수 있다
+  //   조롱: 적 단일 대상 전법은 나를 조롱한 시전자에게 고정 (혼란이 우선)
+  if (!aux && targetCodes.some(c => c !== 'self') && (SINGLE_TARGET_CODES.has(code) || !KNOWN_TARGET_CODES.has(code))) {
+    if (statusFlag(unit, 'randomizeTarget')) return [pick(allUnits.filter(u => u.alive && u !== unit))];
+    if (!/ally/.test(code)) { const tc = tauntTargetFor(unit, allUnits); if (tc) return [tc]; }
+  }
   let result;
   switch (code) {
     case 'all_enemy': result = enemies; break;
@@ -380,6 +413,12 @@ function selectTargets(unit, targetCodes, allUnits) {
   // 아군 대상 코드인데 자기 자신 외에 아군이 없는 경우 등 방어적으로 빈 결과를 걸러냄
   return (Array.isArray(result) ? result : [result]).filter(Boolean);
 }
+// FEAT-019: 혼란·조롱이 적용되는 단일 대상 코드 (그 밖에 모르는 코드는 기본값 '랜덤 적 1명'으로 처리되므로 단일로 본다)
+const SINGLE_TARGET_CODES = new Set(['random_enemy_1', 'random_ally_1', 'random_ally_front', 'random_same_row_ally',
+  'lowest_control_enemy', 'lowest_power_enemy', 'lowest_intel_enemy', 'lowest_speed_enemy', 'lowest_combined_enemy', 'lowest_hp_enemy',
+  'highest_power_enemy', 'highest_intel_enemy', 'highest_speed_ally', 'highest_combined_ally', 'highest_power_ally', 'highest_intel_ally',
+  'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally']);
+const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
 function shuffle(a) { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(__rng() * (i + 1));[b[i], b[j]] = [b[j], b[i]]; } return b; }
 function minBy(arr, fn) { return arr.length ? arr.reduce((a, b) => (fn(a) <= fn(b) ? a : b)) : null; }
 function maxBy(arr, fn) { return arr.length ? arr.reduce((a, b) => (fn(a) >= fn(b) ? a : b)) : null; }
@@ -722,7 +761,7 @@ function emitDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       // 만족해야만 발동하는 유형. (난세의 간웅이 아무 아군이나 맞으면 터져서 판당 28회씩
       // 발동하던 문제 — 실제 전보에서는 1회로 집계된다)
       if (t.requireDefenderIs) {
-        const want = selectTargets(u, [t.requireDefenderIs], allUnits)[0];
+        const want = selectTargets(u, [t.requireDefenderIs], allUnits, true)[0];
         if (!want || want !== defender) return;
       }
       if (t.filterDmgType && t.filterDmgType !== dmgType) return;
@@ -1029,7 +1068,7 @@ function emitCastEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       if (t.role === 'self' && u !== caster) return;
       if (t.role === 'ally_side' && u.side !== caster.side) return;
       if (t.casterIs) {
-        const ok = t.casterIs.some(code => code === 'self' ? u === caster : selectTargets(u, [code], allUnits)[0] === caster);
+        const ok = t.casterIs.some(code => code === 'self' ? u === caster : selectTargets(u, [code], allUnits, true)[0] === caster);
         if (!ok) return;
       }
       if (!rollTrigger(u, skill)) return;
@@ -1100,7 +1139,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
   (eff.damage || []).forEach(d => {
     // 지시형 문장("무력이 가장 높은 아군이 적에게 피해를 준다") 대응:
     // d.actor가 있으면 그 아군이 실제 공격자(자신의 스탯으로 계산), 없으면 시전자 본인이 공격자.
-    const attacker = d.actor && d.actor !== 'self' ? (selectTargets(unit, [d.actor], allUnits)[0] || unit) : unit;
+    const attacker = d.actor && d.actor !== 'self' ? (selectTargets(unit, [d.actor], allUnits, true)[0] || unit) : unit;
     let targets;
     if (d.target === 'self') {
       targets = [attacker];
@@ -1113,7 +1152,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       //   ("랜덤 적군 2명에게 책략과 병기 피해", "추가로 …" — v1.12b 는 항목마다 대상을 다시 뽑았다)
       targets = __sharedDmgTargets;
     } else {
-      targets = selectTargets(unit, targetCodes, allUnits).filter(t => t.side !== unit.side);
+      targets = selectTargets(unit, targetCodes, allUnits).filter(t => t.side !== unit.side || statusFlag(unit, 'randomizeTarget'));   // 혼란이면 아군도 맞을 수 있다(FEAT-019)
       if (!targets.length) targets = selectTargets(unit, ['random_enemy_1'], allUnits);
       __sharedDmgTargets = targets;
     }
@@ -1253,7 +1292,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
 
   (eff.heal || []).forEach(h => {
     if (h.turnCond && !turnMatches(h.turnCond, turn)) return;
-    const healer = h.actor && h.actor !== 'self' ? (selectTargets(unit, [h.actor], allUnits)[0] || unit) : unit;
+    const healer = h.actor && h.actor !== 'self' ? (selectTargets(unit, [h.actor], allUnits, true)[0] || unit) : unit;
     let targets;
     if (h.target === 'self') {
       targets = [healer];
@@ -1402,7 +1441,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     else if (se.target) targets = selectTargets(unit, [se.target], allUnits);
     else targets = selectTargets(unit, targetCodes, allUnits);
     // FEAT-015 시전자 지정: "통솔이 가장 높은 우군이 … 조롱한다" (황월영〈기관술〉) — 조롱의 강제 공격 대상이 그 우군
-    const caster = se.caster ? (selectTargets(unit, [se.caster], allUnits)[0] || unit) : unit;
+    const caster = se.caster ? (selectTargets(unit, [se.caster], allUnits, true)[0] || unit) : unit;
     targets.forEach(t => {
       if (se.condition && !evalCondition(se.condition, { attacker: unit, target: t, self: unit })) return;
       if (!passChance(se)) return;
@@ -1828,7 +1867,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
     });
   }
   // 일반 공격: 위협/무장 해제에 막힘
-  let basicAttackTarget = null;
+  let basicAttackTarget = null, basicLanded = false;
   const blockBasic = statusFlag(unit, 'blockBasic') || selfBlockBasic;
   if (blockBasic) {
     const why = selfBlockBasic ? '고요한 제압(홀수 턴)'
@@ -1864,7 +1903,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
       let target;
       // 조롱과 혼란이 동시에 걸리면 '혼란'이 우선한다 (무작위 타겟팅이 강제 타겟을 덮어씀).
       if (confused) {
-        target = pick(enemies);
+        target = pick(allUnits.filter(u => u.alive && u !== unit));   // FEAT-019(R-026): 혼란 — 자신을 뺀 적·아군 전체에서 무작위
         log.push(`${turn}턴: [${unit.name}]은(는) 「혼란」 효과로 목표가 무작위화됩니다.`);
       } else if (tauntCaster) {
         target = tauntCaster;
@@ -1887,7 +1926,8 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
       log.push(`${turn}턴: [${unit.name}]이(가) [${target.name}]에게 일반 공격을 발동했습니다.`);
       const basicLineIdx = log.length;
       log.push('');
-      const { dmg, crit } = dealDamage(unit, target, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
+      const { dmg, crit, evaded } = dealDamage(unit, target, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
+      if (!evaded) basicLanded = true;   // FIX-009(R-027): 피신당한 일반 공격 뒤에는 추격 판정이 없다
       unit.dmgDealt += dmg;
       log[basicLineIdx] = (crit ? `${turn}턴:   [${unit.name}] 회심 발동. 회심 피해는 ${Math.round(coeffs.critMult * 100)}%입니다.\n` : '')
         + `${turn}턴:   [${target.name}]의 병력이 ${dmg}(${target.troops}) 손실됐습니다.`;
@@ -1925,6 +1965,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
           log.push(`${turn}턴: [${unit.name}]이(가) [${t2.name}]에게 일반 공격을 발동했습니다. (축력)`);
           const idx2 = log.length; log.push('');
           const ex = dealDamage(unit, t2, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
+          if (!ex.evaded) basicLanded = true;
           unit.dmgDealt += ex.dmg;
           log[idx2] = (ex.crit ? `${turn}턴:   [${unit.name}] 회심 발동. 회심 피해는 ${Math.round(coeffs.critMult*100)}%입니다.\n` : '')
             + `${turn}턴:   [${t2.name}]의 병력이 ${ex.dmg}(${t2.troops}) 손실됐습니다.`;
@@ -1939,6 +1980,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
         log.push('');
         unit._pursuitDoneThisHit = {}; unit._basicSeq = (unit._basicSeq || 0) + 1;   // 연격도 별도의 일반 공격 → 판정 기회 새로 부여
         const extra = dealDamage(unit, target, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
+        if (!extra.evaded) basicLanded = true;
         unit.dmgDealt += extra.dmg;
         log[extraIdx] = (extra.crit ? `${turn}턴:   [${unit.name}] 회심 발동. 회심 피해는 ${Math.round(coeffs.critMult * 100)}%입니다.\n` : '')
           + `${turn}턴:   [${target.name}]의 병력이 ${extra.dmg}(${target.troops}) 손실됐습니다.`;
@@ -1961,7 +2003,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
   }
   __phase = 'pursuit';
   byType('추격').forEach(skill => {
-    if (!(unit.alive && !blockBasic && basicAttackTarget)) return;
+    if (!(unit.alive && !blockBasic && basicAttackTarget && basicLanded)) return;
     const __p = procRateOf(skill, unit);
     const __ok = __rng() < __p;
     __T({ e: 'roll', unit: unit.id, skill: skill.id, kind: '추격', p: __p, base: procBaseOf(skill, unit), ok: __ok });
@@ -2039,7 +2081,8 @@ function simulateOneBattle(armyA, armyB, coeffs) {
   // 실제 전보에서도 "1번째 턴" 표시보다 앞에 찍힌다.
   __turn = 0; __phase = 'battleStart';
   __T({ e: 'battle', units: units.map(u => ({ id: u.id, side: u.side, name: u.name, generalId: u.generalId, troops: u.troops, maxTroops: u.maxTroops, skills: u.skills.map(s => s.id) })) });
-  const startOrder = units.filter(u => u.alive).sort((a, b) => effStat(b, '선공') - effStat(a, '선공'));
+  // FEAT-018(R-024): 준비 단계 전법은 선공과 무관하게 배치 순(아군 1번 → 적군 1번 → 아군 2번 …)으로 지휘 → 패시브
+  const startOrder = units.filter(u => u.alive).sort((a, b) => (slotIdx(a) - slotIdx(b)) || (a.side === 'A' ? -1 : 1));
   ['지휘', '패시브'].forEach(type => {
     startOrder.forEach(u => {
       const all = [...(u.skills || []), u.uniqueSkill].filter(Boolean);
@@ -2091,8 +2134,7 @@ function simulateOneBattle(armyA, armyB, coeffs) {
         log.push(`${turn}턴: [${u.name}]의 「축력」이(가) ${u._charge}스택 중첩됐습니다.`);
       }
     });
-    // v1.11 W05: 이번 턴 시작 전에 존재하던 버프 표시(보유자 행동 시 감소 대상)
-    units.forEach(u => { u.buffs.forEach(b => { b._old = true; }); u.statBuffs.forEach(b => { b._old = true; }); u.statuses.forEach(st => { st._old = true; }); });
+    // FIX-010: 지속 감소 대상 표시는 각 무장이 행동을 마친 뒤(markHolderSeen)에 한다 — 턴 시작 표시는 폐지
     // v1.11 W02: 턴 시작 단계 — "턴 시작 시" 지휘·패시브를 행동 순서 판정 전에 선공 순으로 처리
     runPhaseSkills('turnStart', units, coeffs, log, turn, contrib);
     units.forEach(u => { if (u.alive) captureSnapshot(u, battleState, turn); });
@@ -2100,6 +2142,7 @@ function simulateOneBattle(armyA, armyB, coeffs) {
       order.map((u, i) => `${i + 1}.${u.name}(선공 ${effStat(u, '선공').toFixed(0)})`).join('  '));
     for (const u of order) {
       resolveUnitTurn(u, units, coeffs, log, turn, contrib, battleState);
+      if (u.alive) markHolderSeen(u);
       const aAlive = units.some(x => x.side === 'A' && x.alive);
       const bAlive = units.some(x => x.side === 'B' && x.alive);
       if (!aAlive || !bAlive) { winner = aAlive ? 'A' : (bAlive ? 'B' : 'draw'); break; }
@@ -2536,6 +2579,7 @@ return {
   setDetail: (v) => { __detail = !!v; },
   setSkillLevel: (lv) => { SKILL_LEVEL = lv; },
   skillTiming, effStat, hasStatus, selectTargets, mergeActionOrder, calcDamage, calcHeal,
+  tickHolderBuffs, markHolderSeen,
   DEFAULT_COEFFS, buildUnit, simulateOneBattle, simulateBattle, procRateOf,
   getDebugDamageLog: () => DEBUG_DAMAGE_LOG,
   setDebugDamageLog: (v) => { DEBUG_DAMAGE_LOG = !!v; },

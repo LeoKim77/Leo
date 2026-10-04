@@ -64,7 +64,7 @@ describe('전보 툴팁 (FEAT-016)', () => {
     const d = (i: number) => sim.tierDeckSpec(s2[i].id);
     const r = sim.simulate(d(0), d(1), { seed: 'snap', detail: true });
     expect(r.lineSnaps!.length).toBe(r.log.length);
-    const i = r.log.findIndex(l => /병력이 \d+\(\d+\) 손실/.test(l));
+    const i = r.log.findIndex(l => /\[([^\]]+)\]의 병력이 \d+\(\d+\) 손실/.test(l));
     const m = r.log[i].match(/\[([^\]]+)\]의 병력이 \d+\((\d+)\)/)!;
     expect(r.lineSnaps![i]![m[1]].troops).toBe(+m[2]);
     expect(r.lineSnaps![i]![m[1]].stats.length).toBe(4);

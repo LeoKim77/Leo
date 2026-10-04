@@ -1,0 +1,20 @@
+{
+  "id": "2026-10-04-common-rules-r022",
+  "date": "2026-10-04",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "공용 규칙 확정 R-022~R-027: 행동 순서 난수·지속 턴·혼란/조롱·추격",
+  "body": "사용자 제공 자료(시뮬 엔진 구조 정리)를 공용 규칙 질문 10건과 대조해 6건 확정·반영.\n- R-022 행동 순서: 매 턴 선공 + 균등 난수 ±35, 양 편 구분 없이 정렬(같은 편도 뒤바뀜). 선공 차 70 초과 확정 선행은 그대로 성립. 예전 '같은 편 고정 + 0.5+차/140' 폐기 (FEAT-018)\n- R-023 동률: 전열 → 아군 → 배치 순\n- R-024 준비 단계: 선공 무관 배치 순으로 지휘 → 패시브\n- R-025 지속 턴: 걸린 무장이 행동을 마칠 때마다 −1. 이미 행동한 무장에게 건 1턴 효과·'턴 종료 시 1턴' 효과가 한 번도 적용되지 않던 버그 수정 (FIX-010)\n- R-026 혼란·조롱: 단일 대상 전법까지 적용. 혼란은 자신 뺀 적·아군 전체에서 무작위(팀킬·적 회복) (FEAT-019)\n- R-027 추격: 일반 공격이 피신되면 판정 없음 (FIX-009)\n- 영향: 티어덱 상위 8덱 28대전 승률 평균 ±4.9%p(잡음 약 3%p), 최대 문무곽가 vs 동작궁 26.0% → 45.8%. 감사 결과 변화 없음.\n- 남은 결정 7건(아군/우군, 지휘 소멸 시점, 반격 배율, 피신·저항·방어 순서, 연쇄 트리거 등)은 docs/COMMON_RULES.md.",
+  "refs": [],
+  "author": "Claude",
+  "commit": "",
+  "files": [
+    "packages/engine/src/legacy/core.js",
+    "data/common/confirmed-rules.json",
+    "data/verification/engine-assumptions.json",
+    "data/audit/latest.json",
+    "docs/COMMON_RULES.md",
+    "tests/common-rules.test.ts",
+    "tests/simulator.test.ts"
+  ]
+}
