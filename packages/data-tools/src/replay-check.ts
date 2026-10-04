@@ -19,7 +19,7 @@ const gradeMult = (g?: number) => 1 + GRADE_STEP * (g ?? 0);
 interface Tooltip { turn: number; unit: string; stats?: Record<string, number>; troops?: number; maxTroops?: number; mods?: Mods }
 /** at: 그 순간 툴팁과 달라진 값(병력·능력치·증감) — 전보 줄의 괄호 수치로 채운다 */
 type At = Record<string, { troops?: number; stats?: Record<string, number>; mods?: Mods }>;
-interface DamageSample { grade?: number; turn: number; attacker: string; defender: string; kind: string; dmgType: '병기' | '책략'; ratio: number; observed: number; crit?: boolean; tag?: string; note?: string; at?: At }
+interface DamageSample { excluded?: string; grade?: number; turn: number; attacker: string; defender: string; kind: string; dmgType: '병기' | '책략'; ratio: number; observed: number; crit?: boolean; tag?: string; note?: string; at?: At }
 /** "(스탯)의 영향 받음" 표본: 원문 기본값과 전보에 실제로 찍힌 값, 그 순간 시전자(또는 목표)의 해당 스탯 */
 interface InfluenceSample { turn: number; skill: string; caster: string; base: number; observed: number; stat: string; statValue: number; note?: string }
 /**
@@ -75,7 +75,7 @@ export function checkReplay(r: Replay, coeffs: Record<string, unknown> = {}, sim
   };
   const rows: CheckRow[] = [];
   const crit = Number((sim as any).coeffs.critMult ?? 1.5);
-  for (const s of r.damageSamples || []) {
+  for (const s of (r.damageSamples || []).filter(x => !x.excluded)) {
     const A = apply(s.attacker, s.turn, s.at), D = apply(s.defender, s.turn, s.at);
     const tag = s.tag || (s.kind === '일반 공격' ? 'basic' : 'active');
     const { dmg } = E.calcDamage(A.u, D.u, s.ratio * gradeMult(s.grade), s.dmgType, (sim as any).coeffs, null, s.turn, tag);

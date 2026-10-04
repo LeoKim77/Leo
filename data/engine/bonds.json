@@ -85,7 +85,8 @@
     "simulatable": false,
     "legacyMembersInRoster": [
       "유비"
-    ]
+    ],
+    "excludedBy": "R-018 시즌 한정 인연"
   },
   "bond-006": {
     "parsed": {
@@ -376,7 +377,8 @@
     "simulatable": false,
     "legacyMembersInRoster": [
       "손권"
-    ]
+    ],
+    "excludedBy": "R-018 시즌 한정 인연"
   },
   "bond-021": {
     "parsed": {
@@ -656,7 +658,8 @@
     "simulatable": false,
     "legacyMembersInRoster": [
       "조조"
-    ]
+    ],
+    "excludedBy": "R-018 시즌 한정 인연"
   },
   "bond-035": {
     "parsed": {
