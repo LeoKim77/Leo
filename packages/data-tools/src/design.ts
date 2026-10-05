@@ -7,7 +7,7 @@ import { join } from 'node:path';
 import { DATA, readJson } from './paths.ts';
 
 export const DESIGN_DIR = join(DATA, 'design');
-export const POST_TYPES = ['공지', '결정', '질문', '검증요청', '변경'] as const;
+export const POST_TYPES = ['공지', '결정', '질문', '검증요청', '검증완료', '변경'] as const;
 export const POST_STATUS = ['열림', '답변됨', '시뮬 반영', '닫힘'] as const;
 export const SPEC_STATUS = ['확정', '녹화확인', '잠정', '결정필요', '참고'] as const;
 
@@ -27,13 +27,13 @@ function checkCat(cat: string) {
   if (!designCategories().some(c => c.id === cat)) throw new Error(`카테고리 없음: ${cat} (가능: ${designCategories().map(c => c.id).join(', ')})`);
 }
 
-export function addPost(p: { cat: string; type: string; title: string; body: string; status?: string; specIds?: string[]; rules?: string[]; ask?: string[]; date?: string }) {
+export function addPost(p: { cat: string; type: string; title: string; body: string; status?: string; specIds?: string[]; rules?: string[]; ask?: string[]; date?: string; links?: Array<{ label: string; url: string }> }) {
   checkCat(p.cat);
   const ids = designPosts().map(x => +x.id.slice(2));
   const id = `P-${String((ids.length ? Math.max(...ids) : 0) + 1).padStart(4, '0')}`;
   const date = p.date || today();
   const rec = { id, date, cat: p.cat, type: p.type, title: p.title, body: p.body, status: p.status || (p.type === '질문' || p.type === '검증요청' ? '열림' : '시뮬 반영'),
-    specIds: p.specIds || [], rules: p.rules || [], ...(p.ask?.length ? { ask: p.ask } : {}), history: [{ date, change: '작성' }] };
+    specIds: p.specIds || [], rules: p.rules || [], ...(p.ask?.length ? { ask: p.ask } : {}), ...(p.links?.length ? { links: p.links } : {}), history: [{ date, change: '작성' }] };
   save(postPath(id), rec);
   return rec;
 }

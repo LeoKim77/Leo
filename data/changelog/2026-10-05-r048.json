@@ -1,0 +1,30 @@
+{
+  "id": "2026-10-05-r048",
+  "date": "2026-10-05",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "설계서 질문 답변 반영(R-048): 전열/후열 2열·동률 무작위·관통 상한 없음·군량 고갈 ×0.3·연소·축력·회심/묘책 분리",
+  "body": "설계서 '답변이 필요한 것' 1~11번 답을 규정·엔진에 반영했다(R-048, FIX-015).\n■ 진형: 전열/후열 2열뿐(중열 없음). 피격 가중치 = 전열 무장은 전열 피격률, 후열 무장은 후열 피격률. 덱 수동 편성에서 전열/후열 클릭 배치는 시뮬 화면 개편 때 들어간다.\n■ 동률이면 무작위 / 다단 타격 중 대상 전사 시 남은 타격 건너뜀 / 방어 관통 상한 없음 / 능력치 하한 0\n■ 군량 고갈: 받는 회복 증감까지 계산한 최종 회복량 ×0.3 (예전 받는 회복과 합연산 → 회복 +30%와 겹치면 0.6배였는데 이제 0.39배)\n■ 연소 구현: 짐독과 같은 방식(부여마다 1스택, 최대 5, 60%×스택, 부여 시점 스냅샷). 화소연영·육손〈분영〉 원문대로. 짐독도 부여마다 스택이 쌓이게 고침(예전 갱신만)\n■ 지속 피해(짐독·연소)는 행동 순서 결정 직후 한 시점에 부여 순서대로 / 축력은 턴 시작 전법 단계에서 그 무장 차례에\n■ 회심 피해(병기)·묘책 피해(책략) 따로 — 순욱〈북한〉 묘책 피해 +10% 원문대로\n■ 금병법 고정 증감 '영향 받음'은 전투 시작 스냅샷(지금 방식) 확정\n■ 녹화 검증 게시글 4건에 사용자가 준 구글 드라이브 링크를 붙였다(주태·조운·악진 전보 3개, 조황화 녹화 폴더, 진형 소개 영상, 금병법 이미지 폴더). 앞으로 녹화로 검증을 마치면 '검증완료' 글에 링크를 함께 남긴다.\n■ 감사: 통과 2,292 · 경고 42 · 실패 1(미보유 SP 제갈량)",
+  "refs": ["u-lu-xun", "xun-yu", "lu-xun"],
+  "author": "Claude",
+  "commit": "",
+  "files": [
+    "packages/engine/src/legacy/core.js",
+    "packages/engine/src/index.ts",
+    "packages/engine/src/skills/u-lu-xun.ts",
+    "packages/engine/src/manuals/m-xun-yu-1.ts",
+    "packages/engine/src/manuals/m-lu-xun-2.ts",
+    "packages/data-tools/src/design.ts",
+    "apps/design/template.html",
+    "apps/mcp-server/src/server.ts",
+    "data/common/confirmed-rules.json",
+    "data/design/spec.json",
+    "data/design/terms.json",
+    "data/design/posts/*.json",
+    "docs/COMMON_RULES.md",
+    "tests/rules-r048.test.ts",
+    "CLAUDE.md",
+    ".claude/skills/season-update/SKILL.md",
+    "data/audit/latest.json"
+  ]
+}

@@ -40,6 +40,8 @@ export const ENGINE_FIXES = [
     detail: '스택마다 지속을 따로 갖고 먼저 쌓인 것부터 만료된다. 상한(N중첩)에서 또 발동하면 가장 오래된 스택을 빼고 새 스택을 넣는다(수치 그대로, "N스택 중첩됐습니다" 표기). 예전엔 상한에서 맨 앞 스택만 제자리 갱신해, 다음 발동 때도 같은(이미 가장 새로운) 스택을 다시 갱신하는 문제가 있었다.' },
   { id: 'FIX-013', date: '2026-10-04', found: '보유 전법 140개 원문 대조 (함수화 후 1차 보정)', title: '공용 대상·조건 버그',
     detail: '① 대상이 안 적힌 효과는 한 시전 안에서 같은 대상을 공유(R-044) — 예전엔 효과마다 새로 뽑아 "랜덤 2명의 A와 B"가 서로 다른 무장에게 갔다. ② "디버프 상태 보유" 조건이 방어·피신 같은 기능성 상태까지 셌다. ③ "이상 상태 개수"도 기능성 상태 포함. ④ 대상이 자신뿐인 회복이 병력 최저 아군에게 갔다(지혜의 바람·충성과 용맹·전쟁 조달). ⑤ 능력치 증감의 턴 조건(turnCond)이 무시됐다.' },
+  { id: 'FIX-015', date: '2026-10-05', found: '기획 플랫폼 질문 답변 (R-048, 사용자 확인)', title: '동률·관통·능력치 하한·군량 고갈·지속 피해·축력·회심/묘책 피해',
+    detail: '① "가장 높은/낮은" 동률이면 무작위(예전 배치 순 앞) ② 방어 관통 상한 없음(예전 90%) ③ 능력치 하한 0(예전 1) ④ 군량 고갈은 받는 회복 증감까지 계산한 최종 회복량 ×0.3(예전 받는 회복과 합연산) ⑤ 연소 구현(짐독과 같은 방식, 부여 시점 스냅샷), 짐독·연소는 부여마다 1스택씩(최대 5, 예전 짐독은 갱신만) ⑥ 지속 피해는 행동 순서 결정 직후 한 시점에 부여 순서대로 ⑦ 축력은 턴 시작 전법 단계에서 그 무장 차례에 ⑧ 회심 피해(병기)·묘책 피해(책략) 증가를 따로.' },
   { id: 'FIX-014', date: '2026-10-05', found: '금병법 원문 대조 (황개〈견결〉 확인 중)', title: '다른 무장이 때리는 피해의 "자신" 대상',
     detail: '피해 항목에 공격자(actor)가 따로 있을 때 대상 "자신"을 공격자로 풀어, 고육지계("지력이 가장 높은 우군이 자신에게 60% 병기 피해")에서 황개가 아니라 그 우군이 스스로를 때렸다. 대상 "자신" = 시전자로 고침.' },
   { id: 'FEAT-025', date: '2026-10-05', found: '금병법 87개 원문 대조 (금병법 함수화)', title: '회복 이벤트, 우군 최고 무력 대상',
@@ -269,6 +271,17 @@ function runPhaseSkills(phase, units, coeffs, log, turn, contrib, turnOrder) {
   __phase = phase;
   order.forEach(u => {
     if (!u.alive) return;
+    // R-048 축력(완벽한 사격)은 턴 시작 전법 단계에서 그 무장 차례에 쌓인다(예전엔 턴 시작 전법보다 먼저 따로)
+    if (phase === 'turnStart') {
+      const sk = u.skills.find(s => s.special === 'charge_shot');
+      if (sk) {
+        u._charge = u._charge || 0;
+        if (u._charge < (sk.chargeMax || 10) && __rng() < (sk.chargeChance || 0.5)) {
+          u._charge++;
+          log.push(`${turn}턴: [${u.name}]의 「축력」이(가) ${u._charge}스택 중첩됐습니다.`);
+        }
+      }
+    }
     u.skills.filter(s => skillTiming(s) === phase && (!s.onlyTurns || s.onlyTurns.includes(turn))).forEach(skill => {
       log.push(`${turn}턴: [${u.name}]이(가) 전법 [${skill.name}]을(를) 발동했습니다. (${label})`);
       applySkillEffects(u, skill, units, coeffs, log, turn, contrib);
@@ -340,7 +353,7 @@ function buildUnit(general, skills, uniqueSkill, formation, position, side, idx)
     pendingSkills: [],
     guaranteedCrit: 0,
     guaranteedCritNonBasicOnly: false,
-    mods: { 주는피해: 0, 받는피해: 0, 받는병기피해: 0, 받는책략피해: 0, 받는회복량: 0, 주는회복량: 0, 회복2배확률: 0, 액티브발동률: 0, 방어관통: 0, 간파: 0, 회심: DEFAULT_COEFFS.baseCrit, 묘책: DEFAULT_COEFFS.baseCrit, 회유: 0, 심리공격: 0, 연타확률: 0, 피신: 0, 반격확률: 0, 반격피해: 0, 추격전법피해: 0, 받는추격피해: 0, 받는일반공격피해: 0, 받는액티브피해: 0, 주는병기피해: 0, 주는책략피해: 0, 주는일반공격피해: 0, 주는액티브피해: 0, 회심피해: 0, 액티브재발동: 0 },
+    mods: { 주는피해: 0, 받는피해: 0, 받는병기피해: 0, 받는책략피해: 0, 받는회복량: 0, 주는회복량: 0, 회복2배확률: 0, 액티브발동률: 0, 방어관통: 0, 간파: 0, 회심: DEFAULT_COEFFS.baseCrit, 묘책: DEFAULT_COEFFS.baseCrit, 회유: 0, 심리공격: 0, 연타확률: 0, 피신: 0, 반격확률: 0, 반격피해: 0, 추격전법피해: 0, 받는추격피해: 0, 받는일반공격피해: 0, 받는액티브피해: 0, 주는병기피해: 0, 주는책략피해: 0, 주는일반공격피해: 0, 주는액티브피해: 0, 회심피해: 0, 묘책피해: 0, 액티브재발동: 0 },
     buffs: [], // {stat, value, remain, srcId} — mods 계열 버프
     statBuffs: [], // {stat, value, remain, srcId} — 무력/지력/통솔/선공 증감
     statuses: [], // {name, remain}
@@ -465,8 +478,15 @@ const SINGLE_TARGET_CODES = new Set(['random_enemy_1', 'random_ally_1', 'random_
   'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally', 'highest_power_friend']);
 const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'random_friend_n', 'all_friend', 'front_allies', 'random_all_4', 'damaged_me_this_turn', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
 function shuffle(a) { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(__rng() * (i + 1));[b[i], b[j]] = [b[j], b[i]]; } return b; }
-function minBy(arr, fn) { return arr.length ? arr.reduce((a, b) => (fn(a) <= fn(b) ? a : b)) : null; }
-function maxBy(arr, fn) { return arr.length ? arr.reduce((a, b) => (fn(a) >= fn(b) ? a : b)) : null; }
+// R-048 "가장 높은/낮은 ○○"가 동률이면 동률인 무장 중 무작위 (예전엔 배치 순 앞쪽)
+function extremeBy(arr, fn, sign) {
+  if (!arr.length) return null;
+  const vals = arr.map(x => { const v = fn(x); return Number.isFinite(v) ? v : (sign > 0 ? -Infinity : Infinity); }), best = sign > 0 ? Math.max(...vals) : Math.min(...vals);
+  const tied = arr.filter((_, i) => vals[i] === best || Math.abs(vals[i] - best) < 1e-9);
+  return tied.length > 1 ? tied[Math.floor(__rng() * tied.length)] : tied[0];
+}
+function minBy(arr, fn) { return extremeBy(arr, fn, -1); }
+function maxBy(arr, fn) { return extremeBy(arr, fn, 1); }
 
 // ---------- 데미지/치유 계산 ----------
 function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmgTag) {
@@ -491,8 +511,8 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   const ATK = dmgType === '병기' ? effStat(attacker, '무력') : effStat(attacker, '지력');
   let base;
   if (dmgType === '병기') {
-    const pierce = clamp(attacker.mods.방어관통 || 0, 0, 0.9);
-    const DEF = (__dmgOpts && __dmgOpts.ignoreDef) ? 0 : effStat(defender, '통솔') * (1 - pierce);
+    const pierce = Math.max(0, attacker.mods.방어관통 || 0);   // R-048 관통 상한 없음(예전 90%) — 100% 이상이면 통솔 완전 무시
+    const DEF = (__dmgOpts && __dmgOpts.ignoreDef) ? 0 : effStat(defender, '통솔') * Math.max(0, 1 - pierce);
     const tf = Math.pow(Math.max(attacker.troops, 1) / 10000, cf('betaP'));
     base = ratio * tf * Math.max(cf('P0') + cf('Pa') * ATK - cf('Pd') * DEF, 1);
   } else {
@@ -553,7 +573,8 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
     // 요술: 회심/묘책 피해 15% 감소
     // 회심 배율 = 기본 1.5배 + 「회심/묘책 피해 증가」 mod (인재 기용 +40% 등).
     // 요술 등 회심피해 감소 상태이상은 증가분에만 적용된다.
-    const critBonus = (coeffs.critMult - 1) + (attacker.mods.회심피해 || 0) + forcedBonus;
+    // R-048 회심(병기)과 묘책(책략)은 별개 — 피해 증가도 회심피해 / 묘책피해 따로
+    const critBonus = (coeffs.critMult - 1) + ((dmgType === '병기' ? attacker.mods.회심피해 : attacker.mods.묘책피해) || 0) + forcedBonus;
     const critMult = 1 + critBonus * accumStatus(attacker, 'critDamageMult', 'mult');
     dmg *= critMult;
     crit = true;
@@ -744,11 +765,9 @@ function calcHeal(caster, target, ratio, coeffs, healStat) {
   const dblChance = caster.mods.회복2배확률 || 0;
   let doubled = false;
   if (dblChance > 0 && __rng() < clamp(dblChance, 0, 1)) { heal *= 2; doubled = true; }
-  // ⑤ 군량 고갈: 받는 병력 회복 효과 70% 감소
-  // 받는 치유 효과는 같은 범주라 합연산이다: (1 + 증가총합 − 감소총합)
-  // 예) 받는치유 +30%, 군량 고갈 −70% → 1 + 0.30 − 0.70 = 0.60
-  const healMult = Math.max(0, 1 + (target.mods.받는회복량 || 0)
-    + (accumStatus(target, 'healReceivedMult', 'mult') - 1));
+  // ⑤ 받는 회복 증감 → 그 결과에 군량 고갈(최종 회복량 −70%, 30%만) — R-048: 합연산이 아니라 최종값에 곱한다
+  //   예) 회복 300 → 군량 고갈이면 90
+  const healMult = Math.max(0, 1 + (target.mods.받는회복량 || 0)) * accumStatus(target, 'healReceivedMult', 'mult');
   heal *= healMult;
   heal = Math.max(0, Math.round(heal));
   // ⑥ 최대 병력 초과분은 버려짐(오버힐)
@@ -1041,6 +1060,7 @@ const STATUS_DEF = {
   // 짐독: 디버프. 매 턴 시작 시 (60% × 스택수)의 책략 피해를 받는다. 최대 5스택.
   //   이유만 부여할 수 있고, 피해는 짐독을 건 이유의 지력으로 계산한다.
   '짐독': { stackable: true, maxStack: 5, dotRatioPerStack: 0.6 },
+  '연소': { stackable: true, maxStack: 5, dotRatioPerStack: 0.6 },   // R-048 게임 용어: 매 턴 60%×스택 책략, 최대 5스택 — 짐독과 같은 방식
   // 탈주병: 상태가 아니라 즉시 고정 피해로 처리된다(dealDesertionDamage 참조)
   '탈주병': { instantFixedDamage: true },
   // ── 기능성 버프 ──
@@ -1089,8 +1109,8 @@ function effStat(unit, stat) {
     const d = STATUS_DEF[s.name] && STATUS_DEF[s.name].statDelta;
     if (d && d[stat]) v += d[stat];
   });
-  // 스탯 하한은 0이 아니라 1이다 (아무리 깎여도 최소 1로 공식에 대입된다).
-  return Math.max(1, v);
+  // R-048 능력치 하한 0 (예전 1)
+  return Math.max(0, v);
 }
 function accumStatus(unit, key, mode) {
   let acc = mode === 'mult' ? 1 : 0;
@@ -1670,6 +1690,18 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       //   보유하여, 조롱이(가) 잠시 무효화됩니다" — 부여 로그가 먼저 찍힌다.
       //   따라서 statuses에는 넣되 isControlSuppressed()가 효과만 억제한다(제어 7종 전부).
       // FIX-004 방어는 스택형(1회 소모)이라 최대 2스택까지 따로 쌓인다 — 같은 상태 갱신 규칙에서 제외
+      // R-048 지속 피해(짐독·연소)는 부여마다 1스택씩 쌓인다(스택마다 지속 따로, 상한 5에서 가장 오래된 스택 교체 — R-035)
+      const dotDef = STATUS_DEF[se.name] && STATUS_DEF[se.name].dotRatioPerStack ? STATUS_DEF[se.name] : null;
+      if (dotDef) {
+        const stacks = t.statuses.filter(s => s.name === se.name);
+        if (stacks.length >= dotDef.maxStack) t.statuses.splice(t.statuses.indexOf(stacks[0]), 1);
+        t.statuses.push({ name: se.name, remain: dur, casterId: caster.id, casterName: caster.name, srcSkill: skill.name, aura: null,
+          snapInt: effStat(unit, '지력'), snapTroops: unit.troops });
+        log.push(`${turn}턴:   [${t.name}]의 「${se.name}」이(가) ${Math.min(stacks.length + 1, dotDef.maxStack)}스택이 됐습니다. — ${unit.name}의 【${skill.name}】`);
+        __T({ e: 'status', src: unit.id, dst: t.id, status: se.name, dur, refreshed: already, skill: skill.id });
+        if (t.side !== unit.side) emitDebuffEvent({ caster: unit, target: t, statusName: se.name, abnormal: false }, allUnits, coeffs, log, turn, contrib);
+        return;
+      }
       const exist = se.name === '방어' ? null : t.statuses.find(s => s.name === se.name);
       if (exist) {
         if (dur > exist.remain) { exist.remain = dur; exist.casterId = caster.id; exist.casterName = caster.name; }
@@ -1906,7 +1938,7 @@ const SNAP_MODS = [   // 게임 툴팁 표기 순서
   ['주는액티브피해','액티브 전법 피해'], ['받는액티브피해','받는 액티브 전법 피해'],
   ['주는일반공격피해','주는 일반 공격 피해'], ['받는일반공격피해','받는 일반 공격 피해'],
   ['추격전법피해','추격 전법 피해'], ['받는추격피해','받는 추격 전법 피해'],
-  ['회심','회심 확률'], ['묘책','묘책 확률'], ['회심피해','회심/묘책 피해'],
+  ['회심','회심 확률'], ['묘책','묘책 확률'], ['회심피해','회심 피해'], ['묘책피해','묘책 피해'],
   ['연타확률','연타율'], ['반격확률','반격률'], ['반격피해','반격 피해'],
   ['피신','피신'], ['간파','간파'], ['방어관통','방어 관통'],
   ['액티브발동률','액티브 전법 발동률'], ['받는회복량','받는 치유 효과'],
@@ -1980,7 +2012,7 @@ function logUnitSnapshot(unit, log, turn) {
   const MODS = ['주는피해','받는피해','주는병기피해','받는병기피해','주는책략피해','받는책략피해',
     '받는일반공격피해','받는액티브피해','받는추격피해','추격전법피해','액티브발동률',
     '연타확률','반격확률','반격피해','피신','회유','심리공격','회심','묘책','간파','방어관통',
-    '받는회복량','주는회복량','회심피해'];
+    '받는회복량','주는회복량','회심피해','묘책피해'];
   const shown = MODS.filter(k => Math.abs(unit.mods[k] || 0) > 1e-9)
     .map(k => `${k} ${(unit.mods[k] * 100).toFixed(2)}%`);
   if (shown.length) log.push(`${turn}턴:     ${shown.join(' · ')}`);
@@ -2365,35 +2397,28 @@ function simulateOneBattle(armyA, armyB, coeffs) {
     const order = mergeActionOrder(units, coeffs);
     // 실제 게임의 "행동 순서 판단 완료 [판단 결과]"에 대응 — 선공 기준 행동 순서를 매 턴 표기
     log.push(`${turn}턴: ── ${turn}번째 턴 ──`);
-    // 짐독: 턴 시작 시 (60% × 스택수)의 책략 피해. 피해는 짐독을 건 이유의 지력으로 계산한다.
+    // R-048 지속 피해(짐독·연소): 행동 순서 결정 직후 같은 시점에 일괄 처리, 한 무장에 여럿이면 먼저 걸린 것부터(FIFO).
+    //   피해 = 60% × 스택 수 책략, 부여 시점 시전자 지력·병력 스냅샷(R-042) — 시전자가 전사해도 그대로
     units.forEach(u => {
       if (!u.alive) return;
-      const st = u.statuses.filter(s => s.name === '짐독');
-      if (!st.length) return;
-      const n = Math.min(st.length, 5);
-      const caster = units.find(x => x.id === st[0].casterId) || u;
-      // R-042: 짐독 피해는 부여 시점 시전자 지력·병력 스냅샷으로 계산 — 시전자가 전사해도 그대로 들어간다
-      const snap = st[st.length - 1];
-      const keep = { int: caster.stats.지력, troops: caster.troops };
-      if (snap.snapInt != null) { caster.stats.지력 = snap.snapInt - (effStat(caster, '지력') - caster.stats.지력); caster.troops = snap.snapTroops; }
-      let res;
-      try { res = dealDamage(caster, u, 0.6 * n, '책략', coeffs, log, units, turn, contrib, false, 'dot'); }
-      finally { caster.stats.지력 = keep.int; caster.troops = keep.troops; }
-      caster.dmgDealt += res.dmg;
-      log.push(`${turn}턴: [${u.name}]이(가) 「짐독」 ${n}스택으로 병력이 ${res.dmg}(${u.troops}) 손실됐습니다.`);
-    });
-
-    // 태사자 [완벽한 사격]: 매 턴 시작 시 확률로 축력 1스택 (최대 10)
-    units.forEach(u => {
-      if (!u.alive) return;
-      const sk = u.skills.find(s => s.special === 'charge_shot');
-      if (!sk) return;
-      u._charge = u._charge || 0;
-      if (u._charge < (sk.chargeMax || 10) && __rng() < (sk.chargeChance || 0.5)) {
-        u._charge++;
-        log.push(`${turn}턴: [${u.name}]의 「축력」이(가) ${u._charge}스택 중첩됐습니다.`);
+      const kinds = [...new Set(u.statuses.filter(s => STATUS_DEF[s.name] && STATUS_DEF[s.name].dotRatioPerStack).map(s => s.name))];
+      for (const kind of kinds) {
+        if (!u.alive) break;
+        const st = u.statuses.filter(s => s.name === kind);
+        const def = STATUS_DEF[kind];
+        const n = Math.min(st.length, def.maxStack);
+        const snap = st[st.length - 1];
+        const caster = units.find(x => x.id === snap.casterId) || u;
+        const keep = { int: caster.stats.지력, troops: caster.troops };
+        if (snap.snapInt != null) { caster.stats.지력 = snap.snapInt - (effStat(caster, '지력') - caster.stats.지력); caster.troops = snap.snapTroops; }
+        let res;
+        try { res = dealDamage(caster, u, def.dotRatioPerStack * n, '책략', coeffs, log, units, turn, contrib, false, 'dot'); }
+        finally { caster.stats.지력 = keep.int; caster.troops = keep.troops; }
+        caster.dmgDealt += res.dmg;
+        log.push(`${turn}턴: [${u.name}]이(가) 「${kind}」 ${n}스택으로 병력이 ${res.dmg}(${u.troops}) 손실됐습니다.`);
       }
     });
+
     // FIX-010: 지속 감소 대상 표시는 각 무장이 행동을 마친 뒤(markHolderSeen)에 한다 — 턴 시작 표시는 폐지
     // v1.11 W02: 턴 시작 단계 — "턴 시작 시" 지휘·패시브를 행동 순서 판정 전에 선공 순으로 처리
     runPhaseSkills('turnStart', units, coeffs, log, turn, contrib);

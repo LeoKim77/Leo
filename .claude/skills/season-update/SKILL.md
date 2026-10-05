@@ -12,6 +12,7 @@ description: 천하결전 시뮬레이터에 새 시즌·무장·전법·밸런�
 - 사용자가 규칙을 정해 주면: `design_resolve`(열린 질문에 답) 또는 `design_spec_update`(규정 수정, change·post 필수) + 필요하면 확정 규칙 R-번호(`confirmRule`).
 - 애매한 해석이 생기면 바로 확정하지 말고 `design_post` 로 **질문**(ask 에 물을 것) 또는 **검증요청**(녹화·캡처 필요)을 올리고, 시뮬은 잠정값으로 두되 규정 상태를 '잠정'으로.
 - 엔진을 고쳐 반영했으면 게시글을 `design_post_update` 로 '시뮬 반영'.
+- 녹화·캡처로 검증을 마치면 `design_post` type '검증완료' 로 무엇을 확인했는지 + 사용자가 준 구글 드라이브 링크(`links`)를 남긴다. 역재현 파일(`data/replays/*.json`)의 source 에도 링크를 적는다.
 - 페이지: `pnpm build:design` → `apps/design/dist/design.html` 을 `site.json` 의 `designUrl` 에 다시 게시. `docs/COMMON_RULES.md` 는 자동 생성(직접 고치지 않는다).
 
 ## 1. 입력 받기

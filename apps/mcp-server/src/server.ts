@@ -56,7 +56,7 @@ const deckInput = z.union([
       general: z.string().describe('무장 이름 또는 id'),
       skills: z.array(z.string()).max(2).describe('전법 2개 (이름 또는 id). 고유 전법은 자동 포함'),
       manual: z.string().optional().describe('금병법 이름 (생략하면 그 무장의 첫 금병법, "없음" 이면 미장착)'),
-      position: z.enum(['front', 'mid', 'back']).optional(),
+      position: z.enum(['front', 'back']).optional().describe('전열/후열 (생략하면 성향 순 자동 배치)'),
     })).min(1).max(3),
   }),
 ]);
@@ -447,10 +447,11 @@ server.registerTool('design_get', {
 
 server.registerTool('design_post', {
   title: '기획 플랫폼 게시글 쓰기',
-  description: '카테고리 게시판에 글을 올린다. 결정(대화에서 확정된 내용), 질문(사용자 답이 필요 — ask 에 물을 것), 검증요청(녹화·캡처 필요), 변경(규정 수정 기록), 공지.',
+  description: '카테고리 게시판에 글을 올린다. 결정(대화에서 확정된 내용), 질문(사용자 답이 필요 — ask 에 물을 것), 검증요청(녹화·캡처 필요), 검증완료(녹화로 확인 — links 에 사용자가 준 구글 드라이브 링크), 변경(규정 수정 기록), 공지.',
   inputSchema: {
     cat: z.string().describe('카테고리 id (design_list 로 확인)'), type: z.enum(POST_TYPES), title: z.string(), body: z.string(),
     status: z.enum(POST_STATUS).optional(), specIds: z.array(z.string()).optional(), rules: z.array(z.string()).optional(), ask: z.array(z.string()).optional(),
+    links: z.array(z.object({ label: z.string(), url: z.string() })).optional().describe('녹화·캡처 링크(구글 드라이브 등) — 검증완료 글에는 반드시'),
   },
 }, async (args) => {
   try { return text(addPost(args)); } catch (e: any) { return fail(e.message); }

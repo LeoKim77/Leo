@@ -57,6 +57,9 @@ h3 { font-size: 15px; margin: 22px 0 8px; }
 .t-질문 { color: var(--need); border-color: var(--need); }
 .t-검증요청 { color: var(--rec); border-color: var(--rec); }
 .t-변경 { color: var(--prov); border-color: var(--prov); }
+.t-검증완료 { color: var(--ok); background: var(--ok-bg); border-color: var(--ok); }
+.links { margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.links a { font-size: 13px; padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; background: var(--soft); }
 .p-열림 { color: var(--need); background: var(--need-bg); }
 .p-답변됨 { color: var(--rec); background: var(--rec-bg); }
 .p-시뮬반영, .p-닫힘 { color: var(--ok); background: var(--ok-bg); }
@@ -164,7 +167,7 @@ const D = /*__DESIGN_DATA__*/null;
 const STATUS = ['확정', '녹화확인', '잠정', '결정필요', '참고'];
 const STATUS_LABEL = { 확정: '확정', 녹화확인: '녹화 확인', 잠정: '잠정', 결정필요: '결정 필요', 참고: '참고' };
 const CLAUSE_LABEL = { ok: '원문대로', approx: '근사', missing: '미반영', note: '설명', special: '특수', unsupported: '미지원' };
-const POST_TYPES = ['공지', '결정', '질문', '검증요청', '변경'];
+const POST_TYPES = ['공지', '결정', '질문', '검증요청', '검증완료', '변경'];
 
 function h(tag, attrs, ...kids) {
   const el = document.createElement(tag);
@@ -222,6 +225,7 @@ function renderPost(p) {
     h('div', { class: 'post-body' }, p.body),
     p.ask?.length ? h('div', { class: 'ask' }, h('strong', null, isOpen(p) ? '답변이 필요한 것' : '물었던 것'), h('ol', null, p.ask.map(a => h('li', null, a)))) : null,
     p.answer ? h('div', { class: 'answer' }, h('strong', null, '결정 '), p.answer) : null,
+    p.links?.length ? h('div', { class: 'links' }, h('span', { class: 'meta' }, '녹화·자료'), p.links.map(l => h('a', { href: l.url, target: '_blank', rel: 'noopener' }, `▶ ${l.label}`))) : null,
     (p.specIds?.length || p.rules?.length) ? h('div', { class: 'row', style: 'margin-top:10px' }, h('span', { class: 'meta' }, '관련'), (p.specIds || []).map(specRef), (p.rules || []).map(ruleRef)) : null);
 }
 

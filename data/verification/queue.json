@@ -157,19 +157,6 @@
       "status": "pending"
     },
     {
-      "id": "V-manual-m-xun-yu-1",
-      "kind": "manual",
-      "refs": [
-        "xun-yu",
-        "u-xun-yu"
-      ],
-      "title": "순욱 금병법〈북한〉",
-      "assumption": "묘책 피해 +10%는 회심/묘책 공용 피해 증가로 근사",
-      "howToVerify": "순욱이(가) 〈북한〉을 장착한 전보에서 원문 효과(\"지력이 가장 높은 아군 단일 목표의 묘책 확률이 6% 증가하며, 묘책 피해가 10% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 26
-    },
-    {
       "id": "V-engine-confuse-multi",
       "kind": "engine",
       "refs": [],
@@ -400,31 +387,6 @@
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending",
       "priority": 11
-    },
-    {
-      "id": "V-skill-u-lu-xun",
-      "kind": "skill",
-      "refs": [
-        "u-lu-xun"
-      ],
-      "title": "화소연영 (고유)",
-      "assumption": "연소 상태(지속 피해)는 미지원. 화공 부여 후 화공 보유 적에게 220% 책략 피해",
-      "howToVerify": "【화소연영】이(가) 발동한 전보에서 근사 항목(연소 상태(지속 피해)는 미지원. 화공 부여 후 화공 보유 적에게 220% 책략 피해)을 확인",
-      "status": "pending",
-      "priority": 6
-    },
-    {
-      "id": "V-manual-m-lu-xun-2",
-      "kind": "manual",
-      "refs": [
-        "lu-xun",
-        "u-lu-xun"
-      ],
-      "title": "육손 금병법〈분영〉",
-      "assumption": "심리 공격 +5%만 반영. 연소 상태가 엔진 미지원이라 \"연소 시 최고 속성 5% 추가 감소\"는 제외",
-      "howToVerify": "육손이(가) 〈분영〉을 장착한 전보에서 원문 효과(\"자신의 심리 공격이 5% 증가한다. 연소 시전 시 1턴간 목표의 최고 속성이 5%(지력의 영향을 받음) 추가…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 5
     },
     {
       "id": "V-skill-u-sp-zhuge-liang",

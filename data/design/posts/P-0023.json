@@ -1,0 +1,39 @@
+{
+  "id": "P-0023",
+  "date": "2026-10-03",
+  "cat": "verification",
+  "type": "검증완료",
+  "title": "[녹화 검증] 주태·조운·악진 vs 토지 수비군 — 8턴 무승부",
+  "body": "기형진 주태·조운·악진 vs LV12 토지 수비군(대교·손책·견희) 전보 녹화 3개로 확인한 것:\n- 주태 불굴의 의지: 매 턴 시작 보호 상태, 대신 받기(80% 판정·현재 병력 10% 이상 피해) → 엔진 FEAT-007\n- 병기 피해 계수 역산(250 + 0.85×무력 − 0.6×통솔 …) — 툴팁 표본\n- 회심 피해 150% 표기\n- 지속 턴 = 걸린 무장의 행동 횟수(R-025): 침묵·군량 고갈·국색·전략 계획·위협\n- 결사의 다짐 회복(통솔 영향), 문과 무 확률 1회 판정·대상 공유, 난공불락 조롱 2턴부터, 도광양회 누적\n역재현 파일: data/replays/2026-10-03-zhoutai-zhaoyun-yuejin.json",
+  "status": "시뮬 반영",
+  "specIds": [
+    "J1",
+    "J6",
+    "G1",
+    "H8",
+    "I2"
+  ],
+  "rules": [
+    "R-025"
+  ],
+  "links": [
+    {
+      "label": "조운·악진·주태 전보 1 (포진~1턴)",
+      "url": "https://drive.google.com/file/d/1xUyHLtATcOmEYFbulWuQ2nj1j68rhlGF/view?usp=drivesdk"
+    },
+    {
+      "label": "전보 2 (2~5턴)",
+      "url": "https://drive.google.com/file/d/13JYK1scVX2Y0y93yPTdHPlYNLK8mlddc/view?usp=drivesdk"
+    },
+    {
+      "label": "전보 3 (6~8턴)",
+      "url": "https://drive.google.com/file/d/1quMnpBfJvilAqKTqkunrWvZ3PVhMkioY/view?usp=drivesdk"
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-03",
+      "change": "작성"
+    }
+  ]
+}

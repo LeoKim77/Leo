@@ -9,7 +9,8 @@ import type { GameBundle, General, Skill, Manual } from './model.ts';
 export * from './model.ts';
 export { createRng } from './rng.ts';
 
-export type Position = 'front' | 'mid' | 'back';
+/** 진형 열 — 게임에는 전열·후열 둘뿐(R-048). 예전 덱의 'mid' 는 전열로 읽는다 */
+export type Position = 'front' | 'back';
 
 export interface DeckUnitSpec {
   generalId: string;
@@ -230,7 +231,7 @@ export class Simulator {
         raw: manual!.text,
         isManual: true,
       }));
-      const unit = E.buildUnit(g, [...skills, ...skillParts, ...manualSkills], uskill, formation, u.position || slotPos[idx], side, idx);
+      const unit = E.buildUnit(g, [...skills, ...skillParts, ...manualSkills], uskill, formation, (u.position === ('mid' as any) ? 'front' : u.position) || slotPos[idx], side, idx);
       for (const sk of [uskill, ...skills].filter(Boolean) as any[]) {
         if (sk.unit?.uniqueProcAddDelta) unit.uniqueProcAdd = (unit.uniqueProcAdd || 0) + sk.unit.uniqueProcAddDelta;
         if (sk.static) skillStatics.push({ unit, name: sk.name, st: sk.static });
@@ -333,9 +334,10 @@ export class Simulator {
    */
   slotPositions(deck: DeckSpec, formation: { hitRate?: Record<string, number> }): Position[] {
     const hr = formation?.hitRate || { front: 0.6, mid: 0.2, back: 0.2 };
+    // R-048 열은 전열·후열 둘. 엑셀 피격률의 가운데 칸은 전열 값과 같으면 전열, 아니면 후열 (안형진 40/40/20 → 전열 2, 기형진 60/20/20 → 전열 1)
     const slots: Position[] = ['front',
-      hr.mid > hr.back || hr.mid >= hr.front ? 'mid' : 'back',
-      hr.back >= hr.front ? 'mid' : 'back'];
+      hr.mid >= hr.front - 1e-9 ? 'front' : 'back',
+      hr.back >= hr.front - 1e-9 ? 'front' : 'back'];
     const pref = (row: string) => (row === '전열' ? 0 : row === '후열' ? 2 : 1);
     const order = deck.units.map((u, i) => ({ i, p: pref(String(this.generalById.get(u.generalId)?.position ?? '')) }))
       .sort((a, b) => a.p - b.p || a.i - b.i);
