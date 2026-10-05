@@ -1,5 +1,5 @@
 // 괴술 · 고유 전법 · 액티브 65%
-// 원문: 2턴 동안 자신의 회유와(과) 피신 확률이 25% 증가하며, 이후 랜덤 적군 2명에게 220%의 병기 피해를 주고, 2턴 동안 지속되는 요술을(를) 부여한다.
+// 원문: 2턴 동안 자신의 회유와(과) 피신 확률이 25% 증가한다. 그리고 랜덤 적군 2명에게 220%의 병기 피해를 주고, 2턴 동안 지속되는 요술을(를) 부여한다.
 // 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
@@ -16,7 +16,7 @@ export default defineSkill({
   ],
   clauses: [
     {
-      "text": "2턴 동안 자신의 회유와(과) 피신 확률이 25% 증가하며",
+      "text": "2턴 동안 자신의 회유와(과) 피신 확률이 25% 증가한다",
       "status": "ok",
       "impl": [
         "buffs[0]",
@@ -24,7 +24,7 @@ export default defineSkill({
       ]
     },
     {
-      "text": "이후 랜덤 적군 2명에게 220%의 병기 피해를 주고",
+      "text": "그리고 랜덤 적군 2명에게 220%의 병기 피해를 주고",
       "status": "ok",
       "impl": [
         "damage[0]"
@@ -32,10 +32,7 @@ export default defineSkill({
     },
     {
       "text": "2턴 동안 지속되는 요술을(를) 부여한다",
-      "status": "ok",
-      "impl": [
-        "statusEffects[0]"
-      ]
+      "status": "ok"
     }
   ],
   def: {

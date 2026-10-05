@@ -40,6 +40,8 @@ export const ENGINE_FIXES = [
     detail: '스택마다 지속을 따로 갖고 먼저 쌓인 것부터 만료된다. 상한(N중첩)에서 또 발동하면 가장 오래된 스택을 빼고 새 스택을 넣는다(수치 그대로, "N스택 중첩됐습니다" 표기). 예전엔 상한에서 맨 앞 스택만 제자리 갱신해, 다음 발동 때도 같은(이미 가장 새로운) 스택을 다시 갱신하는 문제가 있었다.' },
   { id: 'FIX-013', date: '2026-10-04', found: '보유 전법 140개 원문 대조 (함수화 후 1차 보정)', title: '공용 대상·조건 버그',
     detail: '① 대상이 안 적힌 효과는 한 시전 안에서 같은 대상을 공유(R-044) — 예전엔 효과마다 새로 뽑아 "랜덤 2명의 A와 B"가 서로 다른 무장에게 갔다. ② "디버프 상태 보유" 조건이 방어·피신 같은 기능성 상태까지 셌다. ③ "이상 상태 개수"도 기능성 상태 포함. ④ 대상이 자신뿐인 회복이 병력 최저 아군에게 갔다(지혜의 바람·충성과 용맹·전쟁 조달). ⑤ 능력치 증감의 턴 조건(turnCond)이 무시됐다.' },
+  { id: 'FEAT-026', date: '2026-10-05', found: '사용자 캡처(괴술·장군의 무용) — 금병법 능력 소진', title: '상태 면역',
+    detail: '상태 정의에 immuneTo(면역 대상)를 두어, 면역 상태가 있는 무장에게는 그 상태가 걸리지 않고 면역을 얻을 때 이미 걸린 것은 지운다. 화웅〈신무〉 "능력 소진 효과로부터 면역"(능력 소진 = 침묵으로 잠정 — 장군의 무용의 자신 침묵).' },
   { id: 'FIX-015', date: '2026-10-05', found: '기획 플랫폼 질문 답변 (R-048, 사용자 확인)', title: '동률·관통·능력치 하한·군량 고갈·지속 피해·축력·회심/묘책 피해',
     detail: '① "가장 높은/낮은" 동률이면 무작위(예전 배치 순 앞) ② 방어 관통 상한 없음(예전 90%) ③ 능력치 하한 0(예전 1) ④ 군량 고갈은 받는 회복 증감까지 계산한 최종 회복량 ×0.3(예전 받는 회복과 합연산) ⑤ 연소 구현(짐독과 같은 방식, 부여 시점 스냅샷), 짐독·연소는 부여마다 1스택씩(최대 5, 예전 짐독은 갱신만) ⑥ 지속 피해는 행동 순서 결정 직후 한 시점에 부여 순서대로 ⑦ 축력은 턴 시작 전법 단계에서 그 무장 차례에 ⑧ 회심 피해(병기)·묘책 피해(책략) 증가를 따로.' },
   { id: 'FIX-014', date: '2026-10-05', found: '금병법 원문 대조 (황개〈견결〉 확인 중)', title: '다른 무장이 때리는 피해의 "자신" 대상',
@@ -1060,6 +1062,7 @@ const STATUS_DEF = {
   // 짐독: 디버프. 매 턴 시작 시 (60% × 스택수)의 책략 피해를 받는다. 최대 5스택.
   //   이유만 부여할 수 있고, 피해는 짐독을 건 이유의 지력으로 계산한다.
   '짐독': { stackable: true, maxStack: 5, dotRatioPerStack: 0.6 },
+  '침묵 면역': { immuneTo: ['침묵'] },   // FEAT-026 화웅〈신무〉 "능력 소진 효과로부터 면역"(능력 소진 = 침묵으로 잠정)
   '연소': { stackable: true, maxStack: 5, dotRatioPerStack: 0.6 },   // R-048 게임 용어: 매 턴 60%×스택 책략, 최대 5스택 — 짐독과 같은 방식
   // 탈주병: 상태가 아니라 즉시 고정 피해로 처리된다(dealDesertionDamage 참조)
   '탈주병': { instantFixedDamage: true },
@@ -1667,6 +1670,11 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       if (!passChance(seC)) return;
       // 용어 시트 24번: 방어는 최대 2스택까지만 보유한다.
       if (se.name === '방어' && t.statuses.filter(s => s.name === '방어').length >= 2) return;
+      // FEAT-026 상태 면역: 면역 상태가 있으면 그 상태는 걸리지 않는다. 면역을 얻을 때 이미 걸린 것은 지운다
+      const immune = t.statuses.find(s => STATUS_DEF[s.name] && (STATUS_DEF[s.name].immuneTo || []).includes(se.name));
+      if (immune) { log.push(`${turn}턴:   [${t.name}]이(가) 「${immune.name}」으로 ${se.name}에 걸리지 않습니다.`); return; }
+      const grantsImmune = STATUS_DEF[se.name] && STATUS_DEF[se.name].immuneTo;
+      if (grantsImmune) t.statuses = t.statuses.filter(s => { if (!grantsImmune.includes(s.name)) return true; log.push(`${turn}턴:   [${t.name}]의 「${s.name}」이(가) 「${se.name}」으로 사라집니다.`); return false; });
       const already = t.statuses.some(s => s.name === se.name);
       // 지속시간: 전법 데이터에 duration이 있으면 그 값, 없으면 원문에서 "N턴 동안 지속되는 <상태>"를 읽는다.
       // (예전에는 무조건 2턴이었다 — 1턴짜리 제어기가 두 배로 오래 걸리던 문제)

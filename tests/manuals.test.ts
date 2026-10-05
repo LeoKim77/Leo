@@ -50,8 +50,10 @@ describe('금병법 (R-003)', () => {
   });
 
   it('미지원 금병법은 장착되지 않는다', () => {
-    const [u] = sim.buildArmy(deck('화웅', '신무', []), 'A');
-    expect(u.manual).toBeUndefined();
+    // 지금은 미지원 금병법이 없어 가짜 항목으로 확인한다
+    const fake = { manuals: [{ id: 'm-x', name: '가짜', text: '', status: 'unsupported' as const }] };
+    expect(sim.pickManual(fake, 'm-x')).toBeNull();
+    expect(sim.pickManual(fake)).toBeNull();
   });
 });
 
