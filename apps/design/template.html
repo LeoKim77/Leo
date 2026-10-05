@@ -100,6 +100,35 @@ details.item { background: var(--panel); border: 1px solid var(--line); border-r
 details.item + details.item { margin-top: 6px; }
 details.item summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .clause { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px; padding: 4px 0; font-size: 13.5px; }
+/* 용어 카드 */
+.term { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.term-name { font-family: var(--f-display); font-size: 18px; font-weight: 700; }
+.term-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+.term-label { font-size: 11.5px; letter-spacing: .06em; color: var(--muted); margin-bottom: 2px; }
+.engine-box { margin: 8px 0; padding: 8px 10px; background: var(--soft); border: 1px solid var(--line); border-radius: 6px; }
+/* 무장 카드 */
+.gen-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; align-items: start; }
+.gen { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.gen summary { cursor: pointer; list-style: none; }
+.gen summary::-webkit-details-marker { display: none; }
+.gen-name { font-size: 16px; }
+.gen-body { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; font-size: 13.5px; }
+.stat-bars { display: flex; flex-direction: column; gap: 3px; margin-top: 6px; }
+.stat-row, .form-row { display: grid; grid-template-columns: 34px minmax(0, 1fr) 44px; gap: 8px; align-items: center; font-size: 12.5px; }
+.stat-k { color: var(--muted); }
+.stat-track { height: 8px; background: var(--soft); border-radius: 4px; overflow: hidden; border: 1px solid var(--line); }
+.stat-fill { display: block; height: 100%; border-radius: 4px; }
+.s-무력 { background: var(--need); } .s-지력 { background: var(--rec); } .s-통솔 { background: var(--ok); } .s-선공 { background: var(--prov); }
+.stat-v { font-family: var(--f-mono); font-variant-numeric: tabular-nums; text-align: right; }
+/* 진형 카드 */
+.form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.form { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 5px; }
+.form-name { font-family: var(--f-display); font-size: 17px; font-weight: 700; margin-bottom: 2px; }
+.form-traits { margin-top: 6px; font-size: 13.5px; display: flex; flex-direction: column; gap: 4px; }
+/* 녹화 계획 */
+.battle { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; }
+.battle-no { font-family: var(--f-mono); color: var(--accent); font-weight: 600; }
+.checks { margin: 0; padding-left: 20px; font-size: 13.5px; display: flex; flex-direction: column; gap: 4px; }
 /* 개요: 전투 흐름 */
 .flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; counter-reset: step; }
 .step { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
@@ -116,6 +145,7 @@ details.item summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px
   main { padding-inline: 16px; }
   .spec { grid-template-columns: minmax(0, 1fr); }
   .spec-rule, .spec-foot { grid-column: 1; }
+  .term-cols { grid-template-columns: minmax(0, 1fr); }
   h1 { font-size: 24px; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
@@ -228,9 +258,44 @@ function searchable(placeholder, render, extra) {
 }
 
 /* ---------- 카테고리별 자료 ---------- */
+const TERM_CATS = ['능력치', '전법 종류', '피해 종류', '기본 버프', '기능성 버프', '비제어 이상 상태', '제어 이상 상태', '디버프 상태·표식', '조합', '전장 용어'];
+function termCard(t) {
+  return h('article', { class: 'term', id: `t-${t.term}` },
+    h('div', { class: 'row' }, h('span', { class: 'term-name' }, t.term), chip('t-공지', t.cat), stChip(t.status),
+      t.uses ? h('span', { class: 'meta' }, `전법·금병법 ${t.users.length}개가 사용`) : null),
+    h('div', { class: 'term-cols' },
+      h('div', null, h('div', { class: 'term-label' }, '게임 설명'), h('div', null, t.game || '—')),
+      h('div', null, h('div', { class: 'term-label' }, '시뮬 처리'), h('div', null, t.sim))),
+    t.note ? h('div', { class: 'dim', style: 'font-size:13px' }, t.note) : null,
+    h('div', { class: 'row', style: 'margin-top:6px' },
+      (t.keys || []).map(k => h('span', { class: 'ref', title: '엔진 이름' }, k)), (t.specIds || []).map(specRef)),
+    t.users?.length ? h('details', { style: 'margin-top:6px;font-size:13px' }, h('summary', { class: 'dim' }, `쓰는 전법·금병법 ${t.users.length}개`), h('div', { class: 'dim' }, t.users.join(', '))) : null);
+}
+function termBoard(cats) {
+  let cat = '전체';
+  return searchable('용어 검색 (예: 회심, 도사, 혼란)', q => {
+    const list = D.terms.filter(t => cats.includes(t.cat) && (cat === '전체' || t.cat === cat) && (!q || [t.term, t.game, t.sim].join(' ').includes(q)));
+    return h('div', { class: 'stack' }, list.length ? list.map(termCard) : h('div', { class: 'empty' }, '찾는 용어가 없습니다.'));
+  }, go => cats.length > 1 ? h('select', { 'aria-label': '분류', id: `tc-${cats.length}`, onchange: e => { cat = e.target.value; go(); } }, ['전체', ...cats].map(c => h('option', { value: c }, c === '전체' ? '분류 전체' : c))) : null);
+}
+
 const glossaryOf = cats => D.game.glossary.filter(g => cats.includes(g.category));
 const glossTable = cats => table([{ label: '분류', get: g => g.category }, { label: '용어', get: g => h('strong', null, g.term) }, { label: '게임 설명', get: g => g.desc }], glossaryOf(cats));
 const clauseSummary = cls => { const c = {}; cls.forEach(x => { c[x.status] = (c[x.status] || 0) + 1; }); return h('span', { class: 'row' }, Object.entries(c).map(([k, v]) => chip(`st-${k}`, `${CLAUSE_LABEL[k] || k} ${v}`))); };
+
+function planView() {
+  const V = D.verification;
+  return [
+      h('h3', null, `녹화 계획 ${V.plan.battles.filter(b => !b.optional).length}판${V.plan.battles.some(b => b.optional) ? ' + 선택 1판' : ''} (${V.plan.date})`),
+      h('p', { class: 'lead' }, V.plan.note),
+      h('div', { class: 'row', style: 'margin-bottom:8px' }, h('span', { class: 'meta' }, '녹화 방법'), V.plan.howToRecord.map(x => h('span', { class: 'chip st-참고', style: 'white-space:normal' }, x))),
+      h('div', { class: 'stack' }, V.plan.battles.map(b => h('div', { class: 'battle' },
+        h('div', { class: 'row' }, h('span', { class: 'battle-no' }, `${b.no}판`), h('strong', null, b.title), chip('t-공지', b.formation), b.optional ? chip('st-참고', '선택') : null, h('span', { class: 'meta' }, `확인 ${b.checks.length}건`)),
+        table([{ label: '무장', get: u => h('strong', null, u[0]) }, { label: '전법 1', get: u => u[1][0] || '' }, { label: '전법 2', get: u => u[1][1] || '' }, { label: '금병법', get: u => u[2] ? `〈${u[2]}〉` : '—' }], b.units),
+        h('ol', { class: 'checks' }, b.checks.map(c => h('li', null, typeof c === 'string' ? c : [c.text, ' ', (c.refs || []).map(r => /^P-/.test(r) ? h('a', { class: 'ref', href: `#c-${(D.posts.find(p => p.id === r) || {}).cat}` }, r) : /^R-/.test(r) ? ruleRef(r) : specById[r] ? specRef(r) : h('span', { class: 'ref' }, r))])))))),
+      V.plan.captures?.length ? h('div', null, h('h3', null, '녹화 없이 캡처로 확인'), h('ul', null, V.plan.captures.map(c => h('li', null, c)))) : null,
+  ];
+}
 
 const DATA_VIEWS = {
   overview() {
@@ -258,28 +323,55 @@ const DATA_VIEWS = {
       h('div', { class: 'stack' }, open.map(p => h('a', { href: `#c-${p.cat}`, class: 'post', style: 'text-decoration:none;color:inherit;display:block' },
         h('div', { class: 'row' }, chip(`t-${p.type}`, p.type), h('span', { class: 'meta' }, `${p.id} · ${catById[p.cat]?.title}`)), h('div', { class: 'post-title', style: 'margin-top:4px' }, p.title)))));
   },
+  terms() {
+    const cnt = TERM_CATS.map(c => [c, D.terms.filter(t => t.cat === c).length]);
+    return h('div', null,
+      h('p', { class: 'lead' }, `용어 ${D.terms.length}개. 게임 설명은 한국판 용어 시트, 시뮬 처리는 지금 엔진이 실제로 하는 일이다. 둘이 다르거나 미구현이면 상태가 잠정·결정 필요로 표시된다.`),
+      table([{ label: '분류', get: r => r[0] }, { label: '용어', num: true, get: r => r[1] }, ...STATUS.map(st => ({ label: STATUS_LABEL[st], num: true, get: r => D.terms.filter(t => t.cat === r[0] && t.status === st).length || '·' }))], cnt),
+      h('h3', null, '전체 용어'), termBoard(TERM_CATS));
+  },
   generals() {
     const g = D.game.generals;
+    const ST = ['무력', '지력', '통솔', '선공'];
+    const max = Object.fromEntries(ST.map(k => [k, Math.max(...g.map(x => x.stats[k]))]));
+    let sort = '이름';
     return h('div', null,
-      h('h3', null, '능력치 4종 (게임 용어 설명)'), glossTable(['속성']),
+      h('h3', null, '능력치 4종'), termBoard(['능력치']),
       h('h3', null, `무장 ${g.length}명 — 50레벨 능력치`),
-      searchable('무장·진영·병종·고유 전법 검색', q => table([
-        { label: '무장', get: x => h('strong', null, x.name) }, { label: '진영', get: x => x.faction }, { label: '병종', get: x => x.unitType === '미확인' ? chip('st-결정필요', '미확인') : x.unitType },
-        { label: '성향', get: x => x.row === '미확인' ? chip('st-결정필요', '미확인') : x.row }, { label: '시즌', get: x => x.season },
-        { label: '무력', num: true, get: x => x.stats['무력'] }, { label: '지력', num: true, get: x => x.stats['지력'] }, { label: '통솔', num: true, get: x => x.stats['통솔'] }, { label: '선공', num: true, get: x => x.stats['선공'] },
-        { label: '고유 전법', get: x => x.unique }, { label: '금병법', get: x => x.manuals.map(m => m.name).join(', ') || '—' },
-      ], g.filter(x => !q || [x.name, x.faction, x.unitType, x.unique, x.row].join(' ').includes(q)), { maxH: 560 })));
+      searchable('무장·진영·병종·고유 전법 검색', q => {
+        const list = g.filter(x => !q || [x.name, x.faction, x.unitType, x.unique, x.row, x.season].join(' ').includes(q))
+          .sort((a, b) => sort === '이름' ? a.name.localeCompare(b.name, 'ko') : b.stats[sort] - a.stats[sort]);
+        return h('div', { class: 'gen-grid' }, list.map(x => h('details', { class: 'gen' },
+          h('summary', null,
+            h('div', { class: 'row' }, h('strong', { class: 'gen-name' }, x.name), h('span', { class: 'meta' }, `${x.faction} · ${x.unitType} · ${x.row} · ${x.season}`)),
+            h('div', { class: 'stat-bars' }, ST.map(k => h('div', { class: 'stat-row' }, h('span', { class: 'stat-k' }, k),
+              h('span', { class: 'stat-track' }, h('span', { class: `stat-fill s-${k}`, style: `width:${(x.stats[k] / max[k] * 100).toFixed(1)}%` })),
+              h('span', { class: 'stat-v' }, x.stats[k]))))),
+          h('div', { class: 'gen-body' },
+            h('div', null, h('strong', null, `고유 전법 ${x.unique}`), h('span', { class: 'meta' }, ` ${x.uniqueKind}`), h('div', { class: 'dim' }, x.uniqueText)),
+            x.manuals.length ? h('div', null, h('strong', null, '금병법'), x.manuals.map(m => h('div', { class: 'dim' }, `〈${m.name}〉 `, m.text || '(원문 미확인)'))) : null,
+            x.bonds.length ? h('div', { class: 'dim' }, h('strong', null, '인연 '), x.bonds.join(', ')) : null,
+            (x.unitType === '미확인' || x.row === '미확인') ? h('div', null, chip('st-결정필요', '데이터 빈칸'), h('span', { class: 'dim' }, ' 병종·성향 미확인 (P-0014)')) : null))));
+      }, go => h('select', { 'aria-label': '정렬', id: 'gen-sort', onchange: e => { sort = e.target.value; go(); } }, ['이름', ...ST].map(k => h('option', { value: k }, k === '이름' ? '이름순' : `${k} 높은 순`)))));
   },
   composition() {
-    return h('div', null, h('h3', null, '조합 용어'), glossTable(['조합']),
+    return h('div', null, h('h3', null, '조합'), termBoard(['조합']),
       h('h3', null, `인연 ${D.game.bonds.length}개`),
       searchable('인연·무장 검색', q => table([{ label: '인연', get: b => h('strong', null, b.name) }, { label: '필요', num: true, get: b => `${b.required}명` }, { label: '무장', get: b => b.members.join(', ') }, { label: '효과', get: b => b.text }],
         D.game.bonds.filter(b => !q || [b.name, ...b.members, b.text].join(' ').includes(q)), { maxH: 480 })));
   },
   formation() {
     const pct = v => `${Math.round(v * 100)}%`;
-    return h('div', null, h('h3', null, '진형 8종 (2026-10-03 진형 소개 화면)'),
-      table([{ label: '진형', get: f => h('strong', null, f.name) }, { label: '전열 피격', num: true, get: f => pct(f.hitRate.front) }, { label: '중열 피격', num: true, get: f => pct(f.hitRate.mid) }, { label: '후열 피격', num: true, get: f => pct(f.hitRate.back) }, { label: '특성', get: f => f.traits.join(' · ') }], D.game.formations));
+    const rowOf = t => t.startsWith('전열') ? 'front' : t.startsWith('후열') ? 'back' : null;
+    return h('div', null, h('h3', null, '진형 8종 — 칸별 일반 공격 피격률과 열별 특성 (2026-10-03 진형 소개 화면)'),
+      h('p', { class: 'lead' }, '피격률은 일반 공격(연타·축력 포함) 대상을 고를 때만 쓴다. 특성은 해당 열 무장에게만 붙고, 중열은 전열로 본다(FRM2 확인 대기).'),
+      h('div', { class: 'form-grid' }, D.game.formations.map(f => h('div', { class: 'form' },
+        h('div', { class: 'form-name' }, f.name),
+        [['front', '전열'], ['mid', '중열'], ['back', '후열']].map(([k, label]) => h('div', { class: 'form-row' },
+          h('span', { class: 'stat-k' }, label),
+          h('span', { class: 'stat-track' }, h('span', { class: 'stat-fill s-지력', style: `width:${f.hitRate[k] * 100}%` })),
+          h('span', { class: 'stat-v' }, pct(f.hitRate[k])))),
+        h('div', { class: 'form-traits' }, f.traits.map(t => h('div', null, chip(rowOf(t) === 'back' ? 'st-녹화확인' : 'st-확정', rowOf(t) === 'back' ? '후열' : '전열'), ' ', t.replace(/^(전열|후열)(이|의)?\s*/, ''))))))));
   },
   order() {
     const rows = [0, 10, 20, 30, 35, 40, 50, 60, 70, 71].map(d => ({ d, p: d > 70 ? 1 : 1 - (70 - d) ** 2 / 9800 }));
@@ -288,7 +380,7 @@ const DATA_VIEWS = {
   },
   'skill-system'() {
     const cnt = {}; D.game.skills.forEach(s => { const k = `${s.isUnique ? '고유 전법' : '전법'}|${s.kind}`; cnt[k] = (cnt[k] || 0) + 1; });
-    return h('div', null, h('h3', null, '전법 용어'), glossTable(['전법']),
+    return h('div', null, h('h3', null, '전법 종류'), termBoard(['전법 종류']),
       h('h3', null, '종류별 개수'), table([{ label: '구분', get: r => r[0].split('|')[0] }, { label: '종류', get: r => r[0].split('|')[1] }, { label: '개수', num: true, get: r => r[1] }], Object.entries(cnt).sort()));
   },
   damage() {
@@ -298,22 +390,24 @@ const DATA_VIEWS = {
     return h('div', null,
       h('h3', null, '기초식'),
       h('div', { class: 'formula' }, `병기 = 배율 × (${c.P0} + ${c.Pa}×무력 − ${c.Pd}×통솔×(1−관통)) × (병력/10000)^${c.betaP}\n책략 = 배율 × ${c.Ma} × 지력 × (병력/10000)^${c.betaM}\n최종 = 기초 × 주는 쪽 배수 × 받는 쪽 배수 × (허약 0.3) × (회심·묘책 ${c.critMult}) × (1 ± ${c.damageVariance})`),
-      h('h3', null, '피해 용어'), glossTable(['특수 피해 유형']),
+      h('h3', null, '피해 종류'), termBoard(['피해 종류']),
       h('h3', null, '계수 (엔진 현재값)'), table([{ label: '이름', mono: true, get: r => r[0] }, { label: '뜻', get: r => r[1] }, { label: '값', num: true, get: r => String(c[r[0]]) }], rows));
   },
   heal() {
     return h('div', null, h('h3', null, '회복식'), h('div', { class: 'formula' }, '회복 = 시전자 지력 × (치유율 + (지력 − 100) × 0.12%p) × 0.40 × (1 + 주는 회복) × (1 + 받는 회복)\n상한: 잃은 병력까지 · 군량 고갈: 받는 회복 −70%'));
   },
   effects() {
-    return h('div', null, h('h3', null, '버프 용어'), glossTable(['기본버프', '기본 디버프', '디버프 상태']),
-      h('h3', null, `증감 종류 ${D.catalog.mods.length}개 (전법·금병법·진형 정의에서 쓰는 이름)`),
-      searchable('증감 이름 검색', q => table([{ label: '증감', mono: true, get: m => m.key }, { label: '사용', num: true, get: m => m.n }, { label: '쓰는 곳(일부)', get: m => m.where.join(', ') }],
+    return h('div', null,
+      h('h3', null, '버프 — 기본 버프·기능성 버프'), termBoard(['기본 버프', '기능성 버프']),
+      h('h3', null, `엔진의 증감 이름 ${D.catalog.mods.length}개 (전법·금병법·진형 정의에서 쓰는 순)`),
+      searchable('증감 이름 검색', q => table([{ label: '증감', mono: true, get: m => m.key }, { label: '사용', num: true, get: m => m.n }, { label: '쓰는 곳(일부)', get: m => m.where.slice(0, 6).join(', ') }],
         D.catalog.mods.filter(m => !q || m.key.includes(q) || m.where.join(' ').includes(q)), { maxH: 520 })));
   },
   status() {
-    return h('div', null, h('h3', null, '상태 용어 (게임 설명)'), glossTable(['제어이상상태디버프', '비제어이상상태디버프', '기능성버프']),
-      h('h3', null, `전법이 부여하는 상태 ${D.catalog.statuses.length}종`),
-      table([{ label: '상태', get: m => h('strong', null, m.key) }, { label: '사용', num: true, get: m => m.n }, { label: '쓰는 전법(일부)', get: m => m.where.join(', ') }], D.catalog.statuses, { maxH: 520 }));
+    return h('div', null,
+      h('h3', null, '상태 이상·표식'), termBoard(['제어 이상 상태', '비제어 이상 상태', '디버프 상태·표식']),
+      h('h3', null, `전법이 부여하는 상태 ${D.catalog.statuses.length}종 (사용 순)`),
+      table([{ label: '상태', get: m => h('strong', null, m.key) }, { label: '사용', num: true, get: m => m.n }, { label: '쓰는 전법(일부)', get: m => m.where.slice(0, 6).join(', ') }], D.catalog.statuses, { maxH: 520 }));
   },
   skills() {
     let kind = '전체', uniq = '전체';
@@ -324,6 +418,7 @@ const DATA_VIEWS = {
         h('summary', null, h('strong', null, s.name), chip('t-공지', s.kind), s.isUnique ? h('span', { class: 'dim' }, `고유 · ${s.owner || ''}`) : null, s.proc ? h('span', { class: 'meta' }, s.proc) : null, clauseSummary(s.clauses)),
         h('p', { style: 'margin:8px 0' }, s.text),
         s.clauses.map(c => h('div', { class: 'clause' }, chip(`st-${c.status}`, CLAUSE_LABEL[c.status] || c.status), h('div', null, c.text, c.reviewed ? h('div', { class: 'dim', style: 'font-size:12.5px' }, c.reviewed) : null))),
+        h('div', { class: 'engine-box' }, h('div', { class: 'term-label' }, '시뮬 처리'), (s.engine || []).map(x => h('div', { class: 'mono' }, x))),
         s.engineNote ? h('p', { class: 'dim' }, `엔진 메모: ${s.engineNote}`) : null,
         s.revised.length ? h('div', { class: 'dim', style: 'font-size:12.5px;margin-top:6px' }, h('strong', null, '원문 대조 수정'), h('ul', null, s.revised.map(r => h('li', null, r)))) : null)));
     }, go => [
@@ -354,11 +449,7 @@ const DATA_VIEWS = {
         table([{ label: '턴', num: true, get: x => x.turn }, { label: '항목', get: x => x.label }, { label: '실측', num: true, get: x => x.observed }, { label: '엔진', num: true, get: x => x.predicted }, { label: '오차', num: true, get: x => `${x.errPct > 0 ? '+' : ''}${x.errPct}%` }], r.rows, { maxH: 420 }))),
       h('h3', null, `엔진 가정 (녹화로 확인할 것) ${V.assumptions.length}건`),
       table([{ label: '항목', get: a => h('strong', null, a.title) }, { label: '지금 가정', get: a => a.assumption }, { label: '확인 방법', get: a => a.howToVerify }], V.assumptions, { maxH: 520 }),
-      h('h3', null, `녹화 계획 ${V.plan.battles.length}판 (${V.plan.date})`),
-      h('p', { class: 'lead' }, V.plan.note),
-      V.plan.battles.map(b => h('details', { class: 'item' }, h('summary', null, h('strong', null, `${b.no}판 ${b.title}`), h('span', { class: 'dim' }, `${b.formation} · ${b.units.map(u => u[0]).join(' · ')}`)),
-        h('ul', null, b.units.map(u => h('li', null, `${u[0]} — ${(u[1] || []).join(', ')}${u[2] ? ` · 금병법 ${u[2]}` : ''}`))),
-        h('strong', null, '확인할 것'), h('ul', null, (b.checks || []).map(c => h('li', null, c))))),
+      planView(),
       h('h3', null, `검증 대기열 ${qOpen.length}건 (종류별)`),
       table([{ label: '종류', get: r => r[0] }, { label: '대기', num: true, get: r => r[1] }], Object.entries(kinds).sort((a, b) => b[1] - a[1])));
   },
@@ -430,7 +521,8 @@ function route() {
     const open = D.posts.filter(isOpen);
     body = [h('h1', null, '답변·녹화가 필요한 것'), h('p', { class: 'lead' }, '질문은 대화에서 답해 주면 규정에 반영한다. 검증요청은 녹화·캡처가 오면 역재현으로 계수를 맞춘다.'),
       h('h2', null, `질문 ${open.filter(p => p.type === '질문').length}건`), h('div', { class: 'stack' }, open.filter(p => p.type === '질문').map(renderPost)),
-      h('h2', null, `검증요청 ${open.filter(p => p.type === '검증요청').length}건`), h('div', { class: 'stack' }, open.filter(p => p.type === '검증요청').map(renderPost))];
+      h('h2', null, `검증요청 ${open.filter(p => p.type === '검증요청').length}건`), h('div', { class: 'stack' }, open.filter(p => p.type === '검증요청').map(renderPost)),
+      h('h2', null, '녹화 계획'), planView()];
   } else if (hash === 'board') {
     active = 'board';
     body = [h('h1', null, '전체 게시판'), h('p', { class: 'lead' }, '모든 카테고리의 게시글. 결정·질문·검증요청·변경이 날짜순으로 쌓인다.'),

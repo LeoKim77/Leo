@@ -13,7 +13,7 @@ const ORDER = ['statMods', 'damage', 'heal', 'buffs', 'dispel', 'statusEffects',
 const CALL: Record<string, string> = { statMods: 'statMod', damage: 'damage', heal: 'heal', buffs: 'buff', dispel: 'dispel', statusEffects: 'status', grants: 'grant' };
 
 const pct = (v: any) => (typeof v === 'number' ? `${Math.round(v * 1000) / 10}%` : '');
-function describe(kind: string, x: any): string {
+export function describe(kind: string, x: any): string {
   if (typeof x === 'string') return x;
   if (!x || typeof x !== 'object') return '';
   const range = x.min != null ? (x.max != null && x.max !== x.min ? `${pct(x.min)}→${pct(x.max)}` : pct(x.max ?? x.min)) : '';

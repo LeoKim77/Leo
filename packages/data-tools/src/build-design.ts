@@ -10,6 +10,26 @@ import { Simulator } from '../../engine/src/index.ts';
 import { ENGINE_FIXES } from '../../engine/src/legacy/core.js';
 import { SKILL_MODULES } from '../../engine/src/skills/index.ts';
 import { MANUAL_MODULES } from '../../engine/src/manuals/index.ts';
+import { describe } from './gen-skill-funcs.ts';
+
+const TIMING: Record<string, string> = { battleStart: '전투 시작(포진)', turnStart: '턴 시작', turnEnd: '턴 종료', action: '행동 시', beforeBasic: '일반 공격 직전', afterBasic: '일반 공격 후' };
+const EVENT: Record<string, string> = { damage: '피해 사건', debuff: '디버프 부여 사건', cast: '전법 발동 사건', evade: '피신 사건', pre_damage: '피해 직전', heal: '회복 사건' };
+const KEY_LABEL: Record<string, string> = { damage: '피해', heal: '회복', buffs: '증감', statMods: '능력치', statusEffects: '상태', dispel: '제거', grants: '부여' };
+/** 엔진 정의 → 사람이 읽는 처리 요약 (시점·계기 + 효과 항목) */
+function engineSummary(def: any): string[] {
+  if (!def) return ['엔진 정의 없음'];
+  const out: string[] = [];
+  const when = (d: any) => d.trigger ? `계기: ${EVENT[d.trigger.event] || d.trigger.event}${d.trigger.role ? ` (${d.trigger.role})` : ''}${d.trigger.chance != null && d.trigger.chance < 1 ? ` · 확률 ${Math.round(d.trigger.chance * 100)}%` : ''}${d.trigger.maxPerTurn && d.trigger.maxPerTurn < 9 ? ` · 턴당 ${d.trigger.maxPerTurn}회` : ''}` : d._timing ? `시점: ${TIMING[d._timing] || d._timing}` : '';
+  const eff = (d: any, pre = '') => {
+    const w = when(d); if (w) out.push(pre + w);
+    if (d.onlyTurns) out.push(`${pre}턴: ${d.onlyTurns.join('·')}번째`);
+    for (const [k, label] of Object.entries(KEY_LABEL)) (d.effects?.[k] || []).forEach((x: any) => out.push(`${pre}${label}: ${describe(k, x)}`));
+    if (d.effects?.guardAllies) out.push(`${pre}보호(대신 받기)`);
+  };
+  eff(def);
+  (def.parts || []).forEach((p: any, i: number) => eff(p, `부속 ${i + 1} · `));
+  return out.length ? out : ['상시·특수 처리'];
+}
 
 const DESIGN = join(DATA, 'design');
 
@@ -50,7 +70,7 @@ function catalog(bundle: any) {
   for (const m of Object.values(SKILL_MODULES)) walkDef(m.def, m.name);
   for (const m of Object.values(MANUAL_MODULES)) { walkDef(m.def, `금병법〈${m.name}〉`); for (const k of Object.keys(m.def.static?.mods || {})) add(mods, k, `금병법〈${m.name}〉`); }
   for (const f of bundle.formations) for (const e of f.engine?.effects || []) add(mods, e.mod || (e.stat ? `능력치:${e.stat}` : ''), `진형 ${f.name}`);
-  const out = (m: Map<string, any>) => [...m.entries()].map(([k, v]) => ({ key: k, n: v.n, where: [...v.where].slice(0, 6) })).sort((a, b) => b.n - a.n);
+  const out = (m: Map<string, any>) => [...m.entries()].map(([k, v]) => ({ key: k, n: v.n, where: [...v.where] })).sort((a, b) => b.n - a.n);
   return { mods: out(mods), statuses: out(statuses) };
 }
 
@@ -62,7 +82,10 @@ export function collectDesignData() {
   const generals = bundle.generals.map((g: any) => ({
     id: g.id, name: g.name.ko, faction: g.faction, row: g.row, unitType: g.unitType, role: g.role, season: g.season, gender: bundle.engineGenerals?.[g.id]?.gender || g.gender,
     stats: g.stats, unique: skillName(g.uniqueSkillId), uniqueId: g.uniqueSkillId,
-    manuals: (g.manuals || []).map((m: any) => ({ name: m.name, status: m.status })),
+    uniqueText: bundle.skills.find((s: any) => s.id === g.uniqueSkillId)?.text || '',
+    uniqueKind: bundle.skills.find((s: any) => s.id === g.uniqueSkillId)?.kind || '',
+    manuals: (g.manuals || []).map((m: any) => ({ name: m.name, status: m.status, text: m.text })),
+    bonds: (bundle.bonds || []).filter((b: any) => (b.memberIds || []).includes(g.id)).map((b: any) => b.name),
     dataStatus: g.dataStatus || null,
   }));
   const skills = bundle.skills.map((s: any) => {
@@ -74,6 +97,7 @@ export function collectDesignData() {
       clauses: (s.clauses || []).map((c: any) => ({ text: c.text, status: c.status, reviewed: c.reviewed })),
       engineStatus: (s as any).engineStatus?.status || null, engineNote: (s as any).engineStatus?.note || null,
       revised: (mod?.revised || []).map(r => `${r.date} ${r.note}`),
+      engine: engineSummary(mod?.def),
     };
   });
   const manuals = bundle.generals.flatMap((g: any) => (g.manuals || []).map((m: any) => {
@@ -84,6 +108,12 @@ export function collectDesignData() {
   const formations = bundle.formations.map((f: any) => ({ name: f.name, hitRate: f.hitRate, traits: f.traits, confirmed: f.confirmed || null }));
   const bonds = (bundle.bonds || []).map((b: any) => ({ name: b.name, required: b.required, members: b.memberNames, text: b.text, season: b.season || null }));
   const glossary = readJson<any[]>(join(DATA, 'kr', 'glossary.json'), []).filter(x => x.category !== '성지건설');
+  const cat = catalog(bundle);
+  const terms = readJson<any>(join(DESIGN, 'terms.json')).terms.map((t: any) => {
+    const hits = [...cat.mods, ...cat.statuses].filter(m => (t.keys || []).includes(m.key));
+    const users = [...new Set(hits.flatMap(h => h.where))];
+    return { ...t, uses: hits.reduce((a, h) => a + h.n, 0), users: users.slice(0, 40) };
+  });
   const rules = readJson<any>(join(DATA, 'common', 'confirmed-rules.json')).rules;
   const assumptions = readJson<any>(join(DATA, 'verification', 'engine-assumptions.json')).items;
   const queue = readJson<any>(join(DATA, 'verification', 'queue.json'), { items: [] }).items;
@@ -103,7 +133,8 @@ export function collectDesignData() {
     builtAt: new Date().toISOString(), dataVersion: bundle.dataVersion, season: bundle.season,
     categories, spec, posts,
     game: { generals, skills, manuals, formations, bonds, glossary },
-    catalog: catalog(bundle),
+    terms,
+    catalog: cat,
     rules, changelog: bundle.changelog.map((c: any) => ({ id: c.id, date: c.date, season: c.season, category: c.category, title: c.title, body: c.body, commit: c.commit, files: c.files })),
     engineFixes: ENGINE_FIXES,
     verification: {
