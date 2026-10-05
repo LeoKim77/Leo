@@ -234,6 +234,8 @@ export class Simulator {
       const unit = E.buildUnit(g, [...skills, ...skillParts, ...manualSkills], uskill, formation, (u.position === ('mid' as any) ? 'front' : u.position) || slotPos[idx], side, idx);
       for (const sk of [uskill, ...skills].filter(Boolean) as any[]) {
         if (sk.unit?.uniqueProcAddDelta) unit.uniqueProcAdd = (unit.uniqueProcAdd || 0) + sk.unit.uniqueProcAddDelta;
+        // 도광양회 "(지력 영향)": 확률은 합연산 — 지력 1당 +0.02%p (툴팁 육손 325.55 → 12.50%, 여몽 323.15 → 12.46%), 전투 시작 스냅샷
+        if (sk.unit?.uniqueProcAddPerInt) unit.uniqueProcAdd = (unit.uniqueProcAdd || 0) + sk.unit.uniqueProcAddPerInt * (unit.stats?.지력 || 0);
         if (sk.static) skillStatics.push({ unit, name: sk.name, st: sk.static });
       }
       if (manual && eng) {

@@ -475,20 +475,6 @@
       "priority": 4
     },
     {
-      "id": "V-clause-hide-light-0",
-      "kind": "clause",
-      "refs": [
-        "hide-light"
-      ],
-      "title": "도광양회 — \"고유 액티브 전법 발동률이 6% 상승합니다(지력 영향)…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【도광양회】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "verified",
-      "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 위와 같음.",
-      "resolvedAt": "2026-10-03",
-      "priority": 4
-    },
-    {
       "id": "V-skill-u-gan-furen",
       "kind": "skill",
       "refs": [

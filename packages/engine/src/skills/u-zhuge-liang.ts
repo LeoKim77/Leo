@@ -15,7 +15,7 @@ export default defineSkill({
     },
     {
       "date": "2026-10-05",
-      "note": "녹화 확인: 초선차전 피해가 초선차전을 다시 판정(피격 1번에 3~5연속, 턴 5회 상한) — trigger.selfChain (FEAT-027)"
+      "note": "녹화 확인: 초선차전 피해가 초선차전을 다시 판정(피격 1번에 3~5연속, 턴 5회 상한) — 모든 트리거 공통 규칙(FEAT-027, R-050)"
     }
   ],
   clauses: [
@@ -66,8 +66,7 @@ export default defineSkill({
       "event": "damage",
       "role": "either",
       "chance": 0.5,
-      "maxPerTurn": 5,
-      "selfChain": true
+      "maxPerTurn": 5
     },
     "triggerApplied": true,
     "alwaysOnBuffs": [

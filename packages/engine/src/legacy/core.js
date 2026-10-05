@@ -42,12 +42,12 @@ export const ENGINE_FIXES = [
     detail: '① 대상이 안 적힌 효과는 한 시전 안에서 같은 대상을 공유(R-044) — 예전엔 효과마다 새로 뽑아 "랜덤 2명의 A와 B"가 서로 다른 무장에게 갔다. ② "디버프 상태 보유" 조건이 방어·피신 같은 기능성 상태까지 셌다. ③ "이상 상태 개수"도 기능성 상태 포함. ④ 대상이 자신뿐인 회복이 병력 최저 아군에게 갔다(지혜의 바람·충성과 용맹·전쟁 조달). ⑤ 능력치 증감의 턴 조건(turnCond)이 무시됐다.' },
   { id: 'FIX-016', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보) 역재현', title: '피해·회복 계수 재추정 (책략에 상대 지력 방어)',
     detail: '책략 피해 = (80 + 1.84×지력 − 0.75×상대 지력) × (병력/1만)^0.1, 병기 = (285 + 0.73×무력 − 0.79×통솔) × (병력/1만)^0.1, 회복 = 지력 × (1.123×치유율 + 0.00027×(지력−100)). 녹화 3판 피해 75건 RMS 19%→13%, 회복 17건 17%→4%. 지력이 높은 무장끼리 싸울 때 예전 식은 책략 피해를 최대 60% 크게 냈다.' },
-  { id: 'FEAT-027', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '자기 연쇄 트리거(초선차전)',
-    detail: '초선차전 피해가 초선차전을 다시 판정한다(피격 1번에 3~5연속, 턴 5회 상한). trigger.selfChain — R-033 자기 재발동 금지의 예외(녹화 확인).' },
+  { id: 'FEAT-027', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '자기 연쇄 트리거',
+    detail: '모든 트리거 전법이 자기 피해·피격에도 확률로 다시 판정한다(녹화: 초선차전 피격 1번에 3~5연속, 사용자 확인 R-050). 상한은 원문 턴당 N회, 상한 없는 100% 트리거만 같은 전법 8단계 중첩에서 멈춤. R-033 자기 재발동 금지 폐지.' },
   { id: 'FIX-017', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '받는 피해 감소 체감 기준',
     detail: '새 받는 피해 감소 = 명목 × (1 − 기존 감소분의 합). 예전엔 증가분까지 더한 순합계를 기준으로 해 형주 분할(+28.52%)이 걸린 제갈량에게 출사표 −12%가 그대로 들어갔다(실제 10.68%). 녹화 10건 일치.' },
-  { id: 'FIX-018', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '연소 지속 피해 시점',
-    detail: '연소 피해는 턴 시작 일괄이 아니라 보유자의 행동 시작에 들어간다(1번째 서서·3번째 노숙 모두 자기 행동 시작 직후). 짐독은 R-042 대로 턴 시작.' },
+  { id: 'FIX-018', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '지속 피해(짐독·연소) 시점',
+    detail: '짐독·연소 피해는 턴 시작 일괄이 아니라 보유자의 행동 시작에 들어간다(녹화: 1번째 서서·3번째 노숙 모두 자기 행동 시작 직후, 짐독도 같은 디버프 유형 — 사용자 확인 R-050).' },
   { id: 'FIX-019', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '전사 시 그 무장이 건 효과 전부 해제·중첩 지속 갱신',
     detail: '지휘(R-029)뿐 아니라 전사한 무장이 건 상태·능력치·증감(칠군수몰 침묵·무장 해제·홍수, 전략 계획, 형주 분할, 예측의 신 침묵, 군량 고갈)이 즉시 사라진다. 지속 피해는 남는다. 전략 계획은 새 스택이 들어오면 쌓인 스택 전체 지속이 새로 시작(stackRefresh).' },
   { id: 'FIX-020', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '기지의 승리 회복 = 누적 4회마다',
@@ -831,8 +831,10 @@ const __castStack = [];   // [무장 id:전법 id] — applySkillEffects 진입/
 let __hitLog = null;      // FIX-021 { a, t, fn } — 이번 전법 타격의 피해 줄(calcDamage 가 피해 직후 한 번 호출)
 function rollTrigger(unit, skill) {
   const t = skill.trigger;
-  // R-033 자기 재발동 금지 — 단 FEAT-027 selfChain(초선차전): 녹화(2026-10-05)에서 피격 1번에 초선차전 3~5연속 확인 → 자기 피해로 다시 판정(턴 상한까지)
-  if (!t.selfChain && __castStack.includes(unit.id + ':' + skill.id)) return false;
+  // FEAT-027 (R-050, 사용자 확인 2026-10-05): 자기 효과로도 다시 판정한다 — 모든 공격·피격 트리거가 자기 피해·피격에 확률로 재발동
+  //   (녹화: 초선차전 피격 1번에 3~5연속). 상한은 원문 '매 턴 N회'. 원문 상한이 없는 100% 트리거의 무한 연쇄만 안전장치로 막는다(같은 전법 중첩 8단계)
+  const key = unit.id + ':' + skill.id;
+  if (__castStack.filter(x => x === key).length >= 8) return false;
   const used = unit.triggerCounts[skill.id] || 0;
   // R-033: 턴당 횟수는 원문 상한(maxPerTurn)만 적용. 원문에 상한이 없으면 제한 없음(확률만) — 예전 기본 1회(v1.12b)는 근거 없음
   const cap = t.maxPerTurn != null ? t.maxPerTurn : Infinity;
@@ -1095,7 +1097,7 @@ const STATUS_DEF = {
   //   시뮬 내부에서는 여기서 한 번만 더한다.
   // 짐독: 디버프. 매 턴 시작 시 (60% × 스택수)의 책략 피해를 받는다. 최대 5스택.
   //   이유만 부여할 수 있고, 피해는 짐독을 건 이유의 지력으로 계산한다.
-  '짐독': { stackable: true, maxStack: 5, dotRatioPerStack: 0.6 },
+  '짐독': { stackable: true, maxStack: 5, dotRatioPerStack: 0.6, atHolderAction: true },   // FIX-018 (R-050): 연소와 같은 지속 피해 — 보유자 행동 시작
   '침묵 면역': { immuneTo: ['침묵'] },   // FEAT-026 화웅〈신무〉 "능력 소진 효과로부터 면역"(능력 소진 = 침묵으로 잠정)
   '연소': { stackable: true, maxStack: 5, dotRatioPerStack: 0.6, atHolderAction: true },   // FIX-018 녹화(2026-10-05): 보유자 행동 시작에 피해   // R-048 게임 용어: 매 턴 60%×스택 책략, 최대 5스택 — 짐독과 같은 방식
   // 탈주병: 상태가 아니라 즉시 고정 피해로 처리된다(dealDesertionDamage 참조)
@@ -2104,7 +2106,7 @@ function applyAlwaysOnOnce(unit, allUnits, coeffs, log, turn, contrib) {
       allUnits, coeffs, log, turn, contrib);
   });
 }
-// 지속 피해 정산. atHolder=false: 턴 시작(짐독 — R-042), true: 보유자 행동 시작(연소 — FIX-018 녹화 2026-10-05)
+// 지속 피해 정산. atHolder=true: 보유자 행동 시작(짐독·연소 — FIX-018, R-050), false: 턴 시작(그 밖)
 //   피해 = 60% × 스택 수 책략, 부여 시점 시전자 지력·병력 스냅샷(R-042) — 시전자가 전사해도 그대로
 function processDots(u, units, coeffs, log, turn, contrib, atHolder) {
   if (!u.alive) return;
@@ -2132,7 +2134,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
   __phase = 'action';
   // v1.11 W05: 보유자 행동 기준 지속 감소(잠정)
   if ((coeffs.durationMode || DEFAULT_COEFFS.durationMode) === 'holder') tickHolderBuffs(unit);
-  // FIX-018 연소: 보유자 행동 시작에 지속 피해 (녹화: 1번째 서서·3번째 노숙 모두 자기 '행동 시작' 직후)
+  // FIX-018 짐독·연소: 보유자 행동 시작에 지속 피해 (녹화: 1번째 서서·3번째 노숙 모두 자기 '행동 시작' 직후, R-050)
   processDots(unit, allUnits, coeffs, log, turn, contrib, true);
   if (!unit.alive) return;
   // trigger가 있는 스킬, 또는 특정 턴에만 발동하는 스킬(onlyTurns) 조건 확인 후 고정 슬롯에서 발동
@@ -2484,8 +2486,7 @@ function simulateOneBattle(armyA, armyB, coeffs) {
     const order = mergeActionOrder(units, coeffs);
     // 실제 게임의 "행동 순서 판단 완료 [판단 결과]"에 대응 — 선공 기준 행동 순서를 매 턴 표기
     log.push(`${turn}턴: ── ${turn}번째 턴 ──`);
-    // R-048 지속 피해(짐독): 행동 순서 결정 직후 같은 시점에 일괄 처리, 한 무장에 여럿이면 먼저 걸린 것부터(FIFO).
-    //   연소는 FIX-018 로 보유자 행동 시작(resolveUnitTurn)에서 처리 — 녹화 2026-10-05
+    // 지속 피해(짐독·연소)는 FIX-018(R-050) 로 보유자 행동 시작(resolveUnitTurn)에서 처리 — 여기서는 atHolderAction 이 없는 지속 피해만
     units.forEach(u => processDots(u, units, coeffs, log, turn, contrib, false));
 
     // FIX-010: 지속 감소 대상 표시는 각 무장이 행동을 마친 뒤(markHolderSeen)에 한다 — 턴 시작 표시는 폐지

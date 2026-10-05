@@ -82,4 +82,25 @@ describe('녹화 2026-10-05 (제갈량·육손·주유)', () => {
     }
     expect(seen).toBeGreaterThan(0);
   });
+
+  it('R-050 도광양회: 고유 액티브 발동률 = 6% + 지력×0.02%p (육손 325.55 → 12.50%)', () => {
+    const [u] = sim.buildArmy({ formation: '기형진', units: [unit('육손', ['hide-light'])] } as any, 'A') as any[];
+    expect(u.uniqueProcAdd).toBeCloseTo(0.06 + u.stats.지력 * 0.0002, 6);
+    expect(0.06 + 325.55 * 0.0002).toBeCloseTo(0.1251, 3);
+  });
+
+  it('R-050 짐독도 연소처럼 보유자 행동 시작에 피해', () => {
+    const logs = [1, 2, 3, 4, 5, 6, 7, 8].map(s => sim.simulate({ formation: '기형진', units: [unit('이유'), unit('주유'), unit('제갈량')] } as any,
+      { formation: '기형진', units: [unit('손책'), unit('대교'), unit('조운')] } as any, { seed: s }).log);
+    let seen = 0;
+    for (const log of logs) {
+      let ordered = false;
+      for (const line of log) {
+        if (/행동 순서 판단 완료/.test(line)) ordered = true;
+        if (/── \d+번째 턴 ──/.test(line)) ordered = false;
+        if (/「짐독」 \d스택으로 병력이/.test(line)) { expect(ordered).toBe(true); seen++; }
+      }
+    }
+    expect(seen).toBeGreaterThan(0);
+  });
 });
