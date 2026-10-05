@@ -17,7 +17,7 @@
     "u-huang-gai"
   ],
   "author": "Claude",
-  "commit": "",
+  "commit": "5991f755d353",
   "files": [
     "packages/engine/src/manuals/*.ts (87개, 신규)",
     "packages/engine/src/manuals/types.ts",
