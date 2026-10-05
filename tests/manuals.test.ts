@@ -83,9 +83,10 @@ describe('전법 정의 수정 (S09·FEAT-003)', () => {
     expect(logs.some(l => l.includes('금병법〈산림탈기〉'))).toBe(true);
   });
 
-  it('방통〈책략〉은 게임 확인 패치로 들어오고, 연환(FEAT-024) 구현 뒤 근사로 장착된다 (모든 턴 연환·전달 22%)', () => {
+  it('방통〈책략〉: 모든 턴 연환, 전달 25% → 13% (R-046)', () => {
     const m = gen('방통').manuals.find(x => x.name === '책략')!;
-    expect(m.status).toBe('approx');
+    expect(m.status).toBe('ok');
+    expect((m.engine!.uniquePatch as any)['effects.statusEffects.0.data']).toEqual({ ratio: 0.13 });
     const a = { formation: '기형진', units: [{ generalId: gen('방통').id, skillIds: [], manualId: m.id }, { generalId: gen('조조').id, skillIds: [], manualId: 'none' }, { generalId: gen('전위').id, skillIds: [], manualId: 'none' }] };
     const e = { formation: '기형진', units: ['손책', '대교', '주유'].map(n => ({ generalId: gen(n).id, skillIds: [], manualId: 'none' })) };
     const log = sim.simulate(a, e, { seed: 3 }).log.join('\n');
