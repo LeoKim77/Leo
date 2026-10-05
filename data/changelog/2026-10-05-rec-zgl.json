@@ -17,7 +17,7 @@
     "strategize"
   ],
   "author": "Claude",
-  "commit": "",
+  "commit": "c102e5bb2173",
   "files": [
     "packages/engine/src/legacy/core.js",
     "packages/engine/src/skills/u-zhuge-liang.ts",
