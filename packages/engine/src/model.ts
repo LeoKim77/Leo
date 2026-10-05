@@ -59,6 +59,8 @@ export interface Manual {
   status?: 'ok' | 'approx' | 'unsupported' | 'missing';
   note?: string;
   engine?: ManualEngine;
+  /** 원문 절별 구현 상태 (금병법 함수 파일에서) */
+  clauses?: Clause[];
 }
 
 export interface ManualEngine {
@@ -66,6 +68,8 @@ export interface ManualEngine {
   static?: { mods?: Record<string, number>; stats?: Record<string, number>; row?: 'front' | 'back' };
   unit?: Record<string, unknown>;
   uniquePatch?: Record<string, unknown>;
+  /** 금병법 함수 파일 id (packages/engine/src/manuals/<id>.ts) — 있으면 parts 를 그 파일의 runs 로 실행 */
+  fn?: string;
 }
 
 export interface Clause {

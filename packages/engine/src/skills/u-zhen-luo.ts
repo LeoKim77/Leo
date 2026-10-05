@@ -12,6 +12,10 @@ export default defineSkill({
     {
       "date": "2026-10-05",
       "note": "자신 회복 + '우군 1명(후열 우선)'이 낙수의 여신 1턴: 그 우군 회복 140%·주는 피해 +12.25%·다음 비평타 피해 회심·묘책 확정 — 예전엔 회복·버프가 엉뚱한 대상에"
+    },
+    {
+      "date": "2026-10-05",
+      "note": "낙수의 여신 대상 선택에 금병법 낙신부(지력/무력 최고 우군 우선) 연결 — def.goddessPick"
     }
   ],
   clauses: [
@@ -155,8 +159,10 @@ export default defineSkill({
     // 「매 턴 시작 시, 자신의 병력을 회복하며(치유율 140%, 지력의 영향 받음)」
     c.heal(0);
     // 「우군 1명(후열 우선 선택)이 낙수의 여신을 1턴 동안 획득한다: 자신의 병력을 회복하며(치유율 140%, 지력의 영향 받음)」
+    //   금병법 낙신부 상권/하권이면 지력/무력이 가장 높은 우군을 우선 선택 (uniquePatch 의 goddessPick)
     const fr = c.friendsOf(c.unit), back = fr.filter(u => u.position === 'back');
-    c.tag('g', [c.pick(back.length ? back : fr)]);
+    const pri = c.skill.goddessPick;
+    c.tag('g', [pri ? fr.reduce((m, u) => (c.stat(u, pri) > c.stat(m, pri) ? u : m), fr[0]) : c.pick(back.length ? back : fr)]);
     // 「주는 피해가 12.25% 증가한다」
     c.heal(1); c.buff(0);
     // 「낙수의 여신 획득 후, 처음으로 일반 공격이 아닌 피해 시전 시 회심 및 묘책이(가) 반드시 발동된다」

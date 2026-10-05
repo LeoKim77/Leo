@@ -1,6 +1,7 @@
 // 전투 시뮬레이터 공개 API.
 // GameBundle(한국판 데이터 + 엔진 정의) → v1.12b 엔진 형식으로 바꿔 실행한다.
 import { SKILL_MODULES } from './skills/index.ts';
+import { MANUAL_MODULES } from './manuals/index.ts';
 import { createLegacyEngine } from './legacy/core.js';
 import { createRng } from './rng.ts';
 import type { GameBundle, General, Skill, Manual } from './model.ts';
@@ -218,8 +219,10 @@ export class Simulator {
         ...structuredClone(part), id: `${sk.id}#${i + 1}`, name: sk.name, type: sk.type === '액티브' || sk.type === '추격' ? '패시브' : sk.type,
         procRate: '100%', raw: sk.raw, isManual: true, isPart: true,
       })));
+      const manualRuns = !this.opts.noSkillFns && eng?.fn ? MANUAL_MODULES[eng.fn]?.runs : undefined;
       const manualSkills = (eng?.parts || []).map((part, i) => ({
         ...structuredClone(part),
+        run: manualRuns?.[i] || undefined,
         id: `${manual!.id}#${i + 1}`,
         name: `금병법〈${manual!.name}〉`,
         type: '패시브',

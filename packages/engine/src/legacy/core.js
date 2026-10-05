@@ -40,6 +40,10 @@ export const ENGINE_FIXES = [
     detail: '스택마다 지속을 따로 갖고 먼저 쌓인 것부터 만료된다. 상한(N중첩)에서 또 발동하면 가장 오래된 스택을 빼고 새 스택을 넣는다(수치 그대로, "N스택 중첩됐습니다" 표기). 예전엔 상한에서 맨 앞 스택만 제자리 갱신해, 다음 발동 때도 같은(이미 가장 새로운) 스택을 다시 갱신하는 문제가 있었다.' },
   { id: 'FIX-013', date: '2026-10-04', found: '보유 전법 140개 원문 대조 (함수화 후 1차 보정)', title: '공용 대상·조건 버그',
     detail: '① 대상이 안 적힌 효과는 한 시전 안에서 같은 대상을 공유(R-044) — 예전엔 효과마다 새로 뽑아 "랜덤 2명의 A와 B"가 서로 다른 무장에게 갔다. ② "디버프 상태 보유" 조건이 방어·피신 같은 기능성 상태까지 셌다. ③ "이상 상태 개수"도 기능성 상태 포함. ④ 대상이 자신뿐인 회복이 병력 최저 아군에게 갔다(지혜의 바람·충성과 용맹·전쟁 조달). ⑤ 능력치 증감의 턴 조건(turnCond)이 무시됐다.' },
+  { id: 'FIX-014', date: '2026-10-05', found: '금병법 원문 대조 (황개〈견결〉 확인 중)', title: '다른 무장이 때리는 피해의 "자신" 대상',
+    detail: '피해 항목에 공격자(actor)가 따로 있을 때 대상 "자신"을 공격자로 풀어, 고육지계("지력이 가장 높은 우군이 자신에게 60% 병기 피해")에서 황개가 아니라 그 우군이 스스로를 때렸다. 대상 "자신" = 시전자로 고침.' },
+  { id: 'FEAT-025', date: '2026-10-05', found: '금병법 87개 원문 대조 (금병법 함수화)', title: '회복 이벤트, 우군 최고 무력 대상',
+    detail: '회복 효과가 들어간 뒤 이벤트(trigger.event "heal": 화타 청낭경·유비 인의론·소교 관문), 우군이 준 피해를 받은 뒤(trigger.fromAlly: 황개 견결), "자신과 무력이 가장 높은 우군"의 우군 몫(highest_power_friend, 자신 제외: 안량·문추). 금병법 parts 도 전법처럼 함수(runs)로 실행한다.' },
   { id: 'FEAT-024', date: '2026-10-04', found: '보유 전법 140개 원문 대조', title: '전법 함수 부품 추가',
     detail: '대상 묶기(c.tag), 후열·전열 우선/전열 아군/전장 랜덤 4명/이번 턴 나를 때린 무장 대상, 피해 무작위 계수(100%~140%)·조건 배수·통솔 무시·회심 불가·피해 전달(방금 피해 × 비율), 능력치=다른 스탯 × 비율, 턴 종료까지 지속, 확정 회심 1회분 + 회심 피해 증가, 준비 생략(포위 돌파 첫 턴·기민한 전술·황천), 도사(법정)·연환(방통) 표식, 피해를 받기 직전 트리거(서성·전력 지원), 공격자 위치별·이성 받는 피해(고진양번·폐월), 이상 상태 개수만큼 부여 확률 증가, 대상 편 조건, "무력 또는 통솔 중 높은 쪽" 영향, 손권 최고 속성·허저 무력 영향.' },
   { id: 'FEAT-023', date: '2026-10-04', found: '사용자 요청 (전법별 함수화)', title: '전법 함수 구조',
@@ -434,6 +438,7 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
     case 'highest_power_enemy': result = [maxBy(enemies, u => S(u, '무력'))]; break;
     case 'highest_intel_enemy': result = [maxBy(enemies, u => S(u, '지력'))]; break;
     case 'highest_power_ally': result = [maxBy(allies, u => S(u, '무력'))]; break;
+    case 'highest_power_friend': result = [maxBy(allies.filter(u => u !== unit), u => S(u, '무력'))]; break;   // FEAT-025 "무력이 가장 높은 우군"(자신 제외)
     case 'highest_intel_ally': result = [maxBy(allies, u => S(u, '지력'))]; break;
     case 'highest_command_ally': result = [maxBy(allies, u => S(u, '통솔'))]; break;
     case 'highest_control_ally': result = [maxBy(allies, u => S(u, '통솔'))]; break;
@@ -457,7 +462,7 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
 const SINGLE_TARGET_CODES = new Set(['random_enemy_1', 'random_ally_1', 'random_ally_one', 'random_enemy_back_first', 'random_enemy_front_first', 'random_ally_front', 'random_same_row_ally',
   'lowest_control_enemy', 'lowest_power_enemy', 'lowest_intel_enemy', 'lowest_speed_enemy', 'lowest_combined_enemy', 'lowest_hp_enemy',
   'highest_power_enemy', 'highest_intel_enemy', 'highest_speed_ally', 'highest_combined_ally', 'highest_power_ally', 'highest_intel_ally',
-  'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally']);
+  'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally', 'highest_power_friend']);
 const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'random_friend_n', 'all_friend', 'front_allies', 'random_all_4', 'damaged_me_this_turn', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
 function shuffle(a) { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(__rng() * (i + 1));[b[i], b[j]] = [b[j], b[i]]; } return b; }
 function minBy(arr, fn) { return arr.length ? arr.reduce((a, b) => (fn(a) <= fn(b) ? a : b)) : null; }
@@ -837,6 +842,7 @@ function emitDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       }
       if (t.filterDmgType && t.filterDmgType !== dmgType) return;
       if (t.requireCrit && !crit) return;
+      if (t.fromAlly && attacker.side !== u.side) return;   // FEAT-025 "우군의 피해를 받은 후" (황개 견결)
       if (!rollTrigger(u, skill)) return;
       applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender, dmg, dmgType });
     });
@@ -943,6 +949,23 @@ function resolveDamageMarks(attacker, defender, dmg, isBasic, allUnits, coeffs, 
       sweepDeadAuras(allUnits, log, turn);
     }
   }
+}
+
+// FEAT-025 단순 이벤트 — trigger.event 'heal'(회복이 들어간 뒤: actor=회복시킨 무장, target=회복받은 무장)
+//   role 'self' = actor 가 나, 'ally_side' = actor 가 우리 편
+function emitSimpleEvent(event, ctx, actor, allUnits, coeffs, log, turn, contrib) {
+  allUnits.forEach(u => {
+    if (!u.alive) return;
+    u.skills.forEach(skill => {
+      const t = skill.trigger;
+      if (!t || t.event !== event) return;
+      if (t.role === 'self' && u !== actor) return;
+      if (t.role === 'ally_side' && u.side !== actor.side) return;
+      if (t.turnCond && !turnMatches(t.turnCond, turn)) return;
+      if (!rollTrigger(u, skill)) return;
+      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { ...ctx, actor });
+    });
+  });
 }
 
 function emitEvadeEvent(ctx, allUnits, coeffs, log, turn, contrib) {
@@ -1297,7 +1320,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     const attacker = d.actor && d.actor !== 'self' ? (selectTargets(unit, [d.actor], allUnits, true)[0] || unit) : unit;
     let targets;
     if (d.target === 'self') {
-      targets = [attacker];
+      targets = [unit];   // FIX-014: '자신' = 시전자 (고육지계 "지력 최고 우군이 자신에게" — 예전엔 공격하는 우군 자신이 맞았다)
     } else if (d.target && resolveSpecial(d.target)) {
       targets = resolveSpecial(d.target);
     } else if (d.target) {
@@ -1504,6 +1527,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         log.push(`${turn}턴:   [${t.name}]이(가) ${by}「군량 고갈」 효과로 치유 효과 ${(healMult*100).toFixed(0)}%(으)로 감소`);
       }
       log.push(`${turn}턴:   [${t.name}]이(가) 병력을 ${healed}(${t.troops}) 회복했습니다.`);
+      emitSimpleEvent('heal', { healer, target: t, amount: healed, skillId: skill.id }, healer, allUnits, coeffs, log, turn, contrib);   // FEAT-025
     });
   };
 

@@ -19,6 +19,7 @@
 
 ## 구조
 - **전법 = 함수 파일**: `packages/engine/src/skills/<id>.ts` (전법·고유 전법 194개). `def`(발동 시점·트리거·대상·효과 항목) + `clauses`(한국판 원문 절별 구현 상태) + `run(c)`(공용 부품을 원문 순서대로 호출). **파일이 정본**이다 — 전법 수정·신규 전법은 이 파일을 고치거나 만든다. `data/engine/skills.json`·`overrides.json`·`authored.json` 은 파일을 처음 만들 때 쓰는 원천(`pnpm gen:skills` 는 없는 파일만 만든다, `--force <id>` 는 원천으로 덮어씀). 손본 파일은 `revised` 에 날짜·사유를 남긴다.
+- **금병법 = 함수 파일**: `packages/engine/src/manuals/<id>.ts` (87개, id = `m-<무장 id>-<번호>`). `def`(parts·static·unit·uniquePatch) + `clauses` + `runs`(parts 번호별 실행 함수). 파일이 정본 — `data/engine/manuals.json` 은 생성 원천(`pnpm gen:manuals`), 수정은 `pnpm manual:revise <수정안.json>`.
 - `data/kr/` 엑셀 원본 → `data/engine/` 엔진 정의(v1.12b 변환, `overrides.json` 검수 수정, `authored.json` 직접 작성, `manuals.json` 금병법, `clause-review.json`) → `data/patches/` 게임 확인 정보
 - `packages/engine` 전투 엔진 · `packages/audit` 규칙 감사 · `packages/recommender` 덱 추천 · `packages/data-tools` 가져오기·번들·단일 파일
 - `apps/web` 웹 · `apps/mcp-server` MCP 도구(`.mcp.json`)
@@ -30,6 +31,7 @@ pnpm audit                # 전체 규칙 감사 (~30초) → data/audit/latest.
 pnpm build:bundle         # 웹 데이터
 pnpm build:standalone     # 단일 HTML → apps/web/dist-standalone/muhanmutu(.artifact).html
 pnpm gen:skills           # 함수 파일이 없는 전법의 파일 생성 (신규 전법 추가 후)
+pnpm gen:manuals          # 함수 파일이 없는 금병법의 파일 생성 (manuals.json 에 새 금병법 추가 후)
 ```
 
 ## 검증 원칙 (R-019)

@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { DATA, KR, readJson } from './paths.ts';
 import type { GameBundle, Skill, Clause, Formation, ChangelogEntry, SeasonInfo } from '../../engine/src/model.ts';
 import { SKILL_MODULES } from '../../engine/src/skills/index.ts';
+import { MANUAL_MODULES } from '../../engine/src/manuals/index.ts';
 
 // ---------- 절 분해 ----------
 // 괄호 안의 쉼표·마침표에서는 자르지 않는다. "전투 시작 시," 같은 짧은 시점 문구는 뒤 절에 붙인다.
@@ -165,6 +166,18 @@ export function buildBundle(opts: { fromJson?: boolean } = {}): FullBundle {
   for (const g of generals) {
     (g.manuals || []).forEach((m: any, i: number) => {
       m.id = `m-${g.id}-${i + 1}`;
+      // 금병법 함수 파일(packages/engine/src/manuals/<id>.ts)이 있으면 그것이 정본이다 (무장·이름으로 찾는다)
+      const mod = opts.fromJson ? undefined : Object.values(MANUAL_MODULES).find(x => x.generalId === g.id && squashName(x.name) === squashName(m.name));
+      if (mod) {
+        m.status = mod.status;
+        if (mod.note) m.note = mod.note;
+        m.engine = { ...mod.def, fn: mod.id };
+        m.clauses = splitClauses(m.text || '').map((t, idx) => {
+          const c = mod.clauses.find(x => x.text === t) || mod.clauses.find(x => dice(x.text, t) >= 0.6);
+          return c ? { idx, text: t, status: c.status, ...(c.reviewed ? { reviewed: c.reviewed } : {}) } : { idx, text: t, status: 'missing' };
+        });
+        return;
+      }
       const def = (manualDefs[g.id] || []).find((d: any) => squashName(d.name) === squashName(m.name));
       if (!def) { m.status = 'missing'; if (m.textUnknown) m.note = '원문 미확인 — 티어덱 시트에 이름만 있음'; return; }
       m.status = def.status;

@@ -1,0 +1,42 @@
+{
+  "id": "2026-10-05-manual-functions",
+  "date": "2026-10-05",
+  "season": "S2",
+  "category": "엔진",
+  "title": "금병법 87개 함수화 + 원문 대조 — 20개 보정, 미지원 5개 구현",
+  "body": "금병법도 전법처럼 파일 하나 = 금병법 하나(packages/engine/src/manuals/<id>.ts)로 바꿨다. 파일에 정의(parts·static·unit·uniquePatch)·원문 절별 구현 상태·runs(효과 실행 함수)가 있고, 파일이 정본이다(pnpm gen:manuals 생성, pnpm manual:revise 수정). 함수 실행 = 예전 실행(트리거형 41개 전보 동일) 확인 뒤 원문과 대조했다.\n■ 미지원·근사 → 원문대로 구현\n- 화타〈청낭경〉·유비〈인의론〉·소교〈관문〉: 회복 이벤트(FEAT-025) 추가 — 회복시킨 목표 주는 피해 +6%(2중첩) / 아군 4회 회복마다 정신 회복(턴당 1회)·치유폭 지력 영향 / 여성 아군 그 턴 첫 회복 때 100% 책략\n- 황개〈견결〉: '우군의 피해를 받은 후' = 고육지계에서 우군이 황개를 때린 뒤 받는 피해 −12%\n- 황충〈궁술〉: 그 턴 일반 공격(연타 포함) 2회 미만이면 턴 종료 시 추격 발동률·피해 +25%\n- 방통〈책략〉: 연환(FEAT-024) 구현으로 장착 가능 — 연환을 모든 턴, 전달 25% → 22%(해석 검증 대기)\n- '(○○의 영향 받음)' 반영: 손견〈무열〉 통솔, 하후연〈신속〉 선공, 손책〈무구〉 무력(확률), 조조〈맹덕신서 하권〉 지력(+턴 종료까지 지속), 추씨〈세속〉 눈짓 지력\n- 주유〈화계〉: 기지 효과가 기지의 승리와 같음을 확인 → 원문대로\n■ 원문과 다르게 돌던 것\n- 동탁〈왕신〉: 탈취 +60%가 적군 탈취에만 → 우군 탈취·자신 증가분까지 (고유 전법 함수가 탈취량을 정의에서 읽게)\n- 견희〈낙신부 상·하권〉: 대상 지정이 안 먹고 +10%가 견희 자신 회복에도 → 지력/무력 최고 우군에게 여신, 여신 회복만 154%\n- 초선〈상련·화수〉: 턴 종료 시 '1턴' = 보유자 다음 행동 1번(R-025) — 지속 2 → 1\n- 안량〈무·상〉·문추〈무·하〉: '자신과 무력이 가장 높은 우군'의 우군 몫이 자신이면 사라짐 → 자신 제외 최고 무력 우군\n■ 엔진 버그 FIX-014: 고육지계 '지력이 가장 높은 우군이 자신에게 60% 병기 피해'에서 그 우군이 스스로를 때렸다 → 황개가 맞는다.\n■ 영향: 상위 8덱 28대전(400판씩) 평균 ±11.3%p, 최대 35%p (손상향·견희·소교 덱 하락, 유비·장비·황충 덱 상승 — 낙신부·궁술·인의론 보정). 감사 경고 63 → 48.\n■ 검증 대기 추가: 금병법 문구 '우군'(엑셀 통일 가능성 — 진궁·등애·초선·황월영·이유·유비), 'N% 증가/감소' 가산·곱(하후돈·마초·방통·주창), 영향 스탯 기준 시점.\n■ 아직 근사·미지원: 정보〈호신〉 통솔 영향, 육손〈분영〉 연소, 마초〈마술〉, 하후돈〈위협〉, 순욱〈북한〉 묘책 피해, 장량〈태평도법〉·화웅〈신무〉 능력 소진, 제갈량〈출사표〉 시점.",
+  "refs": [
+    "hua-tuo",
+    "liu-bei",
+    "xiao-qiao",
+    "huang-gai",
+    "huang-zhong",
+    "pang-tong",
+    "dong-zhuo",
+    "zhen-luo",
+    "u-huang-gai"
+  ],
+  "author": "Claude",
+  "commit": "",
+  "files": [
+    "packages/engine/src/manuals/*.ts (87개, 신규)",
+    "packages/engine/src/manuals/types.ts",
+    "packages/engine/src/manuals/index.ts",
+    "packages/data-tools/src/gen-manual-funcs.ts",
+    "packages/data-tools/src/manual-revise.ts",
+    "packages/data-tools/src/gen-skill-funcs.ts",
+    "packages/data-tools/src/bundle.ts",
+    "packages/engine/src/index.ts",
+    "packages/engine/src/model.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/engine/src/skills/u-dong-zhuo.ts",
+    "packages/engine/src/skills/u-zhen-luo.ts",
+    "data/verification/engine-assumptions.json",
+    "tests/manual-functions.test.ts",
+    "tests/manuals.test.ts",
+    "package.json",
+    "CLAUDE.md",
+    ".claude/skills/season-update/SKILL.md",
+    "data/audit/latest.json"
+  ]
+}

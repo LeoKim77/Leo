@@ -12,6 +12,10 @@ export default defineSkill({
     {
       "date": "2026-10-04",
       "note": "'전체 적군과 우군의 통솔 20 탈취'(자신에게 더함, 턴 종료 시 반환, 매 턴 10% 감소) 구현 — 예전엔 적군만 감소"
+    },
+    {
+      "date": "2026-10-05",
+      "note": "탈취분(자신 통솔 증가)을 탈취 항목 수치에서 읽게 함 — 금병법 왕신(탈취 +60%)이 자신 증가분에도 반영되게"
     }
   ],
   clauses: [
@@ -135,8 +139,9 @@ export default defineSkill({
   run(c) {
     // 「매 턴 행동 시, 전체 적군과 우군의 통솔을 20포인트 탈취하고」
     const n = c.enemiesOf(c.unit).length + c.friendsOf(c.unit).length;
+    const take = -c.skill.effects.statMods[0].max;   // 탈취량 20 (금병법 왕신이면 32)
     c.statMod(0); c.statMod(1);
-    c.statMod({ stat: '통솔', min: 20 * n, max: 20 * n, target: 'self', untilTurnEnd: true, maxStacks: 1, turnScale: { perTurn: -0.1, mode: 'mult' } });   // 탈취분
+    c.statMod({ stat: '통솔', min: take * n, max: take * n, target: 'self', untilTurnEnd: true, maxStacks: 1, turnScale: { perTurn: -0.1, mode: 'mult' } });   // 탈취분
     // 「전체 적군에게 60%의 병기와 책략 피해(추가로 통솔의 영향 받음)를 준다」
     c.damage(0); c.damage(1);
   },

@@ -35,7 +35,7 @@ description: 천하결전 시뮬레이터에 새 시즌·무장·전법·밸런�
 4. 없는 메커니즘이면 `core.js` 에 **일반화된 부품**으로 추가하고 `ENGINE_FIXES` 에 FEAT-번호로. 특정 전법 이름으로 분기하지 않는다. 함수 API 에 새 부품을 노출하면 `types.ts`(SkillApi)도 갱신.
 5. 원문대로가 아니면 해당 절 `status: 'approx'` + 검증 대기(`data/verification/engine-assumptions.json`)에 해석을 남긴다.
 6. 확인: `pnpm test`(전법 함수 구조·동등성 포함) → `pnpm audit` → MCP `sim_battle` 로 전보를 읽어 본다. 감사 문제는 오탐인지 엔진 문제인지 전보로 확인한 뒤 고친다.
-7. 금병법은 아직 `data/engine/manuals.json`(함수화 예정).
+7. 금병법도 함수 파일(`packages/engine/src/manuals/<id>.ts`)이 정본이다. 새 금병법은 `data/engine/manuals.json` 에 정의를 넣고 `pnpm gen:manuals` 로 파일을 만든 뒤 원문대로 손본다(`pnpm manual:revise`, 형식은 `manual-revise.ts` 머리말). 기존 금병법 수정도 `manual:revise` 로 — `revised` 에 날짜·사유가 남는다.
 
 ## 4. 게시판
 MCP `board_post` (분류: 신규 무장/신규 전법/밸런스 조정/티어덱/전투 규칙/데이터 수정/엔진/기타). 본문에 무엇이 바뀌었는지, 근사·미지원 항목, 감사 결과를 적는다. `files` 는 생략하면 미커밋 변경 파일이 자동으로 들어간다. 커밋 후에는 해당 글에 `commit` 을 채운다.

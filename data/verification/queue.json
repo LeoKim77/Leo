@@ -119,6 +119,24 @@
       "status": "pending"
     },
     {
+      "id": "V-engine-manual-ally-wording",
+      "kind": "engine",
+      "refs": [
+        "m-chen-gong-1",
+        "m-deng-ai-1",
+        "m-diao-chan-1",
+        "m-diao-chan-2",
+        "m-huang-yueying-1",
+        "m-li-ru-1",
+        "m-liu-bei-2"
+      ],
+      "title": "금병법 문구의 '우군'(엑셀 통일 가능성)",
+      "assumption": "엑셀 옮기는 중 '아군'이 '우군'으로 통일됐을 수 있어(R-034), '무력이 가장 높은 우군'·'우군 2명' 등은 예전처럼 자신 포함으로 둠. '자신과/자신 및 ~ 우군'처럼 문맥상 자신 제외가 분명한 것만 자신 제외(안량·문추·악진·주태)",
+      "howToVerify": "게임 금병법 설명 화면의 아군/우군 표기 캡처 (진궁 논무·등애 제하론·초선 상련/화수·황월영 기관술·이유 비호·유비 인의론)",
+      "priority": 30,
+      "status": "pending"
+    },
+    {
       "id": "V-engine-coef-heal",
       "kind": "engine",
       "refs": [],
@@ -137,19 +155,6 @@
       "howToVerify": "같은 편 두 무장의 선공 차가 0~40일 때 턴마다 순서가 뒤바뀌는지 — '행동 순서 판단 완료' 표기 + 툴팁 선공. 바뀌는 게 한 번이라도 보이면 같은 편 고정(W31)은 확정 기각",
       "priority": 27,
       "status": "pending"
-    },
-    {
-      "id": "V-manual-m-zhou-yu-1",
-      "kind": "manual",
-      "refs": [
-        "zhou-yu",
-        "u-zhou-yu"
-      ],
-      "title": "주유 금병법〈화계〉",
-      "assumption": "기지 효과 = 랜덤 적군 2명 60% 책략 피해(근사). 게임 원문: 적군이 화공 상태를 부여 받을 때마다 판정",
-      "howToVerify": "주유이(가) 〈화계〉을 장착한 전보에서 원문 효과(\"적군이 화공 상태를 부여 받을 경우, 35% 확률로 '기지' 효과 발동(턴당 최대 2회 발동, 고유 전법 기…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 26
     },
     {
       "id": "V-manual-m-xun-yu-1",
@@ -171,6 +176,21 @@
       "title": "혼란 시 여러 명 대상 전법 (R-032)",
       "assumption": "랜덤 N명·전체 대상도 적+아군 풀에서 같은 인원수 추출",
       "howToVerify": "혼란 걸린 무장의 광역 전법 대상 — 전보에 아군 피해 줄이 나오는지",
+      "priority": 25,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-manual-pct-change",
+      "kind": "engine",
+      "refs": [
+        "m-xiahou-dun-1",
+        "m-ma-chao-2",
+        "m-pang-tong-1",
+        "m-zhou-cang-1"
+      ],
+      "title": "금병법 '○○이 N% 증가/감소' — 가산(%p)인지 곱인지",
+      "assumption": "하후돈 위협 강렬 감소 30%→40%(+10%p), 마초 마술 척살 피해 ×2.8(+180%), 방통 책략 연환 전달 25%→22%(×0.88), 주창 충렬 이상 상태 확률 45%→65%(+20%p, 발동률 가산 규칙)",
+      "howToVerify": "금병법 장착 전후 툴팁 수치 또는 전보 피해·전달량",
       "priority": 25,
       "status": "pending"
     },
@@ -318,6 +338,22 @@
       "priority": 15
     },
     {
+      "id": "V-engine-manual-influence-time",
+      "kind": "engine",
+      "refs": [
+        "m-sun-jian-1",
+        "m-xiahou-yuan-1",
+        "m-liu-bei-2",
+        "m-cao-cao-2",
+        "m-zou-shi-1"
+      ],
+      "title": "금병법 '(○○의 영향 받음)' 고정 증감의 스탯 기준 시점",
+      "assumption": "전투 시작 시 스탯으로 한 번 계산(공용 영향 공식 1+(스탯−100)×0.21%). 게임은 매 순간 현재 스탯일 수도 있음",
+      "howToVerify": "전투 중 스탯이 바뀐 뒤 툴팁의 받는 병기 피해·회심 피해 수치가 바뀌는지",
+      "priority": 15,
+      "status": "pending"
+    },
+    {
       "id": "V-manual-m-zhuge-liang-1",
       "kind": "manual",
       "refs": [
@@ -357,19 +393,6 @@
       "priority": 14
     },
     {
-      "id": "V-manual-m-zhen-luo-1",
-      "kind": "manual",
-      "refs": [
-        "zhen-luo",
-        "u-zhen-luo"
-      ],
-      "title": "견희 금병법〈낙신부 상권〉",
-      "assumption": "낙수의 여신 대상 → 지력 최고 우군, 회복 +10%",
-      "howToVerify": "견희이(가) 〈낙신부 상권〉을 장착한 전보에서 원문 효과(\"고유 전법 바람과 눈꽃의 낙수의 여신 효과가 지력이 가장 높은 단일 목표를 우선적으로 선택하고, 낙수의 여신…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 13
-    },
-    {
       "id": "V-skill-see-truth",
       "kind": "skill",
       "refs": [
@@ -394,19 +417,6 @@
       "priority": 11
     },
     {
-      "id": "V-manual-m-liu-bei-2",
-      "kind": "manual",
-      "refs": [
-        "liu-bei",
-        "u-liu-bei"
-      ],
-      "title": "유비 금병법〈인의론〉",
-      "assumption": "치유폭 +12%만 반영(지력 영향 미반영). \"우군 4회 치유마다 정신 회복\"은 미지원",
-      "howToVerify": "유비이(가) 〈인의론〉을 장착한 전보에서 원문 효과(\"치유폭이 12% 증가하며,(지력의 영향 받음), 우군을 4회 치유할 때마다 랜덤 우군 단일 목표가 1턴 동안…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 8
-    },
-    {
       "id": "V-skill-u-lu-xun",
       "kind": "skill",
       "refs": [
@@ -417,19 +427,6 @@
       "howToVerify": "【화소연영】이(가) 발동한 전보에서 근사 항목(연소 상태(지속 피해)는 미지원. 화공 부여 후 화공 보유 적에게 220% 책략 피해)을 확인",
       "status": "pending",
       "priority": 6
-    },
-    {
-      "id": "V-manual-m-diao-chan-1",
-      "kind": "manual",
-      "refs": [
-        "diao-chan",
-        "u-diao-chan"
-      ],
-      "title": "초선 금병법〈상련〉",
-      "assumption": "턴 종료 시 1턴 = 다음 턴 행동까지 유지로 해석",
-      "howToVerify": "초선이(가) 〈상련〉을 장착한 전보에서 원문 효과(\"매 턴 종료 시, 1턴 동안 무력이 가장 높은 우군의 관통이 9% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 5
     },
     {
       "id": "V-manual-m-lu-xun-2",
@@ -703,19 +700,6 @@
       "priority": 4
     },
     {
-      "id": "V-manual-m-xiahou-yuan-1",
-      "kind": "manual",
-      "refs": [
-        "xiahou-yuan",
-        "u-xiahou-yuan"
-      ],
-      "title": "하후연 금병법〈신속〉",
-      "assumption": "선공 영향 미반영",
-      "howToVerify": "하후연이(가) 〈신속〉을 장착한 전보에서 원문 효과(\"회심 피해가 12% 증가(선공의 영향 받음)한다.…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 3
-    },
-    {
       "id": "V-clause-u-xiahou-yuan-1",
       "kind": "clause",
       "refs": [
@@ -944,32 +928,6 @@
       "priority": 2
     },
     {
-      "id": "V-manual-m-cao-cao-2",
-      "kind": "manual",
-      "refs": [
-        "cao-cao",
-        "u-cao-cao"
-      ],
-      "title": "조조 금병법〈맹덕신서 하권〉",
-      "assumption": "게임 원문(2026-10-03): 아군 전원 일반 공격 직전마다 최고 속성 +8, 3중첩, 턴 종료까지. 지력 영향 미반영, \"턴 종료까지\"는 다음 자기 행동 전까지로 근사",
-      "howToVerify": "조조이(가) 〈맹덕신서 하권〉을 장착한 전보에서 원문 효과(\"전체 아군이 일반 공격을 시전하기 직전마다 최고 속성이 8포인트 증가한다(지력의 영향 받음), 3회 중첩 가…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-manual-m-zhen-luo-2",
-      "kind": "manual",
-      "refs": [
-        "zhen-luo",
-        "u-zhen-luo"
-      ],
-      "title": "견희 금병법〈낙신부 하권〉",
-      "assumption": "낙수의 여신 대상 → 무력 최고 우군, 회복 +10%",
-      "howToVerify": "견희이(가) 〈낙신부 하권〉을 장착한 전보에서 원문 효과(\"고유 전법 바람과 눈꽃의 낙수의 여신 효과가 무력이 가장 높은 단일 목표를 우선적으로 선택하고, 낙수의 여신…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 1
-    },
-    {
       "id": "V-manual-m-zhang-liang-1",
       "kind": "manual",
       "refs": [
@@ -979,19 +937,6 @@
       "title": "장량 금병법〈태평도법〉",
       "assumption": "\"1번째 턴 괴술 발동 후 랜덤 적 1명 능력 소진\"은 미지원",
       "howToVerify": "장량이(가) 〈태평도법〉을 장착한 전보에서 원문 효과(\"고유 전법 괴술, 회유 및 피신 확률 8% 증가, 1번째 턴에 괴술 발동 후 랜덤 적군 1명이 1턴 동안 능…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-manual-m-sun-jian-1",
-      "kind": "manual",
-      "refs": [
-        "sun-jian",
-        "u-sun-jian"
-      ],
-      "title": "손견 금병법〈무열〉",
-      "assumption": "통솔 영향 미반영",
-      "howToVerify": "손견이(가) 〈무열〉을 장착한 전보에서 원문 효과(\"자신이 받는 병기 피해가 8% 감소(통솔의 영향 받음)한다.…\")가 실제로 어떻게 찍히는지 확인",
       "status": "pending",
       "priority": 1
     },
@@ -1440,42 +1385,6 @@
       "status": "pending"
     },
     {
-      "id": "V-manual-m-diao-chan-2",
-      "kind": "manual",
-      "refs": [
-        "diao-chan",
-        "u-diao-chan"
-      ],
-      "title": "초선 금병법〈화수〉",
-      "assumption": "턴 종료 시 1턴 = 다음 턴 행동까지 유지로 해석",
-      "howToVerify": "초선이(가) 〈화수〉을 장착한 전보에서 원문 효과(\"매 턴 종료 시, 1턴 동안 무력이 가장 높은 우군의 연타율이 30% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-manual-m-zou-shi-1",
-      "kind": "manual",
-      "refs": [
-        "zou-shi",
-        "u-zou-shi"
-      ],
-      "title": "추씨 금병법〈세속〉",
-      "assumption": "회복 계수 140% → 168%(×1.2). 눈짓의 지력 영향은 공식 미확인이라 미반영",
-      "howToVerify": "추씨이(가) 〈세속〉을 장착한 전보에서 원문 효과(\"고유 전법 눈부신 자태의 눈짓 효과가 추가로 자신 지력의 영향을 받으며, 회복 효과 계수가 20% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-manual-m-sun-ce-2",
-      "kind": "manual",
-      "refs": [
-        "sun-ce",
-        "u-sun-ce"
-      ],
-      "title": "손책 금병법〈무구〉",
-      "assumption": "무력 영향 미반영. 부여 상태는 위협(게임 원문, 엑셀은 공포로 오기)",
-      "howToVerify": "손책이(가) 〈무구〉을 장착한 전보에서 원문 효과(\"액티브 전법 발동 후, 40% 확률(무력의 영향을 받음)로 랜덤 적군 단일 목표에게 2턴 동안 지속되는 위협…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending"
-    },
-    {
       "id": "V-manual-m-cheng-pu-1",
       "kind": "manual",
       "refs": [
@@ -1485,6 +1394,18 @@
       "title": "정보 금병법〈호신〉",
       "assumption": "통솔 영향 미반영",
       "howToVerify": "정보이(가) 〈호신〉을 장착한 전보에서 원문 효과(\"자신의 병력이 최초로 50% 미만이 되면 자신의 병력을 회복하며(치유율 200%, 지력과 통솔의 영향 받음)…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-pang-tong-1",
+      "kind": "manual",
+      "refs": [
+        "pang-tong",
+        "u-pang-tong"
+      ],
+      "title": "방통 금병법〈책략〉",
+      "assumption": "연환계의 연환이 홀수 턴 → 모든 턴, 전달 비율 25% → 22%(12% 감소를 ×0.88로 해석 — 25%−12%p=13% 일 수도 있어 검증 대기)",
+      "howToVerify": "방통이(가) 〈책략〉을 장착한 전보에서 원문 효과(\"고유 전법 연환계가 모든 턴 동안 전달되는 것으로 변경된다. 단, 전달 효과의 퍼센트가 12% 감소한다.…\")가 실제로 어떻게 찍히는지 확인",
       "status": "pending"
     },
     {

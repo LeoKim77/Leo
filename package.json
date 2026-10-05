@@ -15,7 +15,9 @@
     "mcp": "pnpm --filter @cheonha/mcp-server start",
     "build:standalone": "pnpm build:bundle && pnpm --filter @cheonha/web build:standalone",
     "gen:skills": "tsx packages/data-tools/src/gen-skill-funcs.ts",
-    "skill:revise": "tsx packages/data-tools/src/skill-revise.ts"
+    "skill:revise": "tsx packages/data-tools/src/skill-revise.ts",
+    "gen:manuals": "tsx packages/data-tools/src/gen-manual-funcs.ts",
+    "manual:revise": "tsx packages/data-tools/src/manual-revise.ts"
   },
   "devDependencies": {
     "typescript": "~5.9.0",

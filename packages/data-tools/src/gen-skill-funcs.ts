@@ -34,7 +34,7 @@ function describe(kind: string, x: any): string {
   return bits.join(', ');
 }
 
-function renderRun(def: any, clauses: any[]): string {
+export function renderRun(def: any, clauses: any[]): string {
   const eff = def.effects || {};
   const order = def.statusFirst ? ['statusEffects', ...ORDER.filter(k => k !== 'statusEffects')] : [...ORDER];
   const lines: string[] = [];

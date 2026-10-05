@@ -50,7 +50,7 @@ describe('금병법 (R-003)', () => {
   });
 
   it('미지원 금병법은 장착되지 않는다', () => {
-    const [u] = sim.buildArmy(deck('황충', '궁술', []), 'A');
+    const [u] = sim.buildArmy(deck('화웅', '신무', []), 'A');
     expect(u.manual).toBeUndefined();
   });
 });
@@ -83,9 +83,13 @@ describe('전법 정의 수정 (S09·FEAT-003)', () => {
     expect(logs.some(l => l.includes('금병법〈산림탈기〉'))).toBe(true);
   });
 
-  it('방통〈책략〉은 게임 확인 패치로 들어오고 미지원으로 표시된다', () => {
+  it('방통〈책략〉은 게임 확인 패치로 들어오고, 연환(FEAT-024) 구현 뒤 근사로 장착된다 (모든 턴 연환·전달 22%)', () => {
     const m = gen('방통').manuals.find(x => x.name === '책략')!;
-    expect(m.status).toBe('unsupported');
+    expect(m.status).toBe('approx');
+    const a = { formation: '기형진', units: [{ generalId: gen('방통').id, skillIds: [], manualId: m.id }, { generalId: gen('조조').id, skillIds: [], manualId: 'none' }, { generalId: gen('전위').id, skillIds: [], manualId: 'none' }] };
+    const e = { formation: '기형진', units: ['손책', '대교', '주유'].map(n => ({ generalId: gen(n).id, skillIds: [], manualId: 'none' })) };
+    const log = sim.simulate(a, e, { seed: 3 }).log.join('\n');
+    expect(log).toMatch(/^2턴: .*연환/m);   // 원래는 홀수 턴에만
   });
 });
 
@@ -145,7 +149,10 @@ describe('사용자 확인 금병법 2차 (2026-10-03)', () => {
     const a = { formation: '기형진', units: [unit('조조', '맹덕신서 하권'), unit('전위'), unit('허저')] };
     const e = { formation: '기형진', units: [unit('손책'), unit('대교'), unit('주유')] };
     const log = sim.simulate(a, e, { seed: 1 }).log.join('\n');
-    expect(log).toMatch(/\[전위\]의 【무력】이\(가\) 8\.00/);
+    // 8포인트 × 조조 지력 영향(전투 시작 시 조조 지력 기준) — 지력 200대면 약 10
+    const v = +(log.match(/^[1-9]\d*턴:\s+\[전위\]의 【무력】이\(가\) ([\d.]+)/m) || [])[1];
+    expect(v).toBeGreaterThan(9);
+    expect(v).toBeLessThan(12);
     expect(gen('견희').position ?? (gen('견희') as any).row).toBe('균형');
   });
 
