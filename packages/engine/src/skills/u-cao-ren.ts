@@ -1,11 +1,11 @@
-// 고진양번 · 고유 전법 · 지휘 100%
+// 양번 사수 · 고유 전법 · 지휘 100%
 // 원문: 홀수 턴에 자신이 후열로부터 받는 피해가 30% 감소하고(통솔의 영향 받음), 전열로부터 받는 피해가 15% 감소한다(통솔의 영향 받음). 짝수 턴 시작 시, 75% 확률로 랜덤 적군 2명에게 1턴 동안 지속되는 침묵을(를) 부여하며, 확률은 목표마다 개별적으로 판정된다.
 // 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
   id: "u-cao-ren",
-  name: "고진양번",
+  name: "양번 사수",
   kind: "지휘",
   isUnique: true,
   revised: [

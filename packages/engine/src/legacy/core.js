@@ -451,6 +451,7 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
     case 'random_enemy_back_first': { const bk = enemies.filter(u => u.position === 'back'); result = [pick(bk.length ? bk : enemies)]; break; }   // "후열 우선"
     case 'random_enemy_front_first': { const fr = enemies.filter(u => u.position !== 'back'); result = [pick(fr.length ? fr : enemies)]; break; }   // "전열 우선"
     case 'random_all_4': result = shuffle(allUnits.filter(u => u.alive && u !== unit)).slice(0, 4); break;   // "적군과 우군 전체의 랜덤 목표 4개"
+    case 'random_all_4_self': result = shuffle(allUnits.filter(u => u.alive)).slice(0, 4); break;   // "적군과 아군 전체의 랜덤 목표 4개" — 아군은 자신 포함(R-034, 고유 전법 녹화 2026-10-05)
     case 'damaged_me_this_turn': result = allUnits.filter(u => u.alive && u.side !== unit.side && ((unit._hitBy || {})[__turn] || []).includes(u.id)); break;   // "이번 턴에 나에게 피해를 준 목표"
     case 'random_friend_n': result = shuffle(allies.filter(u => u !== unit)).slice(0, 2); break;
     case 'all_friend': result = allies.filter(u => u !== unit); break;
@@ -496,7 +497,7 @@ const SINGLE_TARGET_CODES = new Set(['random_enemy_1', 'random_ally_1', 'random_
   'lowest_control_enemy', 'lowest_power_enemy', 'lowest_intel_enemy', 'lowest_speed_enemy', 'lowest_combined_enemy', 'lowest_hp_enemy',
   'highest_power_enemy', 'highest_intel_enemy', 'highest_speed_ally', 'highest_combined_ally', 'highest_power_ally', 'highest_intel_ally',
   'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally', 'highest_power_friend']);
-const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'random_friend_n', 'all_friend', 'front_allies', 'random_all_4', 'damaged_me_this_turn', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
+const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'random_friend_n', 'all_friend', 'front_allies', 'random_all_4', 'random_all_4_self', 'damaged_me_this_turn', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
 function shuffle(a) { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(__rng() * (i + 1));[b[i], b[j]] = [b[j], b[i]]; } return b; }
 // R-048 "가장 높은/낮은 ○○"가 동률이면 동률인 무장 중 무작위 (예전엔 배치 순 앞쪽)
 function extremeBy(arr, fn, sign) {
