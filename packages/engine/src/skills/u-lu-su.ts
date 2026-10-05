@@ -12,6 +12,10 @@ export default defineSkill({
     {
       "date": "2026-10-04",
       "note": "'적군과 우군 전체의 랜덤 목표 4개'(자신 제외) 무장 해제 1턴, 우군이면 받는 피해 −20%, 적군이면 +20%(지력 영향) — 예전엔 랜덤 적 1명에게만"
+    },
+    {
+      "date": "2026-10-05",
+      "note": "녹화 확인: 목표별 [무장 해제 → 받는 피해 증감] 순서"
     }
   ],
   clauses: [
@@ -122,12 +126,16 @@ export default defineSkill({
     ]
   },
   run(c) {
-    c.tag('four', c.targets('random_all_4'));
-    // 「적군과 우군 전체의 랜덤 목표 4개에게 1턴 동안 지속되는 무장 해제을(를) 부여한다」
-    c.status(0);
-    // 「우군 목표가 선택되면 1턴 동안 목표가 받는 피해가 20% 감소한다(지력의 영향 받음)」
-    c.buff(0);
-    // 「적군 목표가 선택되면 1턴 동안 목표가 받는 피해가 20% 증가한다(지력의 영향 받음)」
-    c.buff(1);
+    // 녹화 확인(2026-10-05): 목표마다 [무장 해제 → (연계 전법) → 받는 피해 증감] 후 다음 목표
+    const E = c.skill.effects;
+    c.tag('four', c.targets('random_all_4')).forEach((u, i) => {
+      if (!u.alive) return;
+      c.tag('f' + i, [u]);
+      // 「적군과 우군 전체의 랜덤 목표 4개에게 1턴 동안 지속되는 무장 해제을(를) 부여한다」
+      c.status({ ...E.statusEffects[0], target: 'tag:f' + i });
+      // 「우군 목표가 선택되면 … 받는 피해가 20% 감소」 / 「적군 목표가 선택되면 … 20% 증가」(지력의 영향 받음)
+      c.buff({ ...E.buffs[0], target: 'tag:f' + i });
+      c.buff({ ...E.buffs[1], target: 'tag:f' + i });
+    });
   },
 });

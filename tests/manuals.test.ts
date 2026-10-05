@@ -156,7 +156,7 @@ describe('사용자 확인 금병법 2차 (2026-10-03)', () => {
     const v = +(log.match(/^[1-9]\d*턴:\s+\[전위\]의 【무력】이\(가\) ([\d.]+)/m) || [])[1];
     expect(v).toBeGreaterThan(9);
     expect(v).toBeLessThan(12);
-    expect(gen('견희').position ?? (gen('견희') as any).row).toBe('균형');
+    expect((gen('견희') as any).position ?? (gen('견희') as any).row).toBe('균형');
   });
 
   it('사마의〈대략〉: 포석이 처음 4스택이 되면 아군 전체를 회복한다', () => {

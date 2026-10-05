@@ -12,6 +12,10 @@ export default defineSkill({
     {
       "date": "2026-10-04",
       "note": "'목표가 화공 상태면 2턴 혼란' 조건 구현, 피해 두 종류는 같은 2명 — 예전엔 혼란·화공을 조건 없이 부여"
+    },
+    {
+      "date": "2026-10-05",
+      "note": "녹화 확인: 목표별 [책략 → 병기 → 혼란] 순서 (방화범 4타 합 2,971 = 통계 일치)"
     }
   ],
   clauses: [
@@ -91,9 +95,16 @@ export default defineSkill({
     ]
   },
   run(c) {
-    // 「1턴 동안 준비 후 랜덤 적군 2명에게 220%의 책략과 병기 피해를 주며」
-    c.damage(0); c.damage(1);
-    // 「목표가 화공 상태면 추가로 2턴 동안 지속되는 혼란 상태를 부여한다」
-    c.status(0);
+    // 녹화 확인(2026-10-05): 목표마다 [책략 220% → 병기 220% → (화공이면) 혼란] 후 다음 목표
+    const E = c.skill.effects;
+    c.tag('m', c.targets('random_enemy_n')).forEach((u, i) => {
+      if (!u.alive) return;
+      c.tag('m' + i, [u]);
+      // 「1턴 동안 준비 후 랜덤 적군 2명에게 220%의 책략과 병기 피해를 주며」
+      c.damage({ ...E.damage[1], target: 'tag:m' + i });
+      if (u.alive) c.damage({ ...E.damage[0], target: 'tag:m' + i, tag: undefined });
+      // 「목표가 화공 상태면 추가로 2턴 동안 지속되는 혼란 상태를 부여한다」
+      if (u.alive) c.status({ ...E.statusEffects[0], target: 'tag:m' + i });
+    });
   },
 });

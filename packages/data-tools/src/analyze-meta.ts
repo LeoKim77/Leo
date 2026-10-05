@@ -111,7 +111,7 @@ const COEFS: Array<{ key: string; base: number | string; what: string; alt?: str
   { key: 'betaM', base: 0.40, what: '책략 피해의 병력 지수' },
   { key: 'counterBonus', base: 0.15, what: '병종 상성 피해 보너스' },
   { key: 'statScaleWeight', base: 0.00285, what: "'(스탯)의 영향 받음' 계수 (잠정 W08)" },
-  { key: 'healStatW', base: 0.0012, what: '회복의 지력 가중치' },
+  { key: 'healStatW', base: 0.00027, what: '회복의 지력 가중치' },
   { key: 'woundedRate', base: 0.85, what: '손실 병력 중 부상병 비율(회복 상한)' },
   { key: 'critMult', base: 1.5, what: '회심·묘책 피해 배율' },
   { key: 'orderWindow', base: 70, what: '선공 차 확정 선행 기준 (70 이내는 확률)' },

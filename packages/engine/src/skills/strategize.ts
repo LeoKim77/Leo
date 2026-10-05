@@ -12,6 +12,10 @@ export default defineSkill({
     {
       "date": "2026-10-04",
       "note": "4가지 능력치 감소가 같은 랜덤 적 2명에게 (예전엔 능력치마다 대상을 따로 뽑음), 지력 영향"
+    },
+    {
+      "date": "2026-10-05",
+      "note": "녹화 확인: 새 스택이 들어오면 쌓인 스택 전체의 지속이 새로 시작(1·2턴 스택이 4턴에 함께 해제) — stackRefresh"
     }
   ],
   clauses: [
@@ -58,6 +62,7 @@ export default defineSkill({
           "target": "random_enemy_n",
           "duration": 2,
           "maxStacks": 2,
+          "stackRefresh": true,
           "inf": {
             "stats": [
               "지력"
@@ -73,6 +78,7 @@ export default defineSkill({
           "target": "tag:two",
           "duration": 2,
           "maxStacks": 2,
+          "stackRefresh": true,
           "inf": {
             "stats": [
               "지력"
@@ -87,6 +93,7 @@ export default defineSkill({
           "target": "tag:two",
           "duration": 2,
           "maxStacks": 2,
+          "stackRefresh": true,
           "inf": {
             "stats": [
               "지력"
@@ -101,6 +108,7 @@ export default defineSkill({
           "target": "tag:two",
           "duration": 2,
           "maxStacks": 2,
+          "stackRefresh": true,
           "inf": {
             "stats": [
               "지력"

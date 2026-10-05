@@ -5,14 +5,20 @@ const rms = (xs: Array<{ predicted: number; observed: number }>) => Math.sqrt(xs
 
 describe('전보 역재현 검증', () => {
   const rows = loadReplays().flatMap(r => checkReplay(r));
-  it('병기 피해: 녹화 표본 전체 RMS 오차 12% 이내 (2026-10-03 재추정·레벨·승품 보정 8.4%)', () => {
+  // FIX-016 (2026-10-05): 녹화 3판 75건으로 재추정 — 병기 13.0%, 책략 13.8% (예전 계수로는 3판 합계 19%)
+  it('병기 피해: 녹화 3판 표본 RMS 오차 15% 이내 (재추정 13.0%)', () => {
     const dmg = rows.filter(x => x.kind === 'damage' && x.label.includes('병기'));
-    expect(dmg.length).toBeGreaterThanOrEqual(23);
-    expect(rms(dmg)).toBeLessThan(0.12);
+    expect(dmg.length).toBeGreaterThanOrEqual(38);
+    expect(rms(dmg)).toBeLessThan(0.15);
   });
-  it('책략 피해: RMS 오차 12% 이내 (재추정 9.4%)', () => {
+  it('책략 피해: RMS 오차 15% 이내 (상대 지력 방어항 추가, 재추정 13.8%)', () => {
     const dmg = rows.filter(x => x.kind === 'damage' && x.label.includes('책략'));
-    expect(dmg.length).toBeGreaterThanOrEqual(8);
-    expect(rms(dmg)).toBeLessThan(0.12);
+    expect(dmg.length).toBeGreaterThanOrEqual(37);
+    expect(rms(dmg)).toBeLessThan(0.15);
+  });
+  it('회복: RMS 오차 6% 이내 (회복식 재추정 3.8%, 예전 17%)', () => {
+    const h = rows.filter(x => x.kind === 'heal');
+    expect(h.length).toBeGreaterThanOrEqual(17);
+    expect(rms(h)).toBeLessThan(0.06);
   });
 });

@@ -12,6 +12,10 @@ export default defineSkill({
     {
       "date": "2026-10-04",
       "note": "원문 순서: 180% → 군량 고갈 2턴 → '군량 고갈이면' 추가 80% (예전엔 두 피해 뒤 상태, 추가 피해 무조건)"
+    },
+    {
+      "date": "2026-10-05",
+      "note": "녹화 확인: 목표별 [180% → 이미 군량 고갈이면 80% → 군량 고갈 갱신] — 첫 시전엔 추가 피해 없음"
     }
   ],
   clauses: [
@@ -101,12 +105,18 @@ export default defineSkill({
     ]
   },
   run(c) {
-    c.tag('m', c.targets('random_enemy_n'));
-    // 「랜덤 적군 2명에게 180%의 책략 피해를 주며」
-    c.damage(0);
-    // 「2턴 동안 지속되는 군량 고갈을(를) 부여한다」
-    c.status(0);
-    // 「목표가 군량 고갈 상태면 추가로 목표에게 80%의 책략 피해를 준다」
-    c.damage(1);
+    // 녹화 확인(2026-10-05): 목표마다 [180% → (이미 군량 고갈이면) 추가 80% → 군량 고갈 부여·갱신]
+    //   첫 시전엔 추가 피해 없음, 이미 걸린 목표에게만 추가 80% (예전엔 상태를 먼저 걸어 추가 피해가 늘 들어갔다)
+    const E = c.skill.effects;
+    c.tag('m', c.targets('random_enemy_n')).forEach((u, i) => {
+      if (!u.alive) return;
+      c.tag('m' + i, [u]);
+      // 「랜덤 적군 2명에게 180%의 책략 피해를 주며」
+      c.damage({ ...E.damage[0], target: 'tag:m' + i });
+      // 「목표가 군량 고갈 상태면 추가로 목표에게 80%의 책략 피해를 준다」
+      if (u.alive) c.damage({ ...E.damage[1], target: 'tag:m' + i });
+      // 「2턴 동안 지속되는 군량 고갈을(를) 부여한다」
+      if (u.alive) c.status({ ...E.statusEffects[0], target: 'tag:m' + i });
+    });
   },
 });

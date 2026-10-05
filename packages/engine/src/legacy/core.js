@@ -40,6 +40,20 @@ export const ENGINE_FIXES = [
     detail: '스택마다 지속을 따로 갖고 먼저 쌓인 것부터 만료된다. 상한(N중첩)에서 또 발동하면 가장 오래된 스택을 빼고 새 스택을 넣는다(수치 그대로, "N스택 중첩됐습니다" 표기). 예전엔 상한에서 맨 앞 스택만 제자리 갱신해, 다음 발동 때도 같은(이미 가장 새로운) 스택을 다시 갱신하는 문제가 있었다.' },
   { id: 'FIX-013', date: '2026-10-04', found: '보유 전법 140개 원문 대조 (함수화 후 1차 보정)', title: '공용 대상·조건 버그',
     detail: '① 대상이 안 적힌 효과는 한 시전 안에서 같은 대상을 공유(R-044) — 예전엔 효과마다 새로 뽑아 "랜덤 2명의 A와 B"가 서로 다른 무장에게 갔다. ② "디버프 상태 보유" 조건이 방어·피신 같은 기능성 상태까지 셌다. ③ "이상 상태 개수"도 기능성 상태 포함. ④ 대상이 자신뿐인 회복이 병력 최저 아군에게 갔다(지혜의 바람·충성과 용맹·전쟁 조달). ⑤ 능력치 증감의 턴 조건(turnCond)이 무시됐다.' },
+  { id: 'FIX-016', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보) 역재현', title: '피해·회복 계수 재추정 (책략에 상대 지력 방어)',
+    detail: '책략 피해 = (80 + 1.84×지력 − 0.75×상대 지력) × (병력/1만)^0.1, 병기 = (285 + 0.73×무력 − 0.79×통솔) × (병력/1만)^0.1, 회복 = 지력 × (1.123×치유율 + 0.00027×(지력−100)). 녹화 3판 피해 75건 RMS 19%→13%, 회복 17건 17%→4%. 지력이 높은 무장끼리 싸울 때 예전 식은 책략 피해를 최대 60% 크게 냈다.' },
+  { id: 'FEAT-027', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '자기 연쇄 트리거(초선차전)',
+    detail: '초선차전 피해가 초선차전을 다시 판정한다(피격 1번에 3~5연속, 턴 5회 상한). trigger.selfChain — R-033 자기 재발동 금지의 예외(녹화 확인).' },
+  { id: 'FIX-017', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '받는 피해 감소 체감 기준',
+    detail: '새 받는 피해 감소 = 명목 × (1 − 기존 감소분의 합). 예전엔 증가분까지 더한 순합계를 기준으로 해 형주 분할(+28.52%)이 걸린 제갈량에게 출사표 −12%가 그대로 들어갔다(실제 10.68%). 녹화 10건 일치.' },
+  { id: 'FIX-018', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '연소 지속 피해 시점',
+    detail: '연소 피해는 턴 시작 일괄이 아니라 보유자의 행동 시작에 들어간다(1번째 서서·3번째 노숙 모두 자기 행동 시작 직후). 짐독은 R-042 대로 턴 시작.' },
+  { id: 'FIX-019', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '전사 시 그 무장이 건 효과 전부 해제·중첩 지속 갱신',
+    detail: '지휘(R-029)뿐 아니라 전사한 무장이 건 상태·능력치·증감(칠군수몰 침묵·무장 해제·홍수, 전략 계획, 형주 분할, 예측의 신 침묵, 군량 고갈)이 즉시 사라진다. 지속 피해는 남는다. 전략 계획은 새 스택이 들어오면 쌓인 스택 전체 지속이 새로 시작(stackRefresh).' },
+  { id: 'FIX-020', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '기지의 승리 회복 = 누적 4회마다',
+    detail: '"기지 총 4회 발동 후 회복"은 그 턴 4회가 아니라 전투 누적 4회마다 반복(1턴 2회 + 2턴 1회 → 3턴 첫 기지에 회복, 이후 8·12·16·20회째).' },
+  { id: 'FIX-021', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '여러 목표 전법의 목표별 처리 순서·전보 줄 순서',
+    detail: '허실 간파(빼앗기→자신 증가→피해, 목표마다 1스택), 방화범(책략→병기), 백의도강(180%→이미 군량 고갈이면 80%→군량 고갈; 예전엔 첫 시전에도 추가 피해), 형주 분할(무장 해제→받는 피해 증감), 칠군수몰(홍수→피해→침묵/무장 해제)을 목표 한 명씩 처리. 전법·일반 공격 피해 줄은 피해가 들어간 순간에 찍어 연계 전법이 그 뒤에 보이게.' },
   { id: 'FEAT-026', date: '2026-10-05', found: '사용자 캡처(괴술·장군의 무용) — 금병법 능력 소진', title: '상태 면역',
     detail: '상태 정의에 immuneTo(면역 대상)를 두어, 면역 상태가 있는 무장에게는 그 상태가 걸리지 않고 면역을 얻을 때 이미 걸린 것은 지운다. 화웅〈신무〉 "능력 소진 효과로부터 면역"(능력 소진 = 침묵으로 잠정 — 장군의 무용의 자신 침묵).' },
   { id: 'FIX-015', date: '2026-10-05', found: '기획 플랫폼 질문 답변 (R-048, 사용자 확인)', title: '동률·관통·능력치 하한·군량 고갈·지속 피해·축력·회심/묘책 피해',
@@ -151,8 +165,12 @@ const DEFAULT_COEFFS = { Clin: 2.726, kDef: 1.574, kDefIntel: 1.28, floorRate: 0
   //   v1.12 값(414/1.07/1.63/0.47, 책략 1.73/0.40)은 고무력 공격자 표본만으로 맞춰져 저무력 공격(화타 무력 49.5 → 손책 168,
   //   엔진 81)과 고통솔 피격을 크게 틀렸다(병기 RMS 37%, 책략 29%). 전법 승품 보정(R-017) 후 새 값: 병기 9.6%, 책략 9.4%.
   //   병력 지수는 이번 표본에선 0 이 가장 잘 맞지만 v1.12 의 병력 비교 근거가 있어 0.1 로 둔다(검증 대기).
-  P0: 250, Pa: 0.85, Pd: 0.6, betaP: 0.1,     // 병기: (250 + 0.85×무력 − 0.6×통솔×(1−관통)) × (병력/10000)^0.1
-  Ma: 1.5, betaM: 0.1,                        // 책략: 1.5 × 지력 × (병력/10000)^0.1
+  // ── 2026-10-05 FIX-016: 녹화 3판(조황화·주태조운악진·제갈량육손주유) 피해 75건 재추정 ──
+  //   책략에 상대 지력 방어항이 없어 고지력 무장끼리의 피해를 크게 틀렸다(지력 366 제갈량이 받는 노숙 예측의 신 539 → 엔진 882).
+  //   병종 상성(궁병→창병 +15%)이 들어간 표본은 그만큼 빼고 맞춤. 책략 RMS 24% → 14%, 병기 15% → 13%.
+  P0: 285, Pa: 0.73, Pd: 0.79, betaP: 0.1,    // 병기: (285 + 0.73×무력 − 0.79×통솔×(1−관통)) × (병력/10000)^0.1
+  Ma: 1.84, Md: 0.75, M0: 80, betaM: 0.1,     // 책략: (80 + 1.84×지력 − 0.75×상대 지력) × (병력/10000)^0.1
+  healK: 1.123, healStatW: 0.00027,           // 회복: 지력 × (1.123×치유율 + 0.00027×(지력−100)) — 녹화 3판 회복 17건 RMS 4% (예전 17%)
   counterBonus: 0.15,                         // 병종 상성: 방패>궁, 궁>창, 창>기, 기>방패 — 피해 +15%
   woundedRate: 0.85 };                        // 손실 병력 중 부상병 비율(실측 0.847~0.849). 회복은 부상병 수가 상한
 // ============================================================
@@ -169,7 +187,7 @@ const DEFAULT_COEFFS = { Clin: 2.726, kDef: 1.574, kDefIntel: 1.28, floorRate: 0
 //   선공 병합 판정, 턴 종료 효과는 그 턴 행동 순서, 난수 폭 ±1%, 표기 "포진" 복원
 //   회복 공식은 실측 검증된 기존 식(가산 0.12%p)을 유지한다 — E07·E15 실측 후 교체.
 // ============================================================
-const HEAL_STAT_W = 0.0012;   // 회복 전용: 실측 3건(오차 0~3%)으로 검증된 기존 가중치
+const HEAL_STAT_W = 0.0012;   // (FIX-016 이전 회복 가중치 — 지금은 DEFAULT_COEFFS.healStatW·healK 사용)
 const V111_STATS = { influenceAttached: 0, influenceSkills: [] };
 function infStatValue(u, st) {
   if (st === '최고') return Math.max(effStat(u, '무력'), effStat(u, '지력'), effStat(u, '통솔'), effStat(u, '선공'));
@@ -519,7 +537,9 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
     base = ratio * tf * Math.max(cf('P0') + cf('Pa') * ATK - cf('Pd') * DEF, 1);
   } else {
     const tf = Math.pow(Math.max(attacker.troops, 1) / 10000, cf('betaM'));
-    base = ratio * tf * cf('Ma') * ATK;
+    // FIX-016 상대 지력 방어항 (예전엔 방어 스탯 영향이 거의 없다고 봐 생략)
+    const DEFI = (__dmgOpts && __dmgOpts.ignoreDef) ? 0 : effStat(defender, '지력');
+    base = ratio * tf * Math.max(cf('M0') + cf('Ma') * ATK - cf('Md') * DEFI, 1);
   }
   // 병종 상성 (+15%)
   const COUNTER = { '방패병': '궁병', '궁병': '창병', '창병': '기병', '기병': '방패병' };
@@ -666,6 +686,8 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   __T({ e: 'damage', src: attacker.id, dst: defender.id, amount: dmg, dmgType, tag: dmgTag, crit: !!crit, skill: __skillStack[__skillStack.length - 1] || null, after: defender.troops });
   defender.wounded = (defender.wounded || 0) + Math.round(lossReal * (coeffs.woundedRate != null ? coeffs.woundedRate : DEFAULT_COEFFS.woundedRate));   // v1.12 W43 (FIX-006: 실제로 잃은 병력 기준)
   if (defender.troops <= 0) defender.alive = false;
+  // FIX-021 전보 순서: 전법 피해 줄은 피해가 들어간 즉시 찍는다(그 뒤 심리 공격·연계 전법) — 녹화처럼 초선차전 연쇄가 차례대로 보이게
+  if (__hitLog && __hitLog.a === attacker && __hitLog.t === defender) { const h = __hitLog; __hitLog = null; h.done = true; h.fn(dmg, crit); }
   // 독살 시해(이유 군주 시해): 짐독 상태인 대상을 때리면 확률로 짐독 1스택 추가
   if (hasStatus(attacker, '시해') && hasStatus(defender, '짐독') && __rng() < 0.5) {
     const cnt = defender.statuses.filter(s => s.name === '짐독').length;
@@ -710,12 +732,20 @@ function sweepDeadAuras(units, log, turn) {
   units.forEach(d => {
     if (d.alive || d._auraCleared) return;
     d._auraCleared = true;
+    // FIX-019 녹화(2026-10-05): 지휘뿐 아니라 그 무장이 건 효과 전부(칠군수몰 침묵·무장 해제·홍수, 전략 계획 능력치, 형주 분할 받는 피해,
+    //   예측의 신 침묵, 백의도강 군량 고갈)가 전사 즉시 사라진다. 지속 피해(짐독·연소)는 R-042 대로 남는다.
+    const mine = x => x.aura === d.id || x.caster === d.id;
     units.forEach(t => {
+      if (t === d) return;
       let removed = 0;
-      t.buffs = t.buffs.filter(b => { if (b.aura !== d.id) return true; t.mods[b.stat] = (t.mods[b.stat] || 0) - b.value; removed++; return false; });
-      t.statBuffs = t.statBuffs.filter(b => { if (b.aura !== d.id) return true; t.stats[b.stat] = Math.max(0, (t.stats[b.stat] || 0) - b.value); removed++; return false; });
-      t.statuses = t.statuses.filter(st => { if (st.aura !== d.id) return true; removed++; return false; });
-      if (removed && log && t !== d) log.push(`${turn}턴:   [${d.name}] 전사로 지휘 전법 효과 ${removed}건이 [${t.name}]에게서 사라졌습니다.`);
+      t.buffs = t.buffs.filter(b => { if (!mine(b)) return true; t.mods[b.stat] = (t.mods[b.stat] || 0) - b.value; removed++; return false; });
+      t.statBuffs = t.statBuffs.filter(b => { if (!mine(b)) return true; t.stats[b.stat] = Math.max(0, (t.stats[b.stat] || 0) - b.value); removed++; return false; });
+      t.statuses = t.statuses.filter(st => {
+        const isDot = STATUS_DEF[st.name] && STATUS_DEF[st.name].dotRatioPerStack;
+        if (st.aura === d.id || (!isDot && st.casterId === d.id)) { removed++; return false; }
+        return true;
+      });
+      if (removed && log) log.push(`${turn}턴:   [${d.name}] 전사로 [${d.name}]이(가) 건 효과 ${removed}건이 [${t.name}]에게서 사라졌습니다.`);
     });
   });
 }
@@ -753,8 +783,10 @@ function calcHeal(caster, target, ratio, coeffs, healStat) {
   //   회복량은 시전자 병력에 비례하지 않는다. beta 미적용.
   // healStat: 회복량이 지력 대신 다른 능력치를 따르는 경우 (FEAT-008, 결사의 다짐 '결사' → 통솔, 전보 확인)
   const casterInt = effStat(caster, healStat || '지력');
-  const w = coeffs && coeffs.healStatW != null ? coeffs.healStatW : HEAL_STAT_W;   // v1.11: 회복은 검증된 기존 가중치 유지 (민감도 분석용으로 계수화)
-  const effRatio = Math.max(0, ratio + (casterInt - 100) * w);
+  // FIX-016 회복 = 지력 × (healK × 치유율 + healStatW × (지력 − 100)) — 녹화 3판 회복 17건으로 재추정
+  const w = coeffs && coeffs.healStatW != null ? coeffs.healStatW : DEFAULT_COEFFS.healStatW;
+  const hk = coeffs && coeffs.healK != null ? coeffs.healK : DEFAULT_COEFFS.healK;
+  const effRatio = Math.max(0, ratio * hk + (casterInt - 100) * w);
   // v1.12 W44(잠정): 회복 = 시전자 지력 × 유효치유율. 시전자 병력과 무관(평화의 기운 3턴 327 vs 예측 339).
   let heal = casterInt * effRatio;
   // 회복도 시전자의 남은 병력에 비례한다(피해와 같은 비선형 계수를 공유).
@@ -796,9 +828,11 @@ function calcHeal(caster, target, ratio, coeffs, healStat) {
 //   막는 것은 '자기 효과로 자기 재발동'뿐 — 지금 실행 중인 전법(연쇄의 조상 포함)과 같은 무장·같은 전법은 다시 발동하지 않는다
 //   (초선차전 피해로 초선차전 재발동 X). 횟수 제한은 각 전법 원문의 '매 턴 최대 N회'(trigger.maxPerTurn)로만 한다.
 const __castStack = [];   // [무장 id:전법 id] — applySkillEffects 진입/종료
+let __hitLog = null;      // FIX-021 { a, t, fn } — 이번 전법 타격의 피해 줄(calcDamage 가 피해 직후 한 번 호출)
 function rollTrigger(unit, skill) {
   const t = skill.trigger;
-  if (__castStack.includes(unit.id + ':' + skill.id)) return false;   // R-033 자기 재발동 금지
+  // R-033 자기 재발동 금지 — 단 FEAT-027 selfChain(초선차전): 녹화(2026-10-05)에서 피격 1번에 초선차전 3~5연속 확인 → 자기 피해로 다시 판정(턴 상한까지)
+  if (!t.selfChain && __castStack.includes(unit.id + ':' + skill.id)) return false;
   const used = unit.triggerCounts[skill.id] || 0;
   // R-033: 턴당 횟수는 원문 상한(maxPerTurn)만 적용. 원문에 상한이 없으면 제한 없음(확률만) — 예전 기본 1회(v1.12b)는 근거 없음
   const cap = t.maxPerTurn != null ? t.maxPerTurn : Infinity;
@@ -1063,7 +1097,7 @@ const STATUS_DEF = {
   //   이유만 부여할 수 있고, 피해는 짐독을 건 이유의 지력으로 계산한다.
   '짐독': { stackable: true, maxStack: 5, dotRatioPerStack: 0.6 },
   '침묵 면역': { immuneTo: ['침묵'] },   // FEAT-026 화웅〈신무〉 "능력 소진 효과로부터 면역"(능력 소진 = 침묵으로 잠정)
-  '연소': { stackable: true, maxStack: 5, dotRatioPerStack: 0.6 },   // R-048 게임 용어: 매 턴 60%×스택 책략, 최대 5스택 — 짐독과 같은 방식
+  '연소': { stackable: true, maxStack: 5, dotRatioPerStack: 0.6, atHolderAction: true },   // FIX-018 녹화(2026-10-05): 보유자 행동 시작에 피해   // R-048 게임 용어: 매 턴 60%×스택 책략, 최대 5스택 — 짐독과 같은 방식
   // 탈주병: 상태가 아니라 즉시 고정 피해로 처리된다(dealDesertionDamage 참조)
   '탈주병': { instantFixedDamage: true },
   // ── 기능성 버프 ──
@@ -1324,12 +1358,14 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       const sk = sm.stat === '최고속성' ? ['무력', '지력', '통솔', '선공'].reduce((m, k) => ((t.stats[k] || 0) > (t.stats[m] || 0) ? k : m), '무력') : sm.stat;
       // R-035 중첩: 스택마다 자기 지속을 따로 갖는다(먼저 쌓인 것부터 만료). 상한에서 또 발동하면 가장 오래된 스택을 새 스택으로 교체(선입선출)
       //   — 수치는 그대로, 교체된 스택만 지속이 새로 시작 (사용자 확인 + 충신의 기재 전보 2026-10-04)
+      // FIX-019 stackRefresh(전략 계획): 새 스택이 들어오면 쌓인 스택 전체의 지속이 새로 시작 (녹화 2026-10-05: 1·2턴 스택이 4턴에 함께 해제)
+      if (sm.stackRefresh) existing.forEach(o => { o.remain = dur; o._old = false; });
       if (existing.length >= cap) {
         const o = existing[0]; t.statBuffs.splice(t.statBuffs.indexOf(o), 1); o.remain = dur; o._old = false; t.statBuffs.push(o);
         if (cap > 1) { log.push(`${turn}턴: [${unit.name}]이(가) 【${skill.name}】「${skill.name}」 효과를 발동합니다.`); log.push(`${turn}턴:   [${t.name}]의 「${skill.name}」이(가) ${cap}스택 중첩됐습니다.`); }
       } else {
         t.stats[sk] = Math.max(0, (t.stats[sk] || 0) + amt);
-        t.statBuffs.push({ stat: sk, value: amt, remain: dur, srcId, aura: skill.type === '지휘' ? unit.id : null, untilTurnEnd: !!sm.untilTurnEnd });
+        t.statBuffs.push({ stat: sk, value: amt, remain: dur, srcId, aura: skill.type === '지휘' ? unit.id : null, caster: unit.id, untilTurnEnd: !!sm.untilTurnEnd });
         if (cap > 1) log.push(`${turn}턴:   [${t.name}]의 「${skill.name}」이(가) ${existing.length + 1}스택 중첩됐습니다.`);
         log.push(`${turn}턴:   [${t.name}]의 【${sk}】이(가) ${Math.abs(amt).toFixed(2)}(${(t.stats[sk]||0).toFixed(2)}) ${amt >= 0 ? '증가' : '감소'}했습니다.`);
       }
@@ -1468,15 +1504,20 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       if (asBasic) { attacker.inBasicPhase = true; attacker._pursuitDoneThisHit = {}; attacker._basicSeq = (attacker._basicSeq || 0) + 1; }
       __dmgOpts = (d.ignoreDef || d.noCrit) ? { ignoreDef: !!d.ignoreDef, noCrit: !!d.noCrit } : null;   // FEAT-024 통솔 무시·회심 불가
       let dmg, crit;
+      const actorNote = attacker !== unit ? ` (${unit.name}의 [${skill.name}]으로 지시됨)` : '';
+      const hitLine = (dm, cr) => {
+        log.push(`${turn}턴: [${attacker.name}]이(가) 【${skill.name}】의 「${skill.name}」 효과를 발동합니다.${actorNote}`);
+        if (cr) log.push(`${turn}턴:   [${attacker.name}] ${d.dmgType === '병기' ? '회심' : '묘책'} 발동. 피해는 ${Math.round(coeffs.critMult * 100)}%입니다.`);
+        log.push(`${turn}턴:   [${t.name}]은(는) [${attacker.name}]의 【${skill.name}】 효과로 병력이 ${dm}(${t.troops}) 손실됐습니다.`);
+      };
+      const myHit = { a: attacker, t, fn: hitLine };
+      __hitLog = myHit;
       try { ({ dmg, crit } = dealDamage(attacker, t, ratio, d.dmgType, coeffs, log, allUnits, turn, contrib,
-        asBasic, asBasic ? 'basic' : tag)); } finally { __dmgOpts = null; }
+        asBasic, asBasic ? 'basic' : tag)); } finally { __dmgOpts = null; if (__hitLog === myHit) __hitLog = null; }
       if (asBasic) attacker.inBasicPhase = false;
       attacker.dmgDealt += dmg;
       value += dmg;
-      const actorNote = attacker !== unit ? ` (${unit.name}의 [${skill.name}]으로 지시됨)` : '';
-      log.push(`${turn}턴: [${attacker.name}]이(가) 【${skill.name}】의 「${skill.name}」 효과를 발동합니다.${actorNote}`);
-      if (crit) log.push(`${turn}턴:   [${attacker.name}] ${d.dmgType === '병기' ? '회심' : '묘책'} 발동. 피해는 ${Math.round(coeffs.critMult * 100)}%입니다.`);
-      log.push(`${turn}턴:   [${t.name}]은(는) [${attacker.name}]의 【${skill.name}】 효과로 병력이 ${dmg}(${t.troops}) 손실됐습니다.`);
+      if (!myHit.done) hitLine(dmg, crit);   // 피신·저항·대신 받기 등으로 피해가 안 들어간 경우 — 예전처럼 뒤에 찍는다
       if (d.reciprocal && t.alive) {
         // 무쌍의 용사(여포): "전체 적군과 서로 1회의 일반 공격을 진행한다" — 상대도 맞받아 친다.
         // 단, 맞받아치는 공격은 '반격 계열' 태그라 그 적의 추격 전법을 발동시키지 않는다.
@@ -1527,13 +1568,13 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
     // afterProcs: "매 턴 최대 N회 발동되며, N회 발동 후 ~" 유형 (주유 기지의 승리).
     // 매 턴 리셋되는 카운터이고, 그 턴에 상한 N회를 모두 채웠을 때만 이 회복이 나간다.
     // 한 턴에 4회를 못 채우면 회복은 발동하지 않는다.
+    // FIX-020 녹화(2026-10-05): "기지 총 4회 발동 후" = 전투 누적 4회마다 반복(1턴 2회 + 2턴 1회 → 3턴 첫 기지에 회복, 이후 8·12·16·20회째)
     if (h.afterProcs) {
-      unit._procCountTurn = unit._procCountTurn || {};
+      unit._procCountBattle = unit._procCountBattle || {};
       const key = skill.id + ':heal';
-      if (unit._procCountTurn.__turn !== turn) { unit._procCountTurn = { __turn: turn }; }
-      unit._procCountTurn[key] = (unit._procCountTurn[key] || 0) + 1;
-      if (unit._procCountTurn[key] !== h.afterProcs) return;
-      log.push(`${turn}턴: [${unit.name}]의 【${skill.name}】이(가) 이번 턴 ${h.afterProcs}회를 모두 채워 추가 효과가 발동합니다.`);
+      unit._procCountBattle[key] = (unit._procCountBattle[key] || 0) + 1;
+      if (unit._procCountBattle[key] % h.afterProcs !== 0) return;
+      log.push(`${turn}턴: [${unit.name}]의 【${skill.name}】이(가) 누적 ${unit._procCountBattle[key]}회를 채워 추가 효과가 발동합니다.`);
     }
     targets.forEach(t => {
       if (!t.alive || t.troops <= 0) return;   // 쓰러진 대상은 회복 불가(부활 없음)
@@ -1609,12 +1650,16 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
         // v1.12 W51: 피신 확률 증가도 곱 합성 — 신규 × (1 − 기존) (조운 41.02%에 3% → +1.76%)
         if (key === '피신' && amt > 0) amt = amt * (1 - Math.max(0, Math.min(t.mods.피신 || 0, 1)));
         if (IN_DMG_KEYS.includes(key) && amt < 0) {
-          const prevRed = -(t.mods[key] || 0);          // 기존 감소율(양수화)
+          // FIX-017 녹화(2026-10-05): 체감 기준은 순합계가 아니라 '기존 감소분의 합'. 증가분은 무시
+          //   (제갈량 받는 피해 +17.52%(전열 −6·건물 −5·형주 분할 +28.52)에 출사표 −12% → 10.68% = 12 × (1 − 0.11))
+          const buffSum = t.buffs.filter(x => x.stat === key).reduce((a, x) => a + x.value, 0);
+          const baseNeg = Math.min(0, (t.mods[key] || 0) - buffSum);
+          const prevRed = -(baseNeg + t.buffs.filter(x => x.stat === key && x.value < 0).reduce((a, x) => a + x.value, 0));
           const scaled = amt * (1 - Math.max(0, Math.min(prevRed, 1)));  // 스케일링된 증분
           amt = scaled;
         }
         t.mods[key] = (t.mods[key] || 0) + amt;
-        t.buffs.push({ stat: key, value: amt, remain: dur, srcId, aura: skill.type === '지휘' ? unit.id : null, untilTurnEnd: !!b.untilTurnEnd });
+        t.buffs.push({ stat: key, value: amt, remain: dur, srcId, aura: skill.type === '지휘' ? unit.id : null, caster: unit.id, untilTurnEnd: !!b.untilTurnEnd });
         // 기본 디버프(주는피해↓·받는피해↑ 등)도 '디버프' 트리거를 발생시킨다.
         // 단 '이상 상태' 트리거(주유 기지의 승리)는 여기서 발동하지 않는다(abnormal:false).
         if (t.side !== unit.side && isBasicDebuff(key, amt)) {
@@ -2059,11 +2104,37 @@ function applyAlwaysOnOnce(unit, allUnits, coeffs, log, turn, contrib) {
       allUnits, coeffs, log, turn, contrib);
   });
 }
+// 지속 피해 정산. atHolder=false: 턴 시작(짐독 — R-042), true: 보유자 행동 시작(연소 — FIX-018 녹화 2026-10-05)
+//   피해 = 60% × 스택 수 책략, 부여 시점 시전자 지력·병력 스냅샷(R-042) — 시전자가 전사해도 그대로
+function processDots(u, units, coeffs, log, turn, contrib, atHolder) {
+  if (!u.alive) return;
+  const kinds = [...new Set(u.statuses.filter(s => STATUS_DEF[s.name] && STATUS_DEF[s.name].dotRatioPerStack && !!STATUS_DEF[s.name].atHolderAction === atHolder).map(s => s.name))];
+  for (const kind of kinds) {
+    if (!u.alive) break;
+    const st = u.statuses.filter(s => s.name === kind);
+    if (!st.length) continue;
+    const def = STATUS_DEF[kind];
+    const n = Math.min(st.length, def.maxStack);
+    const snap = st[st.length - 1];
+    const caster = units.find(x => x.id === snap.casterId) || u;
+    const keep = { int: caster.stats.지력, troops: caster.troops };
+    if (snap.snapInt != null) { caster.stats.지력 = snap.snapInt - (effStat(caster, '지력') - caster.stats.지력); caster.troops = snap.snapTroops; }
+    let res;
+    try { res = dealDamage(caster, u, def.dotRatioPerStack * n, '책략', coeffs, log, units, turn, contrib, false, 'dot'); }
+    finally { caster.stats.지력 = keep.int; caster.troops = keep.troops; }
+    caster.dmgDealt += res.dmg;
+    log.push(`${turn}턴: [${u.name}]이(가) 「${kind}」 ${n}스택으로 병력이 ${res.dmg}(${u.troops}) 손실됐습니다.`);
+  }
+}
+
 function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState) {
   if (!unit.alive) return;
   __phase = 'action';
   // v1.11 W05: 보유자 행동 기준 지속 감소(잠정)
   if ((coeffs.durationMode || DEFAULT_COEFFS.durationMode) === 'holder') tickHolderBuffs(unit);
+  // FIX-018 연소: 보유자 행동 시작에 지속 피해 (녹화: 1번째 서서·3번째 노숙 모두 자기 '행동 시작' 직후)
+  processDots(unit, allUnits, coeffs, log, turn, contrib, true);
+  if (!unit.alive) return;
   // trigger가 있는 스킬, 또는 특정 턴에만 발동하는 스킬(onlyTurns) 조건 확인 후 고정 슬롯에서 발동
   const byType = t => unit.skills.filter(s => s.type === t && !s.trigger && skillTiming(s) === 'action' && (!s.onlyTurns || s.onlyTurns.includes(turn)));
   // 트리거 전법이 "상시 버프 + 조건부 발동"을 함께 가진 경우(예: 칠진칠출의 피신 확률 증가),
@@ -2216,12 +2287,20 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
       log.push(`${turn}턴: [${unit.name}]이(가) [${target.name}]에게 일반 공격을 발동했습니다.`);
       const basicLineIdx = log.length;
       log.push('');
-      const { dmg, crit, evaded } = dealDamage(unit, target, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic');
+      // FIX-021 피해 줄의 남은 병력은 피해가 들어간 순간 값으로(뒤이은 심리 공격·연계 전에)
+      const fillBasic = (dm, cr) => {
+        log[basicLineIdx] = (cr ? `${turn}턴:   [${unit.name}] 회심 발동. 회심 피해는 ${Math.round(coeffs.critMult * 100)}%입니다.\n` : '')
+          + `${turn}턴:   [${target.name}]의 병력이 ${dm}(${target.troops}) 손실됐습니다.`;
+        if (log._resnap) log._resnap(basicLineIdx);
+      };
+      const basicHit = { a: unit, t: target, fn: fillBasic };
+      __hitLog = basicHit;
+      let dmg, crit, evaded;
+      try { ({ dmg, crit, evaded } = dealDamage(unit, target, 1.0, '병기', coeffs, log, allUnits, turn, contrib, true, 'basic')); }
+      finally { if (__hitLog === basicHit) __hitLog = null; }
       if (!evaded) basicLanded = true;   // FIX-009(R-027): 피신당한 일반 공격 뒤에는 추격 판정이 없다
       unit.dmgDealt += dmg;
-      log[basicLineIdx] = (crit ? `${turn}턴:   [${unit.name}] 회심 발동. 회심 피해는 ${Math.round(coeffs.critMult * 100)}%입니다.\n` : '')
-        + `${turn}턴:   [${target.name}]의 병력이 ${dmg}(${target.troops}) 손실됐습니다.`;
-      if (log._resnap) log._resnap(basicLineIdx);
+      if (!basicHit.done) fillBasic(dmg, crit);
       // 피해 전달 전법(일인천군·강습): 방금 낸 일반 공격 피해를 다른 대상에게 그대로 전달
       unit.skills.forEach(sk => {
         const tr = sk.transfer;
@@ -2405,27 +2484,9 @@ function simulateOneBattle(armyA, armyB, coeffs) {
     const order = mergeActionOrder(units, coeffs);
     // 실제 게임의 "행동 순서 판단 완료 [판단 결과]"에 대응 — 선공 기준 행동 순서를 매 턴 표기
     log.push(`${turn}턴: ── ${turn}번째 턴 ──`);
-    // R-048 지속 피해(짐독·연소): 행동 순서 결정 직후 같은 시점에 일괄 처리, 한 무장에 여럿이면 먼저 걸린 것부터(FIFO).
-    //   피해 = 60% × 스택 수 책략, 부여 시점 시전자 지력·병력 스냅샷(R-042) — 시전자가 전사해도 그대로
-    units.forEach(u => {
-      if (!u.alive) return;
-      const kinds = [...new Set(u.statuses.filter(s => STATUS_DEF[s.name] && STATUS_DEF[s.name].dotRatioPerStack).map(s => s.name))];
-      for (const kind of kinds) {
-        if (!u.alive) break;
-        const st = u.statuses.filter(s => s.name === kind);
-        const def = STATUS_DEF[kind];
-        const n = Math.min(st.length, def.maxStack);
-        const snap = st[st.length - 1];
-        const caster = units.find(x => x.id === snap.casterId) || u;
-        const keep = { int: caster.stats.지력, troops: caster.troops };
-        if (snap.snapInt != null) { caster.stats.지력 = snap.snapInt - (effStat(caster, '지력') - caster.stats.지력); caster.troops = snap.snapTroops; }
-        let res;
-        try { res = dealDamage(caster, u, def.dotRatioPerStack * n, '책략', coeffs, log, units, turn, contrib, false, 'dot'); }
-        finally { caster.stats.지력 = keep.int; caster.troops = keep.troops; }
-        caster.dmgDealt += res.dmg;
-        log.push(`${turn}턴: [${u.name}]이(가) 「${kind}」 ${n}스택으로 병력이 ${res.dmg}(${u.troops}) 손실됐습니다.`);
-      }
-    });
+    // R-048 지속 피해(짐독): 행동 순서 결정 직후 같은 시점에 일괄 처리, 한 무장에 여럿이면 먼저 걸린 것부터(FIFO).
+    //   연소는 FIX-018 로 보유자 행동 시작(resolveUnitTurn)에서 처리 — 녹화 2026-10-05
+    units.forEach(u => processDots(u, units, coeffs, log, turn, contrib, false));
 
     // FIX-010: 지속 감소 대상 표시는 각 무장이 행동을 마친 뒤(markHolderSeen)에 한다 — 턴 시작 표시는 폐지
     // v1.11 W02: 턴 시작 단계 — "턴 시작 시" 지휘·패시브를 행동 순서 판정 전에 선공 순으로 처리

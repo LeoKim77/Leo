@@ -12,6 +12,10 @@ export default defineSkill({
     {
       "date": "2026-10-04",
       "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    },
+    {
+      "date": "2026-10-05",
+      "note": "녹화 확인: 초선차전 피해가 초선차전을 다시 판정(피격 1번에 3~5연속, 턴 5회 상한) — trigger.selfChain (FEAT-027)"
     }
   ],
   clauses: [
@@ -62,7 +66,8 @@ export default defineSkill({
       "event": "damage",
       "role": "either",
       "chance": 0.5,
-      "maxPerTurn": 5
+      "maxPerTurn": 5,
+      "selfChain": true
     },
     "triggerApplied": true,
     "alwaysOnBuffs": [
