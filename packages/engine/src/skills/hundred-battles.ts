@@ -1,6 +1,6 @@
 // 백전불태 · 전법 · 지휘 100%
 // 원문: 통솔/지력/무력이 가장 높은 우군 단일 목표가 피해를 받으면 60% 확률로 통솔/지력/무력이 7포인트 증가하며, 8회 중첩될 수 있고, 전투 종료까지 지속된다. 동일한 목표에게 적용될 수 있다.
-// 원문 절 구현: ok / note / note / note
+// 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "백전불태",
   kind: "지휘",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "그 능력치가 가장 높은 우군이 맞았을 때만 그 능력치 +7(각 60%) — 예전엔 누가 맞든 세 능력치 모두"
+    }
+  ],
   clauses: [
     {
       "text": "통솔/지력/무력이 가장 높은 우군 단일 목표가 피해를 받으면 60% 확률로 통솔/지력/무력이 7포인트 증가하며",
@@ -21,15 +27,15 @@ export default defineSkill({
     },
     {
       "text": "8회 중첩될 수 있고",
-      "status": "note"
+      "status": "ok"
     },
     {
       "text": "전투 종료까지 지속된다",
-      "status": "note"
+      "status": "ok"
     },
     {
       "text": "동일한 목표에게 적용될 수 있다",
-      "status": "note"
+      "status": "ok"
     }
   ],
   def: {
@@ -47,7 +53,7 @@ export default defineSkill({
           "stat": "통솔",
           "min": 3.5,
           "max": 7,
-          "target": "highest_command_ally",
+          "target": "trigger_defender",
           "duration": 999,
           "maxStacks": 8
         },
@@ -55,7 +61,7 @@ export default defineSkill({
           "stat": "지력",
           "min": 3.5,
           "max": 7,
-          "target": "highest_intel_ally",
+          "target": "trigger_defender",
           "duration": 999,
           "maxStacks": 8
         },
@@ -63,7 +69,7 @@ export default defineSkill({
           "stat": "무력",
           "min": 3.5,
           "max": 7,
-          "target": "highest_power_ally",
+          "target": "trigger_defender",
           "duration": 999,
           "maxStacks": 8
         }
@@ -74,7 +80,7 @@ export default defineSkill({
     "trigger": {
       "event": "damage",
       "role": "ally_taken",
-      "chance": 0.6
+      "chance": 1
     },
     "triggerApplied": true,
     "preciseApplied": true,
@@ -108,8 +114,10 @@ export default defineSkill({
   },
   run(c) {
     // 「통솔/지력/무력이 가장 높은 우군 단일 목표가 피해를 받으면 60% 확률로 통솔/지력/무력이 7포인트 증가하며」
-    c.statMod(0);   // 통솔 3.5→7, 대상 highest_command_ally, 전투 종료까지, 최대 8중첩
-    c.statMod(1);   // 지력 3.5→7, 대상 highest_intel_ally, 전투 종료까지, 최대 8중첩
-    c.statMod(2);   // 무력 3.5→7, 대상 highest_power_ally, 전투 종료까지, 최대 8중첩
+    const d = c.eventCtx && c.eventCtx.defender;
+    if (!d) return;
+    [['highest_command_ally', 0], ['highest_intel_ally', 1], ['highest_power_ally', 2]].forEach(([code, i]) => {
+      if (c.targets(code as string)[0] === d && c.chance(0.6)) c.statMod(i as number);
+    });
   },
 });

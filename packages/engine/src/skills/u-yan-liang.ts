@@ -8,6 +8,12 @@ export default defineSkill({
   name: "남다른 완력",
   kind: "추격",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "'현재 공격 목표'에게 150%, '목표 무력이 자신보다 낮으면' 추가 70% (예전엔 랜덤 적에게 조건 없이)"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 후, 현재 공격 목표에게 150%의 병기 피해를 주며",
@@ -35,21 +41,24 @@ export default defineSkill({
         {
           "dmgType": "병기",
           "min": 0.75,
-          "max": 1.5
+          "max": 1.5,
+          "target": "trigger_defender"
         },
         {
           "dmgType": "병기",
           "min": 0.35,
-          "max": 0.7
+          "max": 0.7,
+          "target": "trigger_defender",
+          "condition": {
+            "type": "statCompareUnits",
+            "who1": "target",
+            "who2": "attacker",
+            "stat": "무력",
+            "op": "<"
+          }
         }
       ],
-      "heal": [],
-      "buffs": [],
-      "statMods": [],
-      "targets": [
-        "self"
-      ],
-      "statusEffects": []
+      "targets": []
     },
     "clauses": [
       {
@@ -75,8 +84,8 @@ export default defineSkill({
   },
   run(c) {
     // 「일반 공격 후, 현재 공격 목표에게 150%의 병기 피해를 주며」
-    c.damage(0);   // 병기 75%→150%
+    c.damage(0);   // 병기 75%→150%, 대상 trigger_defender
     // 「목표의 무력이 자신보다 낮으면 추가로 70%의 병기 피해를 준다」
-    c.damage(1);   // 병기 35%→70%
+    c.damage(1);   // 병기 35%→70%, 대상 trigger_defender, 조건 statCompareUnits
   },
 });

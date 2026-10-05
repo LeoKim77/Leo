@@ -1,6 +1,6 @@
 // 장소 고유 전법 · 고유 전법 · 액티브 60%
 // 원문: 아군 무작위 2명의 디버프 상태 2종을 해제하고, 병력을 회복합니다. 치료율: 180%(지력의 영향을 받음). 또한 적군 전체가 가하는 피해를 24% 감소시킵니다(지력의 영향을 받음). 지속시간은 2턴입니다.
-// 원문 절 구현: ok / ok / approx / approx / ok
+// 원문 절 구현: ok / ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -9,10 +9,16 @@ export default defineSkill({
   kind: "액티브",
   isUnique: true,
   engineStatus: {
-    "status": "approx",
-    "note": "해제·회복 대상을 따로 뽑음, 지력 영향 미반영",
+    "status": "ok",
+    "note": "대상 공유·지력 영향",
     "source": "authored"
   },
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "디버프 해제와 회복이 같은 랜덤 아군 2명에게, 지력 영향"
+    }
+  ],
   clauses: [
     {
       "text": "아군 무작위 2명의 디버프 상태 2종을 해제하고",
@@ -24,11 +30,11 @@ export default defineSkill({
     },
     {
       "text": "치료율: 180%(지력의 영향을 받음)",
-      "status": "approx"
+      "status": "ok"
     },
     {
       "text": "또한 적군 전체가 가하는 피해를 24% 감소시킵니다(지력의 영향을 받음)",
-      "status": "approx"
+      "status": "ok"
     },
     {
       "text": "지속시간은 2턴입니다",
@@ -37,12 +43,17 @@ export default defineSkill({
   ],
   def: {
     "effects": {
-      "damage": [],
       "heal": [
         {
           "min": 1.8,
           "max": 1.8,
-          "target": "random_ally_n"
+          "target": "tag:two"
+        }
+      ],
+      "dispel": [
+        {
+          "target": "tag:two",
+          "count": 2
         }
       ],
       "buffs": [
@@ -52,28 +63,29 @@ export default defineSkill({
           "max": -0.24,
           "target": "all_enemy",
           "duration": 2,
-          "maxStacks": 1
-        }
-      ],
-      "statMods": [],
-      "statusEffects": [],
-      "targets": [],
-      "dispel": [
-        {
-          "target": "random_ally_n",
-          "count": 2
+          "maxStacks": 1,
+          "inf": {
+            "stats": [
+              "지력"
+            ],
+            "who": "self"
+          }
         }
       ]
     },
     "authored": true,
-    "authoredStatus": "approx",
-    "authoredNote": "해제·회복 대상을 따로 뽑음, 지력 영향 미반영",
+    "authoredStatus": "ok",
+    "authoredNote": "대상 공유·지력 영향 (2026-10-05)",
     "replacedLegacy": false
   },
   run(c) {
-    // (원문 절 매핑 없음)
-    c.heal(0);   // 치유율 180%, 대상 random_ally_n
-    c.buff(0);   // 주는피해 -24%, 대상 all_enemy, 2턴, 최대 1중첩
-    c.dispel(0);   // 디버프 2가지 제거, 대상 random_ally_n
+    c.tag('two', c.targets('random_ally_n'));
+    // 「아군 무작위 2명의 디버프 상태 2종을 해제하고」
+    c.dispel(0);
+    // 「병력을 회복합니다」
+    c.heal(0);
+    // 「치료율: 180%(지력의 영향을 받음)」
+    // 「또한 적군 전체가 가하는 피해를 24% 감소시킵니다(지력의 영향을 받음)」
+    c.buff(0);
   },
 });

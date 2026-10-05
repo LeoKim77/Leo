@@ -13,6 +13,12 @@ export default defineSkill({
     "note": "\"누적 치료량 영향\" 미반영. 전열 회복은 전열 아군 1명(전열 우선)",
     "source": "authored"
   },
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "턴 종료 회복 대상: 전열 아군 전체 (예전엔 전열 1명)"
+    }
+  ],
   clauses: [
     {
       "text": "매 턴 시작 시, 적군 무작위 2명에게 90%의 책략 피해를 입힙니다(추가로 아군 전체의 누적 치료량의 영향을 받음)",
@@ -53,7 +59,7 @@ export default defineSkill({
             {
               "min": 0.5,
               "max": 0.5,
-              "target": "random_ally_front"
+              "target": "front_allies"
             }
           ],
           "buffs": [],

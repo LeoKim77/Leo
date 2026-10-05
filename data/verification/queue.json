@@ -394,66 +394,6 @@
       "priority": 11
     },
     {
-      "id": "V-skill-fold-charge",
-      "kind": "skill",
-      "refs": [
-        "fold-charge"
-      ],
-      "title": "침략방어",
-      "assumption": "피해 감소의 지력 영향 미반영",
-      "howToVerify": "【침략방어】이(가) 발동한 전보에서 근사 항목(피해 감소의 지력 영향 미반영)을 확인",
-      "status": "pending",
-      "priority": 10
-    },
-    {
-      "id": "V-clause-fold-charge-1",
-      "kind": "clause",
-      "refs": [
-        "fold-charge"
-      ],
-      "title": "침략방어 — \"아군 무작위 2명이 받는 피해가 24% 감소합니다(지력…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【침략방어】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 10
-    },
-    {
-      "id": "V-skill-blunt-edge",
-      "kind": "skill",
-      "refs": [
-        "blunt-edge"
-      ],
-      "title": "기선제압",
-      "assumption": "통솔 영향 미반영",
-      "howToVerify": "【기선제압】이(가) 발동한 전보에서 근사 항목(통솔 영향 미반영)을 확인",
-      "status": "pending",
-      "priority": 9
-    },
-    {
-      "id": "V-clause-blunt-edge-1",
-      "kind": "clause",
-      "refs": [
-        "blunt-edge"
-      ],
-      "title": "기선제압 — \"적군 중 무력이 가장 높은 단일 대상이 가하는 병기 피…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【기선제압】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 9
-    },
-    {
-      "id": "V-clause-blunt-edge-2",
-      "kind": "clause",
-      "refs": [
-        "blunt-edge"
-      ],
-      "title": "기선제압 — \"또한 적군 중 지력이 가장 높은 단일 대상이 가하는 책…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【기선제압】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 9
-    },
-    {
       "id": "V-manual-m-liu-bei-2",
       "kind": "manual",
       "refs": [
@@ -678,30 +618,6 @@
       "priority": 4
     },
     {
-      "id": "V-skill-step-camp",
-      "kind": "skill",
-      "refs": [
-        "step-camp"
-      ],
-      "title": "보보위영",
-      "assumption": "통솔 영향 미반영. 확률 60%에서 매 턴 +10%p",
-      "howToVerify": "【보보위영】이(가) 발동한 전보에서 근사 항목(통솔 영향 미반영. 확률 60%에서 매 턴 +10%p)을 확인",
-      "status": "pending",
-      "priority": 4
-    },
-    {
-      "id": "V-clause-step-camp-0",
-      "kind": "clause",
-      "refs": [
-        "step-camp"
-      ],
-      "title": "보보위영 — \"매 턴 시작 시, 60% 확률로 자신과 무작위 아군 1…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【보보위영】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 4
-    },
-    {
       "id": "V-skill-golden-fortress",
       "kind": "skill",
       "refs": [
@@ -894,42 +810,6 @@
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending",
       "priority": 3
-    },
-    {
-      "id": "V-skill-use-talent",
-      "kind": "skill",
-      "refs": [
-        "use-talent"
-      ],
-      "title": "적재적소",
-      "assumption": "지력 영향 미반영",
-      "howToVerify": "【적재적소】이(가) 발동한 전보에서 근사 항목(지력 영향 미반영)을 확인",
-      "status": "pending",
-      "priority": 2
-    },
-    {
-      "id": "V-clause-use-talent-0",
-      "kind": "clause",
-      "refs": [
-        "use-talent"
-      ],
-      "title": "적재적소 — \"지력이 가장 높은 우군 1명이 받는 피해를 25% 감소…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【적재적소】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 2
-    },
-    {
-      "id": "V-skill-u-jia-xu",
-      "kind": "skill",
-      "refs": [
-        "u-jia-xu"
-      ],
-      "title": "현묘한계책 (고유)",
-      "assumption": "90% 판정이 대상별, \"우군이 이미 혼란이면 회복\" 미지원",
-      "howToVerify": "【현묘한계책】이(가) 발동한 전보에서 근사 항목(90% 판정이 대상별, \"우군이 이미 혼란이면 회복\" 미지원)을 확인",
-      "status": "pending",
-      "priority": 2
     },
     {
       "id": "V-skill-u-zuo-ci",
@@ -1368,78 +1248,6 @@
       "priority": 1
     },
     {
-      "id": "V-skill-empty-city",
-      "kind": "skill",
-      "refs": [
-        "empty-city"
-      ],
-      "title": "공성계",
-      "assumption": "지력 영향 미반영",
-      "howToVerify": "【공성계】이(가) 발동한 전보에서 근사 항목(지력 영향 미반영)을 확인",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-clause-empty-city-1",
-      "kind": "clause",
-      "refs": [
-        "empty-city"
-      ],
-      "title": "공성계 — \"적군과 아군 전체의 액티브 전법 발동률이 14% 감소합…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【공성계】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-clause-empty-city-2",
-      "kind": "clause",
-      "refs": [
-        "empty-city"
-      ],
-      "title": "공성계 — \"4턴 시작 시, 아군 중 지력이 가장 높은 단일 무장이…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【공성계】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-clause-empty-city-3",
-      "kind": "clause",
-      "refs": [
-        "empty-city"
-      ],
-      "title": "공성계 — \"아군 중 지력이 가장 낮은 단일 무장이 받는 책략 피해…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【공성계】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-skill-plan-after",
-      "kind": "skill",
-      "refs": [
-        "plan-after"
-      ],
-      "title": "용의주도",
-      "assumption": "추가 발동 확률의 지력 영향 미반영. 추가 발동은 같은 발동 안의 두 번째 피해로 처리",
-      "howToVerify": "【용의주도】이(가) 발동한 전보에서 근사 항목(추가 발동 확률의 지력 영향 미반영. 추가 발동은 같은 발동 안의 두 번째 피해로 처리)을 확인",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-clause-plan-after-1",
-      "kind": "clause",
-      "refs": [
-        "plan-after"
-      ],
-      "title": "용의주도 — \"또한 50% 확률(지력의 영향을 받음)로 용의주도를 추…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【용의주도】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 1
-    },
-    {
       "id": "V-skill-punish-past",
       "kind": "skill",
       "refs": [
@@ -1856,39 +1664,6 @@
       "status": "pending"
     },
     {
-      "id": "V-skill-u-zhang-zhao",
-      "kind": "skill",
-      "refs": [
-        "u-zhang-zhao"
-      ],
-      "title": "장소 고유 전법 (고유)",
-      "assumption": "해제·회복 대상을 따로 뽑음, 지력 영향 미반영",
-      "howToVerify": "【장소 고유 전법】이(가) 발동한 전보에서 근사 항목(해제·회복 대상을 따로 뽑음, 지력 영향 미반영)을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-clause-u-zhang-zhao-2",
-      "kind": "clause",
-      "refs": [
-        "u-zhang-zhao"
-      ],
-      "title": "장소 고유 전법 — \"치료율: 180%(지력의 영향을 받음)…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【장소 고유 전법】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-clause-u-zhang-zhao-3",
-      "kind": "clause",
-      "refs": [
-        "u-zhang-zhao"
-      ],
-      "title": "장소 고유 전법 — \"또한 적군 전체가 가하는 피해를 24% 감소시킵니다(지…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【장소 고유 전법】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending"
-    },
-    {
       "id": "V-skill-u-zhang-chunhua",
       "kind": "skill",
       "refs": [
@@ -1919,50 +1694,6 @@
       "title": "장춘화 고유 전법 — \"심계가 6중첩 미만일 경우 이 추가 일반 공격으로는 추…\"",
       "assumption": "근사 반영",
       "howToVerify": "【장춘화 고유 전법】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-skill-talent-under-heaven",
-      "kind": "skill",
-      "refs": [
-        "talent-under-heaven"
-      ],
-      "title": "천하의인재",
-      "assumption": "무작위 제어 상태는 발동마다 1종을 골라 대상 전체에 각각 80% 판정",
-      "howToVerify": "【천하의인재】이(가) 발동한 전보에서 근사 항목(무작위 제어 상태는 발동마다 1종을 골라 대상 전체에 각각 80% 판정)을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-clause-talent-under-heaven-1",
-      "kind": "clause",
-      "refs": [
-        "talent-under-heaven"
-      ],
-      "title": "천하의인재 — \"또한 80% 확률로 대상에게 무작위 제어 상태 1종을 …\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【천하의인재】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-skill-break-thousand-army",
-      "kind": "skill",
-      "refs": [
-        "break-thousand-army"
-      ],
-      "title": "천군격파",
-      "assumption": "\"35% 확률로 피해 20% 증가\"를 기대값(×1.07)으로 처리, 지력 영향 미반영",
-      "howToVerify": "【천군격파】이(가) 발동한 전보에서 근사 항목(\"35% 확률로 피해 20% 증가\"를 기대값(×1.07)으로 처리, 지력 영향 미반영)을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-clause-break-thousand-army-1",
-      "kind": "clause",
-      "refs": [
-        "break-thousand-army"
-      ],
-      "title": "천군격파 — \"또한 35% 확률(지력의 영향을 받음)로 해당 피해가 …\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【천군격파】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending"
     },
     {

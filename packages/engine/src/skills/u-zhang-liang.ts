@@ -8,6 +8,12 @@ export default defineSkill({
   name: "괴술",
   kind: "액티브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "원문 순서: 회유·피신 +25% 먼저, 이후 피해 → 요술"
+    }
+  ],
   clauses: [
     {
       "text": "2턴 동안 자신의 회유와(과) 피신 확률이 25% 증가하며",
@@ -100,12 +106,11 @@ export default defineSkill({
     ]
   },
   run(c) {
-    // 「이후 랜덤 적군 2명에게 220%의 병기 피해를 주고」
-    c.damage(0);   // 병기 110%→220%
     // 「2턴 동안 자신의 회유와(과) 피신 확률이 25% 증가하며」
-    c.buff(0);   // 피신 +12.5%→25%, 대상 self, 2턴, 최대 1중첩
-    c.buff(1);   // 회유 +12.5%→25%, 대상 self, 2턴, 최대 1중첩
+    c.buff(0); c.buff(1);
+    // 「이후 랜덤 적군 2명에게 220%의 병기 피해를 주고」
+    c.damage(0);
     // 「2턴 동안 지속되는 요술을(를) 부여한다」
-    c.status(0);   // 요술
+    c.status({ name: '요술', duration: 2 });
   },
 });

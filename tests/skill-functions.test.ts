@@ -18,7 +18,7 @@ describe('전법 함수', () => {
     for (const m of Object.values(SKILL_MODULES)) {
       if (!m.run || !m.def) continue;
       const eff = m.def.effects || {};
-      const api: any = { has: () => false, chance: () => true, stat: () => 100, targets: () => [], guard: () => {}, tag: (_n: string, us: any[]) => us || [], tagged: () => [], pick: () => null, friendsOf: () => [], enemiesOf: () => [], unit: {}, skill: { effects: eff }, eventCtx: null };
+      const api: any = { has: () => false, chance: () => true, stat: () => 100, targets: () => [], guard: () => {}, tag: (_n: string, us: any[]) => us || [], tagged: () => [], pick: () => null, friendsOf: () => [], enemiesOf: () => [], infl: () => 1, unit: {}, skill: { effects: eff }, eventCtx: null };
       for (const [fn, key] of Object.entries(KEY)) api[fn] = (x: any) => { if (typeof x === 'number' && !(eff[key] || [])[x]) bad.push(`${m.id} c.${fn}(${x})`); };
       m.run(api);
     }

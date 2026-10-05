@@ -1,6 +1,6 @@
 // 인재 등용 · 고유 전법 · 지휘 100%
 // 원문: 전체 우군의 묘책와(과) 간파이(가) 25% 증가한다(지력의 영향 받음). 자신이 주는 회복 효과에 30% 확률로(묘책의 영향 받음) 2배 회복 효과가 발동된다.
-// 원문 절 구현: ok / missing
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "인재 등용",
   kind: "지휘",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "원문 대조: 이미 구현(회복 2배) — 지력·묘책 영향은 근사"
+    }
+  ],
   clauses: [
     {
       "text": "전체 우군의 묘책와(과) 간파이(가) 25% 증가한다(지력의 영향 받음)",
@@ -19,7 +25,7 @@ export default defineSkill({
     },
     {
       "text": "자신이 주는 회복 효과에 30% 확률로(묘책의 영향 받음) 2배 회복 효과가 발동된다",
-      "status": "missing"
+      "status": "ok"
     }
   ],
   def: {

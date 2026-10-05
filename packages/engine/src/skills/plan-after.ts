@@ -1,6 +1,6 @@
 // 용의주도 · 전법 · 추격 75%
 // 원문: 일반 공격 후, 적군 전체에게 40%의 책략 피해를 입힙니다. 또한 50% 확률(지력의 영향을 받음)로 용의주도를 추가로 1회 발동합니다. 이 추가 발동은 다시 연쇄 발동되지 않습니다. 용의주도의 피해 계수는 매 턴 12%씩 증가합니다.
-// 원문 절 구현: ok / approx / ok / ok
+// 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -9,10 +9,16 @@ export default defineSkill({
   kind: "추격",
   isUnique: false,
   engineStatus: {
-    "status": "approx",
-    "note": "추가 발동 확률의 지력 영향 미반영. 추가 발동은 같은 발동 안의 두 번째 피해로 처리",
+    "status": "ok",
+    "note": "매 턴 12%·지력 영향",
     "source": "authored"
   },
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "피해 계수 매 턴 +12%(예전 +30%), 추가 발동 확률 지력 영향"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 후, 적군 전체에게 40%의 책략 피해를 입힙니다",
@@ -20,7 +26,7 @@ export default defineSkill({
     },
     {
       "text": "또한 50% 확률(지력의 영향을 받음)로 용의주도를 추가로 1회 발동합니다",
-      "status": "approx"
+      "status": "ok"
     },
     {
       "text": "이 추가 발동은 다시 연쇄 발동되지 않습니다",
@@ -41,7 +47,7 @@ export default defineSkill({
           "target": "all_enemy",
           "turnScale": {
             "mode": "add",
-            "perTurn": 0.3
+            "perTurn": 0.12
           }
         },
         {
@@ -52,7 +58,7 @@ export default defineSkill({
           "chance": 0.5,
           "turnScale": {
             "mode": "add",
-            "perTurn": 0.3
+            "perTurn": 0.12
           }
         }
       ],
@@ -63,13 +69,16 @@ export default defineSkill({
       "targets": []
     },
     "authored": true,
-    "authoredStatus": "approx",
-    "authoredNote": "추가 발동 확률의 지력 영향 미반영. 추가 발동은 같은 발동 안의 두 번째 피해로 처리",
+    "authoredStatus": "ok",
+    "authoredNote": "매 턴 12% 증가·지력 영향 반영 (2026-10-05)",
     "replacedLegacy": false
   },
   run(c) {
-    // (원문 절 매핑 없음)
-    c.damage(0);   // 책략 40%, 대상 all_enemy
-    c.damage(1);   // 책략 40%, 대상 all_enemy, 확률 50%
+    // 「일반 공격 후, 적군 전체에게 40%의 책략 피해를 입힙니다」
+    // 「용의주도의 피해 계수는 매 턴 12%씩 증가합니다」
+    c.damage(0);
+    // 「또한 50% 확률(지력의 영향을 받음)로 용의주도를 추가로 1회 발동합니다」
+    // 「이 추가 발동은 다시 연쇄 발동되지 않습니다」
+    if (c.chance(0.5 * c.infl('지력'))) c.damage({ ...c.skill.effects.damage[1], chance: undefined });
   },
 });

@@ -1,6 +1,6 @@
 // 침략방어 · 전법 · 지휘 100%
 // 원문: 전투 시작 후 첫 3턴 동안, 아군 무작위 2명이 받는 피해가 24% 감소합니다(지력의 영향을 받음). 또한 4턴 시작 시, 아군 전체의 병력을 회복합니다. 치료율: 360%(지력의 영향을 받음).
-// 원문 절 구현: ok / approx / ok / ok
+// 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -9,10 +9,16 @@ export default defineSkill({
   kind: "지휘",
   isUnique: false,
   engineStatus: {
-    "status": "approx",
-    "note": "피해 감소의 지력 영향 미반영",
+    "status": "ok",
+    "note": "지력 영향 반영",
     "source": "authored"
   },
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "피해 감소에 지력 영향"
+    }
+  ],
   clauses: [
     {
       "text": "전투 시작 후 첫 3턴 동안",
@@ -20,7 +26,7 @@ export default defineSkill({
     },
     {
       "text": "아군 무작위 2명이 받는 피해가 24% 감소합니다(지력의 영향을 받음)",
-      "status": "approx"
+      "status": "ok"
     },
     {
       "text": "또한 4턴 시작 시, 아군 전체의 병력을 회복합니다",
@@ -43,7 +49,13 @@ export default defineSkill({
           "max": -0.24,
           "target": "random_ally_n",
           "duration": 3,
-          "maxStacks": 1
+          "maxStacks": 1,
+          "inf": {
+            "stats": [
+              "지력"
+            ],
+            "who": "self"
+          }
         }
       ],
       "statMods": [],
@@ -73,8 +85,8 @@ export default defineSkill({
       }
     ],
     "authored": true,
-    "authoredStatus": "approx",
-    "authoredNote": "피해 감소의 지력 영향 미반영",
+    "authoredStatus": "ok",
+    "authoredNote": "지력 영향 반영 (2026-10-05)",
     "replacedLegacy": false
   },
   run(c) {

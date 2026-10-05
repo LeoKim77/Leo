@@ -1,6 +1,6 @@
 // 적재적소 · 전법 · 액티브 75%
 // 원문: 지력이 가장 높은 우군 1명이 받는 피해를 25% 감소시켜 2턴 지속시키고(지력 영향), 저항 1중첩(피해 1회 무효)을 부여합니다.
-// 원문 절 구현: approx / ok
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -9,14 +9,20 @@ export default defineSkill({
   kind: "액티브",
   isUnique: false,
   engineStatus: {
-    "status": "approx",
-    "note": "지력 영향 미반영",
+    "status": "ok",
+    "note": "지력 영향 반영",
     "source": "authored"
   },
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "지력 영향 반영"
+    }
+  ],
   clauses: [
     {
       "text": "지력이 가장 높은 우군 1명이 받는 피해를 25% 감소시켜 2턴 지속시키고(지력 영향)",
-      "status": "approx"
+      "status": "ok"
     },
     {
       "text": "저항 1중첩(피해 1회 무효)을 부여합니다",
@@ -34,7 +40,13 @@ export default defineSkill({
           "max": -0.25,
           "target": "highest_intel_ally",
           "duration": 2,
-          "maxStacks": 1
+          "maxStacks": 1,
+          "inf": {
+            "stats": [
+              "지력"
+            ],
+            "who": "self"
+          }
         }
       ],
       "statMods": [],
@@ -48,8 +60,8 @@ export default defineSkill({
       "targets": []
     },
     "authored": true,
-    "authoredStatus": "approx",
-    "authoredNote": "지력 영향 미반영",
+    "authoredStatus": "ok",
+    "authoredNote": "지력 영향 반영 (2026-10-05)",
     "replacedLegacy": false
   },
   run(c) {

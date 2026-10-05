@@ -1,6 +1,6 @@
 // 주도면밀 · 고유 전법 · 지휘 100%
 // 원문: 전투 시작 시, 자신과 지력이 가장 높은 우군의 액티브 전법 발동률이 6% 증가한다. 자신이 액티브 전법 발동 성공 후, 70% 확률로 1회 추가 발동한다(추가로 전법 준비할 필요 없음).
-// 원문 절 구현: ok / missing
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "주도면밀",
   kind: "지휘",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "원문 대조: 이미 구현(액티브 재발동) — 절 표시만"
+    }
+  ],
   clauses: [
     {
       "text": "전투 시작 시, 자신과 지력이 가장 높은 우군의 액티브 전법 발동률이 6% 증가한다",
@@ -19,7 +25,7 @@ export default defineSkill({
     },
     {
       "text": "자신이 액티브 전법 발동 성공 후, 70% 확률로 1회 추가 발동한다(추가로 전법 준비할 필요 없음)",
-      "status": "missing"
+      "status": "ok"
     }
   ],
   def: {

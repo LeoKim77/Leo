@@ -8,6 +8,12 @@ export default defineSkill({
   name: "결정적인 수",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "원문 순서: 220% → 허약 2턴 → '허약이면' 추가 50% (예전엔 추가 피해 무조건, 허약은 마지막)"
+    }
+  ],
   clauses: [
     {
       "text": "1턴 동안 준비 후 랜덤 적군 2명에게 220%의 책략 피해를 주며",
@@ -44,22 +50,30 @@ export default defineSkill({
         {
           "dmgType": "책략",
           "min": 1.1,
-          "max": 2.2
+          "max": 2.2,
+          "target": "tag:m"
         },
         {
           "dmgType": "책략",
           "min": 0.25,
-          "max": 0.5
+          "max": 0.5,
+          "target": "tag:m",
+          "condition": {
+            "type": "hasStatus",
+            "who": "target",
+            "status": "허약"
+          }
         }
       ],
-      "heal": [],
-      "buffs": [],
-      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "허약",
+          "target": "tag:m",
+          "duration": 2
+        }
+      ],
       "targets": [
         "random_enemy_n"
-      ],
-      "statusEffects": [
-        "허약"
       ]
     },
     "prepTurns": 1,
@@ -90,11 +104,12 @@ export default defineSkill({
     ]
   },
   run(c) {
+    c.tag('m', c.targets('random_enemy_n'));
     // 「1턴 동안 준비 후 랜덤 적군 2명에게 220%의 책략 피해를 주며」
-    c.damage(0);   // 책략 110%→220%
-    // 「목표가 허약 상태면 추가로 50%의 책략 피해를 준다」
-    c.damage(1);   // 책략 25%→50%
+    c.damage(0);
     // 「2턴 동안 지속되는 허약 상태를 부여한다」
-    c.status(0);   // 허약
+    c.status(0);
+    // 「목표가 허약 상태면 추가로 50%의 책략 피해를 준다」
+    c.damage(1);
   },
 });

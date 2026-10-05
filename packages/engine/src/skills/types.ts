@@ -46,6 +46,8 @@ export interface SkillApi {
   /** 그 무장의 생존 우군(자신 제외) / 생존 적군 */
   friendsOf(u: any): any[];
   enemiesOf(u: any): any[];
+  /** "(○○의 영향 받음)" 배수 — 시전자 스탯 기준 */
+  infl(...stats: string[]): number;
 }
 
 export interface SkillClause {

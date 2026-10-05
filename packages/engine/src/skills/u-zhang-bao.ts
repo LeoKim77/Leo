@@ -8,6 +8,12 @@ export default defineSkill({
   name: "도술의 귀재",
   kind: "액티브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "'목표가 요술이면 이번 피해 +35%' 구현, 요술·폭풍 2턴은 피해 준 같은 2명에게"
+    }
+  ],
   clauses: [
     {
       "text": "랜덤 적군 2명에게 280%의 책략 피해를 주며",
@@ -42,18 +48,33 @@ export default defineSkill({
         {
           "dmgType": "책략",
           "min": 1.4,
-          "max": 2.8
+          "max": 2.8,
+          "target": "random_enemy_n",
+          "tag": "m",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "요술"
+            },
+            "mult": 0.35
+          }
         }
       ],
-      "heal": [],
-      "buffs": [],
-      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "요술",
+          "target": "tag:m",
+          "duration": 2
+        },
+        {
+          "name": "폭풍",
+          "target": "tag:m",
+          "duration": 2
+        }
+      ],
       "targets": [
         "random_enemy_n"
-      ],
-      "statusEffects": [
-        "폭풍",
-        "요술"
       ]
     },
     "clauses": [
@@ -82,10 +103,9 @@ export default defineSkill({
   },
   run(c) {
     // 「랜덤 적군 2명에게 280%의 책략 피해를 주며」
-    c.damage(0);   // 책략 140%→280%
-    // 「2턴 동안 지속되는 요술와(과) 폭풍 상태를 부여한다」
-    c.status(0);   // 폭풍
     // 「목표가 요술 상태면 이번 피해가 35% 증가한다」
-    c.status(1);   // 요술
+    c.damage(0);
+    // 「2턴 동안 지속되는 요술와(과) 폭풍 상태를 부여한다」
+    c.status(0); c.status(1);
   },
 });

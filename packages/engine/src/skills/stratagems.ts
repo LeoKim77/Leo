@@ -8,6 +8,12 @@ export default defineSkill({
   name: "넘치는 계책",
   kind: "추격",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "'후열 우선' 대상"
+    }
+  ],
   clauses: [
     {
       "text": "일반 공격 후, 랜덤 적군 단일 목표에게 250%의 책략 피해를 주며",
@@ -35,7 +41,8 @@ export default defineSkill({
         {
           "dmgType": "책략",
           "min": 1.25,
-          "max": 2.5
+          "max": 2.5,
+          "target": "random_enemy_back_first"
         }
       ],
       "heal": [],
@@ -70,6 +77,6 @@ export default defineSkill({
   },
   run(c) {
     // 「일반 공격 후, 랜덤 적군 단일 목표에게 250%의 책략 피해를 주며」
-    c.damage(0);   // 책략 125%→250%
+    c.damage(0);   // 책략 125%→250%, 대상 random_enemy_back_first
   },
 });

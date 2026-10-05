@@ -838,7 +838,7 @@ function emitDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       if (t.filterDmgType && t.filterDmgType !== dmgType) return;
       if (t.requireCrit && !crit) return;
       if (!rollTrigger(u, skill)) return;
-      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender, dmg });
+      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender, dmg, dmgType });
     });
   });
 }
@@ -1721,6 +1721,8 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       // FEAT-024 대상 묶기: c.tag('main', 무장 배열) 후 항목 target 에 'tag:main'
       tag: (name, us) => { tags[name] = (us || []).filter(Boolean); return tags[name]; },
       tagged: name => tags[name] || [],
+      // 스탯 영향 배수: 기본값 × (1 + (스탯 − 100) × 0.21%) — 확률·수치에 "(○○의 영향 받음)"을 직접 곱할 때
+      infl: (...st) => infMult({ stats: st, who: 'self' }, unit, null, coeffs),
       pick: arr => (arr && arr.length ? pick(arr) : null),
       friendsOf: u => allUnits.filter(x => x.alive && x.side === u.side && x !== u),
       enemiesOf: u => allUnits.filter(x => x.alive && x.side !== u.side),

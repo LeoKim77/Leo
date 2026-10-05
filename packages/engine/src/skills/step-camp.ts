@@ -1,6 +1,6 @@
 // 보보위영 · 전법 · 지휘 100%
 // 원문: 매 턴 시작 시, 60% 확률로 자신과 무작위 아군 1명이 받는 피해가 24% 감소합니다(통솔의 영향을 받음). 지속시간은 1턴입니다. 이 효과의 발동 확률은 매 턴 10%씩 증가하며, 각 무장은 독립적으로 판정합니다.
-// 원문 절 구현: approx / ok / ok / ok
+// 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -9,14 +9,20 @@ export default defineSkill({
   kind: "지휘",
   isUnique: false,
   engineStatus: {
-    "status": "approx",
-    "note": "통솔 영향 미반영. 확률 60%에서 매 턴 +10%p",
+    "status": "ok",
+    "note": "통솔 영향 반영",
     "source": "authored"
   },
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "통솔 영향 반영"
+    }
+  ],
   clauses: [
     {
       "text": "매 턴 시작 시, 60% 확률로 자신과 무작위 아군 1명이 받는 피해가 24% 감소합니다(통솔의 영향을 받음)",
-      "status": "approx"
+      "status": "ok"
     },
     {
       "text": "지속시간은 1턴입니다",
@@ -49,6 +55,12 @@ export default defineSkill({
             "turns": [
               1
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -63,6 +75,12 @@ export default defineSkill({
             "turns": [
               1
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -77,6 +95,12 @@ export default defineSkill({
             "turns": [
               2
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -91,6 +115,12 @@ export default defineSkill({
             "turns": [
               2
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -105,6 +135,12 @@ export default defineSkill({
             "turns": [
               3
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -119,6 +155,12 @@ export default defineSkill({
             "turns": [
               3
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -133,6 +175,12 @@ export default defineSkill({
             "turns": [
               4
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -147,6 +195,12 @@ export default defineSkill({
             "turns": [
               4
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -161,6 +215,12 @@ export default defineSkill({
             "turns": [
               5
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -175,6 +235,12 @@ export default defineSkill({
             "turns": [
               5
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -189,6 +255,12 @@ export default defineSkill({
             "turns": [
               6
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -203,6 +275,12 @@ export default defineSkill({
             "turns": [
               6
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -217,6 +295,12 @@ export default defineSkill({
             "turns": [
               7
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -231,6 +315,12 @@ export default defineSkill({
             "turns": [
               7
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -245,6 +335,12 @@ export default defineSkill({
             "turns": [
               8
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         },
         {
@@ -259,6 +355,12 @@ export default defineSkill({
             "turns": [
               8
             ]
+          },
+          "inf": {
+            "stats": [
+              "통솔"
+            ],
+            "who": "self"
           }
         }
       ],
@@ -267,8 +369,8 @@ export default defineSkill({
       "targets": []
     },
     "authored": true,
-    "authoredStatus": "approx",
-    "authoredNote": "통솔 영향 미반영. 확률 60%에서 매 턴 +10%p",
+    "authoredStatus": "ok",
+    "authoredNote": "통솔 영향 반영 (2026-10-05)",
     "replacedLegacy": false
   },
   run(c) {
