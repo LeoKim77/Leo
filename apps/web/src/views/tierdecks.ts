@@ -2,6 +2,7 @@
 import { h, mount, pct } from '../dom.ts';
 import { app, loadUser, skillById, generalById, tentative, laterSeasonWithData, setSeason, seasonLabel, designLink } from '../state.ts';
 import { setSimDeck } from './sim.ts';
+import { saveAsArmy } from './armies.ts';
 import type { TierDeck, TierDeckUnit } from '@cheonha/engine';
 
 /** 시트에서 색칠된 칸인가 (색의 뜻은 시트 작성자 확인 전 — '시트 강조'로만 표시) */
@@ -58,7 +59,8 @@ export function renderTierDecks(root: HTMLElement) {
         h('table', null, h('tbody', null, t.units.map((u, i) => unitRow(t, u, i, own)))),
         h('div', { style: { marginTop: '8px', display: 'flex', gap: '6px' } },
           h('button', { class: 'btn small', onclick: () => { setSimDeck('A', { tierId: t.id }); location.hash = '#/sim'; } }, '내 덱으로 시뮬'),
-          h('button', { class: 'btn small', onclick: () => { setSimDeck('B', { tierId: t.id }); location.hash = '#/sim'; } }, '상대로 시뮬')));
+          h('button', { class: 'btn small', onclick: () => { setSimDeck('B', { tierId: t.id }); location.hash = '#/sim'; } }, '상대로 시뮬'),
+          h('button', { class: 'btn small', onclick: () => { const id = saveAsArmy({ name: t.name, formation: t.formation || '기형진', units: t.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(x => !x.startsWith('?')), manualId: u.manualId })) }); void id; location.hash = '#/armies'; } }, '내 부대로 저장')));
     })),
   );
 }

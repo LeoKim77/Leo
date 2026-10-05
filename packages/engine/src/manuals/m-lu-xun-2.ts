@@ -55,7 +55,7 @@ export default defineManual({
       // 「연소 시전 시 1턴간 목표의 최고 속성이 5%(지력의 영향을 받음) 추가로 감소한다」 — 그 순간 목표의 가장 높은 능력치 기준
       const t = c.eventCtx?.target;
       if (!t) return;
-      const key = ['무력', '지력', '통솔', '선공'].reduce((m, k) => (c.stat(t, k) > c.stat(t, m) ? k : m), '무력');
+      const key = (['무력', '지력', '통솔', '선공'] as const).reduce<'무력' | '지력' | '통솔' | '선공'>((m, k) => (c.stat(t, k) > c.stat(t, m) ? k : m), '무력');
       const v = c.stat(t, key) * 0.05 * c.infl('지력');
       c.statMod({ stat: key, min: -v, max: -v, target: 'trigger_target', duration: 1, maxStacks: 1 });
     },

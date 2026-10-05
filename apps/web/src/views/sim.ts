@@ -1,97 +1,97 @@
 // 시뮬레이션 — 티어덱/내가 짠 덱 아무 조합이나 붙여 본다. 한 판 전보에는 감사 결과를 붙인다.
 import { h, mount, select, lv, pct, fmt } from '../dom.ts';
-import { app, inSeason, generalById, loadUser, saveUser, designLink } from '../state.ts';
+import { app, generalById, designLink } from '../state.ts';
+import { armies, armyName, rowsOf, defaultRows } from './armies.ts';
+import { showSkill, showManual } from './detail.ts';
 import { winBar, troopLines, hBars, SIDE_A, SIDE_B } from '../charts.ts';
 import { call } from '../sim-client.ts';
 import type { DeckSpec, MonteCarloResult } from '@cheonha/engine';
 
-interface SideState { mode: 'tier' | 'custom'; tierId: string; formation: string; units: Array<{ generalId: string; skillIds: [string, string]; manualId?: string; unitType?: string }> }
-const blankUnits = () => [0, 1, 2].map(() => ({ generalId: '', skillIds: ['', ''] as [string, string], manualId: undefined as string | undefined }));
-const sides: Record<'A' | 'B', SideState> = {
-  A: { mode: 'tier', tierId: '', formation: '기형진', units: blankUnits() },
-  B: { mode: 'tier', tierId: '', formation: '기형진', units: blankUnits() },
-};
-let runs = 500;
+// 덱 고르기: 내 부대(부대 편성) · 티어덱 · 다른 화면에서 보낸 덱(custom)
+type Choice = { kind: 'army' | 'tier' | 'custom'; id: string; spec?: DeckSpec };
+const choice: Record<'A' | 'B', Choice> = { A: { kind: 'tier', id: '' }, B: { kind: 'tier', id: '' } };
+let runs = 20;
 let seed = '';
 let mcResult: MonteCarloResult | null = null;
+let battleList: any[] | null = null;
 let battle: any = null;
 let busy = '';
 let progress = 0;
 let error = '';
 
-/** 추천 등에서 만든 덱을 직접 편성 칸에 넣는다 */
+/** 추천 등에서 만든 덱을 그대로 시뮬에 넣는다 */
 export function setSimCustom(side: 'A' | 'B', spec: DeckSpec) {
-  const s = sides[side];
-  s.mode = 'custom';
-  s.formation = spec.formation || s.formation;
-  s.units = blankUnits();
-  spec.units.forEach((u, i) => { s.units[i] = { generalId: u.generalId, skillIds: [u.skillIds[0] || '', u.skillIds[1] || ''], manualId: u.manualId }; });
-  mcResult = null; battle = null;
+  choice[side] = { kind: 'custom', id: 'custom', spec };
+  mcResult = null; battle = null; battleList = null;
 }
-
 export function setSimDeck(side: 'A' | 'B', d: { tierId: string }) {
-  sides[side].mode = 'tier';
-  sides[side].tierId = d.tierId;
-  const td = app.bundle.tierDecks.find(t => t.id === d.tierId);
-  if (td?.formation) sides[side].formation = td.formation;   // 시트에 적힌 진형
-  mcResult = null; battle = null;
+  choice[side] = { kind: 'tier', id: d.tierId };
+  mcResult = null; battle = null; battleList = null;
 }
 
 function specOf(side: 'A' | 'B'): DeckSpec {
-  const s = sides[side];
-  if (s.mode === 'tier') {
-    const td = app.bundle.tierDecks.find(t => t.id === s.tierId) || app.bundle.tierDecks[side === 'A' ? 0 : 1];
-    return { name: `${td.tier} ${td.name}`, formation: s.formation, units: td.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(x => !x.startsWith('?')), manualId: u.manualId, ...(u.unitType ? { unitType: u.unitType } : {}) })) };
+  const c = choice[side];
+  if (c.kind === 'custom' && c.spec) return c.spec;
+  if (c.kind === 'army') {
+    const list = armies();
+    const a = list.find(x => x.id === c.id);
+    if (a) {
+      const rows = rowsOf(a);
+      return { name: armyName(a, list.indexOf(a)), formation: a.formation || '기형진',
+        units: a.units.map((u, i) => ({ u, i })).filter(x => x.u.generalId).map(({ u, i }) => ({ generalId: u.generalId, skillIds: u.skillIds.filter(Boolean), manualId: u.manualId, position: rows[i] })) };
+    }
   }
-  return { name: '직접 편성', formation: s.formation, units: s.units.filter(u => u.generalId).map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(Boolean), manualId: u.manualId, ...(u.unitType ? { unitType: u.unitType } : {}) })) };
+  const td = app.bundle.tierDecks.find(t => t.id === c.id) || app.bundle.tierDecks[side === 'A' ? 0 : 1];
+  return { name: `${td.tier} ${td.name}`, formation: td.formation || '기형진', units: td.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds.filter(x => !x.startsWith('?')), manualId: u.manualId, ...(u.unitType ? { unitType: u.unitType } : {}) })) };
 }
 const deckName = (side: 'A' | 'B') => specOf(side).name || side;
 
 const usableManual = (m: { status?: string }) => m.status === 'ok' || m.status === 'approx';
-/** 덱 표시용: 실제로 장착되는 금병법 이름 */
-function manualLabel(generalId: string, manualId?: string) {
+/** 덱 표시용: 실제로 장착되는 금병법 */
+function manualOf(generalId: string, manualId?: string) {
   const ms = generalById(generalId)?.manuals || [];
-  if (manualId === 'none') return '';
+  if (manualId === 'none') return null;
   const m = manualId ? ms.find(x => x.id === manualId) : ms.find(usableManual);
-  return m && usableManual(m) ? `〈${m.name}〉` : '';
-}
-function manualSelect(u: { generalId: string; manualId?: string }) {
-  const ms = generalById(u.generalId)?.manuals || [];
-  const opts = [{ value: 'none', label: '금병법 없음' }, ...ms.map(m => ({ value: m.id!, label: `〈${m.name}〉${m.status === 'approx' ? ' 근사' : m.status === 'unsupported' ? ' 미지원' : m.status === 'missing' ? ' 정의없음' : ''}` }))];
-  const cur = u.manualId || ms.find(usableManual)?.id || 'none';
-  return select(opts, cur, v => { u.manualId = v; }, { title: '금병법' });
+  return m && usableManual(m) ? m : null;
 }
 
-function deckEditor(side: 'A' | 'B', redraw: () => void) {
-  const s = sides[side];
-  const b = app.bundle;
-  const tierOpts = b.tierDecks.map(t => ({ value: t.id, label: `${t.season} ${t.tier} ${t.name}` }));
-  if (!s.tierId) s.tierId = b.tierDecks[side === 'A' ? 0 : 1]?.id || '';
-  const genOpts = [{ value: '', label: '— 무장 —' }, ...b.generals.filter(g => inSeason(g.season)).sort((x, y) => x.name.ko.localeCompare(y.name.ko, 'ko')).map(g => ({ value: g.id, label: `${g.name.ko} (${g.faction}·${g.unitType})` }))];
-  const skillOpts = [{ value: '', label: '— 전법 —' }, ...b.skills.filter(x => !x.isUnique && inSeason(x.season)).sort((x, y) => x.name.ko.localeCompare(y.name.ko, 'ko')).map(x => ({ value: x.id, label: `${x.name.ko} (${x.kind}${x.engine ? '' : ' · 미구현'})` }))];
-  const user = loadUser();
-  return h('div', { class: `panel deck-box ${side === 'B' ? 'b' : ''}` },
-    h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '16px', color: side === 'A' ? SIDE_A : SIDE_B } }, side === 'A' ? '내 덱 (A)' : '상대 덱 (B)'),
-      h('span', null,
-        h('button', { class: `chip ${s.mode === 'tier' ? 'on' : ''}`, onclick: () => { s.mode = 'tier'; redraw(); } }, '티어덱'),
-        ' ',
-        h('button', { class: `chip ${s.mode === 'custom' ? 'on' : ''}`, onclick: () => { if (s.mode === 'tier') { const sp = specOf(side); s.units = blankUnits(); sp.units.forEach((u, i) => { s.units[i] = { generalId: u.generalId, skillIds: [u.skillIds[0] || '', u.skillIds[1] || ''], manualId: u.manualId, unitType: u.unitType }; }); } s.mode = 'custom'; redraw(); } }, '직접 편성'))),
-    s.mode === 'tier'
-      ? h('div', null, select(tierOpts, s.tierId, v => { s.tierId = v; const td = b.tierDecks.find(t => t.id === v); if (td?.formation) s.formation = td.formation; redraw(); }, { style: { width: '100%' } }),
-        h('div', { class: 'sub', style: { marginTop: '6px' } }, specOf(side).units.map(u => `${generalById(u.generalId)?.name.ko}${manualLabel(u.generalId, u.manualId)}`).join(' · ')))
-      : h('div', null, s.units.map((u, i) => h('div', { class: 'unit-row' },
-        select(genOpts, u.generalId, v => { u.generalId = v; u.unitType = undefined; redraw(); }),
-        select(skillOpts, u.skillIds[0], v => { u.skillIds[0] = v; }),
-        select(skillOpts, u.skillIds[1], v => { u.skillIds[1] = v; }),
-        manualSelect(u))),
-        h('div', { class: 'toolbar', style: { marginTop: '4px', marginBottom: 0 } },
-          h('button', { class: 'btn small', onclick: () => { const d = { ...specOf(side), id: `deck-${Date.now()}`, savedAt: new Date().toISOString() }; user.decks.push(d); saveUser(user); redraw(); } }, '내 덱으로 저장'),
-          user.decks.length ? select([{ value: '', label: `저장한 덱 ${user.decks.length}개` }, ...user.decks.map(d => ({ value: d.id, label: `${d.units.map(u => generalById(u.generalId)?.name.ko).join('·')}` }))], '', v => {
-            const d = user.decks.find(x => x.id === v); if (!d) return;
-            s.units = blankUnits(); d.units.forEach((u, i) => { s.units[i] = { generalId: u.generalId, skillIds: [u.skillIds[0] || '', u.skillIds[1] || ''], manualId: u.manualId }; }); s.formation = d.formation || s.formation; redraw();
-          }) : null)),
-    h('div', { style: { marginTop: '8px' } }, h('span', { class: 'sub' }, '진형 '), select(b.formations.map(f => ({ value: f.name, label: `${f.name} — ${f.traits.join(', ')}` })), s.formation, v => { s.formation = v; })),
-  );
+/** 예전 시뮬처럼 양쪽 부대를 나란히: 무장 이름·열·능력치·전법(누르면 상세) */
+function sideCard(side: 'A' | 'B') {
+  const sp = specOf(side);
+  const rows = sp.units.some(u => u.position) ? sp.units.map(u => u.position) : defaultRows(sp.formation || '기형진', sp.units);
+  return h('div', { class: `side-card ${side === 'B' ? 'b' : ''}` },
+    h('div', { class: 'side-title' }, `${side === 'A' ? '아군' : '적군'} — ${sp.name}`, h('span', { class: 'sub' }, ` · ${sp.formation}`)),
+    sp.units.map((u, i) => {
+      const g = generalById(u.generalId);
+      if (!g) return null;
+      const m = manualOf(u.generalId, u.manualId);
+      const skill = (id: string) => { const x = app.bundle.skills.find(s => s.id === id); return x ? h('a', { href: 'javascript:void 0', class: 'skill-link', onclick: () => showSkill(id) }, `【${x.name.ko}】`) : null; };
+      return h('div', { class: 'side-unit' },
+        h('div', null, h('span', { class: 'gen-name' }, `[${g.name.ko}]`), h('span', { class: 'sub' }, ` ${rows[i] === 'back' ? '후열' : '전열'}`)),
+        h('div', { class: 'sub' }, `무 ${g.stats['무력']} · 지 ${g.stats['지력']} · 통 ${g.stats['통솔']} · 선 ${g.stats['선공']}`),
+        h('div', { class: 'skill-line' }, [g.uniqueSkillId, ...u.skillIds].map(skill).filter(Boolean).flatMap((x, k) => k ? [' · ', x] : [x]),
+          m ? [' · ', h('a', { href: 'javascript:void 0', class: 'skill-link manual', onclick: () => showManual(u.generalId, m.id!) }, `〈${m.name}〉`)] : null));
+    }));
+}
+
+function chooser(side: 'A' | 'B', redraw: () => void) {
+  const list = armies();
+  const tiers = app.bundle.tierDecks;
+  const c = choice[side];
+  if (!c.id) {
+    if (side === 'A' && list.length) choice.A = { kind: 'army', id: list[0].id };
+    else choice[side] = { kind: 'tier', id: tiers[side === 'A' ? 0 : 1]?.id || '' };
+  }
+  const opts = [
+    ...(choice[side].kind === 'custom' ? [{ value: 'custom:custom', label: `보낸 덱 — ${choice[side].spec?.name || ''}` }] : []),
+    ...list.map((a, i) => ({ value: `army:${a.id}`, label: `내 부대 · ${armyName(a, i)}` })),
+    ...tiers.map(t => ({ value: `tier:${t.id}`, label: `티어덱 · ${t.season} ${t.tier} ${t.name}` })),
+  ];
+  return select(opts, `${choice[side].kind}:${choice[side].id}`, v => {
+    const [kind, id] = v.split(':') as [Choice['kind'], string];
+    choice[side] = kind === 'custom' ? choice[side] : { kind, id };
+    mcResult = null; battle = null; battleList = null; redraw();
+  }, { style: { width: '100%' }, 'aria-label': side === 'A' ? '내 부대' : '상대' });
 }
 
 /** 근사·미반영 효과가 섞인 결과임을 알린다 (R-007: 전보 녹화로 검증 대기) */
@@ -119,7 +119,7 @@ function resultView() {
   const contrib = (list: MonteCarloResult['contribution'], color: string) => hBars(list.slice(0, 8).map(c => ({ label: c.name, value: c.pct, display: `${pct(c.pct)} · 판당 ${c.procsPerRun.toFixed(1)}회`, color })), { max: Math.max(...list.slice(0, 8).map(c => c.pct), 0.01), labelWidth: 130, width: 560 });
   return h('div', { class: 'grid' },
     h('div', { class: 'tiles' },
-      h('div', { class: 'tile' }, h('div', { class: 'k' }, '내 덱 승률'), h('div', { class: 'v', style: { color: SIDE_A } }, pct(m.winRateA))),
+      h('div', { class: 'tile' }, h('div', { class: 'k' }, '내 덱 승률'), h('div', { class: 'v', style: { color: SIDE_A } }, pct(m.winRateA)), h('div', { class: 'sub' }, `${fmt(m.winA)}승 ${fmt(m.winB)}패${m.draw ? ` ${fmt(m.draw)}무` : ''}`)),
       h('div', { class: 'tile' }, h('div', { class: 'k' }, '상대 승률'), h('div', { class: 'v', style: { color: SIDE_B } }, pct(m.winRateB))),
       h('div', { class: 'tile' }, h('div', { class: 'k' }, '평균 턴'), h('div', { class: 'v' }, m.avgTurns.toFixed(2), h('small', null, ' 턴')),
         m.avgRounds && m.avgRounds > 1.001 ? h('div', { class: 'sub', title: '8턴 무승부면 생존 무장끼리 다시 싸운다(R-009)' }, `판당 교전 ${m.avgRounds.toFixed(2)}차`) : null),
@@ -193,28 +193,56 @@ function battleView() {
   );
 }
 
-export function renderSim(root: HTMLElement) {
+function battleListView(run: (kind: 'battle', seed?: string) => void) {
+  if (!battleList) return null;
+  return h('div', { class: 'panel' },
+    h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '15px' } }, `전투 목록 — ${battleList.length}판`), h('span', { class: 'sub' }, '누르면 그 판의 전보를 봅니다')),
+    h('div', { class: 'table-wrap' }, h('table', null,
+      h('thead', null, h('tr', null, ['판', '결과', '종료 턴', '최종 병력(아군/적군)'].map(x => h('th', null, x)))),
+      h('tbody', null, battleList.map(r => h('tr', { class: `click-row ${battle?.seed === r.seed ? 'sel' : ''}`, onclick: () => run('battle', r.seed) },
+        h('td', { class: 'num' }, r.no),
+        h('td', null, h('span', { class: `lv ${r.winner === 'A' ? 'pass' : r.winner === 'B' ? 'fail' : 'skip'}` }, r.winner === 'A' ? '승' : r.winner === 'B' ? '패' : '무')),
+        h('td', { class: 'num' }, `${r.turns}턴${r.rounds > 1 ? ` · ${r.rounds}차` : ''}`),
+        h('td', { class: 'num' }, `${fmt(r.troopsA)} / ${fmt(r.troopsB)}`)))))));
+}
+
+export function renderSim(root: HTMLElement, params?: URLSearchParams) {
+  const armyParam = params?.get('army');
+  if (armyParam && armies().some(a => a.id === armyParam)) { choice.A = { kind: 'army', id: armyParam }; history.replaceState(null, '', '#/sim'); mcResult = null; battle = null; battleList = null; }
   const redraw = () => renderSim(root);
-  const run = async (kind: 'mc' | 'battle') => {
+  const run = async (kind: 'mc' | 'battle', battleSeed?: string) => {
     error = ''; busy = kind; progress = 0; redraw();
     const s = seed || String(Date.now() % 1e6);
     try {
-      if (kind === 'mc') mcResult = await call<MonteCarloResult>({ type: 'mc', a: specOf('A'), b: specOf('B'), runs, seed: s }, (d, t) => { progress = d / t; const bar = root.querySelector('.progress > div') as HTMLElement; if (bar) bar.style.width = `${progress * 100}%`; });
-      else battle = { ...(await call({ type: 'battle', a: specOf('A'), b: specOf('B'), seed: s })), seed: s };
+      if (kind === 'mc') {
+        mcResult = await call<MonteCarloResult>({ type: 'mc', a: specOf('A'), b: specOf('B'), runs, seed: s }, (d, t) => { progress = d / t; const bar = root.querySelector('.progress > div') as HTMLElement; if (bar) bar.style.width = `${progress * 100}%`; });
+        battleList = await call<any[]>({ type: 'list', a: specOf('A'), b: specOf('B'), count: Math.min(runs, 20), seed: s });
+        battle = null;
+      } else {
+        const bs = battleSeed || s;
+        battle = { ...(await call({ type: 'battle', a: specOf('A'), b: specOf('B'), seed: bs })), seed: bs };
+      }
     } catch (e: any) { error = e.message; }
     busy = ''; redraw();
+    if (kind === 'battle') root.querySelector('.battle-anchor')?.scrollIntoView({ behavior: 'smooth' });
   };
-  mount(root, 
-    h('div', { class: 'section-head' }, h('h2', null, '전투 시뮬레이션'), h('span', { class: 'sub' }, '엔진 v1.12b 이식 + 수정(FIX-001~005) · 기능 추가(FEAT-001~016) + 금병법 · 전보의 무장 이름을 누르면 그 순간 툴팁 · 진형(전열·후열 피격률·특성) 반영 · 병종·장비·건물 기술·일반 병법·부상병은 제외(R-011~R-016)')),
-    h('div', { class: 'grid cols-2' }, deckEditor('A', redraw), deckEditor('B', redraw)),
-    h('div', { class: 'toolbar', style: { marginTop: '12px' } },
-      h('label', { class: 'sub' }, '판 수 ', h('input', { type: 'number', min: 20, max: 5000, step: 100, value: runs, style: { width: '90px' }, onchange: (e: Event) => { runs = Math.max(20, Math.min(5000, +(e.target as HTMLInputElement).value || 500)); } })),
-      h('label', { class: 'sub' }, '시드 ', h('input', { type: 'text', placeholder: '비우면 무작위', value: seed, style: { width: '120px' }, onchange: (e: Event) => { seed = (e.target as HTMLInputElement).value.trim(); } })),
-      h('button', { class: 'btn primary', disabled: !!busy, onclick: () => run('mc') }, busy === 'mc' ? '계산 중…' : '몬테카를로 실행'),
-      h('button', { class: 'btn', disabled: !!busy, onclick: () => run('battle') }, busy === 'battle' ? '진행 중…' : '한 판 전보 + 감사')),
-    busy === 'mc' ? h('div', { class: 'progress', style: { marginBottom: '12px' } }, h('div', { style: { width: `${progress * 100}%` } })) : null,
+  mount(root,
+    h('div', { class: 'section-head' }, h('h2', null, '시뮬레이션'), h('a', { class: 'sub', href: designLink('home'), target: '_blank' }, '계산 규칙은 설계서에서')),
+    h('div', { class: 'panel sim-setup' },
+      h('div', { class: 'form-row' }, h('label', null, '내 부대'), chooser('A', redraw)),
+      h('div', { class: 'form-row' }, h('label', null, '상대'), chooser('B', redraw)),
+      h('div', { class: 'form-row' }, h('label', null, '시뮬 횟수'),
+        h('div', { class: 'seg' }, [10, 20, 50, 100, 500].map(n => h('button', { class: runs === n ? 'on' : '', onclick: () => { runs = n; redraw(); } }, n)))),
+      h('details', { class: 'sub' }, h('summary', null, '고급 설정'),
+        h('label', null, '시드 ', h('input', { type: 'text', placeholder: '비우면 무작위', value: seed, style: { width: '140px' }, onchange: (e: Event) => { seed = (e.target as HTMLInputElement).value.trim(); } }))),
+      h('button', { class: 'btn primary run-btn', disabled: !!busy, onclick: () => run('mc') }, busy === 'mc' ? '계산 중…' : '시뮬 실행'),
+      busy === 'mc' ? h('div', { class: 'progress', style: { marginTop: '10px' } }, h('div', { style: { width: `${progress * 100}%` } })) : null,
+      h('div', { class: 'grid cols-2', style: { marginTop: '14px' } }, sideCard('A'), sideCard('B'))),
     error ? h('div', { class: 'notice', style: { color: 'var(--fail)' } }, error) : null,
     resultView(),
+    battleListView(run as any),
+    h('div', { class: 'battle-anchor' }),
+    busy === 'battle' ? h('div', { class: 'notice' }, '전보 불러오는 중…') : null,
     battle ? h('div', { style: { marginTop: '12px' } }, battleView()) : null,
   );
 }

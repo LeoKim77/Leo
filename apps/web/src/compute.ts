@@ -10,6 +10,7 @@ type Msg =
   | { type: 'init'; bundle: GameBundle }
   | { type: 'mc'; id: number; a: DeckSpec; b: DeckSpec; runs: number; seed: string }
   | { type: 'battle'; id: number; a: DeckSpec; b: DeckSpec; seed: string }
+  | { type: 'list'; id: number; a: DeckSpec; b: DeckSpec; count: number; seed: string }
   | { type: 'audit'; id: number; skillIds: string[] }
   | { type: 'verifyPlan'; id: number; owned: { generals: string[]; skills: string[] }; queue: any[] }
   | { type: 'recommend'; id: number; owned: { generals: string[]; skills: string[] }; count: number; allowGeneralSub: boolean; alternatives: any[]; validateRuns: number };
@@ -66,6 +67,16 @@ export function handle(m: Msg, post: Post) {
       const { trace, ...rest } = r;
       void trace;
       post({ id: m.id, type: 'result', result: { ...rest, audit } });
+    } else if (m.type === 'list') {
+      // 전투 목록: 판마다 시드를 따로 두어(시드#번호) 누르면 그 판 전보를 그대로 다시 볼 수 있게
+      const out: any[] = [];
+      for (let i = 0; i < m.count; i++) {
+        const seed = `${m.seed}#${i + 1}`;
+        const r: any = sim.simulate(m.a, m.b, { seed });
+        const left = (side: string) => (r.units || []).filter((u: any) => u.side === side).reduce((a: number, u: any) => a + Math.max(0, u.troops || 0), 0);
+        out.push({ no: i + 1, seed, winner: r.winner, turns: r.turns, rounds: r.rounds || 1, troopsA: left('A'), troopsB: left('B') });
+      }
+      post({ id: m.id, type: 'result', result: out });
     } else if (m.type === 'verifyPlan') {
       post({ id: m.id, type: 'result', result: planVerification(bundle, m.queue, m.owned) });
     } else if (m.type === 'recommend') {

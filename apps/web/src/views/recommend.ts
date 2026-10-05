@@ -4,6 +4,7 @@ import { app, loadUser, loadDecklab, generalById, skillById } from '../state.ts'
 import { hBars } from '../charts.ts';
 import { call } from '../sim-client.ts';
 import { setSimCustom } from './sim.ts';
+import { saveAsArmy } from './armies.ts';
 import type { RecommendResult, DeckPlan } from '@cheonha/recommender';
 
 let count = 5;
@@ -37,7 +38,8 @@ function deckCard(d: DeckPlan, i: number) {
       h('div', { class: 'sub' }, `메타 덱 상대 승률 (상대당 ${d.validation.runs}판) — 평균 ${pct(d.validation.avgWinRate)}`),
       hBars(d.validation.opponents.map(o => ({ label: o.name, value: o.winRate, display: pct(o.winRate), color: 'var(--side-a)' })), { max: 1, labelWidth: 110, width: 340 })) : null,
     h('div', { style: { marginTop: '8px' } },
-      h('button', { class: 'btn small', onclick: () => { setSimCustom('A', { name: `추천 ${d.name}`, formation: '기형진', units: d.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds, manualId: u.manualId })) }); location.hash = '#/sim'; } }, '시뮬레이션으로 보내기')));
+      h('button', { class: 'btn small', onclick: () => { setSimCustom('A', { name: `추천 ${d.name}`, formation: '기형진', units: d.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds, manualId: u.manualId })) }); location.hash = '#/sim'; } }, '시뮬레이션으로 보내기'),
+      h('button', { class: 'btn small', onclick: () => { const id = saveAsArmy({ name: `추천 ${d.name}`, formation: '기형진', units: d.units.map(u => ({ generalId: u.generalId, skillIds: u.skillIds, manualId: u.manualId })) }); if (id) location.hash = '#/armies'; } }, '내 부대로 저장')));
 }
 
 export function renderRecommend(root: HTMLElement) {

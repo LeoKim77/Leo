@@ -5,13 +5,15 @@ import { renderTierDecks } from './views/tierdecks.ts';
 import { renderRoster } from './views/roster.ts';
 import { renderSim } from './views/sim.ts';
 import { renderRecommend } from './views/recommend.ts';
+import { renderArmies } from './views/armies.ts';
 
-// 시뮬 사이트는 시뮬레이션·덱 추천만 (도감·감사·게시판은 기획 플랫폼 — site.designUrl)
+// 시뮬 사이트: 예전 시뮬(v1.12b) 화면 순서 — 보유 관리·부대 편성·티어덱·덱 추천·시뮬레이션 (도감·감사·게시판은 설계서 — site.designUrl)
 const TABS: Array<[string, string, (root: HTMLElement, p: URLSearchParams) => void]> = [
-  ['sim', '시뮬레이션', renderSim],
-  ['recommend', '덱 추천', renderRecommend],
-  ['roster', '보유', renderRoster],
+  ['roster', '보유 관리', renderRoster],
+  ['armies', '부대 편성', renderArmies],
   ['tier', '티어덱', renderTierDecks],
+  ['recommend', '덱 추천', renderRecommend],
+  ['sim', '시뮬레이션', renderSim],
 ];
 
 function route() {
