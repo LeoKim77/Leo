@@ -5,7 +5,14 @@ description: 천하결전 시뮬레이터에 새 시즌·무장·전법·밸런�
 
 # 시즌·데이터 업데이트
 
-입력 종류별로 처리하고, 마지막에 항상 **검증 → 게시판 → 배포**를 한다.
+**순서: 기획 플랫폼 → 시뮬.** 규칙·해석이 걸린 변경은 먼저 기획 플랫폼(`data/design`, MCP `design_*`)에 규정·게시글로 남기고, 시뮬 엔진은 그 규정만 구현한다(커밋·게시판에 규정 번호).
+입력 종류별로 처리하고, 마지막에 항상 **검증 → 게시판 → 배포(설계서 + 시뮬)**를 한다.
+
+## 0. 기획 플랫폼 (정본 규정)
+- 사용자가 규칙을 정해 주면: `design_resolve`(열린 질문에 답) 또는 `design_spec_update`(규정 수정, change·post 필수) + 필요하면 확정 규칙 R-번호(`confirmRule`).
+- 애매한 해석이 생기면 바로 확정하지 말고 `design_post` 로 **질문**(ask 에 물을 것) 또는 **검증요청**(녹화·캡처 필요)을 올리고, 시뮬은 잠정값으로 두되 규정 상태를 '잠정'으로.
+- 엔진을 고쳐 반영했으면 게시글을 `design_post_update` 로 '시뮬 반영'.
+- 페이지: `pnpm build:design` → `apps/design/dist/design.html` 을 `site.json` 의 `designUrl` 에 다시 게시. `docs/COMMON_RULES.md` 는 자동 생성(직접 고치지 않는다).
 
 ## 1. 입력 받기
 - **구글 스프레드시트 주소** (복사·다운로드가 막힌 공유 시트도 '보기'만 되면 됨):
@@ -24,7 +31,7 @@ description: 천하결전 시뮬레이터에 새 시즌·무장·전법·밸런�
 - 해외 자료만 있으면 `overseas_lookup` + `term_normalize` 로 한국판 용어로 바꾸고 출처를 남긴다. 한국판 원문이 나오면 덮어쓴다.
 
 ## 3. 전투 엔진에 반영 (핵심) — 전법 = 함수 파일
-전법·고유 전법은 하나에 파일 하나: `packages/engine/src/skills/<id>.ts` (**파일이 정본**). 공용 규칙은 `docs/COMMON_RULES.md`·`data/common/confirmed-rules.json`.
+전법·고유 전법은 하나에 파일 하나: `packages/engine/src/skills/<id>.ts` (**파일이 정본**). 공용 규칙은 기획 플랫폼 규정 `data/design/spec.json`(사본 `docs/COMMON_RULES.md`)·`data/common/confirmed-rules.json`.
 1. **새 전법**: 데이터(`data/kr`·시즌 층·`data/patches`)에 원문이 들어간 뒤 `pnpm gen:skills` → 함수 파일이 없는 전법만 뼈대가 생긴다
    (JSON 원천 `data/engine/authored.json`·`skills.json`·`overrides.json` 에 정의가 있으면 그걸로, 없으면 `def: null`).
 2. **원문 순서대로 run(c) 작성**: 절마다 원문을 `// 「…」` 주석으로 달고 부품을 부른다.
@@ -41,7 +48,7 @@ description: 천하결전 시뮬레이터에 새 시즌·무장·전법·밸런�
 MCP `board_post` (분류: 신규 무장/신규 전법/밸런스 조정/티어덱/전투 규칙/데이터 수정/엔진/기타). 본문에 무엇이 바뀌었는지, 근사·미지원 항목, 감사 결과를 적는다. `files` 는 생략하면 미커밋 변경 파일이 자동으로 들어간다. 커밋 후에는 해당 글에 `commit` 을 채운다.
 
 ## 5. 배포
-1. `pnpm build:standalone`
-2. Artifact 도구로 `apps/web/dist-standalone/muhanmutu.artifact.html` 을 **기존 주소(`data/common/site.json` 의 artifactUrl)에 다시 게시**한다(새 주소를 만들지 않는다).
+1. `pnpm build:design` → `apps/design/dist/design.html` 을 **`site.json` 의 designUrl 에 다시 게시**(설계서: 규정·도감·감사·변경 기록).
+2. `pnpm build:standalone` → `apps/web/dist-standalone/muhanmutu.artifact.html` 을 **`site.json` 의 artifactUrl 에 다시 게시**(시뮬 사이트: 시뮬레이션·덱 추천·보유·티어덱만). 새 주소를 만들지 않는다.
 3. 사용자가 원하면 `muhanmutu.html` 도 파일로 보낸다(로컬 실행용).
 4. 커밋·푸시.

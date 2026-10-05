@@ -1,0 +1,452 @@
+<title>천하결전 전투 설계서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 레이아웃: 왼쪽 목차(카테고리) + 오른쪽 본문(규정 → 자료 → 게시판). 좁은 화면에선 목차가 위쪽 선택 상자로 바뀐다 */
+:root {
+  --bg: #eef1ef; --panel: #ffffff; --fg: #1a201e; --muted: #5a6561; --line: #d3dbd7; --soft: #f6f8f7;
+  --accent: #27695d; --accent-soft: #dcebe6;
+  --ok: #2c7443; --ok-bg: #e2f1e6; --rec: #2b5f9e; --rec-bg: #e2ebf7; --prov: #9a6110; --prov-bg: #f7ecd9;
+  --need: #a8352a; --need-bg: #f7e1de; --ref: #66706c; --ref-bg: #eceeed;
+  --f-display: "Noto Serif KR", "Nanum Myeongjo", serif;
+  --f-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111614; --panel: #181e1c; --fg: #e2e8e5; --muted: #98a39e; --line: #2c3532; --soft: #1d2421;
+  --accent: #6cbcaa; --accent-soft: #1f3530;
+  --ok: #7fcf96; --ok-bg: #1d3325; --rec: #8db6ec; --rec-bg: #1c2a3d; --prov: #e3b062; --prov-bg: #3a2c16;
+  --need: #f0968b; --need-bg: #3d211d; --ref: #a6b0ac; --ref-bg: #252c29; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #111614; --panel: #181e1c; --fg: #e2e8e5; --muted: #98a39e; --line: #2c3532; --soft: #1d2421;
+  --accent: #6cbcaa; --accent-soft: #1f3530;
+  --ok: #7fcf96; --ok-bg: #1d3325; --rec: #8db6ec; --rec-bg: #1c2a3d; --prov: #e3b062; --prov-bg: #3a2c16;
+  --need: #f0968b; --need-bg: #3d211d; --ref: #a6b0ac; --ref-bg: #252c29; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 15px; line-height: 1.6; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.shell { display: grid; grid-template-columns: 260px minmax(0, 1fr); min-height: 100vh; }
+nav.side { border-right: 1px solid var(--line); background: var(--panel); padding: 20px 14px; position: sticky; top: env(safe-area-inset-top, 0px); height: 100vh; overflow-y: auto; }
+.brand { font-family: var(--f-display); font-size: 19px; font-weight: 700; line-height: 1.3; margin: 0 0 4px; }
+.brand-sub { color: var(--muted); font-size: 12.5px; margin-bottom: 16px; }
+.nav-group { font-size: 11.5px; letter-spacing: .06em; color: var(--muted); margin: 16px 6px 6px; }
+.nav-link { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 6px; color: var(--fg); text-decoration: none; font-size: 14px; }
+.nav-link:hover { background: var(--soft); }
+.nav-link.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.nav-count { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); display: flex; gap: 6px; }
+.nav-count .open { color: var(--need); }
+.mobile-nav { display: none; }
+main { padding-block: 28px 64px; padding-inline: 32px; max-width: 1180px; width: 100%; min-width: 0; }
+h1 { font-family: var(--f-display); font-size: 28px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; }
+h2 { font-family: var(--f-display); font-size: 20px; margin: 36px 0 12px; text-wrap: balance; }
+h3 { font-size: 15px; margin: 22px 0 8px; }
+.lead { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
+.meta { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.stack { display: flex; flex-direction: column; gap: 10px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; border: 1px solid transparent; }
+.st-확정, .st-ok { color: var(--ok); background: var(--ok-bg); }
+.st-녹화확인 { color: var(--rec); background: var(--rec-bg); }
+.st-잠정, .st-approx { color: var(--prov); background: var(--prov-bg); }
+.st-결정필요, .st-missing, .st-unsupported { color: var(--need); background: var(--need-bg); }
+.st-참고, .st-note, .st-special { color: var(--ref); background: var(--ref-bg); }
+.t-공지 { color: var(--accent); border-color: var(--accent); }
+.t-결정 { color: var(--ok); border-color: var(--ok); }
+.t-질문 { color: var(--need); border-color: var(--need); }
+.t-검증요청 { color: var(--rec); border-color: var(--rec); }
+.t-변경 { color: var(--prov); border-color: var(--prov); }
+.p-열림 { color: var(--need); background: var(--need-bg); }
+.p-답변됨 { color: var(--rec); background: var(--rec-bg); }
+.p-시뮬반영, .p-닫힘 { color: var(--ok); background: var(--ok-bg); }
+.ref { font-family: var(--f-mono); font-size: 12px; color: var(--muted); background: var(--soft); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; text-decoration: none; }
+a.ref:hover { color: var(--accent); border-color: var(--accent); }
+/* 규정 목록 */
+.spec-group { font-size: 12.5px; color: var(--muted); letter-spacing: .04em; margin: 18px 0 6px; }
+.spec { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 4px 14px; padding: 12px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.spec + .spec { margin-top: 6px; }
+.spec-id { font-family: var(--f-mono); font-size: 13px; color: var(--muted); padding-top: 1px; }
+.spec-title { font-weight: 600; }
+.spec-rule { grid-column: 2 / 4; white-space: pre-wrap; }
+.spec-foot { grid-column: 2 / 4; font-size: 13px; color: var(--muted); }
+.spec-foot details summary { cursor: pointer; }
+/* 상태 막대: 구간마다 개수를 늘 표시 */
+.bar { display: flex; height: 26px; border-radius: 6px; overflow: hidden; gap: 2px; background: var(--panel); border: 1px solid var(--line); padding: 2px; }
+.bar > div { display: flex; align-items: center; justify-content: center; font-family: var(--f-mono); font-size: 12px; font-weight: 600; min-width: 26px; border-radius: 4px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+/* 게시판 */
+.post { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+.post-title { font-weight: 600; font-size: 15.5px; }
+.post-body { white-space: pre-wrap; margin: 8px 0 0; max-width: 78ch; }
+.ask { margin: 10px 0 0; padding: 10px 12px; border-left: 3px solid var(--need); background: var(--need-bg); border-radius: 0 6px 6px 0; }
+.ask ol { margin: 4px 0 0; padding-left: 20px; }
+.answer { margin: 10px 0 0; padding: 10px 12px; border-left: 3px solid var(--ok); background: var(--ok-bg); border-radius: 0 6px 6px 0; white-space: pre-wrap; }
+/* 표 */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; color: var(--muted); font-weight: 600; background: var(--soft); position: sticky; top: 0; white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+td.num, th.num { text-align: right; font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mono { font-family: var(--f-mono); font-size: 12.5px; }
+.dim { color: var(--muted); }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+input[type=search], select { font: inherit; font-size: 14px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--fg); min-width: 0; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg button { font: inherit; font-size: 13px; padding: 5px 10px; border: 0; background: var(--panel); color: var(--fg); cursor: pointer; }
+.seg button.on { background: var(--accent); color: var(--panel); }
+details.item { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+details.item + details.item { margin-top: 6px; }
+details.item summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.clause { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px; padding: 4px 0; font-size: 13.5px; }
+/* 개요: 전투 흐름 */
+.flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; counter-reset: step; }
+.step { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.step-no { font-family: var(--f-mono); font-size: 12px; color: var(--accent); }
+.step-title { font-weight: 600; margin: 2px 0 4px; }
+.step ul { margin: 0; padding-left: 18px; font-size: 13.5px; color: var(--muted); }
+.formula { font-family: var(--f-mono); font-size: 13px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow-x: auto; white-space: pre; }
+.empty { color: var(--muted); padding: 14px; border: 1px dashed var(--line); border-radius: 8px; }
+@media (max-width: 860px) {
+  .shell { grid-template-columns: minmax(0, 1fr); }
+  nav.side { display: none; }
+  .mobile-nav { display: flex; flex-direction: column; gap: 6px; padding-block: 14px 0; padding-inline: 16px; }
+  .mobile-nav select { width: 100%; }
+  main { padding-inline: 16px; }
+  .spec { grid-template-columns: minmax(0, 1fr); }
+  .spec-rule, .spec-foot { grid-column: 1; }
+  h1 { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="shell">
+  <nav class="side" id="side" aria-label="카테고리"></nav>
+  <div style="min-width:0">
+    <div class="mobile-nav"><div class="brand">천하결전 전투 설계서</div><label class="meta" for="mnav">카테고리</label><select id="mnav"></select></div>
+    <main id="main"></main>
+  </div>
+</div>
+
+<script>
+const D = /*__DESIGN_DATA__*/null;
+const STATUS = ['확정', '녹화확인', '잠정', '결정필요', '참고'];
+const STATUS_LABEL = { 확정: '확정', 녹화확인: '녹화 확인', 잠정: '잠정', 결정필요: '결정 필요', 참고: '참고' };
+const CLAUSE_LABEL = { ok: '원문대로', approx: '근사', missing: '미반영', note: '설명', special: '특수', unsupported: '미지원' };
+const POST_TYPES = ['공지', '결정', '질문', '검증요청', '변경'];
+
+function h(tag, attrs, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k === 'class') el.className = v;
+    else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else if (k === 'html') el.innerHTML = v;
+    else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (const c of kids.flat(Infinity)) if (c != null && c !== false) el.append(c.nodeType ? c : String(c));
+  return el;
+}
+const catById = Object.fromEntries(D.categories.map(c => [c.id, c]));
+const specById = Object.fromEntries(D.spec.map(s => [s.id, s]));
+const specOf = id => D.spec.filter(s => s.cat === id);
+const postsOf = id => D.posts.filter(p => p.cat === id).sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id));
+const isOpen = p => p.status === '열림';
+const chip = (cls, txt) => h('span', { class: `chip ${cls}` }, txt);
+const stChip = s => chip(`st-${s}`, STATUS_LABEL[s] || s);
+const specRef = id => specById[id] ? h('a', { class: 'ref', href: `#c-${specById[id].cat}`, title: specById[id].title }, id) : h('span', { class: 'ref' }, id);
+const ruleRef = r => h('a', { class: 'ref', href: '#c-decisions', title: (D.rules.find(x => x.id === r) || {}).statement || '' }, r);
+
+function statusBar(items) {
+  const n = s => items.filter(x => x.status === s).length;
+  const total = items.length || 1;
+  const segs = STATUS.filter(s => n(s));
+  return h('div', null,
+    h('div', { class: 'bar', role: 'img', 'aria-label': segs.map(s => `${STATUS_LABEL[s]} ${n(s)}`).join(', ') },
+      segs.map(s => h('div', { class: `st-${s}`, style: `flex:${n(s) / total}` }, n(s)))),
+    h('div', { class: 'legend' }, segs.map(s => h('span', null, stChip(s), ` ${n(s)}개`))));
+}
+
+function renderSpec(items) {
+  if (!items.length) return h('div', { class: 'empty' }, '이 카테고리에 규정이 아직 없습니다. 대화에서 정하면 여기에 추가됩니다.');
+  const groups = [...new Set(items.map(s => s.group))];
+  return h('div', null, groups.map(g => [
+    h('div', { class: 'spec-group' }, g),
+    items.filter(s => s.group === g).map(s => h('div', { class: 'spec', id: `s-${s.id}` },
+      h('div', { class: 'spec-id' }, s.id),
+      h('div', { class: 'spec-title' }, s.title),
+      h('div', null, stChip(s.status)),
+      h('div', { class: 'spec-rule' }, s.rule),
+      (s.basis?.length || s.note || s.history?.length > 1) ? h('div', { class: 'spec-foot' },
+        h('div', { class: 'row' }, (s.basis || []).map(ruleRef), s.note && s.note !== s.basis?.join('·') ? h('span', null, s.note) : null),
+        s.history?.length > 1 ? h('details', null, h('summary', null, `변경 ${s.history.length - 1}건`), h('ul', null, s.history.map(x => h('li', null, `${x.date} ${x.change}${x.post ? ` (${x.post})` : ''}`)))) : null) : null)),
+  ]));
+}
+
+function renderPost(p) {
+  return h('article', { class: 'post', id: `p-${p.id}` },
+    h('div', { class: 'row' }, chip(`t-${p.type}`, p.type), chip(`p-${p.status.replace(/\s/g, '')}`, p.status),
+      h('span', { class: 'meta' }, `${p.id} · ${p.date} · ${catById[p.cat]?.title || p.cat}`)),
+    h('div', { class: 'post-title', style: 'margin-top:6px' }, p.title),
+    h('div', { class: 'post-body' }, p.body),
+    p.ask?.length ? h('div', { class: 'ask' }, h('strong', null, isOpen(p) ? '답변이 필요한 것' : '물었던 것'), h('ol', null, p.ask.map(a => h('li', null, a)))) : null,
+    p.answer ? h('div', { class: 'answer' }, h('strong', null, '결정 '), p.answer) : null,
+    (p.specIds?.length || p.rules?.length) ? h('div', { class: 'row', style: 'margin-top:10px' }, h('span', { class: 'meta' }, '관련'), (p.specIds || []).map(specRef), (p.rules || []).map(ruleRef)) : null);
+}
+
+function postBoard(posts, opts = {}) {
+  const wrap = h('div');
+  let type = '전체', onlyOpen = !!opts.onlyOpen;
+  const draw = () => {
+    const list = posts.filter(p => (type === '전체' || p.type === type) && (!onlyOpen || isOpen(p)));
+    wrap.replaceChildren(
+      h('div', { class: 'toolbar' },
+        h('div', { class: 'seg', role: 'group', 'aria-label': '게시글 종류' }, ['전체', ...POST_TYPES].map(t => h('button', { class: t === type ? 'on' : '', onclick: () => { type = t; draw(); } }, t))),
+        h('div', { class: 'seg' }, h('button', { class: onlyOpen ? 'on' : '', onclick: () => { onlyOpen = !onlyOpen; draw(); } }, '열린 글만'))),
+      list.length ? h('div', { class: 'stack' }, list.map(renderPost)) : h('div', { class: 'empty' }, '해당하는 게시글이 없습니다.'));
+  };
+  draw();
+  return wrap;
+}
+
+function table(cols, rows, opts = {}) {
+  return h('div', { class: 'table-wrap', style: opts.maxH ? `max-height:${opts.maxH}px` : null },
+    h('table', null, h('thead', null, h('tr', null, cols.map(c => h('th', { class: c.num ? 'num' : '' }, c.label)))),
+      h('tbody', null, rows.map(r => h('tr', null, cols.map(c => h('td', { class: c.num ? 'num' : (c.mono ? 'mono' : '') }, c.get(r))))))));
+}
+
+function searchable(placeholder, render, extra) {
+  const box = h('div');
+  const input = h('input', { type: 'search', placeholder, id: `q-${placeholder.length}`, 'aria-label': placeholder });
+  const out = h('div');
+  const go = () => out.replaceChildren(render(input.value.trim()));
+  input.addEventListener('input', go);
+  box.append(h('div', { class: 'toolbar' }, input, extra ? extra(go) : null), out);
+  go();
+  return box;
+}
+
+/* ---------- 카테고리별 자료 ---------- */
+const glossaryOf = cats => D.game.glossary.filter(g => cats.includes(g.category));
+const glossTable = cats => table([{ label: '분류', get: g => g.category }, { label: '용어', get: g => h('strong', null, g.term) }, { label: '게임 설명', get: g => g.desc }], glossaryOf(cats));
+const clauseSummary = cls => { const c = {}; cls.forEach(x => { c[x.status] = (c[x.status] || 0) + 1; }); return h('span', { class: 'row' }, Object.entries(c).map(([k, v]) => chip(`st-${k}`, `${CLAUSE_LABEL[k] || k} ${v}`))); };
+
+const DATA_VIEWS = {
+  overview() {
+    const steps = [
+      ['편성', ['무장 3명 · 전법 2칸 · 금병법 1개 · 진형', '무장·전법 중복 불가']],
+      ['포진 (0턴)', ['진영 보너스 → 진형 → 인연', '전투 시작 지휘·패시브(배치 순)', '스탯 확정']],
+      ['턴 시작', ['행동 순서 결정(선공 ±35)', '짐독 피해 → 턴 시작 전법']],
+      ['무장 행동 (순서대로)', ['지속 −1 → 지휘·패시브', '준비 전법 → 액티브(고유→1→2)', '일반 공격 → 연타·반격 → 추격']],
+      ['턴 종료', ['턴 종료 전법(그 턴 행동 순)', '전사자 지휘 효과 제거', '전멸 판정']],
+      ['8턴 뒤', ['남은 무장끼리 재교전(최대 10차)', '동시 전멸은 무승부']],
+    ];
+    const dmg = ['기초(병기: 무력·통솔 / 책략: 지력)', '주는·받는 증감 배수', '허약 ×0.3', '회심·묘책 ×1.5', '난수 ±1%', '피신 → 저항 → 방어', '대신 받기 → 불굴', '병력 차감 → 흡혈'];
+    const byCat = D.categories.filter(c => specOf(c.id).length);
+    const open = D.posts.filter(isOpen);
+    return h('div', null,
+      h('h2', null, '전투 한 판의 흐름'),
+      h('div', { class: 'flow' }, steps.map(([t, xs], i) => h('div', { class: 'step' }, h('div', { class: 'step-no' }, `단계 ${i + 1}`), h('div', { class: 'step-title' }, t), h('ul', null, xs.map(x => h('li', null, x)))))),
+      h('h2', null, '피해 한 건의 계산 순서'),
+      h('div', { class: 'flow' }, dmg.map((t, i) => h('div', { class: 'step' }, h('div', { class: 'step-no' }, `${i + 1}`), h('div', { class: 'step-title', style: 'font-weight:500' }, t)))),
+      h('h2', null, '카테고리별 규정 상태'),
+      table([{ label: '카테고리', get: c => h('a', { href: `#c-${c.id}` }, c.title) },
+        ...STATUS.map(s => ({ label: STATUS_LABEL[s], num: true, get: c => specOf(c.id).filter(x => x.status === s).length || '·' })),
+        { label: '열린 글', num: true, get: c => postsOf(c.id).filter(isOpen).length || '·' }], byCat),
+      h('h2', null, `답변·녹화가 필요한 글 ${open.length}건`),
+      h('div', { class: 'stack' }, open.map(p => h('a', { href: `#c-${p.cat}`, class: 'post', style: 'text-decoration:none;color:inherit;display:block' },
+        h('div', { class: 'row' }, chip(`t-${p.type}`, p.type), h('span', { class: 'meta' }, `${p.id} · ${catById[p.cat]?.title}`)), h('div', { class: 'post-title', style: 'margin-top:4px' }, p.title)))));
+  },
+  generals() {
+    const g = D.game.generals;
+    return h('div', null,
+      h('h3', null, '능력치 4종 (게임 용어 설명)'), glossTable(['속성']),
+      h('h3', null, `무장 ${g.length}명 — 50레벨 능력치`),
+      searchable('무장·진영·병종·고유 전법 검색', q => table([
+        { label: '무장', get: x => h('strong', null, x.name) }, { label: '진영', get: x => x.faction }, { label: '병종', get: x => x.unitType === '미확인' ? chip('st-결정필요', '미확인') : x.unitType },
+        { label: '성향', get: x => x.row === '미확인' ? chip('st-결정필요', '미확인') : x.row }, { label: '시즌', get: x => x.season },
+        { label: '무력', num: true, get: x => x.stats['무력'] }, { label: '지력', num: true, get: x => x.stats['지력'] }, { label: '통솔', num: true, get: x => x.stats['통솔'] }, { label: '선공', num: true, get: x => x.stats['선공'] },
+        { label: '고유 전법', get: x => x.unique }, { label: '금병법', get: x => x.manuals.map(m => m.name).join(', ') || '—' },
+      ], g.filter(x => !q || [x.name, x.faction, x.unitType, x.unique, x.row].join(' ').includes(q)), { maxH: 560 })));
+  },
+  composition() {
+    return h('div', null, h('h3', null, '조합 용어'), glossTable(['조합']),
+      h('h3', null, `인연 ${D.game.bonds.length}개`),
+      searchable('인연·무장 검색', q => table([{ label: '인연', get: b => h('strong', null, b.name) }, { label: '필요', num: true, get: b => `${b.required}명` }, { label: '무장', get: b => b.members.join(', ') }, { label: '효과', get: b => b.text }],
+        D.game.bonds.filter(b => !q || [b.name, ...b.members, b.text].join(' ').includes(q)), { maxH: 480 })));
+  },
+  formation() {
+    const pct = v => `${Math.round(v * 100)}%`;
+    return h('div', null, h('h3', null, '진형 8종 (2026-10-03 진형 소개 화면)'),
+      table([{ label: '진형', get: f => h('strong', null, f.name) }, { label: '전열 피격', num: true, get: f => pct(f.hitRate.front) }, { label: '중열 피격', num: true, get: f => pct(f.hitRate.mid) }, { label: '후열 피격', num: true, get: f => pct(f.hitRate.back) }, { label: '특성', get: f => f.traits.join(' · ') }], D.game.formations));
+  },
+  order() {
+    const rows = [0, 10, 20, 30, 35, 40, 50, 60, 70, 71].map(d => ({ d, p: d > 70 ? 1 : 1 - (70 - d) ** 2 / 9800 }));
+    return h('div', null, h('h3', null, '선공 차이별 높은 쪽이 먼저 행동할 확률 (E4: 양쪽 ±35 균등 난수)'),
+      table([{ label: '선공 차이', num: true, get: r => r.d > 70 ? '70 초과' : r.d }, { label: '먼저 행동할 확률', num: true, get: r => `${(r.p * 100).toFixed(1)}%` }], rows));
+  },
+  'skill-system'() {
+    const cnt = {}; D.game.skills.forEach(s => { const k = `${s.isUnique ? '고유 전법' : '전법'}|${s.kind}`; cnt[k] = (cnt[k] || 0) + 1; });
+    return h('div', null, h('h3', null, '전법 용어'), glossTable(['전법']),
+      h('h3', null, '종류별 개수'), table([{ label: '구분', get: r => r[0].split('|')[0] }, { label: '종류', get: r => r[0].split('|')[1] }, { label: '개수', num: true, get: r => r[1] }], Object.entries(cnt).sort()));
+  },
+  damage() {
+    const c = D.verification.coeffs;
+    const rows = [['P0', '병기 기초 상수'], ['Pa', '병기: 무력 계수'], ['Pd', '병기: 피격자 통솔 경감 계수'], ['betaP', '병기: 병력 지수'], ['Ma', '책략: 지력 계수'], ['betaM', '책략: 병력 지수'],
+      ['critMult', '회심·묘책 배율'], ['baseCrit', '기본 회심·묘책 확률'], ['damageVariance', '피해 난수 폭'], ['counterRatio', '반격 기본 배율'], ['statScaleWeight', '"영향 받음" 스탯 1당 가중치']];
+    return h('div', null,
+      h('h3', null, '기초식'),
+      h('div', { class: 'formula' }, `병기 = 배율 × (${c.P0} + ${c.Pa}×무력 − ${c.Pd}×통솔×(1−관통)) × (병력/10000)^${c.betaP}\n책략 = 배율 × ${c.Ma} × 지력 × (병력/10000)^${c.betaM}\n최종 = 기초 × 주는 쪽 배수 × 받는 쪽 배수 × (허약 0.3) × (회심·묘책 ${c.critMult}) × (1 ± ${c.damageVariance})`),
+      h('h3', null, '피해 용어'), glossTable(['특수 피해 유형']),
+      h('h3', null, '계수 (엔진 현재값)'), table([{ label: '이름', mono: true, get: r => r[0] }, { label: '뜻', get: r => r[1] }, { label: '값', num: true, get: r => String(c[r[0]]) }], rows));
+  },
+  heal() {
+    return h('div', null, h('h3', null, '회복식'), h('div', { class: 'formula' }, '회복 = 시전자 지력 × (치유율 + (지력 − 100) × 0.12%p) × 0.40 × (1 + 주는 회복) × (1 + 받는 회복)\n상한: 잃은 병력까지 · 군량 고갈: 받는 회복 −70%'));
+  },
+  effects() {
+    return h('div', null, h('h3', null, '버프 용어'), glossTable(['기본버프', '기본 디버프', '디버프 상태']),
+      h('h3', null, `증감 종류 ${D.catalog.mods.length}개 (전법·금병법·진형 정의에서 쓰는 이름)`),
+      searchable('증감 이름 검색', q => table([{ label: '증감', mono: true, get: m => m.key }, { label: '사용', num: true, get: m => m.n }, { label: '쓰는 곳(일부)', get: m => m.where.join(', ') }],
+        D.catalog.mods.filter(m => !q || m.key.includes(q) || m.where.join(' ').includes(q)), { maxH: 520 })));
+  },
+  status() {
+    return h('div', null, h('h3', null, '상태 용어 (게임 설명)'), glossTable(['제어이상상태디버프', '비제어이상상태디버프', '기능성버프']),
+      h('h3', null, `전법이 부여하는 상태 ${D.catalog.statuses.length}종`),
+      table([{ label: '상태', get: m => h('strong', null, m.key) }, { label: '사용', num: true, get: m => m.n }, { label: '쓰는 전법(일부)', get: m => m.where.join(', ') }], D.catalog.statuses, { maxH: 520 }));
+  },
+  skills() {
+    let kind = '전체', uniq = '전체';
+    return searchable('전법 이름·원문·무장 검색', q => {
+      const list = D.game.skills.filter(s => (kind === '전체' || s.kind === kind) && (uniq === '전체' || (uniq === '고유' ? s.isUnique : !s.isUnique))
+        && (!q || [s.name, s.text, s.owner || ''].join(' ').includes(q)));
+      return h('div', null, h('div', { class: 'meta', style: 'margin-bottom:8px' }, `${list.length}개`), list.map(s => h('details', { class: 'item' },
+        h('summary', null, h('strong', null, s.name), chip('t-공지', s.kind), s.isUnique ? h('span', { class: 'dim' }, `고유 · ${s.owner || ''}`) : null, s.proc ? h('span', { class: 'meta' }, s.proc) : null, clauseSummary(s.clauses)),
+        h('p', { style: 'margin:8px 0' }, s.text),
+        s.clauses.map(c => h('div', { class: 'clause' }, chip(`st-${c.status}`, CLAUSE_LABEL[c.status] || c.status), h('div', null, c.text, c.reviewed ? h('div', { class: 'dim', style: 'font-size:12.5px' }, c.reviewed) : null))),
+        s.engineNote ? h('p', { class: 'dim' }, `엔진 메모: ${s.engineNote}`) : null,
+        s.revised.length ? h('div', { class: 'dim', style: 'font-size:12.5px;margin-top:6px' }, h('strong', null, '원문 대조 수정'), h('ul', null, s.revised.map(r => h('li', null, r)))) : null)));
+    }, go => [
+      h('select', { 'aria-label': '종류', id: 'sk-kind', onchange: e => { kind = e.target.value; go(); } }, ['전체', '지휘', '패시브', '액티브', '추격'].map(k => h('option', { value: k }, k === '전체' ? '종류 전체' : k))),
+      h('select', { 'aria-label': '구분', id: 'sk-uniq', onchange: e => { uniq = e.target.value; go(); } }, ['전체', '고유', '전법'].map(k => h('option', { value: k }, k === '전체' ? '고유+전법' : k === '고유' ? '고유 전법' : '전법'))),
+    ]);
+  },
+  manuals() {
+    return searchable('금병법·무장 검색', q => {
+      const list = D.game.manuals.filter(m => !q || [m.general, m.name, m.text].join(' ').includes(q));
+      return h('div', null, h('div', { class: 'meta', style: 'margin-bottom:8px' }, `${list.length}개`), list.map(m => h('details', { class: 'item' },
+        h('summary', null, h('strong', null, `${m.general}〈${m.name}〉`), chip(`st-${m.status}`, CLAUSE_LABEL[m.status] || (m.status === 'missing' ? '정의 없음' : m.status)), m.clauses.length ? clauseSummary(m.clauses) : null),
+        h('p', { style: 'margin:8px 0' }, m.text || '(원문 미확인)'),
+        m.clauses.map(c => h('div', { class: 'clause' }, chip(`st-${c.status}`, CLAUSE_LABEL[c.status] || c.status), h('div', null, c.text))),
+        m.note ? h('p', { class: 'dim' }, `엔진 메모: ${m.note}`) : null,
+        m.revised.length ? h('div', { class: 'dim', style: 'font-size:12.5px' }, h('strong', null, '원문 대조 수정'), h('ul', null, m.revised.map(r => h('li', null, r)))) : null)));
+    });
+  },
+  verification() {
+    const V = D.verification;
+    const qOpen = V.queue.filter(x => !['verified', 'resolved', 'done'].includes(x.status));
+    const kinds = {}; qOpen.forEach(x => { kinds[x.kind] = (kinds[x.kind] || 0) + 1; });
+    return h('div', null,
+      V.audit ? h('div', null, h('h3', null, `규칙 감사 (${V.audit.generatedAt.slice(0, 10)})`),
+        table([{ label: '결과', get: r => r[0] }, { label: '개수', num: true, get: r => r[1] }], [['통과', V.audit.summary.pass], ['경고', V.audit.summary.warn], ['실패', V.audit.summary.fail], ['생략', V.audit.summary.skip]])) : null,
+      h('h3', null, '전보 역재현 결과'),
+      V.replays.map(r => h('details', { class: 'item' }, h('summary', null, h('strong', null, r.id), h('span', { class: 'meta' }, `표본 ${r.samples}건 · 오차 RMS ${r.rms ?? '—'}%`)),
+        table([{ label: '턴', num: true, get: x => x.turn }, { label: '항목', get: x => x.label }, { label: '실측', num: true, get: x => x.observed }, { label: '엔진', num: true, get: x => x.predicted }, { label: '오차', num: true, get: x => `${x.errPct > 0 ? '+' : ''}${x.errPct}%` }], r.rows, { maxH: 420 }))),
+      h('h3', null, `엔진 가정 (녹화로 확인할 것) ${V.assumptions.length}건`),
+      table([{ label: '항목', get: a => h('strong', null, a.title) }, { label: '지금 가정', get: a => a.assumption }, { label: '확인 방법', get: a => a.howToVerify }], V.assumptions, { maxH: 520 }),
+      h('h3', null, `녹화 계획 ${V.plan.battles.length}판 (${V.plan.date})`),
+      h('p', { class: 'lead' }, V.plan.note),
+      V.plan.battles.map(b => h('details', { class: 'item' }, h('summary', null, h('strong', null, `${b.no}판 ${b.title}`), h('span', { class: 'dim' }, `${b.formation} · ${b.units.map(u => u[0]).join(' · ')}`)),
+        h('ul', null, b.units.map(u => h('li', null, `${u[0]} — ${(u[1] || []).join(', ')}${u[2] ? ` · 금병법 ${u[2]}` : ''}`))),
+        h('strong', null, '확인할 것'), h('ul', null, (b.checks || []).map(c => h('li', null, c))))),
+      h('h3', null, `검증 대기열 ${qOpen.length}건 (종류별)`),
+      table([{ label: '종류', get: r => r[0] }, { label: '대기', num: true, get: r => r[1] }], Object.entries(kinds).sort((a, b) => b[1] - a[1])));
+  },
+  decisions() {
+    return searchable('확정 규칙 검색', q => table([{ label: '번호', mono: true, get: r => r.id }, { label: '날짜', mono: true, get: r => r.date }, { label: '주제', get: r => h('strong', null, r.topic) }, { label: '내용', get: r => r.statement }],
+      [...D.rules].reverse().filter(r => !q || [r.id, r.topic, r.statement].join(' ').includes(q)), { maxH: 640 }));
+  },
+  log() {
+    return h('div', null, h('h3', null, `변경 게시판 ${D.changelog.length}건`),
+      searchable('변경 기록 검색', q => h('div', null, D.changelog.filter(c => !q || [c.title, c.body].join(' ').includes(q)).slice(0, 80).map(c => h('details', { class: 'item' },
+        h('summary', null, h('span', { class: 'meta' }, c.date), chip('t-변경', c.category), h('strong', null, c.title), c.commit ? h('span', { class: 'meta' }, c.commit.slice(0, 8)) : null),
+        h('div', { class: 'post-body' }, c.body), c.files?.length ? h('div', { class: 'meta', style: 'margin-top:6px' }, c.files.join(' · ')) : null)))),
+      h('h3', null, `엔진 수정 내역 ${D.engineFixes.length}건`),
+      table([{ label: '번호', mono: true, get: f => f.id }, { label: '날짜', mono: true, get: f => f.date }, { label: '제목', get: f => h('strong', null, f.title) }, { label: '내용', get: f => f.detail }], [...D.engineFixes].sort((a, b) => b.date.localeCompare(a.date)), { maxH: 560 }));
+  },
+};
+
+/* ---------- 화면 ---------- */
+function renderNav(active) {
+  const side = document.getElementById('side');
+  const openAll = D.posts.filter(isOpen).length;
+  const link = (href, label, right, on) => h('a', { class: `nav-link${on ? ' active' : ''}`, href }, h('span', null, label), right);
+  side.replaceChildren(
+    h('div', { class: 'brand' }, '천하결전 전투 설계서'),
+    h('div', { class: 'brand-sub' }, `시뮬레이션 기획·규정 · ${D.builtAt.slice(0, 10)}`),
+    link('#home', '처음 · 전체 흐름', null, active === 'home'),
+    link('#open', '답변·녹화 필요', h('span', { class: 'nav-count' }, h('span', { class: 'open' }, openAll)), active === 'open'),
+    link('#board', '전체 게시판', h('span', { class: 'nav-count' }, D.posts.length), active === 'board'),
+    h('div', { class: 'nav-group' }, '카테고리'),
+    ...D.categories.filter(c => c.id !== 'overview').map(c => {
+      const n = specOf(c.id).length, o = postsOf(c.id).filter(isOpen).length;
+      return link(`#c-${c.id}`, c.title, h('span', { class: 'nav-count' }, n ? h('span', null, n) : null, o ? h('span', { class: 'open' }, `?${o}`) : null), active === c.id);
+    }));
+  const m = document.getElementById('mnav');
+  m.replaceChildren(h('option', { value: 'home' }, '처음 · 전체 흐름'), h('option', { value: 'open' }, `답변·녹화 필요 (${openAll})`), h('option', { value: 'board' }, '전체 게시판'),
+    ...D.categories.filter(c => c.id !== 'overview').map(c => h('option', { value: `c-${c.id}` }, c.title)));
+  m.value = active === 'home' || active === 'open' || active === 'board' ? active : `c-${active}`;
+  m.onchange = () => { location.hash = m.value; };
+}
+
+function renderCategory(id) {
+  const c = catById[id];
+  const spec = specOf(id), posts = postsOf(id);
+  const view = DATA_VIEWS[id];
+  return [
+    h('div', { class: 'meta' }, '카테고리'),
+    h('h1', null, c.title), h('p', { class: 'lead' }, c.desc),
+    spec.length ? statusBar(spec) : null,
+    spec.length ? [h('h2', null, `규정 ${spec.length}개`), renderSpec(spec)] : null,
+    view ? [h('h2', null, '자료'), view()] : null,
+    h('h2', null, `게시판 ${posts.length}건`), postBoard(posts),
+  ];
+}
+
+function route() {
+  const hash = location.hash.replace(/^#/, '') || 'home';
+  const main = document.getElementById('main');
+  let active = 'home', body;
+  if (hash === 'home' || hash === 'c-overview') {
+    const ov = catById.overview;
+    body = [h('div', { class: 'meta' }, `데이터 ${D.dataVersion} · 규정 ${D.spec.length}개 · 게시글 ${D.posts.length}개 · 무장 ${D.game.generals.length} · 전법 ${D.game.skills.length} · 금병법 ${D.game.manuals.length}`),
+      h('h1', null, '천하결전 전투 설계서'), h('p', { class: 'lead' }, '삼국지 천하결전 전투 시뮬레이션이 작동하는 방법과 결과에 영향을 주는 모든 요소를 규정한다. 시뮬레이션 사이트는 여기 규정만 구현한다. 대화에서 결정한 내용이 이 페이지의 규정과 게시글로 반영된다.'),
+      statusBar(D.spec),
+      h('h2', null, `기본 규정 ${specOf('overview').length}개`), renderSpec(specOf('overview')),
+      DATA_VIEWS.overview(),
+      h('h2', null, '개요 게시판'), postBoard(postsOf('overview'))];
+  } else if (hash === 'open') {
+    active = 'open';
+    const open = D.posts.filter(isOpen);
+    body = [h('h1', null, '답변·녹화가 필요한 것'), h('p', { class: 'lead' }, '질문은 대화에서 답해 주면 규정에 반영한다. 검증요청은 녹화·캡처가 오면 역재현으로 계수를 맞춘다.'),
+      h('h2', null, `질문 ${open.filter(p => p.type === '질문').length}건`), h('div', { class: 'stack' }, open.filter(p => p.type === '질문').map(renderPost)),
+      h('h2', null, `검증요청 ${open.filter(p => p.type === '검증요청').length}건`), h('div', { class: 'stack' }, open.filter(p => p.type === '검증요청').map(renderPost))];
+  } else if (hash === 'board') {
+    active = 'board';
+    body = [h('h1', null, '전체 게시판'), h('p', { class: 'lead' }, '모든 카테고리의 게시글. 결정·질문·검증요청·변경이 날짜순으로 쌓인다.'),
+      postBoard([...D.posts].sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id)))];
+  } else if (hash.startsWith('c-') && catById[hash.slice(2)]) {
+    active = hash.slice(2);
+    body = renderCategory(active);
+  } else if (hash.startsWith('p-')) {
+    const p = D.posts.find(x => x.id === hash.slice(2));
+    active = p ? p.cat : 'home';
+    body = p ? [h('a', { href: `#c-${p.cat}` }, `← ${catById[p.cat]?.title}`), h('div', { style: 'margin-top:12px' }, renderPost(p))] : [h('div', { class: 'empty' }, '게시글을 찾을 수 없습니다.')];
+  } else body = [h('div', { class: 'empty' }, '페이지를 찾을 수 없습니다.')];
+  renderNav(active);
+  main.replaceChildren(...[body].flat(Infinity).filter(Boolean));
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', route);
+route();
+</script>

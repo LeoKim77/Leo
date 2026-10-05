@@ -98,6 +98,8 @@ export const inSeason = (season: string) => SEASON_ORDER(season) <= SEASON_ORDER
 
 export const generalById = (id: string) => app.bundle.generals.find(g => g.id === id);
 export const skillById = (id: string) => app.bundle.skills.find(s => s.id === id);
+/** 기획 플랫폼(정본 규정·도감) 카테고리 링크 */
+export const designLink = (cat: string) => `${(app.bundle as any)?.site?.designUrl || ''}#c-${cat}`;
 export const skillAudit = (id: string) => app.audit?.skills.find(s => s.id === id);
 
 /** 해외 표기 → 한국판 용어 (웹용 간이판: 데이터 도구와 같은 표 사용) */

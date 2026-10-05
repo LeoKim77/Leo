@@ -1,6 +1,6 @@
 // 시뮬레이션 — 티어덱/내가 짠 덱 아무 조합이나 붙여 본다. 한 판 전보에는 감사 결과를 붙인다.
 import { h, mount, select, lv, pct, fmt } from '../dom.ts';
-import { app, inSeason, generalById, loadUser, saveUser } from '../state.ts';
+import { app, inSeason, generalById, loadUser, saveUser, designLink } from '../state.ts';
 import { winBar, troopLines, hBars, SIDE_A, SIDE_B } from '../charts.ts';
 import { call } from '../sim-client.ts';
 import type { DeckSpec, MonteCarloResult } from '@cheonha/engine';
@@ -103,6 +103,16 @@ function approxNotice(m: MonteCarloResult) {
     h('div', { style: { marginTop: '6px' } }, list.map(x => h('div', { style: { fontSize: '13px' } }, h('span', { class: 'badge' }, x.side), h('b', null, `${x.owner} ${x.name}`), ` (${x.kind}) `, h('span', { class: 'muted' }, x.note)))));
 }
 
+/** 잠정·결정 필요 규정으로 돈 결과임을 알린다 (기획 플랫폼 OV3) */
+function provisionalNotice() {
+  const d = (app.bundle as any).design;
+  if (!d?.provisional?.length) return null;
+  return h('details', { class: 'notice' },
+    h('summary', null, lv('warn', `잠정 규정 ${d.provisional.length}개 사용`), ' — 기획 플랫폼에서 아직 확정되지 않은 공용 규정은 잠정값으로 계산합니다'),
+    h('div', { style: { marginTop: '6px', fontSize: '13px' } }, d.provisional.map((x: any) => h('div', null, h('span', { class: 'badge' }, x.id), ` ${x.title}`, x.status === '결정필요' ? h('span', { class: 'muted' }, ' (결정 필요)') : null)),
+      h('a', { href: designLink('home'), target: '_blank' }, '설계서에서 보기')));
+}
+
 function resultView() {
   if (!mcResult) return null;
   const m = mcResult;
@@ -115,6 +125,7 @@ function resultView() {
         m.avgRounds && m.avgRounds > 1.001 ? h('div', { class: 'sub', title: '8턴 무승부면 생존 무장끼리 다시 싸운다(R-009)' }, `판당 교전 ${m.avgRounds.toFixed(2)}차`) : null),
       h('div', { class: 'tile' }, h('div', { class: 'k' }, '시뮬'), h('div', { class: 'v' }, fmt(m.runs), h('small', null, ` 판 · 시드 ${m.seed}`)))),
     approxNotice(m),
+    provisionalNotice(),
     h('div', { class: 'panel' }, h('h3', { style: { fontSize: '15px', marginBottom: '8px' } }, '승패'), winBar(m.winA, m.draw, m.winB, [deckName('A'), deckName('B')])),
     h('div', { class: 'panel' }, h('h3', { style: { fontSize: '15px', marginBottom: '8px' } }, '턴별 평균 병력'), troopLines(m.troopCurveAll, [deckName('A'), deckName('B')])),
     h('div', { class: 'grid cols-2' },
@@ -176,7 +187,7 @@ function battleView() {
       h('h3', { style: { fontSize: '15px', marginBottom: '8px' } }, '이 전투의 규칙 감사'),
       h('table', null, h('tbody', null, a.engineRules.map((r: any) => h('tr', null, h('td', { style: { width: '74px' } }, lv(r.level)), h('td', null, h('div', null, r.title), h('div', { class: 'dim', style: { fontSize: '12.5px' } }, r.message), r.evidence?.length ? h('div', { class: 'muted', style: { fontSize: '12px' } }, r.evidence.slice(0, 3).join(' / ')) : null))))),
       h('h3', { style: { fontSize: '15px', margin: '12px 0 6px' } }, `발동한 전법 ${a.skills.length}개`),
-      bad.length ? h('div', null, bad.map((s: any) => h('div', { style: { marginBottom: '6px' } }, lv(s.worst), ' ', h('a', { href: `#/codex?kind=skill&id=${s.id}` }, s.name), h('div', { class: 'dim', style: { fontSize: '12.5px' } }, s.checks.filter((c: any) => c.level !== 'pass').map((c: any) => `${c.title}: ${c.message}`).join(' / ')))))
+      bad.length ? h('div', null, bad.map((s: any) => h('div', { style: { marginBottom: '6px' } }, lv(s.worst), ' ', h('a', { href: designLink('skills'), target: '_blank' }, s.name), h('div', { class: 'dim', style: { fontSize: '12.5px' } }, s.checks.filter((c: any) => c.level !== 'pass').map((c: any) => `${c.title}: ${c.message}`).join(' / ')))))
         : h('div', { class: 'dim' }, '원문 시점·효과와 어긋난 전법 없음'),
       h('div', { class: 'muted', style: { fontSize: '12px', marginTop: '6px' } }, a.skills.map((s: any) => `${s.name}×${s.fired}`).join(' · '))),
   );

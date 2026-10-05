@@ -4,6 +4,7 @@
 //   읽기:  game_search, game_get, tierdeck_list, term_normalize, overseas_lookup, board_list, audit_summary
 //   실행:  sim_battle, sim_matchup, audit_skill, audit_run
 //   쓰기:  board_post, data_patch, bundle_rebuild
+//   기획 플랫폼(정본 규정): design_list, design_get, design_post, design_spec_update, design_resolve, design_build
 // 쓰기 도구는 data/ 아래 JSON 만 바꾼다. Git 커밋·푸시는 Claude Code 가 따로 한다.
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
@@ -18,6 +19,8 @@ import { buildBundle, loadChangelog, type FullBundle, type PatchKind } from '../
 import { DATA, ROOT, readJson, writeJson } from '../../../packages/data-tools/src/paths.ts';
 import { normalizeKo } from '../../../packages/data-tools/src/terms.ts';
 import { buildQueue, loadQueue, resolveItem } from '../../../packages/data-tools/src/verification.ts';
+import { designCategories, designSpec, designPosts, addPost, updatePost, updateSpec, resolvePost, POST_TYPES, POST_STATUS, SPEC_STATUS } from '../../../packages/data-tools/src/design.ts';
+import { buildDesign } from '../../../packages/data-tools/src/build-design.ts';
 
 let cache: { bundle: FullBundle; sim: Simulator } | null = null;
 function ctx() {
@@ -81,7 +84,7 @@ function resolveDeck(d: z.infer<typeof deckInput>): DeckSpec {
 }
 
 const server = new McpServer({ name: 'cheonha-sim', title: '삼국지 천하결전 무한무투', version: '0.1.0' }, {
-  instructions: '삼국지 천하결전 덱 전투 시뮬레이터. 한국판 용어를 쓴다(병기/책략/피신/묘책, 해외 표기 병인/모략/회피/기책 금지). 사용자가 알려준 게임 정보는 data_patch 로 반영하고, board_post 로 업데이트 게시판에 날짜와 함께 기록한다. 해외 자료를 옮길 때는 term_normalize 로 한국판 용어로 바꾼다.',
+  instructions: '삼국지 천하결전 덱 전투 시뮬레이터. 기획 플랫폼(data/design)의 규정이 정본이다 — 사용자와 대화에서 결정한 것은 design_post·design_spec_update·design_resolve 로 먼저 기록하고, 시뮬 엔진은 그 규정만 구현한다. 한국판 용어를 쓴다(병기/책략/피신/묘책, 해외 표기 병인/모략/회피/기책 금지). 사용자가 알려준 게임 정보는 data_patch 로 반영하고, board_post 로 업데이트 게시판에 날짜와 함께 기록한다. 해외 자료를 옮길 때는 term_normalize 로 한국판 용어로 바꾼다.',
 });
 
 // ---------------- 읽기 ----------------
@@ -421,5 +424,75 @@ server.registerTool('bundle_rebuild', {
   writeJson(join(ROOT, 'apps', 'web', 'public', 'data', 'bundle.json'), out);
   return text({ dataVersion: bundle.dataVersion, generals: bundle.generals.length, skills: bundle.skills.length, posts: bundle.changelog.length });
 });
+
+// ---------------- 기획 플랫폼 (정본 규정) ----------------
+server.registerTool('design_list', {
+  title: '기획 플랫폼 보기',
+  description: '카테고리·규정·게시글 목록. cat 으로 카테고리, open=true 면 열린 질문·검증요청만, status 로 규정 상태(잠정·결정필요 등) 필터.',
+  inputSchema: { cat: z.string().optional(), open: z.boolean().optional(), status: z.enum(SPEC_STATUS).optional() },
+}, async ({ cat, open, status }) => {
+  const spec = designSpec().filter(s => (!cat || s.cat === cat) && (!status || s.status === status)).map(s => ({ id: s.id, cat: s.cat, title: s.title, status: s.status, rule: s.rule }));
+  const posts = designPosts().filter(p => (!cat || p.cat === cat) && (!open || p.status === '열림')).map(p => ({ id: p.id, cat: p.cat, type: p.type, status: p.status, title: p.title, ask: p.ask }));
+  return text({ categories: cat ? undefined : designCategories(), spec: open ? undefined : spec, posts });
+});
+
+server.registerTool('design_get', {
+  title: '규정·게시글 자세히',
+  description: '규정 id(예: J8, GEN5) 또는 게시글 id(P-0004)의 전체 내용과 변경 이력.',
+  inputSchema: { id: z.string() },
+}, async ({ id }) => {
+  const it = id.startsWith('P-') ? designPosts().find(p => p.id === id) : designSpec().find(s => s.id === id);
+  return it ? text(it) : fail(`없음: ${id}`);
+});
+
+server.registerTool('design_post', {
+  title: '기획 플랫폼 게시글 쓰기',
+  description: '카테고리 게시판에 글을 올린다. 결정(대화에서 확정된 내용), 질문(사용자 답이 필요 — ask 에 물을 것), 검증요청(녹화·캡처 필요), 변경(규정 수정 기록), 공지.',
+  inputSchema: {
+    cat: z.string().describe('카테고리 id (design_list 로 확인)'), type: z.enum(POST_TYPES), title: z.string(), body: z.string(),
+    status: z.enum(POST_STATUS).optional(), specIds: z.array(z.string()).optional(), rules: z.array(z.string()).optional(), ask: z.array(z.string()).optional(),
+  },
+}, async (args) => {
+  try { return text(addPost(args)); } catch (e: any) { return fail(e.message); }
+});
+
+server.registerTool('design_spec_update', {
+  title: '규정 추가·수정',
+  description: '규정 항목을 바꾸거나 새로 만든다(정본). change 에 무엇을 왜 바꿨는지, post 에 근거 게시글 id. 새 항목이면 cat·title·rule 필요.',
+  inputSchema: {
+    id: z.string(), change: z.string(), post: z.string().optional(),
+    cat: z.string().optional(), group: z.string().optional(), title: z.string().optional(), rule: z.string().optional(),
+    status: z.enum(SPEC_STATUS).optional(), basis: z.array(z.string()).optional(), note: z.string().optional(),
+  },
+}, async ({ id, ...f }) => {
+  try { return text(updateSpec(id, f)); } catch (e: any) { return fail(e.message); }
+});
+
+server.registerTool('design_resolve', {
+  title: '질문·검증요청 답변 반영',
+  description: '열린 게시글에 답(결정)을 기록하고, 관련 규정을 고치며, confirmRule 을 주면 확정 규칙(R-xxx)도 등록한다. 시뮬 엔진까지 고쳤으면 simApplied=true.',
+  inputSchema: {
+    id: z.string().describe('게시글 id'), answer: z.string(),
+    specUpdates: z.array(z.object({ id: z.string(), rule: z.string().optional(), status: z.enum(SPEC_STATUS).optional(), note: z.string().optional(), title: z.string().optional(), cat: z.string().optional(), group: z.string().optional() })).optional(),
+    confirmRule: z.object({ topic: z.string(), statement: z.string() }).optional(),
+    simApplied: z.boolean().optional(),
+  },
+}, async (args) => {
+  try { const r = resolvePost(args.id, args); return text(r); } catch (e: any) { return fail(e.message); }
+});
+
+server.registerTool('design_post_update', {
+  title: '게시글 상태 바꾸기',
+  description: '게시글 상태(열림·답변됨·시뮬 반영·닫힘)·답변·관련 규정을 바꾼다.',
+  inputSchema: { id: z.string(), status: z.enum(POST_STATUS).optional(), answer: z.string().optional(), note: z.string().optional() },
+}, async ({ id, ...f }) => {
+  try { return text(updatePost(id, f)); } catch (e: any) { return fail(e.message); }
+});
+
+server.registerTool('design_build', {
+  title: '기획 플랫폼 페이지 만들기',
+  description: 'data/design + 게임 데이터 → apps/design/dist/design.html (아티팩트로 게시), docs/COMMON_RULES.md 도 다시 만든다.',
+  inputSchema: {},
+}, async () => text(buildDesign()));
 
 await server.connect(new StdioServerTransport());

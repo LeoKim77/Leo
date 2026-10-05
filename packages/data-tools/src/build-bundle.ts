@@ -9,6 +9,12 @@ const bundle: any = buildBundle();
 bundle.verification = buildQueue(bundle);
 bundle.confirmedRules = readJson<any>(join(DATA, 'common', 'confirmed-rules.json')).rules;
 bundle.site = readJson<any>(join(DATA, 'common', 'site.json'));
+// 기획 플랫폼 규정 요약 — 시뮬 결과에 '잠정 규정 사용'을 표시한다(OV3)
+const spec = readJson<any>(join(DATA, 'design', 'spec.json')).items as any[];
+bundle.design = {
+  total: spec.length,
+  provisional: spec.filter(s => s.status === '잠정' || s.status === '결정필요').map(s => ({ id: s.id, cat: s.cat, title: s.title, status: s.status })),
+};
 const outDir = join(ROOT, 'apps', 'web', 'public', 'data');
 writeJson(join(outDir, 'bundle.json'), bundle);
 

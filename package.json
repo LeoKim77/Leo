@@ -17,7 +17,8 @@
     "gen:skills": "tsx packages/data-tools/src/gen-skill-funcs.ts",
     "skill:revise": "tsx packages/data-tools/src/skill-revise.ts",
     "gen:manuals": "tsx packages/data-tools/src/gen-manual-funcs.ts",
-    "manual:revise": "tsx packages/data-tools/src/manual-revise.ts"
+    "manual:revise": "tsx packages/data-tools/src/manual-revise.ts",
+    "build:design": "tsx packages/data-tools/src/build-design.ts"
   },
   "devDependencies": {
     "typescript": "~5.9.0",

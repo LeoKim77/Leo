@@ -1,24 +1,17 @@
 import './styles.css';
 import { h, select } from './dom.ts';
 import { app, loadData, syncUserFromCloud } from './state.ts';
-import { renderBoard } from './views/board.ts';
-import { renderCodex } from './views/codex.ts';
 import { renderTierDecks } from './views/tierdecks.ts';
 import { renderRoster } from './views/roster.ts';
 import { renderSim } from './views/sim.ts';
 import { renderRecommend } from './views/recommend.ts';
-import { renderAudit } from './views/audit.ts';
-import { renderOverseas } from './views/overseas.ts';
 
+// 시뮬 사이트는 시뮬레이션·덱 추천만 (도감·감사·게시판은 기획 플랫폼 — site.designUrl)
 const TABS: Array<[string, string, (root: HTMLElement, p: URLSearchParams) => void]> = [
-  ['board', '게시판', renderBoard],
-  ['codex', '도감', renderCodex],
-  ['tier', '티어덱', renderTierDecks],
-  ['roster', '보유', renderRoster],
-  ['recommend', '덱 추천', renderRecommend],
   ['sim', '시뮬레이션', renderSim],
-  ['audit', '감사', renderAudit],
-  ['overseas', '해외 자료', renderOverseas],
+  ['recommend', '덱 추천', renderRecommend],
+  ['roster', '보유', renderRoster],
+  ['tier', '티어덱', renderTierDecks],
 ];
 
 function route() {
@@ -39,7 +32,11 @@ async function main() {
     return;
   }
   const b = app.bundle;
-  document.getElementById('version-line')!.textContent = `데이터 ${b.dataVersion} · 무장 ${b.generals.length} · 전법 ${b.skills.length}${app.audit ? ` · 감사 ${app.audit.generatedAt.slice(0, 10)}` : ''}`;
+  const design = (b as any).design, site = (b as any).site || {};
+  document.getElementById('version-line')!.replaceChildren(
+    `데이터 ${b.dataVersion} · 무장 ${b.generals.length} · 전법 ${b.skills.length}`,
+    design ? ` · 규정 ${design.total}개(잠정 ${design.provisional.length}) ` : ' ',
+    site.designUrl ? h('a', { href: site.designUrl, target: '_blank', rel: 'noopener' }, '설계서 보기') : '');
   const sel = document.getElementById('season-select')!;
   sel.replaceWith(select(b.seasons.map(s => ({ value: s.id, label: `${s.label}${s.status === 'live' ? ' (현재)' : s.status === 'upcoming' ? ' (예정)' : ''}` })), app.season, v => { app.season = v; route(); }, { id: 'season-select' }));
   window.addEventListener('hashchange', route);

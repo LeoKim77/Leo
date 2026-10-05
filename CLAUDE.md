@@ -10,6 +10,13 @@
 
 모든 작업(엔진 정확도·검증 녹화·데이터 갱신)은 이 두 기능을 더 정확하게 만들기 위한 것이다.
 
+## 작업 순서 (2026-10-05 사용자 지정)
+**기획 플랫폼 → 시뮬.** 전투에 필요한 모든 요소(능력치·턴·행동 순서·전법 형태·병기/책략·버프/디버프·상태·진형·금병법·계수)의 규정은
+기획 플랫폼(`data/design/` — categories·spec·posts, 페이지 `pnpm build:design`, `site.json` designUrl)이 정본이다.
+대화에서 결정 → MCP `design_resolve`·`design_spec_update`·`design_post` 로 기록 → 시뮬 엔진은 그 규정만 구현(커밋·게시판에 규정 번호) → 두 사이트 재배포.
+애매한 것은 확정하지 말고 질문·검증요청 게시글로 올리고 사용자에게 묻는다. 잠정 규정은 잠정값으로 돌리고 시뮬 결과에 표시한다.
+시뮬 사이트(artifactUrl)에는 시뮬레이션·덱 추천·보유·티어덱만 둔다. 도감·감사·변경 기록은 설계서에 있다.
+
 ## 원칙
 - 한국판 용어만 쓴다 (병기/책략/피신/묘책/금병법). 해외 표기는 `data/common/term-map.json` 으로 바꾼다.
 - 게임 규칙의 근거는 사용자 확인(`data/common/confirmed-rules.json`, R-xxx)과 한국판 원문이다. 추측으로 확정하지 않는다.
@@ -22,14 +29,15 @@
 - **금병법 = 함수 파일**: `packages/engine/src/manuals/<id>.ts` (87개, id = `m-<무장 id>-<번호>`). `def`(parts·static·unit·uniquePatch) + `clauses` + `runs`(parts 번호별 실행 함수). 파일이 정본 — `data/engine/manuals.json` 은 생성 원천(`pnpm gen:manuals`), 수정은 `pnpm manual:revise <수정안.json>`.
 - `data/kr/` 엑셀 원본 → `data/engine/` 엔진 정의(v1.12b 변환, `overrides.json` 검수 수정, `authored.json` 직접 작성, `manuals.json` 금병법, `clause-review.json`) → `data/patches/` 게임 확인 정보
 - `packages/engine` 전투 엔진 · `packages/audit` 규칙 감사 · `packages/recommender` 덱 추천 · `packages/data-tools` 가져오기·번들·단일 파일
-- `apps/web` 웹 · `apps/mcp-server` MCP 도구(`.mcp.json`)
+- `apps/design` 기획 플랫폼(설계서) · `apps/web` 시뮬 사이트 · `apps/mcp-server` MCP 도구(`.mcp.json`, 기획 플랫폼 쓰기 `design_*` 포함)
 
 ## 명령
 ```bash
 pnpm test                 # 엔진 동등성·감사·금병법·추천·데이터 무결성
 pnpm audit                # 전체 규칙 감사 (~30초) → data/audit/latest.json
 pnpm build:bundle         # 웹 데이터
-pnpm build:standalone     # 단일 HTML → apps/web/dist-standalone/muhanmutu(.artifact).html
+pnpm build:design         # 기획 플랫폼(설계서) → apps/design/dist/design.html + docs/COMMON_RULES.md
+pnpm build:standalone     # 시뮬 사이트 단일 HTML → apps/web/dist-standalone/muhanmutu(.artifact).html
 pnpm gen:skills           # 함수 파일이 없는 전법의 파일 생성 (신규 전법 추가 후)
 pnpm gen:manuals          # 함수 파일이 없는 금병법의 파일 생성 (manuals.json 에 새 금병법 추가 후)
 ```
