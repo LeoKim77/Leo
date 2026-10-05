@@ -5,9 +5,12 @@
   "category": "확인 규칙",
   "title": "방통〈책략〉 연환 전달 25% → 13% (R-046, 사용자 확인)",
   "body": "'전달 효과의 퍼센트가 12% 감소'는 퍼센트 값에서 12%p를 빼는 것(25% → 13%)으로 사용자 확인(R-046). 22%(×0.88)로 넣었던 근사를 고치고 원문대로(ok)로 바꿨다. 연환은 모든 턴 부여, 전달 비율에 방통 지력 영향은 그대로.",
-  "refs": ["pang-tong", "u-pang-tong"],
+  "refs": [
+    "pang-tong",
+    "u-pang-tong"
+  ],
   "author": "Claude",
-  "commit": "",
+  "commit": "f5f2c39136a4",
   "files": [
     "packages/engine/src/manuals/m-pang-tong-1.ts",
     "data/common/confirmed-rules.json",
