@@ -180,20 +180,6 @@
       "status": "pending"
     },
     {
-      "id": "V-engine-manual-pct-change",
-      "kind": "engine",
-      "refs": [
-        "m-xiahou-dun-1",
-        "m-ma-chao-2",
-        "m-zhou-cang-1"
-      ],
-      "title": "금병법 '○○이 N% 증가/감소' — 가산(%p)인지 곱인지",
-      "assumption": "하후돈 위협 강렬 감소 30%→40%(+10%p), 마초 마술 척살 피해 ×2.8(+180%), 주창 충렬 이상 상태 확률 45%→65%(+20%p, 발동률 가산 규칙) — 참고: 방통 책략 '퍼센트가 12% 감소'는 25%→13%(%p)로 확인됨(R-046)",
-      "howToVerify": "금병법 장착 전후 툴팁 수치 또는 전보 피해·전달량",
-      "priority": 25,
-      "status": "pending"
-    },
-    {
       "id": "V-engine-pangtong-chain",
       "kind": "engine",
       "refs": [],
@@ -499,19 +485,6 @@
       "howToVerify": "초선 금병법 상련·화수 전보에서 효과가 다음 턴 무력 최고 우군의 공격에 적용되는지, 언제 사라지는지 확인",
       "status": "pending",
       "priority": 5
-    },
-    {
-      "id": "V-manual-m-xiahou-dun-1",
-      "kind": "manual",
-      "refs": [
-        "xiahou-dun",
-        "u-xiahou-dun"
-      ],
-      "title": "하후돈 금병법〈위협〉",
-      "assumption": "강렬 피해 감소 30% → 40%(+10%p로 해석, ×1.1 이면 33%)",
-      "howToVerify": "하후돈이(가) 〈위협〉을 장착한 전보에서 원문 효과(\"고유 전법 강렬의 피해 감소 효과가 10% 증가한다.…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending",
-      "priority": 4
     },
     {
       "id": "V-skill-hide-light",
@@ -1370,18 +1343,6 @@
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending",
       "priority": 1
-    },
-    {
-      "id": "V-manual-m-ma-chao-2",
-      "kind": "manual",
-      "refs": [
-        "ma-chao",
-        "u-ma-chao"
-      ],
-      "title": "마초 금병법〈마술〉",
-      "assumption": "기병 돌격의 척살 피해 +180%(계수 ×2.8), 척살은 매 턴 1회",
-      "howToVerify": "마초이(가) 〈마술〉을 장착한 전보에서 원문 효과(\"회심 피해가 15% 증가하고, 고유 전법-기병 돌격의 척살의 피해가 180% 증가한다. 단, 척살은 매턴 1…\")가 실제로 어떻게 찍히는지 확인",
-      "status": "pending"
     },
     {
       "id": "V-manual-m-cheng-pu-1",

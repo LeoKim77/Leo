@@ -8,7 +8,13 @@ export default defineManual({
   generalId: "zhou-cang",
   name: "충렬",
   status: "ok",
-  note: "이상 상태 확률 45% → 65%(+20%p로 해석)",
+  note: "이상 상태 확률 45% → 65%(+20%p, R-047)",
+  revised: [
+    {
+      "date": "2026-10-05",
+      "note": "R-047: 확률은 합연산 — 이상 상태 확률 45% → 65% 확정"
+    }
+  ],
   clauses: [
     {
       "text": "통솔이 15포인트 증가하고",
