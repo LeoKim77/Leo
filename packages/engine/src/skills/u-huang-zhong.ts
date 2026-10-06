@@ -12,6 +12,10 @@ export default defineSkill({
     {
       "date": "2026-10-04",
       "note": "능력치 감소에 무력 영향 반영"
+    },
+    {
+      "date": "2026-10-06",
+      "note": "녹화(2026-10-06): 180% 피해는 공격 목표만이 아니라 디버프를 가진 적군 전원(손책·견희 2명 동시 피격)"
     }
   ],
   clauses: [
@@ -39,7 +43,7 @@ export default defineSkill({
           "dmgType": "병기",
           "min": 0.9,
           "max": 1.8,
-          "target": "trigger_defender",
+          "target": "all_enemy",
           "condition": {
             "type": "hasAnyDebuff",
             "who": "target"

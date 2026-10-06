@@ -8,6 +8,12 @@ export default defineSkill({
   name: "화하 진압",
   kind: "액티브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-06",
+      "note": "녹화(2026-10-06): 액티브 발동률 증가(재시전 시 갱신) → 목표마다 [180% → 제어 상태면 탈주병] 순서. 탈주병 = 1.49×무력"
+    }
+  ],
   clauses: [
     {
       "text": "2턴 동안 자신의 액티브 전법 발동률이 8% 증가하며",
@@ -123,15 +129,19 @@ export default defineSkill({
       }
     ],
     "desertionStat": "무력",
-    "desertionCoef": 2.4,
-    "desertionBase": 330
+    "desertionCoef": 1.49,
+    "desertionBase": 0
   },
   run(c) {
-    // 「이후 전체 적군에게 180%의 병기 피해를 주며」
-    c.damage(0);   // 병기 90%→180%, 대상 all_enemy
-    // 「2턴 동안 자신의 액티브 전법 발동률이 8% 증가하며」
-    c.buff(0);   // 액티브발동률 +4%→8%, 대상 self, 2턴
-    // 「목표가 제어 상태을(를) 보유하면 목표가 탈주병을(를) 생성하게 한다(무력의 영향 받음)」
-    c.status(0);   // 탈주병, 대상 tag:main, 조건 hasAnyStatus
+    // 「2턴 동안 자신의 액티브 전법 발동률이 8% 증가하며, 위협 상태를 보유한 적군 1명당 추가로 3% 증가한다」 — 녹화: 먼저 발동, 재시전 시 갱신
+    c.buff(0);
+    // 「이후 전체 적군에게 180%의 병기 피해를 주며, 목표가 제어 상태을(를) 보유하면 목표가 탈주병을(를) 생성하게 한다(무력의 영향 받음)」 — 목표마다 피해 → 탈주병
+    const E = c.skill.effects;
+    c.targets('all_enemy').forEach((u, i) => {
+      if (!u.alive) return;
+      c.tag('g' + i, [u]);
+      c.damage({ ...E.damage[0], target: 'tag:g' + i, tag: undefined });
+      if (u.alive) c.status({ ...E.statusEffects[0], target: 'tag:g' + i });
+    });
   },
 });

@@ -12,6 +12,10 @@ export default defineSkill({
     {
       "date": "2026-10-04",
       "note": "회복이 무력 영향"
+    },
+    {
+      "date": "2026-10-06",
+      "note": "녹화(2026-10-06)·게임 문구 \"자신과 랜덤 아군 단일 목표\": 아군은 자신 포함 — 손책이 자신을 두 번 회복"
     }
   ],
   clauses: [
@@ -49,7 +53,7 @@ export default defineSkill({
         {
           "min": 0.325,
           "max": 0.65,
-          "target": "self_and_random_ally_1",
+          "target": "self_and_random_ally_one",
           "stat": "무력"
         }
       ],

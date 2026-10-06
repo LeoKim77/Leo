@@ -12,6 +12,10 @@ export default defineSkill({
     {
       "date": "2026-10-04",
       "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
+    },
+    {
+      "date": "2026-10-06",
+      "note": "탈주병 기본식 1.49×스탯으로(녹화 2026-10-06 관우 표본) — 지력 기준은 확인 대기"
     }
   ],
   clauses: [
@@ -90,8 +94,8 @@ export default defineSkill({
       }
     ],
     "desertionStat": "지력",
-    "desertionCoef": 2.4,
-    "desertionBase": 330
+    "desertionCoef": 1.49,
+    "desertionBase": 0
   },
   run(c) {
     // 「이후 해당 적군에게 360%의 책략 피해를 주며」

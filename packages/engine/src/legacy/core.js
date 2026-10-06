@@ -40,6 +40,8 @@ export const ENGINE_FIXES = [
     detail: '스택마다 지속을 따로 갖고 먼저 쌓인 것부터 만료된다. 상한(N중첩)에서 또 발동하면 가장 오래된 스택을 빼고 새 스택을 넣는다(수치 그대로, "N스택 중첩됐습니다" 표기). 예전엔 상한에서 맨 앞 스택만 제자리 갱신해, 다음 발동 때도 같은(이미 가장 새로운) 스택을 다시 갱신하는 문제가 있었다.' },
   { id: 'FIX-013', date: '2026-10-04', found: '보유 전법 140개 원문 대조 (함수화 후 1차 보정)', title: '공용 대상·조건 버그',
     detail: '① 대상이 안 적힌 효과는 한 시전 안에서 같은 대상을 공유(R-044) — 예전엔 효과마다 새로 뽑아 "랜덤 2명의 A와 B"가 서로 다른 무장에게 갔다. ② "디버프 상태 보유" 조건이 방어·피신 같은 기능성 상태까지 셌다. ③ "이상 상태 개수"도 기능성 상태 포함. ④ 대상이 자신뿐인 회복이 병력 최저 아군에게 갔다(지혜의 바람·충성과 용맹·전쟁 조달). ⑤ 능력치 증감의 턴 조건(turnCond)이 무시됐다.' },
+  { id: 'FIX-022', date: '2026-10-06', found: '녹화 2026-10-06 (손견·관우·황충 vs 대교·손책·견희, 포진~3턴)', title: '탈주병 계수·전장 평정 대상·강동 제패 회복 대상·화하 진압 순서·퇴로 매복 회심',
+    detail: '탈주병 = 1.49×무력(예전 2.4×무력−330, 6~7% 작음 — 5건 ±1%). 전장 평정 180%는 디버프 보유 적 전원. "자신과 랜덤 아군"은 자신이 또 뽑힐 수 있음(손책 자신 2회 회복). 화하 진압은 발동률 증가(갱신) → 목표마다 피해 → 탈주병. 퇴로 매복 시전 중 회심 +25%(근사, 원문 확인 대기).' },
   { id: 'FIX-016', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보) 역재현', title: '피해·회복 계수 재추정 (책략에 상대 지력 방어)',
     detail: '책략 피해 = (80 + 1.84×지력 − 0.75×상대 지력) × (병력/1만)^0.1, 병기 = (285 + 0.73×무력 − 0.79×통솔) × (병력/1만)^0.1, 회복 = 지력 × (1.123×치유율 + 0.00027×(지력−100)). 녹화 3판 피해 75건 RMS 19%→13%, 회복 17건 17%→4%. 지력이 높은 무장끼리 싸울 때 예전 식은 책략 피해를 최대 60% 크게 냈다.' },
   { id: 'FEAT-027', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '자기 연쇄 트리거',
@@ -441,6 +443,7 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
     case 'all_except_self': result = allUnits.filter(u => u.alive && u !== unit); break;
     // R-028: "자신과 랜덤 우군 단일 목표" — 자신 + 자신을 뺀 우군 1명 (예전엔 자신만 또는 자신 포함 2명 무작위)
     case 'self_and_random_ally_1': result = [unit, ...shuffle(allies.filter(u => u !== unit)).slice(0, 1)]; break;
+    case 'self_and_random_ally_one': result = [unit, pick(allies)]; break;   // FIX-022 "자신과 랜덤 아군 단일 목표" — 아군은 자신 포함(녹화: 강동 제패가 손책 자신을 두 번 회복)
     // FIX-007(R-020): 전법의 '랜덤 적군'은 진형 피격률과 무관하게 살아 있는 적 전체에서 균등 무작위 (피격률은 일반 공격 대상에만)
     case 'random_enemy_n': result = shuffle(enemies).slice(0, 2); break;
     case 'random_ally_n': result = shuffle(allies).slice(0, 2); break;
@@ -485,7 +488,7 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
   // FEAT-019·R-032 혼란: 대상 풀이 자신을 뺀 생존 무장 전체(적+아군)로 바뀐다. 원래 뽑힐 인원 수만큼 그 풀에서 비복원 무작위
   //   (단일 → 1명, 랜덤 2명 → 2명, 전체 적군 → 적 생존 수만큼). "자신과 …"처럼 자신이 명시된 몫은 그대로 둔다.
   if (main && result.length && statusFlag(unit, 'randomizeTarget')) {
-    const keepSelf = code === 'self_and_random_ally_1';
+    const keepSelf = code === 'self_and_random_ally_1' || code === 'self_and_random_ally_one';
     const pool = allUnits.filter(u => u.alive && u !== unit);
     const n = result.length - (keepSelf ? 1 : 0);
     result = [...(keepSelf ? [unit] : []), ...shuffle(pool).slice(0, n)];
@@ -497,7 +500,7 @@ const SINGLE_TARGET_CODES = new Set(['random_enemy_1', 'random_ally_1', 'random_
   'lowest_control_enemy', 'lowest_power_enemy', 'lowest_intel_enemy', 'lowest_speed_enemy', 'lowest_combined_enemy', 'lowest_hp_enemy',
   'highest_power_enemy', 'highest_intel_enemy', 'highest_speed_ally', 'highest_combined_ally', 'highest_power_ally', 'highest_intel_ally',
   'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally', 'highest_power_friend']);
-const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'random_friend_n', 'all_friend', 'front_allies', 'random_all_4', 'random_all_4_self', 'damaged_me_this_turn', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
+const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'self_and_random_ally_one', 'random_friend_n', 'all_friend', 'front_allies', 'random_all_4', 'random_all_4_self', 'damaged_me_this_turn', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
 function shuffle(a) { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(__rng() * (i + 1));[b[i], b[j]] = [b[j], b[i]]; } return b; }
 // R-048 "가장 높은/낮은 ○○"가 동률이면 동률인 무장 중 무작위 (예전엔 배치 순 앞쪽)
 function extremeBy(arr, fn, sign) {
@@ -1897,7 +1900,8 @@ function procBaseOf(skill, unit) {
 function dealDesertionDamage(attacker, targets, skill, coeffs, log, turn, contrib) {
   const stat = skill.desertionStat === '지력' ? '지력' : '무력';
   const a = effStat(attacker, stat);
-  const raw = a * (skill.desertionCoef || 2.4) - (skill.desertionBase || 330);
+  // FIX-022 녹화(2026-10-06 화하 진압 5건): 탈주병 = 1.49 × 무력 (무력 334.72 → 500, 329.72 → 493, 324.72 → 479, ±1%) — 예전 2.4×무력−330 은 6~7% 작았다
+  const raw = a * (skill.desertionCoef != null ? skill.desertionCoef : 1.49) - (skill.desertionBase || 0);
   targets.forEach(t => {
     if (!t.alive || t.troops <= 0) return;
     // FEAT-001: 탈주병 수 증가 (정욱 지용, 관우 오상 — 병력이 자신보다 높은 목표)
