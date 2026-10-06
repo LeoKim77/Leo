@@ -7,6 +7,6 @@
   "body": "사용자 녹화(손관황 준비~3턴)를 한 줄씩 읽어 재현했다(설계서 P-0035, R-052, FIX-022).\n■ 탈주병 = 1.49×무력 (관우 5건 ±1%, 예전 식은 6~7% 작음)\n■ 전장 평정(황충) 180%: 디버프 보유 적 전원 (예전 공격 목표 1명)\n■ 강동 제패(손책) '자신과 랜덤 아군': 자신이 또 뽑힐 수 있음\n■ 화하 진압(관우): 발동률 증가(갱신) → 목표마다 피해 → 탈주병\n■ 퇴로 매복: 시전 중 회심 +25% (원문에 없는 효과 — 근사, 게임 문구 확인 요청)\n■ 확인: 준비 완료·천군 소탕·전략 계획·전장 평정 수치·확정 회심 첫 목표·감소 체감·궁술\n■ 질문: 관우 공격이 대교(창병)에게만 약함(P-0036), 무열황제 통솔 영향 이상치(P-0032)\n■ 녹화 계획 4판 확인 5건 완료",
   "refs": ["u-guan-yu", "u-huang-zhong", "u-sun-ce", "ambushes", "u-cheng-yu"],
   "author": "Claude",
-  "commit": "",
+  "commit": "ff8d272",
   "files": ["packages/engine/src/legacy/core.js", "packages/engine/src/skills/u-guan-yu.ts", "packages/engine/src/skills/u-huang-zhong.ts", "packages/engine/src/skills/u-sun-ce.ts", "packages/engine/src/skills/ambushes.ts", "packages/engine/src/skills/u-cheng-yu.ts", "data/replays/2026-10-06-sunjian-guanyu-huangzhong.json", "data/verification/recording-plan.json", "data/common/confirmed-rules.json", "data/design/spec.json", "data/design/posts/*.json", "tests/rec-sgh.test.ts"]
 }
