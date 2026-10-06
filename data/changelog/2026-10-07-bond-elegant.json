@@ -12,7 +12,7 @@
     "guan-yu"
   ],
   "author": "Claude",
-  "commit": "",
+  "commit": "76f3a0e",
   "files": [
     "packages/engine/src/legacy/core.js",
     "packages/engine/src/skills/ambushes.ts",
