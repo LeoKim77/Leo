@@ -42,6 +42,8 @@ export const ENGINE_FIXES = [
     detail: '① 대상이 안 적힌 효과는 한 시전 안에서 같은 대상을 공유(R-044) — 예전엔 효과마다 새로 뽑아 "랜덤 2명의 A와 B"가 서로 다른 무장에게 갔다. ② "디버프 상태 보유" 조건이 방어·피신 같은 기능성 상태까지 셌다. ③ "이상 상태 개수"도 기능성 상태 포함. ④ 대상이 자신뿐인 회복이 병력 최저 아군에게 갔다(지혜의 바람·충성과 용맹·전쟁 조달). ⑤ 능력치 증감의 턴 조건(turnCond)이 무시됐다.' },
   { id: 'FIX-022', date: '2026-10-06', found: '녹화 2026-10-06 (손견·관우·황충 vs 대교·손책·견희, 포진~3턴)', title: '탈주병 계수·전장 평정 대상·강동 제패 회복 대상·화하 진압 순서·퇴로 매복 회심',
     detail: '탈주병 = 1.49×무력(예전 2.4×무력−330, 6~7% 작음 — 5건 ±1%). 전장 평정 180%는 디버프 보유 적 전원. "자신과 랜덤 아군"은 자신이 또 뽑힐 수 있음(손책 자신 2회 회복). 화하 진압은 발동률 증가(갱신) → 목표마다 피해 → 탈주병. 퇴로 매복 시전 중 회심 +25%(근사, 원문 확인 대기).' },
+  { id: 'FEAT-028', date: '2026-10-07', found: '사용자 캡처(견희 열전 인연) + 녹화 2026-10-06 (대교·견희 피격 때 관우 무력 −5 스택)', title: '피격 반응 인연(우아한 자태)·퇴로 매복 110%',
+    detail: '인연 우아한 자태(왕이·보연사·대교·견희·장춘화·오국태 중 2명): 인연 무장이 피해를 받으면 35% 확률로 피해를 준 적의 최고 속성 −5(공격자별 5회 중첩, 영구). 전법이 준 디버프가 아니라 디버프 상태로 세지 않는다. 퇴로 매복은 100~140% 무작위 → 110% 고정(게임 원문), 회심 +25% 원문 확정.' },
   { id: 'FIX-016', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보) 역재현', title: '피해·회복 계수 재추정 (책략에 상대 지력 방어)',
     detail: '책략 피해 = (80 + 1.84×지력 − 0.75×상대 지력) × (병력/1만)^0.1, 병기 = (285 + 0.73×무력 − 0.79×통솔) × (병력/1만)^0.1, 회복 = 지력 × (1.123×치유율 + 0.00027×(지력−100)). 녹화 3판 피해 75건 RMS 19%→13%, 회복 17건 17%→4%. 지력이 높은 무장끼리 싸울 때 예전 식은 책략 피해를 최대 60% 크게 냈다.' },
   { id: 'FEAT-027', date: '2026-10-05', found: '녹화 2026-10-05 (제갈량·육손·주유 vs 서서·여몽·노숙, 6턴 전보)', title: '자기 연쇄 트리거',
@@ -954,8 +956,25 @@ function dealDamage(attacker, defender, ratio, dmgType, coeffs, log, allUnits, t
   } else {
     emitDamageEvent({ attacker, defender, dmgType, crit: result.crit, isBasic: !!isBasic, dmg: result.dmg }, allUnits, coeffs, log, turn, contrib);
     if (allUnits && result.dmg > 0) resolveDamageMarks(attacker, defender, result.dmg, !!isBasic, allUnits, coeffs, log, turn, contrib);
+    if (result.dmg > 0) resolveBondOnDamaged(attacker, defender, log, turn);
   }
   return result;
+}
+
+// FEAT-028 피격 반응 인연 — 우아한 자태: "부대 내 인연 무장이 피해를 받으면 35% 확률로 피해를 준 대상의
+//   최고 속성이 5포인트 감소하며, 5회 중첩될 수 있다." 전투 내내 유지(녹화: 관우 무력 334.72→329.72→324.72→319.72).
+function resolveBondOnDamaged(attacker, defender, log, turn) {
+  if (!defender._bondOnDamaged || !attacker || attacker.side === defender.side) return;
+  defender._bondOnDamaged.forEach(b => {
+    const stacks = attacker._bondStacks || (attacker._bondStacks = {});
+    if ((stacks[b.name] || 0) >= b.maxStacks) return;
+    if (__rng() >= b.chance) return;
+    stacks[b.name] = (stacks[b.name] || 0) + 1;
+    const sk = ['무력', '지력', '통솔', '선공'].reduce((m, k) => ((attacker.stats[k] || 0) > (attacker.stats[m] || 0) ? k : m), '무력');
+    attacker.stats[sk] = Math.max(0, (attacker.stats[sk] || 0) - b.amount);
+    log.push(`${turn}턴:   【인연-${b.name}】 [${attacker.name}]의 「${b.name}」이(가) ${stacks[b.name]}스택 중첩됐습니다.`);
+    log.push(`${turn}턴:   [${attacker.name}]의 【${sk}】이(가) ${b.amount.toFixed(2)}(${attacker.stats[sk].toFixed(2)}) 감소했습니다.`);
+  });
 }
 
 // FEAT-024 피해를 받기 직전 트리거 — trigger.event 'pre_damage', role 'taken'(자신) / 'ally_taken'(우군 누구든)
@@ -2905,6 +2924,10 @@ function applyBondBonuses(units, bondCatalog, log) {
         const stats = ['무력', '지력', '통솔', '선공'];
         const top = stats.reduce((a, c) => (u.stats[c] > u.stats[a] ? c : a), stats[0]);
         u.stats[top] += b.parsed.highestStatBoost;
+      }
+      if (b.parsed.onDamagedHighestDown) {   // FEAT-028 우아한 자태
+        const o = b.parsed.onDamagedHighestDown;
+        (u._bondOnDamaged || (u._bondOnDamaged = [])).push({ name: b.name, chance: o.chance, amount: o.amount, maxStacks: o.maxStacks });
       }
       if (b.parsed.perMemberScale) {
         const amt = b.parsed.perMemberScale.perCount * memberCount;

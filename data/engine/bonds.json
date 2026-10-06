@@ -946,9 +946,14 @@
       "statMods": [],
       "pctStatMods": [],
       "highestStatBoost": null,
-      "perMemberScale": null
+      "perMemberScale": null,
+      "onDamagedHighestDown": {
+        "chance": 0.35,
+        "amount": 5,
+        "maxStacks": 5
+      }
     },
-    "simulatable": false,
+    "simulatable": true,
     "legacyMembersInRoster": [
       "대교",
       "견희"

@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-07-bond-elegant",
+  "date": "2026-10-07",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "퇴로 매복 110%·회심 25% 확정, 인연 우아한 자태 구현, 관우 병법 기록",
+  "body": "사용자 캡처 3장 반영(설계서 P-0037, R-053~055, FEAT-028).\n■ 퇴로 매복: 게임 원문 '110% 병기 피해 4회, 발동 기간 회심 25%' — 100~140% 무작위 → 110% 고정, 회심 +25% 근사 → 확정\n■ 인연 우아한 자태: 오국태 멤버 추가, 인연 무장이 피해를 받으면 35% 확률로 공격자 최고 속성 −5(5중첩) — 예전엔 무시\n■ 일반 병법: 뺄 수 없지만 시뮬 제외 유지(사용자 결정), 아는 7종을 규정 MAN4 에 기록. 관우 툴팁 주는 병기 +5.4% 는 장비가 아니라 병법 <작전>\n■ P-0036 갱신: 병법 가설 제외, 창병 특성·받는 피해 증가 상태가 남음",
+  "refs": [
+    "ambushes",
+    "da-qiao",
+    "zhen-luo",
+    "guan-yu"
+  ],
+  "author": "Claude",
+  "commit": "",
+  "files": [
+    "packages/engine/src/legacy/core.js",
+    "packages/engine/src/skills/ambushes.ts",
+    "data/engine/bonds.json",
+    "data/patches/bonds.json",
+    "data/patches/skills.json",
+    "data/replays/2026-10-06-sunjian-guanyu-huangzhong.json",
+    "data/common/confirmed-rules.json",
+    "data/design/spec.json",
+    "data/design/posts/*.json",
+    "tests/bond-elegant.test.ts"
+  ]
+}
