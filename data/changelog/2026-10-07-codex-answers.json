@@ -7,6 +7,6 @@
   "body": "사용자 답변으로 P-0039 해결, 확정 규칙 R-057. 4건 모두 지금 시뮬 해석과 같아 동작 변경 없음.\n■ 틈새 공략: 혼란을 걸기 전부터 혼란이었을 때만 우군 100%\n■ 구름과 바람: 폭풍 목표 1명당 1스택\n■ 금성의 철벽: 매 턴 8%p 감소\n■ 고요한 제압: 랜덤 우군 매 턴 새로 뽑음",
   "refs": ["strike-gap", "wind-cloud", "golden-fortress", "calm"],
   "author": "Claude",
-  "commit": "",
+  "commit": "88fcdc2",
   "files": ["packages/engine/src/skills/strike-gap.ts", "packages/engine/src/skills/wind-cloud.ts", "packages/engine/src/skills/golden-fortress.ts", "packages/engine/src/skills/calm.ts", "data/common/confirmed-rules.json", "data/design/posts/P-0039.json"]
 }
