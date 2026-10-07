@@ -11,6 +11,10 @@ export default defineSkill({
   revised: [
     {
       "date": "2026-10-07",
+      "note": "사용자 확인(R-057, 2026-10-07): 지금 해석 확정"
+    },
+    {
+      "date": "2026-10-07",
       "note": "도감 녹화(S2 전설): 저항 → 방어 1스택, 확률 감소 12%p → 8%p (80·72·64·…·24%)"
     }
   ],
@@ -26,7 +30,8 @@ export default defineSkill({
     },
     {
       "text": "매 턴 확률이 8% 감소한다",
-      "status": "ok"
+      "status": "ok",
+      "reviewed": "매 턴 8%p 감소(80→72→…→24%) — 사용자 확인 R-057"
     }
   ],
   def: {
