@@ -45,3 +45,21 @@ describe('시즌3 미리보기', () => {
     expect(fired).toBe(true);
   });
 });
+
+describe('R-061 한국 미출시 시즌3 데이터', () => {
+  it('미출시 표시가 붙고, 덱 추천 대체 후보로 나오지 않는다', () => {
+    expect(gen('좌자').krRelease).toBe('미출시');
+    expect(gen('SP 제갈량').krRelease).toBeUndefined();
+    const rec = new Recommender(bundle);
+    const owned = bundle.generals.filter((g: any) => g.season !== 'S3' || g.krRelease).map((g: any) => g.id).filter((id: string) => !['zuo-ci', 'jiang-wei'].includes(id));
+    const res: any = rec.recommend({ owned: { generals: owned, skills: bundle.skills.map((s: any) => s.id) }, count: 5 } as any);
+    for (const d of res.decks) for (const u of d.units) for (const s of u.subs) {
+      const to = bundle.generals.find((g: any) => g.name.ko === s.to) || bundle.skills.find((x: any) => x.name.ko === s.to);
+      expect(to?.krRelease).toBeUndefined();
+    }
+  });
+  it('시뮬 결과 안내에 한국 미출시가 표시된다', () => {
+    const ap = (sim as any).approxIn({ formation: '기형진', units: [U('좌자'), U('관우'), U('황충')] });
+    expect(ap.some((x: any) => x.kind === '한국 미출시')).toBe(true);
+  });
+});

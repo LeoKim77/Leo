@@ -374,9 +374,12 @@ export class Simulator {
       const gs = g.dataStatus || {};
       const tmp = Object.entries(gs).filter(([k, v]) => k !== 'faction' && !(k === 'unitType' && (u.unitType || !/미확인/.test(v))) && /임시|미확인/.test(v));
       if (tmp.length) out.push({ owner: g.name.ko, name: '무장 정보', kind: '임시 자료', note: tmp.map(([k, v]) => `${({ stats: '능력치', unitType: '병종', row: '배치' } as any)[k] || k} ${v}`).join(', ') });
+      if (gs.stats && /환산/.test(gs.stats) && !tmp.some(([k]) => k === 'stats')) out.push({ owner: g.name.ko, name: '능력치', kind: '환산 자료', note: gs.stats });
+      if ((g as any).krRelease) out.push({ owner: g.name.ko, name: '무장', kind: '한국 미출시', note: '해외 자료로 시뮬 (R-061)' });
       for (const sid of [g.uniqueSkillId, ...u.skillIds]) {
         const sk = this.bundle.skills.find(x => x.id === sid);
         if (!sk) continue;
+        if ((sk as any).krRelease) out.push({ owner: g.name.ko, name: sk.name.ko, kind: '한국 미출시', note: '해외 자료로 시뮬 (R-061)' });
         if (sk.dataStatus?.procRate) out.push({ owner: g.name.ko, name: sk.name.ko, kind: '임시 자료', note: `발동률 ${sk.dataStatus.procRate}` });
         const eng = sk.engine as any;
         const approxClauses = sk.clauses.filter(c => c.status === 'approx' || c.status === 'missing');

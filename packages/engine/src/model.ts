@@ -42,6 +42,8 @@ export interface General {
   uniqueSkillId: string;
   /** 같은 인물의 다른 판(SP 등)이면 원래 무장 id — 한 부대에 함께 출전 불가(R-058) */
   samePerson?: string;
+  /** '미출시' = 한국 서버 미출시(해외 자료만) — 표시·추천 대체 후보 제외 */
+  krRelease?: string;
   /** 전용 병법 */
   manuals: Manual[];
   /** 아직 공개 자료가 없어 임시값·추정값을 쓴 항목 (예: stats: '임시값') */
@@ -86,6 +88,8 @@ export interface Clause {
 
 export interface Skill {
   id: string;
+  /** '미출시' = 한국 서버 미출시(해외 자료만) */
+  krRelease?: string;
   name: LocalName;
   isUnique: boolean;
   ownerGeneralId?: string;

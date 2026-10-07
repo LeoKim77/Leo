@@ -47,9 +47,9 @@ export function renderRoster(root: HTMLElement) {
     h('div', { class: 'grid cols-2' },
       h('div', { class: 'panel' }, h('h3', { style: { fontSize: '16px', marginBottom: '8px' } }, '무장'),
         byFaction.map(([f, list]) => h('div', { style: { marginBottom: '10px' } }, h('div', { class: 'sub' }, f),
-          h('div', { class: 'toolbar', style: { marginBottom: 0 } }, list.map(g => chip(ownG.has(g.id), g.name.ko, () => toggle(ownG, g.id))))))),
+          h('div', { class: 'toolbar', style: { marginBottom: 0 } }, list.map(g => chip(ownG.has(g.id), g.name.ko + ((g as any).krRelease ? ' (미출시)' : ''), () => toggle(ownG, g.id))))))),
       h('div', { class: 'panel' }, h('h3', { style: { fontSize: '16px', marginBottom: '8px' } }, '전법'),
         byKind.map(([k, list]) => h('div', { style: { marginBottom: '10px' } }, h('div', { class: 'sub' }, k),
-          h('div', { class: 'toolbar', style: { marginBottom: 0 } }, list.map(s => chip(ownS.has(s.id), s.name.ko, () => toggle(ownS, s.id)))))))),
+          h('div', { class: 'toolbar', style: { marginBottom: 0 } }, list.map(s => chip(ownS.has(s.id), s.name.ko + ((s as any).krRelease ? ' (미출시)' : ''), () => toggle(ownS, s.id)))))))),
   );
 }

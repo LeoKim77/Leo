@@ -93,7 +93,7 @@ export class Recommender {
         for (const id of ownG) {
           if (takenG.has(id) || deckP.has(person(id))) continue;
           const c = this.gById.get(id);
-          if (!c) continue;
+          if (!c || (c as any).krRelease) continue;   // R-061 한국 미출시는 대체 후보에서 제외
           const sim = generalSim(orig, c);
           if (!best || sim.score > best.score) best = { id, ...sim };
         }
@@ -113,7 +113,7 @@ export class Recommender {
         for (const id of ownS) {
           if (takenS.has(id) || u.skillIds.includes(id)) continue;
           const c = this.sById.get(id);
-          if (!c || c.isUnique) continue;
+          if (!c || c.isUnique || (c as any).krRelease) continue;   // R-061
           const sim = this.skillSim(sk, c);
           if (!best || sim.score > best.score) best = { id, ...sim };
         }

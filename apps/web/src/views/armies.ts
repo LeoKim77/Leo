@@ -62,8 +62,8 @@ function armyCard(user: UserData, a: Army, idx: number, redraw: () => void) {
   const unitCard = (u: ArmyUnit, i: number) => {
     const g = u.generalId ? generalById(u.generalId) : undefined;
     const uniq = g ? b.skills.find(s => s.id === g.uniqueSkillId) : undefined;
-    const genOpts = [{ value: '', label: '— 무장 선택 —' }, ...gens.filter(x => x.id === u.generalId || (!usedG.has(x.id) && !usedP.has(personOf(x.id)))).map(x => ({ value: x.id, label: `${x.name.ko} (${x.faction}·${x.row})${owned.size && !owned.has(x.id) ? ' · 미보유' : ''}` }))];
-    const skOpts = (k: number) => [{ value: '', label: '— 전법 —' }, ...skills.filter(s => s.id === u.skillIds[k] || !usedS.has(s.id)).map(s => ({ value: s.id, label: `[${s.grade || '-'}·${s.kind}] ${s.name.ko}${ownedS.size && !ownedS.has(s.id) ? ' · 미보유' : ''}` }))];
+    const genOpts = [{ value: '', label: '— 무장 선택 —' }, ...gens.filter(x => x.id === u.generalId || (!usedG.has(x.id) && !usedP.has(personOf(x.id)))).map(x => ({ value: x.id, label: `${x.name.ko} (${x.faction}·${x.row})${(x as any).krRelease ? ' · 한국 미출시' : ''}${owned.size && !owned.has(x.id) ? ' · 미보유' : ''}` }))];
+    const skOpts = (k: number) => [{ value: '', label: '— 전법 —' }, ...skills.filter(s => s.id === u.skillIds[k] || !usedS.has(s.id)).map(s => ({ value: s.id, label: `[${s.grade || '-'}·${s.kind}] ${s.name.ko}${(s as any).krRelease ? ' · 한국 미출시' : ''}${ownedS.size && !ownedS.has(s.id) ? ' · 미보유' : ''}` }))];
     const ms = g?.manuals || [];
     const curManual = u.manualId || ms.find(usableManual)?.id || 'none';
     const mOpts = [{ value: 'none', label: '금병법 없음' }, ...ms.map(m => ({ value: m.id!, label: `〈${m.name}〉${m.status === 'approx' ? ' 근사' : m.status === 'unsupported' ? ' 미지원' : m.status === 'missing' ? ' 원문 미확인' : ''}` }))];
