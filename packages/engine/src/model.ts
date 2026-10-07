@@ -40,6 +40,8 @@ export interface General {
   stats: Partial<Record<StatKey, number>>;
   maxTroops: number;
   uniqueSkillId: string;
+  /** 같은 인물의 다른 판(SP 등)이면 원래 무장 id — 한 부대에 함께 출전 불가(R-058) */
+  samePerson?: string;
   /** 전용 병법 */
   manuals: Manual[];
   /** 아직 공개 자료가 없어 임시값·추정값을 쓴 항목 (예: stats: '임시값') */

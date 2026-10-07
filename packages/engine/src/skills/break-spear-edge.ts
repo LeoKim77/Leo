@@ -1,6 +1,6 @@
 // 병기 파괴 · 전법 · 액티브 50%
-// 원문: 적군 무작위 2명에게 220%의 병기 피해를 입히고, 75% 확률로 무장해제 상태를 부여합니다. 지속시간은 1턴입니다.
-// 원문 절 구현: ok / ok / ok
+// 원문(시즌3 미리보기 2026-10-07): 랜덤 적군 2명에게 220%의 병기 피해를 주며, 75% 확률로 1턴 동안 지속되는 무장 해제을(를) 부여한다.
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,21 +8,23 @@ export default defineSkill({
   name: "병기 파괴",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-07",
+      "note": "시즌3 미리보기: 해외 번역 문구를 한국판 원문으로 교체"
+    }
+  ],
   engineStatus: {
     "status": "ok",
     "source": "authored"
   },
   clauses: [
     {
-      "text": "적군 무작위 2명에게 220%의 병기 피해를 입히고",
+      "text": "랜덤 적군 2명에게 220%의 병기 피해를 주며",
       "status": "ok"
     },
     {
-      "text": "75% 확률로 무장해제 상태를 부여합니다",
-      "status": "ok"
-    },
-    {
-      "text": "지속시간은 1턴입니다",
+      "text": "75% 확률로 1턴 동안 지속되는 무장 해제을(를) 부여한다",
       "status": "ok"
     }
   ],

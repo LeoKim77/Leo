@@ -1,61 +1,56 @@
-// 풍급우회 · 고유 전법 · 액티브 55%
-// 원문: 적군 전체에게 120%의 책략 피해를 입히고, 홍수 상태를 부여합니다. 지속시간은 2턴입니다. 동시에 자신과 무작위 아군 1명(같은 열 우선)이 아래 효과 중 1~2개를 획득합니다. 각 무장은 독립적으로 판정합니다. 자신의 병력을 회복합니다. 치료율 200%(지력의 영향을 받음). 기궁 상태에 면역됩니다. 지속시간 1턴. 액티브 전법 발동률이 10% 증가합니다. 지속시간 1턴.
-// 원문 절 구현: ok / ok / ok / approx / ok / ok / ok / missing / ok / ok / ok
+// 혼란의 폭우 · 고유 전법 · 액티브 55%
+// 원문(시즌3 미리보기 2026-10-07): 전체 적군에게 120%의 책략 피해를 주고, 2턴 동안 지속되는 홍수 상태를 부여한다. 또한, 자신과 랜덤 우군 1명(같은 열 우선)이 아래 효과 중 1~2개를 획득한다. 효과: 자신의 병력 회복(치유율 200%, 지력의 영향 받음). 2턴 동안 침묵 상태 면역. 2턴 동안 액티브 전법 발동률 10% 증가. 무장마다 개별적으로 판정된다.
+// 원문 절 구현: ok / ok / ok / approx / ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
   id: "u-yu-ji",
-  name: "풍급우회",
+  name: "혼란의 폭우",
   kind: "액티브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-07",
+      "note": "시즌3 미리보기: 이름 혼란의 폭우. 효과 3종(회복 200%·2턴 침묵 면역·2턴 액티브 발동률 +10%) 중 1~2개를 자신과 랜덤 우군 1명(같은 열 우선)이 무장마다 따로 획득(예전: 효과마다 50%, 기궁 면역 누락, 지속 1턴)"
+    }
+  ],
   engineStatus: {
     "status": "approx",
-    "note": "\"효과 1~2개 획득\"을 효과마다 50% 판정으로, \"같은 열 우선\"은 무작위 아군 1명으로 처리. 지력 영향 미반영",
+    "note": "효과 개수 1개/2개는 반반, 효과 고르기는 균등 무작위로 해석(원문에 확률 없음)",
     "source": "authored"
   },
   clauses: [
     {
-      "text": "적군 전체에게 120%의 책략 피해를 입히고",
+      "text": "전체 적군에게 120%의 책략 피해를 주고",
       "status": "ok"
     },
     {
-      "text": "홍수 상태를 부여합니다",
+      "text": "2턴 동안 지속되는 홍수 상태를 부여한다",
       "status": "ok"
     },
     {
-      "text": "지속시간은 2턴입니다",
+      "text": "또한",
       "status": "ok"
     },
     {
-      "text": "동시에 자신과 무작위 아군 1명(같은 열 우선)이 아래 효과 중 1~2개를 획득합니다",
-      "status": "approx"
+      "text": "자신과 랜덤 우군 1명(같은 열 우선)이 아래 효과 중 1~2개를 획득한다",
+      "status": "ok",
+      "reviewed": "무장마다 1개 또는 2개(반반)를 효과 3종에서 고름, 같은 열 우군 우선"
     },
     {
-      "text": "각 무장은 독립적으로 판정합니다",
+      "text": "효과: 자신의 병력 회복(치유율 200%, 지력의 영향 받음)",
       "status": "ok"
     },
     {
-      "text": "자신의 병력을 회복합니다",
+      "text": "2턴 동안 침묵 상태 면역",
       "status": "ok"
     },
     {
-      "text": "치료율 200%(지력의 영향을 받음)",
+      "text": "2턴 동안 액티브 전법 발동률 10% 증가",
       "status": "ok"
     },
     {
-      "text": "기궁 상태에 면역됩니다",
-      "status": "missing"
-    },
-    {
-      "text": "지속시간 1턴",
-      "status": "ok"
-    },
-    {
-      "text": "액티브 전법 발동률이 10% 증가합니다",
-      "status": "ok"
-    },
-    {
-      "text": "지속시간 1턴",
+      "text": "무장마다 개별적으로 판정된다",
       "status": "ok"
     }
   ],
@@ -121,12 +116,25 @@ export default defineSkill({
     "replacedLegacy": false
   },
   run(c) {
-    // (원문 절 매핑 없음)
-    c.damage(0);   // 책략 120%, 대상 all_enemy
-    c.heal(0);   // 치유율 200%, 대상 self, 확률 50%
-    c.heal(1);   // 치유율 200%, 대상 random_ally_1, 확률 50%
-    c.buff(0);   // 액티브발동률 +10%, 대상 self, 확률 50%, 1턴, 최대 1중첩
-    c.buff(1);   // 액티브발동률 +10%, 대상 random_ally_1, 확률 50%, 1턴, 최대 1중첩
-    c.status(0);   // 홍수, 대상 all_enemy, 2턴
+    // 「전체 적군에게 120%의 책략 피해를 주고」
+    c.damage(0);
+    // 「2턴 동안 지속되는 홍수 상태를 부여한다」
+    c.status(0);
+    // 「자신과 랜덤 우군 1명(같은 열 우선)이 아래 효과 중 1~2개를 획득한다 … 무장마다 개별적으로 판정된다」
+    const same = c.targets('random_same_row_ally');
+    const mate = same.length ? same[0] : c.pick(c.friendsOf(c.unit));
+    [c.unit, mate].filter(Boolean).forEach((u: any, i: number) => {
+      const n = c.chance(0.5) ? 2 : 1;
+      const pool = ['heal', 'immune', 'proc'];
+      const got: string[] = [];
+      for (let k = 0; k < n; k++) { const e = c.pick(pool.filter(x => !got.includes(x)))!; got.push(e); }
+      c.tag('y' + i, [u]);
+      // 효과: 「자신의 병력 회복(치유율 200%, 지력의 영향 받음)」
+      if (got.includes('heal')) c.heal({ ...c.skill.effects.heal[0], target: 'tag:y' + i, chance: undefined });
+      // 효과: 「2턴 동안 침묵 상태 면역」
+      if (got.includes('immune')) c.status({ name: '침묵 면역', target: 'tag:y' + i, duration: 2 });
+      // 효과: 「2턴 동안 액티브 전법 발동률 10% 증가」
+      if (got.includes('proc')) c.buff({ ...c.skill.effects.buffs[0], target: 'tag:y' + i, duration: 2, chance: undefined });
+    });
   },
 });

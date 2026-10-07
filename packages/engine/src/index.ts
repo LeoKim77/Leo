@@ -131,6 +131,7 @@ export function toLegacyGameData(bundle: GameBundle & { engineGenerals?: Record<
       stats: { 무력: 0, 지력: 0, 통솔: 0, 선공: 0, ...stats },
       maxTroops: g.maxTroops,
       uniqueSkillId: g.uniqueSkillId,
+      samePerson: (g as any).samePerson,   // R-058
       manuals: g.manuals || [],
     };
   });
@@ -198,6 +199,10 @@ export class Simulator {
     const formation = useFormation ? realFormation : { ...realFormation, name: '진형 없음', traits: [], effects: [], hitRate: { front: 1, mid: 1, back: 1 } };
     const manualsUsed: Array<{ unit: any; manual: Manual }> = [];
     const skillStatics: Array<{ unit: any; name: string; st: any }> = [];
+    // R-058 같은 인물(SP 등 다른 판)은 한 부대에 함께 출전할 수 없다
+    const persons = deck.units.map(u => { const g: any = this.generalById.get(u.generalId); return g ? (g.samePerson || g.id) : u.generalId; });
+    const dupP = persons.find((p, i) => persons.indexOf(p) !== i);
+    if (dupP) throw new Error(`같은 인물은 한 부대에 함께 출전할 수 없습니다: ${deck.units.filter((u, i) => persons[i] === dupP).map(u => (this.generalById.get(u.generalId) as any)?.name || u.generalId).join(' · ')} (R-058)`);
     const slotPos = this.slotPositions(deck, useFormation ? formation : { hitRate: { front: 0.6, mid: 0.2, back: 0.2 } });
     const units = deck.units.map((u, idx) => {
       const g0 = this.generalById.get(u.generalId);
@@ -219,6 +224,8 @@ export class Simulator {
       const skillParts = [uskill, ...skills].filter(Boolean).flatMap((sk: any) => (sk.parts || []).map((part: any, i: number) => ({
         ...structuredClone(part), id: `${sk.id}#${i + 1}`, name: sk.name, type: sk.type === '액티브' || sk.type === '추격' ? '패시브' : sk.type,
         procRate: '100%', raw: sk.raw, isManual: true, isPart: true,
+        // FEAT-030 전법 부속 효과도 함수로 실행(전법 파일의 partRuns[i])
+        run: this.opts.noSkillFns ? undefined : (SKILL_MODULES as any)[sk.id]?.partRuns?.[i],
       })));
       const manualRuns = !this.opts.noSkillFns && eng?.fn ? MANUAL_MODULES[eng.fn]?.runs : undefined;
       const manualSkills = (eng?.parts || []).map((part, i) => ({

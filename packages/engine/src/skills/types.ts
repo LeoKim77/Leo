@@ -70,6 +70,8 @@ export interface SkillModule {
   /** 생성 뒤 원문대로 손본 기록 — 있으면 JSON 원천과의 동등성 검사에서 뺀다 */
   revised?: Array<{ date: string; note: string }>;
   run?: (c: SkillApi) => void;
+  /** def.parts[i] (부속 계기 효과)의 실행 함수 — 없으면 parts 항목대로 */
+  partRuns?: Array<((c: SkillApi) => void) | undefined>;
 }
 
 export const defineSkill = (m: SkillModule): SkillModule => m;

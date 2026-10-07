@@ -1,0 +1,12 @@
+{
+  "id": "2026-10-07-s3-video",
+  "date": "2026-10-07",
+  "season": "S3",
+  "category": "신규 무장",
+  "title": "시즌3 미리보기 반영: EX 무장 8명·SP 제갈량·EX 전법 10개, 성운 대열 진형 보너스·기국 버프, 동일 인물 출전 제한",
+  "body": "사용자 미리보기 영상 3개 반영(설계서 P-0040, R-058~060, FEAT-029·030, 규정 CMP1·FRM3).\n■ 무장 9명 병종·배치·진영·능력치(50레벨 = 5레벨 + 45×성장, SP 제갈량 지력 260 검증)\n■ 고유 전법 한국판 이름·원문 9개, EX 전법 원문 10개(해외 번역 문구 교체)\n■ 성운 대열(SP 제갈량): 진형 보너스 +70%(지력 영향)·기국 버프(단일/이중/삼중 전열) 엔진 구현\n■ 동작 변경: 고통의 심계 25% · 혼란의 폭우 효과 1~2개·2턴 침묵 면역 · 십이기책 2~3명·미보유 이상 상태 우선 · 신속 출병 군령 추가·10군령 260% · 뛰어난 응변 원문대로 · 만군 멸시 35% · 문무의 충신 50%\n■ SP 제갈량과 제갈량은 한 부대 금지(엔진·덱 추천·편성 화면)\n■ 감사: 실패 0 (성라기포 원문 미반영 실패가 해소)\n■ 질문 P-0041",
+  "refs": ["sp-zhuge-liang", "zhang-chunhua", "zhang-zhao", "wang-yi", "yu-ji", "huangfu-song", "zhang-ning", "zhu-jun", "xun-you", "divine-change", "scorn-myriad", "loyal-civil-military"],
+  "author": "Claude",
+  "commit": "",
+  "files": ["data/patches/generals.json", "data/patches/skills.json", "packages/engine/src/legacy/core.js", "packages/engine/src/index.ts", "packages/engine/src/model.ts", "packages/engine/src/skills/*.ts (S3 19개)", "packages/engine/src/skills/types.ts", "packages/recommender/src/index.ts", "apps/web/src/views/armies.ts", "tests/s3.test.ts", "data/common/confirmed-rules.json", "data/design/spec.json", "data/design/posts/*.json"]
+}

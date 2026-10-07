@@ -42,6 +42,10 @@ export const ENGINE_FIXES = [
     detail: '① 대상이 안 적힌 효과는 한 시전 안에서 같은 대상을 공유(R-044) — 예전엔 효과마다 새로 뽑아 "랜덤 2명의 A와 B"가 서로 다른 무장에게 갔다. ② "디버프 상태 보유" 조건이 방어·피신 같은 기능성 상태까지 셌다. ③ "이상 상태 개수"도 기능성 상태 포함. ④ 대상이 자신뿐인 회복이 병력 최저 아군에게 갔다(지혜의 바람·충성과 용맹·전쟁 조달). ⑤ 능력치 증감의 턴 조건(turnCond)이 무시됐다.' },
   { id: 'FIX-022', date: '2026-10-06', found: '녹화 2026-10-06 (손견·관우·황충 vs 대교·손책·견희, 포진~3턴)', title: '탈주병 계수·전장 평정 대상·강동 제패 회복 대상·화하 진압 순서·퇴로 매복 회심',
     detail: '탈주병 = 1.49×무력(예전 2.4×무력−330, 6~7% 작음 — 5건 ±1%). 전장 평정 180%는 디버프 보유 적 전원. "자신과 랜덤 아군"은 자신이 또 뽑힐 수 있음(손책 자신 2회 회복). 화하 진압은 발동률 증가(갱신) → 목표마다 피해 → 탈주병. 퇴로 매복 시전 중 회심 +25%(근사, 원문 확인 대기).' },
+  { id: 'FEAT-030', date: '2026-10-07', found: '시즌3 시뮬 점검(황보숭 신속 출병 260% 미발동)', title: '전법 부속 효과 함수(partRuns)',
+    detail: '전법 파일의 partRuns[i] 를 def.parts[i] 의 실행 함수로 붙인다. 황보숭 신속 출병: 매 턴 첫 피격 군령 +1, 통솔이 전투 시작 대비 60 오를 때마다 군령 +1, 최초 10군령에 전체 적군 260% 병기.' },
+  { id: 'FEAT-029', date: '2026-10-07', found: '시즌3 미리보기 영상(SP 제갈량 성운 대열 + 기국 버프 툴팁)', title: '진형 보너스 증가·기국 버프',
+    detail: '전법 정의 formationBoost {pct, inf}: 부대 진형 특성 수치를 ×(1 + 비율 × 스탯 영향). qiju: 진형의 전열 칸 수에 따라 단일(전열 받는 피해 −12% 지력 영향 + 전열 피격률 85% 고정)·이중(통솔 최저 아군 전열 대상 주는 피해 +20%, 행동 시 랜덤 적 1~2명 160%)·삼중(턴 종료 시 지력 최고 아군이 전체 적군 60% 책략). 새 mod 전열대상주는피해, 피격 가중 _hitWeight. 삼중의 "총 치유량 영향"은 미반영(근사).' },
   { id: 'FIX-023', date: '2026-10-07', found: '전설 전법 도감 녹화 대조 후 시뮬 점검', title: '고요한 제압 발동 시점',
     detail: '"홀수 턴/짝수 턴" 문구만 있는 패시브가 전투 시작(0턴) 한 번만 실행돼, 짝수 턴 감소(받는 책략·액티브 피해)가 전투 내내 걸리고 홀수 턴 감소는 아예 없었다. 매 턴 시작에 실행하도록 고침(def._timing turnStart).' },
   { id: 'FEAT-028', date: '2026-10-07', found: '사용자 캡처(견희 열전 인연) + 녹화 2026-10-06 (대교·견희 피격 때 관우 무력 −5 스택)', title: '피격 반응 인연(우아한 자태)·퇴로 매복 110%',
@@ -399,6 +403,7 @@ function buildUnit(general, skills, uniqueSkill, formation, position, side, idx)
 // 진형의 위치별 피격률에 따른 가중 랜덤 선택 (전열이 대체로 더 많이 맞도록)
 function weightedPickByPosition(units) {
   const weights = units.map(u => {
+    if (u._hitWeight != null) return u._hitWeight;   // FEAT-029 기국(단일 전열): 피격률 고정
     const hr = u.formation && u.formation.hitRate;
     if (!hr) return 1;
     return Math.max(0.05, hr[u.position] != null ? hr[u.position] : 0.33);
@@ -560,7 +565,9 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   const outTypeMod = dmgType === '병기' ? (attacker.mods.주는병기피해 || 0) : (attacker.mods.주는책략피해 || 0);
   // FEAT-001: "병력이 자신보다 높은 목표에게 주는 피해 증가" (관우 오상)
   const vsHigher = defender.troops > attacker.troops ? (attacker.mods.병력우위대상피해 || 0) : 0;
-  const outShared = Math.min((attacker.mods.주는피해 || 0) + outTypeMod + vsHigher, 1.0);
+  // FEAT-029 기국(이중 전열): "전열에 주는 피해 증가"
+  const vsFront = defender.position === 'front' ? (attacker.mods.전열대상주는피해 || 0) : 0;
+  const outShared = Math.min((attacker.mods.주는피해 || 0) + outTypeMod + vsHigher + vsFront, 1.0);
   const typeMod = dmgType === '병기' ? (defender.mods.받는병기피해 || 0) : (defender.mods.받는책략피해 || 0);
   const statusIn = accumStatus(defender, 'inDamageAdd', 'add');   // 위협 등
   let kindMod = 0;
@@ -2797,9 +2804,19 @@ function findActiveBonds(unitNames, bondCatalog) {
 // (기존에는 hitRate만 쓰고 특성 텍스트는 무시하고 있었음)
 function applyFormationEffects(units, log) {
   const announced = new Set();
+  // FEAT-029 진형 보너스 증가(SP 제갈량 성운 대열): 부대에 formationBoost 를 가진 전법이 있으면 진형 특성 수치 × (1 + 비율 × 스탯 영향)
+  const boostOf = {};
+  units.forEach(u => (u.skills || []).forEach(sk => {
+    const fb = sk.formationBoost;
+    if (!fb) return;
+    const b = fb.pct * infMult({ stats: [fb.inf || '지력'], who: 'self' }, u, null, null);
+    boostOf[u.side] = Math.max(boostOf[u.side] || 0, b);
+    if (log) log.push(`0턴: [${u.name}]의 【${sk.name}】 — 진형 보너스가 ${(b * 100).toFixed(2)}% 증가합니다.`);
+  }));
   units.forEach(u => {
     const f = u.formation;
     if (!f || !f.effects) return;
+    const k = 1 + (boostOf[u.side] || 0);
     if (log && !announced.has(f.name + u.side)) {
       announced.add(f.name + u.side);
       log.push(`0턴: [${u.name}] 부대에서 【진형-${f.name}】 강화 효과를 획득했습니다.`);
@@ -2807,15 +2824,73 @@ function applyFormationEffects(units, log) {
     const row = u.position === 'back' ? 'back' : 'front'; // mid는 전열 취급
     f.effects.forEach(e => {
       if (e.row !== row) return;
+      const v = e.value * k;
       if (e.mod) {
-        u.mods[e.mod] = (u.mods[e.mod] || 0) + e.value;
-        if (log) log.push(`0턴:   [${u.name}]의 【${e.mod}】이(가) ${(Math.abs(e.value)*100).toFixed(2)}%(${(u.mods[e.mod]*100).toFixed(2)}%) ${e.value>=0?'증가':'감소'}했습니다.`);
+        u.mods[e.mod] = (u.mods[e.mod] || 0) + v;
+        if (log) log.push(`0턴:   [${u.name}]의 【${e.mod}】이(가) ${(Math.abs(v)*100).toFixed(2)}%(${(u.mods[e.mod]*100).toFixed(2)}%) ${v>=0?'증가':'감소'}했습니다.`);
       }
       if (e.stat) {
-        u.stats[e.stat] = Math.max(0, (u.stats[e.stat] || 0) + e.value);
-        if (log) log.push(`0턴:   [${u.name}]의 【${e.stat}】이(가) ${Math.abs(e.value).toFixed(2)}(${u.stats[e.stat].toFixed(2)}) ${e.value>=0?'증가':'감소'}했습니다.`);
+        u.stats[e.stat] = Math.max(0, (u.stats[e.stat] || 0) + v);
+        if (log) log.push(`0턴:   [${u.name}]의 【${e.stat}】이(가) ${Math.abs(v).toFixed(2)}(${u.stats[e.stat].toFixed(2)}) ${v>=0?'증가':'감소'}했습니다.`);
       }
     });
+  });
+  applyQijuBuffs(units, log);
+}
+
+// FEAT-029 기국 버프(SP 제갈량 성운 대열) — 진형의 전열 칸 수(단일·이중·삼중 전열)에 따라 다른 효과
+//   단일 전열: 전열 아군이 받는 피해 12% 감소(지력 영향), 피격률 85% 고정
+//   이중 전열: 통솔이 가장 낮은 아군이 전열에 주는 피해 20% 증가, 매 턴 행동 시 랜덤 적군 1~2명에게 160%(무력·지력 중 높은 쪽 유형)
+//   삼중 전열: 매 턴 종료 시 지력이 가장 높은 아군이 전체 적군에게 60% 책략 피해(추가로 부대 총 치유량 영향 — 미반영)
+function applyQijuBuffs(units, log) {
+  const sides = [...new Set(units.map(u => u.side))];
+  sides.forEach(side => {
+    const team = units.filter(u => u.side === side);
+    const owner = team.find(u => (u.skills || []).some(sk => sk.qiju));
+    if (!owner) return;
+    const q = owner.skills.find(sk => sk.qiju).qiju;
+    const fronts = team.filter(u => u.position === 'front');
+    const backs = team.filter(u => u.position !== 'front');
+    const kind = fronts.length >= 3 ? 'triple' : fronts.length === 2 ? 'double' : 'single';
+    const label = { single: '단일 전열', double: '이중 전열', triple: '삼중 전열' }[kind];
+    if (log) log.push(`0턴: [${owner.name}]의 기국 버프 — ${label} 진형(전열 ${fronts.length}명)`);
+    if (kind === 'single') {
+      const amt = (q.singleReduce || 0.12) * infMult({ stats: ['지력'], who: 'self' }, owner, null, null);
+      fronts.forEach(u => {
+        u.mods.받는피해 = (u.mods.받는피해 || 0) - amt;
+        if (log) log.push(`0턴:   [${u.name}]의 【받는피해】이(가) ${(amt*100).toFixed(2)}%(${(u.mods.받는피해*100).toFixed(2)}%) 감소했습니다. (기국: 전열)`);
+      });
+      const hit = q.singleHitRate || 0.85;
+      fronts.forEach(u => { u._hitWeight = hit / fronts.length; });
+      backs.forEach(u => { u._hitWeight = (1 - hit) / Math.max(1, backs.length); });
+      if (log) log.push(`0턴:   전열 피격률이 ${(hit*100).toFixed(0)}%로 고정됩니다. (기국)`);
+    } else if (kind === 'double') {
+      const low = team.reduce((m, u) => ((u.stats.통솔 || 0) < (m.stats.통솔 || 0) ? u : m), team[0]);
+      low.mods.전열대상주는피해 = (low.mods.전열대상주는피해 || 0) + (q.doubleFront || 0.2);
+      if (log) log.push(`0턴:   [${low.name}]이(가) 전열에 주는 피해가 ${((q.doubleFront || 0.2)*100).toFixed(0)}% 증가합니다. (기국)`);
+      const dmgType = (low.stats.무력 || 0) >= (low.stats.지력 || 0) ? '병기' : '책략';
+      const ratio = q.doubleStrike || 1.6;
+      low.skills.push({
+        id: 'qiju-double', name: '기국(이중 전열)', type: '지휘', procRate: '100%', _timing: 'action', raw: '매 턴 행동 시',
+        isPart: true, effects: { damage: [], heal: [], buffs: [], statMods: [], statusEffects: [], targets: [] },
+        run(c) {
+          const pool = [...c.enemiesOf(c.unit)];
+          const n = c.chance(0.5) ? 2 : 1, picked = [];
+          for (let i = 0; i < n && pool.length; i++) { const t = c.pick(pool); picked.push(t); pool.splice(pool.indexOf(t), 1); }
+          c.tag('q', picked);
+          c.damage({ dmgType, min: ratio, max: ratio, target: 'tag:q' });
+        },
+      });
+    } else {
+      const top = team.reduce((m, u) => ((u.stats.지력 || 0) > (m.stats.지력 || 0) ? u : m), team[0]);
+      const ratio = q.tripleDamage || 0.6;
+      top.skills.push({
+        id: 'qiju-triple', name: '기국(삼중 전열)', type: '지휘', procRate: '100%', _timing: 'turnEnd', raw: '매 턴 종료 시',
+        isPart: true, effects: { damage: [{ dmgType: '책략', min: ratio, max: ratio, target: 'all_enemy' }], heal: [], buffs: [], statMods: [], statusEffects: [], targets: ['all_enemy'] },
+        run(c) { c.damage(0); },
+      });
+      if (log) log.push(`0턴:   [${top.name}]이(가) 매 턴 종료 시 전체 적군에게 ${(ratio*100).toFixed(0)}% 책략 피해를 줍니다. (기국)`);
+    }
   });
 }
 

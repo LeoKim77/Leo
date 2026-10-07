@@ -49,6 +49,9 @@ function armyCard(user: UserData, a: Army, idx: number, redraw: () => void) {
   while (a.units.length < 3) a.units.push({ generalId: '', skillIds: ['', ''] });
   const owned = new Set(user.ownedGenerals), ownedS = new Set(user.ownedSkills);
   const usedG = new Set(a.units.map(u => u.generalId).filter(Boolean));
+  // R-058 같은 인물(SP 등)은 한 부대에 함께 넣을 수 없다
+  const personOf = (id: string) => ((generalById(id) as any)?.samePerson || id);
+  const usedP = new Set([...usedG].map(personOf));
   const usedS = new Set(a.units.flatMap(u => u.skillIds).filter(Boolean));
   const gens = b.generals.filter(g => inSeason(g.season)).sort((x, y) => (owned.has(y.id) ? 1 : 0) - (owned.has(x.id) ? 1 : 0) || x.name.ko.localeCompare(y.name.ko, 'ko'));
   const skills = b.skills.filter(s => !s.isUnique && inSeason(s.season)).sort((x, y) => (ownedS.has(y.id) ? 1 : 0) - (ownedS.has(x.id) ? 1 : 0) || x.name.ko.localeCompare(y.name.ko, 'ko'));
@@ -59,7 +62,7 @@ function armyCard(user: UserData, a: Army, idx: number, redraw: () => void) {
   const unitCard = (u: ArmyUnit, i: number) => {
     const g = u.generalId ? generalById(u.generalId) : undefined;
     const uniq = g ? b.skills.find(s => s.id === g.uniqueSkillId) : undefined;
-    const genOpts = [{ value: '', label: '— 무장 선택 —' }, ...gens.filter(x => x.id === u.generalId || !usedG.has(x.id)).map(x => ({ value: x.id, label: `${x.name.ko} (${x.faction}·${x.row})${owned.size && !owned.has(x.id) ? ' · 미보유' : ''}` }))];
+    const genOpts = [{ value: '', label: '— 무장 선택 —' }, ...gens.filter(x => x.id === u.generalId || (!usedG.has(x.id) && !usedP.has(personOf(x.id)))).map(x => ({ value: x.id, label: `${x.name.ko} (${x.faction}·${x.row})${owned.size && !owned.has(x.id) ? ' · 미보유' : ''}` }))];
     const skOpts = (k: number) => [{ value: '', label: '— 전법 —' }, ...skills.filter(s => s.id === u.skillIds[k] || !usedS.has(s.id)).map(s => ({ value: s.id, label: `[${s.grade || '-'}·${s.kind}] ${s.name.ko}${ownedS.size && !ownedS.has(s.id) ? ' · 미보유' : ''}` }))];
     const ms = g?.manuals || [];
     const curManual = u.manualId || ms.find(usableManual)?.id || 'none';

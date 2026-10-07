@@ -381,33 +381,21 @@
       "refs": [
         "u-sp-zhuge-liang"
       ],
-      "title": "성라기포 (고유)",
-      "assumption": "성라기포(진형 효과 강화)·기국 버프는 미지원. 자신 30% 추가 감소 미반영",
-      "howToVerify": "【성라기포】이(가) 발동한 전보에서 근사 항목(성라기포(진형 효과 강화)·기국 버프는 미지원. 자신 30% 추가 감소 미반영)을 확인",
+      "title": "성운 대열 (고유)",
+      "assumption": "진형 보너스 증가·기국 버프 구현(FEAT-029). 삼중 기국 총 치유량 영향 미반영",
+      "howToVerify": "【성운 대열】이(가) 발동한 전보에서 근사 항목(진형 보너스 증가·기국 버프 구현(FEAT-029). 삼중 기국 총 치유량 영향 미반영)을 확인",
       "status": "pending",
       "priority": 5
     },
     {
-      "id": "V-clause-u-sp-zhuge-liang-0",
+      "id": "V-clause-u-sp-zhuge-liang-2",
       "kind": "clause",
       "refs": [
         "u-sp-zhuge-liang"
       ],
-      "title": "성라기포 — \"아군 전체가 받는 책략 피해가 10% 감소합니다(지력의…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【성라기포】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending",
-      "priority": 5
-    },
-    {
-      "id": "V-capture-sp-zhuge-liang",
-      "kind": "capture",
-      "refs": [
-        "sp-zhuge-liang"
-      ],
-      "title": "SP 제갈량 무장 정보",
-      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
-      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
+      "title": "성운 대열 — \"진형 유형에 따라 기국 버프을(를) 획득한다…\"",
+      "assumption": "전열 칸 수 1·2·3 → 단일·이중·삼중 기국. 삼중의 총 치유량 영향 미반영",
+      "howToVerify": "【성운 대열】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending",
       "priority": 5
     },
@@ -417,7 +405,7 @@
       "refs": [
         "u-sp-zhuge-liang"
       ],
-      "title": "성라기포 (고유) 전법 정보",
+      "title": "성운 대열 (고유) 전법 정보",
       "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending",
@@ -937,9 +925,9 @@
       "refs": [
         "u-wang-yi"
       ],
-      "title": "교책인봉 (고유)",
+      "title": "유인전 (고유)",
       "assumption": "지력 영향 미반영",
-      "howToVerify": "【교책인봉】이(가) 발동한 전보에서 근사 항목(지력 영향 미반영)을 확인",
+      "howToVerify": "【유인전】이(가) 발동한 전보에서 근사 항목(지력 영향 미반영)을 확인",
       "status": "pending",
       "priority": 1
     },
@@ -949,9 +937,9 @@
       "refs": [
         "u-wang-yi"
       ],
-      "title": "교책인봉 — \"40% 확률(지력의 영향을 받음)로 적군 무작위 2명에…\"",
+      "title": "유인전 — \"40% 확률로(지력의 영향 받음) 랜덤 적군 2명에게 …\"",
       "assumption": "근사 반영",
-      "howToVerify": "【교책인봉】 전보에서 이 절의 수치·대상·지속을 확인",
+      "howToVerify": "【유인전】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending",
       "priority": 1
     },
@@ -961,9 +949,9 @@
       "refs": [
         "u-wang-yi"
       ],
-      "title": "교책인봉 — \"또한 대상이 받는 피해를 4% 증가시킵니다(지력의 영향…\"",
+      "title": "유인전 — \"목표가 받는 피해를 4% 증가시킨다(지력의 영향 받음)…\"",
       "assumption": "근사 반영",
-      "howToVerify": "【교책인봉】 전보에서 이 절의 수치·대상·지속을 확인",
+      "howToVerify": "【유인전】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending",
       "priority": 1
     },
@@ -973,21 +961,21 @@
       "refs": [
         "u-zhang-ning"
       ],
-      "title": "태평여향 (고유)",
+      "title": "태평의 여운 (고유)",
       "assumption": "\"발동마다 그 턴 확률 10% 감소\"를 턴당 평균 70%로 처리. 요술 대상 피해량 40% 회복 미지원",
-      "howToVerify": "【태평여향】이(가) 발동한 전보에서 근사 항목(\"발동마다 그 턴 확률 10% 감소\"를 턴당 평균 70%로 처리. 요술 대상 피해량 40% 회복 미지원)을 확인",
+      "howToVerify": "【태평의 여운】이(가) 발동한 전보에서 근사 항목(\"발동마다 그 턴 확률 10% 감소\"를 턴당 평균 70%로 처리. 요술 대상 피해량 40% 회복 미지원)을 확인",
       "status": "pending",
       "priority": 1
     },
     {
-      "id": "V-clause-u-zhang-ning-2",
+      "id": "V-clause-u-zhang-ning-1",
       "kind": "clause",
       "refs": [
         "u-zhang-ning"
       ],
-      "title": "태평여향 — \"이 효과가 1회 발동할 때마다 해당 턴의 발동 확률이 …\"",
+      "title": "태평의 여운 — \"발동 시마다 현재 턴의 발동률이 10% 감소한다…\"",
       "assumption": "근사 반영",
-      "howToVerify": "【태평여향】 전보에서 이 절의 수치·대상·지속을 확인",
+      "howToVerify": "【태평의 여운】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending",
       "priority": 1
     },
@@ -997,9 +985,9 @@
       "refs": [
         "u-zhu-jun"
       ],
-      "title": "위사필궐 (고유)",
+      "title": "포위의 허점 (고유)",
       "assumption": "지력·통솔 차이 영향 미반영. 탈취한 통솔은 자신과 통솔 최고 아군에게 각 26(같은 무장이면 1회)",
-      "howToVerify": "【위사필궐】이(가) 발동한 전보에서 근사 항목(지력·통솔 차이 영향 미반영. 탈취한 통솔은 자신과 통솔 최고 아군에게 각 26(같은 무장이면 1회))을 확인",
+      "howToVerify": "【포위의 허점】이(가) 발동한 전보에서 근사 항목(지력·통솔 차이 영향 미반영. 탈취한 통솔은 자신과 통솔 최고 아군에게 각 26(같은 무장이면 1회))을 확인",
       "status": "pending",
       "priority": 1
     },
@@ -1009,21 +997,21 @@
       "refs": [
         "u-zhu-jun"
       ],
-      "title": "위사필궐 — \"적군 무작위 2명의 통솔을 26 탈취합니다(지력의 영향…\"",
+      "title": "포위의 허점 — \"2턴 동안 랜덤 적군 2명의 통솔(지력의 영향 받음)을…\"",
       "assumption": "근사 반영",
-      "howToVerify": "【위사필궐】 전보에서 이 절의 수치·대상·지속을 확인",
+      "howToVerify": "【포위의 허점】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending",
       "priority": 1
     },
     {
-      "id": "V-clause-u-zhu-jun-3",
+      "id": "V-clause-u-zhu-jun-2",
       "kind": "clause",
       "refs": [
         "u-zhu-jun"
       ],
-      "title": "위사필궐 — \"이후 대상에게 180%의 책략 피해를 입힙니다(추가로 …\"",
+      "title": "포위의 허점 — \"이후 180%의 책략 피해를 준다(통솔 차이의 영향을 …\"",
       "assumption": "근사 반영",
-      "howToVerify": "【위사필궐】 전보에서 이 절의 수치·대상·지속을 확인",
+      "howToVerify": "【포위의 허점】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending",
       "priority": 1
     },
@@ -1033,9 +1021,9 @@
       "refs": [
         "u-huangfu-song"
       ],
-      "title": "평란정반 (고유)",
-      "assumption": "\"통솔 60 증가마다 군령 추가\"와 \"군령 10중첩 시 260% 피해\"는 미지원(피격 1회/턴만으로는 10중첩에 못 미침). 통솔 영향 미반영",
-      "howToVerify": "【평란정반】이(가) 발동한 전보에서 근사 항목(\"통솔 60 증가마다 군령 추가\"와 \"군령 10중첩 시 260% 피해\"는 미지원(피격 1회/턴만으로는 10중첩에 못 미침). 통솔 영향 미반영)을 확인",
+      "title": "신속 출병 (고유)",
+      "assumption": "군령 추가 획득·10중첩 260% 구현(FEAT-030). 260%의 \"통솔 차이 영향\"은 미반영",
+      "howToVerify": "【신속 출병】이(가) 발동한 전보에서 근사 항목(군령 추가 획득·10중첩 260% 구현(FEAT-030). 260%의 \"통솔 차이 영향\"은 미반영)을 확인",
       "status": "pending",
       "priority": 1
     },
@@ -1045,9 +1033,9 @@
       "refs": [
         "u-huangfu-song"
       ],
-      "title": "평란정반 — \"자신이 받는 피해가 12% 감소합니다(통솔의 영향을 받…\"",
+      "title": "신속 출병 — \"자신이 받는 피해가 12% 감소한다(통솔의 영향 받음)…\"",
       "assumption": "근사 반영",
-      "howToVerify": "【평란정반】 전보에서 이 절의 수치·대상·지속을 확인",
+      "howToVerify": "【신속 출병】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending",
       "priority": 1
     },
@@ -1081,21 +1069,21 @@
       "refs": [
         "wash-marrow"
       ],
-      "title": "신체개조",
+      "title": "신체 개조",
       "assumption": "회복의 \"가장 높은 속성 영향\"을 지력으로 계산",
-      "howToVerify": "【신체개조】이(가) 발동한 전보에서 근사 항목(회복의 \"가장 높은 속성 영향\"을 지력으로 계산)을 확인",
+      "howToVerify": "【신체 개조】이(가) 발동한 전보에서 근사 항목(회복의 \"가장 높은 속성 영향\"을 지력으로 계산)을 확인",
       "status": "pending",
       "priority": 1
     },
     {
-      "id": "V-clause-wash-marrow-6",
+      "id": "V-clause-wash-marrow-4",
       "kind": "clause",
       "refs": [
         "wash-marrow"
       ],
-      "title": "신체개조 — \"치료율 200%(가장 높은 속성의 영향을 받음)…\"",
+      "title": "신체 개조 — \"효과: 자신의 병력 회복(치유율 200%, 최고 속성의…\"",
       "assumption": "근사 반영",
-      "howToVerify": "【신체개조】 전보에서 이 절의 수치·대상·지속을 확인",
+      "howToVerify": "【신체 개조】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending",
       "priority": 1
     },
@@ -1130,54 +1118,6 @@
         "yuan-shu"
       ],
       "title": "원술 무장 정보",
-      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
-      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-capture-wang-yi",
-      "kind": "capture",
-      "refs": [
-        "wang-yi"
-      ],
-      "title": "왕이 무장 정보",
-      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
-      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-capture-zhang-ning",
-      "kind": "capture",
-      "refs": [
-        "zhang-ning"
-      ],
-      "title": "장녕 무장 정보",
-      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
-      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-capture-zhu-jun",
-      "kind": "capture",
-      "refs": [
-        "zhu-jun"
-      ],
-      "title": "주준 무장 정보",
-      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
-      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
-      "status": "pending",
-      "priority": 1
-    },
-    {
-      "id": "V-capture-huangfu-song",
-      "kind": "capture",
-      "refs": [
-        "huangfu-song"
-      ],
-      "title": "황보숭 무장 정보",
       "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
       "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
       "status": "pending",
@@ -1225,7 +1165,7 @@
       "refs": [
         "u-wang-yi"
       ],
-      "title": "교책인봉 (고유) 전법 정보",
+      "title": "유인전 (고유) 전법 정보",
       "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending",
@@ -1237,7 +1177,7 @@
       "refs": [
         "u-zhang-ning"
       ],
-      "title": "태평여향 (고유) 전법 정보",
+      "title": "태평의 여운 (고유) 전법 정보",
       "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending",
@@ -1249,7 +1189,7 @@
       "refs": [
         "u-zhu-jun"
       ],
-      "title": "위사필궐 (고유) 전법 정보",
+      "title": "포위의 허점 (고유) 전법 정보",
       "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending",
@@ -1261,7 +1201,7 @@
       "refs": [
         "u-huangfu-song"
       ],
-      "title": "평란정반 (고유) 전법 정보",
+      "title": "신속 출병 (고유) 전법 정보",
       "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending",
@@ -1408,20 +1348,9 @@
       "refs": [
         "u-yu-ji"
       ],
-      "title": "풍급우회 (고유)",
+      "title": "혼란의 폭우 (고유)",
       "assumption": "\"효과 1~2개 획득\"을 효과마다 50% 판정으로, \"같은 열 우선\"은 무작위 아군 1명으로 처리. 지력 영향 미반영",
-      "howToVerify": "【풍급우회】이(가) 발동한 전보에서 근사 항목(\"효과 1~2개 획득\"을 효과마다 50% 판정으로, \"같은 열 우선\"은 무작위 아군 1명으로 처리. 지력 영향 미반영)을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-clause-u-yu-ji-3",
-      "kind": "clause",
-      "refs": [
-        "u-yu-ji"
-      ],
-      "title": "풍급우회 — \"동시에 자신과 무작위 아군 1명(같은 열 우선)이 아래…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【풍급우회】 전보에서 이 절의 수치·대상·지속을 확인",
+      "howToVerify": "【혼란의 폭우】이(가) 발동한 전보에서 근사 항목(\"효과 1~2개 획득\"을 효과마다 50% 판정으로, \"같은 열 우선\"은 무작위 아군 1명으로 처리. 지력 영향 미반영)을 확인",
       "status": "pending"
     },
     {
@@ -1430,31 +1359,9 @@
       "refs": [
         "u-xun-you"
       ],
-      "title": "순유 고유 전법 (고유)",
+      "title": "십이기책 (고유)",
       "assumption": "무작위 이상 상태는 대상 2명에게 같은 1종, 지속 2턴(원문에 지속시간 없음). \"미보유 상태 우선\" 미반영",
-      "howToVerify": "【순유 고유 전법】이(가) 발동한 전보에서 근사 항목(무작위 이상 상태는 대상 2명에게 같은 1종, 지속 2턴(원문에 지속시간 없음). \"미보유 상태 우선\" 미반영)을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-clause-u-xun-you-1",
-      "kind": "clause",
-      "refs": [
-        "u-xun-you"
-      ],
-      "title": "순유 고유 전법 — \"무작위 이상 상태 1종을 부여합니다…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【순유 고유 전법】 전보에서 이 절의 수치·대상·지속을 확인",
-      "status": "pending"
-    },
-    {
-      "id": "V-clause-u-xun-you-2",
-      "kind": "clause",
-      "refs": [
-        "u-xun-you"
-      ],
-      "title": "순유 고유 전법 — \"이때 대상이 아직 보유하지 않은 이상 상태를 우선적으로…\"",
-      "assumption": "근사 반영",
-      "howToVerify": "【순유 고유 전법】 전보에서 이 절의 수치·대상·지속을 확인",
+      "howToVerify": "【십이기책】이(가) 발동한 전보에서 근사 항목(무작위 이상 상태는 대상 2명에게 같은 1종, 지속 2턴(원문에 지속시간 없음). \"미보유 상태 우선\" 미반영)을 확인",
       "status": "pending"
     },
     {
@@ -1485,9 +1392,9 @@
       "refs": [
         "u-zhang-chunhua"
       ],
-      "title": "장춘화 고유 전법 (고유)",
+      "title": "고통의 심계 (고유)",
       "assumption": "지력 최고 아군은 전투 시작 때 1회 결정. 심계는 주는 책략 피해 +3%/중첩으로만 반영(추가 피해 계수 영향 미반영). 추가 일반 공격은 행동 시작에 처리하고 심계 6중첩 미만 추격 금지 미반영",
-      "howToVerify": "【장춘화 고유 전법】이(가) 발동한 전보에서 근사 항목(지력 최고 아군은 전투 시작 때 1회 결정. 심계는 주는 책략 피해 +3%/중첩으로만 반영(추가 피해 계수 영향 미반영). 추가 일반 공격은 행동 시작에 처리하고 심계 6중첩 미만 추격 금지 미반영)을 확인",
+      "howToVerify": "【고통의 심계】이(가) 발동한 전보에서 근사 항목(지력 최고 아군은 전투 시작 때 1회 결정. 심계는 주는 책략 피해 +3%/중첩으로만 반영(추가 피해 계수 영향 미반영). 추가 일반 공격은 행동 시작에 처리하고 심계 6중첩 미만 추격 금지 미반영)을 확인",
       "status": "pending"
     },
     {
@@ -1496,20 +1403,20 @@
       "refs": [
         "u-zhang-chunhua"
       ],
-      "title": "장춘화 고유 전법 — \"대상에게 70%의 책략 피해를 입힙니다(추가로 심계 중…\"",
+      "title": "고통의 심계 — \"목표에게 70%의 책략 피해를 주며(추가로 심계 스택수…\"",
       "assumption": "근사 반영",
-      "howToVerify": "【장춘화 고유 전법】 전보에서 이 절의 수치·대상·지속을 확인",
+      "howToVerify": "【고통의 심계】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending"
     },
     {
-      "id": "V-clause-u-zhang-chunhua-7",
+      "id": "V-clause-u-zhang-chunhua-6",
       "kind": "clause",
       "refs": [
         "u-zhang-chunhua"
       ],
-      "title": "장춘화 고유 전법 — \"심계가 6중첩 미만일 경우 이 추가 일반 공격으로는 추…\"",
+      "title": "고통의 심계 — \"추가로 일반 공격을 1회 시전한다(심계 스택수가 6회 …\"",
       "assumption": "근사 반영",
-      "howToVerify": "【장춘화 고유 전법】 전보에서 이 절의 수치·대상·지속을 확인",
+      "howToVerify": "【고통의 심계】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending"
     },
     {
@@ -1524,56 +1431,12 @@
       "status": "pending"
     },
     {
-      "id": "V-capture-yu-ji",
-      "kind": "capture",
-      "refs": [
-        "yu-ji"
-      ],
-      "title": "우길 무장 정보",
-      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
-      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
-      "status": "pending"
-    },
-    {
-      "id": "V-capture-xun-you",
-      "kind": "capture",
-      "refs": [
-        "xun-you"
-      ],
-      "title": "순유 무장 정보",
-      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인 · 진영: 추정(역사 소속)",
-      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
-      "status": "pending"
-    },
-    {
       "id": "V-capture-bu-lianshi",
       "kind": "capture",
       "refs": [
         "bu-lianshi"
       ],
       "title": "보연사 무장 정보",
-      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인 · 진영: 추정(역사 소속)",
-      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
-      "status": "pending"
-    },
-    {
-      "id": "V-capture-zhang-zhao",
-      "kind": "capture",
-      "refs": [
-        "zhang-zhao"
-      ],
-      "title": "장소 무장 정보",
-      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인 · 진영: 추정(역사 소속)",
-      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
-      "status": "pending"
-    },
-    {
-      "id": "V-capture-zhang-chunhua",
-      "kind": "capture",
-      "refs": [
-        "zhang-chunhua"
-      ],
-      "title": "장춘화 무장 정보",
       "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인 · 진영: 추정(역사 소속)",
       "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
       "status": "pending"
@@ -1595,7 +1458,7 @@
       "refs": [
         "u-yu-ji"
       ],
-      "title": "풍급우회 (고유) 전법 정보",
+      "title": "혼란의 폭우 (고유) 전법 정보",
       "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending"
@@ -1606,9 +1469,9 @@
       "refs": [
         "u-xun-you"
       ],
-      "title": "순유 고유 전법 (고유) 발동률",
+      "title": "십이기책 (고유) 발동률",
       "assumption": "임시값(같은 종류 고유 전법 중앙값 60%)",
-      "howToVerify": "【순유 고유 전법】 전법 정보 캡처(발동률 표기) 또는 이 전법을 쓴 전보 여러 판의 발동 횟수",
+      "howToVerify": "【십이기책】 전법 정보 캡처(발동률 표기) 또는 이 전법을 쓴 전보 여러 판의 발동 횟수",
       "status": "pending"
     },
     {
@@ -1617,7 +1480,7 @@
       "refs": [
         "u-xun-you"
       ],
-      "title": "순유 고유 전법 (고유) 전법 정보",
+      "title": "십이기책 (고유) 전법 정보",
       "assumption": "전법 종류: 원문으로 추정 · 이름: 이름 미확인",
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending"
@@ -1650,9 +1513,9 @@
       "refs": [
         "u-zhang-zhao"
       ],
-      "title": "장소 고유 전법 (고유) 발동률",
+      "title": "소신발언 (고유) 발동률",
       "assumption": "임시값(같은 종류 고유 전법 중앙값 60%)",
-      "howToVerify": "【장소 고유 전법】 전법 정보 캡처(발동률 표기) 또는 이 전법을 쓴 전보 여러 판의 발동 횟수",
+      "howToVerify": "【소신발언】 전법 정보 캡처(발동률 표기) 또는 이 전법을 쓴 전보 여러 판의 발동 횟수",
       "status": "pending"
     },
     {
@@ -1661,7 +1524,7 @@
       "refs": [
         "u-zhang-zhao"
       ],
-      "title": "장소 고유 전법 (고유) 전법 정보",
+      "title": "소신발언 (고유) 전법 정보",
       "assumption": "전법 종류: 원문으로 추정 · 이름: 이름 미확인",
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending"
@@ -1672,7 +1535,7 @@
       "refs": [
         "u-zhang-chunhua"
       ],
-      "title": "장춘화 고유 전법 (고유) 전법 정보",
+      "title": "고통의 심계 (고유) 전법 정보",
       "assumption": "전법 종류: 원문으로 추정 · 이름: 이름 미확인",
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending"

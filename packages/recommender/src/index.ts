@@ -77,6 +77,9 @@ export class Recommender {
   /** 티어덱 하나를 남은 보유 카드로 채운다. 불가능하면 null */
   private fill(td: GameBundle['tierDecks'][number], ownG: Set<string>, ownS: Set<string>, usedG: Set<string>, usedS: Set<string>, allowGSub: boolean) {
     const takenG = new Set(usedG), takenS = new Set(usedS);
+    // R-058 같은 인물(SP 제갈량·제갈량 등)은 한 부대에 함께 넣을 수 없다
+    const person = (id: string) => ((this.gById.get(id) as any)?.samePerson || id);
+    const deckP = new Set<string>();
     const units: UnitPlan[] = [];
     let total = 0;
     for (const u of td.units) {
@@ -84,11 +87,11 @@ export class Recommender {
       if (!orig) return null;
       const subs: Substitution[] = [];
       let gid = u.generalId, gScore = 1;
-      if (!ownG.has(gid) || takenG.has(gid)) {
+      if (!ownG.has(gid) || takenG.has(gid) || deckP.has(person(gid))) {
         if (!allowGSub) return null;
         let best: { id: string; score: number; reason: string } | null = null;
         for (const id of ownG) {
-          if (takenG.has(id)) continue;
+          if (takenG.has(id) || deckP.has(person(id))) continue;
           const c = this.gById.get(id);
           if (!c) continue;
           const sim = generalSim(orig, c);
@@ -98,7 +101,7 @@ export class Recommender {
         gid = best.id; gScore = 0.55 * best.score;
         subs.push({ slot: '무장', from: orig.name.ko, to: this.gById.get(gid)!.name.ko, score: best.score, reason: `${best.reason} (고유 전법이 바뀜)` });
       }
-      takenG.add(gid);
+      takenG.add(gid); deckP.add(person(gid));
       const skillIds: string[] = [];
       const missing: string[] = [];
       let sScore = 0;
