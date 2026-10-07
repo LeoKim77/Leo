@@ -7,6 +7,6 @@
   "body": "사용자 답변 반영.\n■ 성운 대열 진형 보너스 70%: 진형 특성 수치만(피격률 제외) — 지금 구현과 같음, 규정 FRM3 확정\n■ 뛰어난 응변: 5번째 발동부터 160% 추가 — 지금 구현과 같음\n■ 한국 미리보기에 없던 해외 시즌3 데이터(조순·관은병·좌자·보연사·강유·마등·원술·연의 원소·연의 공손찬 / 천하의인재·침략방어·사방의매복·지략운용·천군격파·공성계)에 '한국 미출시' 표시: 편성·보유 목록, 시뮬 결과 안내, 덱 추천 대체 후보 제외\n■ 시즌3 무장 능력치는 시뮬 결과에 '환산 자료'로 표시",
   "refs": ["zuo-ci", "jiang-wei", "divine-change", "sp-zhuge-liang"],
   "author": "Claude",
-  "commit": "",
+  "commit": "928f2b8",
   "files": ["data/patches/generals.json", "data/patches/skills.json", "packages/engine/src/index.ts", "packages/engine/src/model.ts", "packages/recommender/src/index.ts", "apps/web/src/views/armies.ts", "apps/web/src/views/roster.ts", "packages/engine/src/skills/divine-change.ts", "tests/s3.test.ts", "data/common/confirmed-rules.json", "data/design/spec.json", "data/design/posts/P-0041.json"]
 }
