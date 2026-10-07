@@ -1,6 +1,6 @@
 // 연전연승 · 전법 · 패시브 100%
-// 원문: 병기 피해를 주면 자신의 무력이 16 상승하고, 책략 피해를 주면 지력이 16 상승합니다. 각각 최대 8회 중첩됩니다.
-// 원문 절 구현: ok / ok / ok
+// 원문(도감 2026-10-07): 병기 피해를 준 후, 자신의 무력이 16포인트 증가하며, 최대 8회 중첩된다. 책략 피해를 준 후, 자신의 지력이 16포인트 증가하며, 최대 8회 중첩된다.
+// 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,21 +8,31 @@ export default defineSkill({
   name: "연전연승",
   kind: "패시브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-07",
+      "note": "도감 녹화(S2 전설): 해외 번역 문구를 한국판 원문으로 교체(동작 같음)"
+    }
+  ],
   engineStatus: {
     "status": "ok",
     "source": "authored"
   },
   clauses: [
     {
-      "text": "병기 피해를 주면 자신의 무력이 16 상승하고",
+      "text": "병기 피해를 준 후, 자신의 무력이 16포인트 증가하며",
       "status": "ok"
     },
     {
-      "text": "책략 피해를 주면 지력이 16 상승합니다",
+      "text": "최대 8회 중첩된다",
       "status": "ok"
     },
     {
-      "text": "각각 최대 8회 중첩됩니다",
+      "text": "책략 피해를 준 후, 자신의 지력이 16포인트 증가하며",
+      "status": "ok"
+    },
+    {
+      "text": "최대 8회 중첩된다",
       "status": "ok"
     }
   ],

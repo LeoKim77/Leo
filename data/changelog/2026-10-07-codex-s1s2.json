@@ -1,0 +1,12 @@
+{
+  "id": "2026-10-07-codex-s1s2",
+  "date": "2026-10-07",
+  "season": "S2",
+  "category": "전법 데이터",
+  "title": "전설 전법 도감(S1·S2) 원문 대조: 22개 갱신, 고요한 제압 시점 버그 수정, 관우 병법 반영 취소",
+  "body": "사용자 도감 녹화(전설 63장)를 읽어 대조했다(설계서 P-0038, R-056, FIX-023).\n■ 시즌1: 칠군수몰 65% 침묵·무장 해제 각각 · 구름과 바람 190%·폭풍 목표면 주는 피해 +15% · 고요한 제압 20%(통솔) 자신+랜덤 우군 · 허점 공격 허약 80% · 예리한 판단 전열 우선 · 청낭 치료 아군 · 화공전술 소각(용어) · 순간 돌습 전설\n■ 시즌2: 난공불락 통솔 20%·조롱 확률 통솔 영향 · 틈새 공략 180% · 삼군 압도 3턴 · 적재적소 방어·아군 · 금성의 철벽 방어·8%p 감소 · 맹렬한 화염 90% · 병력 강화 6중첩·무력 영향 · 기민한 전술 문구, 해외 번역 문구 6개를 한국판 원문으로\n■ 버그: 고요한 제압이 0턴에만 걸리던 문제(FIX-023)\n■ 관우 병법 반영 취소(R-054 수정 — 금병법만 반영), 역재현 병기 RMS 15.2%\n■ 질문 4건(P-0039)",
+  "refs": ["flood-seven", "wind-cloud", "calm", "exploit-void", "see-fire", "qingnang", "fire-camp", "battlefield-raid", "overwhelming-win", "break-hardship", "solid-defense", "hide-light", "odd-even", "strike-gap", "drain-morale", "use-talent", "same-boat", "golden-fortress", "blazing-sky", "see-truth", "prepare-armor", "charge-change", "ambushes"],
+  "author": "Claude",
+  "commit": "",
+  "files": ["data/patches/skills.json", "packages/engine/src/skills/*.ts (22개)", "packages/engine/src/legacy/core.js", "data/replays/2026-10-06-sunjian-guanyu-huangzhong.json", "tests/replay.test.ts", "data/common/confirmed-rules.json", "data/design/spec.json", "data/design/posts/*.json"]
+}

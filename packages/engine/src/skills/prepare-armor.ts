@@ -1,5 +1,5 @@
 // 병력 강화 · 전법 · 패시브 100%
-// 원문: 자신의 반격률이 50% 상승합니다. 일반 공격에 성공하면 자신이 받는 병기 피해가 5% 감소하며 2턴 지속, 최대 4회 중첩됩니다.
+// 원문(도감 2026-10-07): 자신의 반격 확률이 50% 증가한다(무력의 영향 받음). 일반 공격 성공 후 2턴 동안 자신이 받는 병기 피해가 5% 감소하며, 6회 중첩될 수 있다.
 // 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "병력 강화",
   kind: "패시브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-07",
+      "note": "도감 녹화(S2 전설): 반격 확률에 무력 영향, 중첩 4회 → 6회"
+    }
+  ],
   engineStatus: {
     "status": "approx",
     "note": "해외 번역문 기준(수치 환산)",
@@ -15,15 +21,15 @@ export default defineSkill({
   },
   clauses: [
     {
-      "text": "자신의 반격률이 50% 상승합니다",
+      "text": "자신의 반격 확률이 50% 증가한다(무력의 영향 받음)",
       "status": "ok"
     },
     {
-      "text": "일반 공격에 성공하면 자신이 받는 병기 피해가 5% 감소하며 2턴 지속",
+      "text": "일반 공격 성공 후 2턴 동안 자신이 받는 병기 피해가 5% 감소하며",
       "status": "ok"
     },
     {
-      "text": "최대 4회 중첩됩니다",
+      "text": "6회 중첩될 수 있다",
       "status": "ok"
     }
   ],
@@ -39,7 +45,13 @@ export default defineSkill({
           "max": 0.5,
           "target": "self",
           "duration": 999,
-          "maxStacks": 1
+          "maxStacks": 1,
+          "inf": {
+            "stats": [
+              "무력"
+            ],
+            "who": "self"
+          }
         }
       ],
       "statMods": [],
@@ -65,7 +77,7 @@ export default defineSkill({
               "max": -0.05,
               "target": "self",
               "duration": 2,
-              "maxStacks": 4
+              "maxStacks": 6
             }
           ],
           "statMods": [],
@@ -80,7 +92,8 @@ export default defineSkill({
     "replacedLegacy": false
   },
   run(c) {
-    // (원문 절 매핑 없음)
-    c.buff(0);   // 반격확률 +50%, 대상 self, 전투 종료까지, 최대 1중첩
+    // 「자신의 반격 확률이 50% 증가한다(무력의 영향 받음)」 — 전투 시작 시 1회
+    c.buff(0);
+    // 「일반 공격 성공 후 2턴 동안 자신이 받는 병기 피해가 5% 감소하며, 6회 중첩될 수 있다」 — 트리거 효과(def.triggers)
   },
 });

@@ -1,6 +1,6 @@
 // 칠군수몰 · 전법 · 액티브 40%
-// 원문: 1턴 동안 준비 후 적군 전체에게 2턴 동안 지속되는 홍수을(를) 부여하고, 260%의 병기 피해를 주며, 1턴 동안 지속되는 침묵 또는 무장 해제 중 한 가지를 부여한다.
-// 원문 절 구현: ok / ok / ok
+// 원문(도감 2026-10-07): 1턴 동안 준비 후 적군 전체에게 2턴 동안 지속되는 홍수을(를) 부여한다. 그리고 260%의 병기 피해를 주며, 65%의 확률로 1턴 동안 지속되는 침묵 및 무장 해제 상태를 부여한다. 각 상태는 개별적으로 판정된다.
+// 원문 절 구현: ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -9,6 +9,10 @@ export default defineSkill({
   kind: "액티브",
   isUnique: false,
   revised: [
+    {
+      "date": "2026-10-07",
+      "note": "도감 녹화(S1 전설): \"침묵 또는 무장 해제 중 한 가지\" → \"65% 확률로 침묵 및 무장 해제, 각 상태 개별 판정\""
+    },
     {
       "date": "2026-10-04",
       "note": "원문 순서: 홍수 2턴 → 260% → 침묵/무장 해제 중 1가지 1턴 (예전엔 피해 뒤 홍수, 무장 해제 2턴)"
@@ -20,7 +24,7 @@ export default defineSkill({
   ],
   clauses: [
     {
-      "text": "1턴 동안 준비 후 적군 전체에게 2턴 동안 지속되는 홍수을(를) 부여하고",
+      "text": "1턴 동안 준비 후 적군 전체에게 2턴 동안 지속되는 홍수을(를) 부여한다",
       "status": "ok",
       "impl": [
         "prepTurns",
@@ -28,14 +32,19 @@ export default defineSkill({
       ]
     },
     {
-      "text": "260%의 병기 피해를 주며",
+      "text": "그리고 260%의 병기 피해를 주며",
       "status": "ok",
       "impl": [
         "damage[0]"
       ]
     },
     {
-      "text": "1턴 동안 지속되는 침묵 또는 무장 해제 중 한 가지를 부여한다",
+      "text": "65%의 확률로 1턴 동안 지속되는 침묵 및 무장 해제 상태를 부여한다",
+      "status": "ok",
+      "reviewed": "침묵 65%·무장 해제 65% 목표마다 따로 판정"
+    },
+    {
+      "text": "각 상태는 개별적으로 판정된다",
       "status": "ok",
       "impl": [
         "statusEffects[0]"
@@ -47,7 +56,7 @@ export default defineSkill({
     "legacyName": "칠군수몰",
     "legacyType": "액티브",
     "legacyProcRate": "40%",
-    "raw": "1턴 동안 준비 후 적군 전체에게 2턴 동안 지속되는 홍수을(를) 부여하고, 130%→260%의 병기 피해를 주며, 1턴 동안 지속되는 침묵 또는 무장 해제 중 한 가지를 부여한다.",
+    "raw": "1턴 동안 준비 후 적군 전체에게 2턴 동안 지속되는 홍수을(를) 부여한다. 그리고 130%→260%의 병기 피해를 주며, 32.5%→65%의 확률로 1턴 동안 지속되는 침묵 및 무장 해제 상태를 부여한다. 각 상태는 개별적으로 판정된다.",
     "effects": {
       "damage": [
         {
@@ -69,12 +78,16 @@ export default defineSkill({
           "duration": 2
         },
         {
-          "oneOf": [
-            "무장 해제",
-            "침묵"
-          ],
+          "name": "침묵",
           "target": "all_enemy",
-          "duration": 1
+          "duration": 1,
+          "chance": 0.65
+        },
+        {
+          "name": "무장 해제",
+          "target": "all_enemy",
+          "duration": 1,
+          "chance": 0.65
         }
       ]
     },
@@ -119,8 +132,9 @@ export default defineSkill({
       c.status({ ...E.statusEffects[0], target: 'tag:f' + i });
       // 「260%의 병기 피해를 주며」
       if (u.alive) c.damage({ ...E.damage[0], target: 'tag:f' + i });
-      // 「1턴 동안 지속되는 침묵 또는 무장 해제 중 한 가지를 부여한다」
+      // 「65%의 확률로 1턴 동안 지속되는 침묵 및 무장 해제 상태를 부여한다. 각 상태는 개별적으로 판정된다」
       if (u.alive) c.status({ ...E.statusEffects[1], target: 'tag:f' + i });
+      if (u.alive) c.status({ ...E.statusEffects[2], target: 'tag:f' + i });
     });
   },
 });

@@ -1,5 +1,5 @@
 // 적재적소 · 전법 · 액티브 75%
-// 원문: 지력이 가장 높은 우군 1명이 받는 피해를 25% 감소시켜 2턴 지속시키고(지력 영향), 저항 1중첩(피해 1회 무효)을 부여합니다.
+// 원문(도감 2026-10-07): 2턴 동안 지력이 가장 높은 아군 단일 목표가 받는 피해가 25% 감소하며(지력의 영향 받음), 1스택의 방어을(를) 획득한다.
 // 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
@@ -15,17 +15,21 @@ export default defineSkill({
   },
   revised: [
     {
+      "date": "2026-10-07",
+      "note": "도감 녹화(S2 전설): 우군 → 아군(자신 포함), 저항 → 방어 1스택, 감소에 지력 영향"
+    },
+    {
       "date": "2026-10-05",
       "note": "지력 영향 반영"
     }
   ],
   clauses: [
     {
-      "text": "지력이 가장 높은 우군 1명이 받는 피해를 25% 감소시켜 2턴 지속시키고(지력 영향)",
+      "text": "2턴 동안 지력이 가장 높은 아군 단일 목표가 받는 피해가 25% 감소하며(지력의 영향 받음)",
       "status": "ok"
     },
     {
-      "text": "저항 1중첩(피해 1회 무효)을 부여합니다",
+      "text": "1스택의 방어을(를) 획득한다",
       "status": "ok"
     }
   ],
@@ -46,15 +50,20 @@ export default defineSkill({
               "지력"
             ],
             "who": "self"
+          },
+          "inf": {
+            "stats": [
+              "지력"
+            ],
+            "who": "self"
           }
         }
       ],
       "statMods": [],
       "statusEffects": [
         {
-          "name": "저항",
-          "target": "highest_intel_ally",
-          "duration": 99
+          "name": "방어",
+          "target": "highest_intel_ally"
         }
       ],
       "targets": []
@@ -65,8 +74,10 @@ export default defineSkill({
     "replacedLegacy": false
   },
   run(c) {
-    // (원문 절 매핑 없음)
-    c.buff(0);   // 받는피해 -25%, 대상 highest_intel_ally, 2턴, 최대 1중첩
-    c.status(0);   // 저항, 대상 highest_intel_ally, 99턴
+    // 「2턴 동안 지력이 가장 높은 아군 단일 목표가 받는 피해가 25% 감소하며(지력의 영향 받음)」
+    c.tag('t', c.targets('highest_intel_ally'));
+    c.buff({ ...c.skill.effects.buffs[0], target: 'tag:t' });
+    // 「1스택의 방어을(를) 획득한다」
+    c.status({ ...c.skill.effects.statusEffects[0], target: 'tag:t' });
   },
 });

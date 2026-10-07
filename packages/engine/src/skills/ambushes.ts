@@ -43,7 +43,7 @@ export default defineSkill({
     "legacyName": "퇴로 매복",
     "legacyType": "액티브",
     "legacyProcRate": "50%",
-    "raw": "랜덤 적군 단일 목표에게 50%→100%~70%→140%의 병기 피해를 주며, 4회 발동된다.",
+    "raw": "랜덤 적군 단일 목표에게 55%→110%의 병기 피해를 주며, 4회 발동된다. 발동 기간 동안 25%의 회심 확률이 적용된다.",
     "effects": {
       "damage": [
         {

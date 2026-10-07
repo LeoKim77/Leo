@@ -1,6 +1,6 @@
 // 난공불락 · 전법 · 지휘 100%
-// 원문: 자신의 통솔이 15% 상승합니다. 2턴부터 매 턴 시작 시 60% 확률로 랜덤 적군 2~3명을 도발하며 2턴 지속됩니다(통솔 영향).
-// 원문 절 구현: ok / approx
+// 원문(도감 2026-10-07): 자신의 통솔이 20% 증가하며, 2번째 턴부터 매 턴 시작 시, 60% 확률로(통솔의 영향 받음) 2턴 동안 랜덤 적군 2~3명을 조롱한다.
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,19 +8,25 @@ export default defineSkill({
   name: "난공불락",
   kind: "지휘",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-07",
+      "note": "도감 녹화(S2 전설): 통솔 +15% → +20%, 조롱 확률 60% 에 통솔 영향 반영(근사 → 구현)"
+    }
+  ],
   engineStatus: {
-    "status": "approx",
-    "note": "\"도발\"=조롱. 2턴부터 매 턴 시작 60% 판정 1번 → 성공 시 랜덤 적군 2~3명 전원 조롱(R-021, R-020). 통솔 영향 미반영",
+    "status": "ok",
+    "note": "2번째 턴부터 매 턴 시작 60%(통솔 영향) 판정 1번 → 성공 시 랜덤 적군 2~3명 전원 조롱(R-021, R-020)",
     "source": "authored"
   },
   clauses: [
     {
-      "text": "자신의 통솔이 15% 상승합니다",
+      "text": "자신의 통솔이 20% 증가하며",
       "status": "ok"
     },
     {
-      "text": "2턴부터 매 턴 시작 시 60% 확률로 랜덤 적군 2~3명을 도발하며 2턴 지속됩니다(통솔 영향)",
-      "status": "approx"
+      "text": "2번째 턴부터 매 턴 시작 시, 60% 확률로(통솔의 영향 받음) 2턴 동안 랜덤 적군 2~3명을 조롱한다",
+      "status": "ok"
     }
   ],
   def: {
@@ -52,16 +58,18 @@ export default defineSkill({
     },
     "static": {
       "statsPct": {
-        "통솔": 0.15
+        "통솔": 0.2
       }
     },
     "authored": true,
-    "authoredStatus": "approx",
+    "authoredStatus": "ok",
     "authoredNote": "\"도발\"=조롱. 2턴부터 매 턴 시작 60% 판정 1번 → 성공 시 랜덤 적군 2~3명 전원 조롱(R-021, R-020). 통솔 영향 미반영",
     "replacedLegacy": false
   },
   run(c) {
-    // (원문 절 매핑 없음)
-    c.status(0);   // 조롱, 대상 random_enemy_2to3, 확률 60%(1회 판정), 2턴
+    // 「자신의 통솔이 20% 증가하며」 — def.static (포진 시 고정)
+    // 「2번째 턴부터 매 턴 시작 시, 60% 확률로(통솔의 영향 받음) 2턴 동안 랜덤 적군 2~3명을 조롱한다」 — 판정 1번 → 전원
+    const st = c.skill.effects.statusEffects[0];
+    c.status({ ...st, chance: st.chance * c.infl('통솔') });
   },
 });

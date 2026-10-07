@@ -1,6 +1,6 @@
 // 화공전술 · 전법 · 액티브 45%
-// 원문: 전체 적군에게 80%의 책략 피해를 주고, 2턴 동안 지속되는 화공 상태를 부여한다. 이후 다시 분영 3회 진행: 랜덤 적군 단일 목표에게 80%의 책략 피해를 준다. 목표가 폭풍 상태면 분영 피해 수치가 30% 증가한다.
-// 원문 절 구현: ok / ok / ok / ok
+// 원문(도감 2026-10-07): 전체 적군에게 80%의 책략 피해를 주고, 2턴 동안 지속되는 화공 상태를 부여한다. 이후 다시 소각을 3회 진행한다. 소각: 랜덤 적군 단일 목표에게 80%의 책략 피해를 준다. 목표가 폭풍 상태면 적진 소각의 피해 수치가 30% 증가한다.
+// 원문 절 구현: ok / ok / ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -8,6 +8,12 @@ export default defineSkill({
   name: "화공전술",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-07",
+      "note": "도감 녹화(S1 전설): 용어만 바뀜 — \"분영\" → \"소각\"(적진 소각). 동작은 같음"
+    }
+  ],
   clauses: [
     {
       "text": "전체 적군에게 80%의 책략 피해를 주고",
@@ -27,7 +33,7 @@ export default defineSkill({
       ]
     },
     {
-      "text": "이후 다시 분영 3회 진행: 랜덤 적군 단일 목표에게 80%의 책략 피해를 준다",
+      "text": "이후 다시 소각을 3회 진행한다",
       "status": "ok",
       "impl": [
         "damage[0]",
@@ -37,7 +43,17 @@ export default defineSkill({
       ]
     },
     {
-      "text": "목표가 폭풍 상태면 분영 피해 수치가 30% 증가한다",
+      "text": "소각: 랜덤 적군 단일 목표에게 80%의 책략 피해를 준다",
+      "status": "ok",
+      "impl": [
+        "damage[0]",
+        "damage[1]",
+        "damage[2]",
+        "damage[3]"
+      ]
+    },
+    {
+      "text": "목표가 폭풍 상태면 적진 소각의 피해 수치가 30% 증가한다",
       "status": "ok",
       "impl": [
         "damage[1].conditionalBonusMult",
@@ -51,7 +67,7 @@ export default defineSkill({
     "legacyName": "화공전술",
     "legacyType": "액티브",
     "legacyProcRate": "45%",
-    "raw": "전체 적군에게 40%→80%의 책략 피해를 주고, 2턴 동안 지속되는 화공 상태를 부여한다. 이후 다시 분영 3회 진행: 랜덤 적군 단일 목표에게 40%→80%의 책략 피해를 준다. 목표가 폭풍 상태면 분영 피해 수치가 30% 증가한다.",
+    "raw": "전체 적군에게 40%→80%의 책략 피해를 주고, 2턴 동안 지속되는 화공 상태를 부여한다. 이후 다시 소각을 3회 진행한다. 소각: 랜덤 적군 단일 목표에게 40%→80%의 책략 피해를 준다. 목표가 폭풍 상태면 적진 소각의 피해 수치가 30% 증가한다.",
     "effects": {
       "damage": [
         {
@@ -135,7 +151,7 @@ export default defineSkill({
         "status": "ok"
       },
       {
-        "text": "다시 분영 3회 진행: 랜덤 적군 단일 목표에게 40%→80%의 책략 피해를 준다",
+        "text": "다시 소각을 3회 진행한다. 소각: 랜덤 적군 단일 목표에게 40%→80%의 책략 피해를 준다",
         "impl": [
           "damage[0]",
           "damage[1]",
@@ -145,7 +161,7 @@ export default defineSkill({
         "status": "ok"
       },
       {
-        "text": "목표가 폭풍 상태면 분영 피해 수치가 30% 증가한다",
+        "text": "목표가 폭풍 상태면 적진 소각의 피해 수치가 30% 증가한다",
         "impl": [
           "damage[1].conditionalBonusMult",
           "damage[2].conditionalBonusMult",
