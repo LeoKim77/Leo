@@ -26,3 +26,14 @@ describe('점검 대시보드', () => {
     expect(done.every((c: any) => c.donePost === 'P-0029' && c.links.length === 2)).toBe(true);
   });
 });
+
+describe('시즌별 자료 현황', () => {
+  it('시즌1·2·3 행과 시즌3 무장 18·미출시 9', () => {
+    expect(B.seasons.map((s: any) => s.id)).toEqual(['S1', 'S2', 'S3']);
+    const s3 = B.seasons.find((s: any) => s.id === 'S3');
+    expect(s3.generals.n).toBe(18);
+    expect(s3.generals.unreleased).toBe(9);
+    expect(s3.generals.converted).toBe(9);
+    for (const s of B.seasons) expect(s.generals.n).toBeGreaterThan(0);
+  });
+});

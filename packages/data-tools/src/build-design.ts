@@ -210,7 +210,36 @@ function buildDashboard(x: any) {
   const auditS = audit?.summary || null;
   const sev = (bad: boolean, warn: boolean) => bad ? 'bad' : warn ? 'warn' : 'good';
   const specOk = spec.filter((s: any) => s.status === '확정' || s.status === '녹화확인').length;
+  // 시즌별 자료 현황 — 무장·전법·금병법·티어덱·녹화 수와 확인 정도
+  const seasonOrder = (bundle.seasons || []).map((s: any) => s.id);
+  const gameChecked = (x: any) => (x.sources || []).some((src: any) => src.kind === 'manual' && /게임 확인/.test(src.label || '') && !/미리보기에 없음/.test(src.note || ''));   // 미출시 표시 패치는 확인이 아님
+  const rawReplays = loadReplays() as any[];
+  const replaySeason = (r: any) => {
+    const ids = new Set<string>([...(r.tooltips || []).map((t: any) => t.unit), ...(r.damageSamples || []).flatMap((d: any) => [d.attacker, d.defender])]);
+    const ss = [...ids].map(id => bundle.generals.find((g: any) => g.id === id)?.season).filter(Boolean);
+    return ss.sort((a: string, b: string) => seasonOrder.indexOf(b) - seasonOrder.indexOf(a))[0] || null;
+  };
+  const seasons = (bundle.seasons || []).map((se: any) => {
+    const gs = bundle.generals.filter((g: any) => g.season === se.id);
+    const uq = bundle.skills.filter((x: any) => x.isUnique && x.season === se.id);
+    const sk = bundle.skills.filter((x: any) => !x.isUnique && x.season === se.id);
+    const ms = gs.flatMap((g: any) => g.manuals || []);
+    const grades: Record<string, number> = {};
+    sk.forEach((x: any) => { const k = x.grade || '미확인'; grades[k] = (grades[k] || 0) + 1; });
+    const notOk = (x: any) => (x.clauses || []).some((c: any) => c.status === 'approx' || c.status === 'missing');
+    return {
+      id: se.id, label: se.label, status: se.status,
+      generals: { n: gs.length, checked: gs.filter(gameChecked).length, converted: gs.filter((g: any) => /환산/.test(g.dataStatus?.stats || '')).length,
+        temp: gs.filter((g: any) => /임시|미확인/.test(JSON.stringify(g.dataStatus || {})) || g.unitType === '미확인').length, unreleased: gs.filter((g: any) => g.krRelease).length },
+      uniques: { n: uq.length, checked: uq.filter(gameChecked).length, approx: uq.filter(notOk).length },
+      skills: { n: sk.length, grades, checked: sk.filter(gameChecked).length, approx: sk.filter(notOk).length, unreleased: sk.filter((x: any) => x.krRelease).length },
+      manuals: { n: ms.length, ok: ms.filter((m: any) => m.status === 'ok').length, approx: ms.filter((m: any) => m.status === 'approx').length, missing: ms.filter((m: any) => m.status !== 'ok' && m.status !== 'approx').length },
+      tierDecks: (bundle.tierDecks || []).filter((t: any) => t.season === se.id).length,
+      replays: rawReplays.filter(r => replaySeason(r) === se.id).length,
+    };
+  });
   return {
+    seasons,
     totals: { spec: spec.length, specOk, clauses: allClauses.length, clausesOk: okClauses, openChecks, decks: decks.filter((d: any) => d.open).length },
     cards: {
       engine: { sev: sev(false, openChecks > 0 || engineQueue.length > 0), count: openChecks, sub: `녹화 ${decks.filter((d: any) => d.open && !d.optional).length}판 · 덱 미배정 ${engineQueue.length}건` },
