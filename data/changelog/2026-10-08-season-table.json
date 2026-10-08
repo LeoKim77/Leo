@@ -7,6 +7,6 @@
   "body": "설계서 점검 대시보드에 시즌1·2·3별 무장·고유 전법·일반 전법(등급별)·금병법·티어덱·녹화 역재현 수와 확인 정도(원문 확인·환산·임시·미출시·근사 포함)를 표로 추가했다. 도감 대조에서 문구가 같았던 전설 전법 41개에도 '원문 확인' 기록을 남겼다.",
   "refs": [],
   "author": "Claude",
-  "commit": "",
+  "commit": "9e5036b",
   "files": ["packages/data-tools/src/build-design.ts", "apps/design/template.html", "data/patches/skills.json", "tests/design-dashboard.test.ts"]
 }
