@@ -10,6 +10,10 @@ export default defineSkill({
   isUnique: true,
   revised: [
     {
+      "date": "2026-10-09",
+      "note": "녹화(2026-10-06 손관황): 무열황제 1223 = 통솔 321.35 에서 1.55배 — 가중치 0.25%/통솔 (FEAT-031, 잠정)"
+    },
+    {
       "date": "2026-10-04",
       "note": "통솔 감소를 피해 대상과 같은 목표에(예전엔 따로 뽑힐 수 있었음) 먼저 적용, 무력·통솔 중 높은 쪽 영향, 공포 1턴"
     }
@@ -56,7 +60,8 @@ export default defineSkill({
           "max": 2.5,
           "target": "tag:main",
           "statScale": {
-            "stat": "통솔"
+            "stat": "통솔",
+            "weight": 0.0025
           }
         }
       ],

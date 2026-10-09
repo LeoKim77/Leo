@@ -42,6 +42,12 @@ export const ENGINE_FIXES = [
     detail: '① 대상이 안 적힌 효과는 한 시전 안에서 같은 대상을 공유(R-044) — 예전엔 효과마다 새로 뽑아 "랜덤 2명의 A와 B"가 서로 다른 무장에게 갔다. ② "디버프 상태 보유" 조건이 방어·피신 같은 기능성 상태까지 셌다. ③ "이상 상태 개수"도 기능성 상태 포함. ④ 대상이 자신뿐인 회복이 병력 최저 아군에게 갔다(지혜의 바람·충성과 용맹·전쟁 조달). ⑤ 능력치 증감의 턴 조건(turnCond)이 무시됐다.' },
   { id: 'FIX-022', date: '2026-10-06', found: '녹화 2026-10-06 (손견·관우·황충 vs 대교·손책·견희, 포진~3턴)', title: '탈주병 계수·전장 평정 대상·강동 제패 회복 대상·화하 진압 순서·퇴로 매복 회심',
     detail: '탈주병 = 1.49×무력(예전 2.4×무력−330, 6~7% 작음 — 5건 ±1%). 전장 평정 180%는 디버프 보유 적 전원. "자신과 랜덤 아군"은 자신이 또 뽑힐 수 있음(손책 자신 2회 회복). 화하 진압은 발동률 증가(갱신) → 목표마다 피해 → 탈주병. 퇴로 매복 시전 중 회심 +25%(근사, 원문 확인 대기).' },
+  { id: 'FEAT-031', date: '2026-10-09', found: '녹화 2026-10-09 주하황 3~8턴 (강렬 6건) + 2026-10-06 손관황 (무열황제 1건)', title: '"(추가로 통솔의 영향 받음)" 전법별 가중치',
+    detail: '같은 문구인데 실측 배율이 다르다: 강렬 6건은 통솔 297~350 에서 약 2.07배(가중치 0.46%/통솔), 무열황제 1건은 통솔 321 에서 1.55배(0.25%). 공통 가중치 0.21% 로는 강렬을 30% 넘게 작게 잡았다. 피해 항목 statScale.weight 로 전법마다 따로 두고, 표본 없는 전법(신속전개·압도적 권력)은 J10 기본 0.21%. 잠정 — 하후돈 통솔이 크게 다를 때 표본이 더 필요.' },
+  { id: 'FIX-026', date: '2026-10-09', found: '녹화 2026-10-09 주하황 3~8턴 (주태 대신 받기 3건)', title: '불굴의 의지 확률·감소율 통솔 영향',
+    detail: '대신 받는 피해 감소 50% 가 통솔 영향 없이 고정이라 주태가 실제보다 1.5배 가까이 맞았다. 실측: 출기불의 1,360 → 442, 1,450 → 486, 백의도강 650 → 220 (66~68% 감소, 주태 통솔 325.57). 감소율 = 50% × (1 + (통솔−100)×0.148%), 확률 = 80% × (1 + (통솔−100)×0.21%).' },
+  { id: 'FIX-025', date: '2026-10-09', found: '녹화 2026-10-09 주하황 3~8턴 (주태 병력 645~4,045 의 피해 표본)', title: '병력 계수 지수 0.1 → 0.35, 1만 상한',
+    detail: '병력이 크게 준 무장의 피해를 엔진이 2배 넘게 잡았다(주태 병력 645 보급 차단 실측 104 / 엔진 245, 병력 854 일반 공격 110 / 235). 피해 × (병력/1만)^0.1 → (min(병력, 1만)/1만)^0.35. 1만을 넘는 NPC(16,000)는 더 세지지 않는다(넣으면 여몽 보급 차단이 30~50% 과대). 녹화 6판 RMS 병기 16.7→14.1%, 책략 21.3→14.7%.' },
   { id: 'FIX-024', date: '2026-10-08', found: '녹화 2026-10-08 주태·하후돈·황개 vs 여몽·채문희·소교 (역재현 22건)', title: '저능력 피해 하한',
     detail: '공격 능력치가 방어 능력치보다 많이 낮을 때 선형식(285 + 0.73×무력 − 0.79×통솔 등)이 피해를 너무 작게 잡았다(채문희 무력 30 → 주태 평타 실측 98 / 엔진 43, 주태 지력 112 보급 차단 → 소교 실측 379 / 엔진 151). 기본 피해 = max(선형식, 하한)으로: 병기 하한 125, 책략 하한 345 − 0.31×상대 지력. 다른 녹화 4판의 오차는 그대로이고 전체 RMS 병기 22.6→14.2%, 책략 22.7→13.6%.' },
   { id: 'FEAT-030', date: '2026-10-07', found: '시즌3 시뮬 점검(황보숭 신속 출병 260% 미발동)', title: '전법 부속 효과 함수(partRuns)',
@@ -180,8 +186,9 @@ const DEFAULT_COEFFS = { Clin: 2.726, kDef: 1.574, kDefIntel: 1.28, floorRate: 0
   // ── 2026-10-05 FIX-016: 녹화 3판(조황화·주태조운악진·제갈량육손주유) 피해 75건 재추정 ──
   //   책략에 상대 지력 방어항이 없어 고지력 무장끼리의 피해를 크게 틀렸다(지력 366 제갈량이 받는 노숙 예측의 신 539 → 엔진 882).
   //   병종 상성(궁병→창병 +15%)이 들어간 표본은 그만큼 빼고 맞춤. 책략 RMS 24% → 14%, 병기 15% → 13%.
-  P0: 285, Pa: 0.73, Pd: 0.79, betaP: 0.1,    // 병기: (285 + 0.73×무력 − 0.79×통솔×(1−관통)) × (병력/10000)^0.1
-  Ma: 1.84, Md: 0.75, M0: 80, betaM: 0.1,     // 책략: (80 + 1.84×지력 − 0.75×상대 지력) × (병력/10000)^0.1
+  P0: 285, Pa: 0.73, Pd: 0.79, betaP: 0.35,   // 병기: (285 + 0.73×무력 − 0.79×통솔×(1−관통)) × (min(병력, 1만)/10000)^0.35
+  Ma: 1.84, Md: 0.75, M0: 80, betaM: 0.35,    // 책략: (80 + 1.84×지력 − 0.75×상대 지력) × (min(병력, 1만)/10000)^0.35
+  troopCap: 10000,                            // FIX-025 병력 계수: 1만을 넘는 병력(NPC 16,000)은 피해를 더 늘리지 않음
   PF0: 125, PFd: 0, MF0: 345, MFd: 0.31,     // FIX-024 저능력 하한: max(선형식, F0 − Fd×방어 스탯) — 녹화 5판 피해 표본으로 맞춤(병기 RMS 22.6→14.2%, 책략 22.7→13.6%)
   healK: 1.123, healStatW: 0.00027,           // 회복: 지력 × (1.123×치유율 + 0.00027×(지력−100)) — 녹화 3판 회복 17건 RMS 4% (예전 17%)
   counterBonus: 0.15,                         // 병종 상성: 방패>궁, 궁>창, 창>기, 기>방패 — 피해 +15%
@@ -549,11 +556,11 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   if (dmgType === '병기') {
     const pierce = Math.max(0, attacker.mods.방어관통 || 0);   // R-048 관통 상한 없음(예전 90%) — 100% 이상이면 통솔 완전 무시
     const DEF = (__dmgOpts && __dmgOpts.ignoreDef) ? 0 : effStat(defender, '통솔') * Math.max(0, 1 - pierce);
-    const tf = Math.pow(Math.max(attacker.troops, 1) / 10000, cf('betaP'));
+    const tf = Math.pow(Math.max(Math.min(attacker.troops, cf('troopCap') || Infinity), 1) / 10000, cf('betaP'));
     // FIX-024 저능력 하한: 공격 능력치가 낮아도 피해가 선형식만큼 줄지 않는다(채문희 무력 30 → 주태 통솔 326 평타 98)
     base = ratio * tf * Math.max(cf('P0') + cf('Pa') * ATK - cf('Pd') * DEF, cf('PF0') - cf('PFd') * DEF, 1);
   } else {
-    const tf = Math.pow(Math.max(attacker.troops, 1) / 10000, cf('betaM'));
+    const tf = Math.pow(Math.max(Math.min(attacker.troops, cf('troopCap') || Infinity), 1) / 10000, cf('betaM'));
     // FIX-016 상대 지력 방어항 (예전엔 방어 스탯 영향이 거의 없다고 봐 생략)
     const DEFI = (__dmgOpts && __dmgOpts.ignoreDef) ? 0 : effStat(defender, '지력');
     // FIX-024 저능력 하한: 지력이 낮은 무장의 책략도 하한 이상(주태 지력 112 보급 차단 110% → 소교 379)
@@ -682,7 +689,7 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
     const g = gd.by;
     const shared = Math.max(1, Math.round(dmg * (1 - gd.cfg.cut)));
     if (log) log.push(`${turnNo}턴:   [${g.name}]이(가) [${defender.name}] 대신 피해를 받습니다.`);
-    __T({ e: 'guard', src: g.id, dst: defender.id, amount: shared, skill: gd.skill });
+    __T({ e: 'guard', src: g.id, dst: defender.id, amount: shared, before: dmg, skill: gd.skill });
     applyGuardedLoss(g, attacker, shared, dmgType, dmgTag, crit, coeffs, log, turnNo);
     if (g._guardReversal && g.alive) defender._reversal = { by: g, bonus: g._guardReversal.bonus, healRatio: g._guardReversal.healRatio };
     return { dmg: 0, crit, guarded: true };
@@ -1473,7 +1480,9 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       if (d.statScale) {
         const src = effStat(attacker, d.statScale.stat);
         // v1.11 W08: 곱연산 — 기본값 × (1 + (스탯 − 100) × w)
-        ratio *= Math.max(0, 1 + (src - 100) * (coeffs.statScaleWeight != null ? coeffs.statScaleWeight : DEFAULT_COEFFS.statScaleWeight));
+        // FEAT-031 전법별 가중치(statScale.weight): 녹화로 따로 맞춘 전법만 — 강렬 0.46%·무열황제 0.25%, 나머지는 J10 기본
+        const sw = d.statScale.weight != null ? d.statScale.weight : (coeffs.statScaleWeight != null ? coeffs.statScaleWeight : DEFAULT_COEFFS.statScaleWeight);
+        ratio *= Math.max(0, 1 + (src - 100) * sw);
       }
       if (d.inf && !d.statScale) ratio *= infMult(d.inf, attacker, t, coeffs);
       // 턴 내 누적 감쇠 (turnDecay): "현재 턴에서 다음 <효과>의 피해 계수가 N% 감소".
@@ -1837,7 +1846,15 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
   // FEAT-007 보호 상태 부여: 보호자가 다음에 행동을 마칠 때까지 우군을 보호한다
   const doGuard = () => {
     if (!eff.guardAllies) return;
-    const cfg = eff.guardAllies;
+    // FIX-026 "(통솔의 영향 받음)": 확률·감소율 = 기본값 × (1 + (통솔 − 100) × 가중치) — 행동 순서 결정 뒤 그 턴 보호 시작 때의 통솔
+    //   감소율 가중치는 녹화(2026-10-09, 주태 통솔 325.57 → 대신 받는 피해 66~68% 감소 3건)로 0.148%, 확률은 J10 기본 0.21%
+    const infOf = (base, inf) => {
+      if (!inf) return base;
+      const w = inf.weight != null ? inf.weight : (coeffs.statScaleWeight != null ? coeffs.statScaleWeight : DEFAULT_COEFFS.statScaleWeight);
+      return base * Math.max(0, 1 + (effStat(unit, inf.stat) - 100) * w);
+    };
+    const cfg0 = eff.guardAllies;
+    const cfg = { ...cfg0, chance: Math.min(1, infOf(cfg0.chance, cfg0.chanceInf)), cut: Math.min(0.95, infOf(cfg0.cut, cfg0.cutInf)) };
     unit._allies = allUnits.filter(a => a.side === unit.side);
     if (cfg.unyielding && !unit._unyielding) unit._unyielding = { decay: cfg.unyielding.decay, n: 0, skill: skill.id };
     unit._allies.forEach(a => {

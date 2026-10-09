@@ -8,6 +8,12 @@ export default defineSkill({
   name: "강렬",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-09",
+      "note": "녹화(2026-10-09 주하황 3~8턴): 강렬 6건 실측 배율 약 2.07배(통솔 297~350) — (추가로 통솔의 영향 받음) 가중치 0.46%/통솔 (FEAT-031, 잠정)"
+    }
+  ],
   clauses: [
     {
       "text": "자신이 피해를 받은 후, 40% 확률로 피해를 준 목표에게 80%의 병기 피해를 주며(추가로 통솔의 영향 받음)",
@@ -39,7 +45,8 @@ export default defineSkill({
           "max": 0.8,
           "target": "trigger_attacker",
           "statScale": {
-            "stat": "통솔"
+            "stat": "통솔",
+            "weight": 0.0046
           }
         }
       ],

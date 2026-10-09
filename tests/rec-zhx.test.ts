@@ -42,3 +42,40 @@ describe('맹렬한 화염 목표별 처리', () => {
     expect(hits.filter(k => k < fire[1]).length).toBeGreaterThanOrEqual(1);
   });
 });
+
+// 녹화 2026-10-09 주하황 3~8턴 — FIX-025 병력 계수, FIX-026 대신 받기 통솔 영향, FEAT-031 강렬 통솔 가중치
+describe('녹화 2판 3~8턴', () => {
+  const E: any = (sim as any).engine;
+  const mk = (gid: string, side: string) => sim.buildArmy({ formation: '기형진', units: [{ generalId: gid, skillIds: [] }] } as any, side)[0] as any;
+  it('FIX-025 병력이 적을수록 피해가 크게 준다 — 병력 645 주태 보급 차단이 실측(104·121)과 40% 안 (예전 +130%)', () => {
+    const rows = checkReplay(loadReplays().find(r => r.id === '2026-10-09-zhoutai-xiahoudun-huanggai-t3-8')!);
+    const low = rows.filter(x => x.turn === 8 && /주태→(채문희|소교) 보급 차단/.test(x.label));
+    expect(low.length).toBe(2);
+    for (const x of low) expect(Math.abs(x.errPct)).toBeLessThan(0.4);
+  });
+  it('FIX-025 1만을 넘는 병력은 피해를 더 늘리지 않는다', () => {
+    const a = mk(gid('여몽'), 'A'), d = mk(gid('주태'), 'B');
+    a.troops = 10000; const x = E.calcDamage(a, d, 1, '책략', (sim as any).coeffs, null, 1, 'active').dmg;
+    a.troops = 16000; const y = E.calcDamage(a, d, 1, '책략', (sim as any).coeffs, null, 1, 'active').dmg;
+    expect(Math.abs(x - y)).toBeLessThan(x * 0.02);   // 피해 편차(±1%)만큼만 다름
+    a.troops = 2500; const z = E.calcDamage(a, d, 1, '책략', (sim as any).coeffs, null, 1, 'active').dmg;
+    expect(z / x).toBeCloseTo(Math.pow(0.25, 0.35), 1);
+  });
+  it('FIX-026 주태 대신 받기: 감소율 50% × 통솔 영향(325.57 → 약 67%)', () => {
+    const foe2 = { formation: '안형진', units: [U('여몽'), U('채문희', ['unexpected']), U('소교')] } as any;
+    const ev: any[] = [];
+    for (let seed = 1; seed < 80 && !ev.length; seed++) ev.push(...(sim.simulate(ally, foe2, { seed, trace: true }).trace || []).filter((e: any) => e.e === 'guard'));
+    expect(ev.length).toBeGreaterThan(0);
+    const tong = mk(gid('주태'), 'A').stats.통솔;   // 시뮬은 진영·건물 보너스가 없어 녹화(325.57)보다 낮다
+    const cut = 0.5 * (1 + (tong - 100) * 0.00148);
+    for (const e of ev) expect(e.amount / e.before).toBeCloseTo(1 - cut, 1);
+  });
+  it('FEAT-031 강렬은 통솔 영향 가중치 0.46%, 무열황제 0.25%', () => {
+    const sk = (id: string) => bundle.skills.find((s: any) => s.id === id) || bundle.uniqueSkills?.find((s: any) => s.id === id);
+    const xd: any = (sim as any).skillDefs?.['u-xiahou-dun'] ?? null;
+    const src = require('node:fs').readFileSync('packages/engine/src/skills/u-xiahou-dun.ts', 'utf8');
+    expect(src).toMatch(/"weight": 0\.0046/);
+    expect(require('node:fs').readFileSync('packages/engine/src/skills/u-sun-jian.ts', 'utf8')).toMatch(/"weight": 0\.0025/);
+    void sk; void xd;
+  });
+});

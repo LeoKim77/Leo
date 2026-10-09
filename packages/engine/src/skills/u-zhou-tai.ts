@@ -8,6 +8,12 @@ export default defineSkill({
   name: "불굴의 의지",
   kind: "패시브",
   isUnique: true,
+  revised: [
+    {
+      "date": "2026-10-09",
+      "note": "녹화(주하황 3~8턴): 대신 받는 피해 감소율·확률에 통솔 영향 반영 (FIX-026)"
+    }
+  ],
   engineStatus: {
     "status": "approx",
     "note": "전보(2026-10-03)로 확인한 구조: 매 턴 시작 시 우군에게 「불굴의 의지」를 걸고 주태 행동 종료 시 해제, 그동안 현재 병력 10% 초과 피해를 80% 확률로 50% 줄여 대신 받음(우군당 턴 3회). 확률·감소율의 통솔 영향은 미반영",
@@ -20,7 +26,8 @@ export default defineSkill({
     },
     {
       "text": "80%확률(통솔의 영향 받음)로 우군을 위해 해당 피해를 부담한다",
-      "status": "approx"
+      "status": "ok",
+      "reviewed": "확률 80% × (1 + (통솔−100)×0.21%) — J10 기본(FIX-026)"
     },
     {
       "text": "매 턴 각 우군마다 최대 3회 부담할 수 있으며",
@@ -28,7 +35,8 @@ export default defineSkill({
     },
     {
       "text": "부담하는 피해가 50%감소한다(통솔의 영향 받음)",
-      "status": "approx"
+      "status": "ok",
+      "reviewed": "녹화 2026-10-09: 통솔 325.57 에서 66~68% 감소 3건 → 50% × (1 + (통솔−100)×0.148%) (FIX-026)"
     },
     {
       "text": "자신이 곧 사망할 때 생존한 우군이 있으면 100%확률로 불굴이 발동된다",
@@ -57,6 +65,8 @@ export default defineSkill({
         "chance": 0.8,
         "perTurn": 3,
         "cut": 0.5,
+        "chanceInf": { "stat": "통솔" },
+        "cutInf": { "stat": "통솔", "weight": 0.00148 },
         "unyielding": {
           "decay": 0.1
         }
