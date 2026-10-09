@@ -50,12 +50,6 @@ export default defineSkill({
               "지력"
             ],
             "who": "self"
-          },
-          "inf": {
-            "stats": [
-              "지력"
-            ],
-            "who": "self"
           }
         }
       ],
