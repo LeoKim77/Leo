@@ -1,0 +1,44 @@
+import { describe, it, expect } from 'vitest';
+import { buildBundle } from '../packages/data-tools/src/bundle.ts';
+import { runAudit, deriveExpectation, auditSingleBattle } from '../packages/audit/src/index.ts';
+import { Simulator } from '../packages/engine/src/index.ts';
+
+const bundle = buildBundle();
+const byName = (n: string) => bundle.skills.find(s => s.name.ko === n)!;
+
+describe('감사 — 원문 해석(오라클)', () => {
+  it('시점·대상·효과를 원문에서 뽑는다', () => {
+    const e = deriveExpectation(byName('보급 차단'));
+    expect(e.timing).toBe('turnStart');
+    expect(e.damageTypes).toContain('책략');
+    expect(e.statuses).toContain('군량 고갈');
+    expect(deriveExpectation(byName('칠군수몰')).damageTargets).toBe('all');
+    expect(deriveExpectation(byName('칠군수몰')).prepTurns).toBe(1);
+    expect(deriveExpectation(byName('기지의 승리')).damageTargets).toBe(2);
+    expect(deriveExpectation(byName('퇴로 매복')).damageTargets).toBeUndefined(); // 다단 → 판정 생략
+  });
+});
+
+describe('감사 — 실행', () => {
+  const report = runAudit(bundle, { tierSeeds: 3, extraSeeds: 4 });
+  it('엔진 규칙 위반이 없다 (규칙 확인 필요 경고는 허용)', () => {
+    for (const r of report.engineRules) expect(r.level, `${r.title}: ${r.message}`).not.toBe('fail');
+  });
+  it('수정한 전법들의 대상 수가 원문과 맞다', () => {
+    for (const n of ['칠군수몰', '문과 무', '방화범']) {
+      const s = report.skills.find(x => x.name === n)!;
+      const c = s.checks.find(c => c.rule === 'D06-targets');
+      if (c) expect(c.level, `${n}: ${c.message}`).toBe('pass');
+    }
+  });
+});
+
+describe('한 판 감사', () => {
+  it('금병법이 부여한 효과(기대치 없는 id)가 있어도 멈추지 않는다 — 조조〈맹덕신서 하권〉', () => {
+    const sim = new Simulator(bundle);
+    const g = (n: string) => bundle.generals.find(x => x.name.ko === n)!;
+    const a = { formation: '기형진', units: [{ generalId: g('조조').id, skillIds: [], manualId: g('조조').manuals.find(m => m.name === '맹덕신서 하권')!.id }, { generalId: g('전위').id, skillIds: [] }] };
+    const r = sim.simulate(a as any, a as any, { seed: 1, trace: true, detail: true });
+    expect(() => auditSingleBattle(bundle as any, r.trace!)).not.toThrow();
+  });
+});

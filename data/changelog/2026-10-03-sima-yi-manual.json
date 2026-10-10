@@ -1,0 +1,19 @@
+{
+  "id": "2026-10-03-sima-yi-manual",
+  "date": "2026-10-03",
+  "season": "S2",
+  "category": "데이터",
+  "title": "사마의 금병법〈대략〉 추가 · 사마의·가후 \"미출시\" 표시 정정",
+  "body": "정정: \"없는 장수\"는 한국 서버 미출시가 아니라 사용자 미보유라는 뜻. 사마의·가후의 미출시 표시를 지우고 덱 추천·녹화 계획 대상에 다시 넣음(미보유라 보유 기준 추천에는 원래대로 안 나옴).\n사마의〈대략〉(미리보기 캡처): 받는 피해 −5%, 매의 응시의 포석이 처음으로 4스택·8스택이 될 때 아군 전체 회복(치유율 80%, 지력 영향). 엔진 FEAT-013(스택 문턱 회복).\n가후 금병법은 사용자 캡처 대기.",
+  "refs": [],
+  "author": "Claude",
+  "commit": "36954602c8fa",
+  "files": [
+    "data/audit/latest.json",
+    "data/engine/manuals.json",
+    "data/patches/generals.json",
+    "data/verification/queue.json",
+    "packages/engine/src/legacy/core.js",
+    "tests/manuals.test.ts"
+  ]
+}

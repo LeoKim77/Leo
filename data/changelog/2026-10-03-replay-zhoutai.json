@@ -1,0 +1,22 @@
+{
+  "id": "2026-10-03-replay-zhoutai",
+  "date": "2026-10-03",
+  "season": "S2",
+  "category": "엔진",
+  "title": "첫 전보 녹화 반영 — 주태 불굴의 의지 구현, 진형 칸 배치, 행동 종료 시점",
+  "body": "전보 녹화(주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 포진~8턴 무승부)를 프레임 단위로 읽어 대조했습니다. 원자료: data/replays/2026-10-03-zhoutai-zhaoyun-yuejin.json\n엔진 수정\n- FEAT-007 주태 불굴의 의지: 매 턴 시작에 아군 보호 상태 → 주태 행동 종료 시 해제. 보호 중 현재 병력 10% 초과 피해를 80% 확률로 50% 줄여 대신 받음(우군당 턴 3회), 주태 사망 직전 불굴 면역(발동마다 −10%p). 감사 실패 8→5.\n- FEAT-006 진형 칸: 기형진은 첫 칸만 전열, 일자진은 전원 전열(전보 확인). 무장 고유 배치 대신 진형 칸으로 전열·후열을 정함.\n- FEAT-008 행동 종료 시점: 요새 함락·옥새·마등 추가 공격을 일반 공격 뒤로. 결사 회복은 통솔 기준(실측 215~297).\n검증 결과 (확인 9 · 불일치 5)\n- 확인: 병기 피해 공식(툴팁 역산 오차 1~3%), 회심·묘책 150%, 지속 효과는 보유자 행동 시작에 소멸, 한 전법 안 피해 대상 공유, 피해 확률 1회 판정, 도광양회 누적.\n- 불일치→수정: 결사 회복, 요새 함락 시점. 불일치→관찰: 조운 피신은 시뮬보다 실제가 높음(41~45.65%, '피신 과다' 가설 기각), 난공불락 조롱이 3명에게 걸린 턴 있음.\n새 요청: 주태 금병법〈역전〉·〈불굴〉 원문, 병종 진급(질주·여유만만·적군 섬멸·초지일관) 설명, 건물 기술, 공급 규칙, 안형·방원진 전열 칸 수.\n교차 분석 재실행: S1 69% · S2 31%(주태 덱 상승: 태황유 14→28%, 태원마 15→31%). 남은 차이는 병종 진급·특화 미반영이 유력.",
+  "refs": [],
+  "author": "Claude",
+  "files": [
+    "data/analysis/s1-vs-s2.json",
+    "data/audit/latest.json",
+    "data/engine/authored.json",
+    "data/replays/2026-10-03-zhoutai-zhaoyun-yuejin.json",
+    "data/verification/engine-assumptions.json",
+    "data/verification/queue.json",
+    "packages/audit/src/dynamic.ts",
+    "packages/engine/src/index.ts",
+    "packages/engine/src/legacy/core.js"
+  ],
+  "commit": "d0e2a92c353e"
+}

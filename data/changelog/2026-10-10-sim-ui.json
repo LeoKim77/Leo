@@ -1,0 +1,12 @@
+{
+  "id": "2026-10-10-sim-ui",
+  "date": "2026-10-10",
+  "season": "S3",
+  "category": "기능",
+  "title": "시뮬 사이트 이름 '삼국지 천하결전 전투시뮬', 시즌별 덱 추천, 전보 턴 이동·게임 색",
+  "body": "시뮬 사이트 이름을 '삼국지 천하결전 전투시뮬'로 바꿨다. 덱 추천은 위에서 고른 시즌의 티어덱만 기준으로 쓰고, 승률 검증도 그 시즌 상위 티어덱(시즌3 이면 시즌3 티어덱)과 붙인다(예전엔 모든 시즌을 섞어 시즌2 티어덱이 메타 상대로 나왔다). 보유 카드도 그 시즌까지 나온 것만 쓴다. 전보는 게임처럼 왼쪽에 준비 턴·1~8턴 버튼을 두어 누르면 그 턴으로 바로 이동하고, 글씨 색을 게임 전보와 같게 했다(아군 이름 파랑, 적군 이름 빨강, 손실 병력 빨강, 회복 병력 초록, 증감 수치·스택·배율 노랑).",
+  "refs": [],
+  "author": "Claude",
+  "commit": "2d43a1c",
+  "files": ["apps/web/index.html", "apps/web/src/views/sim.ts", "apps/web/src/views/recommend.ts", "apps/web/src/compute.ts", "apps/web/src/styles.css", "packages/recommender/src/index.ts", "data/common/site.json", "apps/mcp-server/src/server.ts", "CLAUDE.md", "tests/recommender.test.ts"]
+}

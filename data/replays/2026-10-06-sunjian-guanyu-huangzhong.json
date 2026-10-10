@@ -1,0 +1,569 @@
+{
+  "id": "2026-10-06-sunjian-guanyu-huangzhong",
+  "date": "2026-10-06",
+  "season": "S2",
+  "source": "사용자 전보 녹화 '손관황_준비~3턴'(구글 드라이브 폴더). 아군 손견(전열)·관우·황충 기형진 vs 훈련소 NPC 대교·손책·견희 일자진(병력 16,000). 아군 일반 병법(기임·호세 선본 조롱·무장 해제, 고군 회유, 궁술=금병법)은 시뮬 범위 밖이나 제어 상태를 만들어 화하 진압 탈주병 조건을 채움.",
+  "links": [
+    "https://drive.google.com/drive/folders/1D0cbUCewU-QOvdQwPXaqb0fybkp6vyOo"
+  ],
+  "battle": {
+    "ally": {
+      "formation": "기형진",
+      "units": [
+        {
+          "generalId": "sun-jian",
+          "skills": [
+            "gate-halberd",
+            "pursue-remnants"
+          ],
+          "manual": "무열"
+        },
+        {
+          "generalId": "guan-yu",
+          "skills": [
+            "charge-change",
+            "ambushes"
+          ]
+        },
+        {
+          "generalId": "huang-zhong",
+          "skills": [
+            "ready",
+            "sweep-army"
+          ],
+          "manual": "궁술"
+        }
+      ]
+    },
+    "enemy": {
+      "formation": "일자진",
+      "units": [
+        "da-qiao",
+        "sun-ce",
+        "zhen-luo"
+      ]
+    }
+  },
+  "outOfScopeSeen": [
+    "진영 촉·오 강화 +5%",
+    "건물 기술(능력치 +20, 방어 태세 받는 −7%, 강궁 회심·묘책 +10%)",
+    "병종 특성 질주·경기",
+    "일반 병법 기임·호세(조롱·무장 해제)·고군(회유)·적응 / 관우 병법 <작전>수기 병기 피해 +5.4%(반영 안 함)·<기동>선본 액티브 발동률 +3%·<병정>수기 4턴 받는 피해 −5%"
+  ],
+  "tooltips": [
+    {
+      "turn": 1,
+      "unit": "guan-yu",
+      "stats": {
+        "무력": 334.72,
+        "지력": 154.87,
+        "통솔": 230.52,
+        "선공": 197.92
+      },
+      "troops": 9541,
+      "maxTroops": 9541,
+      "mods": {
+        "주는피해": 0.29,
+        "받는책략피해": -0.05
+      },
+      "note": "툴팁의 주는 병기 +5.4%는 일반 병법 <작전> 효과 — 금병법만 반영 원칙(R-054)에 따라 넣지 않음"
+    },
+    {
+      "turn": 1,
+      "unit": "huang-zhong",
+      "stats": {
+        "무력": 333.42,
+        "지력": 157.55,
+        "통솔": 206.37,
+        "선공": 186.42
+      },
+      "troops": 9200,
+      "maxTroops": 9200,
+      "mods": {
+        "주는피해": 0.17,
+        "받는피해": 0.15,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "sun-jian",
+      "stats": {
+        "무력": 228.95,
+        "지력": 143.37,
+        "통솔": 321.35,
+        "선공": 178.02
+      },
+      "troops": 8580,
+      "maxTroops": 8580,
+      "mods": {
+        "주는피해": 0.12,
+        "받는피해": -0.11,
+        "받는병기피해": -0.1657,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "sun-ce",
+      "stats": {
+        "무력": 261.97,
+        "지력": 142.8,
+        "통솔": 236.3,
+        "선공": 197.92
+      },
+      "troops": 16000,
+      "maxTroops": 16000,
+      "mods": {
+        "받는피해": -0.08
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "da-qiao",
+      "stats": {
+        "무력": 42.52,
+        "지력": 223.12,
+        "통솔": 211.62,
+        "선공": 118.65
+      },
+      "troops": 16000,
+      "maxTroops": 16000,
+      "mods": {
+        "받는피해": -0.08
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "zhen-luo",
+      "stats": {
+        "무력": 34.65,
+        "지력": 231.05,
+        "통솔": 204.8,
+        "선공": 132.3
+      },
+      "troops": 16000,
+      "maxTroops": 16000,
+      "mods": {
+        "받는피해": -0.08
+      }
+    }
+  ],
+  "damageSamples": [
+    {
+      "turn": 1,
+      "attacker": "guan-yu",
+      "defender": "da-qiao",
+      "kind": "화하 진압",
+      "dmgType": "병기",
+      "ratio": 1.8,
+      "observed": 868,
+      "at": {
+        "da-qiao": {
+          "troops": 16000
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "guan-yu",
+      "defender": "sun-ce",
+      "kind": "화하 진압",
+      "dmgType": "병기",
+      "ratio": 1.8,
+      "observed": 912,
+      "at": {
+        "guan-yu": {
+          "stats": {
+            "무력": 329.72
+          }
+        },
+        "sun-ce": {
+          "troops": 16000
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "guan-yu",
+      "defender": "zhen-luo",
+      "kind": "화하 진압",
+      "dmgType": "병기",
+      "ratio": 1.8,
+      "observed": 1083,
+      "at": {
+        "zhen-luo": {
+          "troops": 16000
+        }
+      },
+      "note": "견희 통솔은 추정(176×1.05+20)"
+    },
+    {
+      "turn": 1,
+      "attacker": "sun-ce",
+      "defender": "huang-zhong",
+      "kind": "강동 제패",
+      "dmgType": "병기",
+      "ratio": 2.5,
+      "observed": 891,
+      "at": {
+        "sun-ce": {
+          "troops": 12942
+        },
+        "huang-zhong": {
+          "troops": 9200
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "sun-ce",
+      "defender": "huang-zhong",
+      "kind": "압도적 승리",
+      "dmgType": "병기",
+      "ratio": 2.2,
+      "observed": 772,
+      "at": {
+        "sun-ce": {
+          "troops": 13348
+        },
+        "huang-zhong": {
+          "troops": 8309
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "huang-zhong",
+      "defender": "da-qiao",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 513,
+      "at": {
+        "huang-zhong": {
+          "troops": 7532
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 1,
+      "attacker": "sun-jian",
+      "defender": "sun-ce",
+      "kind": "무열황제",
+      "dmgType": "병기",
+      "ratio": 2.5,
+      "observed": 1223,
+      "at": {
+        "sun-ce": {
+          "troops": 13348,
+          "stats": {
+            "통솔": 164.15
+          }
+        }
+      },
+      "note": "(추가로 통솔의 영향 받음) statScale"
+    },
+    {
+      "turn": 2,
+      "attacker": "guan-yu",
+      "defender": "da-qiao",
+      "kind": "화하 진압",
+      "dmgType": "병기",
+      "ratio": 1.8,
+      "observed": 852,
+      "at": {
+        "guan-yu": {
+          "stats": {
+            "무력": 324.72
+          },
+          "mods": {
+            "주는피해": 0.36
+          }
+        },
+        "da-qiao": {
+          "troops": 14588
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "guan-yu",
+      "defender": "sun-ce",
+      "kind": "화하 진압",
+      "dmgType": "병기",
+      "ratio": 1.8,
+      "observed": 1181,
+      "at": {
+        "guan-yu": {
+          "stats": {
+            "무력": 324.72
+          },
+          "mods": {
+            "주는피해": 0.36
+          }
+        },
+        "sun-ce": {
+          "troops": 13439,
+          "stats": {
+            "통솔": 164.15
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "guan-yu",
+      "defender": "sun-ce",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 663,
+      "at": {
+        "guan-yu": {
+          "stats": {
+            "무력": 324.72
+          },
+          "mods": {
+            "주는피해": 0.36
+          }
+        },
+        "sun-ce": {
+          "troops": 11779,
+          "stats": {
+            "통솔": 164.15
+          }
+        }
+      }
+    },
+    {
+      "turn": 3,
+      "attacker": "guan-yu",
+      "defender": "da-qiao",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 485,
+      "at": {
+        "guan-yu": {
+          "troops": 9004,
+          "stats": {
+            "무력": 319.72
+          },
+          "mods": {
+            "주는피해": 0.43
+          }
+        },
+        "da-qiao": {
+          "troops": 12895
+        }
+      }
+    },
+    {
+      "turn": 3,
+      "attacker": "sun-ce",
+      "defender": "guan-yu",
+      "kind": "강동 제패",
+      "dmgType": "병기",
+      "ratio": 2.5,
+      "observed": 758,
+      "at": {
+        "sun-ce": {
+          "troops": 7993
+        },
+        "guan-yu": {
+          "troops": 9004,
+          "stats": {
+            "무력": 319.72
+          },
+          "mods": {
+            "받는피해": 0.1025
+          }
+        }
+      }
+    },
+    {
+      "turn": 3,
+      "attacker": "sun-ce",
+      "defender": "sun-jian",
+      "kind": "강동 제패(회심)",
+      "dmgType": "병기",
+      "ratio": 2.5,
+      "observed": 911,
+      "at": {
+        "sun-ce": {
+          "troops": 7993
+        },
+        "sun-jian": {
+          "troops": 5800,
+          "stats": {
+            "무력": 197.79,
+            "통솔": 290.19
+          },
+          "mods": {
+            "받는피해": 0.09
+          }
+        }
+      },
+      "crit": true,
+      "counter": 0.15
+    },
+    {
+      "turn": 3,
+      "attacker": "sun-ce",
+      "defender": "huang-zhong",
+      "kind": "압도적 승리",
+      "dmgType": "병기",
+      "ratio": 2.2,
+      "observed": 812,
+      "at": {
+        "sun-ce": {
+          "troops": 8193
+        },
+        "huang-zhong": {
+          "troops": 6827,
+          "stats": {
+            "무력": 302.26,
+            "통솔": 175.21
+          },
+          "mods": {
+            "받는피해": 0.15
+          }
+        }
+      }
+    },
+    {
+      "turn": 3,
+      "attacker": "sun-ce",
+      "defender": "guan-yu",
+      "kind": "찬란한 위명",
+      "dmgType": "병기",
+      "ratio": 2.2,
+      "observed": 642,
+      "at": {
+        "sun-ce": {
+          "troops": 8193
+        },
+        "guan-yu": {
+          "troops": 8246,
+          "stats": {
+            "무력": 319.72
+          },
+          "mods": {
+            "받는피해": 0.1025
+          }
+        }
+      }
+    },
+    {
+      "turn": 3,
+      "attacker": "sun-jian",
+      "defender": "da-qiao",
+      "kind": "일반 공격(혼란)",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 208,
+      "at": {
+        "sun-jian": {
+          "troops": 4481,
+          "stats": {
+            "무력": 166.63,
+            "통솔": 259.03
+          },
+          "mods": {
+            "주는피해": 0.26
+          }
+        },
+        "da-qiao": {
+          "troops": 11974
+        }
+      }
+    }
+  ],
+  "healSamples": [],
+  "influenceSamples": [
+    {
+      "turn": 2,
+      "skill": "전장 평정 선공·무력 감소",
+      "caster": "황충",
+      "base": 24,
+      "observed": 33.6,
+      "stat": "무력",
+      "statValue": 297.26
+    },
+    {
+      "turn": 1,
+      "skill": "전략 계획 능력치 감소(대교)",
+      "caster": "대교",
+      "base": 25,
+      "observed": 31.15,
+      "stat": "지력",
+      "statValue": 223.12
+    },
+    {
+      "turn": 1,
+      "skill": "무열황제 통솔 감소(무력 또는 통솔 중 높은 수치)",
+      "caster": "손견",
+      "base": 40,
+      "observed": 72.14,
+      "stat": "통솔",
+      "statValue": 321.35,
+      "note": "목표 통솔(236.3)이 손견보다 낮아 50% 증가 조건 아님 — 1.80배는 설명 안 됨"
+    },
+    {
+      "turn": 1,
+      "skill": "금병법〈무열〉 받는 병기 피해 감소(통솔)",
+      "caster": "손견",
+      "base": 8,
+      "observed": 11.57,
+      "stat": "통솔",
+      "statValue": 321.35
+    }
+  ],
+  "desertionSamples": [
+    {
+      "turn": 1,
+      "target": "견희",
+      "attackerMuryeok": 334.72,
+      "observed": 500
+    },
+    {
+      "turn": 1,
+      "target": "대교",
+      "attackerMuryeok": 329.72,
+      "observed": 493
+    },
+    {
+      "turn": 1,
+      "target": "손책",
+      "attackerMuryeok": 329.72,
+      "observed": 493
+    },
+    {
+      "turn": 2,
+      "target": "견희",
+      "attackerMuryeok": 324.72,
+      "observed": 479
+    },
+    {
+      "turn": 2,
+      "target": "손책",
+      "attackerMuryeok": 324.72,
+      "observed": 479
+    }
+  ],
+  "ratioChecks": [
+    {
+      "what": "퇴로 매복 110% 고정 (2026-10-07 원문 캡처)",
+      "basis": "같은 1턴 관우→손책 화하 진압 180% = 912",
+      "expect": 557,
+      "observed": [
+        559,
+        556,
+        530
+      ],
+      "note": "손책 3타가 912×110/180=557 과 ±5% 안. 견희 660. 관우→손책·견희 공통 편차(P-0036)는 계수 표본에서 이미 세므로 중복 표본으로 넣지 않음"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "2026-10-03-sim-scope",
+  "date": "2026-10-03",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "시뮬 범위 확정 (R-011~R-016) — 진형·병종·장비·건물·부상병 제외",
+  "body": "개인 선택으로 달라지는 변수와 모두에게 같게 적용되는 변수는 빼고, 무장 배치와 전법 배치에 따른 전투 계수에 집중하기로 했습니다.\n- R-011 부상병 구분 없음: 병력 손실만 계산, 무승부 뒤 다음 교전도 남은 병력 그대로. 회복 상한은 잃은 병력.\n- R-012 병법은 금병법만: 하나면 적용/제외, 둘이면 하나 선택 또는 제외. 일반 병법 미적용.\n- R-013 진형 효과 없음: 능력치 효과·피격률 제외(첫 칸만 전열 우선 대상 판정용).\n- R-014 건물 기술·장비 효과 없음.\n- R-015 병종 효과 전부 제외: 세부 병종·병종 특화/진급·병종 전환·상성. 무장 병종은 전법 조건에만 사용.\n- R-016 목표: 인게임 전투 계수를 최대한 가깝게.\n엔진 FEAT-009(계수 formationEffects·troopEffects·woundedCap 기본 끔). 검증 대기에서 범위 밖 항목(병종 진급·건물 기술·공급·진형 칸·상성·부상병 비율) 제거.",
+  "refs": [],
+  "author": "Claude",
+  "files": [
+    "apps/web/src/views/sim.ts",
+    "data/audit/latest.json",
+    "data/common/confirmed-rules.json",
+    "data/verification/engine-assumptions.json",
+    "data/verification/queue.json",
+    "packages/engine/src/index.ts",
+    "packages/engine/src/legacy/core.js"
+  ],
+  "commit": "23f887500c96"
+}

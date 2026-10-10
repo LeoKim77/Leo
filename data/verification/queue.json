@@ -1,0 +1,1690 @@
+{
+  "note": "전보 녹화 검증 대기 목록 (R-007). status: pending=대기, verified=전보로 확인, rejected=틀림(수정 필요). priority 가 높을수록 먼저 녹화. MCP verification_resolve 로 판정을 기록한다.",
+  "items": [
+    {
+      "id": "V-engine-zhou-tai-unyielding",
+      "kind": "engine",
+      "refs": [
+        "u-zhou-tai"
+      ],
+      "title": "주태 불굴의 의지 — 대신 받기 확률·감소율의 통솔 영향 계수",
+      "assumption": "구조(보호 상태·대신 받기·불굴 면역)는 전보로 확인해 구현(FEAT-007). 남은 것은 계수: 80% 확률·50% 감소에 붙은 \"(통솔의 영향 받음)\"이 엔진에 미반영.",
+      "howToVerify": "주태가 대신 받은 장면의 피해 숫자 + 주태 통솔(툴팁) + 원래 피해(같은 공격의 다른 대상 피해로 추정). 확률 자체는 녹화로 재지 않고 시뮬 통계로 원문과 비교(R-019).",
+      "priority": 95,
+      "status": "verified",
+      "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 매 턴 시작 시 주태가 「불굴의 의지」를 발동해 조운·악진이 보호 상태를 얻고, 주태 행동이 끝나면 사라짐. 보호 중 \"[주태]이(가) [악진] 대신 피해를 받습니다\" 확인(악진 9,411병에 1,083 피해는 미발동 → 80% 판정 실패로 추정, 조운 10,000병에 791은 10% 미만이라 미발동). 엔진 FEAT-007 로 구현.",
+      "resolvedAt": "2026-10-03"
+    },
+    {
+      "id": "V-engine-coef-strategy",
+      "kind": "engine",
+      "refs": [],
+      "title": "책략 피해 공식 계수 (지력 1.5 · 병력 지수 0.1, 2026-10-03 재추정)",
+      "assumption": "1.5×지력×(병력/10000)^0.1. 조황화 전보 8건(상대 5·아군 화공전술 3, 승품 보정)으로 RMS 9.4%. 화공전술 → 견희 한 건만 −17%로 벗어남.",
+      "howToVerify": "책략 피해 숫자 + 시전자 지력·병력 (예: 천하평론·화공전술). 지력이 다른 두 책사의 같은 전법이면 가장 좋다. 같은 책략 전법의 피해를 시전자 병력이 많을 때와 적을 때 비교 — 각 시점 병력·지력. 대상 지력·통솔이 다른 두 무장이 같은 전법에 맞은 장면이 있으면 방어 영향 여부도 확인된다.",
+      "priority": 90,
+      "status": "verified",
+      "result": "조황화 녹화 책략 11건 역검증: 1.5×지력×(병력/10000)^0.1, RMS 4.8%. 대상 지력 영향 없음 확인(같은 시전 대상 비교)",
+      "resolvedAt": "2026-10-04"
+    },
+    {
+      "id": "V-engine-coef-physical",
+      "kind": "engine",
+      "refs": [],
+      "title": "병기 피해 공식 계수 (기초값 250 · 무력 0.85 · 통솔 0.6 · 병력 지수 0.1, 2026-10-03 재추정)",
+      "assumption": "(250 + 0.85×무력 − 0.6×통솔×(1−관통)) × (병력/10000)^0.1. 조황화 25건(화검 승품 5 보정)+조운덱 3건 RMS 9.6%. 병력 지수는 이번 표본에선 0 이 최적(8.6%)이나 v1.12 근거와 충돌해 0.1. 상대가 모두 NPC. 2026-10-04: 조황화 녹화 전체 검토 후 병기 28건 RMS 9.1%, 같은 시전 대상 비교 3쌍 6.7%. 대상 비교만 보면 통솔 계수 ≈1.0(대교가 손책보다 늘 더 맞음, 오차 2.7%)이나 그 값으로는 절대 피해가 크게 틀어져(기초값을 올려도) 현재 0.6 이 양쪽 절충 최적. 대교 쪽에 미확인 받는 피해 요인이 있을 가능성 — 다른 상대(PvP)로 확인 필요.",
+      "howToVerify": "PvP 전보에서 같은 공격자가 통솔이 크게 다른 두 무장을 때린 장면(파죽지세·화검 같은 전체 공격) + 양쪽 툴팁. 저무력 무장(책사)의 일반 공격 표본도 계속 유효.",
+      "priority": 88,
+      "status": "verified",
+      "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 툴팁 수치로 역산 — 조운(무력 270, 주는 피해 +48.61%) → 손책(통솔 236.3, 받는 피해 −4.78%) 일반 공격 예측 450 / 실제 455(+1%), 요새 함락 110% 예측 506 / 실제 523(+3%). 병력 10,000 기준이라 병력 지수는 미확인.",
+      "resolvedAt": "2026-10-03"
+    },
+    {
+      "id": "V-engine-stat-influence",
+      "kind": "engine",
+      "refs": [
+        "u-liu-bei",
+        "u-cao-cao"
+      ],
+      "title": "'(스탯)의 영향 받음' 계수 (v1.12b 잠정 W08)",
+      "assumption": "효과 × (1 + (스탯 − 100) × 0.21%) (2026-10-03 재추정: 목우유마 2건·난세의 간웅·전략 계획 ±4%). 예외: 난세의 간웅 회유·심리 공격(실측 10.68 vs 8.22), 마비산 받는 피해 감소(15.58 — 기본 16보다 작음). 전장의 노래 통솔 17.92 는 승품 4(×1.12)로 설명됨.",
+      "howToVerify": "전보에 실제로 찍힌 효과 수치 + 그 순간 시전자 스탯(툴팁). 예: 조조 난세의 간웅 0턴 \"받는 피해 N% 감소\"(기본 14%, 지력), 화타 마비산 매 턴 종료(기본 16%, 지력), 황월영 목우유마 홀수 턴(기본 25%, 지력), 황개 고육지계(기본 30%, 통솔). 같은 전법을 스탯이 다른 순간(스탯 감소 디버프를 받은 뒤, 또는 능력치 분배를 바꾼 판)에 한 번 더 찍으면 기울기까지 나온다. 표본은 data/replays 의 influenceSamples 로 넣고 pnpm replay:check 로 비교.",
+      "priority": 60,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-holder-duration",
+      "kind": "engine",
+      "refs": [
+        "all-directions",
+        "supply-cut",
+        "flood-seven"
+      ],
+      "title": "지속 턴 = 걸린 무장의 행동 횟수 (R-025)",
+      "assumption": "R-025 채택: 걸린 무장이 행동을 마칠 때마다 −1 (FIX-010). 이미 행동한 무장에게 건 효과는 다음 턴부터 셈",
+      "howToVerify": "선공이 느린 무장이 이미 행동한 적에게 1~2턴 상태(침묵·위협 등)를 건 뒤, 그 적의 다음 행동 몇 번 동안 상태가 남는지 전보·툴팁(N턴)에서 확인",
+      "priority": 48,
+      "status": "verified",
+      "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 침묵·군량 고갈·국색·전략 계획·위협 등이 모두 \"보유자 행동 시작\" 줄에서 사라짐 → 보유자 행동 기준 감소 맞음.",
+      "resolvedAt": "2026-10-03"
+    },
+    {
+      "id": "V-engine-ally-self",
+      "kind": "engine",
+      "refs": [
+        "u-cao-cao",
+        "u-xun-yu",
+        "u-cai-wenji"
+      ],
+      "title": "무장 고유 전법의 아군/우군 (R-034)",
+      "assumption": "일반 전법은 게임 캡처로 확정(아군=자신 포함, 우군=자신 제외). 고유 전법은 엑셀이 '우군'으로 통일돼 있어 실제 문구를 모름 → 자신 포함으로 유지(조조 고유는 녹화상 자신 포함)",
+      "howToVerify": "무장 상세 화면에서 고유 전법 문구의 '아군'/'우군' 확인 (사용자 확인 예정)",
+      "priority": 45,
+      "status": "verified",
+      "result": "고유 전법 녹화 2026-10-05 (R-051, P-0033): 54개 게임 원문 반영"
+    },
+    {
+      "id": "V-engine-coef-crit",
+      "kind": "engine",
+      "refs": [],
+      "title": "회심·묘책 피해 배율 (1.5배)",
+      "assumption": "회심·묘책은 피해 ×1.5, 기본 확률 0. 민감도: critMult ±15% → 상위 덱 승률 평균 4.4%p (같은 설정 반복 시 잡음 3.0%p)",
+      "howToVerify": "회심(병기)·묘책(책략)이 터진 피해와 같은 전법의 일반 피해 비교.",
+      "priority": 44,
+      "status": "verified",
+      "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): \"회심 발동. 회심 피해는 150%입니다\" 다수(조운·손책), 묘책도 150%.",
+      "resolvedAt": "2026-10-03"
+    },
+    {
+      "id": "V-engine-multi-stat-weight",
+      "kind": "engine",
+      "refs": [
+        "support-selfless",
+        "same-boat",
+        "u-cheng-pu"
+      ],
+      "title": "'(A와 B의 영향 받음)' 두 스탯 가중치",
+      "assumption": "현재 두 스탯의 단순 평균. 사용자 정보: 내부적으로 스탯별 가중치가 다르게 매겨짐(예: 지력 60%·통솔 40%) — 값 미상",
+      "howToVerify": "같은 전법(예: 일심협력·전력 지원 '지력과 통솔')의 회복/피해를 지력·통솔이 다른 두 시전 상태에서 툴팁과 함께 기록 → 역재현으로 가중치 역산",
+      "priority": 40,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-confuse-scope",
+      "kind": "engine",
+      "refs": [],
+      "title": "혼란·조롱이 단일 대상 전법에도 적용 (R-026)",
+      "assumption": "혼란 상태 무장의 단일 대상 피해 전법이 아군을, 회복 전법이 적을 고를 수 있다고 처리. 여러 명 대상 전법은 영향 없음으로 둠",
+      "howToVerify": "혼란·조롱이 걸린 무장이 단일 대상 액티브를 쓸 때 대상 — 전보의 대상 이름",
+      "priority": 30,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-manual-ally-wording",
+      "kind": "engine",
+      "refs": [
+        "m-chen-gong-1",
+        "m-deng-ai-1",
+        "m-diao-chan-1",
+        "m-diao-chan-2",
+        "m-huang-yueying-1",
+        "m-li-ru-1",
+        "m-liu-bei-2"
+      ],
+      "title": "금병법 문구의 '우군'(엑셀 통일 가능성)",
+      "assumption": "엑셀 옮기는 중 '아군'이 '우군'으로 통일됐을 수 있어(R-034), '무력이 가장 높은 우군'·'우군 2명' 등은 예전처럼 자신 포함으로 둠. '자신과/자신 및 ~ 우군'처럼 문맥상 자신 제외가 분명한 것만 자신 제외(안량·문추·악진·주태)",
+      "howToVerify": "게임 금병법 설명 화면의 아군/우군 표기 캡처 (진궁 논무·등애 제하론·초선 상련/화수·황월영 기관술·이유 비호·유비 인의론)",
+      "priority": 30,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-coef-heal",
+      "kind": "engine",
+      "refs": [],
+      "title": "회복 공식의 지력 가중치 (0.12%p/지력)",
+      "assumption": "민감도 2.9%p — 잡음(3.0%p) 수준이라 후순위. 다른 녹화에 함께 찍히면 확인",
+      "howToVerify": "회복 숫자 + 시전자 지력 + 전법 치유율 (청낭 치료·백성과 함께 등). 부상병이 충분할 때(회복이 상한에 안 걸릴 때) 장면.",
+      "priority": 29,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-coef-order",
+      "kind": "engine",
+      "refs": [],
+      "title": "행동 순서: 선공 + 난수 ±35 전체 정렬 (R-022)",
+      "assumption": "R-022 로 '선공 + 균등 난수 ±35, 양 편 구분 없이 정렬'을 채택(같은 편 순서 고정 W31 폐기). 난수 분포(균등)와 폭(±35)은 용어 시트 '70 초과 확정'과 맞지만 녹화로 직접 확인된 적은 없음",
+      "howToVerify": "같은 편 두 무장의 선공 차가 0~40일 때 턴마다 순서가 뒤바뀌는지 — '행동 순서 판단 완료' 표기 + 툴팁 선공. 바뀌는 게 한 번이라도 보이면 같은 편 고정(W31)은 확정 기각",
+      "priority": 27,
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-xun-yu-1",
+      "kind": "clause",
+      "refs": [
+        "u-xun-yu"
+      ],
+      "title": "인재 등용 — \"자신이 주는 회복 효과가 30% 확률로(묘책의 영향 받…\"",
+      "assumption": "2배 확률의 '묘책의 영향' 공식 미상 — 30% 고정",
+      "howToVerify": "【인재 등용】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 26
+    },
+    {
+      "id": "V-engine-confuse-multi",
+      "kind": "engine",
+      "refs": [],
+      "title": "혼란 시 여러 명 대상 전법 (R-032)",
+      "assumption": "랜덤 N명·전체 대상도 적+아군 풀에서 같은 인원수 추출",
+      "howToVerify": "혼란 걸린 무장의 광역 전법 대상 — 전보에 아군 피해 줄이 나오는지",
+      "priority": 25,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-pangtong-chain",
+      "kind": "engine",
+      "refs": [],
+      "title": "방통 연환계 — \"전체에 연환\" 대상",
+      "assumption": "적군 전체로 해석(1턴, 홀수 턴 시작). 전달 피해 25%는 방통 지력 영향",
+      "howToVerify": "연환이 걸린 무장 이름(적군만인지 아군도인지) — 전보",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-charge-change-skip",
+      "kind": "engine",
+      "refs": [],
+      "title": "기민한 전술 — \"준비 턴을 일정 횟수 생략\"",
+      "assumption": "다음 준비형 전법 1회 준비 생략으로 해석",
+      "howToVerify": "기민한 전술 발동 뒤 준비형 전법(포위 돌파·방화범 등)이 몇 번 바로 발동하는지",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-diaochan-retaliate",
+      "kind": "engine",
+      "refs": [],
+      "title": "초선 폐월 — \"이번 턴에 초선에게 피해를 준 목표\"",
+      "assumption": "그 턴에 초선을 때린 적 전원에게 각 1회 60%로 해석",
+      "howToVerify": "턴 종료 때 폐월 피해 줄이 몇 명에게 찍히는지",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-fazheng-mark",
+      "kind": "engine",
+      "refs": [],
+      "title": "법정 간파력 — 도사 지속",
+      "assumption": "지속 턴 표기가 없어 발동(일반 공격 외 피해)될 때까지 유지로 처리. 법정 전사 시 발동 안 함",
+      "howToVerify": "도사가 걸린 적의 툴팁 [도사] N턴 표기, 법정 전사 후 발동 여부",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-statScale-weights",
+      "kind": "engine",
+      "refs": [
+        "u-xiahou-dun",
+        "u-sun-jian",
+        "speed-first",
+        "u-dong-zhuo"
+      ],
+      "title": "\"(추가로 ○○의 영향 받음)\" 피해 배율의 전법별 가중치",
+      "assumption": "피해 배율 × (1 + (통솔 − 100) × 가중치) — 강렬 0.46%(2판 6건, 통솔 297~350 → 2.07배), 무열황제 0.25%(1건), 나머지 J10 기본 0.21% (FEAT-031 잠정)",
+      "howToVerify": "하후돈 통솔이 크게 다를 때(250 이하·400 이상) 강렬 피해 줄 + 그 순간 통솔 툴팁, 손견 무열황제 피해 줄 + 통솔 툴팁 추가",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-armor-edge",
+      "kind": "skill",
+      "refs": [
+        "armor-edge"
+      ],
+      "title": "결사의 다짐",
+      "assumption": "결사 회복은 받은 무장의 통솔 기준(전보: 주태 통솔 315 → 회복 297, 252 → 218 — 엔진 예측은 약 12% 높음, 지력 영향 미반영)",
+      "howToVerify": "【결사의 다짐】이(가) 발동한 전보에서 근사 항목(결사 회복은 받은 무장의 통솔 기준(전보: 주태 통솔 315 → 회복 297, 252 → 218 — 엔진 예측은 약 12% 높음, 지력 영향 미반영))을 확인",
+      "status": "rejected",
+      "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 결사(주태)의 행동 전 회복이 215~297(주태 지력 108·통솔 315) — 엔진의 지력만 쓰는 회복 식으로는 약 90이라 3배 낮음. 통솔 반영 필요. 다짐(조운) 추가 피해는 주태 이름으로 기록됨(\"[견희]이(가) [주태]의 결사의 다짐-다짐 효과로 553\").",
+      "resolvedAt": "2026-10-03",
+      "priority": 18
+    },
+    {
+      "id": "V-clause-armor-edge-1",
+      "kind": "clause",
+      "refs": [
+        "armor-edge"
+      ],
+      "title": "결사의 다짐 — \"자신의 병력을 회복하며(치유율 80%, 목표의 지력과 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【결사의 다짐】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "rejected",
+      "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 위와 같음 — 회복량이 통솔 영향을 크게 받음.",
+      "resolvedAt": "2026-10-03",
+      "priority": 18
+    },
+    {
+      "id": "V-engine-FIX-003-damage-chance",
+      "kind": "engine",
+      "refs": [
+        "civil-martial",
+        "strong-wind"
+      ],
+      "title": "피해 확률은 발동 1회에 한 번 판정",
+      "assumption": "'N% 확률로 (대상들)에게 피해'는 대상마다가 아니라 한 번만 판정한다.",
+      "howToVerify": "문과 무·광풍의 분노 전보에서 확률 피해가 대상 2명에게 항상 함께 들어가는지(한 명만 맞는 경우가 없는지) 확인",
+      "status": "verified",
+      "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 문과 무 60% 판정 성공 시 두 대상 모두 피해 — 한 명만 맞는 경우 없음.",
+      "resolvedAt": "2026-10-03",
+      "priority": 16
+    },
+    {
+      "id": "V-skill-u-zhou-tai",
+      "kind": "skill",
+      "refs": [
+        "u-zhou-tai"
+      ],
+      "title": "불굴의 의지 (고유)",
+      "assumption": "전보(2026-10-03)로 확인한 구조: 매 턴 시작 시 우군에게 「불굴의 의지」를 걸고 주태 행동 종료 시 해제, 그동안 현재 병력 10% 초과 피해를 80% 확률로 50% 줄여 대신 받음(우군당 턴 3회). 확률·감소율의 통솔 영향은 미반영",
+      "howToVerify": "【불굴의 의지】이(가) 발동한 전보에서 근사 항목(전보(2026-10-03)로 확인한 구조: 매 턴 시작 시 우군에게 「불굴의 의지」를 걸고 주태 행동 종료 시 해제, 그동안 현재 병력 10% 초과 피해를 80% 확률로 50% 줄여 대신 받음(우군당 턴 3회). 확률·감소율의 통솔 영향은 미반영)을 확인",
+      "status": "pending",
+      "priority": 15
+    },
+    {
+      "id": "V-skill-blazing-sky",
+      "kind": "skill",
+      "refs": [
+        "blazing-sky"
+      ],
+      "title": "맹렬한 화염",
+      "assumption": "해외 번역문 기준(수치 레벨 확인 필요)",
+      "howToVerify": "【맹렬한 화염】이(가) 발동한 전보에서 근사 항목(해외 번역문 기준(수치 레벨 확인 필요))을 확인",
+      "status": "pending",
+      "priority": 15
+    },
+    {
+      "id": "V-capture-blazing-sky",
+      "kind": "capture",
+      "refs": [
+        "blazing-sky"
+      ],
+      "title": "맹렬한 화염 전법 정보",
+      "assumption": "원문: 해외 자료 번역(deck-lab), 한국판 문구 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 15
+    },
+    {
+      "id": "V-engine-manual-influence-time",
+      "kind": "engine",
+      "refs": [
+        "m-sun-jian-1",
+        "m-xiahou-yuan-1",
+        "m-liu-bei-2",
+        "m-cao-cao-2",
+        "m-zou-shi-1"
+      ],
+      "title": "금병법 '(○○의 영향 받음)' 고정 증감의 스탯 기준 시점",
+      "assumption": "전투 시작 시 스탯으로 한 번 계산(공용 영향 공식 1+(스탯−100)×0.21%). 게임은 매 순간 현재 스탯일 수도 있음",
+      "howToVerify": "전투 중 스탯이 바뀐 뒤 툴팁의 받는 병기 피해·회심 피해 수치가 바뀌는지",
+      "priority": 15,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-guard-cut-inf",
+      "kind": "engine",
+      "refs": [
+        "u-zhou-tai"
+      ],
+      "title": "불굴의 의지 대신 받는 피해 감소율의 통솔 영향",
+      "assumption": "감소율 50% × (1 + (통솔 − 100) × 0.148%) — 통솔 325.57 에서 67%",
+      "howToVerify": "주태 통솔이 다른 판에서 대신 받기 줄과 원래 피해 비교",
+      "priority": 15,
+      "status": "verified",
+      "result": "녹화 2026-10-09 (주하황 3~8턴) 3건: 출기불의 1,360→442, 1,450→486, 백의도강 650→220 = 66~68% 감소(주태 통솔 325.57) → 50% × (1 + (통솔−100)×0.148%) (FIX-026, P-0043)",
+      "resolvedAt": "2026-10-09"
+    },
+    {
+      "id": "V-engine-troop-factor",
+      "kind": "engine",
+      "refs": [],
+      "title": "피해 병력 계수 (min(병력, 1만)/1만)^0.35",
+      "assumption": "공격자 병력 1만 이하에서 병력^0.35 비례, 1만 초과(NPC 16,000)는 1만과 같음 (FIX-025)",
+      "howToVerify": "병력 1만을 넘는 아군(만약 있으면) 또는 NPC 공격의 피해 줄 + 그 순간 병력, 병력 1,000 아래 무장의 피해 줄 더",
+      "priority": 15,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-heal-two-stat",
+      "kind": "engine",
+      "refs": [
+        "same-boat",
+        "support-selfless",
+        "u-cao-cao",
+        "spring-breeze",
+        "taxation",
+        "u-cheng-pu",
+        "u-zhou-cang"
+      ],
+      "title": "\"지력과 통솔의 영향\" 회복 = 지력 × 1.123 × 치유율 (가산항 없음)",
+      "assumption": "통솔이 실제로 어떻게 들어가는지는 모름 — 통솔 222~252 범위 표본뿐. 일심협력만 1.44배",
+      "howToVerify": "통솔이 크게 다른 시전자의 같은 회복(전력 지원·난세의 간웅) + 일심협력 전법 상세 캡처",
+      "priority": 15,
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-zhuge-liang-1",
+      "kind": "manual",
+      "refs": [
+        "zhuge-liang",
+        "u-zhuge-liang"
+      ],
+      "title": "제갈량 금병법〈출사표〉",
+      "assumption": "\"홀수/짝수 턴에\"를 턴 시작 시 1턴 지속으로 해석",
+      "howToVerify": "제갈량이(가) 〈출사표〉을 장착한 전보에서 원문 효과(\"홀수 턴에 랜덤 적군 2명이 받는 피해가 12% 증가한다. 짝수 턴에 랜덤 아군 2명이 받는 피해가 12% …\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending",
+      "priority": 14
+    },
+    {
+      "id": "V-skill-see-truth",
+      "kind": "skill",
+      "refs": [
+        "see-truth"
+      ],
+      "title": "허실 간파",
+      "assumption": "해외 번역문 기준. 빼앗은 지력·통솔은 자신에게 +20씩. 지력 영향 미반영",
+      "howToVerify": "【허실 간파】이(가) 발동한 전보에서 근사 항목(해외 번역문 기준. 빼앗은 지력·통솔은 자신에게 +20씩. 지력 영향 미반영)을 확인",
+      "status": "pending",
+      "priority": 11
+    },
+    {
+      "id": "V-capture-see-truth",
+      "kind": "capture",
+      "refs": [
+        "see-truth"
+      ],
+      "title": "허실 간파 전법 정보",
+      "assumption": "원문: 해외 자료 번역(deck-lab) — 2레벨 수치 2개를 10레벨로 환산, 한국판 문구 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 11
+    },
+    {
+      "id": "V-engine-in-damage-increase-diminish",
+      "kind": "engine",
+      "refs": [],
+      "title": "받는 피해 증가의 체감(FIX-028)",
+      "assumption": "증가 = 명목 × (1 − 기존 증가분 합) — 위협 1건으로 확인",
+      "howToVerify": "받는 피해 증가가 두 겹 이상 걸리는 줄의 표기값",
+      "priority": 10,
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-sp-zhuge-liang",
+      "kind": "skill",
+      "refs": [
+        "u-sp-zhuge-liang"
+      ],
+      "title": "성운 대열 (고유)",
+      "assumption": "진형 보너스 증가·기국 버프 구현(FEAT-029). 삼중 기국 총 치유량 영향 미반영",
+      "howToVerify": "【성운 대열】이(가) 발동한 전보에서 근사 항목(진형 보너스 증가·기국 버프 구현(FEAT-029). 삼중 기국 총 치유량 영향 미반영)을 확인",
+      "status": "pending",
+      "priority": 5
+    },
+    {
+      "id": "V-clause-u-sp-zhuge-liang-2",
+      "kind": "clause",
+      "refs": [
+        "u-sp-zhuge-liang"
+      ],
+      "title": "성운 대열 — \"진형 유형에 따라 기국 버프을(를) 획득한다…\"",
+      "assumption": "전열 칸 수 1·2·3 → 단일·이중·삼중 기국. 삼중의 총 치유량 영향 미반영",
+      "howToVerify": "【성운 대열】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 5
+    },
+    {
+      "id": "V-capture-u-sp-zhuge-liang",
+      "kind": "capture",
+      "refs": [
+        "u-sp-zhuge-liang"
+      ],
+      "title": "성운 대열 (고유) 전법 정보",
+      "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 5
+    },
+    {
+      "id": "V-engine-turnend-one-turn",
+      "kind": "engine",
+      "refs": [
+        "u-diao-chan"
+      ],
+      "title": "'턴 종료 시 1턴 동안' 지속",
+      "assumption": "턴 종료 시 1턴 동안 효과는 다음 턴의 보유자 행동이 끝날 때까지 유지된다.",
+      "howToVerify": "초선 금병법 상련·화수 전보에서 효과가 다음 턴 무력 최고 우군의 공격에 적용되는지, 언제 사라지는지 확인",
+      "status": "pending",
+      "priority": 5
+    },
+    {
+      "id": "V-skill-hide-light",
+      "kind": "skill",
+      "refs": [
+        "hide-light"
+      ],
+      "title": "도광양회",
+      "assumption": "지력 영향 미반영",
+      "howToVerify": "【도광양회】이(가) 발동한 전보에서 근사 항목(지력 영향 미반영)을 확인",
+      "status": "verified",
+      "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 매 턴 시작 시 주는 책략 피해 +8% 누적(6턴 48%, 8턴 64%) 확인. 고유 액티브 발동률은 툴팁 8.30%(악진 지력 115) — 지력 영향 계수는 별도 확인 필요.",
+      "resolvedAt": "2026-10-03",
+      "priority": 4
+    },
+    {
+      "id": "V-skill-u-gan-furen",
+      "kind": "skill",
+      "refs": [
+        "u-gan-furen"
+      ],
+      "title": "황심의 가호 (고유)",
+      "assumption": "랜덤 아군 2~3명(원문 그대로), 60% 확률은 효과 전체 1회 판정. 지력 영향 미반영",
+      "howToVerify": "【황심의 가호】이(가) 발동한 전보에서 근사 항목(랜덤 아군 2~3명(원문 그대로), 60% 확률은 효과 전체 1회 판정. 지력 영향 미반영)을 확인",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-clause-u-gan-furen-0",
+      "kind": "clause",
+      "refs": [
+        "u-gan-furen"
+      ],
+      "title": "황심의 가호 — \"매 턴 시작 시, 60% 확률로(지력의 영향 받음) 2…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【황심의 가호】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-skill-u-jiang-wei",
+      "kind": "skill",
+      "refs": [
+        "u-jiang-wei"
+      ],
+      "title": "구벌중원 (고유)",
+      "assumption": "토벌 1~3회를 1회 확정+66.7%+33.3%(기대 2회)로, 피해 계수 증가는 턴당 평균 6회 가정(+30%, 40%→52%)으로 처리. 도주병은 2턴 종료 시 1회(누적 3회 시점 근사, 무력 기준)",
+      "howToVerify": "【구벌중원】이(가) 발동한 전보에서 근사 항목(토벌 1~3회를 1회 확정+66.7%+33.3%(기대 2회)로, 피해 계수 증가는 턴당 평균 6회 가정(+30%, 40%→52%)으로 처리. 도주병은 2턴 종료 시 1회(누적 3회 시점 근사, 무력 기준))을 확인",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-clause-u-jiang-wei-0",
+      "kind": "clause",
+      "refs": [
+        "u-jiang-wei"
+      ],
+      "title": "구벌중원 — \"매 턴 종료 시 1~3회 토벌을 실시합니다…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【구벌중원】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-clause-u-jiang-wei-2",
+      "kind": "clause",
+      "refs": [
+        "u-jiang-wei"
+      ],
+      "title": "구벌중원 — \"아군 전체가 피해를 가할 때마다 해당 턴의 토벌 피해 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【구벌중원】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-clause-u-jiang-wei-4",
+      "kind": "clause",
+      "refs": [
+        "u-jiang-wei"
+      ],
+      "title": "구벌중원 — \"토벌이 누적 3회 발동하면 적군 중 병력이 가장 낮은 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【구벌중원】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-skill-golden-fortress",
+      "kind": "skill",
+      "refs": [
+        "golden-fortress"
+      ],
+      "title": "금성의 철벽",
+      "assumption": "해외 번역문 기준. 확률 80%에서 매 턴 12%p 감소, 저항은 1턴 유지로 처리",
+      "howToVerify": "【금성의 철벽】이(가) 발동한 전보에서 근사 항목(해외 번역문 기준. 확률 80%에서 매 턴 12%p 감소, 저항은 1턴 유지로 처리)을 확인",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-skill-prepare-armor",
+      "kind": "skill",
+      "refs": [
+        "prepare-armor"
+      ],
+      "title": "병력 강화",
+      "assumption": "해외 번역문 기준(수치 환산)",
+      "howToVerify": "【병력 강화】이(가) 발동한 전보에서 근사 항목(해외 번역문 기준(수치 환산))을 확인",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-capture-jiang-wei",
+      "kind": "capture",
+      "refs": [
+        "jiang-wei"
+      ],
+      "title": "강유 무장 정보",
+      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
+      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-capture-u-jiang-wei",
+      "kind": "capture",
+      "refs": [
+        "u-jiang-wei"
+      ],
+      "title": "구벌중원 (고유) 전법 정보",
+      "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-capture-golden-fortress",
+      "kind": "capture",
+      "refs": [
+        "golden-fortress"
+      ],
+      "title": "금성의 철벽 전법 정보",
+      "assumption": "원문: 해외 자료 번역(deck-lab) — 2레벨 수치 1개를 10레벨로 환산, 한국판 문구 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-capture-prepare-armor",
+      "kind": "capture",
+      "refs": [
+        "prepare-armor"
+      ],
+      "title": "병력 강화 전법 정보",
+      "assumption": "원문: 해외 자료 번역(deck-lab) — 2레벨 수치 2개를 10레벨로 환산, 한국판 문구 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-engine-pct-increase-additive",
+      "kind": "engine",
+      "refs": [
+        "u-xiahou-dun",
+        "u-zhou-cang"
+      ],
+      "title": "'효과 N% 증가'의 해석",
+      "assumption": "고유 전법 수치를 'N% 증가'시키는 금병법은 %p 덧셈으로 처리(예: 강렬 피해 감소 30% → 40%).",
+      "howToVerify": "하후돈(위협)·주창(충렬) 전보 툴팁에서 실제 수치가 30→40(덧셈)인지 30→33(곱셈)인지 확인",
+      "status": "pending",
+      "priority": 4
+    },
+    {
+      "id": "V-clause-u-xiahou-yuan-1",
+      "kind": "clause",
+      "refs": [
+        "u-xiahou-yuan"
+      ],
+      "title": "신속기습 — \"자신보다 선공이 낮은 적군 1명 당 1스택의 신속을 획…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【신속기습】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 3
+    },
+    {
+      "id": "V-clause-u-xu-sheng-0",
+      "kind": "clause",
+      "refs": [
+        "u-xu-sheng"
+      ],
+      "title": "백리의성 — \"전투 시작 후 4턴 동안 전체 아군이 피해를 받기 직전…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【백리의성】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 3
+    },
+    {
+      "id": "V-skill-u-sima-yi",
+      "kind": "skill",
+      "refs": [
+        "u-sima-yi"
+      ],
+      "title": "매의 응시 (고유)",
+      "assumption": "포진 상태 자체의 효과는 미지원. 포석 수(발동마다 1 + 50%로 1, 최대 8)에 따른 피해 계수 증가만 반영",
+      "howToVerify": "【매의 응시】이(가) 발동한 전보에서 근사 항목(포진 상태 자체의 효과는 미지원. 포석 수(발동마다 1 + 50%로 1, 최대 8)에 따른 피해 계수 증가만 반영)을 확인",
+      "status": "pending",
+      "priority": 3
+    },
+    {
+      "id": "V-skill-u-romance-yuan-shao",
+      "kind": "skill",
+      "refs": [
+        "u-romance-yuan-shao"
+      ],
+      "title": "사세삼공 (고유)",
+      "assumption": "해외 번역문 기준: 무력·지력·선공 최고 아군이 각각 해당 능력치 최저 적에게 100% 병기+100% 책략. 회심·묘책 시 도망병 미지원",
+      "howToVerify": "【사세삼공】이(가) 발동한 전보에서 근사 항목(해외 번역문 기준: 무력·지력·선공 최고 아군이 각각 해당 능력치 최저 적에게 100% 병기+100% 책략. 회심·묘책 시 도망병 미지원)을 확인",
+      "status": "pending",
+      "priority": 3
+    },
+    {
+      "id": "V-skill-same-boat",
+      "kind": "skill",
+      "refs": [
+        "same-boat"
+      ],
+      "title": "일심협력",
+      "assumption": "한국판 문구·수치는 게임 캡처로 확인(10레벨 치유율 90%, 2026-10-04). 통솔 영향은 회복 공식(지력 기준)상 미반영",
+      "howToVerify": "【일심협력】이(가) 발동한 전보에서 근사 항목(한국판 문구·수치는 게임 캡처로 확인(10레벨 치유율 90%, 2026-10-04). 통솔 영향은 회복 공식(지력 기준)상 미반영)을 확인",
+      "status": "pending",
+      "priority": 3
+    },
+    {
+      "id": "V-capture-romance-yuan-shao",
+      "kind": "capture",
+      "refs": [
+        "romance-yuan-shao"
+      ],
+      "title": "연의 원소 무장 정보",
+      "assumption": "능력치: 임시값(기존 무장 평균) · 배치(전열/후열): 미확인",
+      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
+      "status": "pending",
+      "priority": 3
+    },
+    {
+      "id": "V-capture-u-romance-yuan-shao",
+      "kind": "capture",
+      "refs": [
+        "u-romance-yuan-shao"
+      ],
+      "title": "사세삼공 (고유) 전법 정보",
+      "assumption": "원문: 해외 자료 번역(deck-lab) — 한국판 문구 확인 필요 · 이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 3
+    },
+    {
+      "id": "V-capture-same-boat",
+      "kind": "capture",
+      "refs": [
+        "same-boat"
+      ],
+      "title": "일심협력 전법 정보",
+      "assumption": "원문: 해외 자료 번역(deck-lab), 한국판 문구 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 3
+    },
+    {
+      "id": "V-skill-u-zuo-ci",
+      "kind": "skill",
+      "refs": [
+        "u-zuo-ci"
+      ],
+      "title": "운행우시 (고유)",
+      "assumption": "운신 재판정(실패한 액티브 50% 재판정)을 아군 2명의 액티브 발동률 +22%(기대값)로 환산. 지력·운신 중첩 수 영향 미반영",
+      "howToVerify": "【운행우시】이(가) 발동한 전보에서 근사 항목(운신 재판정(실패한 액티브 50% 재판정)을 아군 2명의 액티브 발동률 +22%(기대값)로 환산. 지력·운신 중첩 수 영향 미반영)을 확인",
+      "status": "pending",
+      "priority": 2
+    },
+    {
+      "id": "V-clause-u-zuo-ci-1",
+      "kind": "clause",
+      "refs": [
+        "u-zuo-ci"
+      ],
+      "title": "운행우시 — \"피해를 받을 때 해당 피해가 20% 감소합니다(추가로 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【운행우시】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 2
+    },
+    {
+      "id": "V-clause-u-zuo-ci-3",
+      "kind": "clause",
+      "refs": [
+        "u-zuo-ci"
+      ],
+      "title": "운행우시 — \"50% 확률(지력의 영향을 받음)로 운신 1중첩을 소모…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【운행우시】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 2
+    },
+    {
+      "id": "V-skill-u-ma-teng",
+      "kind": "skill",
+      "refs": [
+        "u-ma-teng"
+      ],
+      "title": "웅거서량 (고유)",
+      "assumption": "추가 일반 공격을 행동 종료 시 처리. 통솔 영향 미반영",
+      "howToVerify": "【웅거서량】이(가) 발동한 전보에서 근사 항목(추가 일반 공격을 행동 종료 시 처리. 통솔 영향 미반영)을 확인",
+      "status": "pending",
+      "priority": 2
+    },
+    {
+      "id": "V-clause-u-ma-teng-1",
+      "kind": "clause",
+      "refs": [
+        "u-ma-teng"
+      ],
+      "title": "웅거서량 — \"아군 2명의 추격 전법 피해가 20% 증가합니다(통솔의…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【웅거서량】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 2
+    },
+    {
+      "id": "V-clause-u-ma-teng-2",
+      "kind": "clause",
+      "refs": [
+        "u-ma-teng"
+      ],
+      "title": "웅거서량 — \"또한 해당 무장들이 매 턴 행동 종료 시 50% 확률(…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【웅거서량】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 2
+    },
+    {
+      "id": "V-capture-zuo-ci",
+      "kind": "capture",
+      "refs": [
+        "zuo-ci"
+      ],
+      "title": "좌자 무장 정보",
+      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
+      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
+      "status": "pending",
+      "priority": 2
+    },
+    {
+      "id": "V-capture-ma-teng",
+      "kind": "capture",
+      "refs": [
+        "ma-teng"
+      ],
+      "title": "마등 무장 정보",
+      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
+      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
+      "status": "pending",
+      "priority": 2
+    },
+    {
+      "id": "V-capture-u-zuo-ci",
+      "kind": "capture",
+      "refs": [
+        "u-zuo-ci"
+      ],
+      "title": "운행우시 (고유) 전법 정보",
+      "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 2
+    },
+    {
+      "id": "V-capture-u-ma-teng",
+      "kind": "capture",
+      "refs": [
+        "u-ma-teng"
+      ],
+      "title": "웅거서량 (고유) 전법 정보",
+      "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 2
+    },
+    {
+      "id": "V-capture-charge-change",
+      "kind": "capture",
+      "refs": [
+        "charge-change"
+      ],
+      "title": "기민한 전술 전법 정보",
+      "assumption": "원문: 해외 자료 번역(deck-lab), 한국판 문구 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 2
+    },
+    {
+      "id": "V-manual-m-zhang-liang-1",
+      "kind": "manual",
+      "refs": [
+        "zhang-liang",
+        "u-zhang-liang"
+      ],
+      "title": "장량 금병법〈태평도법〉",
+      "assumption": "괴술 회유·피신 +8%. 1번째 턴 괴술 발동 후 랜덤 적군 1명 1턴 '능력 소진'(= 침묵으로 잠정, 설계서 질문)",
+      "howToVerify": "장량이(가) 〈태평도법〉을 장착한 전보에서 원문 효과(\"고유 전법 괴술, 회유 및 피신 확률 8% 증가, 1번째 턴에 괴술 발동 후 랜덤 적군 1명이 1턴 동안 능…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-skill-u-chen-gong",
+      "kind": "skill",
+      "refs": [
+        "u-chen-gong"
+      ],
+      "title": "지략전 (고유)",
+      "assumption": "추격 연계 피해의 공격자를 진궁으로 처리, 목표 무력 영향 미반영",
+      "howToVerify": "【지략전】이(가) 발동한 전보에서 근사 항목(추격 연계 피해의 공격자를 진궁으로 처리, 목표 무력 영향 미반영)을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-skill-u-guan-yinping",
+      "kind": "skill",
+      "refs": [
+        "u-guan-yinping"
+      ],
+      "title": "호소생위 (고유)",
+      "assumption": "무력 영향 미반영. \"매 턴 처음으로 발동한 후\"를 매 턴 첫 성공 판정까지로 처리",
+      "howToVerify": "【호소생위】이(가) 발동한 전보에서 근사 항목(무력 영향 미반영. \"매 턴 처음으로 발동한 후\"를 매 턴 첫 성공 판정까지로 처리)을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-u-guan-yinping-0",
+      "kind": "clause",
+      "refs": [
+        "u-guan-yinping"
+      ],
+      "title": "호소생위 — \"전투 중, 매 턴 처음으로 액티브 전법을 발동한 후 4…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【호소생위】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-skill-u-yuan-shu",
+      "kind": "skill",
+      "refs": [
+        "u-yuan-shu"
+      ],
+      "title": "참호천자 (고유)",
+      "assumption": "통솔 영향 미반영. 옥새 피해는 행동 종료 시 처리. 옥새 보유자는 4턴 시작 시 통솔 기준으로 1회 결정",
+      "howToVerify": "【참호천자】이(가) 발동한 전보에서 근사 항목(통솔 영향 미반영. 옥새 피해는 행동 종료 시 처리. 옥새 보유자는 4턴 시작 시 통솔 기준으로 1회 결정)을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-u-yuan-shu-1",
+      "kind": "clause",
+      "refs": [
+        "u-yuan-shu"
+      ],
+      "title": "참호천자 — \"아군 전체의 통솔이 80 증가합니다(통솔의 영향을 받음…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【참호천자】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-u-yuan-shu-4",
+      "kind": "clause",
+      "refs": [
+        "u-yuan-shu"
+      ],
+      "title": "참호천자 — \"옥새 효과: 가하는 피해가 15% 증가합니다(통솔의 영…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【참호천자】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-u-yuan-shu-5",
+      "kind": "clause",
+      "refs": [
+        "u-yuan-shu"
+      ],
+      "title": "참호천자 — \"자신의 행동 종료 시, 적군 전체에게 160%의 병기 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【참호천자】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-skill-u-wang-yi",
+      "kind": "skill",
+      "refs": [
+        "u-wang-yi"
+      ],
+      "title": "유인전 (고유)",
+      "assumption": "지력 영향 미반영",
+      "howToVerify": "【유인전】이(가) 발동한 전보에서 근사 항목(지력 영향 미반영)을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-u-wang-yi-1",
+      "kind": "clause",
+      "refs": [
+        "u-wang-yi"
+      ],
+      "title": "유인전 — \"40% 확률로(지력의 영향 받음) 랜덤 적군 2명에게 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【유인전】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-u-wang-yi-2",
+      "kind": "clause",
+      "refs": [
+        "u-wang-yi"
+      ],
+      "title": "유인전 — \"목표가 받는 피해를 4% 증가시킨다(지력의 영향 받음)…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【유인전】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-skill-u-zhang-ning",
+      "kind": "skill",
+      "refs": [
+        "u-zhang-ning"
+      ],
+      "title": "태평의 여운 (고유)",
+      "assumption": "\"발동마다 그 턴 확률 10% 감소\"를 턴당 평균 70%로 처리. 요술 대상 피해량 40% 회복 미지원",
+      "howToVerify": "【태평의 여운】이(가) 발동한 전보에서 근사 항목(\"발동마다 그 턴 확률 10% 감소\"를 턴당 평균 70%로 처리. 요술 대상 피해량 40% 회복 미지원)을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-u-zhang-ning-1",
+      "kind": "clause",
+      "refs": [
+        "u-zhang-ning"
+      ],
+      "title": "태평의 여운 — \"발동 시마다 현재 턴의 발동률이 10% 감소한다…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【태평의 여운】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-skill-u-zhu-jun",
+      "kind": "skill",
+      "refs": [
+        "u-zhu-jun"
+      ],
+      "title": "포위의 허점 (고유)",
+      "assumption": "지력·통솔 차이 영향 미반영. 탈취한 통솔은 자신과 통솔 최고 아군에게 각 26(같은 무장이면 1회)",
+      "howToVerify": "【포위의 허점】이(가) 발동한 전보에서 근사 항목(지력·통솔 차이 영향 미반영. 탈취한 통솔은 자신과 통솔 최고 아군에게 각 26(같은 무장이면 1회))을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-u-zhu-jun-0",
+      "kind": "clause",
+      "refs": [
+        "u-zhu-jun"
+      ],
+      "title": "포위의 허점 — \"2턴 동안 랜덤 적군 2명의 통솔(지력의 영향 받음)을…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【포위의 허점】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-u-zhu-jun-2",
+      "kind": "clause",
+      "refs": [
+        "u-zhu-jun"
+      ],
+      "title": "포위의 허점 — \"이후 180%의 책략 피해를 준다(통솔 차이의 영향을 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【포위의 허점】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-skill-u-huangfu-song",
+      "kind": "skill",
+      "refs": [
+        "u-huangfu-song"
+      ],
+      "title": "신속 출병 (고유)",
+      "assumption": "군령 추가 획득·10중첩 260% 구현(FEAT-030). 260%의 \"통솔 차이 영향\"은 미반영",
+      "howToVerify": "【신속 출병】이(가) 발동한 전보에서 근사 항목(군령 추가 획득·10중첩 260% 구현(FEAT-030). 260%의 \"통솔 차이 영향\"은 미반영)을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-u-huangfu-song-0",
+      "kind": "clause",
+      "refs": [
+        "u-huangfu-song"
+      ],
+      "title": "신속 출병 — \"자신이 받는 피해가 12% 감소한다(통솔의 영향 받음)…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【신속 출병】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-skill-u-romance-gongsun-zan",
+      "kind": "skill",
+      "refs": [
+        "u-romance-gongsun-zan"
+      ],
+      "title": "북강질봉 (고유)",
+      "assumption": "해외 번역문 기준. 탈취한 무력·지력은 자신에게 +32(대상 2명분). 선공 차이 영향 미반영",
+      "howToVerify": "【북강질봉】이(가) 발동한 전보에서 근사 항목(해외 번역문 기준. 탈취한 무력·지력은 자신에게 +32(대상 2명분). 선공 차이 영향 미반영)을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-u-romance-gongsun-zan-1",
+      "kind": "clause",
+      "refs": [
+        "u-romance-gongsun-zan"
+      ],
+      "title": "북강질봉 — \"이어 두 대상에게 각각 140% 병기 피해와 책략 피해…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【북강질봉】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-skill-wash-marrow",
+      "kind": "skill",
+      "refs": [
+        "wash-marrow"
+      ],
+      "title": "신체 개조",
+      "assumption": "회복의 \"가장 높은 속성 영향\"을 지력으로 계산",
+      "howToVerify": "【신체 개조】이(가) 발동한 전보에서 근사 항목(회복의 \"가장 높은 속성 영향\"을 지력으로 계산)을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-clause-wash-marrow-4",
+      "kind": "clause",
+      "refs": [
+        "wash-marrow"
+      ],
+      "title": "신체 개조 — \"효과: 자신의 병력 회복(치유율 200%, 최고 속성의…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【신체 개조】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-skill-punish-past",
+      "kind": "skill",
+      "refs": [
+        "punish-past"
+      ],
+      "title": "훗날의 교훈",
+      "assumption": "\"누적 치료량 영향\" 미반영. 전열 회복은 전열 아군 1명(전열 우선)",
+      "howToVerify": "【훗날의 교훈】이(가) 발동한 전보에서 근사 항목(\"누적 치료량 영향\" 미반영. 전열 회복은 전열 아군 1명(전열 우선))을 확인",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-capture-guan-yinping",
+      "kind": "capture",
+      "refs": [
+        "guan-yinping"
+      ],
+      "title": "관은병 무장 정보",
+      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
+      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-capture-yuan-shu",
+      "kind": "capture",
+      "refs": [
+        "yuan-shu"
+      ],
+      "title": "원술 무장 정보",
+      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인",
+      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-capture-romance-gongsun-zan",
+      "kind": "capture",
+      "refs": [
+        "romance-gongsun-zan"
+      ],
+      "title": "연의 공손찬 무장 정보",
+      "assumption": "능력치: 임시값(기존 무장 평균) · 배치(전열/후열): 미확인",
+      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-capture-u-guan-yinping",
+      "kind": "capture",
+      "refs": [
+        "u-guan-yinping"
+      ],
+      "title": "호소생위 (고유) 전법 정보",
+      "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-capture-u-yuan-shu",
+      "kind": "capture",
+      "refs": [
+        "u-yuan-shu"
+      ],
+      "title": "참호천자 (고유) 전법 정보",
+      "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-capture-u-wang-yi",
+      "kind": "capture",
+      "refs": [
+        "u-wang-yi"
+      ],
+      "title": "유인전 (고유) 전법 정보",
+      "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-capture-u-zhang-ning",
+      "kind": "capture",
+      "refs": [
+        "u-zhang-ning"
+      ],
+      "title": "태평의 여운 (고유) 전법 정보",
+      "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-capture-u-zhu-jun",
+      "kind": "capture",
+      "refs": [
+        "u-zhu-jun"
+      ],
+      "title": "포위의 허점 (고유) 전법 정보",
+      "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-capture-u-huangfu-song",
+      "kind": "capture",
+      "refs": [
+        "u-huangfu-song"
+      ],
+      "title": "신속 출병 (고유) 전법 정보",
+      "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-capture-u-romance-gongsun-zan",
+      "kind": "capture",
+      "refs": [
+        "u-romance-gongsun-zan"
+      ],
+      "title": "북강질봉 (고유) 전법 정보",
+      "assumption": "원문: 해외 자료 번역(deck-lab) — 한국판 문구 확인 필요 · 이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending",
+      "priority": 1
+    },
+    {
+      "id": "V-manual-m-cheng-pu-1",
+      "kind": "manual",
+      "refs": [
+        "cheng-pu",
+        "u-cheng-pu"
+      ],
+      "title": "정보 금병법〈호신〉",
+      "assumption": "통솔 영향 미반영",
+      "howToVerify": "정보이(가) 〈호신〉을 장착한 전보에서 원문 효과(\"자신의 병력이 최초로 50% 미만이 되면 자신의 병력을 회복하며(치유율 200%, 지력과 통솔의 영향 받음)…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-manual-m-hua-xiong-1",
+      "kind": "manual",
+      "refs": [
+        "hua-xiong",
+        "u-hua-xiong"
+      ],
+      "title": "화웅 금병법〈신무〉",
+      "assumption": "추격 전법 발동 후 16% 확률로 2턴 동안 침묵 면역(능력 소진 = 침묵으로 잠정 — 장군의 무용 자신 침묵이 풀린다)",
+      "howToVerify": "화웅이(가) 〈신무〉을 장착한 전보에서 원문 효과(\"자신의 추격 전법 발동 성공 후, 16% 확률로 2턴 동안 능력 소진 효과로부터 면역된다.…\")가 실제로 어떻게 찍히는지 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-war-sustains-war-1",
+      "kind": "clause",
+      "refs": [
+        "war-sustains-war"
+      ],
+      "title": "전쟁 조달 — \"일반 공격 후, 자신의 병력을 회복한다(치유율 110%…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【전쟁 조달】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-zhang-liao",
+      "kind": "skill",
+      "refs": [
+        "u-zhang-liao"
+      ],
+      "title": "바람 방랑자 (고유)",
+      "assumption": "손실 병력 영향, 전열 시 피해 전달 미지원",
+      "howToVerify": "【바람 방랑자】이(가) 발동한 전보에서 근사 항목(손실 병력 영향, 전열 시 피해 전달 미지원)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-zhang-liao-1",
+      "kind": "clause",
+      "refs": [
+        "u-zhang-liao"
+      ],
+      "title": "바람 방랑자 — \"매 턴 시작 시, 60% 확률(이미 손실된 병력의 영향…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【바람 방랑자】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-pang-tong",
+      "kind": "skill",
+      "refs": [
+        "u-pang-tong"
+      ],
+      "title": "연환계 (고유)",
+      "assumption": "「연환」(피해 분산) 미지원. 간파 +20%만 반영",
+      "howToVerify": "【연환계】이(가) 발동한 전보에서 근사 항목(「연환」(피해 분산) 미지원. 간파 +20%만 반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-pang-tong-2",
+      "kind": "clause",
+      "refs": [
+        "u-pang-tong"
+      ],
+      "title": "연환계 — \"연환: 피해를 받으면 우군 2명이 25%(지력의 영향 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【연환계】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-tian-feng",
+      "kind": "skill",
+      "refs": [
+        "u-tian-feng"
+      ],
+      "title": "지략 방어 (고유)",
+      "assumption": "최고 속성 영향 미반영",
+      "howToVerify": "【지략 방어】이(가) 발동한 전보에서 근사 항목(최고 속성 영향 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-gongsun-zan",
+      "kind": "skill",
+      "refs": [
+        "u-gongsun-zan"
+      ],
+      "title": "국경의 장수 (고유)",
+      "assumption": "선공 영향·선공 차이 영향 미반영",
+      "howToVerify": "【국경의 장수】이(가) 발동한 전보에서 근사 항목(선공 영향·선공 차이 영향 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-cao-chun",
+      "kind": "skill",
+      "refs": [
+        "u-cao-chun"
+      ],
+      "title": "조순 고유 전법 (고유)",
+      "assumption": "\"가장 높은 속성 영향\" 미반영. 3턴부터의 추가 피해를 \"행동할 때\" 대신 행동 시작(패시브 순서)에서 처리. 병종이 기병·창병인 아군에게만 동작",
+      "howToVerify": "【조순 고유 전법】이(가) 발동한 전보에서 근사 항목(\"가장 높은 속성 영향\" 미반영. 3턴부터의 추가 피해를 \"행동할 때\" 대신 행동 시작(패시브 순서)에서 처리. 병종이 기병·창병인 아군에게만 동작)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-cao-chun-0",
+      "kind": "clause",
+      "refs": [
+        "u-cao-chun"
+      ],
+      "title": "조순 고유 전법 — \"전투 시작 후, 아군 기병 및 창병이 일반 공격을 한 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【조순 고유 전법】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-yu-ji",
+      "kind": "skill",
+      "refs": [
+        "u-yu-ji"
+      ],
+      "title": "혼란의 폭우 (고유)",
+      "assumption": "\"효과 1~2개 획득\"을 효과마다 50% 판정으로, \"같은 열 우선\"은 무작위 아군 1명으로 처리. 지력 영향 미반영",
+      "howToVerify": "【혼란의 폭우】이(가) 발동한 전보에서 근사 항목(\"효과 1~2개 획득\"을 효과마다 50% 판정으로, \"같은 열 우선\"은 무작위 아군 1명으로 처리. 지력 영향 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-xun-you",
+      "kind": "skill",
+      "refs": [
+        "u-xun-you"
+      ],
+      "title": "십이기책 (고유)",
+      "assumption": "무작위 이상 상태는 대상 2명에게 같은 1종, 지속 2턴(원문에 지속시간 없음). \"미보유 상태 우선\" 미반영",
+      "howToVerify": "【십이기책】이(가) 발동한 전보에서 근사 항목(무작위 이상 상태는 대상 2명에게 같은 1종, 지속 2턴(원문에 지속시간 없음). \"미보유 상태 우선\" 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-bu-lianshi",
+      "kind": "skill",
+      "refs": [
+        "u-bu-lianshi"
+      ],
+      "title": "보연사 고유 전법 (고유)",
+      "assumption": "안정의 회복은 받은 무장의 지력으로 계산(보연사 지력 아님)",
+      "howToVerify": "【보연사 고유 전법】이(가) 발동한 전보에서 근사 항목(안정의 회복은 받은 무장의 지력으로 계산(보연사 지력 아님))을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-bu-lianshi-2",
+      "kind": "clause",
+      "refs": [
+        "u-bu-lianshi"
+      ],
+      "title": "보연사 고유 전법 — \"매 턴 행동 전에 병력을 회복합니다…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【보연사 고유 전법】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-zhang-chunhua",
+      "kind": "skill",
+      "refs": [
+        "u-zhang-chunhua"
+      ],
+      "title": "고통의 심계 (고유)",
+      "assumption": "지력 최고 아군은 전투 시작 때 1회 결정. 심계는 주는 책략 피해 +3%/중첩으로만 반영(추가 피해 계수 영향 미반영). 추가 일반 공격은 행동 시작에 처리하고 심계 6중첩 미만 추격 금지 미반영",
+      "howToVerify": "【고통의 심계】이(가) 발동한 전보에서 근사 항목(지력 최고 아군은 전투 시작 때 1회 결정. 심계는 주는 책략 피해 +3%/중첩으로만 반영(추가 피해 계수 영향 미반영). 추가 일반 공격은 행동 시작에 처리하고 심계 6중첩 미만 추격 금지 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-zhang-chunhua-1",
+      "kind": "clause",
+      "refs": [
+        "u-zhang-chunhua"
+      ],
+      "title": "고통의 심계 — \"목표에게 70%의 책략 피해를 주며(추가로 심계 스택수…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【고통의 심계】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-zhang-chunhua-6",
+      "kind": "clause",
+      "refs": [
+        "u-zhang-chunhua"
+      ],
+      "title": "고통의 심계 — \"추가로 일반 공격을 1회 시전한다(심계 스택수가 6회 …\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【고통의 심계】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-cao-chun",
+      "kind": "capture",
+      "refs": [
+        "cao-chun"
+      ],
+      "title": "조순 무장 정보",
+      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인 · 진영: 추정(역사 소속)",
+      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-bu-lianshi",
+      "kind": "capture",
+      "refs": [
+        "bu-lianshi"
+      ],
+      "title": "보연사 무장 정보",
+      "assumption": "능력치: 임시값(기존 무장 평균) · 병종: 미확인 · 배치(전열/후열): 미확인 · 진영: 추정(역사 소속)",
+      "howToVerify": "게임 무장 정보 화면(능력치·병종·배치) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-u-cao-chun",
+      "kind": "capture",
+      "refs": [
+        "u-cao-chun"
+      ],
+      "title": "조순 고유 전법 (고유) 전법 정보",
+      "assumption": "전법 종류: 원문으로 추정 · 이름: 이름 미확인",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-u-yu-ji",
+      "kind": "capture",
+      "refs": [
+        "u-yu-ji"
+      ],
+      "title": "혼란의 폭우 (고유) 전법 정보",
+      "assumption": "이름: 한자 독음(deck-lab) — 한국판 이름 확인 필요",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-rate-u-xun-you",
+      "kind": "rate",
+      "refs": [
+        "u-xun-you"
+      ],
+      "title": "십이기책 (고유) 발동률",
+      "assumption": "임시값(같은 종류 고유 전법 중앙값 60%)",
+      "howToVerify": "【십이기책】 전법 정보 캡처(발동률 표기) 또는 이 전법을 쓴 전보 여러 판의 발동 횟수",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-u-xun-you",
+      "kind": "capture",
+      "refs": [
+        "u-xun-you"
+      ],
+      "title": "십이기책 (고유) 전법 정보",
+      "assumption": "전법 종류: 원문으로 추정 · 이름: 이름 미확인",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-rate-u-bu-lianshi",
+      "kind": "rate",
+      "refs": [
+        "u-bu-lianshi"
+      ],
+      "title": "보연사 고유 전법 (고유) 발동률",
+      "assumption": "임시값(같은 종류 고유 전법 중앙값 60%)",
+      "howToVerify": "【보연사 고유 전법】 전법 정보 캡처(발동률 표기) 또는 이 전법을 쓴 전보 여러 판의 발동 횟수",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-u-bu-lianshi",
+      "kind": "capture",
+      "refs": [
+        "u-bu-lianshi"
+      ],
+      "title": "보연사 고유 전법 (고유) 전법 정보",
+      "assumption": "전법 종류: 원문으로 추정 · 이름: 이름 미확인",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-rate-u-zhang-zhao",
+      "kind": "rate",
+      "refs": [
+        "u-zhang-zhao"
+      ],
+      "title": "소신발언 (고유) 발동률",
+      "assumption": "임시값(같은 종류 고유 전법 중앙값 60%)",
+      "howToVerify": "【소신발언】 전법 정보 캡처(발동률 표기) 또는 이 전법을 쓴 전보 여러 판의 발동 횟수",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-u-zhang-zhao",
+      "kind": "capture",
+      "refs": [
+        "u-zhang-zhao"
+      ],
+      "title": "소신발언 (고유) 전법 정보",
+      "assumption": "전법 종류: 원문으로 추정 · 이름: 이름 미확인",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-u-zhang-chunhua",
+      "kind": "capture",
+      "refs": [
+        "u-zhang-chunhua"
+      ],
+      "title": "고통의 심계 (고유) 전법 정보",
+      "assumption": "전법 종류: 원문으로 추정 · 이름: 이름 미확인",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-rate-loyal-civil-military",
+      "kind": "rate",
+      "refs": [
+        "loyal-civil-military"
+      ],
+      "title": "문무의 충신 발동률",
+      "assumption": "임시값(같은 종류 전법 중앙값 40%)",
+      "howToVerify": "【문무의 충신】 전법 정보 캡처(발동률 표기) 또는 이 전법을 쓴 전보 여러 판의 발동 횟수",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-loyal-civil-military",
+      "kind": "capture",
+      "refs": [
+        "loyal-civil-military"
+      ],
+      "title": "문무의 충신 전법 정보",
+      "assumption": "전법 종류: 원문으로 추정",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-rate-talent-under-heaven",
+      "kind": "rate",
+      "refs": [
+        "talent-under-heaven"
+      ],
+      "title": "천하의인재 발동률",
+      "assumption": "임시값(같은 종류 전법 중앙값 50%)",
+      "howToVerify": "【천하의인재】 전법 정보 캡처(발동률 표기) 또는 이 전법을 쓴 전보 여러 판의 발동 횟수",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-talent-under-heaven",
+      "kind": "capture",
+      "refs": [
+        "talent-under-heaven"
+      ],
+      "title": "천하의인재 전법 정보",
+      "assumption": "전법 종류: 원문으로 추정",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-rate-break-thousand-army",
+      "kind": "rate",
+      "refs": [
+        "break-thousand-army"
+      ],
+      "title": "천군격파 발동률",
+      "assumption": "임시값(같은 종류 전법 중앙값 40%)",
+      "howToVerify": "【천군격파】 전법 정보 캡처(발동률 표기) 또는 이 전법을 쓴 전보 여러 판의 발동 횟수",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-break-thousand-army",
+      "kind": "capture",
+      "refs": [
+        "break-thousand-army"
+      ],
+      "title": "천군격파 전법 정보",
+      "assumption": "전법 종류: 원문으로 추정",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-rate-scorn-myriad",
+      "kind": "rate",
+      "refs": [
+        "scorn-myriad"
+      ],
+      "title": "만군 멸시 발동률",
+      "assumption": "임시값(같은 종류 전법 중앙값 40%)",
+      "howToVerify": "【만군 멸시】 전법 정보 캡처(발동률 표기) 또는 이 전법을 쓴 전보 여러 판의 발동 횟수",
+      "status": "pending"
+    },
+    {
+      "id": "V-capture-scorn-myriad",
+      "kind": "capture",
+      "refs": [
+        "scorn-myriad"
+      ],
+      "title": "만군 멸시 전법 정보",
+      "assumption": "전법 종류: 원문으로 추정",
+      "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-FIX-002-shared-targets",
+      "kind": "engine",
+      "refs": [
+        "loot-fire",
+        "civil-martial",
+        "night-raid"
+      ],
+      "title": "한 전법 안 여러 피해의 대상 공유",
+      "assumption": "대상이 따로 적히지 않은 피해 항목('책략과 병기 피해', '추가로 …')은 같은 발동 안에서 같은 대상을 맞힌다.",
+      "howToVerify": "방화범·문과 무·야습 전보에서 두 종류 피해(또는 추가 피해)가 같은 무장에게 찍히는지 확인",
+      "status": "verified",
+      "result": "전보 녹화 2026-10-03 (주태·조운·악진 기형진 vs LV12 토지 수비군 대교·손책·견희, 8턴 무승부): 문과 무 한 번에 대교·손책 두 명이 병기·책략 피해를 각각 받음(472/378, 486/460).",
+      "resolvedAt": "2026-10-03"
+    }
+  ]
+}

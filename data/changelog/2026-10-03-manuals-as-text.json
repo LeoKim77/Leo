@@ -1,0 +1,20 @@
+{
+  "id": "2026-10-03-manuals-as-text",
+  "date": "2026-10-03",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "금병법은 원문 그대로 반영 — 금병법 확인용 녹화 제외 · 금병법 4개 원문대로 구현",
+  "body": "사용자 지정: 금병법은 미리보기 원문 그대로 시뮬에 적용한다. 금병법 확인만을 위한 녹화는 녹화 계획에서 뺌(9판 → 4판).\n원문이 있는데 엔진이 못 하던 부분 구현:\n- 이유〈비호〉 방어 2스택 (FIX-004: 방어는 1회 소모 스택이라 따로 쌓임, 최대 2)\n- 서서〈장검행〉 책략 피해 후 다음 병기 피해 +40%\n- 서성〈의성〉 홍수 상태 적이 주는 피해 −8%(서성 생존 중)\n- 황월영〈기관술〉 조롱 시전자 = 통솔 최고 우군\n엔진 FEAT-015. 남은 금병법 미구현: 방통〈책략〉(연환), 육손〈분영〉 연소, 소교〈관문〉, 화타〈청낭경〉, 황개〈견결〉, 황충〈궁술〉, 화웅〈신무〉, 장량〈태평도법〉 일부 — 엔진 작업으로 처리할 일(녹화 불필요).",
+  "refs": [],
+  "author": "Claude",
+  "commit": "cad0be889c98",
+  "files": [
+    "data/audit/latest.json",
+    "data/engine/manuals.json",
+    "data/verification/engine-assumptions.json",
+    "data/verification/queue.json",
+    "packages/engine/src/index.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/recommender/src/verify-plan.ts"
+  ]
+}

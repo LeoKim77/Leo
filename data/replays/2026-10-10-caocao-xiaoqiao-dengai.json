@@ -1,0 +1,796 @@
+{
+  "id": "2026-10-10-caocao-xiaoqiao-dengai",
+  "date": "2026-10-10",
+  "season": "S2",
+  "source": "사용자 전보 녹화 '조소등_통계~2턴'·'조소등_3턴~8턴'(구글 드라이브 폴더). 녹화 계획 3판(회복·회유 판). 아군 조조(전열)·소교·등애 기형진(진영 위 +5%) vs LV12 토지 수비군 등애·이유·우금 일자진(병력 16,000). 회복 표본은 전보 회복량을 군량 고갈 0.3·받는 치유 효과(둔전령 10%×스택)로 나눈 기본 회복량.",
+  "links": [
+    "https://drive.google.com/drive/folders/1tZupostL5l0WmiH6F4RBu4yBIjv_aIaO"
+  ],
+  "battle": {
+    "ally": {
+      "formation": "기형진",
+      "units": [
+        {
+          "generalId": "cao-cao",
+          "skills": [
+            "same-boat",
+            "famous"
+          ],
+          "manual": "맹덕신서 하권"
+        },
+        {
+          "generalId": "xiao-qiao",
+          "skills": [
+            "sacrifice",
+            "ten-thousand"
+          ],
+          "manual": "관문"
+        },
+        {
+          "generalId": "deng-ai",
+          "skills": [
+            "support-selfless",
+            "assault"
+          ]
+        }
+      ]
+    },
+    "enemy": {
+      "formation": "일자진",
+      "units": [
+        "deng-ai",
+        "li-ru",
+        "yu-jin"
+      ]
+    }
+  },
+  "outOfScopeSeen": [
+    "진영 위 +5%",
+    "건물 기술(능력치 +20, 받는 피해 −5%)",
+    "병법 저력·병령·호세·문무·여심·합모",
+    "기술-방어 태세·강궁·신의 창",
+    "기좌 직업 숙련"
+  ],
+  "tooltips": [
+    {
+      "turn": 1,
+      "unit": "cao-cao",
+      "stats": {
+        "무력": 161.75,
+        "지력": 288.8,
+        "통솔": 252.05,
+        "선공": 161.22
+      },
+      "troops": 9724,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": -0.3,
+        "받는피해": -0.327,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 4,
+      "unit": "cao-cao",
+      "stats": {
+        "무력": 161.75,
+        "지력": 288.8,
+        "통솔": 252.05,
+        "선공": 161.22
+      },
+      "troops": 8793,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.05,
+        "받는피해": -0.0899,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "xiao-qiao",
+      "stats": {
+        "무력": 62.0,
+        "지력": 294.05,
+        "통솔": 190.1,
+        "선공": 210.57
+      },
+      "troops": 10000,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": -0.18,
+        "받는피해": -0.2817,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 4,
+      "unit": "xiao-qiao",
+      "stats": {
+        "무력": 62.0,
+        "지력": 294.05,
+        "통솔": 190.1,
+        "선공": 210.57
+      },
+      "troops": 9873,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.17,
+        "받는피해": -0.1817,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "deng-ai",
+      "stats": {
+        "무력": 203.75,
+        "지력": 326.1,
+        "통솔": 207.42,
+        "선공": 172.77
+      },
+      "troops": 10000,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": -0.13,
+        "받는피해": -0.2817,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 4,
+      "unit": "deng-ai",
+      "stats": {
+        "무력": 203.75,
+        "지력": 326.1,
+        "통솔": 207.42,
+        "선공": 172.77
+      },
+      "troops": 9935,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.22,
+        "받는피해": -0.0446,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 2,
+      "unit": "li-ru",
+      "stats": {
+        "무력": 45.67,
+        "지력": 274.73,
+        "통솔": 162.75,
+        "선공": 158.02
+      },
+      "troops": 15798,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": -0.35,
+        "받는피해": -0.08
+      }
+    },
+    {
+      "turn": 2,
+      "unit": "deng-ai#e",
+      "stats": {
+        "무력": 190.75,
+        "지력": 226.8,
+        "통솔": 187.42,
+        "선공": 152.77
+      },
+      "troops": 15594,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": -0.35,
+        "받는피해": -0.08
+      }
+    },
+    {
+      "turn": 3,
+      "unit": "yu-jin",
+      "stats": {
+        "무력": 163.8,
+        "지력": 111.82,
+        "통솔": 269.22,
+        "선공": 117.6
+      },
+      "troops": 15335,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": -0.5,
+        "받는피해": -0.08
+      }
+    }
+  ],
+  "damageSamples": [
+    {
+      "turn": 1,
+      "attacker": "xiao-qiao",
+      "defender": "deng-ai#e",
+      "kind": "관문",
+      "dmgType": "책략",
+      "ratio": 1.0,
+      "observed": 406,
+      "at": {
+        "deng-ai#e": {
+          "troops": 16000
+        },
+        "xiao-qiao": {
+          "mods": {
+            "주는피해": -0.18
+          }
+        }
+      },
+      "note": "병종 상성 궁병(소교)→창병(적 등애) +15%",
+      "counter": 0.15
+    },
+    {
+      "turn": 2,
+      "attacker": "xiao-qiao",
+      "defender": "yu-jin",
+      "kind": "관문",
+      "dmgType": "책략",
+      "ratio": 1.0,
+      "observed": 340,
+      "at": {
+        "xiao-qiao": {
+          "troops": 9962,
+          "mods": {
+            "주는피해": -0.18
+          }
+        }
+      }
+    },
+    {
+      "turn": 3,
+      "attacker": "xiao-qiao",
+      "defender": "yu-jin",
+      "kind": "관문",
+      "dmgType": "책략",
+      "ratio": 1.0,
+      "observed": 346,
+      "at": {
+        "xiao-qiao": {
+          "troops": 9986,
+          "stats": {
+            "지력": 305.95
+          },
+          "mods": {
+            "주는피해": -0.18
+          }
+        }
+      },
+      "note": "맹덕신서 하권 +11.90 뒤"
+    },
+    {
+      "turn": 5,
+      "attacker": "xiao-qiao",
+      "defender": "li-ru",
+      "kind": "관문",
+      "dmgType": "책략",
+      "ratio": 1.0,
+      "observed": 447,
+      "at": {
+        "li-ru": {
+          "troops": 15818,
+          "stats": {
+            "지력": 321.62
+          }
+        },
+        "xiao-qiao": {
+          "mods": {
+            "주는피해": 0.17
+          }
+        }
+      },
+      "note": "둔전령(첫 3턴 주는 −35%) 끝난 뒤 — 소교 주는 +17%"
+    },
+    {
+      "turn": 2,
+      "attacker": "deng-ai",
+      "defender": "deng-ai#e",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 254,
+      "at": {
+        "deng-ai": {
+          "troops": 9901,
+          "mods": {
+            "주는피해": -0.13
+          }
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 2,
+      "attacker": "deng-ai",
+      "defender": "li-ru",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 318,
+      "at": {
+        "deng-ai": {
+          "troops": 9964,
+          "mods": {
+            "주는피해": -0.13
+          }
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 4,
+      "attacker": "deng-ai",
+      "defender": "deng-ai#e",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 361,
+      "at": {
+        "deng-ai#e": {
+          "troops": 15476,
+          "stats": {
+            "통솔": 187.42
+          }
+        },
+        "deng-ai": {
+          "mods": {
+            "주는피해": 0.22
+          }
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 5,
+      "attacker": "deng-ai",
+      "defender": "li-ru",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 432,
+      "at": {
+        "deng-ai": {
+          "troops": 9707,
+          "mods": {
+            "주는피해": 0.22
+          }
+        },
+        "li-ru": {
+          "troops": 15371
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 1,
+      "attacker": "cao-cao",
+      "defender": "li-ru",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 168,
+      "at": {
+        "cao-cao": {
+          "troops": 9519,
+          "mods": {
+            "주는피해": -0.3
+          }
+        },
+        "li-ru": {
+          "troops": 15798
+        }
+      },
+      "note": "조조 무력 161.75 — 낮은 무력 하한 표본",
+      "tag": "basic"
+    },
+    {
+      "turn": 3,
+      "attacker": "cao-cao",
+      "defender": "deng-ai#e",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 183,
+      "at": {
+        "cao-cao": {
+          "troops": 9361,
+          "mods": {
+            "주는피해": -0.3
+          }
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 4,
+      "attacker": "cao-cao",
+      "defender": "li-ru",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 203,
+      "at": {
+        "cao-cao": {
+          "troops": 6336,
+          "mods": {
+            "주는피해": 0.05
+          }
+        },
+        "li-ru": {
+          "troops": 15849
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 5,
+      "attacker": "cao-cao",
+      "defender": "li-ru",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 163,
+      "at": {
+        "cao-cao": {
+          "troops": 4812,
+          "stats": {
+            "무력": 131.88
+          },
+          "mods": {
+            "주는피해": 0.05
+          }
+        },
+        "li-ru": {
+          "troops": 14939
+        }
+      },
+      "note": "전략 계획 −29.86 뒤",
+      "tag": "basic"
+    },
+    {
+      "turn": 8,
+      "attacker": "xiao-qiao",
+      "defender": "deng-ai#e",
+      "kind": "관문",
+      "dmgType": "책략",
+      "ratio": 1.0,
+      "observed": 572,
+      "at": {
+        "xiao-qiao": {
+          "troops": 9613,
+          "mods": {
+            "주는피해": 0.17
+          }
+        },
+        "deng-ai#e": {
+          "troops": 15532
+        }
+      },
+      "counter": 0.15,
+      "note": "병종 상성 궁병(소교)→창병(적 등애) +15%"
+    }
+  ],
+  "healSamples": [
+    {
+      "turn": 2,
+      "healer": "deng-ai",
+      "skill": "둔전령",
+      "ratio": 1.0,
+      "observed": 411,
+      "healerStats": {
+        "지력": 326.1,
+        "통솔": 207.42
+      },
+      "note": "조조 148 ÷ 군량 0.3 ÷ 받는 치유 1.2"
+    },
+    {
+      "turn": 4,
+      "healer": "deng-ai",
+      "skill": "둔전령",
+      "ratio": 1.0,
+      "observed": 410,
+      "healerStats": {
+        "지력": 326.1,
+        "통솔": 207.42
+      },
+      "note": "소교·조조 172 ÷0.3 ÷1.4 (두 건 같음)"
+    },
+    {
+      "turn": 5,
+      "healer": "deng-ai",
+      "skill": "둔전령",
+      "ratio": 1.0,
+      "observed": 411,
+      "healerStats": {
+        "지력": 326.1,
+        "통솔": 207.42
+      },
+      "note": "조조 185 ÷0.3÷1.5"
+    },
+    {
+      "turn": 6,
+      "healer": "deng-ai",
+      "skill": "둔전령(전략 계획 뒤)",
+      "ratio": 1.0,
+      "observed": 360,
+      "healerStats": {
+        "지력": 296.24,
+        "통솔": 177.56
+      },
+      "note": "조조 173 ÷0.3÷1.6"
+    },
+    {
+      "turn": 2,
+      "healer": "deng-ai#e",
+      "skill": "둔전령(적)",
+      "ratio": 1.0,
+      "observed": 268,
+      "healerStats": {
+        "무력": 190.75,
+        "지력": 226.8,
+        "통솔": 187.42,
+        "선공": 152.77
+      },
+      "note": "적 등애 321÷1.2·347÷1.3·373÷1.4·400÷1.5 = 267~268"
+    },
+    {
+      "turn": 4,
+      "healer": "deng-ai#e",
+      "skill": "둔전령(적)",
+      "ratio": 1.0,
+      "observed": 266,
+      "healerStats": {
+        "무력": 190.75,
+        "지력": 226.8,
+        "통솔": 187.42,
+        "선공": 152.77
+      },
+      "note": "373÷1.4"
+    },
+    {
+      "turn": 2,
+      "healer": "cao-cao",
+      "skill": "일심협력",
+      "ratio": 0.9,
+      "observed": 422,
+      "healerStats": {
+        "지력": 288.8,
+        "통솔": 252.05
+      },
+      "note": "조조 152 ÷0.3÷1.2 — 지력과 통솔의 영향",
+      "noStatTerm": true,
+      "excluded": "실측이 지력×1.123×치유율의 1.44배(치유율 130% 에 해당) — 원인 미상, 질문 글. 회복 RMS 에서 뺌"
+    },
+    {
+      "turn": 4,
+      "healer": "cao-cao",
+      "skill": "일심협력",
+      "ratio": 0.9,
+      "observed": 417,
+      "healerStats": {
+        "지력": 288.8,
+        "통솔": 252.05
+      },
+      "note": "175 ÷0.3÷1.4",
+      "noStatTerm": true,
+      "excluded": "실측이 지력×1.123×치유율의 1.44배(치유율 130% 에 해당) — 원인 미상, 질문 글. 회복 RMS 에서 뺌"
+    },
+    {
+      "turn": 5,
+      "healer": "cao-cao",
+      "skill": "일심협력(전략 계획 뒤)",
+      "ratio": 0.9,
+      "observed": 360,
+      "healerStats": {
+        "지력": 258.93,
+        "통솔": 222.18
+      },
+      "note": "162 ÷0.3÷1.5",
+      "noStatTerm": true,
+      "excluded": "실측이 지력×1.123×치유율의 1.44배(치유율 130% 에 해당) — 원인 미상, 질문 글. 회복 RMS 에서 뺌"
+    },
+    {
+      "turn": 2,
+      "healer": "cao-cao",
+      "skill": "난세의 간웅-호",
+      "ratio": 0.4,
+      "observed": 131,
+      "healerStats": {
+        "지력": 288.8,
+        "통솔": 252.05
+      },
+      "note": "47 ÷0.3÷1.2 — 지력과 통솔의 영향",
+      "noStatTerm": true
+    },
+    {
+      "turn": 3,
+      "healer": "cao-cao",
+      "skill": "난세의 간웅-호",
+      "ratio": 0.4,
+      "observed": 131,
+      "healerStats": {
+        "지력": 288.8,
+        "통솔": 252.05
+      },
+      "note": "51 ÷0.3÷1.3",
+      "noStatTerm": true
+    },
+    {
+      "turn": 4,
+      "healer": "cao-cao",
+      "skill": "난세의 간웅-호",
+      "ratio": 0.4,
+      "observed": 129,
+      "healerStats": {
+        "지력": 288.8,
+        "통솔": 252.05
+      },
+      "note": "54 ÷0.3÷1.4",
+      "noStatTerm": true
+    },
+    {
+      "turn": 4,
+      "healer": "cao-cao",
+      "skill": "난세의 간웅-호(맹덕 뒤)",
+      "ratio": 0.4,
+      "observed": 133,
+      "healerStats": {
+        "지력": 300.7,
+        "통솔": 252.05
+      },
+      "note": "56 ÷0.3÷1.4",
+      "noStatTerm": true
+    },
+    {
+      "turn": 5,
+      "healer": "cao-cao",
+      "skill": "난세의 간웅-호(전략 계획 뒤)",
+      "ratio": 0.4,
+      "observed": 111,
+      "healerStats": {
+        "지력": 258.93,
+        "통솔": 222.18
+      },
+      "note": "50 ÷0.3÷1.5",
+      "noStatTerm": true
+    },
+    {
+      "turn": 2,
+      "healer": "deng-ai",
+      "skill": "전력 지원(맹덕 2스택 뒤)",
+      "ratio": 0.5,
+      "observed": 203,
+      "healerStats": {
+        "지력": 349.9,
+        "통솔": 207.42
+      },
+      "note": "조조 73 ÷0.3÷1.2 — 지력과 통솔의 영향",
+      "noStatTerm": true
+    },
+    {
+      "turn": 5,
+      "healer": "deng-ai",
+      "skill": "전력 지원",
+      "ratio": 0.5,
+      "observed": 189,
+      "healerStats": {
+        "지력": 326.1,
+        "통솔": 207.42
+      },
+      "note": "85 ÷0.3÷1.5",
+      "noStatTerm": true
+    },
+    {
+      "turn": 6,
+      "healer": "deng-ai",
+      "skill": "전력 지원(전략 계획 뒤)",
+      "ratio": 0.5,
+      "observed": 165,
+      "healerStats": {
+        "지력": 296.24,
+        "통솔": 177.56
+      },
+      "note": "79 ÷0.3÷1.6",
+      "noStatTerm": true
+    },
+    {
+      "turn": 8,
+      "healer": "xiao-qiao",
+      "skill": "천향",
+      "ratio": 2.5,
+      "observed": 890,
+      "healerStats": {
+        "지력": 294.05,
+        "통솔": 190.1
+      },
+      "note": "조조 1,602 ÷ 받는 치유 1.8 (군량 없음) / 등애 481 ÷0.3÷1.8 = 891 — 지력의 영향"
+    },
+    {
+      "turn": 8,
+      "healer": "deng-ai",
+      "skill": "둔전령(전략 계획 중)",
+      "ratio": 1.0,
+      "observed": 357,
+      "healerStats": {
+        "지력": 296.23,
+        "통솔": 177.56
+      },
+      "note": "조조 643 ÷1.8 (군량 없음)"
+    },
+    {
+      "turn": 8,
+      "healer": "deng-ai",
+      "skill": "전력 지원(전략 계획 중)",
+      "ratio": 0.5,
+      "observed": 163,
+      "healerStats": {
+        "지력": 296.23,
+        "통솔": 177.56
+      },
+      "noStatTerm": true,
+      "note": "조조 294 ÷1.8 (군량 없음)"
+    }
+  ],
+  "influenceSamples": [
+    {
+      "turn": 0,
+      "skill": "난세의 간웅 받는 피해 감소(표기 21.70% = x × (1 − 0.11))",
+      "caster": "조조",
+      "base": 14,
+      "observed": 24.38,
+      "stat": "지력",
+      "statValue": 288.8
+    },
+    {
+      "turn": 0,
+      "skill": "난세의 간웅 회유·심리 공격",
+      "caster": "조조",
+      "base": 6,
+      "observed": 10.87,
+      "stat": "지력",
+      "statValue": 288.8
+    },
+    {
+      "turn": 1,
+      "skill": "맹덕신서 하권 최고 속성(조조 지력)",
+      "caster": "조조",
+      "base": 8,
+      "observed": 11.9,
+      "stat": "지력",
+      "statValue": 288.8
+    },
+    {
+      "turn": 5,
+      "skill": "맹덕신서 하권 최고 속성(조조 지력, 전략 계획 뒤)",
+      "caster": "조조",
+      "base": 8,
+      "observed": 11.53,
+      "stat": "지력",
+      "statValue": 258.93
+    },
+    {
+      "turn": 5,
+      "skill": "전략 계획 능력치 감소(적 등애)",
+      "caster": "등애(적)",
+      "base": 25,
+      "observed": 29.86,
+      "stat": "지력",
+      "statValue": 226.8
+    },
+    {
+      "turn": 1,
+      "skill": "침착한 지휘 받는 피해 증가(우금 통솔)",
+      "caster": "우금",
+      "base": 10,
+      "observed": 15.23,
+      "stat": "통솔",
+      "statValue": 262.22,
+      "note": "우금 통솔 255.22(침착한 지휘 +30 포함)+7(백전불태)? 시점 통솔 불확실"
+    }
+  ]
+}

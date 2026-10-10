@@ -1,0 +1,12 @@
+{
+  "id": "2026-10-05-unique-skill-texts",
+  "date": "2026-10-05",
+  "season": "S2",
+  "category": "데이터",
+  "title": "보유 무장 고유 전법 54개 게임 화면 대조: 이름 5개·아군/우군 문구·동작 6개 정정",
+  "body": "사용자 녹화(보유 무장 고유 전법 설명 화면)로 고유 전법 원문을 한 줄씩 대조했다(설계서 검증완료 글, 확정 규칙 R-051).\n■ 이름: 선봉 정신·바람 방랑자·만인지적·무열황제·양번 사수\n■ 동작: 화하 진압 발동률 50%, 만인지적 공포 30%, 완벽한 사격 축력 90%, 군주 시해 시해 = 전체 아군, 형주 분할 4목표에 자신 포함, 눈부신 자태 눈짓 감소 조건·지속·회복 시점\n■ 문구: '우군' → '아군'(자신 포함) 13개 전법 등 30여 개 원문을 게임 그대로\n■ 승품 보정이 붙은 화면 수치는 기본값 유지(R-017)",
+  "refs": ["u-guan-yu", "u-zhang-fei", "u-taishi-ci", "u-li-ru", "u-lu-su", "u-zou-shi"],
+  "author": "Claude",
+  "commit": "8bd4dae247f1",
+  "files": ["data/patches/skills.json", "packages/engine/src/skills/u-*.ts", "packages/engine/src/legacy/core.js", "data/verification/recording-plan.json", "data/common/confirmed-rules.json", "data/design/posts/*.json"]
+}

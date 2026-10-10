@@ -1,0 +1,47 @@
+{
+  "attribution": {
+    "label": "천덱랩 deck-lab v5.0 (스냅샷 cheonha-v5-20260829)",
+    "note": "다른 유저가 해외(중국·대만) 자료를 모아 만든 공유 HTML. 각 항목의 sourceUrl 이 원출처다. 해외 표기는 표시 전에 한국판 용어로 정규화한다.",
+    "generatedAt": "2026-08-29T05:50:21.611Z",
+    "excluded": [
+      "supportInfo",
+      "generalPortraits",
+      "tacticImages"
+    ]
+  },
+  "metadata": {
+    "appVersion": "5.0",
+    "generatedAt": "2026-08-29T05:50:21.611Z",
+    "dataSnapshot": "cheonha-v5-20260829",
+    "downloadFilename": "cheonha-deck-lab-v5.0.html",
+    "standaloneStorageKey": "cheonha-deck-builder-standalone-v1",
+    "yanwuStorageKey": "cheonha-deck-yanwu-session-v1",
+    "counts": {
+      "generals": 118,
+      "collectableGenerals": 109,
+      "tactics": 124,
+      "collectableTactics": 120,
+      "officialDecks": 93,
+      "warDecks": 75,
+      "openingDecks": 18,
+      "aiDecks": 20,
+      "matchupRelations": 78,
+      "matchupEvidence": 80,
+      "tacticAlternatives": 724,
+      "evaluatedTacticAlternatives": 95,
+      "battleTerms": 14,
+      "yanwuEntityEvidence": 164,
+      "yanwuSynergies": 57,
+      "yanwuBuilds": 16,
+      "yanwuReports": 8154
+    }
+  },
+  "files": [
+    "catalog",
+    "decks",
+    "matchups",
+    "yanwu",
+    "guides"
+  ],
+  "unclassifiedKeys": []
+}

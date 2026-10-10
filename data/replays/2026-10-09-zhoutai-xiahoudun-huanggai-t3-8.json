@@ -1,0 +1,1064 @@
+{
+  "id": "2026-10-09-zhoutai-xiahoudun-huanggai-t3-8",
+  "date": "2026-10-09",
+  "season": "S2",
+  "source": "사용자 전보 녹화 '주하황_3턴~8턴'(같은 드라이브 폴더). 2판(주태·하후돈·황개 기형진 vs 여몽·채문희·소교 안형진)의 3~8턴 전보. 2026-10-08 통계~2턴 녹화의 이어지는 부분.",
+  "links": [
+    "https://drive.google.com/drive/folders/18dz74PpR1GsArw1f-5n7A9UfqmhJ3vgR"
+  ],
+  "battle": {
+    "ally": {
+      "formation": "기형진",
+      "units": [
+        {
+          "generalId": "zhou-tai",
+          "skills": [
+            "supply-cut",
+            "blazing-sky"
+          ],
+          "manual": "역전"
+        },
+        {
+          "generalId": "huang-gai",
+          "skills": [
+            "golden-fortress",
+            "prepare-armor"
+          ],
+          "manual": "견결"
+        },
+        {
+          "generalId": "xiahou-dun",
+          "skills": [
+            "see-truth",
+            "choose-momentum"
+          ],
+          "manual": "위협"
+        }
+      ]
+    },
+    "enemy": {
+      "formation": "안형진",
+      "units": [
+        "lü-meng",
+        "cai-wenji",
+        "xiao-qiao"
+      ]
+    }
+  },
+  "outOfScopeSeen": [
+    "병법 <호익>(하후돈, 매 턴 행동 끝에 사라짐)",
+    "병종 정통-초지일관(황개 방어 1스택)",
+    "병종 특성-적군 섬멸(소교 받는 피해 +3.5%/스택)"
+  ],
+  "tooltips": [
+    {
+      "turn": 5,
+      "unit": "huang-gai",
+      "stats": {
+        "무력": 194.3,
+        "지력": 193.25,
+        "통솔": 335.55,
+        "선공": 144.02
+      },
+      "troops": 7639,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.22,
+        "받는피해": -0.4959,
+        "받는병기피해": -0.2745,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 7,
+      "unit": "huang-gai",
+      "stats": {
+        "무력": 194.3,
+        "지력": 193.25,
+        "통솔": 335.55,
+        "선공": 144.02
+      },
+      "troops": 6072,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.22,
+        "받는피해": -0.4272,
+        "받는병기피해": -0.3118,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 5,
+      "unit": "xiahou-dun",
+      "stats": {
+        "무력": 240.5,
+        "지력": 196.24,
+        "통솔": 350.07,
+        "선공": 179.6
+      },
+      "troops": 9542,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.17,
+        "받는피해": -0.05,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 6,
+      "unit": "xiahou-dun",
+      "stats": {
+        "무력": 240.5,
+        "지력": 143.9,
+        "통솔": 297.72,
+        "선공": 179.6
+      },
+      "troops": 7138,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.17,
+        "받는피해": -0.05,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 8,
+      "unit": "xiahou-dun",
+      "stats": {
+        "무력": 240.5,
+        "지력": 196.24,
+        "통솔": 350.07,
+        "선공": 179.6
+      },
+      "troops": 6115,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.17,
+        "받는피해": -0.05,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 5,
+      "unit": "lü-meng",
+      "stats": {
+        "무력": 187.95,
+        "지력": 230.7,
+        "통솔": 193.2,
+        "선공": 185.32
+      },
+      "troops": 13143,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": -0.215,
+        "받는피해": 0.035
+      }
+    },
+    {
+      "turn": 8,
+      "unit": "lü-meng",
+      "stats": {
+        "무력": 187.95,
+        "지력": 205.0,
+        "통솔": 167.5,
+        "선공": 185.32
+      },
+      "troops": 10355,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.185
+      }
+    },
+    {
+      "turn": 6,
+      "unit": "zhou-tai",
+      "stats": {
+        "무력": 182.75,
+        "지력": 112.4,
+        "통솔": 325.57,
+        "선공": 154.92
+      },
+      "troops": 4045,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.05,
+        "받는피해": -0.1367,
+        "받는병기피해": -0.075,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 6,
+      "unit": "cai-wenji",
+      "stats": {
+        "무력": 30.45,
+        "지력": 201.33,
+        "통솔": 170.13,
+        "선공": 182.7
+      },
+      "troops": 9214,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.035
+      }
+    },
+    {
+      "turn": 7,
+      "unit": "cai-wenji",
+      "stats": {
+        "무력": 30.45,
+        "지력": 227.02,
+        "통솔": 195.82,
+        "선공": 182.7
+      },
+      "troops": 9286,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.035
+      }
+    },
+    {
+      "turn": 7,
+      "unit": "xiao-qiao",
+      "stats": {
+        "무력": 42.0,
+        "지력": 206.55,
+        "통솔": 191.1,
+        "선공": 190.57
+      },
+      "troops": 9454,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.035,
+        "받는피해": 0.0712
+      }
+    },
+    {
+      "turn": 8,
+      "unit": "xiao-qiao",
+      "stats": {
+        "무력": 42.0,
+        "지력": 179.89,
+        "통솔": 164.44,
+        "선공": 190.57
+      },
+      "troops": 8269,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.035,
+        "받는피해": 0.0712
+      }
+    }
+  ],
+  "damageSamples": [
+    {
+      "turn": 5,
+      "attacker": "lü-meng",
+      "defender": "zhou-tai",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 231,
+      "at": {
+        "lü-meng": {
+          "troops": 12560,
+          "mods": {
+            "주는피해": -0.215
+          }
+        },
+        "zhou-tai": {
+          "troops": 4276
+        }
+      }
+    },
+    {
+      "turn": 5,
+      "attacker": "lü-meng",
+      "defender": "xiahou-dun",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 249,
+      "at": {
+        "lü-meng": {
+          "troops": 12560,
+          "mods": {
+            "주는피해": -0.215
+          }
+        },
+        "xiahou-dun": {
+          "troops": 7913
+        }
+      }
+    },
+    {
+      "turn": 5,
+      "attacker": "lü-meng",
+      "defender": "huang-gai",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 132,
+      "at": {
+        "lü-meng": {
+          "troops": 12560,
+          "mods": {
+            "주는피해": -0.215
+          }
+        },
+        "huang-gai": {
+          "troops": 7639
+        }
+      }
+    },
+    {
+      "turn": 6,
+      "attacker": "lü-meng",
+      "defender": "zhou-tai",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 228,
+      "at": {
+        "lü-meng": {
+          "troops": 10818,
+          "stats": {
+            "지력": 215.7
+          },
+          "mods": {
+            "주는피해": -0.215
+          }
+        },
+        "zhou-tai": {
+          "troops": 3197
+        }
+      },
+      "note": "여몽 화공(지력 −15)"
+    },
+    {
+      "turn": 6,
+      "attacker": "lü-meng",
+      "defender": "xiahou-dun",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 276,
+      "at": {
+        "lü-meng": {
+          "troops": 10818,
+          "stats": {
+            "지력": 215.7
+          },
+          "mods": {
+            "주는피해": -0.215
+          }
+        },
+        "xiahou-dun": {
+          "troops": 6802
+        }
+      }
+    },
+    {
+      "turn": 7,
+      "attacker": "lü-meng",
+      "defender": "zhou-tai",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 222,
+      "at": {
+        "lü-meng": {
+          "troops": 10656,
+          "stats": {
+            "지력": 215.7
+          },
+          "mods": {
+            "주는피해": -0.215
+          }
+        },
+        "zhou-tai": {
+          "troops": 2170
+        }
+      }
+    },
+    {
+      "turn": 7,
+      "attacker": "lü-meng",
+      "defender": "xiahou-dun",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 283,
+      "at": {
+        "lü-meng": {
+          "troops": 10656,
+          "stats": {
+            "지력": 215.7
+          },
+          "mods": {
+            "주는피해": -0.215
+          }
+        },
+        "xiahou-dun": {
+          "troops": 6398
+        }
+      }
+    },
+    {
+      "turn": 7,
+      "attacker": "lü-meng",
+      "defender": "huang-gai",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 126,
+      "at": {
+        "lü-meng": {
+          "troops": 10656,
+          "stats": {
+            "지력": 215.7
+          },
+          "mods": {
+            "주는피해": -0.215
+          }
+        },
+        "huang-gai": {
+          "troops": 6019,
+          "mods": {
+            "받는피해": -0.4959
+          }
+        }
+      }
+    },
+    {
+      "turn": 8,
+      "attacker": "lü-meng",
+      "defender": "zhou-tai",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 209,
+      "at": {
+        "lü-meng": {
+          "troops": 9836,
+          "stats": {
+            "지력": 205.0
+          },
+          "mods": {
+            "주는피해": -0.215
+          }
+        },
+        "zhou-tai": {
+          "troops": 854
+        }
+      }
+    },
+    {
+      "turn": 8,
+      "attacker": "lü-meng",
+      "defender": "xiahou-dun",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 232,
+      "at": {
+        "lü-meng": {
+          "troops": 9836,
+          "stats": {
+            "지력": 205.0
+          },
+          "mods": {
+            "주는피해": -0.215
+          }
+        },
+        "xiahou-dun": {
+          "troops": 5365
+        }
+      }
+    },
+    {
+      "turn": 5,
+      "attacker": "zhou-tai",
+      "defender": "cai-wenji",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 267,
+      "at": {
+        "zhou-tai": {
+          "troops": 4045
+        },
+        "cai-wenji": {
+          "troops": 10153
+        }
+      }
+    },
+    {
+      "turn": 5,
+      "attacker": "zhou-tai",
+      "defender": "lü-meng",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 223,
+      "at": {
+        "zhou-tai": {
+          "troops": 4045
+        },
+        "lü-meng": {
+          "troops": 12560
+        }
+      }
+    },
+    {
+      "turn": 6,
+      "attacker": "zhou-tai",
+      "defender": "cai-wenji",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 232,
+      "at": {
+        "zhou-tai": {
+          "troops": 2969
+        },
+        "cai-wenji": {
+          "troops": 9214
+        }
+      }
+    },
+    {
+      "turn": 6,
+      "attacker": "zhou-tai",
+      "defender": "lü-meng",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 195,
+      "at": {
+        "zhou-tai": {
+          "troops": 2969
+        },
+        "lü-meng": {
+          "troops": 11013,
+          "stats": {
+            "지력": 215.7
+          }
+        }
+      }
+    },
+    {
+      "turn": 8,
+      "attacker": "zhou-tai",
+      "defender": "cai-wenji",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 104,
+      "at": {
+        "zhou-tai": {
+          "troops": 645
+        },
+        "cai-wenji": {
+          "troops": 9054,
+          "stats": {
+            "지력": 212.02,
+            "통솔": 195.82
+          }
+        }
+      },
+      "note": "주태 병력 645 — 낮은 병력 계수 표본"
+    },
+    {
+      "turn": 8,
+      "attacker": "zhou-tai",
+      "defender": "xiao-qiao",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 121,
+      "at": {
+        "zhou-tai": {
+          "troops": 645
+        },
+        "xiao-qiao": {
+          "troops": 7335
+        }
+      },
+      "note": "주태 병력 645"
+    },
+    {
+      "turn": 6,
+      "attacker": "zhou-tai",
+      "defender": "lü-meng",
+      "kind": "맹렬한 화염 책략(묘책 190%)",
+      "dmgType": "책략",
+      "ratio": 1.14,
+      "observed": 331,
+      "at": {
+        "lü-meng": {
+          "troops": 12017
+        }
+      },
+      "note": "인재 기용 묘책 190% — ratio 에 1.9/1.5 를 넣고 crit 1.5",
+      "crit": true
+    },
+    {
+      "turn": 6,
+      "attacker": "zhou-tai",
+      "defender": "lü-meng",
+      "kind": "맹렬한 화염 병기",
+      "dmgType": "병기",
+      "ratio": 0.9,
+      "observed": 189,
+      "at": {
+        "lü-meng": {
+          "troops": 11686
+        }
+      }
+    },
+    {
+      "turn": 6,
+      "attacker": "zhou-tai",
+      "defender": "cai-wenji",
+      "kind": "맹렬한 화염 책략",
+      "dmgType": "책략",
+      "ratio": 0.9,
+      "observed": 200,
+      "at": {
+        "cai-wenji": {
+          "troops": 9886
+        }
+      }
+    },
+    {
+      "turn": 6,
+      "attacker": "zhou-tai",
+      "defender": "cai-wenji",
+      "kind": "맹렬한 화염 병기",
+      "dmgType": "병기",
+      "ratio": 0.9,
+      "observed": 224,
+      "at": {
+        "cai-wenji": {
+          "troops": 9686
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 6,
+      "attacker": "zhou-tai",
+      "defender": "xiao-qiao",
+      "kind": "맹렬한 화염 책략",
+      "dmgType": "책략",
+      "ratio": 0.9,
+      "observed": 214,
+      "at": {
+        "xiao-qiao": {
+          "troops": 10493,
+          "stats": {
+            "지력": 179.89
+          }
+        }
+      }
+    },
+    {
+      "turn": 6,
+      "attacker": "zhou-tai",
+      "defender": "xiao-qiao",
+      "kind": "맹렬한 화염 병기",
+      "dmgType": "병기",
+      "ratio": 0.9,
+      "observed": 236,
+      "at": {
+        "xiao-qiao": {
+          "troops": 10279,
+          "stats": {
+            "통솔": 164.44
+          },
+          "mods": {
+            "받는피해": 0.035
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 6,
+      "attacker": "huang-gai",
+      "defender": "xiao-qiao",
+      "kind": "일반 공격(회심 190%)",
+      "dmgType": "병기",
+      "ratio": 1.2666666666666666,
+      "observed": 589,
+      "at": {
+        "huang-gai": {
+          "troops": 7087
+        },
+        "xiao-qiao": {
+          "troops": 10043,
+          "mods": {
+            "받는피해": 0.035
+          }
+        }
+      },
+      "crit": true,
+      "tag": "basic"
+    },
+    {
+      "turn": 8,
+      "attacker": "huang-gai",
+      "defender": "xiao-qiao",
+      "kind": "일반 공격(회심 190%)",
+      "dmgType": "병기",
+      "ratio": 1.2666666666666666,
+      "observed": 540,
+      "at": {
+        "huang-gai": {
+          "troops": 5473
+        },
+        "xiao-qiao": {
+          "troops": 7875
+        }
+      },
+      "crit": true,
+      "tag": "basic"
+    },
+    {
+      "turn": 8,
+      "attacker": "xiahou-dun",
+      "defender": "lü-meng",
+      "kind": "허실 간파",
+      "dmgType": "책략",
+      "ratio": 1.4,
+      "observed": 389,
+      "at": {
+        "xiahou-dun": {
+          "stats": {
+            "지력": 169.59
+          }
+        },
+        "lü-meng": {
+          "troops": 10744
+        }
+      }
+    },
+    {
+      "turn": 8,
+      "attacker": "xiahou-dun",
+      "defender": "xiao-qiao",
+      "kind": "허실 간파",
+      "dmgType": "책략",
+      "ratio": 1.4,
+      "observed": 550,
+      "at": {
+        "xiao-qiao": {
+          "troops": 8819
+        }
+      }
+    },
+    {
+      "turn": 5,
+      "attacker": "huang-gai",
+      "defender": "cai-wenji",
+      "kind": "고육지계",
+      "dmgType": "책략",
+      "ratio": 2.2,
+      "observed": 928,
+      "at": {
+        "huang-gai": {
+          "troops": 7774
+        },
+        "cai-wenji": {
+          "troops": 11330
+        }
+      }
+    },
+    {
+      "turn": 5,
+      "attacker": "huang-gai",
+      "defender": "xiao-qiao",
+      "kind": "고육지계",
+      "dmgType": "책략",
+      "ratio": 2.2,
+      "observed": 999,
+      "at": {
+        "huang-gai": {
+          "troops": 7774
+        },
+        "xiao-qiao": {
+          "troops": 11815,
+          "stats": {
+            "지력": 179.89
+          },
+          "mods": {
+            "받는피해": 0
+          }
+        }
+      }
+    },
+    {
+      "turn": 7,
+      "attacker": "huang-gai",
+      "defender": "xiao-qiao",
+      "kind": "고육지계",
+      "dmgType": "책략",
+      "ratio": 2.2,
+      "observed": 706,
+      "at": {
+        "huang-gai": {
+          "troops": 6019
+        },
+        "xiao-qiao": {
+          "troops": 9742
+        }
+      }
+    },
+    {
+      "turn": 5,
+      "attacker": "xiahou-dun",
+      "defender": "huang-gai",
+      "kind": "고육지계 자해(지력 최고 우군 60%)",
+      "dmgType": "병기",
+      "ratio": 0.6,
+      "observed": 61,
+      "at": {
+        "huang-gai": {
+          "troops": 7835,
+          "mods": {
+            "받는피해": -0.4272
+          }
+        }
+      }
+    },
+    {
+      "turn": 6,
+      "attacker": "xiahou-dun",
+      "defender": "lü-meng",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 320,
+      "at": {
+        "xiahou-dun": {
+          "troops": 7664
+        },
+        "lü-meng": {
+          "troops": 12337
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 8,
+      "attacker": "xiahou-dun",
+      "defender": "xiao-qiao",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 396,
+      "at": {
+        "xiao-qiao": {
+          "troops": 8269
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 5,
+      "attacker": "zhou-tai",
+      "defender": "cai-wenji",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 249,
+      "at": {
+        "zhou-tai": {
+          "troops": 4276
+        },
+        "cai-wenji": {
+          "troops": 10402
+        }
+      },
+      "tag": "basic",
+      "counter": 0.15
+    },
+    {
+      "turn": 6,
+      "attacker": "zhou-tai",
+      "defender": "cai-wenji",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 248,
+      "at": {
+        "cai-wenji": {
+          "troops": 9462
+        }
+      },
+      "tag": "basic",
+      "counter": 0.15
+    },
+    {
+      "turn": 8,
+      "attacker": "zhou-tai",
+      "defender": "lü-meng",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 110,
+      "at": {
+        "zhou-tai": {
+          "troops": 854
+        },
+        "lü-meng": {
+          "troops": 9946
+        }
+      },
+      "note": "주태 병력 854",
+      "tag": "basic"
+    },
+    {
+      "turn": 5,
+      "attacker": "lü-meng",
+      "defender": "xiahou-dun",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 243,
+      "at": {
+        "lü-meng": {
+          "troops": 14347,
+          "mods": {
+            "주는피해": 0.185
+          }
+        },
+        "xiahou-dun": {
+          "troops": 9542
+        }
+      },
+      "tag": "basic",
+      "counter": 0.15,
+      "note": "강렬 디버프는 이 공격 뒤에 걸림 — 주는 피해 +18.5%"
+    },
+    {
+      "turn": 5,
+      "attacker": "xiao-qiao",
+      "defender": "zhou-tai",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 101,
+      "at": {
+        "xiao-qiao": {
+          "troops": 10493
+        },
+        "zhou-tai": {
+          "troops": 4840
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 5,
+      "attacker": "cai-wenji",
+      "defender": "zhou-tai",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 96,
+      "at": {
+        "cai-wenji": {
+          "troops": 10153
+        },
+        "zhou-tai": {
+          "troops": 4372
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 6,
+      "attacker": "cai-wenji",
+      "defender": "xiahou-dun",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 120,
+      "at": {
+        "cai-wenji": {
+          "troops": 9214
+        },
+        "xiahou-dun": {
+          "troops": 6922
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 8,
+      "attacker": "cai-wenji",
+      "defender": "xiahou-dun",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 111,
+      "at": {
+        "cai-wenji": {
+          "troops": 9054,
+          "stats": {
+            "지력": 212.02,
+            "통솔": 195.82
+          }
+        },
+        "xiahou-dun": {
+          "troops": 5476
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 7,
+      "attacker": "xiao-qiao",
+      "defender": "xiahou-dun",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 128,
+      "at": {
+        "xiao-qiao": {
+          "troops": 9634
+        },
+        "xiahou-dun": {
+          "troops": 6526,
+          "stats": {
+            "지력": 143.9,
+            "통솔": 297.72
+          }
+        }
+      },
+      "tag": "basic"
+    },
+    {
+      "turn": 8,
+      "attacker": "xiao-qiao",
+      "defender": "xiahou-dun",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 109,
+      "at": {
+        "xiao-qiao": {
+          "troops": 8269
+        },
+        "xiahou-dun": {
+          "troops": 5852
+        }
+      },
+      "tag": "basic"
+    }
+  ],
+  "healSamples": [],
+  "influenceSamples": []
+}

@@ -1,0 +1,31 @@
+{
+  "id": "2026-10-05-design-platform",
+  "date": "2026-10-05",
+  "season": "S2",
+  "category": "기타",
+  "title": "기획 플랫폼(전투 설계서) 개설 — 규정이 정본, 시뮬 사이트는 시뮬·추천만",
+  "body": "작업 순서를 '기획 플랫폼 → 시뮬'로 바꿨다(사용자 지정). 전투에 필요한 모든 요소를 카테고리 19개(개요·범위·무장·편성·진형·턴·행동 순서·무장 행동·전법 체계·대상·피해·회복·버프/디버프·상태·전법 목록·금병법·계수 검증·확정 규칙·변경 기록)로 나눠 규정 139개와 카테고리별 게시판으로 정리했다.\n■ 정본: data/design (categories·spec·posts). docs/COMMON_RULES.md 는 규정에서 자동 생성.\n■ 대화에서 결정한 것은 MCP design_resolve·design_spec_update·design_post 로 기록하고, 시뮬 엔진은 그 규정만 구현한다.\n■ 열린 글 18건: 질문 12(진형 칸 배치·동률·다단 타격·관통 상한·능력치 하한·고유 전법/금병법 아군·우군·능력 소진/연소·묘책 피해·영향 스탯 시점·턴 시작 순서·무장 데이터 빈칸), 검증요청 6(피해 계수·회심 배율·두 스탯 가중치·탈주병·흡혈·녹화 7판).\n■ 시뮬 사이트: 탭을 시뮬레이션·덱 추천·보유·티어덱만 남기고 도감·감사·게시판·해외 자료는 설계서로 옮겼다. 시뮬 결과에 '잠정 규정 N개 사용'을 표시한다.",
+  "refs": [],
+  "author": "Claude",
+  "commit": "323fb80a03d6",
+  "files": [
+    "data/design/categories.json",
+    "data/design/spec.json",
+    "data/design/posts/*.json",
+    "apps/design/template.html",
+    "packages/data-tools/src/build-design.ts",
+    "packages/data-tools/src/design.ts",
+    "packages/data-tools/src/build-bundle.ts",
+    "apps/mcp-server/src/server.ts",
+    "apps/web/src/main.ts",
+    "apps/web/src/state.ts",
+    "apps/web/src/views/sim.ts",
+    "apps/web/src/views/tierdecks.ts",
+    "data/common/site.json",
+    "docs/COMMON_RULES.md",
+    "tests/design.test.ts",
+    "CLAUDE.md",
+    ".claude/skills/season-update/SKILL.md",
+    "package.json"
+  ]
+}

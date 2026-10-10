@@ -1,0 +1,61 @@
+{
+  "note": "시즌3(한국 기준, 해외 문정 1·2 / 업주산하) 시트 이름 → 내부 id 대응표. 사람이 검토해 고정한다. 다음 시트 갱신 때도 같은 이름은 이 표로 연결된다. kind·rate 의 inferred=true 는 원문 문장으로 추정한 값(공식 확인 전).",
+  "sheet": {
+    "id": "1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA",
+    "codexGid": "900776650",
+    "tierGid": "1516949980",
+    "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)"
+  },
+  "generals": [
+    { "sheet": "조순", "id": "cao-chun", "zhTW": "曹純", "faction": "위", "factionInferred": true, "unique": { "ko": "조순 고유 전법", "nameUnknown": true, "kind": "지휘", "kindInferred": true } },
+    { "sheet": "우길", "id": "yu-ji", "decklab": "yu-ji" },
+    { "sheet": "관은병", "id": "guan-yinping", "decklab": "guan-yinping" },
+    { "sheet": "좌자", "id": "zuo-ci", "decklab": "zuo-ci" },
+    { "sheet": "순유", "id": "xun-you", "zhTW": "荀攸", "faction": "위", "factionInferred": true, "unique": { "ko": "순유 고유 전법", "nameUnknown": true, "kind": "액티브", "kindInferred": true } },
+    { "sheet": "보연사", "id": "bu-lianshi", "zhTW": "步練師", "faction": "오", "factionInferred": true, "unique": { "ko": "보연사 고유 전법", "nameUnknown": true, "kind": "액티브", "kindInferred": true } },
+    { "sheet": "강유", "id": "jiang-wei", "decklab": "jiang-wei" },
+    { "sheet": "마등", "id": "ma-teng", "decklab": "ma-teng" },
+    { "sheet": "원술", "id": "yuan-shu", "decklab": "yuan-shu" },
+    { "sheet": "왕이", "id": "wang-yi", "decklab": "wang-yi" },
+    { "sheet": "장녕", "id": "zhang-ning", "decklab": "zhang-ning" },
+    { "sheet": "주준", "id": "zhu-jun", "decklab": "zhu-jun" },
+    { "sheet": "황보숭", "id": "huangfu-song", "decklab": "huangfu-song" },
+    { "sheet": "장소", "id": "zhang-zhao", "zhTW": "張昭", "faction": "오", "factionInferred": true, "unique": { "ko": "장소 고유 전법", "nameUnknown": true, "kind": "액티브", "kindInferred": true } },
+    { "sheet": "장춘화", "id": "zhang-chunhua", "zhTW": "張春華", "faction": "위", "factionInferred": true, "unique": { "ko": "장춘화 고유 전법", "nameUnknown": true, "kind": "지휘", "kindInferred": true } },
+    { "sheet": "sp 제갈량", "aliases": ["SP 제갈량", "sp제갈량"], "id": "sp-zhuge-liang", "decklab": "sp-zhuge-liang", "ko": "SP 제갈량" },
+    { "sheet": "연의 원소", "aliases": ["연의원소"], "id": "romance-yuan-shao", "decklab": "romance-yuan-shao", "unitType": "궁병", "unitTypeNote": "원명 演義弓袁(궁)", "textFrom": "decklab" },
+    { "sheet": "연의 공손찬", "aliases": ["연의공손찬"], "id": "romance-gongsun-zan", "decklab": "romance-gongsun-zan", "unitType": "기병", "unitTypeNote": "원명 演義騎瓚(기)", "textFrom": "decklab" }
+  ],
+  "skills": [
+    { "sheet": "문무의 충신", "id": "loyal-civil-military", "kind": "추격", "kindInferred": true },
+    { "sheet": "천하의인재", "aliases": ["천하의 인재"], "id": "talent-under-heaven", "kind": "액티브", "kindInferred": true, "prepare": true },
+    { "sheet": "신체개조", "id": "wash-marrow", "decklab": "wash-marrow" },
+    { "sheet": "침략방어", "id": "fold-charge", "decklab": "fold-charge" },
+    { "sheet": "사방의매복", "aliases": ["사방의 매복"], "id": "ten-ambush", "decklab": "ten-ambush" },
+    { "sheet": "지략운용", "id": "plot-strategy", "decklab": "plot-strategy" },
+    { "sheet": "기선제압", "id": "blunt-edge", "decklab": "blunt-edge" },
+    { "sheet": "천군격파", "id": "break-thousand-army", "kind": "추격", "kindInferred": true },
+    { "sheet": "보보위영", "id": "step-camp", "decklab": "step-camp" },
+    { "sheet": "공성계", "id": "empty-city", "decklab": "empty-city" },
+    { "sheet": "병기 파괴", "aliases": ["병기파괴"], "id": "break-spear-edge", "decklab": "break-spear-edge" },
+    { "sheet": "황천의 선동", "aliases": ["황천의선동"], "id": "yellow-heaven", "decklab": "yellow-heaven" },
+    { "sheet": "용의주도", "id": "plan-after", "decklab": "plan-after" },
+    { "sheet": "만군 멸시", "aliases": ["만군멸시"], "id": "scorn-myriad", "kind": "추격", "kindInferred": true },
+    { "sheet": "훗날의 교훈", "aliases": ["훗날의교훈"], "id": "punish-past", "decklab": "punish-past" },
+    { "sheet": "뛰어난 응변", "aliases": ["뛰어난응변"], "id": "divine-change", "decklab": "divine-change" },
+    { "sheet": "일심협력", "id": "same-boat", "decklab": "same-boat", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" },
+    { "sheet": "금성의 철벽", "id": "golden-fortress", "decklab": "golden-fortress", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" },
+    { "sheet": "맹렬한 화염", "id": "blazing-sky", "decklab": "blazing-sky", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" },
+    { "sheet": "허실 간파", "id": "see-truth", "decklab": "see-truth", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" },
+    { "sheet": "병력 강화", "aliases": ["병력강화"], "id": "prepare-armor", "decklab": "prepare-armor", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" },
+    { "sheet": "기민한 전술", "id": "charge-change", "decklab": "charge-change", "textFrom": "decklab", "season": "S2", "seasonNote": "S2 티어덱 시트에서 사용 — 엑셀(2025-09-25) 이후 S2 추가 전법" }
+  ],
+  "textFixes": [
+    { "from": "용의주도을", "to": "용의주도를", "note": "시트 조사 오타" }
+  ],
+  "manualMarks": {
+    "prefix": "금·",
+    "placeholders": ["연의", "금서"],
+    "note": "R-003: '금·' 이 붙은 칸만 그 무장의 금병법. '연의' 는 연의 무장(병법 칸 없음), '금서' 는 시트에 이름 없이 적힌 금병법 자리"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@cheonha/web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:standalone": "vite build --mode standalone && tsx ../../packages/data-tools/src/build-standalone.ts"
+  },
+  "dependencies": {
+    "@cheonha/engine": "workspace:*",
+    "@cheonha/audit": "workspace:*",
+    "@cheonha/recommender": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0",
+    "vite-plugin-singlefile": "^2.3.3"
+  }
+}

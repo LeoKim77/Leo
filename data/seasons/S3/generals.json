@@ -1,0 +1,734 @@
+[
+  {
+    "id": "cao-chun",
+    "name": {
+      "ko": "조순",
+      "zhTW": "曹純"
+    },
+    "season": "S3",
+    "faction": "위",
+    "row": "미확인",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-cao-chun",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인",
+      "faction": "추정(역사 소속)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "yu-ji",
+    "name": {
+      "ko": "우길",
+      "zhTW": "于吉"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 2",
+    "faction": "군",
+    "row": "미확인",
+    "role": "책략",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-yu-ji",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E4%BA%8E%E5%90%89/"
+      }
+    ]
+  },
+  {
+    "id": "guan-yinping",
+    "name": {
+      "ko": "관은병",
+      "zhTW": "關銀屏"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "faction": "촉",
+    "row": "미확인",
+    "role": "병기",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-guan-yinping",
+    "manuals": [
+      {
+        "name": "관씨",
+        "text": "",
+        "textUnknown": true
+      }
+    ],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E5%85%B3%E9%93%B6%E5%B1%8F/"
+      }
+    ]
+  },
+  {
+    "id": "zuo-ci",
+    "name": {
+      "ko": "좌자",
+      "zhTW": "左慈"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "faction": "군",
+    "row": "미확인",
+    "role": "보조",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zuo-ci",
+    "manuals": [
+      {
+        "name": "구정",
+        "text": "",
+        "textUnknown": true
+      }
+    ],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E5%B7%A6%E6%85%88/"
+      }
+    ]
+  },
+  {
+    "id": "xun-you",
+    "name": {
+      "ko": "순유",
+      "zhTW": "荀攸"
+    },
+    "season": "S3",
+    "faction": "위",
+    "row": "미확인",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-xun-you",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인",
+      "faction": "추정(역사 소속)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "bu-lianshi",
+    "name": {
+      "ko": "보연사",
+      "zhTW": "步練師"
+    },
+    "season": "S3",
+    "faction": "오",
+    "row": "미확인",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-bu-lianshi",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인",
+      "faction": "추정(역사 소속)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "jiang-wei",
+    "name": {
+      "ko": "강유",
+      "zhTW": "姜維"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "faction": "촉",
+    "row": "미확인",
+    "role": "문무",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-jiang-wei",
+    "manuals": [
+      {
+        "name": "촉무",
+        "text": "",
+        "textUnknown": true
+      }
+    ],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E5%A7%9C%E7%BB%B4/"
+      }
+    ]
+  },
+  {
+    "id": "ma-teng",
+    "name": {
+      "ko": "마등",
+      "zhTW": "馬騰"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "faction": "군",
+    "row": "미확인",
+    "role": "보조",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-ma-teng",
+    "manuals": [
+      {
+        "name": "철기",
+        "text": "",
+        "textUnknown": true
+      }
+    ],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E9%A9%AC%E8%85%BE/"
+      }
+    ]
+  },
+  {
+    "id": "yuan-shu",
+    "name": {
+      "ko": "원술",
+      "zhTW": "袁術"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "faction": "군",
+    "row": "미확인",
+    "role": "보조",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-yuan-shu",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E8%A2%81%E6%9C%AF/"
+      }
+    ]
+  },
+  {
+    "id": "wang-yi",
+    "name": {
+      "ko": "왕이",
+      "zhTW": "王異"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "faction": "위",
+    "row": "미확인",
+    "role": "책략",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-wang-yi",
+    "manuals": [
+      {
+        "name": "풍화",
+        "text": "",
+        "textUnknown": true
+      }
+    ],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E7%8E%8B%E5%BC%82/"
+      }
+    ]
+  },
+  {
+    "id": "zhang-ning",
+    "name": {
+      "ko": "장녕",
+      "zhTW": "張寧"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "faction": "군",
+    "row": "미확인",
+    "role": "책략",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhang-ning",
+    "manuals": [
+      {
+        "name": "황건",
+        "text": "",
+        "textUnknown": true
+      }
+    ],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E5%BC%A0%E5%AE%81/"
+      }
+    ]
+  },
+  {
+    "id": "zhu-jun",
+    "name": {
+      "ko": "주준",
+      "zhTW": "朱儁"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "faction": "군",
+    "row": "미확인",
+    "role": "책략",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhu-jun",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/%E6%9C%B1%E5%84%81/"
+      }
+    ]
+  },
+  {
+    "id": "huangfu-song",
+    "name": {
+      "ko": "황보숭",
+      "zhTW": "皇甫嵩"
+    },
+    "season": "S3",
+    "overseasSeason": "S1",
+    "faction": "군",
+    "row": "미확인",
+    "role": "방어",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-huangfu-song",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://sanmou-wiki.vercel.app/generals/%E7%9A%87%E7%94%AB%E5%B5%A9"
+      }
+    ]
+  },
+  {
+    "id": "zhang-zhao",
+    "name": {
+      "ko": "장소",
+      "zhTW": "張昭"
+    },
+    "season": "S3",
+    "faction": "오",
+    "row": "미확인",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhang-zhao",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인",
+      "faction": "추정(역사 소속)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "zhang-chunhua",
+    "name": {
+      "ko": "장춘화",
+      "zhTW": "張春華"
+    },
+    "season": "S3",
+    "faction": "위",
+    "row": "미확인",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhang-chunhua",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인",
+      "faction": "추정(역사 소속)"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      }
+    ]
+  },
+  {
+    "id": "sp-zhuge-liang",
+    "name": {
+      "ko": "SP 제갈량",
+      "zhTW": "SP諸葛亮"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "faction": "촉",
+    "row": "미확인",
+    "role": "보조",
+    "unitType": "미확인",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-sp-zhuge-liang",
+    "manuals": [
+      {
+        "name": "팔진",
+        "text": "",
+        "textUnknown": true
+      }
+    ],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "미확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://www.sgmdtx.com/wj/SP%E8%AF%B8%E8%91%9B%E4%BA%AE/"
+      }
+    ]
+  },
+  {
+    "id": "romance-yuan-shao",
+    "name": {
+      "ko": "연의 원소",
+      "zhTW": "演義弓袁"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "faction": "군",
+    "row": "미확인",
+    "role": "문무",
+    "unitType": "궁병",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-romance-yuan-shao",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "원명으로 확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://news.17173.com/content/07012025/095404991.shtml"
+      }
+    ]
+  },
+  {
+    "id": "romance-gongsun-zan",
+    "name": {
+      "ko": "연의 공손찬",
+      "zhTW": "演義騎瓚"
+    },
+    "season": "S3",
+    "overseasSeason": "문정 1",
+    "faction": "군",
+    "row": "미확인",
+    "role": "문무",
+    "unitType": "기병",
+    "stats": {
+      "무력": 149,
+      "지력": 163,
+      "통솔": 183,
+      "선공": 162
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-romance-gongsun-zan",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "임시값(기존 무장 평균)",
+      "unitType": "원명으로 확인",
+      "row": "미확인"
+    },
+    "sources": [
+      {
+        "kind": "gsheet",
+        "label": "천하결전 시즌3 티어덱 시트 (공유 구글 시트)",
+        "url": "https://docs.google.com/spreadsheets/d/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/edit?gid=900776650",
+        "note": "가져온 때 2026-10-02 · 원 출처: sgmdtx.com"
+      },
+      {
+        "kind": "decklab",
+        "label": "deck-lab 교차참조",
+        "url": "https://news.17173.com/content/07012025/095404991.shtml"
+      }
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "id": "2026-10-04-skill-functions",
+  "date": "2026-10-04",
+  "season": "S2",
+  "category": "엔진",
+  "title": "전법 전체 함수화 — 전법 하나 = 함수 파일 하나 (194개)",
+  "body": "사용자 요청: 고유 전법·전법을 모두 함수로, 앞으로의 업데이트도 함수로.\n- 전법·고유 전법 194개를 각각 packages/engine/src/skills/<id>.ts 파일로 분리. 파일에는 엔진 정의(def), 한국판 원문 절별 구현 상태(clauses), 실행 함수 run(c)이 들어 있다.\n- run(c)는 공용 규칙이 구현된 부품(피해 c.damage·회복 c.heal·증감 c.buff·상태 c.status·능력치 c.statMod·디버프 제거 c.dispel·효과 부여 c.grant·보호 c.guard·대상 c.targets·확률 c.chance)을 원문 순서대로 부르고, 각 줄 위에 그 원문 절을 주석으로 단다.\n- 동등성: 함수 실행 결과가 예전 해석기와 티어덱 3,422판 전보까지 완전히 같음을 확인(테스트에 40판 상시 검사).\n- 앞으로: 신규 전법·수정은 함수 파일에서. 원문과 다르게 구현된 전법은 파일에서 원문 순서대로 고치고 revised 에 기록.\n- 다음 단계: 원문 미반영·근사 전법을 함수에서 원문대로 보정(보유 전법 먼저). 예) 방화범 — 원문은 '목표가 화공 상태면 혼란'인데 지금은 혼란·화공을 조건 없이 부여.",
+  "refs": [],
+  "author": "Claude",
+  "commit": "ccf734ac9005",
+  "files": [
+    "packages/engine/src/skills/*.ts (194)",
+    "packages/engine/src/skills/types.ts",
+    "packages/engine/src/skills/index.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/engine/src/index.ts",
+    "packages/data-tools/src/bundle.ts",
+    "packages/data-tools/src/gen-skill-funcs.ts",
+    "tests/skill-functions.test.ts",
+    "package.json",
+    "CLAUDE.md"
+  ]
+}

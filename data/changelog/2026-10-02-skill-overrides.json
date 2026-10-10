@@ -1,0 +1,19 @@
+{
+  "id": "2026-10-02-skill-overrides",
+  "date": "2026-10-02",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "전법 효과 정의 수정: 칠군수몰·천리기습·야습",
+  "body": "감사(D06)에서 원문과 다르게 동작한 3개 전법을 고쳤습니다(data/engine/overrides.json).\n- 칠군수몰: '적군 전체'인데 1명만 맞음 → 전체로 수정\n- 천리기습: '선공이 가장 낮은 적군' 대상과 '목표가 후열이면 추가 100%' 조건 추가\n- 야습: '자신의 선공이 목표보다 높으면 추가 50%' 조건 추가",
+  "refs": [
+    "flood-seven",
+    "thousand-raid",
+    "night-raid"
+  ],
+  "author": "Claude",
+  "commit": "7ad0305be8fc",
+  "files": [
+    "data/engine/overrides.json",
+    "packages/data-tools/src/bundle.ts"
+  ]
+}

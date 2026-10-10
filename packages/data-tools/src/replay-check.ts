@@ -1,0 +1,133 @@
+// 전보 역재현 검증: 녹화 영상의 툴팁 스탯을 그대로 무장에 세팅하고,
+// 전보에 찍힌 피해·회복 한 건 한 건을 엔진 공식으로 다시 계산해 실측과 비교한다.
+// 한 턴을 통째로 다시 돌리면 발동 확률·대상 선택·피신이 매번 달라 비교가 흐려지므로,
+// "누가 누구에게 어떤 계수로" 는 전보 그대로 고정하고 숫자만 엔진에 맡긴다.
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { buildBundle } from './bundle.ts';
+import { DATA, readJson } from './paths.ts';
+import { Simulator } from '../../engine/src/index.ts';
+
+type Mods = Record<string, number>;
+/**
+ * 전법 승품 보너스: 1단계당 효과 수치 +3% (곱). 사용자 전법 상세 화면 4장으로 확인(2026-10-04):
+ * 화공전술 승품2 80→84.8%(+6%), 평화의 기운 3 90→98.1%(+9%), 전장의 노래 4 130→145.6%(+12%), 화검 5 150→172.5%(+15%).
+ * 시뮬 기본은 승품 0(R-017).
+ */
+export const GRADE_STEP = 0.03;
+const gradeMult = (g?: number) => 1 + GRADE_STEP * (g ?? 0);
+interface Tooltip { turn: number; unit: string; stats?: Record<string, number>; troops?: number; maxTroops?: number; mods?: Mods }
+/** at: 그 순간 툴팁과 달라진 값(병력·능력치·증감) — 전보 줄의 괄호 수치로 채운다 */
+type At = Record<string, { troops?: number; stats?: Record<string, number>; mods?: Mods }>;
+interface DamageSample { excluded?: string; grade?: number; /** 병종 상성 등 시뮬 범위 밖 배율(+0.15 = 상성 +15%) — 실측 비교 때만 곱한다 */ counter?: number; turn: number; attacker: string; defender: string; kind: string; dmgType: '병기' | '책략'; ratio: number; observed: number; crit?: boolean; tag?: string; note?: string; at?: At }
+/** "(스탯)의 영향 받음" 표본: 원문 기본값과 전보에 실제로 찍힌 값, 그 순간 시전자(또는 목표)의 해당 스탯 */
+interface InfluenceSample { turn: number; skill: string; caster: string; base: number; observed: number; stat: string; statValue: number; note?: string }
+/**
+ * 같은 시전의 여러 대상 비교 표본: 공격자 스탯이 같으므로 대상 간 피해 비율만 비교한다(공격자 툴팁이 없어도 쓸 수 있다).
+ * 통솔(병기)·지력(책략) 방어 계수를 가르는 데 가장 좋은 표본.
+ */
+interface GroupSample { turn: number; attacker: string; kind: string; dmgType: '병기' | '책략'; ratio: number; grade?: number; attackerAt?: { troops?: number; stats?: Record<string, number>; mods?: Mods }; hits: Array<{ defender: string; observed: number; at?: { troops?: number; stats?: Record<string, number>; mods?: Mods } }>; note?: string }
+interface HealSample { excluded?: string; /** FIX-029 "지력과 통솔의 영향" 회복(지력 가산항 없음) */ noStatTerm?: boolean; grade?: number; turn: number; healer: string; target?: string; skill: string; ratio: number; observed: number; healStat?: string; healerStats?: Record<string, number> }
+export interface Replay {
+  id: string; date: string; season: string;
+  battle: { ally: { formation: string; units: Array<{ generalId: string; skills?: string[] }> }; enemy: { formation: string; units: string[] } };
+  tooltips: Tooltip[]; damageSamples?: DamageSample[]; healSamples?: HealSample[]; influenceSamples?: InfluenceSample[]; groupSamples?: GroupSample[];
+}
+export interface CheckRow { kind: 'damage' | 'heal' | 'influence' | 'group'; turn: number; label: string; observed: number; predicted: number; errPct: number; snapshot: string }
+
+/** 피해 계산에 쓰이는 증감 항목 — 툴팁에 없으면 0 으로 본다 */
+const DMG_MODS = ['주는피해', '받는피해', '주는병기피해', '받는병기피해', '주는책략피해', '받는책략피해', '주는일반공격피해', '받는일반공격피해',
+  '주는액티브피해', '받는액티브피해', '추격전법피해', '받는추격피해', '방어관통', '간파', '회심', '묘책', '피신', '받는회복량', '주는회복량', '병력우위대상피해'];
+
+export function loadReplays(): Replay[] {
+  const dir = join(DATA, 'replays');
+  return readdirSync(dir).filter(f => f.endsWith('.json')).map(f => readJson<Replay>(join(dir, f)));
+}
+
+export function checkReplay(r: Replay, coeffs: Record<string, unknown> = {}, sim = new Simulator(buildBundle(), { coeffs: { ...coeffs, damageVariance: 0 } })): CheckRow[] {
+  const E: any = (sim as any).engine;
+  E.setRng(() => 0.999);   // 피신·회심·2배 회복 판정이 일어나지 않게
+  const a = sim.buildArmy({ formation: r.battle.ally.formation, units: r.battle.ally.units.map(u => ({ generalId: u.generalId, skillIds: [] })) } as any, 'A');
+  const b = sim.buildArmy({ formation: r.battle.enemy.formation, units: r.battle.enemy.units.map(id => ({ generalId: id, skillIds: [] })) } as any, 'B');
+  const all: any[] = [...a, ...b];
+  const byGeneral = (gid: string) => {
+    // 양쪽에 같은 무장이 있으면 적군 쪽은 '<id>#e' 로 적는다 (2026-10-10 조조·소교·등애 vs 등애)
+    const u = gid.endsWith('#e') ? b.find((x: any) => x.generalId === gid.slice(0, -2)) : (a.find((x: any) => x.generalId === gid) || b.find((x: any) => x.generalId === gid));
+    if (!u) throw new Error(`${r.id}: 전투에 없는 무장 ${gid}`);
+    return u;
+  };
+  // 그 턴(없으면 가장 가까운 턴)의 툴팁을 무장에 덮어쓴다
+  const apply = (gid: string, turn: number, at?: At) => {
+    const u = byGeneral(gid);
+    const tips = r.tooltips.filter(t => t.unit === gid).sort((x, y) => Math.abs(x.turn - turn) - Math.abs(y.turn - turn) || x.turn - y.turn);
+    const tip = tips[0];
+    u.statuses = []; u.statBuffs = [];
+    for (const k of DMG_MODS) u.mods[k] = 0;
+    if (tip) {
+      Object.assign(u.stats, tip.stats || {});
+      Object.assign(u.mods, tip.mods || {});
+      if (tip.troops != null) u.troops = tip.troops;
+      if (tip.maxTroops != null) u.maxTroops = tip.maxTroops;
+    }
+    const o = at?.[gid];
+    if (o) { Object.assign(u.stats, o.stats || {}); Object.assign(u.mods, o.mods || {}); if (o.troops != null) u.troops = o.troops; }
+    u.mods.피신 = 0; u.mods.회심 = 0; u.mods.묘책 = 0; u.alive = true;
+    return { u, snap: tip ? `${tip.turn}턴 툴팁${tip.turn !== turn ? '(다른 턴)' : ''}${tip.stats ? '' : ' 스탯 없음'}` : '툴팁 없음' };
+  };
+  const rows: CheckRow[] = [];
+  const crit = Number((sim as any).coeffs.critMult ?? 1.5);
+  for (const s of (r.damageSamples || []).filter(x => !x.excluded)) {
+    const A = apply(s.attacker, s.turn, s.at), D = apply(s.defender, s.turn, s.at);
+    const tag = s.tag || (s.kind === '일반 공격' ? 'basic' : 'active');
+    const { dmg } = E.calcDamage(A.u, D.u, s.ratio * gradeMult(s.grade), s.dmgType, (sim as any).coeffs, null, s.turn, tag);
+    const predicted = Math.round(dmg * (s.crit ? crit : 1) * (1 + (s.counter ?? 0)));
+    rows.push({ kind: 'damage', turn: s.turn, label: `${A.u.name}→${D.u.name} ${s.kind} ${Math.round(s.ratio * 100)}% ${s.dmgType}`, observed: s.observed, predicted, errPct: (predicted - s.observed) / s.observed, snapshot: `${A.snap} / ${D.snap}` });
+  }
+  for (const s of (r.healSamples || []).filter(x => !x.excluded)) {
+    const H = apply(s.healer, s.turn);
+    if (s.healerStats) Object.assign(H.u.stats, s.healerStats);
+    const T = s.target ? apply(s.target, s.turn).u : H.u;
+    T.troops = 1; T.wounded = T.maxTroops;   // 회복 상한에 걸리지 않게
+    const { heal } = E.calcHeal(H.u, T, s.ratio * gradeMult(s.grade), (sim as any).coeffs, s.healStat, { noStatTerm: !!s.noStatTerm });
+    rows.push({ kind: 'heal', turn: s.turn, label: `${H.u.name} ${s.skill} 치유율 ${Math.round(s.ratio * 100)}%${s.healStat ? ` (${s.healStat} 기준)` : ''}`, observed: s.observed, predicted: heal, errPct: (heal - s.observed) / s.observed, snapshot: s.healerStats ? '표본에 적힌 시전자 스탯' : H.snap });
+  }
+  // 같은 시전 여러 대상: 대상별 피해 / 대상 평균 의 비율을 비교한다
+  for (const g of r.groupSamples || []) {
+    const preds = g.hits.map(h => {
+      const A = apply(g.attacker, g.turn, g.attackerAt ? { [g.attacker]: g.attackerAt } : undefined);
+      const D = apply(h.defender, g.turn, h.at ? { [h.defender]: h.at } : undefined);
+      return E.calcDamage(A.u, D.u, g.ratio * gradeMult(g.grade), g.dmgType, (sim as any).coeffs, null, g.turn, 'active').dmg as number;
+    });
+    const mp = preds.reduce((a, b) => a + b, 0) / preds.length, mo = g.hits.reduce((a, h) => a + h.observed, 0) / g.hits.length;
+    g.hits.forEach((h, i) => {
+      const o = h.observed / mo, p = preds[i] / mp;
+      rows.push({ kind: 'group', turn: g.turn, label: `${byGeneral(g.attacker).name} ${g.kind} ${g.dmgType} → ${byGeneral(h.defender).name} (대상 간 비율)`, observed: Math.round(o * 1000) / 1000, predicted: Math.round(p * 1000) / 1000, errPct: (p - o) / o, snapshot: '같은 시전 대상 비교' });
+    });
+  }
+  // 스탯 영향: 기본값 × (1 + (스탯 − 100) × statScaleWeight) — v1.12b 잠정식(W08)
+  const w = Number((sim as any).coeffs.statScaleWeight);
+  for (const s of r.influenceSamples || []) {
+    const predicted = s.base * Math.max(0, 1 + (s.statValue - 100) * w);
+    rows.push({ kind: 'influence', turn: s.turn, label: `${s.caster} ${s.skill} 기본 ${s.base} (${s.stat} ${s.statValue})`, observed: s.observed, predicted: Math.round(predicted * 100) / 100, errPct: (predicted - s.observed) / s.observed, snapshot: '전보 표기값' });
+  }
+  return rows;
+}
+
+/** 계수 하나를 범위 안에서 훑어 표본 오차(로그 제곱합)가 가장 작은 값을 찾는다 */
+export function fitCoeff(replays: Replay[], key: string, values: number[], filter: (r: CheckRow) => boolean) {
+  const bundle = buildBundle();
+  return values.map(v => {
+    const sim = new Simulator(bundle, { coeffs: { [key]: v, damageVariance: 0 } });
+    const rows = replays.flatMap(r => checkReplay(r, { [key]: v }, sim)).filter(filter);
+    const loss = rows.reduce((acc, x) => acc + Math.log(x.predicted / x.observed) ** 2, 0) / Math.max(1, rows.length);
+    return { value: v, rmsPct: Math.sqrt(loss) * 100, n: rows.length };
+  }).sort((x, y) => x.rmsPct - y.rmsPct);
+}
+
+if (process.argv[1]?.endsWith('replay-check.ts')) {
+  const replays = loadReplays();
+  for (const r of replays) {
+    console.log(`\n■ ${r.id}`);
+    for (const x of checkReplay(r)) console.log(`  ${x.kind === 'damage' ? '피해' : x.kind === 'heal' ? '회복' : x.kind === 'group' ? '대상 비교' : '스탯 영향'} ${x.turn}턴 ${x.label}: 실측 ${x.observed} / 엔진 ${x.predicted} (${x.errPct >= 0 ? '+' : ''}${(x.errPct * 100).toFixed(1)}%) — ${x.snapshot}`);
+  }
+}

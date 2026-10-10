@@ -1,0 +1,12 @@
+{
+  "id": "2026-10-07-raid-grade",
+  "date": "2026-10-07",
+  "season": "S1",
+  "category": "전법 데이터",
+  "title": "순간 돌습 등급 희귀로 되돌림",
+  "body": "사용자 확인: 순간 돌습은 희귀 전법. 도감 녹화 대조 때 전설로 바꾼 것을 취소했다(R-056 문구 수정, P-0038 메모).",
+  "refs": ["battlefield-raid"],
+  "author": "Claude",
+  "commit": "1404ba2",
+  "files": ["data/patches/skills.json", "data/common/confirmed-rules.json", "data/design/posts/P-0038.json"]
+}

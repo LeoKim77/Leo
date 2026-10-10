@@ -1,0 +1,117 @@
+{
+  "note": "v1.12b 절 분석(MISSING/NOTE)이 실제 엔진 구현보다 오래된 경우 사람이 검토해 고친 표시. match 문구가 든 절의 상태를 바꾼다.",
+  "skills": {
+    "ambushes": [
+      {
+        "match": "랜덤 적군 단일 목표에게",
+        "status": "approx",
+        "note": "4회 타격 구현. 100~140% 무작위 폭은 140% 고정"
+      }
+    ],
+    "assault": [
+      {
+        "match": "피해 전달",
+        "status": "ok",
+        "note": "일반 공격 후 피해 전달(transfer) 구현"
+      }
+    ],
+    "taxation": [
+      {
+        "match": "디버프 효과 부여 후",
+        "status": "ok",
+        "note": "자신이 디버프 부여 시 회복 트리거 구현"
+      },
+      {
+        "match": "턴마다 최대 10회",
+        "status": "ok",
+        "note": "maxPerTurn 10"
+      }
+    ],
+    "u-taishi-ci": [
+      {
+        "match": "축력",
+        "status": "ok",
+        "note": "charge_shot 특수 처리"
+      },
+      {
+        "match": "일반 공격 불가 상태",
+        "status": "ok",
+        "note": "charge_shot 특수 처리"
+      }
+    ],
+    "u-gan-ning": [
+      {
+        "match": "일반 공격 피해가 150%",
+        "status": "ok",
+        "note": "주는일반공격피해 +150%"
+      }
+    ],
+    "u-li-ru": [
+      {
+        "match": "짐독",
+        "status": "ok",
+        "note": "짐독·시해 상태 구현(calcDamage 시해 50%)"
+      },
+      {
+        "match": "시해",
+        "status": "ok",
+        "note": "시해 상태 구현"
+      }
+    ],
+    "choose-momentum": [
+      {
+        "match": "반드시 발동",
+        "status": "approx",
+        "note": "확정 회심/묘책 1회. 우군 2명 매 턴 80%"
+      },
+      {
+        "match": "40% 증가",
+        "status": "approx",
+        "note": "회심/묘책 피해 +40%를 1턴 버프로"
+      }
+    ],
+    "strategize": [
+      {
+        "match": "무력",
+        "status": "ok"
+      },
+      {
+        "match": "지력",
+        "status": "ok"
+      },
+      {
+        "match": "통솔",
+        "status": "ok"
+      },
+      {
+        "match": "선공이 25",
+        "status": "approx",
+        "note": "지력 영향 반영(infMult)"
+      }
+    ],
+    "calm": [
+      {
+        "match": "",
+        "status": "ok",
+        "note": "자기 제약(selfRestrict) + 홀짝 턴 피해 감소 구현"
+      }
+    ],
+    "u-dong-zhuo": [
+      {
+        "match": "탈취하고",
+        "status": "approx",
+        "note": "적군 통솔 감소만 구현. 우군 통솔 탈취·자신 가산은 미지원"
+      },
+      {
+        "match": "반환",
+        "status": "ok",
+        "note": "1턴 지속"
+      },
+      {
+        "match": "매 턴 10% 감소",
+        "status": "ok",
+        "note": "turnScale"
+      }
+    ]
+  }
+}

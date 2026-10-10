@@ -1,0 +1,12 @@
+{
+  "id": "2026-10-10-sujungjeon",
+  "date": "2026-10-10",
+  "season": "S1",
+  "category": "데이터 수정",
+  "title": "전법 이름 정정: 수전 섬멸 → 수중전 (영웅)",
+  "body": "사용자 전법 상세 캡처로 엑셀의 '수전 섬멸'이 한국판 '수중전'(영웅, 액티브 60%, 책략)임을 확인해 이름을 고쳤다. 캡처 수치(57.5%·34.5%)는 낮은 레벨 값이고, 최고 레벨 100%·60%·홍수 2턴은 기존 원문과 같아 효과는 그대로다.",
+  "refs": ["flood-break"],
+  "author": "Claude",
+  "commit": "b71139e",
+  "files": ["data/patches/skills.json", "packages/engine/src/skills/flood-break.ts"]
+}
