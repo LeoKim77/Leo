@@ -7,6 +7,6 @@
   "body": "사용자가 등급별로 나눠 녹화한 무장 창고·전법 목록으로 카드 색 등급을 넣었다. 무장 68명(전설 67·영웅 황보숭)에 등급이 생겨 보유 관리에서 등급별로 나뉜다. S1 엑셀이 '희귀'로 적은 전법 28개는 실제로 영웅(보라)이라 고쳤고, 수전 섬멸은 녹화의 '수중전'으로 보고 영웅으로 넣었다(이름 확인 대기). 게임의 실제 희귀 전법 11개와 영웅 무장 22명·희귀 무장 4명은 우리 데이터에 아직 없다(P-0048).",
   "refs": [],
   "author": "Claude",
-  "commit": "",
+  "commit": "0073a52",
   "files": ["data/patches/generals.json", "data/patches/skills.json", "packages/engine/src/model.ts", "tests/data-integrity.test.ts", "data/design/posts/P-0047.json", "data/design/posts/P-0048.json"]
 }
