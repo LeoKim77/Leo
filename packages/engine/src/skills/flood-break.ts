@@ -1,13 +1,19 @@
-// 수전 섬멸 · 전법 · 액티브 60%
+// 수중전 · 전법 · 액티브 60%
 // 원문: 랜덤 적군 2명에게 100%의 책략 피해를 주며, 목표가 홍수 상태면 추가로 60%의 책략 피해를 준다. 그렇지 않으면 2턴 동안 지속되는 홍수을(를) 부여한다.
 // 원문 절 구현: ok / ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
   id: "flood-break",
-  name: "수전 섬멸",
+  name: "수중전",
   kind: "액티브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-10",
+      "note": "이름 정정: 수전 섬멸 → 수중전 (사용자 캡처, 영웅). 최고 레벨 수치는 원문과 같음"
+    }
+  ],
   clauses: [
     {
       "text": "랜덤 적군 2명에게 100%의 책략 피해를 주며",
