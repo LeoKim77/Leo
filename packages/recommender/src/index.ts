@@ -14,6 +14,8 @@ export interface RecommendInput {
   allowGeneralSub?: boolean;
   /** deck-lab 대체 전법 평가 (참고 근거) */
   alternatives?: AltRating[];
+  /** 이 시즌의 티어덱만 기준·메타 상대로 쓴다(없으면 전체) — 시즌3 을 고르면 시즌3 티어덱과 시뮬 */
+  season?: string;
   /** 시뮬 검증: 메타 상대 수, 상대당 판 수 (0 이면 생략), 검증할 후보 조합 수 */
   validate?: { opponents: number; runs: number; seed?: string; candidates?: number };
   onProgress?: (done: number, total: number) => void;
@@ -140,7 +142,7 @@ export class Recommender {
     const ownG = new Set(input.owned.generals.filter(id => !(this.gById.get(id) as any)?.notInKr)), ownS = new Set(input.owned.skills);
     const count = Math.max(1, Math.min(5, input.count));
     const allowGSub = input.allowGeneralSub !== false;
-    const decks = this.bundle.tierDecks;
+    const decks = this.seasonDecks(input.season);
     type State = { plans: DeckPlan[]; usedG: Set<string>; usedS: Set<string>; total: number };
     let beam: State[] = [{ plans: [], usedG: new Set(), usedS: new Set(), total: 0 }];
     const BEAM = 40;
@@ -170,7 +172,7 @@ export class Recommender {
       const cands = beam.slice(0, input.validate.candidates ?? 6);
       const unique = new Map<string, DeckPlan>();
       cands.forEach(st => st.plans.forEach(p => unique.set(planKey(p), p)));
-      this.validate([...unique.values()], input.validate, input.onProgress);
+      this.validate([...unique.values()], input.validate, input.onProgress, input.season);
       const combined = (st: State) => st.plans.reduce((a, p) => a + 0.5 * p.score + 0.5 * (unique.get(planKey(p))!.validation!.avgWinRate), 0);
       best = cands.reduce((x, y) => (combined(y) > combined(x) ? y : x));
       best.plans.forEach(p => { p.validation = unique.get(planKey(p))!.validation; });
@@ -186,9 +188,15 @@ export class Recommender {
   }
 
   /** 메타(상위 티어덱) 상대 승률로 검증 */
-  private validate(plans: DeckPlan[], v: NonNullable<RecommendInput['validate']>, onProgress?: (d: number, t: number) => void) {
+  private seasonDecks(season?: string) {
+    const all = this.bundle.tierDecks;
+    const own = season ? all.filter(t => t.season === season) : [];
+    return own.length ? own : all;
+  }
+
+  private validate(plans: DeckPlan[], v: NonNullable<RecommendInput['validate']>, onProgress?: (d: number, t: number) => void, season?: string) {
     const sim = new Simulator(this.bundle);
-    const meta = [...this.bundle.tierDecks].sort((a, b) => tierWeight(b.tier) - tierWeight(a.tier)).slice(0, v.opponents);
+    const meta = [...this.seasonDecks(season)].sort((a, b) => tierWeight(b.tier) - tierWeight(a.tier)).slice(0, v.opponents);
     const total = plans.length * meta.length;
     let done = 0;
     for (const p of plans) {

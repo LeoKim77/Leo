@@ -83,7 +83,7 @@ function resolveDeck(d: z.infer<typeof deckInput>): DeckSpec {
   };
 }
 
-const server = new McpServer({ name: 'cheonha-sim', title: '삼국지 천하결전 무한무투', version: '0.1.0' }, {
+const server = new McpServer({ name: 'cheonha-sim', title: '삼국지 천하결전 전투시뮬', version: '0.1.0' }, {
   instructions: '삼국지 천하결전 덱 전투 시뮬레이터. 기획 플랫폼(data/design)의 규정이 정본이다 — 사용자와 대화에서 결정한 것은 design_post·design_spec_update·design_resolve 로 먼저 기록하고, 시뮬 엔진은 그 규정만 구현한다. 한국판 용어를 쓴다(병기/책략/피신/묘책, 해외 표기 병인/모략/회피/기책 금지). 사용자가 알려준 게임 정보는 data_patch 로 반영하고, board_post 로 업데이트 게시판에 날짜와 함께 기록한다. 해외 자료를 옮길 때는 term_normalize 로 한국판 용어로 바꾼다.',
 });
 

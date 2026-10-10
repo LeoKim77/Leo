@@ -1,4 +1,4 @@
-/* 삼국지 천하결전 무한무투 — v1.12b 디자인 토큰 계승
+/* 삼국지 천하결전 전투시뮬 — v1.12b 디자인 토큰 계승
    묵색 바탕 · 인장주홍(내 덱) · 금박(티어/강조) · 온백 본문
    차트: 내 덱 #e0604c / 상대 #3987e5 (어두운 바탕에서 색각 검증 통과) */
 :root {
@@ -132,7 +132,17 @@ tr.click { cursor: pointer; } tr.click:hover td { background: var(--panel-2); }
 .game-tip-note { margin-top: 6px; padding-top: 5px; border-top: 1px dashed #444; color: #c9a227; font-size: 12px; }
 :root { --tip-ally: #5aa8ff; --tip-enemy: #ff5a5a; }
 .log .snap-name { color: inherit; text-decoration: underline dotted; cursor: pointer; }
-.log .turn { color: var(--gold); font-weight: 700; margin-top: 6px; }
+.log .turn { color: #e3c98a; font-weight: 700; margin-top: 10px; text-align: center; }
+/* 게임 전보 색 (녹화 화면 기준) */
+.log { color: #ece7dc; }
+.log .lg-ally { color: #5aa9f0; } .log .lg-enemy { color: #e5534b; }
+.log .lg-dmg { color: #e5534b; } .log .lg-heal { color: #4cc96a; } .log .lg-num { color: #f0b429; }
+.log-wrap { display: flex; gap: 8px; }
+.log-wrap .log { flex: 1; min-width: 0; }
+.turn-nav { display: flex; flex-direction: column; gap: 4px; flex: 0 0 auto; max-height: 460px; overflow: auto; }
+.turn-nav button { background: var(--panel-2); border: 1px solid var(--border); color: var(--text-dim); border-radius: 6px; padding: 5px 9px; font-size: 12.5px; cursor: pointer; white-space: nowrap; }
+.turn-nav button.on, .turn-nav button:hover { border-color: var(--gold); color: var(--gold); }
+@media (max-width: 520px) { .log-wrap { flex-direction: column; } .turn-nav { flex-direction: row; flex-wrap: wrap; max-height: none; } }
 .progress { height: 6px; background: var(--panel-2); border-radius: 3px; overflow: hidden; }
 .progress > div { height: 100%; background: var(--gold); width: 0; transition: width .2s; }
 

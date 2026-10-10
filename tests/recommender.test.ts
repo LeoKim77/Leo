@@ -63,3 +63,18 @@ describe('검증 전투 짜기', () => {
     for (const bt of p.battles) for (const u of bt.units) expect(allG.slice(0, 10)).toContain(u.generalId);
   });
 });
+
+// 2026-10-10 시즌을 고르면 그 시즌 티어덱만 기준·메타 상대로 쓴다
+import { buildBundle as _bb } from '../packages/data-tools/src/bundle.ts';
+import { Recommender as _R } from '../packages/recommender/src/index.ts';
+describe('시즌별 덱 추천', () => {
+  it('시즌3 을 고르면 시즌3 티어덱과 시즌3 메타로 검증', () => {
+    const b: any = _bb();
+    const r: any = new _R(b).recommend({ owned: { generals: b.generals.map((g: any) => g.id), skills: b.skills.map((s: any) => s.id) }, count: 2, season: 'S3', validate: { opponents: 2, runs: 2, candidates: 2 } } as any);
+    expect(r.decks.length).toBeGreaterThan(0);
+    for (const d of r.decks) {
+      expect(d.season).toBe('S3');
+      for (const o of d.validation.opponents) expect(b.tierDecks.find((t: any) => t.id === o.id).season).toBe('S3');
+    }
+  });
+});

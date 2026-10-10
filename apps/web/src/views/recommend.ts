@@ -1,6 +1,6 @@
 // 덱 추천 — 내 보유 무장·전법으로 1~5덱 (R-006: 전법 전체 1회, 무장 한 부대)
 import { h, mount, select, lv, pct } from '../dom.ts';
-import { app, loadUser, loadDecklab, generalById, skillById } from '../state.ts';
+import { app, loadUser, loadDecklab, generalById, skillById, seasonLabel, inSeason } from '../state.ts';
 import { hBars } from '../charts.ts';
 import { call } from '../sim-client.ts';
 import { setSimCustom } from './sim.ts';
@@ -50,15 +50,15 @@ export function renderRecommend(root: HTMLElement) {
     try {
       const dl = await loadDecklab().catch(() => null);
       const alternatives = dl?.tacticAlternatives || [];
-      result = await call<RecommendResult>({ type: 'recommend', owned: { generals: user.ownedGenerals, skills: user.ownedSkills }, count, allowGeneralSub: allowSub, alternatives, validateRuns: runs },
+      result = await call<RecommendResult>({ type: 'recommend', owned: { generals: user.ownedGenerals.filter(id => inSeason(generalById(id)?.season || 'S1')), skills: user.ownedSkills.filter(id => inSeason(skillById(id)?.season || 'S1')) }, count, allowGeneralSub: allowSub, alternatives, validateRuns: runs, season: app.season },
         (d, t) => { progress = d / t; const bar = root.querySelector('.progress > div') as HTMLElement; if (bar) bar.style.width = `${progress * 100}%`; });
     } catch (e: any) { error = e.message; }
     busy = false; redraw();
   };
   const noRoster = !user.ownedGenerals.length;
   mount(root,
-    h('div', { class: 'section-head' }, h('h2', null, '덱 추천'), h('span', { class: 'sub' }, `보유 무장 ${user.ownedGenerals.length} · 전법 ${user.ownedSkills.length} · 티어덱 ${app.bundle.tierDecks.length}개 기준`)),
-    h('div', { class: 'notice' }, '티어덱을 기준으로 보유 카드를 채우고, 없는 카드는 비슷한 보유 카드로 대체합니다. 전법은 전체 부대를 통틀어 1번만(R-006), 무장도 한 부대에만 씁니다. 상위 후보 조합을 메타 덱(상위 티어 3개)과 붙여 보고 "티어 충족도 + 실제 승률"이 가장 높은 조합을 고릅니다. 스탯 배분·세팅 병법은 반영하지 않습니다.'),
+    h('div', { class: 'section-head' }, h('h2', null, '덱 추천'), h('span', { class: 'sub' }, `${seasonLabel(app.season)} · 보유 무장 ${user.ownedGenerals.length} · 전법 ${user.ownedSkills.length} · 이 시즌 티어덱 ${app.bundle.tierDecks.filter(t => t.season === app.season).length}개 기준`)),
+    h('div', { class: 'notice' }, '티어덱을 기준으로 보유 카드를 채우고, 없는 카드는 비슷한 보유 카드로 대체합니다. 전법은 전체 부대를 통틀어 1번만(R-006), 무장도 한 부대에만 씁니다. 상위 후보 조합을 고른 시즌의 메타 덱(그 시즌 상위 티어 3개)과 붙여 보고 "티어 충족도 + 실제 승률"이 가장 높은 조합을 고릅니다. 스탯 배분·세팅 병법은 반영하지 않습니다.'),
     noRoster ? h('div', { class: 'notice', style: { color: 'var(--warn)' } }, '보유 탭에서 가진 무장·전법을 먼저 체크하세요.') : null,
     h('div', { class: 'toolbar' },
       h('label', { class: 'sub' }, '덱 수 ', select(['1', '2', '3', '4', '5'], String(count), v => { count = +v; })),

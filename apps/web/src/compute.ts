@@ -13,7 +13,7 @@ type Msg =
   | { type: 'list'; id: number; a: DeckSpec; b: DeckSpec; count: number; seed: string }
   | { type: 'audit'; id: number; skillIds: string[] }
   | { type: 'verifyPlan'; id: number; owned: { generals: string[]; skills: string[] }; queue: any[] }
-  | { type: 'recommend'; id: number; owned: { generals: string[]; skills: string[] }; count: number; allowGeneralSub: boolean; alternatives: any[]; validateRuns: number };
+  | { type: 'recommend'; id: number; owned: { generals: string[]; skills: string[] }; count: number; allowGeneralSub: boolean; alternatives: any[]; validateRuns: number; season?: string };
 
 function mergeMc(parts: MonteCarloResult[], seed: string): MonteCarloResult {
   const runs = parts.reduce((a, p) => a + p.runs, 0);
@@ -81,7 +81,7 @@ export function handle(m: Msg, post: Post) {
       post({ id: m.id, type: 'result', result: planVerification(bundle, m.queue, m.owned) });
     } else if (m.type === 'recommend') {
       const r = new Recommender(bundle).recommend({
-        owned: m.owned, count: m.count, allowGeneralSub: m.allowGeneralSub, alternatives: m.alternatives,
+        owned: m.owned, count: m.count, allowGeneralSub: m.allowGeneralSub, alternatives: m.alternatives, season: m.season,
         validate: m.validateRuns > 0 ? { opponents: 3, runs: m.validateRuns, candidates: 6 } : undefined,
         onProgress: (done, total) => post({ id: m.id, type: 'progress', done, total }),
       });

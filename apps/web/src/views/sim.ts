@@ -168,13 +168,32 @@ function battleView() {
     tipEl.style.top = `${(below ? r.bottom + 6 : Math.max(8, r.top - hgt - 6)) + window.scrollY}px`;
     setTimeout(() => document.addEventListener('click', closeTip, { once: true }), 0);
   };
+  // 게임 전보 글씨 색: 아군 이름 파랑 · 적군 이름 빨강 · 손실 병력 빨강 · 회복 병력 초록 · 증감 수치·스택·회심/묘책 배율 노랑
+  const sideOfName = new Map<string, string>();
+  (battle.units || []).forEach((u: any) => sideOfName.set(u.name, sideOfName.has(u.name) && sideOfName.get(u.name) !== u.side ? 'both' : u.side));
+  const nameSide = (name: string, i: number) => snaps[i]?.[name]?.side || sideOfName.get(name) || '';
+  const colorNums = (t: string) => t.split(/(병력이 [\d,]+(?=\()|병력을 [\d,]+(?=\()|[\d.]+%?(?=\([^)]*\)\s*(?:증가|감소|중첩))|\d+(?=스택)|\d+(?:\.\d+)?%(?=입니다))/).map((part, k) => {
+    if (k % 2 === 0) return part;
+    if (part.startsWith('병력이 ')) return ['병력이 ', h('span', { class: 'lg-dmg' }, part.slice(4))];
+    if (part.startsWith('병력을 ')) return ['병력을 ', h('span', { class: 'lg-heal' }, part.slice(4))];
+    return h('span', { class: 'lg-num' }, part);
+  });
   const lineEl = (l: string, i: number) => {
     const text = l.replace(/^\d+턴: /, '');
-    if (!snaps[i]) return text;
     return text.split(/(\[[^\]]+\])/).map(part => {
       const m = part.match(/^\[([^\]]+)\]$/);
-      return m && snaps[i][m[1]] ? h('a', { class: 'snap-name', href: 'javascript:void 0', onclick: (ev: MouseEvent) => { ev.stopPropagation(); showSnap(m[1], i, ev); } }, part) : part;
+      if (!m) return colorNums(part);
+      const side = nameSide(m[1], i);
+      const cls = side === 'A' ? 'lg-ally' : side === 'B' ? 'lg-enemy' : '';
+      return snaps[i]?.[m[1]] ? h('a', { class: `snap-name ${cls}`, href: 'javascript:void 0', onclick: (ev: MouseEvent) => { ev.stopPropagation(); showSnap(m[1], i, ev); } }, part) : h('span', { class: cls }, part);
     });
+  };
+  // 게임처럼 왼쪽에 준비 턴·1~8턴 — 누르면 그 턴 전보로 이동
+  const turnMarks = rows.filter(({ l }) => /── \d+번째 턴 ──|── 포진 ──/.test(l)).map(({ l, i }) => ({ i, label: /포진/.test(l) ? '준비' : `${l.match(/(\d+)번째 턴/)![1]}턴` }));
+  const goTurn = (i: number) => {
+    const box = document.getElementById('battle-log'), el = document.getElementById(`turn-${i}`);
+    if (box && el) box.scrollTo({ top: el.offsetTop - box.offsetTop, behavior: 'smooth' });
+    document.querySelectorAll('.turn-nav button').forEach(b => b.classList.toggle('on', b.getAttribute('data-i') === String(i)));
   };
   const a = battle.audit;
   const bad = a.skills.filter((s: any) => s.worst === 'fail' || s.worst === 'warn');
@@ -182,7 +201,11 @@ function battleView() {
     h('div', { class: 'panel' },
       h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '15px' } }, `전보 — ${battle.winner === 'A' ? '내 덱 승' : battle.winner === 'B' ? '상대 승' : '무승부'} (${battle.turns}턴${(battle as any).rounds > 1 ? ` · ${(battle as any).rounds}차 교전` : ''})`), h('span', { class: 'sub' }, `시드 ${battle.seed}`)),
       snaps.length ? h('div', { class: 'sub', style: { marginBottom: '6px' } }, '전보의 무장 이름을 누르면 그 시점의 툴팁이 게임처럼 뜹니다.') : null,
-      h('div', { class: 'log' }, rows.map(({ l, i }) => /── \d+번째 턴 ──|── 포진 ──/.test(l) ? h('div', { class: 'turn' }, l.replace(/^\d+턴: /, '')) : h('div', null, lineEl(l, i))))),
+      h('div', { class: 'log-wrap' },
+        h('div', { class: 'turn-nav' }, turnMarks.map(t => h('button', { 'data-i': String(t.i), onclick: () => goTurn(t.i) }, t.label))),
+        h('div', { class: 'log', id: 'battle-log' }, rows.map(({ l, i }) => /── \d+번째 턴 ──|── 포진 ──/.test(l)
+          ? h('div', { class: 'turn', id: `turn-${i}` }, /포진/.test(l) ? '◇ 준비 턴 ◇' : `◇ ${l.match(/(\d+)번째 턴/)![1]}번째 턴 ◇`)
+          : h('div', null, lineEl(l, i)))))),
     h('div', { class: 'panel' },
       h('h3', { style: { fontSize: '15px', marginBottom: '8px' } }, '이 전투의 규칙 감사'),
       h('table', null, h('tbody', null, a.engineRules.map((r: any) => h('tr', null, h('td', { style: { width: '74px' } }, lv(r.level)), h('td', null, h('div', null, r.title), h('div', { class: 'dim', style: { fontSize: '12.5px' } }, r.message), r.evidence?.length ? h('div', { class: 'muted', style: { fontSize: '12px' } }, r.evidence.slice(0, 3).join(' / ')) : null))))),
