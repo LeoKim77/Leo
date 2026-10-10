@@ -729,7 +729,7 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
   }
   // 회유/심리공격: 준 피해만큼 자신의 병력 회복
   // 이것도 "회복"이므로 받는회복량/군량 고갈 보정을 동일하게 적용한다
-  // (예전에는 보정 없이 그대로 더해서, 군량 고갈이 걸려도 흡혈은 멀쩡히 되는 문제가 있었음)
+  // (예전에는 보정 없이 그대로 더해서, 군량 고갈이 걸려도 회유는 멀쩡히 되는 문제가 있었음)
   const drain = dmgType === '병기' ? (attacker.mods.회유 || 0) : (attacker.mods.심리공격 || 0);
   if (drain > 0 && attacker.alive) {
     const drainName = dmgType === '병기' ? '회유' : '심리 공격';
@@ -806,7 +806,7 @@ function calcHeal(caster, target, ratio, coeffs, healStat) {
   //   오차 3%에 맞아서(통솔 213.20인데도) 통솔 기여가 유의미하지 않다고 판단했다.
   //   무력도 같은 이유로 미반영. 단 전쟁 조달만 실측이 예측의 4.56배로 크게 어긋나는데,
   //   이는 무력 계수로 설명하기엔 과도해서(지력 가중치의 18배 필요) 별도 구조로 추정된다
-  //   — "일반 공격 후" 발동이라 공격 피해량 연동(흡혈)일 가능성. 미해결, 표본 추가 필요.
+  //   — "일반 공격 후" 발동이라 공격 피해량 연동(회유)일 가능성. 미해결, 표본 추가 필요.
   //   회복량은 시전자 병력에 비례하지 않는다. beta 미적용.
   // healStat: 회복량이 지력 대신 다른 능력치를 따르는 경우 (FEAT-008, 결사의 다짐 '결사' → 통솔, 전보 확인)
   const casterInt = effStat(caster, healStat || '지력');

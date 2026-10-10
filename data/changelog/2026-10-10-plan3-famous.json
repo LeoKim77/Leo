@@ -1,0 +1,12 @@
+{
+  "id": "2026-10-10-plan3-famous",
+  "date": "2026-10-10",
+  "season": "S2",
+  "category": "검증",
+  "title": "녹화 계획 3판 조조 전법 교체(찬란한 위명), 설계·시뮬 문구의 '흡혈' → 회유",
+  "body": "사용자가 강철의 의지를 보유하지 않아 녹화 계획 3판(회복·회유 판) 조조의 둘째 전법을 찬란한 위명(2턴 동안 자신 회유 +30%, 랜덤 적 2명 220% 병기)으로 바꿨다. 찬란한 위명 함수는 원문대로 실행됨을 시뮬로 확인했다. 또 '흡혈'은 인게임 공식 용어가 아니어서 설계서·시뮬 문구를 회유·심리 공격으로 고쳤다(P-0044).",
+  "refs": ["cao-cao"],
+  "author": "Claude",
+  "commit": "",
+  "files": ["data/verification/recording-plan.json", "data/design/spec.json", "data/design/categories.json", "data/design/posts/P-0044.json", "apps/design/template.html", "packages/engine/src/legacy/core.js", "CLAUDE.md"]
+}
