@@ -31,6 +31,8 @@ export interface General {
   season: string;
   /** 해외(중국/대만) 원작 기준 시즌·콘텐츠 그룹 — 참고용 */
   overseasSeason?: string;
+  /** 무장 등급(카드 색) — 전설(금)·영웅(보라)·희귀(파랑). 사용자 도감 녹화 2026-10-10 */
+  grade?: '전설' | '영웅' | '희귀';
   faction: Faction | string;
   row: Row | string;
   role?: string;
