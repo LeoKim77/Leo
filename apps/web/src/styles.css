@@ -59,6 +59,13 @@ textarea { width: 100%; min-height: 90px; }
 .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
 .chip { border: 1px solid var(--border); border-radius: 999px; padding: 3px 11px; font-size: 13px; cursor: pointer; background: var(--panel); color: var(--text-dim); }
 .chip.on { border-color: var(--gold); color: var(--gold); }
+/* 등급 색: 전설 금 · 영웅 보라 · 희귀 파랑 (보유 관리) */
+:root { --g-legend: #d4a63c; --g-hero: #a77be0; --g-rare: #4f95e8; }
+.grade-row { display: flex; gap: 8px; align-items: flex-start; margin: 4px 0; }
+.grade-tag { flex: 0 0 auto; min-width: 58px; font-size: 12px; padding: 4px 0; color: var(--text-dim); }
+.grade-tag.g-legend { color: var(--g-legend); } .grade-tag.g-hero { color: var(--g-hero); } .grade-tag.g-rare { color: var(--g-rare); }
+.chip.g-legend { border-left: 3px solid var(--g-legend); } .chip.g-hero { border-left: 3px solid var(--g-hero); } .chip.g-rare { border-left: 3px solid var(--g-rare); }
+.chip.on.g-legend { border-color: var(--g-legend); color: var(--g-legend); } .chip.on.g-hero { border-color: var(--g-hero); color: var(--g-hero); } .chip.on.g-rare { border-color: var(--g-rare); color: var(--g-rare); }
 
 .panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
 .grid { display: grid; gap: 12px; }

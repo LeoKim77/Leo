@@ -1,14 +1,18 @@
-// 듬직한 자태 · 전법 · 패시브 100%
+// 늠름한 자태 · 전법 · 패시브 100%
 // 원문: 자신의 연타 확률이 60% 증가하며, 주는 피해가 10% 증가한다.
 // 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
   id: "valiant-form",
-  name: "듬직한 자태",
+  name: "늠름한 자태",
   kind: "패시브",
   isUnique: false,
   revised: [
+    {
+      "date": "2026-10-10",
+      "note": "이름 정정: 듬직한 자태 → 늠름한 자태 (사용자 확인)"
+    },
     {
       "date": "2026-10-04",
       "note": "연타·주는 피해를 상시로 (예전엔 2턴 뒤 사라짐)"

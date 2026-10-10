@@ -1,0 +1,12 @@
+{
+  "id": "2026-10-10-roster-grades",
+  "date": "2026-10-10",
+  "season": "S2",
+  "category": "기능",
+  "title": "보유 관리를 등급별(전설·영웅·희귀)로 나눔, 늠름한 자태 이름 정정",
+  "body": "시뮬 사이트 보유 관리에서 무장(진영별)·전법(종류별) 안을 다시 전설(금)·영웅(보라)·희귀(파랑)로 나눴다. 무장 등급은 자료가 없어 '등급 미확인'으로 나오고, 영웅·희귀 전법 등급은 엑셀 기준이라 녹화 요청 글(P-0047)을 올렸다. 전법 '듬직한 자태'를 한국판 이름 '늠름한 자태'로 고쳤다(사용자 확인).",
+  "refs": ["valiant-form"],
+  "author": "Claude",
+  "commit": "",
+  "files": ["apps/web/src/views/roster.ts", "apps/web/src/styles.css", "data/patches/skills.json", "data/patches/tier-decks.json", "packages/engine/src/skills/valiant-form.ts", "data/verification/recording-plan.json", "data/design/posts/P-0047.json"]
+}

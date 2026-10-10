@@ -5,6 +5,8 @@ import { app, inSeason, loadUser, saveUser, userStoreStatus } from '../state.ts'
 let msg = '';
 let showText = '';
 let showPaste = false;
+const GRADES = ['전설', '영웅', '희귀'];
+const GRADE_CLASS: Record<string, string> = { 전설: 'g-legend', 영웅: 'g-hero', 희귀: 'g-rare', '등급 미확인': 'g-unknown' };
 
 export function renderRoster(root: HTMLElement) {
   const user = loadUser();
@@ -14,7 +16,12 @@ export function renderRoster(root: HTMLElement) {
   const skills = app.bundle.skills.filter(s => !s.isUnique && inSeason(s.season));
   const byFaction = ['위', '촉', '오', '군'].map(f => [f, generals.filter(g => g.faction === f)] as const);
   const byKind = ['지휘', '패시브', '액티브', '추격'].map(k => [k, skills.filter(s => s.kind === k)] as const);
-  const chip = (on: boolean, label: string, onClick: () => void) => h('button', { class: `chip ${on ? 'on' : ''}`, onclick: onClick }, label);
+  const chip = (on: boolean, label: string, onClick: () => void, grade?: string) => h('button', { class: `chip ${on ? 'on' : ''} ${GRADE_CLASS[grade || ''] || ''}`, onclick: onClick }, label);
+  // 진영·전법 종류 안에서 다시 등급별로(전설 금 · 영웅 보라 · 희귀 파랑). 등급 자료가 없는 것은 '등급 미확인'
+  const byGrade = <T extends { grade?: string }>(list: T[]) => [...GRADES, '등급 미확인']
+    .map(gr => [gr, list.filter(x => (GRADES.includes(x.grade || '') ? x.grade : '등급 미확인') === gr)] as const).filter(([, l]) => l.length);
+  const gradeRows = <T extends { grade?: string }>(list: T[], render: (x: T) => any) => byGrade(list).map(([gr, l]) =>
+    h('div', { class: 'grade-row' }, h('span', { class: `grade-tag ${GRADE_CLASS[gr] || ''}` }, `${gr} ${l.length}`), h('div', { class: 'toolbar', style: { marginBottom: 0 } }, l.map(render))));
 
   // 아티팩트 화면에서는 파일 저장이 막혀 있어 클립보드 복사·붙여넣기로 옮긴다
   const exportBtn = h('button', { class: 'btn small', onclick: async () => {
@@ -47,9 +54,9 @@ export function renderRoster(root: HTMLElement) {
     h('div', { class: 'grid cols-2' },
       h('div', { class: 'panel' }, h('h3', { style: { fontSize: '16px', marginBottom: '8px' } }, '무장'),
         byFaction.map(([f, list]) => h('div', { style: { marginBottom: '10px' } }, h('div', { class: 'sub' }, f),
-          h('div', { class: 'toolbar', style: { marginBottom: 0 } }, list.map(g => chip(ownG.has(g.id), g.name.ko + ((g as any).krRelease ? ' (미출시)' : ''), () => toggle(ownG, g.id))))))),
+          gradeRows(list as any[], (g: any) => chip(ownG.has(g.id), g.name.ko + (g.krRelease ? ' (미출시)' : ''), () => toggle(ownG, g.id), g.grade))))),
       h('div', { class: 'panel' }, h('h3', { style: { fontSize: '16px', marginBottom: '8px' } }, '전법'),
         byKind.map(([k, list]) => h('div', { style: { marginBottom: '10px' } }, h('div', { class: 'sub' }, k),
-          h('div', { class: 'toolbar', style: { marginBottom: 0 } }, list.map(s => chip(ownS.has(s.id), s.name.ko + ((s as any).krRelease ? ' (미출시)' : ''), () => toggle(ownS, s.id)))))))),
+          gradeRows(list as any[], (x: any) => chip(ownS.has(x.id), x.name.ko + (x.krRelease ? ' (미출시)' : ''), () => toggle(ownS, x.id), x.grade)))))),
   );
 }
