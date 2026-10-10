@@ -27,7 +27,7 @@ interface InfluenceSample { turn: number; skill: string; caster: string; base: n
  * 통솔(병기)·지력(책략) 방어 계수를 가르는 데 가장 좋은 표본.
  */
 interface GroupSample { turn: number; attacker: string; kind: string; dmgType: '병기' | '책략'; ratio: number; grade?: number; attackerAt?: { troops?: number; stats?: Record<string, number>; mods?: Mods }; hits: Array<{ defender: string; observed: number; at?: { troops?: number; stats?: Record<string, number>; mods?: Mods } }>; note?: string }
-interface HealSample { grade?: number; turn: number; healer: string; target?: string; skill: string; ratio: number; observed: number; healStat?: string; healerStats?: Record<string, number> }
+interface HealSample { excluded?: string; /** FIX-029 "지력과 통솔의 영향" 회복(지력 가산항 없음) */ noStatTerm?: boolean; grade?: number; turn: number; healer: string; target?: string; skill: string; ratio: number; observed: number; healStat?: string; healerStats?: Record<string, number> }
 export interface Replay {
   id: string; date: string; season: string;
   battle: { ally: { formation: string; units: Array<{ generalId: string; skills?: string[] }> }; enemy: { formation: string; units: string[] } };
@@ -51,7 +51,8 @@ export function checkReplay(r: Replay, coeffs: Record<string, unknown> = {}, sim
   const b = sim.buildArmy({ formation: r.battle.enemy.formation, units: r.battle.enemy.units.map(id => ({ generalId: id, skillIds: [] })) } as any, 'B');
   const all: any[] = [...a, ...b];
   const byGeneral = (gid: string) => {
-    const u = all.find(x => x.generalId === gid);
+    // 양쪽에 같은 무장이 있으면 적군 쪽은 '<id>#e' 로 적는다 (2026-10-10 조조·소교·등애 vs 등애)
+    const u = gid.endsWith('#e') ? b.find((x: any) => x.generalId === gid.slice(0, -2)) : (a.find((x: any) => x.generalId === gid) || b.find((x: any) => x.generalId === gid));
     if (!u) throw new Error(`${r.id}: 전투에 없는 무장 ${gid}`);
     return u;
   };
@@ -82,12 +83,12 @@ export function checkReplay(r: Replay, coeffs: Record<string, unknown> = {}, sim
     const predicted = Math.round(dmg * (s.crit ? crit : 1) * (1 + (s.counter ?? 0)));
     rows.push({ kind: 'damage', turn: s.turn, label: `${A.u.name}→${D.u.name} ${s.kind} ${Math.round(s.ratio * 100)}% ${s.dmgType}`, observed: s.observed, predicted, errPct: (predicted - s.observed) / s.observed, snapshot: `${A.snap} / ${D.snap}` });
   }
-  for (const s of r.healSamples || []) {
+  for (const s of (r.healSamples || []).filter(x => !x.excluded)) {
     const H = apply(s.healer, s.turn);
     if (s.healerStats) Object.assign(H.u.stats, s.healerStats);
     const T = s.target ? apply(s.target, s.turn).u : H.u;
     T.troops = 1; T.wounded = T.maxTroops;   // 회복 상한에 걸리지 않게
-    const { heal } = E.calcHeal(H.u, T, s.ratio * gradeMult(s.grade), (sim as any).coeffs, s.healStat);
+    const { heal } = E.calcHeal(H.u, T, s.ratio * gradeMult(s.grade), (sim as any).coeffs, s.healStat, { noStatTerm: !!s.noStatTerm });
     rows.push({ kind: 'heal', turn: s.turn, label: `${H.u.name} ${s.skill} 치유율 ${Math.round(s.ratio * 100)}%${s.healStat ? ` (${s.healStat} 기준)` : ''}`, observed: s.observed, predicted: heal, errPct: (heal - s.observed) / s.observed, snapshot: s.healerStats ? '표본에 적힌 시전자 스탯' : H.snap });
   }
   // 같은 시전 여러 대상: 대상별 피해 / 대상 평균 의 비율을 비교한다

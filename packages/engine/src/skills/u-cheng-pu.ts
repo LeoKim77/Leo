@@ -10,6 +10,10 @@ export default defineSkill({
   isUnique: true,
   revised: [
     {
+      "date": "2026-10-10",
+      "note": "녹화(2026-10-10 조조·소교·등애): 지력과 통솔의 영향 회복은 지력 가산항 없이 지력 × 1.123 × 치유율 (FIX-029)"
+    },
+    {
       "date": "2026-10-05",
       "note": "병기 피해 후 → 60% 회복, 책략 피해 후 → 60% 받는 피해 −14%(2중첩), 각각 피해를 준 그 우군에게 — 예전엔 60%를 두 번 굴리고(36%) 피해 유형 구분 없이 전원"
     }
@@ -43,6 +47,7 @@ export default defineSkill({
     "effects": {
       "heal": [
         {
+          "noStatTerm": true,
           "min": 0.2,
           "max": 0.4,
           "chance": null,

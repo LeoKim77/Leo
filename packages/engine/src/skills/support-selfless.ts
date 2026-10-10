@@ -8,6 +8,12 @@ export default defineSkill({
   name: "전력 지원",
   kind: "패시브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-10",
+      "note": "녹화(2026-10-10 조조·소교·등애): 지력과 통솔의 영향 회복은 지력 가산항 없이 지력 × 1.123 × 치유율 (FIX-029)"
+    }
+  ],
   clauses: [
     {
       "text": "자신이 피해를 받기 직전, 50% 확률로 우군 2명의 병력을 회복시킨다(치유율 50%, 지력과 통솔의 영향 받음)",
@@ -27,6 +33,7 @@ export default defineSkill({
       "damage": [],
       "heal": [
         {
+          "noStatTerm": true,
           "min": 0.25,
           "max": 0.5,
           "chance": 0.5,

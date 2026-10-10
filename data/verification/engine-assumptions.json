@@ -246,6 +246,30 @@
       "assumption": "공격자 병력 1만 이하에서 병력^0.35 비례, 1만 초과(NPC 16,000)는 1만과 같음 (FIX-025)",
       "howToVerify": "병력 1만을 넘는 아군(만약 있으면) 또는 NPC 공격의 피해 줄 + 그 순간 병력, 병력 1,000 아래 무장의 피해 줄 더",
       "priority": 15
+    },
+    {
+      "key": "heal-two-stat",
+      "title": "\"지력과 통솔의 영향\" 회복 = 지력 × 1.123 × 치유율 (가산항 없음)",
+      "refs": [
+        "same-boat",
+        "support-selfless",
+        "u-cao-cao",
+        "spring-breeze",
+        "taxation",
+        "u-cheng-pu",
+        "u-zhou-cang"
+      ],
+      "assumption": "통솔이 실제로 어떻게 들어가는지는 모름 — 통솔 222~252 범위 표본뿐. 일심협력만 1.44배",
+      "howToVerify": "통솔이 크게 다른 시전자의 같은 회복(전력 지원·난세의 간웅) + 일심협력 전법 상세 캡처",
+      "priority": 15
+    },
+    {
+      "key": "in-damage-increase-diminish",
+      "title": "받는 피해 증가의 체감(FIX-028)",
+      "refs": [],
+      "assumption": "증가 = 명목 × (1 − 기존 증가분 합) — 위협 1건으로 확인",
+      "howToVerify": "받는 피해 증가가 두 겹 이상 걸리는 줄의 표기값",
+      "priority": 10
     }
   ]
 }

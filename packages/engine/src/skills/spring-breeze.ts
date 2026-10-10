@@ -8,6 +8,12 @@ export default defineSkill({
   name: "지혜의 바람",
   kind: "패시브",
   isUnique: false,
+  revised: [
+    {
+      "date": "2026-10-10",
+      "note": "녹화(2026-10-10 조조·소교·등애): 지력과 통솔의 영향 회복은 지력 가산항 없이 지력 × 1.123 × 치유율 (FIX-029)"
+    }
+  ],
   clauses: [
     {
       "text": "매 턴 행동 시, 자신의 병력을 회복한다(치유율 140%, 지력과 통솔의 영향 받음)",
@@ -27,6 +33,7 @@ export default defineSkill({
       "damage": [],
       "heal": [
         {
+          "noStatTerm": true,
           "min": 0.7,
           "max": 1.4
         }

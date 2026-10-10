@@ -10,6 +10,10 @@ export default defineSkill({
   isUnique: false,
   revised: [
     {
+      "date": "2026-10-10",
+      "note": "녹화(2026-10-10 조조·소교·등애): 지력과 통솔의 영향 회복은 지력 가산항 없이 지력 × 1.123 × 치유율 (FIX-029)"
+    },
+    {
       "date": "2026-10-04",
       "note": "원문 대조 결과 이미 구현돼 있음 — 절 상태 표시만 바로잡음 (v1.12b 절 매칭이 낡음)"
     }
@@ -47,6 +51,7 @@ export default defineSkill({
       "damage": [],
       "heal": [
         {
+          "noStatTerm": true,
           "min": 0.2,
           "max": 0.4
         }

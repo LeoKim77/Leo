@@ -10,6 +10,10 @@ export default defineSkill({
   isUnique: true,
   revised: [
     {
+      "date": "2026-10-10",
+      "note": "녹화(2026-10-10 조조·소교·등애): 지력과 통솔의 영향 회복은 지력 가산항 없이 지력 × 1.123 × 치유율 (FIX-029)"
+    },
+    {
       "date": "2026-10-04",
       "note": "회복 대상을 자신으로(예전엔 병력 최저 아군), 조롱·위협이 같은 랜덤 적 2명에게"
     }
@@ -40,6 +44,7 @@ export default defineSkill({
     "effects": {
       "heal": [
         {
+          "noStatTerm": true,
           "min": 1,
           "max": 2,
           "target": "self"

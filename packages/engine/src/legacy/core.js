@@ -42,6 +42,14 @@ export const ENGINE_FIXES = [
     detail: '① 대상이 안 적힌 효과는 한 시전 안에서 같은 대상을 공유(R-044) — 예전엔 효과마다 새로 뽑아 "랜덤 2명의 A와 B"가 서로 다른 무장에게 갔다. ② "디버프 상태 보유" 조건이 방어·피신 같은 기능성 상태까지 셌다. ③ "이상 상태 개수"도 기능성 상태 포함. ④ 대상이 자신뿐인 회복이 병력 최저 아군에게 갔다(지혜의 바람·충성과 용맹·전쟁 조달). ⑤ 능력치 증감의 턴 조건(turnCond)이 무시됐다.' },
   { id: 'FIX-022', date: '2026-10-06', found: '녹화 2026-10-06 (손견·관우·황충 vs 대교·손책·견희, 포진~3턴)', title: '탈주병 계수·전장 평정 대상·강동 제패 회복 대상·화하 진압 순서·퇴로 매복 회심',
     detail: '탈주병 = 1.49×무력(예전 2.4×무력−330, 6~7% 작음 — 5건 ±1%). 전장 평정 180%는 디버프 보유 적 전원. "자신과 랜덤 아군"은 자신이 또 뽑힐 수 있음(손책 자신 2회 회복). 화하 진압은 발동률 증가(갱신) → 목표마다 피해 → 탈주병. 퇴로 매복 시전 중 회심 +25%(근사, 원문 확인 대기).' },
+  { id: 'FIX-029', date: '2026-10-10', found: '녹화 2026-10-10 조조·소교·등애 (회복 17건)', title: '"지력과 통솔의 영향" 회복의 지력 가산항',
+    detail: '난세의 간웅-호(40%)·전력 지원(50%) 회복 9건이 지력 × 1.123 × 치유율에 ±5% 로 맞고, 지력 가산항(0.00027×(지력−100))을 더한 엔진은 8~14% 크게 잡았다. 같은 문구의 회복 7개 전법(난세의 간웅·전력 지원·일심협력·춘풍·조세·정보·주창)은 가산항을 뺀다(heal.noStatTerm). 일심협력은 실측이 이 식의 1.44배(치유율 130% 에 해당, 3건) — 원인 미상이라 질문 글.' },
+  { id: 'FIX-028', date: '2026-10-10', found: '녹화 2026-10-10 (위협·침착한 지휘 표기)', title: '받는 피해 증가의 체감',
+    detail: '받는 피해 감소처럼(L3) 증가도 기존 증가분의 합만큼 줄어 들어간다: 침착한 지휘 +15.23% 가 있는 조조·등애에게 위협 10% → 8.47%(= 10 × (1 − 0.1523)), 증가가 없던 소교는 10.00%. 받는 피해 증가 버프와 위협류 상태(부여 때 체감값 저장) 모두.' },
+  { id: 'FIX-027', date: '2026-10-10', found: '녹화 2026-10-10 (회유·심리 공격 18건, 관문)', title: '회유·심리 공격: 받는 치유 효과 제외·올림·회복 계기',
+    detail: '회유·심리 공격 회복 = 준 피해 × 비율 × 군량 고갈(0.3), 받는 치유 효과(둔전령 +10%×스택)는 곱하지 않고 올림(340×10.87%×0.3 = 11.09 → 12, 254×10.87% = 27.6 → 28). 회유·심리 공격도 회복 효과라 0 회복이어도 관문 같은 "회복 효과를 발동하면" 계기가 된다(녹화: 천향 실패 턴에 소교 회유 0 → 관문 346).' },
+  { id: 'FEAT-032', date: '2026-10-10', found: '녹화 2026-10-10 (맹덕신서 하권 11.90·11.53)', title: '부여한 무장 스탯 영향(맹덕신서 하권)',
+    detail: '맹덕신서 하권 "최고 속성 +8(지력의 영향 받음)"은 받은 무장이 아니라 조조의 그 순간 지력을 따른다(소교·등애·조조 모두 +11.90, 조조가 전략 계획으로 지력 258.93 이 되자 +11.53). 전투 시작에 한 번 계산하던 것을 매번 조조 현재 지력으로(inf.who grantor), 가중치 0.27%.' },
   { id: 'FEAT-031', date: '2026-10-09', found: '녹화 2026-10-09 주하황 3~8턴 (강렬 6건) + 2026-10-06 손관황 (무열황제 1건)', title: '"(추가로 통솔의 영향 받음)" 전법별 가중치',
     detail: '같은 문구인데 실측 배율이 다르다: 강렬 6건은 통솔 297~350 에서 약 2.07배(가중치 0.46%/통솔), 무열황제 1건은 통솔 321 에서 1.55배(0.25%). 공통 가중치 0.21% 로는 강렬을 30% 넘게 작게 잡았다. 피해 항목 statScale.weight 로 전법마다 따로 두고, 표본 없는 전법(신속전개·압도적 권력)은 J10 기본 0.21%. 잠정 — 하후돈 통솔이 크게 다를 때 표본이 더 필요.' },
   { id: 'FIX-026', date: '2026-10-09', found: '녹화 2026-10-09 주하황 3~8턴 (주태 대신 받기 3건)', title: '불굴의 의지 확률·감소율 통솔 영향',
@@ -221,7 +229,8 @@ function infMult(inf, self, target, coeffs) {
   const vals = inf.stats.map(st => infStatValue(u, st));
   // 여러 스탯: 기본은 평균(가중치 미상, 검증 대기). mode 'max' 는 "무력 또는 통솔 중 높은 수치의 영향"
   const v = inf.mode === 'max' ? Math.max(...vals) : vals.reduce((a, b) => a + b, 0) / vals.length;
-  const w = coeffs && coeffs.statScaleWeight != null ? coeffs.statScaleWeight : DEFAULT_COEFFS.statScaleWeight;
+  // FEAT-031 전법별 가중치(inf.weight): 녹화로 따로 맞춘 효과만 — 없으면 J10 기본
+  const w = inf.weight != null ? inf.weight : (coeffs && coeffs.statScaleWeight != null ? coeffs.statScaleWeight : DEFAULT_COEFFS.statScaleWeight);
   return Math.max(0, 1 + (v - 100) * w);
 }
 // 원문 절(clauses)의 "(○○의 영향 받음)"을 해당 절이 구현한 효과 항목에 연결한다.
@@ -728,14 +737,13 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
     if (log) log.push(`${turnNo}턴:   [${defender.name}]의 「짐독」이(가) 1스택 추가됐습니다. (${attacker.name}의 시해)`);
   }
   // 회유/심리공격: 준 피해만큼 자신의 병력 회복
-  // 이것도 "회복"이므로 받는회복량/군량 고갈 보정을 동일하게 적용한다
-  // (예전에는 보정 없이 그대로 더해서, 군량 고갈이 걸려도 회유는 멀쩡히 되는 문제가 있었음)
+  // 군량 고갈(×0.3)은 적용하고(예전엔 보정 없이 그대로 더해 군량 고갈이 걸려도 회유는 멀쩡했다),
+  // FIX-027 받는 치유 효과(둔전령 등)는 적용하지 않으며 올림한다 — 녹화 2026-10-10: 340×10.87%×0.3 = 11.09 → 12(받는 치유 +20% 였으면 14), 254×10.87% = 27.6 → 28
   const drain = dmgType === '병기' ? (attacker.mods.회유 || 0) : (attacker.mods.심리공격 || 0);
   if (drain > 0 && attacker.alive) {
     const drainName = dmgType === '병기' ? '회유' : '심리 공격';
     if (log) log.push(`${turnNo}턴: [${attacker.name}]이(가) ${drainName}을(를) 발동했습니다.`);
     let leech = dmg * drain;
-    leech *= (1 + (attacker.mods.받는회복량 || 0));
     // 군량 고갈 등으로 회복이 깎이면 실제 게임처럼 그 사유를 한 줄로 남긴다
     const healMult = accumStatus(attacker, 'healReceivedMult', 'mult');
     if (healMult < 1) {
@@ -745,9 +753,10 @@ function calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turnNo, dmg
     }
     leech *= healMult;
     const before = attacker.troops;
-    attacker.troops = Math.min(attacker.maxTroops, attacker.troops + Math.round(leech));
+    attacker.troops = Math.min(attacker.maxTroops, attacker.troops + Math.ceil(leech - 1e-9));
     attacker.wounded = Math.max(0, (attacker.wounded || 0) - (attacker.troops - before));   // FIX-006 회유·심리 공격 회복도 부상병에서 나온다
     if (log) log.push(`${turnNo}턴:   [${attacker.name}]이(가) 병력을 ${attacker.troops - before}(${attacker.troops}) 회복했습니다.`);
+    __drained = { healer: attacker, amount: attacker.troops - before };   // FIX-027 회유·심리 공격도 회복 효과(관문 계기, 0 이어도)
   }
   return { dmg, crit };
 }
@@ -796,7 +805,7 @@ function applyGuardedLoss(g, attacker, amount, dmgType, dmgTag, crit, coeffs, lo
   if (g.troops <= 0) g.alive = false;
 }
 
-function calcHeal(caster, target, ratio, coeffs, healStat) {
+function calcHeal(caster, target, ratio, coeffs, healStat, opts) {
   // 공격 스케일과 비슷한 크기로 맞춤 (근사): 지력 기반, maxTroops 비례가 아님
   // maxTroops 비례로 하면 통솔 높은 탱커 대상 고비율 회복기가 비현실적으로 강력해짐
   // ① 기초 회복 = C × 시전자 지력 × 유효치유율 × HEAL_SCALE
@@ -813,7 +822,8 @@ function calcHeal(caster, target, ratio, coeffs, healStat) {
   // FIX-016 회복 = 지력 × (healK × 치유율 + healStatW × (지력 − 100)) — 녹화 3판 회복 17건으로 재추정
   const w = coeffs && coeffs.healStatW != null ? coeffs.healStatW : DEFAULT_COEFFS.healStatW;
   const hk = coeffs && coeffs.healK != null ? coeffs.healK : DEFAULT_COEFFS.healK;
-  const effRatio = Math.max(0, ratio * hk + (casterInt - 100) * w);
+  // FIX-029 "지력과 통솔의 영향 받음" 회복은 지력 가산항이 없다(녹화 2026-10-10: 난세의 간웅·전력 지원 9건 = 지력 × 1.123 × 치유율, ±5%)
+  const effRatio = Math.max(0, ratio * hk + (opts && opts.noStatTerm ? 0 : (casterInt - 100) * w));
   // v1.12 W44(잠정): 회복 = 시전자 지력 × 유효치유율. 시전자 병력과 무관(평화의 기운 3턴 327 vs 예측 339).
   let heal = casterInt * effRatio;
   // 회복도 시전자의 남은 병력에 비례한다(피해와 같은 비선형 계수를 공유).
@@ -855,6 +865,7 @@ function calcHeal(caster, target, ratio, coeffs, healStat) {
 //   막는 것은 '자기 효과로 자기 재발동'뿐 — 지금 실행 중인 전법(연쇄의 조상 포함)과 같은 무장·같은 전법은 다시 발동하지 않는다
 //   (초선차전 피해로 초선차전 재발동 X). 횟수 제한은 각 전법 원문의 '매 턴 최대 N회'(trigger.maxPerTurn)로만 한다.
 const __castStack = [];   // [무장 id:전법 id] — applySkillEffects 진입/종료
+let __drained = null;     // FIX-027 방금 피해에서 회유·심리 공격 회복이 났으면 { healer, amount } — dealDamage 가 heal 계기로 넘긴다
 let __hitLog = null;      // FIX-021 { a, t, fn } — 이번 전법 타격의 피해 줄(calcDamage 가 피해 직후 한 번 호출)
 function rollTrigger(unit, skill) {
   const t = skill.trigger;
@@ -968,7 +979,9 @@ function emitDebuffEvent(ctx, allUnits, coeffs, log, turn, contrib) {
 function dealDamage(attacker, defender, ratio, dmgType, coeffs, log, allUnits, turn, contrib, isBasic, dmgTag) {
   // FEAT-024 "피해를 받기 직전" 트리거(서성 백리의성·전력 지원) — 계산 전에 발동해 이번 피해에 적용된다
   if (allUnits) emitPreDamageEvent({ attacker, defender, dmgType, isBasic: !!isBasic }, allUnits, coeffs, log, turn, contrib);
+  __drained = null;
   const result = calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turn, dmgTag || (isBasic ? 'basic' : 'active'));
+  if (__drained && allUnits) { const dr = __drained; __drained = null; emitSimpleEvent('heal', { healer: dr.healer, target: dr.healer, amount: dr.amount, skillId: null }, dr.healer, allUnits, coeffs, log, turn, contrib); }
   if (allUnits && allUnits.some(u => !u.alive && !u._auraCleared)) sweepDeadAuras(allUnits, log, turn);   // R-029 전사 즉시
   if (result.resisted) return result;   // 저항으로 무효 — 피격·회피 연계 없음
   if (result.evaded) {
@@ -1200,11 +1213,17 @@ function accumStatus(unit, key, mode) {
   activeStatuses(unit).forEach(s => {
     const d = STATUS_DEF[s.name];
     if (!d || d[key] === undefined) return;
-    if (mode === 'mult') acc *= d[key]; else acc += d[key];
+    const v = key === 'inDamageAdd' && s.inAdd != null ? s.inAdd : d[key];   // FIX-028 부여 때 체감된 위협 수치
+    if (mode === 'mult') acc *= v; else acc += v;
   });
   return acc;
 }
 
+// FIX-028 지금 걸린 받는 피해 '증가'의 합 — 받는 피해 증가 버프 + 위협류 상태
+function inDamageIncrease(t) {
+  const buffInc = (t.buffs || []).filter(x => x.stat === '받는피해' && x.value > 0).reduce((a, x) => a + x.value, 0);
+  return buffInc + accumStatus(t, 'inDamageAdd', 'add');
+}
 function resolveWho(who, ctx) {
   if (who === 'attacker') return ctx.attacker;
   if (who === 'target') return ctx.target;
@@ -1385,7 +1404,8 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       let amt = lvVal(sm.min, sm.max);
       // FEAT-024 fromStat: "무력이 선공 수치의 40% 만큼 증가" — 적용 순간의 다른 스탯 × 비율 (하후연)
       if (sm.fromStat) amt = effStat(sm.fromStat.who === 'target' ? t : unit, sm.fromStat.stat) * sm.fromStat.ratio;
-      if (sm.inf) amt *= infMult(sm.inf, unit, t, coeffs);   // v1.11 W08·W09
+      // FEAT-032 who 'grantor': 효과를 부여한 무장(맹덕신서 하권 → 조조)의 지금 스탯 (녹화 2026-10-10: 조조 지력 288.80 → +11.90, 258.93 → +11.53)
+      if (sm.inf) amt *= infMult(sm.inf, sm.inf.who === 'grantor' ? (allUnits.find(u => u.id === skill.grantedBy) || unit) : unit, t, coeffs);   // v1.11 W08·W09
       // 턴별 감쇠/증폭 (예: 동탁 압도적 권력 — 통솔 탈취량이 매 턴 10% 감소)
       if (sm.turnScale) {
         const steps = Math.max(0, turn - 1);
@@ -1628,7 +1648,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       if (!t.alive || t.troops <= 0) return;   // 쓰러진 대상은 회복 불가(부활 없음)
       if (!passChance(h)) return;
       const ratio = lvVal(h.min, h.max);
-      const { heal: healed, doubled, healMult, effRatio } = calcHeal(healer, t, ratio, coeffs, h.stat);
+      const { heal: healed, doubled, healMult, effRatio } = calcHeal(healer, t, ratio, coeffs, h.stat, { noStatTerm: !!h.noStatTerm });
       healer.healDone += healed;
       value += healed * 0.6; // 치유 가치는 피해 대비 가중치 낮춰서 기여도 산정
       log.push(`${turn}턴: [${healer.name}]이(가) 【${skill.name}】의 「${skill.name}」 효과를 발동합니다.` +
@@ -1706,6 +1726,8 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
           const scaled = amt * (1 - Math.max(0, Math.min(prevRed, 1)));  // 스케일링된 증분
           amt = scaled;
         }
+        // FIX-028 받는 피해 '증가'도 기존 증가분의 합만큼 체감 (녹화 2026-10-10: 침착한 지휘 +15.23% 위에 위협 10% → 8.47% = 10 × (1 − 0.1523))
+        if (key === '받는피해' && amt > 0) amt = amt * (1 - Math.max(0, Math.min(inDamageIncrease(t), 1)));
         t.mods[key] = (t.mods[key] || 0) + amt;
         t.buffs.push({ stat: key, value: amt, remain: dur, srcId, aura: skill.type === '지휘' ? unit.id : null, caster: unit.id, untilTurnEnd: !!b.untilTurnEnd });
         // 기본 디버프(주는피해↓·받는피해↑ 등)도 '디버프' 트리거를 발생시킨다.
@@ -1807,7 +1829,10 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       if (exist) {
         if (dur > exist.remain) { exist.remain = dur; exist.casterId = caster.id; exist.casterName = caster.name; }
       } else {
+        const inAddBase = STATUS_DEF[se.name] && STATUS_DEF[se.name].inDamageAdd;
+        const inAdd = inAddBase > 0 ? inAddBase * (1 - Math.max(0, Math.min(inDamageIncrease(t), 1))) : undefined;   // FIX-028 위협 증가분 체감
         t.statuses.push({ name: se.name, remain: dur, casterId: caster.id, casterName: caster.name, srcSkill: skill.name, aura: skill.type === '지휘' ? unit.id : null,
+          ...(inAdd != null ? { inAdd } : {}),
           ...(se.name === '짐독' ? { snapInt: effStat(unit, '지력'), snapTroops: unit.troops } : {}), ...(se.data ? { data: se.data } : {}) });   // R-042 지속 피해는 부여 시점 스탯 스냅샷
       }
       __T({ e: 'status', src: unit.id, dst: t.id, status: se.name, dur, refreshed: already, skill: skill.id });
@@ -3043,7 +3068,7 @@ return {
   setTrace: (f) => { __traceFn = f; },
   setDetail: (v) => { __detail = !!v; },
   setSkillLevel: (lv) => { SKILL_LEVEL = lv; },
-  skillTiming, effStat, hasStatus, selectTargets, mergeActionOrder, calcDamage, calcHeal,
+  skillTiming, effStat, hasStatus, selectTargets, mergeActionOrder, calcDamage, calcHeal, accumStatus, applySkillEffects, dealDamage,
   tickHolderBuffs, markHolderSeen, sweepDeadAuras,
   DEFAULT_COEFFS, buildUnit, simulateOneBattle, simulateBattle, procRateOf,
   getDebugDamageLog: () => DEBUG_DAMAGE_LOG,

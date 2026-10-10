@@ -10,6 +10,10 @@ export default defineSkill({
   isUnique: true,
   revised: [
     {
+      "date": "2026-10-10",
+      "note": "녹화(조조·소교·등애 상대): 받는 피해 증가 10% → 15.23%(우금 통솔 약 262) — 통솔 영향 가중치 0.32% (잠정)"
+    },
+    {
       "date": "2026-10-04",
       "note": "통솔 +30은 전투 시작 상시(예전엔 피격 때 2턴), 무장 해제는 '공격자'에게 2턴(예전엔 랜덤 적), 받는 피해 증가에 통솔 영향"
     }
@@ -56,7 +60,8 @@ export default defineSkill({
             "stats": [
               "통솔"
             ],
-            "who": "self"
+            "who": "self",
+            "weight": 0.0032
           }
         }
       ],

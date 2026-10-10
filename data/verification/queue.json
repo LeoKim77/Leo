@@ -354,6 +354,24 @@
       "status": "pending"
     },
     {
+      "id": "V-engine-heal-two-stat",
+      "kind": "engine",
+      "refs": [
+        "same-boat",
+        "support-selfless",
+        "u-cao-cao",
+        "spring-breeze",
+        "taxation",
+        "u-cheng-pu",
+        "u-zhou-cang"
+      ],
+      "title": "\"지력과 통솔의 영향\" 회복 = 지력 × 1.123 × 치유율 (가산항 없음)",
+      "assumption": "통솔이 실제로 어떻게 들어가는지는 모름 — 통솔 222~252 범위 표본뿐. 일심협력만 1.44배",
+      "howToVerify": "통솔이 크게 다른 시전자의 같은 회복(전력 지원·난세의 간웅) + 일심협력 전법 상세 캡처",
+      "priority": 15,
+      "status": "pending"
+    },
+    {
       "id": "V-manual-m-zhuge-liang-1",
       "kind": "manual",
       "refs": [
@@ -389,6 +407,16 @@
       "howToVerify": "게임 전법 정보 화면(이름·종류·발동률·10레벨 설명) 캡처 1장",
       "status": "pending",
       "priority": 11
+    },
+    {
+      "id": "V-engine-in-damage-increase-diminish",
+      "kind": "engine",
+      "refs": [],
+      "title": "받는 피해 증가의 체감(FIX-028)",
+      "assumption": "증가 = 명목 × (1 − 기존 증가분 합) — 위협 1건으로 확인",
+      "howToVerify": "받는 피해 증가가 두 겹 이상 걸리는 줄의 표기값",
+      "priority": 10,
+      "status": "pending"
     },
     {
       "id": "V-skill-u-sp-zhuge-liang",
