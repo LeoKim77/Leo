@@ -1,6 +1,6 @@
 // 유현정책 · 전법 · 액티브 60%
-// 원문: 랜덤 우군 2명이 주는 피해가 15%, 통솔이 25 상승합니다. 2턴 지속됩니다.
-// 원문 절 구현: ok / ok / ok
+// 원문(녹화 2026-10-11): 2턴 동안 랜덤 아군 2명의 주는 피해가 15%, 통솔이 25포인트 증가한다.
+// 원문 절 구현: ok / ok
 import { defineSkill } from './types.ts';
 
 export default defineSkill({
@@ -12,17 +12,19 @@ export default defineSkill({
     "status": "ok",
     "source": "authored"
   },
+  revised: [
+    {
+      "date": "2026-10-11",
+      "note": "영웅 전법 녹화 원문(10레벨)으로 교체: 랜덤 아군 2명(자신 포함)"
+    }
+  ],
   clauses: [
     {
-      "text": "랜덤 우군 2명이 주는 피해가 15%",
+      "text": "2턴 동안 랜덤 아군 2명의 주는 피해가 15%",
       "status": "ok"
     },
     {
-      "text": "통솔이 25 상승합니다",
-      "status": "ok"
-    },
-    {
-      "text": "2턴 지속됩니다",
+      "text": "통솔이 25포인트 증가한다",
       "status": "ok"
     }
   ],
@@ -59,8 +61,8 @@ export default defineSkill({
     "replacedLegacy": false
   },
   run(c) {
-    // (원문 절 매핑 없음)
-    c.statMod(0);   // 통솔 25, 대상 random_ally_n, 2턴, 최대 1중첩
-    c.buff(0);   // 주는피해 +15%, 대상 tag:t, 2턴, 최대 1중첩
+    // 「2턴 동안 랜덤 아군 2명의 주는 피해가 15%」「통솔이 25포인트 증가한다」 — 아군 = 자신 포함(random_ally_n), 같은 2명
+    c.statMod(0);   // 통솔 25, 대상 random_ally_n(tag t), 2턴
+    c.buff(0);   // 주는피해 +15%, 대상 tag:t, 2턴
   },
 });

@@ -89,6 +89,8 @@ export function deriveExpectation(skill: Skill): Expectation {
   if (new RegExp(`병기(?:와 책략)? ${GIVE}`).test(text) || /병기 피해를 (?:\d|각)/.test(text)) exp.damageTypes.push('병기');
   if (new RegExp(`(?:병기와 )?책략 ${GIVE}`).test(text) || new RegExp(`책략과 병기 ${GIVE}`).test(text)) exp.damageTypes.push('책략');
   if (new RegExp(`책략과 병기 ${GIVE}`).test(text) && !exp.damageTypes.includes('병기')) exp.damageTypes.push('병기');
+  // "추가로 일반 공격을 1회"(한당 명사수) — 일반 공격은 병기 피해
+  if (/일반 공격을\s*\d회\s*(?:부여|실시|발동)/.test(text) && !exp.damageTypes.includes('병기')) exp.damageTypes.push('병기');
   exp.heals = /회복(?:한다|하며|하고|시킨다|시키며|합니다)|치유율/.test(text) && !/받는 (?:회복|치유)/.test(text.replace(/치유율[^)]*\)/g, ''));
   const st = new Set<string>();
   for (const s of [...KNOWN_STATUSES, '무장해제']) {
@@ -102,7 +104,9 @@ export function deriveExpectation(skill: Skill): Expectation {
   const dmgPhrases = text.match(/피해를\s*(?:준|주)/g) || [];
   // 다단 타격("4회 발동된다", "총 5회 시전")·개수 비례만 생략. "매 턴 최대 4회 발동" 같은 상한은 다단이 아니다
   const multiHit = /(?<!최대\s?)(?<!총\s?)\d+회\s*(?:발동된다|발동한다|시전)|총\s*\d+회\s*시전|1명\s*당|명당|각각/.test(text);
-  if (dmgPhrases.length === 1 && !multiHit) {
+  // "목표가 이미 ○○ 상태면 … 피해" — 피해는 조건을 만족한 일부 목표에게만 (장흠 천하무략)
+  const subsetOnly = /목표가\s*(?:이미\s*)?[^,.]*상태(?:를 보유 중이)?면[^.]*피해를\s*(?:준|주)/.test(text);
+  if (dmgPhrases.length === 1 && !multiHit && !subsetOnly) {
     const full = text.slice(0, text.search(/피해를\s*(?:준|주)/));
     // 대상 표현은 같은 절(쉼표·마침표 뒤)에서만 찾는다 — 앞 절의 "우군 단일 목표" 를 피해 대상으로 잘못 읽지 않게 (폐월)
     //   단, 그 절에 '~에게' 대상이 없으면 앞 절의 대상을 이어받는다 ("적군 전체에게 홍수를 부여하고, 260% 피해" — 칠군수몰)

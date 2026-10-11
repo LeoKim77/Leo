@@ -235,6 +235,78 @@
       "status": "pending"
     },
     {
+      "id": "V-engine-hero-wenpin-command",
+      "kind": "engine",
+      "refs": [
+        "u-wen-pin"
+      ],
+      "title": "문빙 형강 사수 통솔 40 증가의 지속·중첩",
+      "assumption": "지속 기간 표기가 없어 전투 끝까지·중첩 제한 없음",
+      "howToVerify": "형강 사수 2회 이상 발동 후 문빙 통솔 툴팁(턴 경과 뒤 유지·누적되는지)",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-hero-masu-timing",
+      "kind": "engine",
+      "refs": [
+        "u-ma-su"
+      ],
+      "title": "마속 뛰어난 인재 짝수 턴 피해 시점",
+      "assumption": "짝수 턴 마속 행동 시점에 적군 전체 100% 책략",
+      "howToVerify": "짝수 턴 전보에서 뛰어난 인재 피해 줄의 위치(턴 시작/행동/종료)",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-hero-chenwu-range",
+      "kind": "engine",
+      "refs": [
+        "u-chen-wu"
+      ],
+      "title": "진무 무외의 경지 260%~300% 분포",
+      "assumption": "시전마다 260~300% 에서 균등 무작위",
+      "howToVerify": "같은 대상 피해 여러 건의 배율 분포",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-hero-dongxi-heal-stack",
+      "kind": "engine",
+      "refs": [
+        "u-dong-xi"
+      ],
+      "title": "동습 도약일격 받는 회복 효과 누적",
+      "assumption": "매 턴 행동마다 +10% 누적, 상한 없음",
+      "howToVerify": "동습 받는 회복 효과 툴팁의 턴별 값",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-hero-guotu-chaos",
+      "kind": "engine",
+      "refs": [
+        "u-guo-tu"
+      ],
+      "title": "곽도 아첨의 귀재 혼란 대상·확률",
+      "assumption": "혼란은 지력 최고 우군(자신 제외)이 받고 확률 5%×턴",
+      "howToVerify": "혼란이 걸린 무장과 발생 턴",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-hero-mancheng-cut",
+      "kind": "engine",
+      "refs": [
+        "u-zhang-mancheng"
+      ],
+      "title": "장만성 천공장군 이번 피해 감소(통솔 영향)",
+      "assumption": "30% × 통솔 영향(J10 기본 가중치), 피해 배율에 곱함",
+      "howToVerify": "요술 상태 적에게 받은 피해 vs 같은 적의 다른 대상 피해",
+      "priority": 20,
+      "status": "pending"
+    },
+    {
       "id": "V-skill-armor-edge",
       "kind": "skill",
       "refs": [
@@ -1361,6 +1433,116 @@
       "title": "국경의 장수 (고유)",
       "assumption": "선공 영향·선공 차이 영향 미반영",
       "howToVerify": "【국경의 장수】이(가) 발동한 전보에서 근사 항목(선공 영향·선공 차이 영향 미반영)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-wen-pin",
+      "kind": "skill",
+      "refs": [
+        "u-wen-pin"
+      ],
+      "title": "형강 사수 (고유)",
+      "assumption": "통솔 40 증가의 지속·중첩이 원문에 없어 전투 끝까지·중첩 제한 없음으로 처리(검증 대기)",
+      "howToVerify": "【형강 사수】이(가) 발동한 전보에서 근사 항목(통솔 40 증가의 지속·중첩이 원문에 없어 전투 끝까지·중첩 제한 없음으로 처리(검증 대기))을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-wen-pin-0",
+      "kind": "clause",
+      "refs": [
+        "u-wen-pin"
+      ],
+      "title": "형강 사수 — \"자신의 통솔이 40포인트 증가하며…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【형강 사수】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-ma-su",
+      "kind": "skill",
+      "refs": [
+        "u-ma-su"
+      ],
+      "title": "뛰어난 인재 (고유)",
+      "assumption": "짝수 턴 피해를 그 턴 행동 시점에 처리(시점 검증 대기)",
+      "howToVerify": "【뛰어난 인재】이(가) 발동한 전보에서 근사 항목(짝수 턴 피해를 그 턴 행동 시점에 처리(시점 검증 대기))을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-ma-su-1",
+      "kind": "clause",
+      "refs": [
+        "u-ma-su"
+      ],
+      "title": "뛰어난 인재 — \"짝수 턴에 적군 전체에게 100%의 책략 피해를 준다…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【뛰어난 인재】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-chen-wu",
+      "kind": "skill",
+      "refs": [
+        "u-chen-wu"
+      ],
+      "title": "무외의 경지 (고유)",
+      "assumption": "260%~300% 는 시전마다 그 범위에서 무작위(분포 검증 대기)",
+      "howToVerify": "【무외의 경지】이(가) 발동한 전보에서 근사 항목(260%~300% 는 시전마다 그 범위에서 무작위(분포 검증 대기))을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-chen-wu-1",
+      "kind": "clause",
+      "refs": [
+        "u-chen-wu"
+      ],
+      "title": "무외의 경지 — \"이후 전체 적군에게 260%~300%의 병기 피해를 준…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【무외의 경지】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-dong-xi",
+      "kind": "skill",
+      "refs": [
+        "u-dong-xi"
+      ],
+      "title": "도약일격 (고유)",
+      "assumption": "받는 회복 효과 증가는 매 턴 누적(상한 없음)으로 처리",
+      "howToVerify": "【도약일격】이(가) 발동한 전보에서 근사 항목(받는 회복 효과 증가는 매 턴 누적(상한 없음)으로 처리)을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-dong-xi-1",
+      "kind": "clause",
+      "refs": [
+        "u-dong-xi"
+      ],
+      "title": "도약일격 — \"매 턴 행동 시, 자신이 받는 회복 효과가 10% 증가…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【도약일격】 전보에서 이 절의 수치·대상·지속을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-skill-u-guo-tu",
+      "kind": "skill",
+      "refs": [
+        "u-guo-tu"
+      ],
+      "title": "아첨의 귀재 (고유)",
+      "assumption": "혼란은 지력 최고 우군(자신 제외)이 받는 것으로 해석, 확률 5%×턴(검증 대기)",
+      "howToVerify": "【아첨의 귀재】이(가) 발동한 전보에서 근사 항목(혼란은 지력 최고 우군(자신 제외)이 받는 것으로 해석, 확률 5%×턴(검증 대기))을 확인",
+      "status": "pending"
+    },
+    {
+      "id": "V-clause-u-guo-tu-1",
+      "kind": "clause",
+      "refs": [
+        "u-guo-tu"
+      ],
+      "title": "아첨의 귀재 — \"5% 확률로 1턴 동안 혼란 상태가 되고…\"",
+      "assumption": "근사 반영",
+      "howToVerify": "【아첨의 귀재】 전보에서 이 절의 수치·대상·지속을 확인",
       "status": "pending"
     },
     {

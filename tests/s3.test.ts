@@ -6,7 +6,8 @@ import { Recommender } from '../packages/recommender/src/index.ts';
 
 const bundle: any = buildBundle();
 const sim = new Simulator(bundle);
-const gen = (n: string) => bundle.generals.find((g: any) => g.name.ko === n);
+// 같은 이름의 영웅 카드(황보숭 반란 평정)가 있어 시즌3 무장을 먼저 찾는다
+const gen = (n: string) => bundle.generals.find((g: any) => g.name.ko === n && g.season === 'S3') || bundle.generals.find((g: any) => g.name.ko === n);
 const U = (n: string, s: string[] = []) => ({ generalId: gen(n).id, skillIds: s, manualId: 'none' });
 const foe = { formation: '일자진', units: [U('대교'), U('손책'), U('견희')] } as any;
 const prep = (formation: string) => sim.simulate({ formation, units: [U('SP 제갈량'), U('관우'), U('황충')] } as any, foe, { seed: 1 }).log.filter((l: string) => l.startsWith('0턴'));

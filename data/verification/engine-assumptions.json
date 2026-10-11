@@ -270,6 +270,66 @@
       "assumption": "증가 = 명목 × (1 − 기존 증가분 합) — 위협 1건으로 확인",
       "howToVerify": "받는 피해 증가가 두 겹 이상 걸리는 줄의 표기값",
       "priority": 10
+    },
+    {
+      "key": "hero-wenpin-command",
+      "title": "문빙 형강 사수 통솔 40 증가의 지속·중첩",
+      "refs": [
+        "u-wen-pin"
+      ],
+      "assumption": "지속 기간 표기가 없어 전투 끝까지·중첩 제한 없음",
+      "howToVerify": "형강 사수 2회 이상 발동 후 문빙 통솔 툴팁(턴 경과 뒤 유지·누적되는지)",
+      "priority": 20
+    },
+    {
+      "key": "hero-masu-timing",
+      "title": "마속 뛰어난 인재 짝수 턴 피해 시점",
+      "refs": [
+        "u-ma-su"
+      ],
+      "assumption": "짝수 턴 마속 행동 시점에 적군 전체 100% 책략",
+      "howToVerify": "짝수 턴 전보에서 뛰어난 인재 피해 줄의 위치(턴 시작/행동/종료)",
+      "priority": 20
+    },
+    {
+      "key": "hero-chenwu-range",
+      "title": "진무 무외의 경지 260%~300% 분포",
+      "refs": [
+        "u-chen-wu"
+      ],
+      "assumption": "시전마다 260~300% 에서 균등 무작위",
+      "howToVerify": "같은 대상 피해 여러 건의 배율 분포",
+      "priority": 20
+    },
+    {
+      "key": "hero-dongxi-heal-stack",
+      "title": "동습 도약일격 받는 회복 효과 누적",
+      "refs": [
+        "u-dong-xi"
+      ],
+      "assumption": "매 턴 행동마다 +10% 누적, 상한 없음",
+      "howToVerify": "동습 받는 회복 효과 툴팁의 턴별 값",
+      "priority": 20
+    },
+    {
+      "key": "hero-guotu-chaos",
+      "title": "곽도 아첨의 귀재 혼란 대상·확률",
+      "refs": [
+        "u-guo-tu"
+      ],
+      "assumption": "혼란은 지력 최고 우군(자신 제외)이 받고 확률 5%×턴",
+      "howToVerify": "혼란이 걸린 무장과 발생 턴",
+      "priority": 20
+    },
+    {
+      "key": "hero-mancheng-cut",
+      "title": "장만성 천공장군 이번 피해 감소(통솔 영향)",
+      "refs": [
+        "u-zhang-mancheng"
+      ],
+      "assumption": "30% × 통솔 영향(J10 기본 가중치), 피해 배율에 곱함",
+      "howToVerify": "요술 상태 적에게 받은 피해 vs 같은 적의 다른 대상 피해",
+      "priority": 20
     }
   ]
 }

@@ -1,0 +1,1062 @@
+[
+  {
+    "id": "yang-xiu",
+    "name": {
+      "ko": "양수",
+      "zhTW": "楊修"
+    },
+    "season": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "궁병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 49.75,
+      "지력": 171.25,
+      "통솔": 143.75,
+      "선공": 145.25
+    },
+    "statsLv5": {
+      "무력": 34,
+      "지력": 88,
+      "통솔": 83,
+      "선공": 71
+    },
+    "growth": {
+      "무력": 0.35,
+      "지력": 1.85,
+      "통솔": 1.35,
+      "선공": 1.65
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-yang-xiu",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "liu-ye",
+    "name": {
+      "ko": "유엽",
+      "zhTW": "劉曄"
+    },
+    "season": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "보조책략",
+    "unitType": "창병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 46.3,
+      "지력": 162.75,
+      "통솔": 122.25,
+      "선공": 100.15
+    },
+    "statsLv5": {
+      "무력": 31,
+      "지력": 84,
+      "통솔": 66,
+      "선공": 34
+    },
+    "growth": {
+      "무력": 0.34,
+      "지력": 1.75,
+      "통솔": 1.25,
+      "선공": 1.47
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-liu-ye",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "wen-pin",
+    "name": {
+      "ko": "문빙",
+      "zhTW": "文聘"
+    },
+    "season": "S1",
+    "faction": "위",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "기병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 93.6,
+      "지력": 149.5,
+      "통솔": 156.5,
+      "선공": 107.8
+    },
+    "statsLv5": {
+      "무력": 81,
+      "지력": 73,
+      "통솔": 89,
+      "선공": 25
+    },
+    "growth": {
+      "무력": 0.28,
+      "지력": 1.7,
+      "통솔": 1.5,
+      "선공": 1.84
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-wen-pin",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "cao-hong",
+    "name": {
+      "ko": "조홍",
+      "zhTW": "曹洪"
+    },
+    "season": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "문무",
+    "unitType": "기병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 160.25,
+      "지력": 82.65,
+      "통솔": 155.35,
+      "선공": 136.8
+    },
+    "statsLv5": {
+      "무력": 86,
+      "지력": 48,
+      "통솔": 82,
+      "선공": 54
+    },
+    "growth": {
+      "무력": 1.65,
+      "지력": 0.77,
+      "통솔": 1.63,
+      "선공": 1.84
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-cao-hong",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "zhong-yao",
+    "name": {
+      "ko": "종요",
+      "zhTW": "鍾繇"
+    },
+    "season": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "궁병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 25.45,
+      "지력": 166.95,
+      "통솔": 141.25,
+      "선공": 100.4
+    },
+    "statsLv5": {
+      "무력": 16,
+      "지력": 81,
+      "통솔": 76,
+      "선공": 41
+    },
+    "growth": {
+      "무력": 0.21,
+      "지력": 1.91,
+      "통솔": 1.45,
+      "선공": 1.32
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhong-yao",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "cao-zhen",
+    "name": {
+      "ko": "조진",
+      "zhTW": "曹真"
+    },
+    "season": "S1",
+    "faction": "위",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "방패병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 124.95,
+      "지력": 130.4,
+      "통솔": 178.85,
+      "선공": 109.5
+    },
+    "statsLv5": {
+      "무력": 66,
+      "지력": 71,
+      "통솔": 101,
+      "선공": 51
+    },
+    "growth": {
+      "무력": 1.31,
+      "지력": 1.32,
+      "통솔": 1.73,
+      "선공": 1.3
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-cao-zhen",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "zang-ba",
+    "name": {
+      "ko": "장패",
+      "zhTW": "臧霸"
+    },
+    "season": "S1",
+    "faction": "위",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "기병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 156.8,
+      "지력": 55.65,
+      "통솔": 150.75,
+      "선공": 121.95
+    },
+    "statsLv5": {
+      "무력": 83,
+      "지력": 48,
+      "통솔": 81,
+      "선공": 63
+    },
+    "growth": {
+      "무력": 1.64,
+      "지력": 0.17,
+      "통솔": 1.55,
+      "선공": 1.31
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zang-ba",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "guo-huai",
+    "name": {
+      "ko": "곽회",
+      "zhTW": "郭淮"
+    },
+    "season": "S1",
+    "faction": "위",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "방패병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 120.65,
+      "지력": 146.0,
+      "통솔": 175.5,
+      "선공": 104.45
+    },
+    "statsLv5": {
+      "무력": 77,
+      "지력": 83,
+      "통솔": 99,
+      "선공": 41
+    },
+    "growth": {
+      "무력": 0.97,
+      "지력": 1.4,
+      "통솔": 1.7,
+      "선공": 1.41
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-guo-huai",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "jian-yong",
+    "name": {
+      "ko": "간옹",
+      "zhTW": "簡雍"
+    },
+    "season": "S1",
+    "faction": "촉",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "창병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 60.45,
+      "지력": 162.85,
+      "통솔": 132.25,
+      "선공": 131.0
+    },
+    "statsLv5": {
+      "무력": 33,
+      "지력": 85,
+      "통솔": 67,
+      "선공": 68
+    },
+    "growth": {
+      "무력": 0.61,
+      "지력": 1.73,
+      "통솔": 1.45,
+      "선공": 1.4
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-jian-yong",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "ma-su",
+    "name": {
+      "ko": "마속",
+      "zhTW": "馬謖"
+    },
+    "season": "S1",
+    "faction": "촉",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "궁병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 62.25,
+      "지력": 172.9,
+      "통솔": 137.6,
+      "선공": 122.3
+    },
+    "statsLv5": {
+      "무력": 42,
+      "지력": 91,
+      "통솔": 71,
+      "선공": 62
+    },
+    "growth": {
+      "무력": 0.45,
+      "지력": 1.82,
+      "통솔": 1.48,
+      "선공": 1.34
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-ma-su",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "ma-liang",
+    "name": {
+      "ko": "마량",
+      "zhTW": "馬良"
+    },
+    "season": "S1",
+    "faction": "촉",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "궁병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 43.8,
+      "지력": 168.75,
+      "통솔": 149.05,
+      "선공": 114.3
+    },
+    "statsLv5": {
+      "무력": 24,
+      "지력": 90,
+      "통솔": 82,
+      "선공": 54
+    },
+    "growth": {
+      "무력": 0.44,
+      "지력": 1.75,
+      "통솔": 1.49,
+      "선공": 1.34
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-ma-liang",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "shamoke",
+    "name": {
+      "ko": "사마가",
+      "zhTW": "沙摩柯"
+    },
+    "season": "S1",
+    "faction": "촉",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "기병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 181.45,
+      "지력": 41.7,
+      "통솔": 139.55,
+      "선공": 160.35
+    },
+    "statsLv5": {
+      "무력": 91,
+      "지력": 30,
+      "통솔": 77,
+      "선공": 78
+    },
+    "growth": {
+      "무력": 2.01,
+      "지력": 0.26,
+      "통솔": 1.39,
+      "선공": 1.83
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-shamoke",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "chen-wu",
+    "name": {
+      "ko": "진무",
+      "zhTW": "陳武"
+    },
+    "season": "S1",
+    "faction": "오",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "창병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 168.65,
+      "지력": 75.1,
+      "통솔": 168.75,
+      "선공": 109.55
+    },
+    "statsLv5": {
+      "무력": 89,
+      "지력": 49,
+      "통솔": 99,
+      "선공": 47
+    },
+    "growth": {
+      "무력": 1.77,
+      "지력": 0.58,
+      "통솔": 1.55,
+      "선공": 1.39
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-chen-wu",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "han-dang",
+    "name": {
+      "ko": "한당",
+      "zhTW": "韓當"
+    },
+    "season": "S1",
+    "faction": "오",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "궁병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 179.7,
+      "지력": 109.7,
+      "통솔": 145.75,
+      "선공": 130.4
+    },
+    "statsLv5": {
+      "무력": 96,
+      "지력": 71,
+      "통솔": 85,
+      "선공": 53
+    },
+    "growth": {
+      "무력": 1.86,
+      "지력": 0.86,
+      "통솔": 1.35,
+      "선공": 1.72
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-han-dang",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "dong-xi",
+    "name": {
+      "ko": "동습",
+      "zhTW": "董襲"
+    },
+    "season": "S1",
+    "faction": "오",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "기병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 154.75,
+      "지력": 95.15,
+      "통솔": 164.5,
+      "선공": 122.35
+    },
+    "statsLv5": {
+      "무력": 85,
+      "지력": 56,
+      "통솔": 88,
+      "선공": 58
+    },
+    "growth": {
+      "무력": 1.55,
+      "지력": 0.87,
+      "통솔": 1.7,
+      "선공": 1.43
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-dong-xi",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "jiang-qin",
+    "name": {
+      "ko": "장흠",
+      "zhTW": "蔣欽"
+    },
+    "season": "S1",
+    "faction": "오",
+    "row": "후열",
+    "role": "문무",
+    "unitType": "궁병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 165.4,
+      "지력": 162.6,
+      "통솔": 158.9,
+      "선공": 103.45
+    },
+    "statsLv5": {
+      "무력": 88,
+      "지력": 87,
+      "통솔": 86,
+      "선공": 40
+    },
+    "growth": {
+      "무력": 1.72,
+      "지력": 1.68,
+      "통솔": 1.62,
+      "선공": 1.41
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-jiang-qin",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "ding-feng",
+    "name": {
+      "ko": "정봉",
+      "zhTW": "丁奉"
+    },
+    "season": "S1",
+    "faction": "오",
+    "row": "후열",
+    "role": "병기",
+    "unitType": "창병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 155.25,
+      "지력": 120.0,
+      "통솔": 148.75,
+      "선공": 112.65
+    },
+    "statsLv5": {
+      "무력": 81,
+      "지력": 84,
+      "통솔": 88,
+      "선공": 51
+    },
+    "growth": {
+      "무력": 1.65,
+      "지력": 0.8,
+      "통솔": 1.35,
+      "선공": 1.37
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-ding-feng",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "pan-zhang",
+    "name": {
+      "ko": "반장",
+      "zhTW": "潘璋"
+    },
+    "season": "S1",
+    "faction": "오",
+    "row": "균형",
+    "role": "병기",
+    "unitType": "방패병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 155.1,
+      "지력": 129.25,
+      "통솔": 152.75,
+      "선공": 128.85
+    },
+    "statsLv5": {
+      "무력": 84,
+      "지력": 82,
+      "통솔": 83,
+      "선공": 69
+    },
+    "growth": {
+      "무력": 1.58,
+      "지력": 1.05,
+      "통솔": 1.55,
+      "선공": 1.33
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-pan-zhang",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "kong-rong",
+    "name": {
+      "ko": "공융",
+      "zhTW": "孔融"
+    },
+    "season": "S1",
+    "faction": "군",
+    "row": "후열",
+    "role": "보조",
+    "unitType": "방패병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 7.25,
+      "지력": 177.2,
+      "통솔": 130.85,
+      "선공": 98.3
+    },
+    "statsLv5": {
+      "무력": 5,
+      "지력": 98,
+      "통솔": 71,
+      "선공": 38
+    },
+    "growth": {
+      "무력": 0.05,
+      "지력": 1.76,
+      "통솔": 1.33,
+      "선공": 1.34
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-kong-rong",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "zhang-mancheng",
+    "name": {
+      "ko": "장만성",
+      "zhTW": "張曼成"
+    },
+    "season": "S1",
+    "faction": "군",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "방패병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 154.75,
+      "지력": 35.6,
+      "통솔": 166.5,
+      "선공": 98.55
+    },
+    "statsLv5": {
+      "무력": 85,
+      "지력": 23,
+      "통솔": 90,
+      "선공": 36
+    },
+    "growth": {
+      "무력": 1.55,
+      "지력": 0.28,
+      "통솔": 1.7,
+      "선공": 1.39
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-zhang-mancheng",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "huangfu-song-hero",
+    "name": {
+      "ko": "황보숭",
+      "zhTW": "皇甫嵩"
+    },
+    "season": "S1",
+    "faction": "군",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "기병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 129.15,
+      "지력": 115.2,
+      "통솔": 171.3,
+      "선공": 82.85
+    },
+    "statsLv5": {
+      "무력": 72,
+      "지력": 81,
+      "통솔": 93,
+      "선공": 23
+    },
+    "growth": {
+      "무력": 1.27,
+      "지력": 0.76,
+      "통솔": 1.74,
+      "선공": 1.33
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-huangfu-song-hero",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리",
+      "note": "시즌3 황보숭(신속 출병)과 다른 영웅 카드(반란 평정)"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ],
+    "samePerson": "huangfu-song"
+  },
+  {
+    "id": "lu-zhi",
+    "name": {
+      "ko": "노식",
+      "zhTW": "盧植"
+    },
+    "season": "S1",
+    "faction": "군",
+    "row": "전열",
+    "role": "방어",
+    "unitType": "방패병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 84.75,
+      "지력": 164.4,
+      "통솔": 171.75,
+      "선공": 123.95
+    },
+    "statsLv5": {
+      "무력": 60,
+      "지력": 87,
+      "통솔": 93,
+      "선공": 65
+    },
+    "growth": {
+      "무력": 0.55,
+      "지력": 1.72,
+      "통솔": 1.75,
+      "선공": 1.31
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-lu-zhi",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "guo-tu",
+    "name": {
+      "ko": "곽도",
+      "zhTW": "郭圖"
+    },
+    "season": "S1",
+    "faction": "군",
+    "row": "후열",
+    "role": "책략",
+    "unitType": "창병",
+    "grade": "영웅",
+    "gender": "M",
+    "stats": {
+      "무력": 76.65,
+      "지력": 156.0,
+      "통솔": 121.1,
+      "선공": 122.55
+    },
+    "statsLv5": {
+      "무력": 51,
+      "지력": 84,
+      "통솔": 59,
+      "선공": 60
+    },
+    "growth": {
+      "무력": 0.57,
+      "지력": 1.6,
+      "통솔": 1.38,
+      "선공": 1.39
+    },
+    "maxTroops": 10000,
+    "uniqueSkillId": "u-guo-tu",
+    "manuals": [],
+    "dataStatus": {
+      "stats": "50레벨 환산 = 5레벨 미리보기 + 45×성장치 (녹화 2026-10-11)",
+      "season": "시즌 표시 없음 — 시즌1 무장으로 처리"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (5레벨 미리보기 + 성장치, 고유 전법)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  }
+]

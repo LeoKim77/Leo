@@ -48,6 +48,8 @@ export const ENGINE_FIXES = [
     detail: '받는 피해 감소처럼(L3) 증가도 기존 증가분의 합만큼 줄어 들어간다: 침착한 지휘 +15.23% 가 있는 조조·등애에게 위협 10% → 8.47%(= 10 × (1 − 0.1523)), 증가가 없던 소교는 10.00%. 받는 피해 증가 버프와 위협류 상태(부여 때 체감값 저장) 모두.' },
   { id: 'FIX-027', date: '2026-10-10', found: '녹화 2026-10-10 (회유·심리 공격 18건, 관문)', title: '회유·심리 공격: 받는 치유 효과 제외·올림·회복 계기',
     detail: '회유·심리 공격 회복 = 준 피해 × 비율 × 군량 고갈(0.3), 받는 치유 효과(둔전령 +10%×스택)는 곱하지 않고 올림(340×10.87%×0.3 = 11.09 → 12, 254×10.87% = 27.6 → 28). 회유·심리 공격도 회복 효과라 0 회복이어도 관문 같은 "회복 효과를 발동하면" 계기가 된다(녹화: 천향 실패 턴에 소교 회유 0 → 관문 346).' },
+  { id: 'FEAT-033', date: '2026-10-11', found: '영웅 무장 녹화 2026-10-11 (고유 전법 23개)', title: '영웅 고유 전법용 부품',
+    detail: '적군 쪽 액티브 발동에 반응하는 트리거(cast role enemy_side, 양수 민첩한 대응), 피해 직전 트리거가 이번 1회 피해만 줄이는 _hitCut(장만성 천공장군), 공격자·회복자를 같은 시전에서 고른 무장으로(actor tag:, 공융 격렬한 언사), 대상 코드 highest_intel_friend(자신 제외 지력 최고 우군, 곽도 아첨의 귀재).' },
   { id: 'FEAT-032', date: '2026-10-10', found: '녹화 2026-10-10 (맹덕신서 하권 11.90·11.53)', title: '부여한 무장 스탯 영향(맹덕신서 하권)',
     detail: '맹덕신서 하권 "최고 속성 +8(지력의 영향 받음)"은 받은 무장이 아니라 조조의 그 순간 지력을 따른다(소교·등애·조조 모두 +11.90, 조조가 전략 계획으로 지력 258.93 이 되자 +11.53). 전투 시작에 한 번 계산하던 것을 매번 조조 현재 지력으로(inf.who grantor), 가중치 0.27%.' },
   { id: 'FEAT-031', date: '2026-10-09', found: '녹화 2026-10-09 주하황 3~8턴 (강렬 6건) + 2026-10-06 손관황 (무열황제 1건)', title: '"(추가로 통솔의 영향 받음)" 전법별 가중치',
@@ -503,6 +505,7 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
     case 'highest_power_enemy': result = [maxBy(enemies, u => S(u, '무력'))]; break;
     case 'highest_intel_enemy': result = [maxBy(enemies, u => S(u, '지력'))]; break;
     case 'highest_power_ally': result = [maxBy(allies, u => S(u, '무력'))]; break;
+    case 'highest_intel_friend': result = [maxBy(allies.filter(u => u !== unit), u => S(u, '지력'))]; break;   // FEAT-033 "지력이 가장 높은 우군"(자신 제외, 곽도 아첨의 귀재)
     case 'highest_power_friend': result = [maxBy(allies.filter(u => u !== unit), u => S(u, '무력'))]; break;   // FEAT-025 "무력이 가장 높은 우군"(자신 제외)
     case 'highest_intel_ally': result = [maxBy(allies, u => S(u, '지력'))]; break;
     case 'highest_command_ally': result = [maxBy(allies, u => S(u, '통솔'))]; break;
@@ -527,7 +530,7 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
 const SINGLE_TARGET_CODES = new Set(['random_enemy_1', 'random_ally_1', 'random_ally_one', 'random_enemy_back_first', 'random_enemy_front_first', 'random_ally_front', 'random_same_row_ally',
   'lowest_control_enemy', 'lowest_power_enemy', 'lowest_intel_enemy', 'lowest_speed_enemy', 'lowest_combined_enemy', 'lowest_hp_enemy',
   'highest_power_enemy', 'highest_intel_enemy', 'highest_speed_ally', 'highest_combined_ally', 'highest_power_ally', 'highest_intel_ally',
-  'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally', 'highest_power_friend']);
+  'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally', 'highest_power_friend', 'highest_intel_friend']);
 const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'self_and_random_ally_one', 'random_friend_n', 'all_friend', 'front_allies', 'random_all_4', 'random_all_4_self', 'damaged_me_this_turn', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
 function shuffle(a) { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(__rng() * (i + 1));[b[i], b[j]] = [b[j], b[i]]; } return b; }
 // R-048 "가장 높은/낮은 ○○"가 동률이면 동률인 무장 중 무작위 (예전엔 배치 순 앞쪽)
@@ -939,7 +942,7 @@ function emitDamageEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       if (t.requireCrit && !crit) return;
       if (t.fromAlly && attacker.side !== u.side) return;   // FEAT-025 "우군의 피해를 받은 후" (황개 견결)
       if (!rollTrigger(u, skill)) return;
-      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender, dmg, dmgType });
+      applySkillEffects(u, skill, allUnits, coeffs, log, turn, contrib, { attacker, defender, dmg, dmgType, isBasic: !!isBasic });   // FEAT-033 isBasic (한당 명사수)
     });
   });
 }
@@ -979,6 +982,8 @@ function emitDebuffEvent(ctx, allUnits, coeffs, log, turn, contrib) {
 function dealDamage(attacker, defender, ratio, dmgType, coeffs, log, allUnits, turn, contrib, isBasic, dmgTag) {
   // FEAT-024 "피해를 받기 직전" 트리거(서성 백리의성·전력 지원) — 계산 전에 발동해 이번 피해에 적용된다
   if (allUnits) emitPreDamageEvent({ attacker, defender, dmgType, isBasic: !!isBasic }, allUnits, coeffs, log, turn, contrib);
+  // FEAT-033 "이번 피해가 N% 감소한다" — 직전 트리거가 defender._hitCut 에 쌓은 감소를 이번 1회 피해에만 적용 (장만성 천공장군)
+  if (defender._hitCut) { ratio *= Math.max(0, 1 - defender._hitCut); defender._hitCut = 0; }
   __drained = null;
   const result = calcDamage(attacker, defender, ratio, dmgType, coeffs, log, turn, dmgTag || (isBasic ? 'basic' : 'active'));
   if (__drained && allUnits) { const dr = __drained; __drained = null; emitSimpleEvent('heal', { healer: dr.healer, target: dr.healer, amount: dr.amount, skillId: null }, dr.healer, allUnits, coeffs, log, turn, contrib); }
@@ -1357,6 +1362,7 @@ function emitCastEvent(ctx, allUnits, coeffs, log, turn, contrib) {
       if (t.castSkill === 'unique' && !cast.isUnique) return;   // 자기 고유 전법 (role 'self' 와 함께 쓴다)
       if (t.role === 'self' && u !== caster) return;
       if (t.role === 'ally_side' && u.side !== caster.side) return;
+      if (t.role === 'enemy_side' && u.side === caster.side) return;   // FEAT-033 "적군 전체가 액티브 전법 발동 후" (양수 민첩한 대응)
       if (t.casterIs) {
         const ok = t.casterIs.some(code => code === 'self' ? u === caster : selectTargets(u, [code], allUnits, true)[0] === caster);
         if (!ok) return;
@@ -1442,7 +1448,8 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
   const doDamage = d => {
     // 지시형 문장("무력이 가장 높은 아군이 적에게 피해를 준다") 대응:
     // d.actor가 있으면 그 아군이 실제 공격자(자신의 스탯으로 계산), 없으면 시전자 본인이 공격자.
-    const attacker = d.actor && d.actor !== 'self' ? (selectTargets(unit, [d.actor], allUnits, true)[0] || unit) : unit;
+    // FEAT-033: actor 에 tag: 를 쓰면 같은 시전에서 앞서 고른 무장이 공격자 (격렬한 언사 "우군 랜덤 1명이 … 피해, 이후 해당 우군 회복")
+    const attacker = d.actor && d.actor !== 'self' ? ((resolveSpecial(d.actor) || [])[0] || selectTargets(unit, [d.actor], allUnits, true)[0] || unit) : unit;
     let targets;
     if (d.target === 'self') {
       targets = [unit];   // FIX-014: '자신' = 시전자 (고육지계 "지력 최고 우군이 자신에게" — 예전엔 공격하는 우군 자신이 맞았다)
@@ -1614,7 +1621,7 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
 
   const doHeal = h => {
     if (h.turnCond && !turnMatches(h.turnCond, turn)) return;
-    const healer = h.actor && h.actor !== 'self' ? (selectTargets(unit, [h.actor], allUnits, true)[0] || unit) : unit;
+    const healer = h.actor && h.actor !== 'self' ? ((resolveSpecial(h.actor) || [])[0] || selectTargets(unit, [h.actor], allUnits, true)[0] || unit) : unit;
     let targets;
     if (h.target === 'self') {
       targets = [healer];

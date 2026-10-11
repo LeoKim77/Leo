@@ -3325,6 +3325,886 @@
       "missingHints": [
         "준비 턴"
       ]
+    },
+    "u-yang-xiu": {
+      "status": "ok",
+      "note": "적군의 액티브 발동마다 그 시전자에게 50% 책략",
+      "trigger": {
+        "event": "cast",
+        "castType": "액티브",
+        "role": "enemy_side",
+        "chance": 1
+      },
+      "effects": {
+        "damage": [
+          {
+            "dmgType": "책략",
+            "min": 0.5,
+            "max": 0.5,
+            "target": "trigger_attacker"
+          }
+        ],
+        "heal": [],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": []
+      }
+    },
+    "u-liu-ye": {
+      "status": "ok",
+      "note": "원문 순서대로 침묵 부여 → 160% → 침묵 보유 목표에 추가 160%(저항으로 침묵이 안 걸린 목표는 추가 피해 없음)",
+      "prepTurns": 1,
+      "effects": {
+        "damage": [
+          {
+            "dmgType": "책략",
+            "min": 1.6,
+            "max": 1.6,
+            "target": "tag:two"
+          },
+          {
+            "dmgType": "책략",
+            "min": 1.6,
+            "max": 1.6,
+            "target": "tag:two",
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "침묵"
+            }
+          }
+        ],
+        "heal": [],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [
+          {
+            "name": "침묵",
+            "target": "tag:two",
+            "duration": 2
+          }
+        ],
+        "targets": []
+      }
+    },
+    "u-wen-pin": {
+      "status": "approx",
+      "note": "통솔 40 증가의 지속·중첩이 원문에 없어 전투 끝까지·중첩 제한 없음으로 처리(검증 대기)",
+      "approxHints": [
+        "통솔이 40포인트"
+      ],
+      "effects": {
+        "damage": [],
+        "heal": [],
+        "buffs": [],
+        "statMods": [
+          {
+            "stat": "통솔",
+            "min": 40,
+            "max": 40,
+            "target": "self",
+            "duration": 999,
+            "maxStacks": 99
+          }
+        ],
+        "statusEffects": [
+          {
+            "name": "정신 회복",
+            "target": "self",
+            "duration": 2
+          }
+        ],
+        "targets": []
+      }
+    },
+    "u-cao-hong": {
+      "status": "ok",
+      "note": "병기·책략 피해 2건을 같은 목표에, 홍수면 각각 +30%",
+      "prepTurns": 1,
+      "effects": {
+        "damage": [
+          {
+            "dmgType": "병기",
+            "min": 3.6,
+            "max": 3.6,
+            "target": "tag:one",
+            "conditionalBonusMult": {
+              "condition": {
+                "type": "hasStatus",
+                "who": "target",
+                "status": "홍수"
+              },
+              "mult": 0.3
+            }
+          },
+          {
+            "dmgType": "책략",
+            "min": 3.6,
+            "max": 3.6,
+            "target": "tag:one",
+            "conditionalBonusMult": {
+              "condition": {
+                "type": "hasStatus",
+                "who": "target",
+                "status": "홍수"
+              },
+              "mult": 0.3
+            }
+          }
+        ],
+        "heal": [],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": []
+      }
+    },
+    "u-zhong-yao": {
+      "status": "ok",
+      "note": "",
+      "effects": {
+        "damage": [
+          {
+            "dmgType": "책략",
+            "min": 1.1,
+            "max": 1.1,
+            "target": "all_enemy"
+          }
+        ],
+        "heal": [],
+        "buffs": [
+          {
+            "stat": "간파",
+            "min": 0.1,
+            "max": 0.1,
+            "target": "self",
+            "duration": 2,
+            "maxStacks": 2
+          }
+        ],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": []
+      }
+    },
+    "u-cao-zhen": {
+      "status": "ok",
+      "note": "피해를 받을 때마다 그 피해 종류에 따라 감소 1중첩, 전투 중 최대 5회",
+      "_timing": "battleStart",
+      "effects": {
+        "damage": [],
+        "heal": [],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": []
+      },
+      "parts": [
+        {
+          "trigger": {
+            "event": "damage",
+            "role": "taken",
+            "chance": 1,
+            "maxPerBattle": 5
+          },
+          "effects": {
+            "damage": [],
+            "heal": [],
+            "buffs": [
+              {
+                "stat": "받는병기피해",
+                "min": -0.1,
+                "max": -0.1,
+                "target": "self",
+                "duration": 999,
+                "maxStacks": 5
+              },
+              {
+                "stat": "받는책략피해",
+                "min": -0.1,
+                "max": -0.1,
+                "target": "self",
+                "duration": 999,
+                "maxStacks": 5
+              }
+            ],
+            "statMods": [],
+            "statusEffects": [],
+            "targets": []
+          }
+        }
+      ]
+    },
+    "u-zang-ba": {
+      "status": "ok",
+      "note": "통솔 감소 대상과 피해 대상은 같은 2명",
+      "prepTurns": 1,
+      "effects": {
+        "damage": [
+          {
+            "dmgType": "병기",
+            "min": 2.8,
+            "max": 2.8,
+            "target": "tag:two"
+          }
+        ],
+        "heal": [],
+        "buffs": [],
+        "statMods": [
+          {
+            "stat": "통솔",
+            "min": -35,
+            "max": -35,
+            "target": "random_enemy_n",
+            "duration": 2,
+            "maxStacks": 1,
+            "tag": "two"
+          }
+        ],
+        "statusEffects": [],
+        "targets": []
+      }
+    },
+    "u-guo-huai": {
+      "status": "ok",
+      "note": "",
+      "_timing": "battleStart",
+      "effects": {
+        "damage": [],
+        "heal": [],
+        "buffs": [
+          {
+            "stat": "받는피해",
+            "min": -0.14,
+            "max": -0.14,
+            "target": "self",
+            "duration": 999,
+            "maxStacks": 1,
+            "inf": {
+              "stats": [
+                "통솔"
+              ],
+              "who": "self"
+            }
+          }
+        ],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": []
+      },
+      "parts": [
+        {
+          "trigger": {
+            "event": "damage",
+            "role": "taken",
+            "chance": 1
+          },
+          "effects": {
+            "damage": [],
+            "heal": [],
+            "buffs": [],
+            "statMods": [
+              {
+                "stat": "무력",
+                "min": -20,
+                "max": -20,
+                "target": "trigger_attacker",
+                "duration": 2,
+                "maxStacks": 2
+              },
+              {
+                "stat": "지력",
+                "min": -20,
+                "max": -20,
+                "target": "trigger_attacker",
+                "duration": 2,
+                "maxStacks": 2
+              }
+            ],
+            "statusEffects": [],
+            "targets": []
+          }
+        }
+      ]
+    },
+    "u-jian-yong": {
+      "status": "ok",
+      "note": "",
+      "effects": {
+        "damage": [],
+        "heal": [
+          {
+            "min": 1.4,
+            "max": 1.4,
+            "target": "tag:two"
+          }
+        ],
+        "buffs": [
+          {
+            "stat": "받는책략피해",
+            "min": -0.2,
+            "max": -0.2,
+            "target": "tag:two",
+            "duration": 2,
+            "maxStacks": 1
+          }
+        ],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": []
+      }
+    },
+    "u-ma-su": {
+      "status": "approx",
+      "note": "짝수 턴 피해를 그 턴 행동 시점에 처리(시점 검증 대기)",
+      "approxHints": [
+        "짝수 턴에"
+      ],
+      "_timing": "battleStart",
+      "effects": {
+        "damage": [],
+        "heal": [],
+        "buffs": [
+          {
+            "stat": "묘책",
+            "min": 0.12,
+            "max": 0.12,
+            "target": "self",
+            "duration": 999,
+            "maxStacks": 1
+          }
+        ],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": []
+      },
+      "parts": [
+        {
+          "_timing": "action",
+          "onlyTurns": [
+            2,
+            4,
+            6,
+            8
+          ],
+          "effects": {
+            "damage": [
+              {
+                "dmgType": "책략",
+                "min": 1.0,
+                "max": 1.0,
+                "target": "all_enemy"
+              }
+            ],
+            "heal": [],
+            "buffs": [],
+            "statMods": [],
+            "statusEffects": [],
+            "targets": []
+          }
+        }
+      ]
+    },
+    "u-ma-liang": {
+      "status": "ok",
+      "note": "",
+      "effects": {
+        "damage": [
+          {
+            "dmgType": "책략",
+            "min": 1.1,
+            "max": 1.1,
+            "target": "all_enemy"
+          }
+        ],
+        "heal": [],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [
+          {
+            "name": "위협",
+            "target": "all_enemy",
+            "duration": 2
+          }
+        ],
+        "targets": []
+      }
+    },
+    "u-shamoke": {
+      "status": "ok",
+      "note": "매 턴 3번째 피격 직후 1턴 공포(턴마다 1회)",
+      "_timing": "battleStart",
+      "effects": {
+        "damage": [],
+        "heal": [],
+        "buffs": [
+          {
+            "stat": "주는피해",
+            "min": 0.6,
+            "max": 0.6,
+            "target": "self",
+            "duration": 999,
+            "maxStacks": 1
+          }
+        ],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": []
+      },
+      "parts": [
+        {
+          "trigger": {
+            "event": "damage",
+            "role": "taken",
+            "chance": 1
+          },
+          "effects": {
+            "damage": [],
+            "heal": [],
+            "buffs": [],
+            "statMods": [],
+            "statusEffects": [
+              {
+                "name": "공포",
+                "target": "self",
+                "duration": 1
+              }
+            ],
+            "targets": []
+          }
+        }
+      ]
+    },
+    "u-chen-wu": {
+      "status": "approx",
+      "note": "260%~300% 는 시전마다 그 범위에서 무작위(분포 검증 대기)",
+      "approxHints": [
+        "260%~300%"
+      ],
+      "prepTurns": 1,
+      "effects": {
+        "damage": [
+          {
+            "dmgType": "병기",
+            "min": 2.6,
+            "max": 3.0,
+            "target": "all_enemy"
+          }
+        ],
+        "heal": [],
+        "buffs": [],
+        "statMods": [
+          {
+            "stat": "무력",
+            "min": 30,
+            "max": 30,
+            "target": "self",
+            "duration": 1,
+            "maxStacks": 1
+          }
+        ],
+        "statusEffects": [],
+        "targets": []
+      }
+    },
+    "u-han-dang": {
+      "status": "ok",
+      "note": "우군(자신 제외)의 일반 공격 피해 1회마다 35% 판정, 그 목표에게 한당의 일반 공격 1회",
+      "trigger": {
+        "event": "damage",
+        "role": "ally_dealt",
+        "chance": 1
+      },
+      "effects": {
+        "damage": [
+          {
+            "dmgType": "병기",
+            "min": 1.0,
+            "max": 1.0,
+            "target": "trigger_defender",
+            "asBasicAttack": true
+          }
+        ],
+        "heal": [],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": []
+      }
+    },
+    "u-dong-xi": {
+      "status": "approx",
+      "note": "받는 회복 효과 증가는 매 턴 누적(상한 없음)으로 처리",
+      "approxHints": [
+        "받는 회복 효과가 10%"
+      ],
+      "_timing": "battleStart",
+      "effects": {
+        "damage": [],
+        "heal": [],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [
+          {
+            "name": "정신 회복",
+            "target": "self",
+            "duration": 999
+          }
+        ],
+        "targets": []
+      },
+      "parts": [
+        {
+          "_timing": "action",
+          "effects": {
+            "damage": [],
+            "heal": [],
+            "buffs": [
+              {
+                "stat": "받는회복량",
+                "min": 0.1,
+                "max": 0.1,
+                "target": "self",
+                "duration": 999,
+                "maxStacks": 99
+              }
+            ],
+            "statMods": [],
+            "statusEffects": [],
+            "targets": []
+          }
+        }
+      ]
+    },
+    "u-jiang-qin": {
+      "status": "ok",
+      "note": "홍수 부여 전에 이미 홍수였던 목표만 100% 병기·책략",
+      "effects": {
+        "damage": [
+          {
+            "dmgType": "병기",
+            "min": 1.0,
+            "max": 1.0,
+            "target": "tag:had"
+          },
+          {
+            "dmgType": "책략",
+            "min": 1.0,
+            "max": 1.0,
+            "target": "tag:had"
+          }
+        ],
+        "heal": [],
+        "buffs": [],
+        "statMods": [
+          {
+            "stat": "지력",
+            "min": 20,
+            "max": 20,
+            "target": "self",
+            "duration": 2,
+            "maxStacks": 2
+          },
+          {
+            "stat": "무력",
+            "min": 20,
+            "max": 20,
+            "target": "self",
+            "duration": 2,
+            "maxStacks": 2
+          }
+        ],
+        "statusEffects": [
+          {
+            "name": "홍수",
+            "target": "tag:two",
+            "duration": 2
+          }
+        ],
+        "targets": []
+      }
+    },
+    "u-ding-feng": {
+      "status": "ok",
+      "note": "",
+      "effects": {
+        "damage": [
+          {
+            "dmgType": "병기",
+            "min": 0.8,
+            "max": 0.8,
+            "target": "all_enemy"
+          }
+        ],
+        "heal": [],
+        "buffs": [],
+        "statMods": [
+          {
+            "stat": "선공",
+            "min": 25,
+            "max": 25,
+            "target": "self",
+            "duration": 2,
+            "maxStacks": 1
+          }
+        ],
+        "statusEffects": [],
+        "targets": []
+      }
+    },
+    "u-pan-zhang": {
+      "status": "ok",
+      "note": "",
+      "_timing": "battleStart",
+      "static": {
+        "statsPct": {
+          "무력": 0.1,
+          "통솔": 0.1
+        }
+      },
+      "effects": {
+        "damage": [],
+        "heal": [],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [],
+        "targets": []
+      },
+      "parts": [
+        {
+          "trigger": {
+            "event": "cast",
+            "role": "self",
+            "chance": 0.6
+          },
+          "effects": {
+            "damage": [
+              {
+                "dmgType": "병기",
+                "min": 0.8,
+                "max": 0.8,
+                "target": "random_enemy_1"
+              }
+            ],
+            "heal": [],
+            "buffs": [],
+            "statMods": [],
+            "statusEffects": [],
+            "targets": []
+          }
+        }
+      ]
+    },
+    "u-kong-rong": {
+      "status": "ok",
+      "note": "조롱 대상에게 우군(자신 제외) 1명이 자기 스탯으로 160% 병기·책략, 이후 그 우군 회복(공융 지력)",
+      "effects": {
+        "damage": [
+          {
+            "dmgType": "병기",
+            "min": 1.6,
+            "max": 1.6,
+            "target": "tag:e",
+            "actor": "tag:f"
+          },
+          {
+            "dmgType": "책략",
+            "min": 1.6,
+            "max": 1.6,
+            "target": "tag:e",
+            "actor": "tag:f"
+          }
+        ],
+        "heal": [
+          {
+            "min": 1.4,
+            "max": 1.4,
+            "target": "tag:f"
+          }
+        ],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [
+          {
+            "name": "조롱",
+            "target": "highest_intel_enemy",
+            "duration": 2,
+            "tag": "e"
+          }
+        ],
+        "targets": []
+      }
+    },
+    "u-zhang-mancheng": {
+      "status": "ok",
+      "note": "요술 80% 는 시전 1회 판정(R-021). 피해 감소는 이번 1회 피해(FEAT-033)",
+      "_timing": "action",
+      "effects": {
+        "damage": [],
+        "heal": [],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [
+          {
+            "name": "요술",
+            "target": "random_enemy_n",
+            "duration": 2,
+            "chance": 0.8,
+            "chanceOnce": true
+          }
+        ],
+        "targets": []
+      },
+      "parts": [
+        {
+          "trigger": {
+            "event": "pre_damage",
+            "role": "taken",
+            "chance": 1
+          },
+          "effects": {
+            "damage": [],
+            "heal": [],
+            "buffs": [],
+            "statMods": [],
+            "statusEffects": [],
+            "targets": []
+          }
+        }
+      ]
+    },
+    "u-huangfu-song-hero": {
+      "status": "ok",
+      "note": "",
+      "_timing": "battleStart",
+      "effects": {
+        "damage": [],
+        "heal": [],
+        "buffs": [],
+        "statMods": [
+          {
+            "stat": "통솔",
+            "min": 60,
+            "max": 60,
+            "target": "self",
+            "duration": 999,
+            "maxStacks": 1
+          }
+        ],
+        "statusEffects": [],
+        "targets": []
+      },
+      "parts": [
+        {
+          "trigger": {
+            "event": "damage",
+            "role": "taken",
+            "chance": 0.5
+          },
+          "effects": {
+            "damage": [],
+            "heal": [],
+            "buffs": [
+              {
+                "stat": "주는피해",
+                "min": -0.1,
+                "max": -0.1,
+                "target": "trigger_attacker",
+                "duration": 2,
+                "maxStacks": 4
+              }
+            ],
+            "statMods": [],
+            "statusEffects": [],
+            "targets": []
+          }
+        }
+      ]
+    },
+    "u-lu-zhi": {
+      "status": "ok",
+      "note": "",
+      "_timing": "turnEnd",
+      "onlyTurns": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "effects": {
+        "damage": [],
+        "heal": [
+          {
+            "min": 1.8,
+            "max": 1.8,
+            "target": "self",
+            "noStatTerm": true
+          }
+        ],
+        "buffs": [],
+        "statMods": [],
+        "statusEffects": [
+          {
+            "name": "방어",
+            "target": "self_and_random_ally_1"
+          }
+        ],
+        "targets": []
+      }
+    },
+    "u-guo-tu": {
+      "status": "approx",
+      "note": "혼란은 지력 최고 우군(자신 제외)이 받는 것으로 해석, 확률 5%×턴(검증 대기)",
+      "approxHints": [
+        "5% 확률로 1턴 동안 혼란"
+      ],
+      "_timing": "turnStart",
+      "effects": {
+        "damage": [],
+        "heal": [],
+        "buffs": [
+          {
+            "stat": "주는피해",
+            "min": 0.3,
+            "max": 0.3,
+            "target": "highest_intel_friend",
+            "duration": 1,
+            "maxStacks": 1,
+            "tag": "f"
+          }
+        ],
+        "statMods": [],
+        "statusEffects": [
+          {
+            "name": "혼란",
+            "target": "tag:f",
+            "duration": 1
+          }
+        ],
+        "targets": []
+      },
+      "parts": [
+        {
+          "_timing": "turnEnd",
+          "effects": {
+            "damage": [
+              {
+                "dmgType": "책략",
+                "min": 1.0,
+                "max": 1.0,
+                "target": "random_enemy_1",
+                "actor": "highest_intel_friend"
+              }
+            ],
+            "heal": [],
+            "buffs": [],
+            "statMods": [],
+            "statusEffects": [],
+            "targets": []
+          }
+        }
+      ]
     }
   }
 }
