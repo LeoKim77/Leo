@@ -48,6 +48,8 @@ export const ENGINE_FIXES = [
     detail: '받는 피해 감소처럼(L3) 증가도 기존 증가분의 합만큼 줄어 들어간다: 침착한 지휘 +15.23% 가 있는 조조·등애에게 위협 10% → 8.47%(= 10 × (1 − 0.1523)), 증가가 없던 소교는 10.00%. 받는 피해 증가 버프와 위협류 상태(부여 때 체감값 저장) 모두.' },
   { id: 'FIX-027', date: '2026-10-10', found: '녹화 2026-10-10 (회유·심리 공격 18건, 관문)', title: '회유·심리 공격: 받는 치유 효과 제외·올림·회복 계기',
     detail: '회유·심리 공격 회복 = 준 피해 × 비율 × 군량 고갈(0.3), 받는 치유 효과(둔전령 +10%×스택)는 곱하지 않고 올림(340×10.87%×0.3 = 11.09 → 12, 254×10.87% = 27.6 → 28). 회유·심리 공격도 회복 효과라 0 회복이어도 관문 같은 "회복 효과를 발동하면" 계기가 된다(녹화: 천향 실패 턴에 소교 회유 0 → 관문 346).' },
+  { id: 'FIX-030', date: '2026-10-11', found: '사용자 요청 2026-10-11 (인게임 전보 순서)', title: '행동 순서 판단 표기를 턴 맨 앞으로',
+    detail: '행동 순서는 원래 턴 시작 전법보다 먼저 정해졌지만, 전보 줄은 턴 시작 전법 뒤에 찍히고 선공도 그 뒤 값(턴 시작 선공 버프 반영)으로 보였다. 인게임처럼 턴 머리 바로 다음에 판단 시점의 선공으로 표기.' },
   { id: 'FEAT-033', date: '2026-10-11', found: '영웅 무장 녹화 2026-10-11 (고유 전법 23개)', title: '영웅 고유 전법용 부품',
     detail: '적군 쪽 액티브 발동에 반응하는 트리거(cast role enemy_side, 양수 민첩한 대응), 피해 직전 트리거가 이번 1회 피해만 줄이는 _hitCut(장만성 천공장군), 공격자·회복자를 같은 시전에서 고른 무장으로(actor tag:, 공융 격렬한 언사), 대상 코드 highest_intel_friend(자신 제외 지력 최고 우군, 곽도 아첨의 귀재).' },
   { id: 'FEAT-032', date: '2026-10-10', found: '녹화 2026-10-10 (맹덕신서 하권 11.90·11.53)', title: '부여한 무장 스탯 영향(맹덕신서 하권)',
@@ -2573,6 +2575,9 @@ function simulateOneBattle(armyA, armyB, coeffs) {
     const order = mergeActionOrder(units, coeffs);
     // 실제 게임의 "행동 순서 판단 완료 [판단 결과]"에 대응 — 선공 기준 행동 순서를 매 턴 표기
     log.push(`${turn}턴: ── ${turn}번째 턴 ──`);
+    // FIX-030: 인게임처럼 턴 맨 앞(턴 시작 전법보다 먼저)에 판단 결과를 표기한다. 선공은 판단에 쓴 그 순간 값
+    log.push(`${turn}턴: 행동 순서 판단 완료 — ` +
+      order.map((u, i) => `${i + 1}.${u.name}(선공 ${effStat(u, '선공').toFixed(0)})`).join('  '));
     // 지속 피해(짐독·연소)는 FIX-018(R-050) 로 보유자 행동 시작(resolveUnitTurn)에서 처리 — 여기서는 atHolderAction 이 없는 지속 피해만
     units.forEach(u => processDots(u, units, coeffs, log, turn, contrib, false));
 
@@ -2580,8 +2585,6 @@ function simulateOneBattle(armyA, armyB, coeffs) {
     // v1.11 W02: 턴 시작 단계 — "턴 시작 시" 지휘·패시브를 행동 순서 판정 전에 선공 순으로 처리
     runPhaseSkills('turnStart', units, coeffs, log, turn, contrib);
     units.forEach(u => { if (u.alive) captureSnapshot(u, battleState, turn); });
-    log.push(`${turn}턴: 행동 순서 판단 완료 — ` +
-      order.map((u, i) => `${i + 1}.${u.name}(선공 ${effStat(u, '선공').toFixed(0)})`).join('  '));
     for (const u of order) {
       resolveUnitTurn(u, units, coeffs, log, turn, contrib, battleState);
       if (u.alive) markHolderSeen(u);

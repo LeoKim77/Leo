@@ -159,6 +159,9 @@ function battleView() {
       sn.mods.map((m: any) => h('div', null, `${m[0]}: ${fmt(m[1] * 100)}%`)),
       sn.effects.map((e: any) => h('div', { style: { color: sideColor(e[3] || sn.side) } }, `[${e[0]}], ${e[1]}턴${e[2] ? '---' + e[2] : ''}`)),
       ax.length ? h('div', { class: 'game-tip-note' }, '시뮬 참고 · 근사·미반영', ax.map((x: any) => h('div', null, `${x.kind} ${x.name}`))) : null);
+    placeTip(tipEl, ev);
+  };
+  const placeTip = (tipEl: HTMLElement, ev: MouseEvent) => {
     document.body.appendChild(tipEl);
     const r = (ev.target as HTMLElement).getBoundingClientRect();
     const w = tipEl.offsetWidth, hgt = tipEl.offsetHeight;
@@ -168,6 +171,24 @@ function battleView() {
     tipEl.style.top = `${(below ? r.bottom + 6 : Math.max(8, r.top - hgt - 6)) + window.scrollY}px`;
     setTimeout(() => document.addEventListener('click', closeTip, { once: true }), 0);
   };
+  // 전보의 전법·금병법 이름(【…】·[…]) — 누르면 무장 툴팁처럼 전법 설명 상자가 뜬다
+  const sq = (x: string) => x.replace(/\s+/g, '');
+  const skillByName = new Map<string, any>();
+  app.bundle.skills.forEach((x: any) => skillByName.set(sq(x.name.ko), { name: x.name.ko, kind: x.kind, trait: x.trait, rate: x.procRateText, text: x.text, grade: x.grade, unique: x.isUnique,
+    owner: x.isUnique ? generalById(x.ownerGeneralId)?.name.ko : '', status: (x as any).engineStatus?.status, note: (x as any).engineStatus?.note }));
+  app.bundle.generals.forEach((g: any) => (g.manuals || []).forEach((m: any) => { if (!skillByName.has(sq(m.name))) skillByName.set(sq(m.name), { name: m.name, kind: '금병법', text: m.text, owner: g.name.ko, status: m.status, note: m.note }); }));
+  const showSkillTip = (key: string, ev: MouseEvent) => {
+    closeTip();
+    const x = skillByName.get(sq(key));
+    if (!x) return;
+    const tipEl = h('div', { class: 'game-tip skill-tip', onclick: (e: Event) => { e.stopPropagation(); closeTip(); } },
+      h('div', { class: 'skill-tip-name' }, x.name),
+      h('div', null, [x.unique ? `${x.owner} 고유 전법` : x.kind === '금병법' ? `${x.owner} 금병법` : x.grade ? `${x.grade} 전법` : '전법', x.kind !== '금병법' ? x.kind : '', x.rate ? `발동률 ${x.rate}` : '', x.trait ? `특성 ${x.trait}` : ''].filter(Boolean).join(' · ')),
+      h('div', { class: 'skill-tip-text' }, x.text ? x.text.split(/(\d+(?:\.\d+)?%|\d+포인트)/).map((t: string, j: number) => (j % 2 ? h('span', { class: 'lg-num' }, t) : t)) : '원문 없음'),
+      x.status && x.status !== 'ok' ? h('div', { class: 'game-tip-note' }, `시뮬 참고 · ${x.status === 'approx' ? '근사' : x.status === 'missing' ? '미반영' : x.status}${x.note ? ' — ' + x.note : ''}`) : null);
+    placeTip(tipEl, ev);
+  };
+  const skillLink = (part: string, inner: string) => h('a', { class: 'skill-name', href: 'javascript:void 0', onclick: (ev: MouseEvent) => { ev.stopPropagation(); showSkillTip(inner, ev); } }, part);
   // 게임 전보 글씨 색: 아군 이름 파랑 · 적군 이름 빨강 · 손실 병력 빨강 · 회복 병력 초록 · 증감 수치·스택·회심/묘책 배율 노랑
   const sideOfName = new Map<string, string>();
   (battle.units || []).forEach((u: any) => sideOfName.set(u.name, sideOfName.has(u.name) && sideOfName.get(u.name) !== u.side ? 'both' : u.side));
@@ -180,9 +201,12 @@ function battleView() {
   });
   const lineEl = (l: string, i: number) => {
     const text = l.replace(/^\d+턴: /, '');
-    return text.split(/(\[[^\]]+\])/).map(part => {
+    return text.split(/(\[[^\]]+\]|【[^】]+】|「[^」]+」|〈[^〉]+〉)/).map(part => {
+      const k = part.match(/^【([^】]+)】$/) || part.match(/^「([^」]+)」$/) || part.match(/^〈([^〉]+)〉$/);
+      if (k) return skillByName.has(sq(k[1])) ? skillLink(part, k[1]) : part;
       const m = part.match(/^\[([^\]]+)\]$/);
       if (!m) return colorNums(part);
+      if (!snaps[i]?.[m[1]] && !sideOfName.has(m[1]) && skillByName.has(sq(m[1]))) return skillLink(part, m[1]);
       const side = nameSide(m[1], i);
       const cls = side === 'A' ? 'lg-ally' : side === 'B' ? 'lg-enemy' : '';
       return snaps[i]?.[m[1]] ? h('a', { class: `snap-name ${cls}`, href: 'javascript:void 0', onclick: (ev: MouseEvent) => { ev.stopPropagation(); showSnap(m[1], i, ev); } }, part) : h('span', { class: cls }, part);
@@ -200,7 +224,7 @@ function battleView() {
   return h('div', { class: 'grid cols-2' },
     h('div', { class: 'panel' },
       h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '15px' } }, `전보 — ${battle.winner === 'A' ? '내 덱 승' : battle.winner === 'B' ? '상대 승' : '무승부'} (${battle.turns}턴${(battle as any).rounds > 1 ? ` · ${(battle as any).rounds}차 교전` : ''})`), h('span', { class: 'sub' }, `시드 ${battle.seed}`)),
-      snaps.length ? h('div', { class: 'sub', style: { marginBottom: '6px' } }, '전보의 무장 이름을 누르면 그 시점의 툴팁이 게임처럼 뜹니다.') : null,
+      snaps.length ? h('div', { class: 'sub', style: { marginBottom: '6px' } }, '전보의 무장 이름을 누르면 그 시점의 툴팁이, 전법 이름을 누르면 전법 설명이 게임처럼 뜹니다.') : null,
       h('div', { class: 'log-wrap' },
         h('div', { class: 'turn-nav' }, turnMarks.map(t => h('button', { 'data-i': String(t.i), onclick: () => goTurn(t.i) }, t.label))),
         h('div', { class: 'log', id: 'battle-log' }, rows.map(({ l, i }) => /── \d+번째 턴 ──|── 포진 ──/.test(l)

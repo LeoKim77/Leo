@@ -73,12 +73,13 @@ describe('녹화 2026-10-05 (제갈량·육손·주유)', () => {
       { formation: '기형진', units: [unit('손책'), unit('대교'), unit('조운')] } as any, { seed: s }).log);
     let seen = 0;
     for (const log of logs) {
-      let ordered = false;
-      for (const line of log) {
-        if (/행동 순서 판단 완료/.test(line)) ordered = true;
-        if (/── \d+번째 턴 ──/.test(line)) ordered = false;
-        if (/「연소」 \d스택으로 병력이/.test(line)) { expect(ordered).toBe(true); seen++; }
-      }
+      // 보유자 차례의 지속 피해 → 그 줄 다음 첫 '행동 시작'이 보유자 자신 (FIX-030 뒤 판단 표기는 턴 맨 앞이라 기준선으로 못 쓴다)
+      log.forEach((line, k) => {
+        const m = line.match(/\[([^\]]+)\]이\(가\) 「연소」 \d스택으로 병력이/);
+        if (!m) return;
+        const next = log.slice(k + 1).find(l => /\] 행동 시작/.test(l));
+        if (next) { expect(next).toContain(`[${m[1]}] 행동 시작`); seen++; }
+      });
     }
     expect(seen).toBeGreaterThan(0);
   });
@@ -94,12 +95,13 @@ describe('녹화 2026-10-05 (제갈량·육손·주유)', () => {
       { formation: '기형진', units: [unit('손책'), unit('대교'), unit('조운')] } as any, { seed: s }).log);
     let seen = 0;
     for (const log of logs) {
-      let ordered = false;
-      for (const line of log) {
-        if (/행동 순서 판단 완료/.test(line)) ordered = true;
-        if (/── \d+번째 턴 ──/.test(line)) ordered = false;
-        if (/「짐독」 \d스택으로 병력이/.test(line)) { expect(ordered).toBe(true); seen++; }
-      }
+      // 보유자 차례의 지속 피해 → 그 줄 다음 첫 '행동 시작'이 보유자 자신 (FIX-030 뒤 판단 표기는 턴 맨 앞이라 기준선으로 못 쓴다)
+      log.forEach((line, k) => {
+        const m = line.match(/\[([^\]]+)\]이\(가\) 「짐독」 \d스택으로 병력이/);
+        if (!m) return;
+        const next = log.slice(k + 1).find(l => /\] 행동 시작/.test(l));
+        if (next) { expect(next).toContain(`[${m[1]}] 행동 시작`); seen++; }
+      });
     }
     expect(seen).toBeGreaterThan(0);
   });

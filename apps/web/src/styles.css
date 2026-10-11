@@ -129,6 +129,10 @@ tr.click { cursor: pointer; } tr.click:hover td { background: var(--panel-2); }
 .unit-row select { width: 100%; min-width: 0; }
 .log { max-height: 460px; overflow: auto; font-size: 13px; line-height: 1.6; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px; white-space: pre-wrap; }
 .game-tip { position: absolute; z-index: 50; background: rgba(8, 9, 11, 0.94); color: #e8e8e8; border-radius: 4px; padding: 10px 14px; font-size: 13.5px; line-height: 1.5; min-width: 170px; max-width: min(320px, calc(100vw - 16px)); box-shadow: 0 6px 20px rgba(0,0,0,.45); font-variant-numeric: tabular-nums; }
+.skill-name { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; cursor: pointer; }
+.skill-tip { max-width: min(360px, calc(100vw - 16px)); }
+.skill-tip .skill-tip-name { font-weight: 700; font-size: 14.5px; color: #f0d58a; margin-bottom: 2px; }
+.skill-tip .skill-tip-text { margin-top: 6px; white-space: normal; }
 .game-tip-note { margin-top: 6px; padding-top: 5px; border-top: 1px dashed #444; color: #c9a227; font-size: 12px; }
 :root { --tip-ally: #5aa8ff; --tip-enemy: #ff5a5a; }
 .log .snap-name { color: inherit; text-decoration: underline dotted; cursor: pointer; }

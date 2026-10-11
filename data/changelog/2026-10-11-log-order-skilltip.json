@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-11-log-order-skilltip",
+  "date": "2026-10-11",
+  "season": "S1",
+  "category": "시뮬 화면",
+  "title": "전보: 행동 순서 판단을 턴 맨 앞에 표기, 전법 이름을 누르면 전법 설명 툴팁",
+  "body": "행동 순서는 원래 턴 시작 전법보다 먼저 정해졌는데(D3) 전보 줄만 턴 시작 전법 뒤에 찍혀 선공도 그 뒤 값으로 보였다. 인게임처럼 턴 머리 바로 다음에 판단 시점 선공으로 표기(FIX-030, 전투 결과는 그대로). 전보의 【전법】·[전법]·「효과」·〈금병법〉 이름을 누르면 무장 툴팁과 같은 검은 상자에 전법 이름·유형·발동률·특성·원문(10레벨)과 근사 표시가 뜬다.",
+  "refs": [],
+  "author": "Claude",
+  "commit": "",
+  "files": [
+    "packages/engine/src/legacy/core.js",
+    "apps/web/src/views/sim.ts",
+    "apps/web/src/styles.css",
+    "tests/rec-zgl.test.ts",
+    "data/design/spec.json"
+  ]
+}
