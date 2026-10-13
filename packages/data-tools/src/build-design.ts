@@ -118,6 +118,7 @@ export function collectDesignData() {
   const assumptions = readJson<any>(join(DATA, 'verification', 'engine-assumptions.json')).items;
   const queue = readJson<any>(join(DATA, 'verification', 'queue.json'), { items: [] }).items;
   const plan = readJson<any>(join(DATA, 'verification', 'recording-plan.json'));
+  const missions = readJson<any>(join(DATA, 'verification', 'missions.json'), { missions: [] });
   const audit = readJson<any>(join(DATA, 'audit', 'latest.json'), null);
   const replays = loadReplays().map(r => {
     let rows: any[] = [];
@@ -142,7 +143,7 @@ export function collectDesignData() {
     verification: {
       coeffs, assumptions,
       queue: queue.map((q: any) => ({ id: q.id, kind: q.kind, title: q.title, status: q.status || 'open', priority: q.priority })),
-      plan, replays,
+      plan, replays, missions,
       audit: audit ? { generatedAt: audit.generatedAt, summary: audit.summary } : null,
     },
   };

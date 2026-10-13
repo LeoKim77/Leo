@@ -558,6 +558,8 @@ const SPACES = [
     pages: [['flow', '전투 한 판의 흐름'], ...DESIGN_CATS.filter(c => catById[c] && c !== 'overview').map(c => [`c-${c}`, catById[c].title])] },
   { id: 'verify', title: '검증', desc: '녹화로 확인할 것, 맞춰 본 결과, 엔진이 원문대로 도는지.',
     pages: [['v-decks', '녹화할 덱'], ['v-clauses', '원문 반영 상태'], ['v-quality', '계수·감사·데이터'], ['c-verification', '검증 자료'], ['c-log', '변경 기록']] },
+  { id: 'ops', title: '운영', desc: '공개 서비스·포인트·검증 미션·자유게시판 (파일럿).',
+    pages: [['v-missions', '검증 미션'], ['c-operations', '서비스 운영']] },
 ];
 const spaceOf = page => (SPACES.find(s => s.pages.some(p => p[0] === page)) || SPACES[0]);
 const pageTitle = page => (SPACES.flatMap(s => s.pages).find(p => p[0] === page) || [page, page])[1];
@@ -566,7 +568,7 @@ function renderNav(active) {
   const side = document.getElementById('side');
   const sp = spaceOf(active);
   const openAll = D.posts.filter(isOpen).length;
-  const badge = { 'plan-open': DB.cards.questions.count, 'v-decks': DB.cards.engine.count, 'v-clauses': DB.cards.clauses.count, 'board': D.posts.length };
+  const badge = { 'v-missions': (D.verification.missions?.missions || []).length, 'plan-open': DB.cards.questions.count, 'v-decks': DB.cards.engine.count, 'v-clauses': DB.cards.clauses.count, 'board': D.posts.length };
   const link = (href, label, on, n, warn) => h('a', { class: `nav-link${on ? ' active' : ''}`, href: `#${href}` }, h('span', null, label), n != null ? h('span', { class: 'nav-count' }, h('span', { class: warn ? 'open' : '' }, n)) : null);
   side.replaceChildren(...[
     h('div', { class: 'brand' }, '천하결전 전투 설계서'),
@@ -699,6 +701,40 @@ function decksView() {
   ];
 }
 
+/* 검증 미션 (OPS5) — 유저에게 맡길 녹화 미션, 데이터 빈칸에서 자동 생성(pnpm missions) */
+function missionCard(m, open) {
+  return h('details', { class: 'deck', open: open ? true : null },
+    h('summary', null,
+      h('span', { class: 'deck-no' }, m.kind), h('span', { class: 'deck-title' }, m.title), chip('t-공지', `${m.reward[0]}~${m.reward[1]}P`),
+      h('span', { class: 'deck-names' }, m.why)),
+    h('div', { class: 'deck-body' },
+      m.setup ? h('div', null, h('h3', { style: 'margin-top:0' }, '편성'), h('div', { class: 'opp' }, `${m.setup.formation ? m.setup.formation + ' · ' : ''}상대: ${m.setup.opponent}`),
+        h('ul', null, m.setup.units.map(u => h('li', null, h('strong', null, u.general), u.skills?.length ? ` · ${u.skills.join(' · ')}` : '', u.manual ? ` · 〈${u.manual}〉` : '')))) : null,
+      h('h3', null, '녹화에 꼭 들어가야 할 화면'),
+      h('ul', { class: 'checklist' }, m.checklist.map(c => h('li', null, h('span', { class: 'box', 'aria-hidden': 'true' }, ''), h('div', null, h('span', { class: 'ctext' }, c))))),
+      h('h3', null, '촬영 순서'), h('ol', null, m.howTo.map(x => h('li', null, x))),
+      h('div', { class: 'meta' }, `최소 ${m.minSeconds}초 · 미션당 제출 ${m.cap}건 · ${m.status} · ${m.id}`)));
+}
+function missionsView() {
+  const M = D.verification.missions || { missions: [] };
+  let kind = '전체';
+  const list = () => M.missions.filter(m => kind === '전체' || m.kind === kind);
+  const box = h('div');
+  const draw = () => box.replaceChildren(...list().slice(0, 120).map((m, i) => missionCard(m, i === 0)));
+  draw();
+  const cnt = k => M.missions.filter(m => m.kind === k).length;
+  return [
+    h('h1', null, '검증 미션'),
+    h('p', { class: 'lead' }, '엔진을 인게임과 똑같이 맞추기 위해 유저에게 맡길 녹화 미션. 무장·전법 데이터 빈칸, 녹화 계획, 검증 대기에서 자동으로 만들고(pnpm missions), 확인되면 다음 생성 때 사라진다. 덱 추천에 많이 쓰이는 대상이 위.'),
+    h('div', { class: 'meters' }, meter('무장 화면', cnt('무장 화면'), M.missions.length, `${cnt('무장 화면')}개`), meter('전법 화면', cnt('전법 화면'), M.missions.length, `${cnt('전법 화면')}개`), meter('전투', cnt('전투'), M.missions.length, `${cnt('전투')}개`)),
+    h('h2', null, '구글 드라이브 올리기·공유'), h('ol', null, (M.driveGuide || []).map(x => h('li', null, x))),
+    h('h2', null, '제출·보상 규칙'), h('ul', null, (M.rules || []).map(x => h('li', null, x))),
+    h('h2', null, `미션 ${M.missions.length}개`),
+    h('select', { 'aria-label': '종류', onchange: e => { kind = e.target.value; draw(); } }, ['전체', '무장 화면', '전법 화면', '전투'].map(k => h('option', { value: k }, k === '전체' ? '종류 전체' : k))),
+    box,
+  ];
+}
+
 /* 원문 반영 상태 */
 function clausesView() {
   let kind = '전체', st = '전체';
@@ -768,6 +804,7 @@ function route() {
   else if (hash === 'v-decks') body = [crumb(hash), decksView()];
   else if (hash === 'v-clauses') body = [crumb(hash), clausesView()];
   else if (hash === 'v-quality') body = [crumb(hash), qualityView()];
+  else if (hash === 'v-missions') body = [crumb(hash), missionsView()];
   else if (hash === 'plan-open') body = [crumb(hash), planOpenView()];
   else if (hash === 'flow' || hash === 'c-overview') {
     active = 'flow';
