@@ -10,6 +10,7 @@ export default defineManual({
   status: "ok",
   note: "턴 종료 시 부여, 보유자 다음 행동 1번 동안 유지(R-025)",
   revised: [
+    { date: "2026-10-13", note: "녹화 2026-10-13: 대상은 자신 제외 무력 최고 우군(대교·화타) (FIX-032)" },
     {
       "date": "2026-10-05",
       "note": "턴 종료 시 1턴 = 보유자 다음 행동 1번(R-025 보유자 기준 지속) — 지속 2 → 1"
@@ -32,7 +33,7 @@ export default defineManual({
               "stat": "연타확률",
               "min": 0.3,
               "max": 0.3,
-              "target": "highest_power_ally",
+              "target": "highest_power_friend",
               "duration": 1,
               "maxStacks": 1
             }
@@ -48,7 +49,7 @@ export default defineManual({
   runs: [
     // parts[0] — 시점 turnEnd
     (c) => {
-      c.buff(0);   // 연타확률 +30%, 대상 highest_power_ally, 1턴, 최대 1중첩
+      c.buff(0);   // 연타확률 +30%, 대상 highest_power_friend (FIX-032 우군 = 자신 제외), 1턴, 최대 1중첩
     },
   ],
 });

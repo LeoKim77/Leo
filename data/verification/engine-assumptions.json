@@ -330,6 +330,27 @@
       "assumption": "30% × 통솔 영향(J10 기본 가중치), 피해 배율에 곱함",
       "howToVerify": "요술 상태 적에게 받은 피해 vs 같은 적의 다른 대상 피해",
       "priority": 20
+    },
+    {
+      "key": "heal-high-int",
+      "title": "높은 지력의 \"지력 영향\" 회복이 엔진보다 큼",
+      "refs": [
+        "u-hua-tuo"
+      ],
+      "assumption": "회복 = 지력 × (1.123 × 치유율 + 0.00027 × (지력 − 100)) — 마비산 지력 295.62 에서 −7%, 265.19 에서 ±1%",
+      "howToVerify": "지력 280 이상 시전자의 지력 영향 회복(마비산·청풍 질주) 여러 건 + 그 전법 승품",
+      "priority": 12
+    },
+    {
+      "key": "diaochan-grade",
+      "title": "초선 전법 승품(폐월-구 −15%)",
+      "refs": [
+        "u-diao-chan",
+        "calamity"
+      ],
+      "assumption": "시뮬 기본 승품 0 — 녹화의 폐월-구 5건은 승품 5(+15%)면 맞음",
+      "howToVerify": "질문 P-0052 답",
+      "priority": 8
     }
   ]
 }

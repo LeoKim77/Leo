@@ -10,6 +10,10 @@ export default defineSkill({
   isUnique: true,
   revised: [
     {
+      "date": "2026-10-13",
+      "note": "녹화 2026-10-13: 병기 피해 증가 대상은 자신 제외 무력 최고 우군(대교·화타), 1턴(다음 행동 시작에 사라짐) (FIX-032)"
+    },
+    {
       "date": "2026-10-04",
       "note": "'이성에게 받는 피해 30% 감소'(예전엔 모두에게서), 턴 종료 '병기 피해 +15%', '이번 턴에 초선을 때린 목표'에게 반격(예전엔 랜덤 적), 통솔 무시·회심 불가 구현"
     }
@@ -46,8 +50,8 @@ export default defineSkill({
           "stat": "주는병기피해",
           "min": 0.075,
           "max": 0.15,
-          "target": "highest_power_ally",
-          "duration": 2,
+          "target": "highest_power_friend",
+          "duration": 1,
           "maxStacks": 1
         }
       ],

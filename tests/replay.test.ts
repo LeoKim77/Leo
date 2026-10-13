@@ -18,6 +18,7 @@ describe('전보 역재현 검증', () => {
     expect(dmg.length).toBeGreaterThanOrEqual(37);
     expect(rms(dmg)).toBeLessThan(0.15);
   });
+  // 2026-10-13 녹화 7판(화초대 추가): 병기 102건 14.2%, 책략 103건 13.2%, 회복 50건 3.7%
   // 2026-10-10 FIX-029 "지력과 통솔의 영향" 회복 가산항 제외 — 녹화 4판 회복 31건 3.7% (일심협력 3건은 원인 미상으로 제외)
   it('회복: RMS 오차 6% 이내 (현재 3.7%)', () => {
     const h = rows.filter(x => x.kind === 'heal');

@@ -10,6 +10,10 @@ export default defineSkill({
   isUnique: true,
   revised: [
     {
+      "date": "2026-10-13",
+      "note": "녹화 2026-10-13: 받는 피해 증감 지력 가중치 0.29% (노숙 지력 248.85 → 20% 가 28.52%)"
+    },
+    {
       "date": "2026-10-04",
       "note": "'적군과 우군 전체의 랜덤 목표 4개'(자신 제외) 무장 해제 1턴, 우군이면 받는 피해 −20%, 적군이면 +20%(지력 영향) — 예전엔 랜덤 적 1명에게만"
     },
@@ -73,7 +77,8 @@ export default defineSkill({
             "stats": [
               "지력"
             ],
-            "who": "self"
+            "who": "self",
+            "weight": 0.0029
           },
           "condition": {
             "type": "side",
@@ -92,7 +97,8 @@ export default defineSkill({
             "stats": [
               "지력"
             ],
-            "who": "self"
+            "who": "self",
+            "weight": 0.0029
           },
           "condition": {
             "type": "side",

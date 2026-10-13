@@ -457,6 +457,18 @@
       "priority": 14
     },
     {
+      "id": "V-engine-heal-high-int",
+      "kind": "engine",
+      "refs": [
+        "u-hua-tuo"
+      ],
+      "title": "높은 지력의 \"지력 영향\" 회복이 엔진보다 큼",
+      "assumption": "회복 = 지력 × (1.123 × 치유율 + 0.00027 × (지력 − 100)) — 마비산 지력 295.62 에서 −7%, 265.19 에서 ±1%",
+      "howToVerify": "지력 280 이상 시전자의 지력 영향 회복(마비산·청풍 질주) 여러 건 + 그 전법 승품",
+      "priority": 12,
+      "status": "pending"
+    },
+    {
       "id": "V-skill-see-truth",
       "kind": "skill",
       "refs": [
@@ -488,6 +500,19 @@
       "assumption": "증가 = 명목 × (1 − 기존 증가분 합) — 위협 1건으로 확인",
       "howToVerify": "받는 피해 증가가 두 겹 이상 걸리는 줄의 표기값",
       "priority": 10,
+      "status": "pending"
+    },
+    {
+      "id": "V-engine-diaochan-grade",
+      "kind": "engine",
+      "refs": [
+        "u-diao-chan",
+        "calamity"
+      ],
+      "title": "초선 전법 승품(폐월-구 −15%)",
+      "assumption": "시뮬 기본 승품 0 — 녹화의 폐월-구 5건은 승품 5(+15%)면 맞음",
+      "howToVerify": "질문 P-0052 답",
+      "priority": 8,
       "status": "pending"
     },
     {

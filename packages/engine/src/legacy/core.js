@@ -48,6 +48,10 @@ export const ENGINE_FIXES = [
     detail: '받는 피해 감소처럼(L3) 증가도 기존 증가분의 합만큼 줄어 들어간다: 침착한 지휘 +15.23% 가 있는 조조·등애에게 위협 10% → 8.47%(= 10 × (1 − 0.1523)), 증가가 없던 소교는 10.00%. 받는 피해 증가 버프와 위협류 상태(부여 때 체감값 저장) 모두.' },
   { id: 'FIX-027', date: '2026-10-10', found: '녹화 2026-10-10 (회유·심리 공격 18건, 관문)', title: '회유·심리 공격: 받는 치유 효과 제외·올림·회복 계기',
     detail: '회유·심리 공격 회복 = 준 피해 × 비율 × 군량 고갈(0.3), 받는 치유 효과(둔전령 +10%×스택)는 곱하지 않고 올림(340×10.87%×0.3 = 11.09 → 12, 254×10.87% = 27.6 → 28). 회유·심리 공격도 회복 효과라 0 회복이어도 관문 같은 "회복 효과를 발동하면" 계기가 된다(녹화: 천향 실패 턴에 소교 회유 0 → 관문 346).' },
+  { id: 'FIX-032', date: '2026-10-13', found: '녹화 2026-10-13 화타·초선·대교', title: '마비산·폐월·화수의 "우군"은 자신 제외',
+    detail: '마비산(병력이 가장 낮은 우군)이 화타 자신도 골랐고, 폐월·화수(무력이 가장 높은 우군)가 초선 자신에게도 걸렸다. 녹화: 마비산 → 대교·초선만, 화수·폐월 → 대교·화타만(R-034 우군 = 자신 제외). 폐월 병기 피해 증가는 1턴(다음 행동 시작에 사라짐, 화수와 같이). 마비산 순서는 정신 회복 → 받는 피해 감소 → 회복, 받는 피해 감소 지력 가중치 0.28%(22.88%·22.17% 실측).' },
+  { id: 'FIX-031', date: '2026-10-13', found: '녹화 2026-10-13 화타·초선·대교 5턴', title: '준비 중 전법은 침묵·공포에 걸리는 순간 취소',
+    detail: '화타가 준비하던 청천벽력이 서서의 칠군수몰 침묵을 받자마자 "전법【청천벽력】을 발동할 수 없습니다"로 취소됐다. 예전엔 발동 차례에 침묵이 남아 있을 때만 막아, 그 사이 침묵이 풀리면 그대로 터졌다. 정신 회복으로 무효화된 침묵은 취소하지 않는다.' },
   { id: 'FIX-030', date: '2026-10-11', found: '사용자 요청 2026-10-11 (인게임 전보 순서)', title: '행동 순서 판단 표기를 턴 맨 앞으로',
     detail: '행동 순서는 원래 턴 시작 전법보다 먼저 정해졌지만, 전보 줄은 턴 시작 전법 뒤에 찍히고 선공도 그 뒤 값(턴 시작 선공 버프 반영)으로 보였다. 인게임처럼 턴 머리 바로 다음에 판단 시점의 선공으로 표기.' },
   { id: 'FEAT-033', date: '2026-10-11', found: '영웅 무장 녹화 2026-10-11 (고유 전법 23개)', title: '영웅 고유 전법용 부품',
@@ -513,6 +517,7 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
     case 'highest_command_ally': result = [maxBy(allies, u => S(u, '통솔'))]; break;
     case 'highest_control_ally': result = [maxBy(allies, u => S(u, '통솔'))]; break;
     case 'lowest_hp_ally': result = [minBy(allies, u => u.troops)]; break;
+    case 'lowest_hp_friend': result = [minBy(allies.filter(u => u !== unit), u => u.troops)]; break;   // FIX-032 "병력이 가장 낮은 우군"(자신 제외, 마비산)
     case 'lowest_intel_ally': result = [minBy(allies, u => S(u, '지력'))]; break;   // FEAT-004
     case 'lowest_hp_enemy': result = [minBy(enemies, u => u.troops)]; break;
     default: result = [pick(enemies)];
@@ -532,7 +537,7 @@ function selectTargets(unit, targetCodes, allUnits, aux) {   // aux: 조건 판�
 const SINGLE_TARGET_CODES = new Set(['random_enemy_1', 'random_ally_1', 'random_ally_one', 'random_enemy_back_first', 'random_enemy_front_first', 'random_ally_front', 'random_same_row_ally',
   'lowest_control_enemy', 'lowest_power_enemy', 'lowest_intel_enemy', 'lowest_speed_enemy', 'lowest_combined_enemy', 'lowest_hp_enemy',
   'highest_power_enemy', 'highest_intel_enemy', 'highest_speed_ally', 'highest_combined_ally', 'highest_power_ally', 'highest_intel_ally',
-  'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally', 'highest_power_friend', 'highest_intel_friend']);
+  'highest_command_ally', 'highest_control_ally', 'lowest_hp_ally', 'lowest_intel_ally', 'highest_power_friend', 'highest_intel_friend', 'lowest_hp_friend']);
 const KNOWN_TARGET_CODES = new Set([...SINGLE_TARGET_CODES, 'all_enemy', 'all_ally', 'all_except_self', 'self_and_random_ally_1', 'self_and_random_ally_one', 'random_friend_n', 'all_friend', 'front_allies', 'random_all_4', 'random_all_4_self', 'damaged_me_this_turn', 'random_enemy_n', 'random_ally_n', 'random_enemy_2to3', 'random_ally_2to3']);
 function shuffle(a) { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(__rng() * (i + 1));[b[i], b[j]] = [b[j], b[i]]; } return b; }
 // R-048 "가장 높은/낮은 ○○"가 동률이면 동률인 무장 중 무작위 (예전엔 배치 순 앞쪽)
@@ -1851,6 +1856,12 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       log.push(`${turn}턴:   [${t.name}]의 「${se.name}」 효과가 ${already ? '갱신' : '발동'}됐습니다. (${dur}턴 지속)` +
         (unit !== t ? ` — ${unit.name}의 【${skill.name}】` : ''));
       log.push(`${turn}턴:   [${t.name}]이(가) 「${se.name}」 상태를 획득했습니다. (${skill.name})`);
+      // FIX-031 준비 중 전법은 침묵·공포에 걸리는 그 순간 취소된다(녹화 2026-10-13: 서서 칠군수몰 침묵 → "화타 전법【청천벽력】을 발동할 수 없습니다").
+      //   정신 회복으로 무효화된 침묵은 취소하지 않는다.
+      if ((se.name === '침묵' || se.name === '공포') && (t.pendingSkills || []).length && statusFlag(t, 'blockActive')) {
+        t.pendingSkills.forEach(p => log.push(`${turn}턴:   [${t.name}]이(가) 전법【${p.skill.name}】을(를) 발동할 수 없습니다.`));
+        t.pendingSkills = [];
+      }
       // '디버프 부여 후' 트리거는 특수 디버프 12종에만 반응한다.
       // (정신 회복 같은 버프에 주유 기지의 승리가 반응하던 문제)
       if (SPECIAL_DEBUFFS.includes(se.name)) {
@@ -2246,7 +2257,7 @@ function resolveUnitTurn(unit, allUnits, coeffs, log, turn, contrib, battleState
   if (!unit.alive) return;
   // 준비 턴(prepTurns): "1턴 동안 준비 후 ~" 전법은 발동에 성공해도 즉시 터지지 않고
   // 다음 턴에 실행된다. 실제 전보에도 "【방화범】 발동 준비 중입니다"가 별도 줄로 찍힌다.
-  // 준비 중 예약분은 위협/침묵의 영향을 받지 않고 예정대로 발동한다(이미 시전을 시작했으므로).
+  // 준비 중에 침묵·공포에 걸리면 그 순간 예약이 취소된다(FIX-031). 위협·무장 해제는 영향 없음.
   log.push(`${turn}턴: [${unit.name}] 행동 시작`);
   __phase = 'action';
   __T({ e: 'action', unit: unit.id, statuses: unit.statuses.map(s => s.name) });
@@ -3078,6 +3089,7 @@ return {
   setTrace: (f) => { __traceFn = f; },
   setDetail: (v) => { __detail = !!v; },
   setSkillLevel: (lv) => { SKILL_LEVEL = lv; },
+  setDamageOpts: (o) => { __dmgOpts = o || null; },   // 역재현 검사용(통솔 무시 등 이번 피해 옵션)
   skillTiming, effStat, hasStatus, selectTargets, mergeActionOrder, calcDamage, calcHeal, accumStatus, applySkillEffects, dealDamage,
   tickHolderBuffs, markHolderSeen, sweepDeadAuras,
   DEFAULT_COEFFS, buildUnit, simulateOneBattle, simulateBattle, procRateOf,

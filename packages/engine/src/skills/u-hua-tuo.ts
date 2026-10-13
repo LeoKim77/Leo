@@ -10,6 +10,10 @@ export default defineSkill({
   isUnique: true,
   revised: [
     {
+      "date": "2026-10-13",
+      "note": "녹화 2026-10-13: 우군(자신 제외) 병력 최저 대상, 정신 회복→받는 피해 감소→회복 순서, 지력 가중치 0.28% (FIX-032)"
+    },
+    {
       "date": "2026-10-04",
       "note": "정신 회복 1턴(예전 2턴)"
     }
@@ -57,7 +61,14 @@ export default defineSkill({
           "min": -0.08,
           "max": -0.16,
           "duration": 1,
-          "maxStacks": 1
+          "maxStacks": 1,
+          "inf": {
+            "stats": [
+              "지력"
+            ],
+            "who": "self",
+            "weight": 0.0028
+          }
         }
       ],
       "statMods": [],
@@ -112,11 +123,15 @@ export default defineSkill({
     ]
   },
   run(c) {
-    // 「또한 해당 목표의 병력을 회복시킨다(치유율 240%, 지력의 영향 받음)」
-    c.heal(0);   // 치유율 120%→240%
-    // 「턴 종료 시, 병력이 가장 낮은 우군 단일 목표가 받는 피해가 16% 감소하며(지력의 영향 받음)」
-    c.buff(0);   // 받는피해 -8%→-16%, 1턴, 최대 1중첩
+    // FIX-032 녹화 2026-10-13: 대상은 자신을 뺀 우군 중 병력 최저(대교·초선만), 순서는 정신 회복 → 받는 피해 감소 → 회복
+    const t = c.tag('t', c.targets('lowest_hp_friend'));
+    if (!t.length) return;
+    const E = c.skill.effects;
     // 「1턴 동안 해당 목표에게 정신 회복을(를) 부여한다」
-    c.status(0);   // 정신 회복, 1턴
+    c.status({ ...E.statusEffects[0], target: 'tag:t' });
+    // 「턴 종료 시, 병력이 가장 낮은 우군 단일 목표가 받는 피해가 16% 감소하며(지력의 영향 받음)」 — 가중치 0.28%(22.88%·22.17% 실측)
+    c.buff({ ...E.buffs[0], target: 'tag:t' });
+    // 「또한 해당 목표의 병력을 회복시킨다(치유율 240%, 지력의 영향 받음)」
+    c.heal({ ...E.heal[0], target: 'tag:t' });
   },
 });

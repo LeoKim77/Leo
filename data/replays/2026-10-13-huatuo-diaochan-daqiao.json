@@ -1,0 +1,1278 @@
+{
+ "id": "2026-10-13-huatuo-diaochan-daqiao",
+ "date": "2026-10-13",
+ "season": "S2",
+ "source": "사용자 전보 녹화 '화초대_준비~4턴'·'화초대_5~8턴'(구글 드라이브 폴더). 녹화 계획 8판(회복 이벤트·진형 칸 판). 아군 화타·초선·대교 안형진(진영 군 +5%) vs LV12 토지 수비군 서서·여몽·노숙 기형진(병력 16,000, 적 전법 9레벨). 4턴 행동은 녹화에 없음.",
+ "links": [
+  "https://drive.google.com/drive/folders/1nA8Al5cE7da1FsqSj9a_RY0qU8MVOsVX"
+ ],
+ "battle": {
+  "ally": {
+   "formation": "안형진",
+   "units": [
+    {
+     "generalId": "hua-tuo",
+     "skills": [
+      "unexpected",
+      "five-thunder"
+     ],
+     "manual": "청낭경"
+    },
+    {
+     "generalId": "diao-chan",
+     "skills": [
+      "calamity",
+      "good-plan"
+     ],
+     "manual": "화수"
+    },
+    {
+     "generalId": "da-qiao",
+     "skills": [
+      "fresh-breeze",
+      "strategize"
+     ],
+     "manual": "상사문부"
+    }
+   ]
+  },
+  "enemy": {
+   "formation": "기형진",
+   "units": [
+    "xu-shu",
+    "lü-meng",
+    "lu-su"
+   ]
+  }
+ },
+ "outOfScopeSeen": [
+  "진영 군 +5%",
+  "건물 기술(능력치 +20, 받는 피해 −5%)",
+  "직업 숙련(받는 책략 −5%)",
+  "병법 연사·수세·선위·승민·정시·병교",
+  "기술-강궁(회심·묘책 +10%)·신의 창(관통·간파 +8%)",
+  "병종 정통-초지일관(방어 횟수)·병종 특성-적군 섬멸",
+  "인연 괄목상대(받는 액티브 −12%)"
+ ],
+ "tooltips": [
+  {
+   "turn": 1,
+   "unit": "hua-tuo",
+   "stats": {
+    "무력": 50.97,
+    "지력": 295.62,
+    "통솔": 177.0,
+    "선공": 160.17
+   },
+   "troops": 10000,
+   "maxTroops": 10000,
+   "mods": {
+    "주는피해": 0.221,
+    "주는책략피해": 0.035,
+    "받는피해": -0.1176,
+    "받는책략피해": -0.05
+   }
+  },
+  {
+   "turn": 3,
+   "unit": "hua-tuo",
+   "stats": {
+    "무력": 50.97,
+    "지력": 295.62,
+    "통솔": 157.0,
+    "선공": 160.17
+   },
+   "troops": 5698,
+   "maxTroops": 10000,
+   "mods": {
+    "주는피해": 0.341,
+    "주는병기피해": 0.15,
+    "주는책략피해": 0.035,
+    "받는피해": -0.1176,
+    "받는책략피해": -0.05
+   }
+  },
+  {
+   "turn": 6,
+   "unit": "hua-tuo",
+   "stats": {
+    "무력": 20.54,
+    "지력": 265.19,
+    "통솔": 126.57,
+    "선공": 129.74
+   },
+   "troops": 124,
+   "maxTroops": 10000,
+   "mods": {
+    "주는피해": 0.221,
+    "주는책략피해": 0.035,
+    "받는피해": 0.1675,
+    "받는책략피해": -0.05
+   }
+  },
+  {
+   "turn": 1,
+   "unit": "diao-chan",
+   "stats": {
+    "무력": 60.42,
+    "지력": 257.3,
+    "통솔": 276.72,
+    "선공": 173.82
+   },
+   "troops": 10000,
+   "maxTroops": 10000,
+   "mods": {
+    "주는피해": 0.071,
+    "주는책략피해": 0.035,
+    "받는피해": -0.064,
+    "받는책략피해": -0.05
+   }
+  },
+  {
+   "turn": 7,
+   "unit": "diao-chan",
+   "stats": {
+    "무력": 0,
+    "지력": 196.44,
+    "통솔": 195.86,
+    "선공": 112.96
+   },
+   "troops": 5425,
+   "maxTroops": 10000,
+   "mods": {
+    "주는피해": 0.071,
+    "주는책략피해": 0.035,
+    "받는피해": -0.064,
+    "받는책략피해": -0.05
+   }
+  },
+  {
+   "turn": 1,
+   "unit": "da-qiao",
+   "stats": {
+    "무력": 62.52,
+    "지력": 285.12,
+    "통솔": 232.62,
+    "선공": 138.65
+   },
+   "troops": 10000,
+   "maxTroops": 10000,
+   "mods": {
+    "주는피해": 0.071,
+    "받는피해": -0.064,
+    "받는책략피해": -0.05
+   }
+  },
+  {
+   "turn": 3,
+   "unit": "da-qiao",
+   "stats": {
+    "무력": 32.09,
+    "지력": 254.69,
+    "통솔": 182.19,
+    "선공": 108.22
+   },
+   "troops": 8860,
+   "maxTroops": 10000,
+   "mods": {
+    "주는피해": 0.191,
+    "주는병기피해": 0.15,
+    "받는피해": -0.2928,
+    "받는책략피해": -0.05
+   }
+  },
+  {
+   "turn": 1,
+   "unit": "xu-shu",
+   "stats": {
+    "무력": 192.67,
+    "지력": 235.72,
+    "통솔": 194.77,
+    "선공": 203.7
+   },
+   "troops": 16000,
+   "maxTroops": 16000,
+   "mods": {
+    "주는피해": 0.021,
+    "받는피해": 0.1268
+   }
+  },
+  {
+   "turn": 1,
+   "unit": "lü-meng",
+   "stats": {
+    "무력": 187.95,
+    "지력": 245.7,
+    "통솔": 193.2,
+    "선공": 185.32
+   },
+   "troops": 16000,
+   "maxTroops": 16000,
+   "mods": {
+    "주는피해": 0.141,
+    "받는피해": 0.186
+   }
+  },
+  {
+   "turn": 3,
+   "unit": "lü-meng",
+   "stats": {
+    "무력": 187.95,
+    "지력": 245.7,
+    "통솔": 193.2,
+    "선공": 185.32
+   },
+   "troops": 15182,
+   "maxTroops": 16000,
+   "mods": {
+    "주는피해": 0.141,
+    "받는피해": 0.186,
+    "받는액티브피해": -0.12
+   }
+  },
+  {
+   "turn": 1,
+   "unit": "lu-su",
+   "stats": {
+    "무력": 93.45,
+    "지력": 248.85,
+    "통솔": 181.12,
+    "선공": 183.22
+   },
+   "troops": 16000,
+   "maxTroops": 16000,
+   "mods": {
+    "주는피해": 0.141,
+    "받는피해": 0.186
+   }
+  },
+  {
+   "turn": 3,
+   "unit": "lu-su",
+   "stats": {
+    "무력": 93.45,
+    "지력": 248.85,
+    "통솔": 181.12,
+    "선공": 183.22
+   },
+   "troops": 14306,
+   "maxTroops": 16000,
+   "mods": {
+    "주는피해": 0.141,
+    "받는피해": 0.186,
+    "받는액티브피해": -0.12
+   }
+  }
+ ],
+ "damageSamples": [
+  {
+   "turn": 1,
+   "attacker": "diao-chan",
+   "defender": "hua-tuo",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 407,
+   "at": {
+    "diao-chan": {
+     "troops": 10000
+    }
+   },
+   "note": "아군 대상"
+  },
+  {
+   "turn": 1,
+   "attacker": "diao-chan",
+   "defender": "da-qiao",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 458,
+   "at": {
+    "diao-chan": {
+     "troops": 10000
+    }
+   },
+   "note": "아군 대상"
+  },
+  {
+   "turn": 1,
+   "attacker": "diao-chan",
+   "defender": "lü-meng",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 729,
+   "at": {
+    "diao-chan": {
+     "troops": 10000
+    },
+    "lü-meng": {
+     "troops": 16000
+    }
+   }
+  },
+  {
+   "turn": 1,
+   "attacker": "diao-chan",
+   "defender": "lu-su",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 735,
+   "at": {
+    "diao-chan": {
+     "troops": 10000
+    },
+    "lu-su": {
+     "troops": 16000
+    }
+   }
+  },
+  {
+   "turn": 1,
+   "attacker": "diao-chan",
+   "defender": "xu-shu",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 786,
+   "at": {
+    "diao-chan": {
+     "troops": 10000
+    },
+    "xu-shu": {
+     "troops": 16000
+    }
+   },
+   "counter": 0.15,
+   "note": "병종 상성 창병(초선, 툴팁)→기병"
+  },
+  {
+   "turn": 2,
+   "attacker": "hua-tuo",
+   "defender": "xu-shu",
+   "kind": "출기불의(디버프 +25%)",
+   "dmgType": "책략",
+   "ratio": 4.375,
+   "observed": 1607,
+   "at": {
+    "hua-tuo": {
+     "troops": 6972
+    },
+    "xu-shu": {
+     "troops": 15187,
+     "mods": {
+      "받는피해": -0.3375
+     }
+    }
+   },
+   "note": "서서 무장 해제(디버프) → 350% × 1.25"
+  },
+  {
+   "turn": 3,
+   "attacker": "hua-tuo",
+   "defender": "lu-su",
+   "kind": "청천벽력",
+   "dmgType": "책략",
+   "ratio": 1.6,
+   "observed": 968,
+   "at": {
+    "lu-su": {
+     "troops": 14306
+    }
+   },
+   "counter": 0.15
+  },
+  {
+   "turn": 3,
+   "attacker": "hua-tuo",
+   "defender": "xu-shu",
+   "kind": "청천벽력",
+   "dmgType": "책략",
+   "ratio": 1.6,
+   "observed": 940,
+   "at": {
+    "xu-shu": {
+     "troops": 13387
+    }
+   }
+  },
+  {
+   "turn": 3,
+   "attacker": "hua-tuo",
+   "defender": "lü-meng",
+   "kind": "청천벽력",
+   "dmgType": "책략",
+   "ratio": 1.6,
+   "observed": 962,
+   "at": {
+    "lü-meng": {
+     "troops": 15182
+    }
+   },
+   "counter": 0.15
+  },
+  {
+   "turn": 3,
+   "attacker": "hua-tuo",
+   "defender": "lü-meng",
+   "kind": "청천벽력",
+   "dmgType": "책략",
+   "ratio": 1.6,
+   "observed": 968,
+   "at": {
+    "lü-meng": {
+     "troops": 14220
+    }
+   },
+   "counter": 0.15
+  },
+  {
+   "turn": 3,
+   "attacker": "hua-tuo",
+   "defender": "xu-shu",
+   "kind": "청천벽력(묘책 150%)",
+   "dmgType": "책략",
+   "ratio": 1.6,
+   "observed": 1370,
+   "at": {
+    "xu-shu": {
+     "troops": 12447
+    }
+   },
+   "crit": true
+  },
+  {
+   "turn": 6,
+   "attacker": "hua-tuo",
+   "defender": "xu-shu",
+   "kind": "출기불의(디버프 +25%)",
+   "dmgType": "책략",
+   "ratio": 4.375,
+   "observed": 398,
+   "at": {
+    "xu-shu": {
+     "troops": 9079,
+     "mods": {
+      "받는피해": -0.1239
+     }
+    }
+   },
+   "note": "화타 병력 124 — 병력 계수 하한 표본"
+  },
+  {
+   "turn": 6,
+   "attacker": "diao-chan",
+   "defender": "da-qiao",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 397,
+   "at": {
+    "diao-chan": {
+     "troops": 5715,
+     "stats": {
+      "무력": 30.0,
+      "지력": 226.87,
+      "통솔": 226.29,
+      "선공": 143.39
+     },
+     "mods": {
+      "주는피해": 0.191
+     }
+    },
+    "da-qiao": {
+     "troops": 5533,
+     "stats": {
+      "지력": 285.12
+     },
+     "mods": {
+      "받는피해": -0.0075
+     }
+    }
+   },
+   "note": "아군 대상"
+  },
+  {
+   "turn": 6,
+   "attacker": "diao-chan",
+   "defender": "hua-tuo",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 469,
+   "at": {
+    "diao-chan": {
+     "troops": 5715,
+     "stats": {
+      "무력": 30.0,
+      "지력": 226.87,
+      "통솔": 226.29,
+      "선공": 143.39
+     },
+     "mods": {
+      "주는피해": 0.191
+     }
+    },
+    "hua-tuo": {
+     "troops": 593
+    }
+   },
+   "note": "아군 대상"
+  },
+  {
+   "turn": 6,
+   "attacker": "diao-chan",
+   "defender": "lü-meng",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 407,
+   "at": {
+    "diao-chan": {
+     "troops": 5715,
+     "stats": {
+      "무력": 30.0,
+      "지력": 226.87,
+      "통솔": 226.29,
+      "선공": 143.39
+     },
+     "mods": {
+      "주는피해": 0.191
+     }
+    },
+    "lü-meng": {
+     "troops": 12297,
+     "mods": {
+      "받는피해": -0.0705
+     }
+    }
+   }
+  },
+  {
+   "turn": 6,
+   "attacker": "diao-chan",
+   "defender": "xu-shu",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 492,
+   "at": {
+    "diao-chan": {
+     "troops": 5715,
+     "stats": {
+      "무력": 30.0,
+      "지력": 226.87,
+      "통솔": 226.29,
+      "선공": 143.39
+     },
+     "mods": {
+      "주는피해": 0.191
+     }
+    },
+    "xu-shu": {
+     "troops": 9727,
+     "mods": {
+      "받는피해": -0.1467
+     }
+    }
+   },
+   "counter": 0.15
+  },
+  {
+   "turn": 6,
+   "attacker": "diao-chan",
+   "defender": "lu-su",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 399,
+   "at": {
+    "diao-chan": {
+     "troops": 5715,
+     "stats": {
+      "무력": 30.0,
+      "지력": 226.87,
+      "통솔": 226.29,
+      "선공": 143.39
+     },
+     "mods": {
+      "주는피해": 0.191
+     }
+    },
+    "lu-su": {
+     "troops": 9898,
+     "mods": {
+      "받는피해": -0.0952
+     }
+    }
+   }
+  },
+  {
+   "turn": 7,
+   "attacker": "diao-chan",
+   "defender": "da-qiao",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 332,
+   "at": {
+    "diao-chan": {
+     "troops": 5425
+    },
+    "da-qiao": {
+     "troops": 3948,
+     "mods": {
+      "받는피해": -0.064
+     }
+    }
+   },
+   "note": "아군 대상"
+  },
+  {
+   "turn": 7,
+   "attacker": "diao-chan",
+   "defender": "lu-su",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 341,
+   "at": {
+    "diao-chan": {
+     "troops": 5425
+    },
+    "lu-su": {
+     "troops": 9776,
+     "mods": {
+      "받는피해": -0.014
+     }
+    }
+   }
+  },
+  {
+   "turn": 7,
+   "attacker": "diao-chan",
+   "defender": "xu-shu",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 404,
+   "at": {
+    "diao-chan": {
+     "troops": 5425
+    },
+    "xu-shu": {
+     "troops": 8937,
+     "mods": {
+      "받는피해": -0.1239
+     }
+    }
+   },
+   "counter": 0.15
+  },
+  {
+   "turn": 7,
+   "attacker": "diao-chan",
+   "defender": "lü-meng",
+   "kind": "재해 이용",
+   "dmgType": "책략",
+   "ratio": 1.4,
+   "observed": 310,
+   "at": {
+    "diao-chan": {
+     "troops": 5425
+    },
+    "lü-meng": {
+     "troops": 11533,
+     "mods": {
+      "받는피해": -0.105
+     }
+    }
+   }
+  },
+  {
+   "turn": 7,
+   "attacker": "diao-chan",
+   "defender": "lu-su",
+   "kind": "양책 수립(툴팁 184%)",
+   "dmgType": "책략",
+   "ratio": 1.84,
+   "observed": 494,
+   "at": {
+    "diao-chan": {
+     "troops": 5425,
+     "stats": {
+      "지력": 219.44
+     }
+    },
+    "lu-su": {
+     "troops": 9435,
+     "mods": {
+      "받는피해": -0.014
+     }
+    }
+   }
+  },
+  {
+   "turn": 7,
+   "attacker": "diao-chan",
+   "defender": "xu-shu",
+   "kind": "양책 수립(툴팁 184%)",
+   "dmgType": "책략",
+   "ratio": 1.84,
+   "observed": 576,
+   "at": {
+    "diao-chan": {
+     "troops": 5425,
+     "stats": {
+      "지력": 219.44
+     }
+    },
+    "xu-shu": {
+     "troops": 8533,
+     "mods": {
+      "받는피해": -0.1239
+     }
+    }
+   },
+   "counter": 0.15
+  },
+  {
+   "turn": 1,
+   "attacker": "da-qiao",
+   "defender": "lu-su",
+   "kind": "폐월-구(통솔 무시)",
+   "dmgType": "병기",
+   "ratio": 0.6,
+   "observed": 317,
+   "at": {
+    "da-qiao": {
+     "troops": 8005,
+     "mods": {
+      "주는피해": 0.071,
+      "주는병기피해": 0.15
+     }
+    },
+    "lu-su": {
+     "troops": 15265
+    }
+   },
+   "ignoreDef": true
+  },
+  {
+   "turn": 1,
+   "attacker": "da-qiao",
+   "defender": "lü-meng",
+   "kind": "폐월-구(통솔 무시)",
+   "dmgType": "병기",
+   "ratio": 0.6,
+   "observed": 244,
+   "at": {
+    "da-qiao": {
+     "troops": 8005,
+     "mods": {
+      "주는피해": 0.071,
+      "주는병기피해": 0.15
+     }
+    },
+    "lü-meng": {
+     "troops": 15093,
+     "mods": {
+      "받는피해": -0.0952
+     }
+    }
+   },
+   "ignoreDef": true
+  },
+  {
+   "turn": 1,
+   "attacker": "da-qiao",
+   "defender": "xu-shu",
+   "kind": "폐월-구(통솔 무시)",
+   "dmgType": "병기",
+   "ratio": 0.6,
+   "observed": 264,
+   "at": {
+    "da-qiao": {
+     "troops": 8005,
+     "mods": {
+      "주는피해": 0.071,
+      "주는병기피해": 0.15
+     }
+    },
+    "xu-shu": {
+     "troops": 14957,
+     "mods": {
+      "받는피해": -0.1375
+     }
+    }
+   },
+   "ignoreDef": true,
+   "counter": 0.15
+  },
+  {
+   "turn": 2,
+   "attacker": "hua-tuo",
+   "defender": "xu-shu",
+   "kind": "폐월-구(통솔 무시)",
+   "dmgType": "병기",
+   "ratio": 0.6,
+   "observed": 193,
+   "at": {
+    "hua-tuo": {
+     "troops": 7524,
+     "mods": {
+      "주는피해": 0.281,
+      "주는병기피해": 0.15
+     }
+    },
+    "xu-shu": {
+     "troops": 13580,
+     "mods": {
+      "받는피해": -0.3375
+     }
+    }
+   },
+   "ignoreDef": true
+  },
+  {
+   "turn": 2,
+   "attacker": "hua-tuo",
+   "defender": "lu-su",
+   "kind": "폐월-구(통솔 무시)",
+   "dmgType": "병기",
+   "ratio": 0.6,
+   "observed": 402,
+   "at": {
+    "hua-tuo": {
+     "troops": 7524,
+     "mods": {
+      "주는피해": 0.281,
+      "주는병기피해": 0.15
+     }
+    },
+    "lu-su": {
+     "troops": 14708
+    }
+   },
+   "ignoreDef": true,
+   "counter": 0.15
+  },
+  {
+   "turn": 1,
+   "attacker": "lu-su",
+   "defender": "da-qiao",
+   "kind": "예측의 신(9레벨)",
+   "dmgType": "책략",
+   "ratio": 1.7,
+   "observed": 576,
+   "at": {
+    "lu-su": {
+     "troops": 15265
+    },
+    "da-qiao": {
+     "troops": 8575
+    }
+   }
+  },
+  {
+   "turn": 3,
+   "attacker": "lu-su",
+   "defender": "da-qiao",
+   "kind": "예측의 신(9레벨)",
+   "dmgType": "책략",
+   "ratio": 1.7,
+   "observed": 497,
+   "at": {
+    "lu-su": {
+     "troops": 14306
+    },
+    "da-qiao": {
+     "troops": 7684
+    }
+   }
+  },
+  {
+   "turn": 5,
+   "attacker": "lu-su",
+   "defender": "hua-tuo",
+   "kind": "예측의 신(9레벨)",
+   "dmgType": "책략",
+   "ratio": 1.7,
+   "observed": 666,
+   "at": {
+    "lu-su": {
+     "troops": 10492
+    },
+    "hua-tuo": {
+     "troops": 1742,
+     "stats": {
+      "지력": 295.62
+     },
+     "mods": {
+      "받는피해": 0.1675
+     }
+    }
+   }
+  },
+  {
+   "turn": 6,
+   "attacker": "lu-su",
+   "defender": "da-qiao",
+   "kind": "예측의 신(9레벨)",
+   "dmgType": "책략",
+   "ratio": 1.7,
+   "observed": 590,
+   "at": {
+    "lu-su": {
+     "troops": 9898
+    },
+    "da-qiao": {
+     "troops": 6123,
+     "stats": {
+      "지력": 285.12
+     },
+     "mods": {
+      "받는피해": -0.0075
+     }
+    }
+   }
+  },
+  {
+   "turn": 8,
+   "attacker": "lu-su",
+   "defender": "da-qiao",
+   "kind": "예측의 신(9레벨)",
+   "dmgType": "책략",
+   "ratio": 1.7,
+   "observed": 619,
+   "at": {
+    "lu-su": {
+     "troops": 8941
+    },
+    "da-qiao": {
+     "troops": 2087,
+     "mods": {
+      "받는피해": -0.064
+     }
+    }
+   }
+  },
+  {
+   "turn": 3,
+   "attacker": "xu-shu",
+   "defender": "hua-tuo",
+   "kind": "칠군수몰(9레벨)",
+   "dmgType": "병기",
+   "ratio": 2.4556,
+   "observed": 678,
+   "at": {
+    "xu-shu": {
+     "troops": 13387
+    },
+    "hua-tuo": {
+     "troops": 6376
+    }
+   }
+  },
+  {
+   "turn": 3,
+   "attacker": "xu-shu",
+   "defender": "da-qiao",
+   "kind": "칠군수몰(9레벨)",
+   "dmgType": "병기",
+   "ratio": 2.4556,
+   "observed": 447,
+   "at": {
+    "xu-shu": {
+     "troops": 13387
+    },
+    "da-qiao": {
+     "troops": 8860
+    }
+   }
+  },
+  {
+   "turn": 5,
+   "attacker": "xu-shu",
+   "defender": "da-qiao",
+   "kind": "칠군수몰(9레벨)",
+   "dmgType": "병기",
+   "ratio": 2.4556,
+   "observed": 399,
+   "at": {
+    "xu-shu": {
+     "troops": 10014
+    },
+    "da-qiao": {
+     "troops": 7416,
+     "stats": {
+      "무력": 62.52,
+      "지력": 285.12,
+      "통솔": 212.62
+     }
+    }
+   }
+  },
+  {
+   "turn": 5,
+   "attacker": "xu-shu",
+   "defender": "hua-tuo",
+   "kind": "칠군수몰(9레벨)",
+   "dmgType": "병기",
+   "ratio": 2.4556,
+   "observed": 861,
+   "at": {
+    "xu-shu": {
+     "troops": 10014
+    },
+    "hua-tuo": {
+     "troops": 2603,
+     "stats": {
+      "통솔": 157
+     },
+     "mods": {
+      "받는피해": 0.1675
+     }
+    }
+   }
+  },
+  {
+   "turn": 1,
+   "attacker": "xu-shu",
+   "defender": "da-qiao",
+   "kind": "문무겸비(9레벨)",
+   "dmgType": "책략",
+   "ratio": 2.0778,
+   "observed": 546,
+   "at": {
+    "xu-shu": {
+     "troops": 15214
+    },
+    "da-qiao": {
+     "troops": 9542
+    }
+   }
+  },
+  {
+   "turn": 1,
+   "attacker": "xu-shu",
+   "defender": "hua-tuo",
+   "kind": "문무겸비(9레벨)",
+   "dmgType": "병기",
+   "ratio": 2.0778,
+   "observed": 569,
+   "at": {
+    "xu-shu": {
+     "troops": 15214
+    },
+    "hua-tuo": {
+     "troops": 9593
+    }
+   },
+   "excluded": "엔진 +32% — 적 9레벨 문무겸비 병기 배율·금병법(장검행) 미확인. 같은 시전의 책략(대교)은 +4%"
+  }
+ ],
+ "healSamples": [
+  {
+   "turn": 2,
+   "healer": "da-qiao",
+   "skill": "국색(상사문부 회복 50%)",
+   "ratio": 0.9,
+   "observed": 308,
+   "healerStats": {
+    "지력": 285.12
+   }
+  },
+  {
+   "turn": 3,
+   "healer": "da-qiao",
+   "skill": "국색(상사문부 회복 50%)",
+   "ratio": 0.9,
+   "observed": 268,
+   "healerStats": {
+    "지력": 254.69
+   }
+  },
+  {
+   "turn": 4,
+   "healer": "da-qiao",
+   "skill": "국색(상사문부 회복 50%)",
+   "ratio": 0.9,
+   "observed": 267,
+   "healerStats": {
+    "지력": 254.69
+   }
+  },
+  {
+   "turn": 5,
+   "healer": "da-qiao",
+   "skill": "국색(상사문부 회복 50%)",
+   "ratio": 0.9,
+   "observed": 307,
+   "healerStats": {
+    "지력": 285.12
+   }
+  },
+  {
+   "turn": 7,
+   "healer": "da-qiao",
+   "skill": "국색(상사문부 회복 50%)",
+   "ratio": 0.9,
+   "observed": 305,
+   "healerStats": {
+    "지력": 285.12
+   }
+  },
+  {
+   "turn": 8,
+   "healer": "da-qiao",
+   "skill": "국색(상사문부 회복 50%)",
+   "ratio": 0.9,
+   "observed": 263,
+   "healerStats": {
+    "지력": 254.69
+   },
+   "note": "79 ÷ 군량 고갈 0.3"
+  },
+  {
+   "turn": 1,
+   "healer": "hua-tuo",
+   "skill": "마비산",
+   "ratio": 2.4,
+   "observed": 875,
+   "healerStats": {
+    "지력": 295.62
+   }
+  },
+  {
+   "turn": 2,
+   "healer": "hua-tuo",
+   "skill": "마비산",
+   "ratio": 2.4,
+   "observed": 873,
+   "healerStats": {
+    "지력": 295.62
+   }
+  },
+  {
+   "turn": 3,
+   "healer": "hua-tuo",
+   "skill": "마비산",
+   "ratio": 2.4,
+   "observed": 868,
+   "healerStats": {
+    "지력": 295.62
+   }
+  },
+  {
+   "turn": 5,
+   "healer": "hua-tuo",
+   "skill": "마비산",
+   "ratio": 2.4,
+   "observed": 733,
+   "healerStats": {
+    "지력": 265.19
+   }
+  },
+  {
+   "turn": 6,
+   "healer": "hua-tuo",
+   "skill": "마비산",
+   "ratio": 2.4,
+   "observed": 716,
+   "healerStats": {
+    "지력": 265.19
+   }
+  },
+  {
+   "turn": 2,
+   "healer": "da-qiao",
+   "skill": "청풍 질주(툴팁 185.4%)",
+   "ratio": 1.854,
+   "observed": 550,
+   "healerStats": {
+    "지력": 254.69
+   }
+  },
+  {
+   "turn": 3,
+   "healer": "da-qiao",
+   "skill": "청풍 질주(툴팁 185.4%)",
+   "ratio": 1.854,
+   "observed": 549,
+   "healerStats": {
+    "지력": 254.69
+   }
+  },
+  {
+   "turn": 5,
+   "healer": "da-qiao",
+   "skill": "청풍 질주(툴팁 185.4%)",
+   "ratio": 1.854,
+   "observed": 629,
+   "healerStats": {
+    "지력": 285.12
+   }
+  },
+  {
+   "turn": 2,
+   "healer": "lü-meng",
+   "skill": "청풍 질주(9레벨 170%)",
+   "ratio": 1.7,
+   "observed": 494,
+   "healerStats": {
+    "지력": 245.7
+   }
+  },
+  {
+   "turn": 7,
+   "healer": "lü-meng",
+   "skill": "청풍 질주(9레벨 170%)",
+   "ratio": 1.7,
+   "observed": 490,
+   "healerStats": {
+    "지력": 245.7
+   }
+  }
+ ],
+ "influenceSamples": [
+  {
+   "turn": 1,
+   "skill": "마비산 받는 피해 감소(표기 22.88% ÷ (1−0.064))",
+   "caster": "화타",
+   "base": 16,
+   "observed": 24.44,
+   "stat": "지력",
+   "statValue": 295.62
+  },
+  {
+   "turn": 5,
+   "skill": "마비산 받는 피해 감소(표기 22.17% ÷ (1−0.064))",
+   "caster": "화타",
+   "base": 16,
+   "observed": 23.69,
+   "stat": "지력",
+   "statValue": 265.19
+  },
+  {
+   "turn": 1,
+   "skill": "형주 분할 받는 피해 증가(적군 쪽, 표기 28.52%)",
+   "caster": "노숙",
+   "base": 20,
+   "observed": 28.52,
+   "stat": "지력",
+   "statValue": 248.85
+  },
+  {
+   "turn": 2,
+   "skill": "전략 계획 능력치 감소(표기 30.42)",
+   "caster": "노숙",
+   "base": 25,
+   "observed": 30.42,
+   "stat": "지력",
+   "statValue": 248.85
+  }
+ ]
+}
