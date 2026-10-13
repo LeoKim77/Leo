@@ -7,7 +7,7 @@
   "body": "설계서에 '운영' 공간(검증 미션·서비스 운영)과 규정 OPS1~10, 결정 글 P-0055 를 추가했다. 목표는 리워드 집단지성으로 엔진을 인게임과 똑같이 맞추는 것. 검증 미션 생성기(pnpm missions)가 데이터 빈칸·녹화 계획·검증 대기에서 구체적 미션 85개를 만든다(무장 화면 41 · 전법 화면 22 · 전투 22). 로그인·포인트·제출·자유게시판 구현은 계정 준비 뒤 단계별로.",
   "refs": [],
   "author": "Claude",
-  "commit": "",
+  "commit": "5a949da",
   "files": [
     "data/design/categories.json",
     "data/design/spec.json",
