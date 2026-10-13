@@ -13,7 +13,7 @@
     "calamity"
   ],
   "author": "Claude",
-  "commit": "",
+  "commit": "eca4b2d",
   "files": [
     "packages/engine/src/legacy/core.js",
     "packages/engine/src/skills/u-hua-tuo.ts",
