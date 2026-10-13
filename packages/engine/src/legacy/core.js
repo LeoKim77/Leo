@@ -48,6 +48,8 @@ export const ENGINE_FIXES = [
     detail: '받는 피해 감소처럼(L3) 증가도 기존 증가분의 합만큼 줄어 들어간다: 침착한 지휘 +15.23% 가 있는 조조·등애에게 위협 10% → 8.47%(= 10 × (1 − 0.1523)), 증가가 없던 소교는 10.00%. 받는 피해 증가 버프와 위협류 상태(부여 때 체감값 저장) 모두.' },
   { id: 'FIX-027', date: '2026-10-10', found: '녹화 2026-10-10 (회유·심리 공격 18건, 관문)', title: '회유·심리 공격: 받는 치유 효과 제외·올림·회복 계기',
     detail: '회유·심리 공격 회복 = 준 피해 × 비율 × 군량 고갈(0.3), 받는 치유 효과(둔전령 +10%×스택)는 곱하지 않고 올림(340×10.87%×0.3 = 11.09 → 12, 254×10.87% = 27.6 → 28). 회유·심리 공격도 회복 효과라 0 회복이어도 관문 같은 "회복 효과를 발동하면" 계기가 된다(녹화: 천향 실패 턴에 소교 회유 0 → 관문 346).' },
+  { id: 'FIX-033', date: '2026-10-13', found: '사용자 요청 2026-10-13 (시뮬 전보 캡처)', title: '전보 표기: 인게임 문구만 화면에',
+    detail: '디버프 제거를 "디버프 N가지가 제거"가 아니라 인게임처럼 "「침묵」 효과가 사라졌습니다"로 상태마다 찍는다. 행동 시작의 [스택] 참고 줄에서 다른 무장이 준 버프의 출처가 내부 id(ready)로 나오던 것을 전법 이름(준비 완료)으로. 웹 화면 전보는 인게임 문구만 보여 주고, 치유율·시전자 지력·무장 스냅숏·스택·진영 요약 같은 검증용 정보는 엔진 로그·감사 내부에서만 쓴다.' },
   { id: 'FIX-032', date: '2026-10-13', found: '녹화 2026-10-13 화타·초선·대교', title: '마비산·폐월·화수의 "우군"은 자신 제외',
     detail: '마비산(병력이 가장 낮은 우군)이 화타 자신도 골랐고, 폐월·화수(무력이 가장 높은 우군)가 초선 자신에게도 걸렸다. 녹화: 마비산 → 대교·초선만, 화수·폐월 → 대교·화타만(R-034 우군 = 자신 제외). 폐월 병기 피해 증가는 1턴(다음 행동 시작에 사라짐, 화수와 같이). 마비산 순서는 정신 회복 → 받는 피해 감소 → 회복, 받는 피해 감소 지력 가중치 0.28%(22.88%·22.17% 실측).' },
   { id: 'FIX-031', date: '2026-10-13', found: '녹화 2026-10-13 화타·초선·대교 5턴', title: '준비 중 전법은 침묵·공포에 걸리는 순간 취소',
@@ -147,6 +149,7 @@ let __traceFn = null;
 let __turn = 0;
 let __detail = false;   // FEAT-016: 전보 줄마다 그 순간 무장 상태(툴팁)를 남긴다 — 단일 전투에서만 켬
 let __turnOffset = 0;
+let __allUnitsRef = null;   // FIX-033 [스택] 참고 줄의 출처 전법 이름 찾기용
 let __dmgOpts = null;   // FEAT-024 이번 피해 한 건의 옵션(통솔 무시·회심 불가)   // FEAT-005: 재교전의 전보·추적 턴 번호를 앞 교전 뒤에 잇는다
 let __phase = 'battleStart';
 const __skillStack = [];
@@ -1770,10 +1773,13 @@ function __applySkillEffectsImpl(unit, skill, allUnits, coeffs, log, turn, contr
       const passes = dp.controlFirst ? [CONTROL_DEBUFFS, NON_CONTROL_DEBUFFS] : [[...CONTROL_DEBUFFS, ...NON_CONTROL_DEBUFFS]];
       for (const names of passes) {
         for (let i = 0; i < t.statuses.length && removed < (dp.count || 1);) {
-          if (names.includes(t.statuses[i].name)) { t.statuses.splice(i, 1); removed++; } else i++;
+          if (names.includes(t.statuses[i].name)) {
+            const gone = t.statuses.splice(i, 1)[0]; removed++;
+            // FIX-033 인게임처럼 제거된 상태 이름을 찍는다 (녹화 2026-10-13 청풍 질주: "[초선]의 「침묵」 효과가 사라졌습니다")
+            if (log) log.push(`${turn}턴:   [${t.name}]의 「${gone.name}」 효과가 사라졌습니다.`);
+          } else i++;
         }
       }
-      if (removed && log) log.push(`${turn}턴:   [${t.name}]의 디버프 ${removed}가지가 제거되었습니다.`);
     });
   };
 
@@ -2187,7 +2193,8 @@ function logUnitSnapshot(unit, log, turn) {
   const bump = b => {
     if (!b.srcId) return;
     const sid = String(b.srcId).split(':')[0];      // "skill_55:추격전법피해" → "skill_55"
-    const s = unit.skills.find(x => x.id === sid);
+    // FIX-033 다른 무장이 걸어 준 버프(조조 준비 완료 → 곽가)는 전투 전체 무장의 전법·금병법에서 이름을 찾는다
+    const s = unit.skills.find(x => x.id === sid) || (__allUnitsRef || []).flatMap(u => u.skills || []).find(x => x.id === sid || String(x.id).split('#')[0] === sid.split('#')[0]);
     const key = (s ? s.name : sid) + '·' + b.stat;
     stacks[key] = (stacks[key] || 0) + 1;
   };
@@ -2568,6 +2575,7 @@ function simulateOneBattle(armyA, armyB, coeffs) {
     });
   });
   // v1.12b: 트리거 전법의 상시 효과(초선차전 심리 공격·칠진칠출 피신 등)도 포진에서 적용
+  __allUnitsRef = units;
   units.forEach(u => { if (u.alive) applyAlwaysOnOnce(u, units, coeffs, log, 0, contrib); });
   log.push('0턴: ※ 공급·건물기술·장비·병법·전법 승급은 계정별 변수라 시뮬에 반영되지 않습니다.');
   const MAX_TURN = 8;

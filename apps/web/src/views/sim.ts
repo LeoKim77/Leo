@@ -5,6 +5,7 @@ import { armies, armyName, rowsOf, defaultRows } from './armies.ts';
 import { showSkill, showManual } from './detail.ts';
 import { winBar, troopLines, hBars, SIDE_A, SIDE_B } from '../charts.ts';
 import { call } from '../sim-client.ts';
+import { gameLine } from '../log-format.ts';
 import type { DeckSpec, MonteCarloResult } from '@cheonha/engine';
 
 // 덱 고르기: 내 부대(부대 편성) · 티어덱 · 다른 화면에서 보낸 덱(custom)
@@ -137,7 +138,8 @@ function resultView() {
 function battleView() {
   if (!battle) return null;
   // FEAT-016: 전보 줄마다 그 순간 무장 상태 — 이름을 누르면 게임 전보 툴팁처럼 보인다
-  const rows = (battle.log as string[]).map((l, i) => ({ l, i })).filter(x => !/└\[상태\]|└\[계산\]|^\d+턴:\s+(무력|지력|\[상태이상\]|[가-힣]+ -?\d)/.test(x.l));
+  // FIX-033 화면 전보는 인게임 문구만 — 검증용 줄·꼬리는 엔진 로그(감사 내부)에만 남는다. i 는 원본 줄 번호(lineSnaps 인덱스)
+  const rows = (battle.log as string[]).map((l, i) => ({ l: gameLine(l), i })).filter((x): x is { l: string; i: number } => x.l != null);
   const snaps: any[] = battle.lineSnaps || [];
   // 게임 전보 툴팁과 같은 모양: 누른 이름 옆에 뜨는 검은 상자, 같은 항목·같은 순서
   const approxOf = (name: string) => [...(battle.approx?.A || []), ...(battle.approx?.B || [])].filter((x: any) => x.owner === name);
@@ -225,6 +227,7 @@ function battleView() {
     h('div', { class: 'panel' },
       h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '15px' } }, `전보 — ${battle.winner === 'A' ? '내 덱 승' : battle.winner === 'B' ? '상대 승' : '무승부'} (${battle.turns}턴${(battle as any).rounds > 1 ? ` · ${(battle as any).rounds}차 교전` : ''})`), h('span', { class: 'sub' }, `시드 ${battle.seed}`)),
       snaps.length ? h('div', { class: 'sub', style: { marginBottom: '6px' } }, '전보의 무장 이름을 누르면 그 시점의 툴팁이, 전법 이름을 누르면 전법 설명이 게임처럼 뜹니다.') : null,
+      h('div', { class: 'muted', style: { fontSize: '12px', marginBottom: '6px' } }, '전보는 인게임 문구만 보여 줍니다. 공급·건물 기술·장비·일반 병법·전법 승품은 계정별 변수라 시뮬에 반영되지 않습니다.'),
       h('div', { class: 'log-wrap' },
         h('div', { class: 'turn-nav' }, turnMarks.map(t => h('button', { 'data-i': String(t.i), onclick: () => goTurn(t.i) }, t.label))),
         h('div', { class: 'log', id: 'battle-log' }, rows.map(({ l, i }) => /── \d+번째 턴 ──|── 포진 ──/.test(l)

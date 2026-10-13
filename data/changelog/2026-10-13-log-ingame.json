@@ -1,0 +1,17 @@
+{
+  "id": "2026-10-13-log-ingame",
+  "date": "2026-10-13",
+  "season": "S1",
+  "category": "시뮬 화면",
+  "title": "전보를 인게임 문구로: 디버프 제거 상태명, 회복 계산값·스냅숏 숨김",
+  "body": "화면 전보는 인게임 문구만 보여 주고 검증용 정보(치유율·시전자 지력·무장 스냅숏·스택·진영 요약 등)는 엔진 로그·감사 내부에서만 쓴다(설계서 P-0053, FIX-033). 디버프 제거는 \"「침묵」 효과가 사라졌습니다\"처럼 상태 이름으로. 행동 시작의 \"[스택] ready·주는피해 3스택\"은 조조의 준비 완료로 받은 주는 피해 3스택이라는 시뮬 참고 줄이었다 — 화면에서 숨기고 내부 로그엔 전법 이름으로.",
+  "refs": [],
+  "author": "Claude",
+  "commit": "",
+  "files": [
+    "packages/engine/src/legacy/core.js",
+    "apps/web/src/log-format.ts",
+    "apps/web/src/views/sim.ts",
+    "tests/web-log.test.ts"
+  ]
+}
