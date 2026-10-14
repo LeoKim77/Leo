@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-13-rec-guide",
+  "date": "2026-10-13",
+  "season": "S1",
+  "category": "검증",
+  "title": "녹화 안내 = 통합 검증 요청 — 엔진이 짠 최소 편성 12판, 스탯 영향 값까지",
+  "body": "녹화로 알아내야 할 정보를 모두 하나의 검증 요청(설계서 검증 › 녹화 안내, 게시글 P-0057)으로 모았다. 원문 근사·미반영, 전법마다 스탯 영향 값('○○의 영향 받음'), 검증 대기, 잠정 규정 6건, 역재현 오차 10% 초과 계수(병기·책략·스탯 영향), 열린 검증요청·질문 글, 녹화 계획 남은 항목, 무장·전법 자료 빈칸을 합쳐 263건이다. 전투 엔진이 이것을 전투 12판으로 덮는 편성(무장·고유·전법·금병법·기형진)을 짰다. 스탯 영향을 재는 전법으로 빈 전법 칸을 채워 판 수는 늘리지 않았다. 판마다 '이 판에서 재는 스탯 영향 값' 표와 엔진 20판 발동 비율, 권장 판 수를 적었다. 그 밖에 화면만 녹화 30건, 모든 판 공통 확인 13건, 편성으로 못 덮는 장면 6건이 있다. 열린 검증요청 글 8건은 이 요청으로 묶었다. 설계서의 '녹화할 덱'과 '검증 미션' 페이지는 한 페이지로 합쳤다.",
+  "refs": [],
+  "author": "Claude",
+  "commit": "",
+  "files": [
+    "apps/design/template.html",
+    "data/design/posts/P-0016.json",
+    "data/design/posts/P-0017.json",
+    "data/design/posts/P-0018.json",
+    "data/design/posts/P-0019.json",
+    "data/design/posts/P-0020.json",
+    "data/design/posts/P-0021.json",
+    "data/design/posts/P-0022.json",
+    "data/design/posts/P-0032.json",
+    "data/design/posts/P-0056.json",
+    "data/design/posts/P-0057.json",
+    "data/design/spec.json",
+    "data/verification/missions.json",
+    "packages/data-tools/src/missions.ts",
+    "tests/missions.test.ts"
+  ]
+}

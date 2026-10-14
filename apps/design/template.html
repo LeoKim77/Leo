@@ -557,9 +557,9 @@ const SPACES = [
   { id: 'design', title: '설계', desc: '전투가 실제로 어떻게 돌아가는지의 규정(정본)과 게임 자료.',
     pages: [['flow', '전투 한 판의 흐름'], ...DESIGN_CATS.filter(c => catById[c] && c !== 'overview').map(c => [`c-${c}`, catById[c].title])] },
   { id: 'verify', title: '검증', desc: '녹화로 확인할 것, 맞춰 본 결과, 엔진이 원문대로 도는지.',
-    pages: [['v-decks', '녹화할 덱'], ['v-clauses', '원문 반영 상태'], ['v-quality', '계수·감사·데이터'], ['c-verification', '검증 자료'], ['c-log', '변경 기록']] },
+    pages: [['v-rec', '녹화 안내'], ['v-clauses', '원문 반영 상태'], ['v-quality', '계수·감사·데이터'], ['c-verification', '검증 자료'], ['c-log', '변경 기록']] },
   { id: 'ops', title: '운영', desc: '공개 서비스·포인트·검증 미션·자유게시판 (파일럿).',
-    pages: [['v-missions', '검증 미션'], ['c-operations', '서비스 운영']] },
+    pages: [['c-operations', '서비스 운영']] },
 ];
 const spaceOf = page => (SPACES.find(s => s.pages.some(p => p[0] === page)) || SPACES[0]);
 const pageTitle = page => (SPACES.flatMap(s => s.pages).find(p => p[0] === page) || [page, page])[1];
@@ -568,7 +568,7 @@ function renderNav(active) {
   const side = document.getElementById('side');
   const sp = spaceOf(active);
   const openAll = D.posts.filter(isOpen).length;
-  const badge = { 'v-missions': (D.verification.missions?.missions || []).length, 'plan-open': DB.cards.questions.count, 'v-decks': DB.cards.engine.count, 'v-clauses': DB.cards.clauses.count, 'board': D.posts.length };
+  const badge = { 'v-rec': D.verification.missions?.totals?.items ?? null, 'plan-open': DB.cards.questions.count, 'v-decks': DB.cards.engine.count, 'v-clauses': DB.cards.clauses.count, 'board': D.posts.length };
   const link = (href, label, on, n, warn) => h('a', { class: `nav-link${on ? ' active' : ''}`, href: `#${href}` }, h('span', null, label), n != null ? h('span', { class: 'nav-count' }, h('span', { class: warn ? 'open' : '' }, n)) : null);
   side.replaceChildren(...[
     h('div', { class: 'brand' }, '천하결전 전투 설계서'),
@@ -578,7 +578,7 @@ function renderNav(active) {
       s.pages.map(([id, label]) => {
         const cat = id.startsWith('c-') ? id.slice(2) : null;
         const o = cat ? postsOf(cat).filter(isOpen).length : 0;
-        return link(id, label, id === active, badge[id] ?? (o ? `?${o}` : null), id === 'plan-open' || id === 'v-decks' || o > 0);
+        return link(id, label, id === active, badge[id] ?? (o ? `?${o}` : null), id === 'plan-open' || id === 'v-rec' || o > 0);
       }),
     ])].flat(Infinity));
   const tabs = document.getElementById('mtabs');
@@ -611,14 +611,14 @@ function homeView() {
       meter('원문대로 구현', T.clausesOk, T.clauses, `전법·금병법 원문 문장 ${T.clausesOk} / ${T.clauses}`),
       meter('녹화 확인 진행', DB.decks.reduce((a, d) => a + d.total - d.open, 0), DB.decks.reduce((a, d) => a + d.total, 0), `남은 확인 ${T.openChecks}건 · 녹화할 판 ${T.decks}개`)),
     h('div', { class: 'cards' },
-      dashCard('v-decks', '전투엔진 검증 필요', C.engine, '녹화할 덱과 확인할 것'),
+      dashCard('v-rec', '전투엔진 검증 필요', recCard(), '녹화 안내 — 편성·확인할 것·화면'),
       dashCard('v-clauses', '원문 미반영·근사', C.clauses, '전법·금병법 문장 중 원문대로가 아닌 것'),
       dashCard('plan-open', '답변 필요·잠정 규정', C.questions, '대화에서 정해 주면 규정으로 확정'),
       dashCard('v-quality', '계수 오차·감사·데이터', C.quality, '녹화 역재현 오차, 규칙 감사, 데이터 빈칸')),
     h('h2', null, '시즌별 자료 현황'),
     h('p', { class: 'lead' }, '시즌마다 들어 있는 자료 수와 확인 정도. 원문 확인 = 사용자 캡처·녹화로 게임 원문과 대조한 것, 환산 = 5레벨 미리보기에서 계산한 능력치, 미출시 = 한국 서버에 아직 없는 해외 자료.'),
     seasonTable(DB.seasons || []),
-    next ? [h('h2', null, '다음에 녹화할 덱'), deckCard(next, false)] : null,
+    D.verification.missions?.decks?.length ? [h('h2', null, '다음에 녹화할 판'), recDeckCard(D.verification.missions.decks[0], false)] : null,
     h('h2', null, '최근 변경'),
     h('div', { class: 'mini-list' }, D.changelog.slice(0, 5).map(c => h('a', { class: 'mini', href: '#c-log' }, h('span', { class: 'meta' }, c.date), h('span', null, c.title)))),
   ];
@@ -690,48 +690,72 @@ function deckCard(d, open) {
             c.links?.length ? h('div', { class: 'links' }, c.links.map(l => h('a', { href: l.url, target: '_blank', rel: 'noopener' }, `▶ ${l.label}`))) : null))))),
       h('details', null, h('summary', { class: 'dim' }, '녹화 방법'), h('ul', null, D.verification.plan.howToRecord.map(x => h('li', null, x))))));
 }
-function decksView() {
-  const list = DB.decks;
-  return [
-    h('h1', null, '녹화할 덱'), h('p', { class: 'lead' }, `게임에서 이 편성으로 ${list[0]?.opponent || '훈련소 NPC'}와 싸우는 장면을 녹화해 주면, 전보를 한 줄씩 재현해 규칙과 계수를 맞춘다. 확인할 것이 많이 남은 판부터.`),
-    h('div', null, list.map((d, i) => deckCard(d, i === 0))),
-    h('h2', null, `덱에 아직 배정 안 된 엔진 검증 ${DB.engineQueue.length}건`),
-    DB.engineQueue.length ? table([{ label: '항목', get: q => q.title }, { label: '우선', num: true, get: q => q.priority }], DB.engineQueue) : h('div', { class: 'empty' }, '없음'),
-    D.verification.plan.captures?.length ? [h('h2', null, '녹화 없이 캡처로 확인'), h('ul', null, D.verification.plan.captures.map(c => h('li', null, c)))] : null,
-  ];
+/* 녹화 안내 (OPS5) — 녹화로 알아내야 할 모든 것을 가장 적은 판으로. 생성: pnpm missions (packages/data-tools/src/missions.ts) */
+function recCard() {
+  const M = D.verification.missions || { totals: { items: 0 }, decks: [] };
+  return { sev: M.totals.items ? 'warn' : 'ok', count: M.totals.items, sub: `전투 ${M.decks.length}판 · 화면만 ${(M.screens || []).length}건 · 공통 ${(M.common || []).length}건 · 못 덮음 ${(M.uncovered || []).length}건` };
 }
-
-/* 검증 미션 (OPS5) — 유저에게 맡길 녹화 미션, 데이터 빈칸에서 자동 생성(pnpm missions) */
-function missionCard(m, open) {
+function recDeckCard(d, open) {
+  const pct = r => `${Math.round(r * 100)}%`;
+  const byKind = {};
+  for (const c of d.checks) (byKind[c.kind] ||= []).push(c);
   return h('details', { class: 'deck', open: open ? true : null },
     h('summary', null,
-      h('span', { class: 'deck-no' }, m.kind), h('span', { class: 'deck-title' }, m.title), chip('t-공지', `${m.reward[0]}~${m.reward[1]}P`),
-      h('span', { class: 'deck-names' }, m.why)),
+      h('span', { class: 'deck-no' }, `${d.no}판`), h('span', { class: 'deck-title' }, d.title), chip('t-공지', `${d.reward[0]}~${d.reward[1]}P`),
+      h('span', { class: 'deck-names' }, d.units.map(u => u.name).join(' · '))),
     h('div', { class: 'deck-body' },
-      m.setup ? h('div', null, h('h3', { style: 'margin-top:0' }, '편성'), h('div', { class: 'opp' }, `${m.setup.formation ? m.setup.formation + ' · ' : ''}상대: ${m.setup.opponent}`),
-        h('ul', null, m.setup.units.map(u => h('li', null, h('strong', null, u.general), u.skills?.length ? ` · ${u.skills.join(' · ')}` : '', u.manual ? ` · 〈${u.manual}〉` : '')))) : null,
-      h('h3', null, '녹화에 꼭 들어가야 할 화면'),
-      h('ul', { class: 'checklist' }, m.checklist.map(c => h('li', null, h('span', { class: 'box', 'aria-hidden': 'true' }, ''), h('div', null, h('span', { class: 'ctext' }, c))))),
-      h('h3', null, '촬영 순서'), h('ol', null, m.howTo.map(x => h('li', null, x))),
-      h('div', { class: 'meta' }, `최소 ${m.minSeconds}초 · 미션당 제출 ${m.cap}건 · ${m.status} · ${m.id}`)));
+      h('div', null, h('h3', { style: 'margin-top:0' }, '편성'),
+        h('div', { class: 'opp' }, `${d.formation} · 상대: ${d.opponent} · 권장 ${d.runs}판`),
+        table([
+          { label: '무장', get: u => h('strong', null, u.name) },
+          { label: '고유 전법', get: u => u.unique },
+          { label: '전법', get: u => u.skills.length ? u.skills.join(' · ') : h('span', { class: 'dim' }, '자유') },
+          { label: '금병법', get: u => u.manual ? `〈${u.manual}〉` : h('span', { class: 'dim' }, '자유') },
+        ], d.units)),
+      d.before.length ? h('div', null, h('h3', null, '출전 전 화면 (1~2초씩 멈춰 녹화)'),
+        h('ul', { class: 'checklist' }, d.before.map(c => h('li', null, h('span', { class: 'box', 'aria-hidden': 'true' }, ''), h('div', null, h('span', { class: 'ctext' }, c)))))) : null,
+      d.checks.length ? h('div', null, h('h3', null, `전투에서 확인할 것 ${d.checks.length}건`),
+        Object.entries(byKind).map(([k, cs]) => [h('div', { class: 'meta' }, `${k} ${cs.length}`),
+          h('ul', { class: 'checklist' }, cs.map(c => h('li', null, h('span', { class: 'box', 'aria-hidden': 'true' }, ''),
+            h('div', null, h('span', { class: 'ctext' }, c.text), ' ', (c.refs || []).slice(0, 4).map(refLink), h('span', { class: 'meta' }, ` ${c.id}`)))))])) : null,
+      d.stats?.length ? h('div', null, h('h3', null, `이 판에서 재는 스탯 영향 값 ${d.stats.length}개`),
+        h('div', { class: 'meta' }, '전법 효과 수치가 찍힌 줄에서 시전자를 눌러 그 순간 스탯 툴팁을 같이 녹화 (J10 스탯 영향 공식)'),
+        table([{ label: '무장', get: x => x.general }, { label: '전법', get: x => x.skill }, { label: '스탯', get: x => x.stat }, { label: '찍을 것', get: x => x.what }], d.stats)) : null,
+      d.fireRates.length ? h('div', null, h('h3', null, '엔진으로 20판 돌렸을 때 한 판에 나오는 비율'),
+        h('div', { class: 'row' }, d.fireRates.map(f => chip(f.rate >= 0.5 ? 't-결정' : f.rate > 0 ? 't-질문' : 't-검증요청', `${f.skill} ${pct(f.rate)}`))),
+        d.fireRates.some(f => f.rate === 0) ? h('div', { class: 'meta' }, '0% = 엔진에서 이 편성으로는 안 나왔다 — 발동 조건(대상·피해 종류)을 녹화에서 확인') : null) : null));
 }
-function missionsView() {
-  const M = D.verification.missions || { missions: [] };
-  let kind = '전체';
-  const list = () => M.missions.filter(m => kind === '전체' || m.kind === kind);
-  const box = h('div');
-  const draw = () => box.replaceChildren(...list().slice(0, 120).map((m, i) => missionCard(m, i === 0)));
-  draw();
-  const cnt = k => M.missions.filter(m => m.kind === k).length;
+function recView() {
+  const M = D.verification.missions || { totals: { items: 0, byKind: {} }, decks: [], screens: [], uncovered: [], unreleased: [] };
+  const T = M.totals;
   return [
-    h('h1', null, '검증 미션'),
-    h('p', { class: 'lead' }, '엔진을 인게임과 똑같이 맞추기 위해 유저에게 맡길 녹화 미션. 무장·전법 데이터 빈칸, 녹화 계획, 검증 대기에서 자동으로 만들고(pnpm missions), 확인되면 다음 생성 때 사라진다. 덱 추천에 많이 쓰이는 대상이 위.'),
-    h('div', { class: 'meters' }, meter('무장 화면', cnt('무장 화면'), M.missions.length, `${cnt('무장 화면')}개`), meter('전법 화면', cnt('전법 화면'), M.missions.length, `${cnt('전법 화면')}개`), meter('전투', cnt('전투'), M.missions.length, `${cnt('전투')}개`)),
+    h('h1', null, '녹화 안내'),
+    h('p', { class: 'lead' }, `통합 검증 요청. 엔진을 인게임과 똑같이 맞추려고 녹화로 알아내야 하는 것을 모두 모았다 — 원문 근사·미반영 문장이 실제로 어떻게 적용되는지, 전법마다의 스탯 영향 값, 검증 대기·잠정 규정·역재현 오차가 큰 계수, 열린 검증요청·질문 글, 녹화 계획 남은 항목, 무장·전법 자료 빈칸. 엔진이 이것을 가장 적은 판으로 덮는 편성(무장·전법·금병법)을 짰다. 결과 분석은 '원문 반영 상태'·'계수·감사·데이터'·'검증 자료' 페이지에 따로 남는다.`),
+    h('div', { class: 'meters' },
+      meter('확인 항목', T.covered, T.items, `${T.items}건 중 편성·화면으로 덮음 ${T.covered}건`),
+      ...Object.entries(T.byKind || {}).map(([k, n]) => meter(k, n, T.items, `${n}건`))),
+    h('h2', null, '녹화 방법 (모든 판 공통)'), h('ol', null, (M.howTo || []).map(x => h('li', null, x))),
     h('h2', null, '구글 드라이브 올리기·공유'), h('ol', null, (M.driveGuide || []).map(x => h('li', null, x))),
     h('h2', null, '제출·보상 규칙'), h('ul', null, (M.rules || []).map(x => h('li', null, x))),
-    h('h2', null, `미션 ${M.missions.length}개`),
-    h('select', { 'aria-label': '종류', onchange: e => { kind = e.target.value; draw(); } }, ['전체', '무장 화면', '전법 화면', '전투'].map(k => h('option', { value: k }, k === '전체' ? '종류 전체' : k))),
-    box,
+    (M.common || []).length ? [h('h2', null, `모든 판에서 같이 확인 ${M.common.length}건`),
+      h('p', { class: 'lead' }, '어느 판을 녹화하든 해당 장면이 나오면 툴팁을 같이 찍어 두면 된다 — 검증요청 글·잠정 규정·역재현 오차가 큰 계수.'),
+      h('ul', { class: 'checklist' }, M.common.map(c => h('li', null, h('span', { class: 'box', 'aria-hidden': 'true' }, ''),
+        h('div', null, h('span', { class: 'ctext' }, c.text), ' ', (c.refs || []).map(refLink), h('span', { class: 'meta' }, ` ${c.kind} · ${c.id}`)))))] : null,
+    h('h2', null, `전투 녹화 ${M.decks.length}판`),
+    h('div', null, M.decks.map((d, i) => recDeckCard(d, i === 0))),
+    (M.screens || []).length ? [h('h2', null, `전투 없이 화면만 녹화 ${M.screens.length}건`),
+      h('p', { class: 'lead' }, '도감(무장·전법)에서 상세 화면을 차례로 열어 1~2초씩 멈추면 한 영상으로 끝난다.'),
+      h('ul', { class: 'checklist' }, M.screens.map(c => h('li', null, h('span', { class: 'box', 'aria-hidden': 'true' }, ''), h('div', null, h('span', { class: 'ctext' }, c.text), h('span', { class: 'meta' }, ` ${c.id}`)))))] : null,
+    (M.uncovered || []).length ? [h('h2', null, `편성만으로 못 덮는 것 ${M.uncovered.length}건`),
+      h('p', { class: 'lead' }, '특정 장면(선공 차·같은 조건 반복·미출시 무장)이 필요해 따로 묻거나 맞는 녹화가 올 때 확인한다.'),
+      h('ul', null, M.uncovered.map(c => h('li', null, c.text, h('span', { class: 'meta' }, ` ${c.id}`))))] : null,
+    (M.statsLeft || []).length ? [h('h2', null, `편성 빈칸이 모자라 이번에 못 넣은 스탯 영향 ${M.statsLeft.length}개`),
+      h('p', { class: 'dim' }, M.statsLeft.map(c => c.text.split(' — ')[0]).join(' · '))] : null,
+    (M.talk || []).length ? [h('h2', null, `녹화 대신 답으로 ${M.talk.length}건`),
+      h('ul', null, M.talk.map(c => h('li', null, c.text, ' ', c.refs.map(refLink))))] : null,
+    (M.unreleased || []).length ? [h('h2', null, '한국 서버 미출시라 제외'), h('p', { class: 'dim' }, M.unreleased.join(' · '))] : null,
+    h('details', null, h('summary', { class: 'dim' }, `지난 녹화 계획 ${DB.decks.length}판 (완료 기록·드라이브 링크)`), h('div', null, DB.decks.map(d => deckCard(d, false)))),
+    h('div', { class: 'meta' }, `${M.note || ''} · 생성 ${M.generatedAt || ''}`),
   ];
 }
 
@@ -801,10 +825,9 @@ function route() {
   let active = hash, body;
   const crumb = page => h('div', { class: 'crumb' }, `${spaceOf(page).title} › ${pageTitle(page)}`);
   if (hash === 'home' || hash === 'open') { active = 'home'; body = homeView(); }
-  else if (hash === 'v-decks') body = [crumb(hash), decksView()];
+  else if (hash === 'v-rec' || hash === 'v-decks' || hash === 'v-missions') body = [crumb('v-rec'), recView()];
   else if (hash === 'v-clauses') body = [crumb(hash), clausesView()];
   else if (hash === 'v-quality') body = [crumb(hash), qualityView()];
-  else if (hash === 'v-missions') body = [crumb(hash), missionsView()];
   else if (hash === 'plan-open') body = [crumb(hash), planOpenView()];
   else if (hash === 'flow' || hash === 'c-overview') {
     active = 'flow';
