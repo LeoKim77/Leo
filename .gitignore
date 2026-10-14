@@ -7,3 +7,7 @@ dist/
 apps/web/public/data/
 apps/web/dist-standalone/
 *.tsbuildinfo
+apps/web/public-server/data/
+apps/web/server/_generated/
+apps/web/dist-public/
+data/submissions/

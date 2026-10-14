@@ -17,13 +17,14 @@ import { DATA, readJson } from './paths.ts';
 import { Simulator } from '../../engine/src/index.ts';
 import { designPosts, designSpec } from './design.ts';
 import { checkReplay, loadReplays } from './replay-check.ts';
+import { loadInfluenceFit } from './influence.ts';
 
 type Need = { generals?: string[]; skills?: string[]; manual?: { general: string; name: string } };
-type Kind = '원문 근사·미반영' | '검증 대기' | '녹화 계획' | '검증 요청 글' | '스탯 영향' | '무장 자료' | '전법 자료' | '화면 확인';
+type Kind = '스탯 영향 세부' | '원문 근사·미반영' | '검증 대기' | '녹화 계획' | '검증 요청 글' | '스탯 영향' | '무장 자료' | '전법 자료' | '화면 확인';
 interface Item { id: string; kind: Kind; text: string; need: Need; weight: number; refs: string[] }
 
 export interface RecDeck {
-  no: number; title: string; formation: string; opponent: string;
+  no: number; legend: number; hero: number; title: string; formation: string; opponent: string;
   units: Array<{ generalId: string; name: string; unique: string; skills: string[]; skillIds: string[]; manual: string | null; manualId: string | null }>;
   before: string[];                         // 출전 전 화면 녹화(무장 상세·전법 상세)
   checks: Array<{ id: string; kind: string; text: string; refs: string[] }>;
@@ -159,6 +160,12 @@ export function buildMissions(opts: { simRuns?: number } = {}) {
     items.push({ id: `I-${s.id}`, kind: '스탯 영향', weight: 0.6 * pop(s.id), refs: [s.id, 'J10'], need,
       text: `「${s.name.ko}」 ${st}의 영향 — 효과 수치 줄 + 그 순간 시전자 ${st} 툴팁` });
   }
+  // 스탯 영향 세부 검증 요청 (FEAT-034: 녹화 표본끼리 어긋나는 전법 — 실행·발동 구간을 자세히)
+  for (const r of loadInfluenceFit()?.requests || []) {
+    const s = sById.get(r.key.split('@')[0]); if (!s) continue;
+    const need = skillNeed(s); if (!need) continue;
+    items.push({ id: `IR-${r.key}`, kind: '스탯 영향 세부', weight: 5 * pop(s.id), refs: [s.id, 'J10'], need, text: r.ask });
+  }
   // 열린 검증요청·질문 글의 요청 문장 (옛 녹화 계획 판 글은 위 '녹화 계획' 항목으로 이미 들어감)
   const common: Array<{ id: string; kind: string; text: string; refs: string[] }> = [];
   const talk: Array<{ id: string; text: string; refs: string[] }> = [];
@@ -229,6 +236,16 @@ export function buildMissions(opts: { simRuns?: number } = {}) {
   let remaining = [...items];
   const decks: RecDeck[] = [];
   const person = (id: string) => gById.get(id)?.samePerson || id;
+  // 등급 우선 (사용자 지정 2026-10-14): 실전은 전설급 위주 — 전설 ×3, 영웅 ×0.4
+  const gradeOf = (it: Item): string => {
+    const n = it.need;
+    const sk = n.skills?.length ? sById.get(n.skills[0]) : null;
+    if (sk && !sk.isUnique) return sk.grade || '';
+    const g = n.generals?.length ? gById.get(n.generals[0]) : (sk?.isUnique ? gById.get(sk.ownerGeneralId) : null);
+    return g?.grade || '';
+  };
+  const GRADE_MUL: Record<string, number> = { 전설: 3, 영웅: 0.4 };
+  for (const it of items) it.weight *= GRADE_MUL[gradeOf(it)] ?? 1;
   const isData = (it: Item) => it.kind === '무장 자료' || it.kind === '전법 자료' || it.kind === '화면 확인';
   const isFill = (it: Item) => it.kind === '스탯 영향';   // 빈칸 채우기 — 이것만 남으면 판을 더 만들지 않는다
   const primary = (it: Item) => !isData(it) && !isFill(it);
@@ -305,14 +322,20 @@ export function buildMissions(opts: { simRuns?: number } = {}) {
       const sk = sById.get(sid); const st = sk && statOf(sk);
       if (st) stats.push({ general: u.name, skill: sk.name.ko, stat: st, what: `「${sk.name.ko}」 효과 수치 줄 + 그 순간 ${u.name} ${st} 툴팁` });
     }
-    decks.push({ no, title: battleChecks.length ? `확인 ${battleChecks.length}건 · 화면 ${got.length - battleChecks.length}건` : `자료 ${got.length}건`, formation: '기형진', opponent: '병영소 NPC(아무 레벨) 또는 유저 대전',
+    const legend = got.filter(it => gradeOf(it) === '전설').length, hero = got.filter(it => gradeOf(it) === '영웅').length;
+    decks.push({ no, legend, hero, title: battleChecks.length ? `확인 ${battleChecks.length}건 · 화면 ${got.length - battleChecks.length}건` : `자료 ${got.length}건`, formation: '기형진', opponent: '병영소 NPC(아무 레벨) 또는 유저 대전',
       units, before, checks: battleChecks.map(it => ({ id: it.id, kind: it.kind, text: it.text, refs: it.refs })), stats, fireRates, runs,
       reward: [100, Math.min(1000, 200 + battleChecks.length * 60 + before.length * 30)] });
   }
+  // 판 순서: 전설 항목 비중이 큰 판부터
+  decks.sort((a, b) => (b.legend - b.hero * 0.5) / (b.checks.length + b.before.length || 1) * Math.log2(2 + b.checks.length) - (a.legend - a.hero * 0.5) / (a.checks.length + a.before.length || 1) * Math.log2(2 + a.checks.length));
+  decks.forEach((d, i) => { d.no = i + 1; });
+  const gRank = (it: Item) => ({ 전설: 0, '': 1, 영웅: 2 } as any)[gradeOf(it)] ?? 1;
+  remaining.sort((a, b) => gRank(a) - gRank(b));
   const byKind = (k: string) => items.filter(i => i.kind === k).length;
   return { generatedAt: new Date().toISOString().slice(0, 10),
     note: '자동 생성(pnpm missions). 녹화로 알아내야 할 모든 것(원문 근사·미반영, 검증 대기, 녹화 계획 남은 항목, 무장·전법 자료 빈칸)을 모아 가장 적은 판 수로 덮는 편성을 엔진으로 짰다. 확인되면 다음 생성 때 빠진다.',
-    totals: { items: items.length + common.length, covered: items.length - remaining.filter(it => !isData(it)).length + common.length, statsLeft: remaining.filter(isFill).length, decks: decks.length, screens: remaining.filter(isData).length, common: common.length, byKind: Object.fromEntries(['원문 근사·미반영', '검증 대기', '녹화 계획', '검증 요청 글', '스탯 영향', '무장 자료', '전법 자료', '화면 확인'].map(k => [k, byKind(k) + common.filter(c => c.kind === k).length]).concat([['잠정 규정', common.filter(c => c.kind === '잠정 규정').length], ['계수 표본', common.filter(c => c.kind === '계수 표본').length]])) },
+    totals: { items: items.length + common.length, covered: items.length - remaining.filter(it => !isData(it)).length + common.length, statsLeft: remaining.filter(isFill).length, decks: decks.length, screens: remaining.filter(isData).length, common: common.length, byKind: Object.fromEntries(['스탯 영향 세부', '원문 근사·미반영', '검증 대기', '녹화 계획', '검증 요청 글', '스탯 영향', '무장 자료', '전법 자료', '화면 확인'].map(k => [k, byKind(k) + common.filter(c => c.kind === k).length]).concat([['잠정 규정', common.filter(c => c.kind === '잠정 규정').length], ['계수 표본', common.filter(c => c.kind === '계수 표본').length]])) },
     howTo: HOW_TO, driveGuide: DRIVE_GUIDE,
     rules: ['판(편성)당 제출 3건까지', '보상은 Claude 가 요청 사항 준수·중대 버그 발견·엔진 개선 기여도로 산정, 운영자 엔진 반영 승인 때 지급(최소 100P)', '분석이 불가능할 정도로 짧거나 내용이 없는 영상은 보상 제외', '제출 → 운영자 분석 승인 → Claude 분석 → 운영자 반영 승인'],
     common, talk, decks, screens: remaining.filter(isData).map(it => ({ id: it.id, kind: it.kind, text: it.text })),

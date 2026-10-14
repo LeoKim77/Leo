@@ -2,6 +2,7 @@
 import type { GameBundle, ChangelogEntry, DeckSpec } from '@cheonha/engine';
 import type { AuditReport } from '@cheonha/audit';
 
+declare global { const __SERVER_ENGINE__: boolean }
 export type Bundle = GameBundle & { changelog: ChangelogEntry[] };
 
 export const app = {
@@ -83,9 +84,10 @@ export async function loadData() {
     if (e) return e;
     const r = await fetch(p); if (!r.ok) throw new Error(`${p} ${r.status}`); return r.json();
   };
-  app.bundle = await get('./data/bundle.json');
+  // 공개 서비스(OPS15)는 엔진 정의가 빠진 공개 카탈로그만 받는다
+  app.bundle = await get(__SERVER_ENGINE__ ? './data/catalog.json' : './data/bundle.json');
   app.season = app.bundle.season;
-  app.audit = await get('./data/audit.json').catch(() => null);
+  app.audit = __SERVER_ENGINE__ ? null : await get('./data/audit.json').catch(() => null);
 }
 export async function loadDecklab() {
   if (!app.decklab) app.decklab = embedded('cheonha-decklab') ?? await (await fetch('./data/reference-decklab.json')).json();
@@ -99,7 +101,7 @@ export const inSeason = (season: string) => SEASON_ORDER(season) <= SEASON_ORDER
 export const generalById = (id: string) => app.bundle.generals.find(g => g.id === id);
 export const skillById = (id: string) => app.bundle.skills.find(s => s.id === id);
 /** 기획 플랫폼(정본 규정·도감) 카테고리 링크 */
-export const designLink = (cat: string) => `${(app.bundle as any)?.site?.designUrl || ''}#c-${cat}`;
+export const designLink = (cat: string) => (__SERVER_ENGINE__ ? '#/' : `${(app.bundle as any)?.site?.designUrl || ''}#c-${cat}`);   // 설계서는 외부 비공개(OPS1)
 export const skillAudit = (id: string) => app.audit?.skills.find(s => s.id === id);
 
 /** 해외 표기 → 한국판 용어 (웹용 간이판: 데이터 도구와 같은 표 사용) */

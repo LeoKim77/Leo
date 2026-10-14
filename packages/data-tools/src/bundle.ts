@@ -133,6 +133,7 @@ export function loadChangelog(): ChangelogEntry[] {
 export interface FullBundle extends GameBundle {
   changelog: ChangelogEntry[];
   engineGenerals: Record<string, { gender?: 'M' | 'F'; legacyStats?: Record<string, number> }>;
+  influenceWeights?: Record<string, number>;
 }
 
 /** 시즌 시트에서 가져온 층(data/seasons/<시즌>/<종류>.json)을 엑셀 원본 뒤에 붙인다. 같은 id 는 엑셀이 우선 */
@@ -256,5 +257,7 @@ export function buildBundle(opts: { fromJson?: boolean } = {}): FullBundle {
     termMap: readJson<any>(join(DATA, 'common', 'term-map.json')).mappings,
     changelog: loadChangelog(),
     engineGenerals: engGenerals,
+    // FEAT-034 전법별 스탯 영향 가중치(서버 전용 — 공개 카탈로그에는 없다)
+    influenceWeights: Object.fromEntries(Object.entries(readJson<any>(join(DATA, 'engine', 'influence-fit.json'), { weights: {} }).weights).map(([k, v]: any) => [k, v.weight])),
   };
 }

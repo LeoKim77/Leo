@@ -111,7 +111,7 @@ function provisionalNotice() {
   return h('details', { class: 'notice' },
     h('summary', null, lv('warn', `잠정 규정 ${d.provisional.length}개 사용`), ' — 기획 플랫폼에서 아직 확정되지 않은 공용 규정은 잠정값으로 계산합니다'),
     h('div', { style: { marginTop: '6px', fontSize: '13px' } }, d.provisional.map((x: any) => h('div', null, h('span', { class: 'badge' }, x.id), ` ${x.title}`, x.status === '결정필요' ? h('span', { class: 'muted' }, ' (결정 필요)') : null)),
-      h('a', { href: designLink('home'), target: '_blank' }, '설계서에서 보기')));
+      __SERVER_ENGINE__ ? null : h('a', { href: designLink('home'), target: '_blank' }, '설계서에서 보기')));
 }
 
 function resultView() {
@@ -221,8 +221,8 @@ function battleView() {
     if (box && el) box.scrollTo({ top: el.offsetTop - box.offsetTop, behavior: 'smooth' });
     document.querySelectorAll('.turn-nav button').forEach(b => b.classList.toggle('on', b.getAttribute('data-i') === String(i)));
   };
-  const a = battle.audit;
-  const bad = a.skills.filter((s: any) => s.worst === 'fail' || s.worst === 'warn');
+  const a = battle.audit;   // 공개 서비스(OPS15)는 감사 결과를 보내지 않는다
+  const bad = a ? a.skills.filter((s: any) => s.worst === 'fail' || s.worst === 'warn') : [];
   return h('div', { class: 'grid cols-2' },
     h('div', { class: 'panel' },
       h('div', { class: 'section-head' }, h('h3', { style: { fontSize: '15px' } }, `전보 — ${battle.winner === 'A' ? '내 덱 승' : battle.winner === 'B' ? '상대 승' : '무승부'} (${battle.turns}턴${(battle as any).rounds > 1 ? ` · ${(battle as any).rounds}차 교전` : ''})`), h('span', { class: 'sub' }, `시드 ${battle.seed}`)),
@@ -233,7 +233,7 @@ function battleView() {
         h('div', { class: 'log', id: 'battle-log' }, rows.map(({ l, i }) => /── \d+번째 턴 ──|── 포진 ──/.test(l)
           ? h('div', { class: 'turn', id: `turn-${i}` }, /포진/.test(l) ? '◇ 준비 턴 ◇' : `◇ ${l.match(/(\d+)번째 턴/)![1]}번째 턴 ◇`)
           : h('div', null, lineEl(l, i)))))),
-    h('div', { class: 'panel' },
+    a && h('div', { class: 'panel' },
       h('h3', { style: { fontSize: '15px', marginBottom: '8px' } }, '이 전투의 규칙 감사'),
       h('table', null, h('tbody', null, a.engineRules.map((r: any) => h('tr', null, h('td', { style: { width: '74px' } }, lv(r.level)), h('td', null, h('div', null, r.title), h('div', { class: 'dim', style: { fontSize: '12.5px' } }, r.message), r.evidence?.length ? h('div', { class: 'muted', style: { fontSize: '12px' } }, r.evidence.slice(0, 3).join(' / ')) : null))))),
       h('h3', { style: { fontSize: '15px', margin: '12px 0 6px' } }, `발동한 전법 ${a.skills.length}개`),
@@ -277,7 +277,7 @@ export function renderSim(root: HTMLElement, params?: URLSearchParams) {
     if (kind === 'battle') root.querySelector('.battle-anchor')?.scrollIntoView({ behavior: 'smooth' });
   };
   mount(root,
-    h('div', { class: 'section-head' }, h('h2', null, '시뮬레이션'), h('a', { class: 'sub', href: designLink('home'), target: '_blank' }, '계산 규칙은 설계서에서')),
+    h('div', { class: 'section-head' }, h('h2', null, '시뮬레이션'), __SERVER_ENGINE__ ? null : h('a', { class: 'sub', href: designLink('home'), target: '_blank' }, '계산 규칙은 설계서에서')),
     h('div', { class: 'panel sim-setup' },
       h('div', { class: 'form-row' }, h('label', null, '내 부대'), chooser('A', redraw)),
       h('div', { class: 'form-row' }, h('label', null, '상대'), chooser('B', redraw)),

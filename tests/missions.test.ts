@@ -55,6 +55,12 @@ describe('녹화 안내 (OPS5)', () => {
       if (/의 영향(을)? 받/.test(sk.get(sid)?.text || '')) expect(d.stats.some((x: any) => x.skill === sk.get(sid).name.ko), `${d.no}판 ${sid}`).toBe(true);
     }
   });
+  it('전설 우선: 앞 판일수록 전설 항목이 많고, 1판에는 영웅 항목이 전설보다 적다', () => {
+    expect(M.decks[0].legend).toBeGreaterThan(M.decks[0].hero);
+    const half = Math.ceil(M.decks.length / 2);
+    const sum = (ds: any[], k: string) => ds.reduce((a, d) => a + d[k], 0);
+    expect(sum(M.decks.slice(0, half), 'legend')).toBeGreaterThan(sum(M.decks.slice(half), 'legend'));
+  });
   it('드라이브 공유 가이드에 "링크가 있는 모든 사용자"·뷰어 안내', () => {
     expect(M.driveGuide.join(' ')).toContain('링크가 있는 모든 사용자');
   });

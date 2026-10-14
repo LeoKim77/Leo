@@ -13,13 +13,16 @@
     "dev": "pnpm --filter @cheonha/web dev",
     "build": "pnpm build:bundle && pnpm --filter @cheonha/web build",
     "mcp": "pnpm --filter @cheonha/mcp-server start",
-    "build:standalone": "pnpm build:bundle && pnpm --filter @cheonha/web build:standalone",
+    "build:standalone": "pnpm build:bundle && tsx packages/data-tools/src/missions-public.ts && pnpm --filter @cheonha/web build:standalone",
+    "build:public": "tsx packages/data-tools/src/public-bundle.ts && tsx packages/data-tools/src/missions-public.ts && pnpm --filter @cheonha/web build:public",
+    "serve:local": "tsx apps/web/server/local.ts",
     "gen:skills": "tsx packages/data-tools/src/gen-skill-funcs.ts",
     "skill:revise": "tsx packages/data-tools/src/skill-revise.ts",
     "gen:manuals": "tsx packages/data-tools/src/gen-manual-funcs.ts",
     "manual:revise": "tsx packages/data-tools/src/manual-revise.ts",
     "build:design": "tsx packages/data-tools/src/missions.ts && tsx packages/data-tools/src/build-design.ts",
-    "missions": "tsx packages/data-tools/src/missions.ts"
+    "missions": "tsx packages/data-tools/src/missions.ts",
+    "fit:influence": "tsx packages/data-tools/src/fit-influence.ts"
   },
   "devDependencies": {
     "typescript": "~5.9.0",

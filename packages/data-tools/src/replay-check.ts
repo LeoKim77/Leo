@@ -5,6 +5,7 @@
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildBundle } from './bundle.ts';
+import { engineWeight, loadInfluenceFit, matchSkill } from './influence.ts';
 import { DATA, readJson } from './paths.ts';
 import { Simulator } from '../../engine/src/index.ts';
 
@@ -107,8 +108,12 @@ export function checkReplay(r: Replay, coeffs: Record<string, unknown> = {}, sim
     });
   }
   // 스탯 영향: 기본값 × (1 + (스탯 − 100) × statScaleWeight) — v1.12b 잠정식(W08)
-  const w = Number((sim as any).coeffs.statScaleWeight);
+  // FEAT-034: 엔진이 실제로 쓰는 가중치(실측 맞춤 → 전법 파일 → 공용 J10)로 계산
+  const gw = Number((sim as any).coeffs.statScaleWeight);
+  const fit = loadInfluenceFit();
+  const allSkills = (sim as any).bundle?.skills || buildBundle().skills;
   for (const s of r.influenceSamples || []) {
+    const { w } = engineWeight(matchSkill(s.skill, allSkills), s.base, fit, gw);
     const predicted = s.base * Math.max(0, 1 + (s.statValue - 100) * w);
     rows.push({ kind: 'influence', turn: s.turn, label: `${s.caster} ${s.skill} 기본 ${s.base} (${s.stat} ${s.statValue})`, observed: s.observed, predicted: Math.round(predicted * 100) / 100, errPct: (predicted - s.observed) / s.observed, snapshot: '전보 표기값' });
   }

@@ -136,6 +136,7 @@ export function toLegacyGameData(bundle: GameBundle & { engineGenerals?: Record<
     };
   });
   return {
+    influenceWeights: (bundle as any).influenceWeights || {},   // FEAT-034
     generals,
     skills: bundle.skills.filter(s => !s.isUnique).map(legacySkill),
     uniqueSkills: bundle.skills.filter(s => s.isUnique).map(legacySkill),

@@ -10,7 +10,7 @@ const html = readFileSync(join(web, 'dist-standalone', 'index.html'), 'utf8');
 const data = (f: string) => JSON.stringify(JSON.parse(readFileSync(join(web, 'public', 'data', f), 'utf8')));   // 공백 제거
 // JSON 안의 "</script" 가 태그를 닫지 않게 한다
 const tag = (id: string, json: string) => `<script type="application/json" id="${id}">${json.replace(/<\//g, '<\\/')}</script>`;
-const blobs = [tag('cheonha-bundle', data('bundle.json')), tag('cheonha-audit', data('audit.json')), tag('cheonha-decklab', data('reference-decklab.json'))].join('\n');
+const blobs = [tag('cheonha-bundle', data('bundle.json')), tag('cheonha-audit', data('audit.json')), tag('cheonha-decklab', data('reference-decklab.json')), tag('cheonha-requests', data('requests.json'))].join('\n');
 
 // 데이터는 앱 스크립트보다 앞에 둔다
 const full = html.replace(/<script type="module"/, `${blobs}\n<script type="module"`);

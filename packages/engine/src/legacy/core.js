@@ -56,6 +56,8 @@ export const ENGINE_FIXES = [
     detail: '화타가 준비하던 청천벽력이 서서의 칠군수몰 침묵을 받자마자 "전법【청천벽력】을 발동할 수 없습니다"로 취소됐다. 예전엔 발동 차례에 침묵이 남아 있을 때만 막아, 그 사이 침묵이 풀리면 그대로 터졌다. 정신 회복으로 무효화된 침묵은 취소하지 않는다.' },
   { id: 'FIX-030', date: '2026-10-11', found: '사용자 요청 2026-10-11 (인게임 전보 순서)', title: '행동 순서 판단 표기를 턴 맨 앞으로',
     detail: '행동 순서는 원래 턴 시작 전법보다 먼저 정해졌지만, 전보 줄은 턴 시작 전법 뒤에 찍히고 선공도 그 뒤 값(턴 시작 선공 버프 반영)으로 보였다. 인게임처럼 턴 머리 바로 다음에 판단 시점의 선공으로 표기.' },
+  { id: 'FEAT-034', date: '2026-10-14', found: '사용자 지정: 스탯 영향은 인게임 수치 우선', title: '전법별 스탯 영향 가중치(실측 맞춤)',
+    detail: '녹화 역재현 스탯 영향 표본으로 공용 J10 가중치 오차가 10%를 넘는 전법만 그 전법(+기본값)에 실측 가중치를 준다(pnpm fit:influence → influence-fit.json). 표본끼리 어긋나면 가중치 대신 세부 검증 요청. 난세의 간웅 회유·심리 공격 0.436%, 도광양회 0.48%, 고육지계 0.111%.' },
   { id: 'FEAT-033', date: '2026-10-11', found: '영웅 무장 녹화 2026-10-11 (고유 전법 23개)', title: '영웅 고유 전법용 부품',
     detail: '적군 쪽 액티브 발동에 반응하는 트리거(cast role enemy_side, 양수 민첩한 대응), 피해 직전 트리거가 이번 1회 피해만 줄이는 _hitCut(장만성 천공장군), 공격자·회복자를 같은 시전에서 고른 무장으로(actor tag:, 공융 격렬한 언사), 대상 코드 highest_intel_friend(자신 제외 지력 최고 우군, 곽도 아첨의 귀재).' },
   { id: 'FEAT-032', date: '2026-10-10', found: '녹화 2026-10-10 (맹덕신서 하권 11.90·11.53)', title: '부여한 무장 스탯 영향(맹덕신서 하권)',
@@ -270,6 +272,27 @@ function attachInfluences(D) {
   });
 }
 try { attachInfluences(gameData); } catch (e) { console.warn('attachInfluences 실패', e); }
+// FEAT-034 인게임 실측 우선: 녹화 표본으로 맞춘 전법별 스탯 영향 가중치(data/engine/influence-fit.json)를
+//   "<전법 id>@<10레벨 기본값>" 이 맞는 효과 항목에만 넣는다. 없는 전법은 공용 J10 가중치.
+function applyInfluenceWeights(D) {
+  const W = D.influenceWeights || {};
+  const keys = Object.keys(W);
+  if (!keys.length) return;
+  [...(D.skills || []), ...(D.uniqueSkills || [])].forEach(sk => {
+    const mine = keys.filter(k => k.startsWith(sk.id + '@'));
+    if (!mine.length) return;
+    const eff = sk.effects || {};
+    ['damage', 'buffs', 'statMods'].flatMap(k => eff[k] || []).concat(sk.alwaysOnBuffs || []).forEach(item => {
+      if (!item || (!item.inf && !item.statScale)) return;
+      const v = Math.abs(item.max != null ? item.max : (item.min || 0));
+      const k = mine.find(k => { const b = +k.split('@')[1]; return Math.abs(v * 100 - b) < 0.6 || Math.abs(v - b) < 0.6; });
+      if (!k) return;
+      if (item.inf) item.inf = { ...item.inf, weight: W[k] };
+      else item.statScale = { ...item.statScale, weight: W[k] };
+    });
+  });
+}
+try { applyInfluenceWeights(gameData); } catch (e) { console.warn('applyInfluenceWeights 실패', e); }
 // 전법 발동 시점 분류 (W02·W03): battleStart / turnStart / turnEnd / action / trigger
 function skillTiming(skill) {
   if (!skill) return 'action';
