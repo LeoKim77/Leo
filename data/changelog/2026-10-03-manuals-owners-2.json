@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-03-manuals-owners-2",
+  "date": "2026-10-03",
+  "season": "S2",
+  "category": "데이터",
+  "title": "금병법 6개 추가(진궁·마운록·법정·전풍·공손찬) · 사마의·가후 한국 서버 미출시",
+  "body": "사용자 확인 금병법(미리보기 캡처 원문):\n- 진궁〈논무〉 무력 최고 우군이 추격 전법 발동마다 추격 전법 피해 +2%(최대 10회)\n- 마운록〈풍속통의〉 아군 기병(무장 기본 병종)의 최고 속성 +5%\n- 법정〈문도〉 전투 시작 시 4턴 동안 적군 전체 병기 피해 −10%\n- 전풍〈권략〉 고유 전법 발동률 +10%\n- 공손찬〈서좌〉 추격 전법 발동률 +7% / 〈백마의종〉 피신할 때마다 무력·지력 +선공×2%(최대 8회)\n- 악진〈동등〉 \"같은 열\" 대상 반영(근사 → 원문대로)\n사마의·가후: 한국 서버에 없는 무장(사용자 확인). 엑셀·S2 시트 자료는 남기되 덱 추천과 녹화 계획에서 제외, 티어덱에 \"한국 서버 미출시\" 표시.\n감사: 주태가 대신 받은 타격·저항으로 무효화된 타격도 대상 수에 포함(D06 오탐 수정).\n엔진 FEAT-012(피신 후 성장·아군 병종별 최고 속성).\n사이트 목적(사용자 지정): ① 구상한 덱 바로 실험 ② 보유 무장·전법으로 이번 시즌 최상의 덱 자동 추천 — CLAUDE.md 에 고정.",
+  "refs": [],
+  "author": "Claude",
+  "commit": "c1250798abb7",
+  "files": [
+    "CLAUDE.md",
+    "apps/web/src/views/tierdecks.ts",
+    "data/audit/latest.json",
+    "data/engine/manuals.json",
+    "data/patches/generals.json",
+    "data/verification/queue.json",
+    "packages/audit/src/dynamic.ts",
+    "packages/data-tools/src/verification.ts",
+    "packages/engine/src/index.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/engine/src/model.ts",
+    "packages/recommender/src/index.ts",
+    "tests/manuals.test.ts"
+  ]
+}

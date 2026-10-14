@@ -1,0 +1,27 @@
+{
+  "id": "P-0025",
+  "date": "2026-10-03",
+  "cat": "formation",
+  "type": "검증완료",
+  "title": "[화면 확인] 진형 소개 화면 — 8개 진형 피격률·특성",
+  "body": "진형 소개 화면 녹화로 8개 진형의 전열·후열 피격률과 열별 특성을 옮겼다(진형 카테고리 표).",
+  "status": "시뮬 반영",
+  "specIds": [
+    "FRM1"
+  ],
+  "rules": [
+    "R-013"
+  ],
+  "links": [
+    {
+      "label": "진형 소개 영상",
+      "url": "https://drive.google.com/file/d/1mQ80op4bce4ubH3UWMQb4Tg38w9B2jnG/view?usp=drivesdk"
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-03",
+      "change": "작성"
+    }
+  ]
+}

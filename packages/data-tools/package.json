@@ -1,0 +1,15 @@
+{
+  "name": "@cheonha/data-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "import:excel": "tsx src/import-excel.ts",
+    "import:legacy": "tsx src/import-legacy.ts",
+    "import:decklab": "tsx src/import-decklab.ts",
+    "import:all": "tsx src/import-excel.ts && tsx src/import-legacy.ts && tsx src/import-decklab.ts && tsx src/build-bundle.ts",
+    "bundle": "tsx src/build-bundle.ts"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  }
+}

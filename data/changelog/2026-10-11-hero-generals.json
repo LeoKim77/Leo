@@ -1,0 +1,32 @@
+{
+  "id": "2026-10-11-hero-generals",
+  "date": "2026-10-11",
+  "season": "S1",
+  "category": "데이터 추가",
+  "title": "영웅 무장 23명·고유 전법 23개 추가, 유현정책·투혼의 추격 원문 갱신",
+  "body": "사용자 녹화(무장_영웅·전법_영웅)로 영웅 무장 23명과 고유 전법을 시뮬에 넣었다(설계서 P-0049). 능력치는 50레벨 환산, 고유 전법은 10레벨 원문대로 함수 작성. 엔진 FEAT-033(적군 액티브 반응·이번 피해 감소·지정 우군 공격·자신 제외 지력 최고 우군·일반 공격 여부 전달). 영웅 황보숭(반란 평정)은 시즌3 황보숭과 다른 카드로 분리. 유현정책 대상 랜덤 아군 2명, 투혼의 추격 이름 띄어쓰기. 해석 5가지는 질문 P-0050. 내 보유에 영웅 무장 23명 추가.",
+  "refs": [
+    "yang-xiu",
+    "huangfu-song-hero",
+    "u-han-dang",
+    "know-people",
+    "relentless-chase"
+  ],
+  "author": "Claude",
+  "commit": "5efceb3",
+  "files": [
+    "data/seasons/S1/generals.json",
+    "data/seasons/S1/skills.json",
+    "data/engine/authored.json",
+    "packages/engine/src/skills/u-*.ts (23개)",
+    "packages/engine/src/skills/know-people.ts",
+    "packages/engine/src/skills/relentless-chase.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/audit/src/expect.ts",
+    "data/patches/skills.json",
+    "data/patches/generals.json",
+    "data/verification/engine-assumptions.json",
+    "tests/hero-generals.test.ts",
+    "tests/s3.test.ts"
+  ]
+}

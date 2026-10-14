@@ -1,0 +1,7970 @@
+{
+  "supply-cut": {
+    "legacyId": "skill_1",
+    "legacyName": "보급 차단",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "턴 시작 시 적군 단일 목표에게 2턴 동안 지속되는 군량 고갈을(를) 부여한다. 턴 종료 시 군량 고갈 상태를 보유한 적군에게 55%→110%의 책략 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.55,
+          "max": 1.1,
+          "target": "all_enemy",
+          "condition": {
+            "type": "hasStatus",
+            "who": "target",
+            "status": "군량 고갈"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "군량 고갈",
+          "target": "random_enemy_1"
+        }
+      ],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "턴 시작 시 적군 단일 목표에게 2턴 동안 지속되는 군량 고갈을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "턴 종료 시 군량 고갈 상태를 보유한 적군에게 55%→110%의 책략 피해를 준다",
+        "impl": [
+          "damage[0]",
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "strong-wind": {
+    "legacyId": "skill_2",
+    "legacyName": "광풍의 분노",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "2번째와 4번째 턴 시작 시, 전체 적군과 아군이 2턴 동안 폭풍 상태가 된다. 홀수 턴 시작 시, 60% 확률로 전체 적군에게 50%→100%의 책략 피해를 준다. 짝수 턴 시작 시, 60% 확률로 랜덤 적군 단일 목표에게 140%→280%의 책략 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.5,
+          "max": 1,
+          "target": "all_enemy",
+          "chance": 0.6,
+          "turnCond": {
+            "parity": "odd"
+          }
+        },
+        {
+          "dmgType": "책략",
+          "min": 1.4,
+          "max": 2.8,
+          "target": "random_enemy_1",
+          "chance": 0.6,
+          "turnCond": {
+            "parity": "even"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "폭풍",
+          "target": "all_enemy",
+          "turnCond": {
+            "turns": [
+              2,
+              4
+            ]
+          }
+        },
+        {
+          "name": "폭풍",
+          "target": "all_ally",
+          "turnCond": {
+            "turns": [
+              2,
+              4
+            ]
+          }
+        }
+      ],
+      "targets": []
+    },
+    "chanceFixed": true,
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "2번째와 4번째 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전체 적군과 아군이 2턴 동안 폭풍 상태가 된다",
+        "impl": [
+          "statusEffects[0]",
+          "statusEffects[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "홀수 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "60% 확률로 전체 적군에게 50%→100%의 책략 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "짝수 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "60% 확률로 랜덤 적군 단일 목표에게 140%→280%의 책략 피해를 준다",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "supreme-war": {
+    "legacyId": "skill_3",
+    "legacyName": "비상한 전략",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "턴 시작 시, 랜덤 적군 단일 목표에게 60%→120%의 책략 피해를 주며, 비상한 전략의 피해는 턴 수에 따라 매 턴 10% 증가한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.6,
+          "max": 1.2,
+          "turnScale": {
+            "perTurn": 0.1,
+            "mode": "add"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "랜덤 적군 단일 목표에게 60%→120%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "비상한 전략의 피해는 턴 수에 따라 매 턴 10% 증가한다",
+        "impl": [
+          "damage[0].turnScale"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "hundred-battles": {
+    "legacyId": "skill_4",
+    "legacyName": "백전불태",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "통솔/지력/무력이 가장 높은 아군 단일 목표가 피해를 받으면 60% 확률로 통솔/지력/무력이 3.5→7포인트 증가하며, 8회 중첩될 수 있고, 전투 종료까지 지속된다. 동일한 목표에게 적용될 수 있다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "min": 3.5,
+          "max": 7,
+          "target": "highest_command_ally",
+          "duration": 999,
+          "maxStacks": 8
+        },
+        {
+          "stat": "지력",
+          "min": 3.5,
+          "max": 7,
+          "target": "highest_intel_ally",
+          "duration": 999,
+          "maxStacks": 8
+        },
+        {
+          "stat": "무력",
+          "min": 3.5,
+          "max": 7,
+          "target": "highest_power_ally",
+          "duration": 999,
+          "maxStacks": 8
+        }
+      ],
+      "statusEffects": [],
+      "targets": []
+    },
+    "trigger": {
+      "event": "damage",
+      "role": "ally_taken",
+      "chance": 0.6
+    },
+    "triggerApplied": true,
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "통솔/지력/무력이 가장 높은 아군 단일 목표가 피해를 받으면 60% 확률로 통솔/지력/무력이 3.5→7포인트 증가",
+        "impl": [
+          "statMods[0]",
+          "statMods[1]",
+          "statMods[2]",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "8회 중첩될 수 있고",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전투 종료까지 지속된다",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "동일한 목표에게 적용될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "armor-edge": {
+    "legacyId": "skill_5",
+    "legacyName": "결사의 다짐",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전투 시작 시, 랜덤 아군 단일 목표(전열 우선)가 결사 획득: 행동 전, 자신의 병력을 회복하며(치유율 40%→80%, 목표의 지력과 통솔의 영향 받음), 받는 병기 피해가 10%→20% 감소한다. 무력이 가장 높은 아군 단일 목표가 다짐 획득: 일반 공격 후, 50% 확률로 랜덤 적군 단일 목표에게 50%→100%의 병기 피해를 1회 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.5,
+          "max": 1,
+          "actor": "highest_power_ally",
+          "target": "random_enemy_1"
+        }
+      ],
+      "heal": [
+        {
+          "min": 0.4,
+          "max": 0.8,
+          "actor": "random_ally_n",
+          "target": "self"
+        }
+      ],
+      "buffs": [
+        {
+          "stat": "받는병기피해",
+          "min": -0.1,
+          "max": -0.2
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_ally_n"
+      ],
+      "statusEffects": []
+    },
+    "manualOverride": true,
+    "clauses": [
+      {
+        "text": "전투 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "랜덤 아군 단일 목표(전열 우선)가 결사 획득: 행동 전",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "자신의 병력을 회복",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(치유율 40%→80%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표의 지력과 통솔의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "받는 병기 피해가 10%→20% 감소한다",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "무력이 가장 높은 아군 단일 목표가 다짐 획득: 일반 공격 후",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "50% 확률로 랜덤 적군 단일 목표에게 50%→100%의 병기 피해를 1회 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "ready": {
+    "legacyId": "skill_6",
+    "legacyName": "준비 완료",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "매 턴 시작 시, 우군 2명의 주는 피해가 3.5%→7% 증가하며, 중첩될 수 있고, 전투 종료까지 지속된다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "min": 0.035,
+          "max": 0.07,
+          "duration": 999,
+          "maxStacks": 8
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_ally_n"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "매 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "우군 2명의 주는 피해가 3.5%→7% 증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "중첩될 수 있고",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전투 종료까지 지속된다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "choose-momentum": {
+    "legacyId": "skill_7",
+    "legacyName": "인재 기용",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "3번째 턴부터 우군 2명은 매 턴 40%→80% 확률로 다음 피해에 회심 또는 묘책(이)가 반드시 발동되며, 해당 회심 또는 묘책 피해가 20%→40% 증가한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "확정회심",
+          "min": 1,
+          "max": 1,
+          "chance": 0.8,
+          "target": "random_ally_n"
+        },
+        {
+          "stat": "회심피해",
+          "min": 0.2,
+          "max": 0.4,
+          "target": "random_ally_n",
+          "duration": 1,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_ally_n"
+      ],
+      "statusEffects": []
+    },
+    "onlyTurns": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "manualOverride": true,
+    "clauses": [
+      {
+        "text": "3번째 턴부터 우군 2명은 매 턴 40%→80% 확률로 다음 피해에 회심 또는 묘책(이)가 반드시 발동",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "해당 회심 또는 묘책 피해가 20%→40% 증가한다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "sacrifice": {
+    "legacyId": "skill_8",
+    "legacyName": "정의의 희생",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전투 시작 후 2턴 동안 전체 아군의 연타 확률이 15%→30% 증가하며, 2턴 동안 무력이 가장 높은 아군 단일 목표가 정신 회복을(를) 획득하고, 자신이 무장해제을(를) 획득한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "연타확률",
+          "min": 0.15,
+          "max": 0.3,
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "all_ally",
+        "highest_power_ally",
+        "random_ally_n",
+        "self"
+      ],
+      "statusEffects": [
+        "무장 해제",
+        "정신 회복"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "전투 시작 후 2턴 동안 전체 아군의 연타 확률이 15%→30% 증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 무력이 가장 높은 아군 단일 목표가 정신 회복을(를) 획득",
+        "impl": [
+          "statusEffects[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "자신이 무장해제을(를) 획득한다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "civil-martial": {
+    "legacyId": "skill_9",
+    "legacyName": "문과 무",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "매 턴 행동 시, 60% 확률로 랜덤 적군 2명에게 50%→100%의 병기와 책략 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.5,
+          "max": 1,
+          "chance": 0.6
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.5,
+          "max": 1,
+          "chance": 0.6
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n"
+      ],
+      "statusEffects": []
+    },
+    "chanceFixed": true,
+    "clauses": [
+      {
+        "text": "매 턴 행동 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "60% 확률로 랜덤 적군 2명에게 50%→100%의 병기와 책략 피해를 준다",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "avoid-edge": {
+    "legacyId": "skill_10",
+    "legacyName": "허점 공략",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전투 시작 후 4턴 동안 자신과 랜덤 우군 단일 목표가 받는 피해가 13%→26% 감소한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.13,
+          "max": -0.26,
+          "duration": 4,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_ally_n",
+        "random_ally_n",
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "전투 시작 후 4턴 동안 자신과 랜덤 우군 단일 목표가 받는 피해가 13%→26% 감소한다",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "forge-armor": {
+    "legacyId": "skill_11",
+    "legacyName": "전쟁 종식",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전투 시작 후 첫 3턴 동안 전체 아군이 턴 시작 시 32.5%→65% 확률로 방어 1스택을 획득한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "방어",
+          "target": "all_ally",
+          "chance": 0.65,
+          "turnCond": {
+            "maxTurn": 3
+          }
+        }
+      ],
+      "targets": []
+    },
+    "manualOverride": true,
+    "onlyTurns": [
+      1,
+      2,
+      3
+    ],
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "전투 시작 후 첫 3턴 동안 전체 아군이 턴 시작 시 32.5%→65% 확률로 방어 1스택을 획득한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "flood-seven": {
+    "legacyId": "skill_12",
+    "legacyName": "칠군수몰",
+    "legacyType": "액티브",
+    "legacyProcRate": "40%",
+    "raw": "1턴 동안 준비 후 적군 전체에게 2턴 동안 지속되는 홍수을(를) 부여하고, 130%→260%의 병기 피해를 주며, 1턴 동안 지속되는 침묵 또는 무장 해제 중 한 가지를 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.3,
+          "max": 2.6
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [],
+      "statusEffects": [
+        {
+          "oneOf": [
+            "무장 해제",
+            "침묵"
+          ]
+        },
+        "홍수"
+      ]
+    },
+    "prepTurns": 1,
+    "clauses": [
+      {
+        "text": "1턴 동안 준비 후 적군 전체에게 2턴 동안 지속되는 홍수을(를) 부여",
+        "impl": [
+          "prepTurns",
+          "statusEffects[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "130%→260%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "1턴 동안 지속되는 침묵 또는 무장 해제 중 한 가지를 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "break-through": {
+    "legacyId": "skill_13",
+    "legacyName": "파죽지세",
+    "legacyType": "액티브",
+    "legacyProcRate": "27.5%~ 50%",
+    "raw": "2턴 동안 자신의 회심 확률이 20% 증가한다. 전체 적군에게 70%→140%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.7,
+          "max": 1.4
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "회심",
+          "min": 0.2,
+          "max": 0.2,
+          "target": "self",
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "all_enemy",
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "2턴 동안 자신의 회심 확률이 20% 증가한다",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "전체 적군에게 70%→140%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "break-army": {
+    "legacyId": "skill_14",
+    "legacyName": "기습 제압",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "1턴 동안 준비 후 전체 적군에게 150%→300%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.5,
+          "max": 3
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "all_enemy"
+      ],
+      "statusEffects": []
+    },
+    "prepTurns": 1,
+    "clauses": [
+      {
+        "text": "1턴 동안 준비 후 전체 적군에게 150%→300%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]",
+          "prepTurns"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "take-banner": {
+    "legacyId": "skill_15",
+    "legacyName": "압도적 승리",
+    "legacyType": "액티브",
+    "legacyProcRate": "55%",
+    "raw": "통솔이 가장 낮은 적군 단일 목표에게 110%→220%의 병기 피해를 주며, 2턴 동안 지속되는 군량 고갈을(를) 부여한다. 목표가 군량 고갈 상태를 보유한 경우, 추가로 40%→80%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.1,
+          "max": 2.2,
+          "target": "lowest_control_enemy",
+          "tag": "main"
+        },
+        {
+          "dmgType": "병기",
+          "min": 0.4,
+          "max": 0.8,
+          "target": "tag:main",
+          "condition": {
+            "type": "hasStatus",
+            "who": "target",
+            "status": "군량 고갈"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "군량 고갈",
+          "target": "tag:main"
+        }
+      ],
+      "targets": []
+    },
+    "specialApplied": true,
+    "clauses": [
+      {
+        "text": "통솔이 가장 낮은 적군 단일 목표에게 110%→220%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 지속되는 군량 고갈을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 군량 고갈 상태를 보유한 경우",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "추가로 40%→80%의 병기 피해를 준다",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "famous": {
+    "legacyId": "skill_16",
+    "legacyName": "찬란한 위명",
+    "legacyType": "액티브",
+    "legacyProcRate": "27.5%~ 50%",
+    "raw": "2턴 동안 자신의 회유이(가) 30% 증가한다. 이후 랜덤 적군 2명에게 110%→220%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.1,
+          "max": 2.2
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "회유",
+          "min": 0.3,
+          "max": 0.3,
+          "target": "self",
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n",
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "2턴 동안 자신의 회유이(가) 30% 증가한다",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "랜덤 적군 2명에게 110%→220%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "all-directions": {
+    "legacyId": "skill_17",
+    "legacyName": "팔방전",
+    "legacyType": "액티브",
+    "legacyProcRate": "55%",
+    "raw": "전체 적군에게 65%→130%의 병기 피해를 주고 2턴 동안 지속되는 위협을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.65,
+          "max": 1.3
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "all_enemy"
+      ],
+      "statusEffects": [
+        "위협"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "전체 적군에게 65%→130%의 병기 피해를 주고 2턴 동안 지속되는 위협을(를) 부여한다",
+        "impl": [
+          "damage[0]",
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "ambushes": {
+    "legacyId": "skill_18",
+    "legacyName": "퇴로 매복",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "랜덤 적군 단일 목표에게 50%→100%~70%→140%의 병기 피해를 주며, 4회 발동된다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.7,
+          "max": 1.4,
+          "target": "random_enemy_1"
+        },
+        {
+          "dmgType": "병기",
+          "min": 0.7,
+          "max": 1.4,
+          "target": "random_enemy_1"
+        },
+        {
+          "dmgType": "병기",
+          "min": 0.7,
+          "max": 1.4,
+          "target": "random_enemy_1"
+        },
+        {
+          "dmgType": "병기",
+          "min": 0.7,
+          "max": 1.4,
+          "target": "random_enemy_1"
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 단일 목표에게 50%→100%~70%→140%의 병기 피해를 주며",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "4회 발동된다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "encircle-break": {
+    "legacyId": "skill_19",
+    "legacyName": "포위 돌파",
+    "legacyType": "액티브",
+    "legacyProcRate": "55%",
+    "raw": "1턴 동안 준비 후 2턴 동안 랜덤 적군 단일 목표가 받는 피해를 15%→30% 증가시키며, 해당 목표에게 220%→440%의 병기 피해를 준다. 해당 전법은 첫 턴 발동 시 준비할 필요 없다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 2.2,
+          "max": 4.4
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": 0.15,
+          "max": 0.3,
+          "duration": 1,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1"
+      ],
+      "statusEffects": []
+    },
+    "prepTurns": 1,
+    "clauses": [
+      {
+        "text": "1턴 동안 준비 후 2턴 동안 랜덤 적군 단일 목표가 받는 피해를 15%→30% 증가시키며",
+        "impl": [
+          "buffs[0]",
+          "prepTurns"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "해당 목표에게 220%→440%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "해당 전법은 첫 턴 발동 시 준비할 필요 없다",
+        "impl": [
+          "prepTurns"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "wind-cloud": {
+    "legacyId": "skill_20",
+    "legacyName": "구름과 바람",
+    "legacyType": "액티브",
+    "legacyProcRate": "60%",
+    "raw": "랜덤 적군 2명에게 90%→180%의 병기 피해를 주며, 목표가 폭풍 상태면 이번 피해가 25% 증가한다. 자신이 폭풍 상태면 2턴 동안 자신의 피신 확률이 5%→10% 증가한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.9,
+          "max": 1.8
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "피신",
+          "min": 0.05,
+          "max": 0.1,
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n",
+        "self"
+      ],
+      "statusEffects": [
+        "폭풍"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 2명에게 90%→180%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 폭풍 상태면 이번 피해가 25% 증가한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "자신이 폭풍 상태면 2턴 동안 자신의 피신 확률이 5%→10% 증가한다",
+        "impl": [
+          "buffs[0]",
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "swift-flank": {
+    "legacyId": "skill_21",
+    "legacyName": "측면 공격",
+    "legacyType": "액티브",
+    "legacyProcRate": "60%",
+    "raw": "랜덤 적군 단일 목표에게 75%→150%의 병기 피해를 주며, 2턴 동안 지속되는 위협을(를) 부여한다. 2회 발동된다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.75,
+          "max": 1.5
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1"
+      ],
+      "statusEffects": [
+        "위협"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 단일 목표에게 75%→150%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 지속되는 위협을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2회 발동된다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "defeat-like-wind": {
+    "legacyId": "skill_22",
+    "legacyName": "기풍당당",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "랜덤 적군 단일 목표에게 120%→240%의 병기 피해(후열 우선 선택)를 주며, 2턴 동안 지속되는 폭풍을(를) 부여한다. 목표가 폭풍 상태면 2턴 동안 추가로 목표의 선공을 12.5→25포인트 감소시킨다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.2,
+          "max": 2.4
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1"
+      ],
+      "statusEffects": [
+        "폭풍"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 단일 목표에게 120%→240%의 병기 피해(후열 우선 선택)를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 지속되는 폭풍을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 폭풍 상태면 2턴 동안 추가로 목표의 선공을 12.5→25포인트 감소시킨다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "fire-feather": {
+    "legacyId": "skill_23",
+    "legacyName": "화검",
+    "legacyType": "액티브",
+    "legacyProcRate": "40%",
+    "raw": "전체 적군에게 75%→150%의 병기 피해를 주고 2턴 동안 지속되는 화공을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.75,
+          "max": 1.5
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "all_enemy"
+      ],
+      "statusEffects": [
+        "화공"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "전체 적군에게 75%→150%의 병기 피해를 주고 2턴 동안 지속되는 화공을(를) 부여한다",
+        "impl": [
+          "damage[0]",
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "meet-enemy": {
+    "legacyId": "skill_24",
+    "legacyName": "응전",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "1턴 동안 준비 후 2턴 동안 자신의 방어 관통이(가) 10%→20% 증가하며, 이후 적군 단일 목표에게 220%→440%의 병기 피해를 준다. 전열 목표를 우선적으로 선택한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 2.2,
+          "max": 4.4
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "방어관통",
+          "min": 0.1,
+          "max": 0.2,
+          "target": "self",
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "prepTurns": 1,
+    "clauses": [
+      {
+        "text": "1턴 동안 준비 후 2턴 동안 자신의 방어 관통이(가) 10%→20% 증가",
+        "impl": [
+          "buffs[0]",
+          "prepTurns"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "적군 단일 목표에게 220%→440%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "전열 목표를 우선적으로 선택한다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "raise-banner": {
+    "legacyId": "skill_25",
+    "legacyName": "민중 봉기",
+    "legacyType": "액티브",
+    "legacyProcRate": "45%",
+    "raw": "랜덤 적군 2명에게 75%→150%의 병기 피해를 주며, 목표에게 1턴 동안 지속되는 군량 고갈을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.75,
+          "max": 1.5
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n"
+      ],
+      "statusEffects": [
+        "군량 고갈"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 2명에게 75%→150%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표에게 1턴 동안 지속되는 군량 고갈을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "foresight": {
+    "legacyId": "skill_26",
+    "legacyName": "예측의 신",
+    "legacyType": "액티브",
+    "legacyProcRate": "45%",
+    "raw": "랜덤 적군 2명에게 90%→180%의 책략 피해를 주며, 50% 확률로 1턴 동안 지속되는 침묵을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.9,
+          "max": 1.8,
+          "target": "random_enemy_n",
+          "tag": "main"
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "침묵",
+          "target": "tag:main",
+          "chance": 0.5
+        }
+      ],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "랜덤 적군 2명에게 90%→180%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "50% 확률로 1턴 동안 지속되는 침묵을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "highest-wisdom": {
+    "legacyId": "skill_27",
+    "legacyName": "최상의 지략",
+    "legacyType": "액티브",
+    "legacyProcRate": "45%",
+    "raw": "랜덤 적군 단일 목표에게 1턴 동안 지속되는 혼란을(를) 부여하며, 150%→300%의 책략 피해를 준다. 목표가 혼란 상태면 추가로 해당 목표에게 75%→150%의 책략 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1.5,
+          "max": 3
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.75,
+          "max": 1.5
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1"
+      ],
+      "statusEffects": [
+        "혼란"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 단일 목표에게 1턴 동안 지속되는 혼란을(를) 부여",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "150%→300%의 책략 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 혼란 상태면 추가로 해당 목표에게 75%→150%의 책략 피해를 준다",
+        "impl": [
+          "damage[1]",
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "five-thunder": {
+    "legacyId": "skill_28",
+    "legacyName": "청천벽력",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "1턴 동안 준비 후 랜덤 적군 단일 목표에게 80%→160%의 책략 피해를 주며, 총 5회 시전한다. 홍수 상태인 목표를 명중할 때마다 해당 피해가 40% 증가한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.8,
+          "max": 1.6,
+          "target": "random_enemy_1",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "홍수"
+            },
+            "mult": 0.4
+          }
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.8,
+          "max": 1.6,
+          "target": "random_enemy_1",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "홍수"
+            },
+            "mult": 0.4
+          }
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.8,
+          "max": 1.6,
+          "target": "random_enemy_1",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "홍수"
+            },
+            "mult": 0.4
+          }
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.8,
+          "max": 1.6,
+          "target": "random_enemy_1",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "홍수"
+            },
+            "mult": 0.4
+          }
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.8,
+          "max": 1.6,
+          "target": "random_enemy_1",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "홍수"
+            },
+            "mult": 0.4
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "prepTurns": 1,
+    "clauses": [
+      {
+        "text": "1턴 동안 준비 후 랜덤 적군 단일 목표에게 80%→160%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]",
+          "damage[1]",
+          "damage[2]",
+          "damage[3]",
+          "damage[4]",
+          "prepTurns"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "총 5회 시전한다",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "홍수 상태인 목표를 명중할 때마다 해당 피해가 40% 증가한다",
+        "impl": [
+          "damage[0].conditionalBonusMult",
+          "damage[1].conditionalBonusMult",
+          "damage[2].conditionalBonusMult",
+          "damage[3].conditionalBonusMult",
+          "damage[4].conditionalBonusMult"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "unexpected": {
+    "legacyId": "skill_29",
+    "legacyName": "출기불의",
+    "legacyType": "액티브",
+    "legacyProcRate": "55%",
+    "raw": "랜덤 적군 단일 목표에게 175%→350%의 책략 피해를 주며, 목표가 디버프 상태를 보유한 경우, 이번 피해 수치가 25% 증가한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1.75,
+          "max": 3.5,
+          "target": "random_enemy_1",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasAnyDebuff",
+              "who": "target"
+            },
+            "mult": 0.25
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "specialApplied": true,
+    "clauses": [
+      {
+        "text": "랜덤 적군 단일 목표에게 175%→350%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 디버프 상태를 보유한 경우",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "이번 피해 수치가 25% 증가한다",
+        "impl": [
+          "damage[0].conditionalBonusMult"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "qimen": {
+    "legacyId": "skill_30",
+    "legacyName": "기문둔갑",
+    "legacyType": "액티브",
+    "legacyProcRate": "40%",
+    "raw": "1턴 동안 준비 후 전체 적군에게 125%→250%의 책략 피해를 주며, 12.5%→25% 확률로 1턴 동안 지속되는 공포을(를) 부여한다. 목표가 보유 중인 기타 이상 상태 하나 당 책략 피해 계수가 25% 증가하고, 공포 부여 확률이 8% 증가한다. 5회까지 증가할 수 있다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1.25,
+          "max": 2.5,
+          "target": "all_enemy",
+          "tag": "main",
+          "scaleBy": {
+            "kind": "targetAbnormal",
+            "per": 0.25,
+            "cap": 5
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "공포",
+          "target": "tag:main",
+          "chance": 0.25
+        }
+      ],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "prepTurns": 1,
+    "clauses": [
+      {
+        "text": "1턴 동안 준비 후 전체 적군에게 125%→250%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]",
+          "prepTurns"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "12.5%→25% 확률로 1턴 동안 지속되는 공포을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 보유 중인 기타 이상 상태 하나 당 책략 피해 계수가 25% 증가",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "공포 부여 확률이 8% 증가한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "5회까지 증가할 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "fire-camp": {
+    "legacyId": "skill_31",
+    "legacyName": "화공전술",
+    "legacyType": "액티브",
+    "legacyProcRate": "45%",
+    "raw": "전체 적군에게 40%→80%의 책략 피해를 주고, 2턴 동안 지속되는 화공 상태를 부여한다. 이후 다시 분영 3회 진행: 랜덤 적군 단일 목표에게 40%→80%의 책략 피해를 준다. 목표가 폭풍 상태면 분영 피해 수치가 30% 증가한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.4,
+          "max": 0.8,
+          "target": "all_enemy",
+          "tag": "main"
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.4,
+          "max": 0.8,
+          "target": "random_enemy_1",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "폭풍"
+            },
+            "mult": 0.3
+          }
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.4,
+          "max": 0.8,
+          "target": "random_enemy_1",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "폭풍"
+            },
+            "mult": 0.3
+          }
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.4,
+          "max": 0.8,
+          "target": "random_enemy_1",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "폭풍"
+            },
+            "mult": 0.3
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "화공",
+          "target": "tag:main"
+        }
+      ],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "전체 적군에게 40%→80%의 책략 피해를 주고",
+        "impl": [
+          "damage[0]",
+          "damage[1]",
+          "damage[2]",
+          "damage[3]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 지속되는 화공 상태를 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "다시 분영 3회 진행: 랜덤 적군 단일 목표에게 40%→80%의 책략 피해를 준다",
+        "impl": [
+          "damage[0]",
+          "damage[1]",
+          "damage[2]",
+          "damage[3]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 폭풍 상태면 분영 피해 수치가 30% 증가한다",
+        "impl": [
+          "damage[1].conditionalBonusMult",
+          "damage[2].conditionalBonusMult",
+          "damage[3].conditionalBonusMult"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "calamity": {
+    "legacyId": "skill_32",
+    "legacyName": "재해 이용",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "자신을 제외한 전체 적군과 아군에게 70%→140%의 책략 피해를 준다. 적군 목표가 화공 상태면 40% 확률로 1턴 동안 지속되는 혼란을(를) 부여한다. 적군 목표가 홍수 상태면 40% 확률로 1턴 동안 지속되는 무장 해제를(를) 부여한다. 적군 목표가 폭풍 상태면 40% 확률로 1턴 동안 지속되는 침묵을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.7,
+          "max": 1.4
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "all_enemy",
+        "self"
+      ],
+      "statusEffects": [
+        "폭풍",
+        "무장 해제",
+        "침묵",
+        "혼란",
+        "화공",
+        "홍수"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "자신을 제외한 전체 적군과 아군에게 70%→140%의 책략 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "적군 목표가 화공 상태면 40% 확률로 1턴 동안 지속되는 혼란을(를) 부여한다",
+        "impl": [
+          "statusEffects[3]",
+          "statusEffects[4]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "적군 목표가 홍수 상태면 40% 확률로 1턴 동안 지속되는 무장 해제를(를) 부여한다",
+        "impl": [
+          "statusEffects[1]",
+          "statusEffects[5]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "적군 목표가 폭풍 상태면 40% 확률로 1턴 동안 지속되는 침묵을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]",
+          "statusEffects[2]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "flood-break": {
+    "legacyId": "skill_33",
+    "legacyName": "수전 섬멸",
+    "legacyType": "액티브",
+    "legacyProcRate": "60%",
+    "raw": "랜덤 적군 2명에게 50%→100%의 책략 피해를 주며, 목표가 홍수 상태면 추가로 30%→60%의 책략 피해를 준다. 그렇지 않으면 2턴 동안 지속되는 홍수을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.5,
+          "max": 1,
+          "target": "random_enemy_n",
+          "tag": "main"
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.3,
+          "max": 0.6,
+          "target": "tag:main",
+          "condition": {
+            "type": "hasStatus",
+            "who": "target",
+            "status": "홍수"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "홍수",
+          "target": "tag:main",
+          "condition": {
+            "type": "hasStatus",
+            "who": "target",
+            "status": "홍수",
+            "negate": true
+          }
+        }
+      ],
+      "targets": []
+    },
+    "specialApplied": true,
+    "clauses": [
+      {
+        "text": "랜덤 적군 2명에게 50%→100%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 홍수 상태면 추가로 30%→60%의 책략 피해를 준다",
+        "impl": [
+          "damage[1]",
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "그렇지 않으면 2턴 동안 지속되는 홍수을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "helpless": {
+    "legacyId": "skill_34",
+    "legacyName": "속수무책",
+    "legacyType": "액티브",
+    "legacyProcRate": "45%",
+    "raw": "랜덤 적군 단일 목표에게 100%→200%의 책략 피해를 주고, 1턴 동안 지속되는 침묵을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1,
+          "max": 2
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1"
+      ],
+      "statusEffects": [
+        "침묵"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 단일 목표에게 100%→200%의 책략 피해를 주고",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "1턴 동안 지속되는 침묵을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "good-plan": {
+    "legacyId": "skill_35",
+    "legacyName": "양책 수립",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "2턴 동안 자신의 지력이 10→20포인트 증가하며, 랜덤 적군 2명에게 80%→160%의 책략 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.8,
+          "max": 1.6
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "지력",
+          "min": 10,
+          "max": 20,
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "targets": [
+        "random_enemy_n",
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "2턴 동안 자신의 지력이 10→20포인트 증가",
+        "impl": [
+          "statMods[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "랜덤 적군 2명에게 80%→160%의 책략 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "one-plan-win": {
+    "legacyId": "skill_36",
+    "legacyName": "결정적인 수",
+    "legacyType": "액티브",
+    "legacyProcRate": "35%",
+    "raw": "1턴 동안 준비 후 랜덤 적군 2명에게 110%→220%의 책략 피해를 주며, 2턴 동안 지속되는 허약 상태를 부여한다. 목표가 허약 상태면 추가로 25%→50%의 책략 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1.1,
+          "max": 2.2
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.25,
+          "max": 0.5
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n"
+      ],
+      "statusEffects": [
+        "허약"
+      ]
+    },
+    "prepTurns": 1,
+    "clauses": [
+      {
+        "text": "1턴 동안 준비 후 랜덤 적군 2명에게 110%→220%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]",
+          "prepTurns"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 지속되는 허약 상태를 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 허약 상태면 추가로 25%→50%의 책략 피해를 준다",
+        "impl": [
+          "damage[1]",
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "direct-world": {
+    "legacyId": "skill_37",
+    "legacyName": "천하평론",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "무력이 가장 높은 아군 단일 목표가 적군 전체에게 40%→80% 병기 피해를 주게 하며, 지력이 가장 높은 아군 단일 목표가 적군 전체에게 40%→80%의 책략 피해를 주게 한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.4,
+          "max": 0.8,
+          "actor": "highest_power_ally",
+          "target": "all_enemy"
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.4,
+          "max": 0.8,
+          "actor": "highest_intel_ally",
+          "target": "all_enemy"
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [],
+      "statusEffects": []
+    },
+    "manualOverride": true,
+    "clauses": [
+      {
+        "text": "무력이 가장 높은 아군 단일 목표가 적군 전체에게 40%→80% 병기 피해를 주게",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력이 가장 높은 아군 단일 목표가 적군 전체에게 40%→80%의 책략 피해를 주게 한다",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "civil-military": {
+    "legacyId": "skill_38",
+    "legacyName": "문무겸비",
+    "legacyType": "액티브",
+    "legacyProcRate": "65%",
+    "raw": "무력이 가장 높은 적군 단일 목표에게 110%→220%의 책략 피해를 주며, 지력이 가장 높은 적군 단일 목표에게 110%→220%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1.1,
+          "max": 2.2,
+          "target": "highest_power_enemy"
+        },
+        {
+          "dmgType": "병기",
+          "min": 1.1,
+          "max": 2.2,
+          "target": "highest_intel_enemy"
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "clauses": [
+      {
+        "text": "무력이 가장 높은 적군 단일 목표에게 110%→220%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력이 가장 높은 적군 단일 목표에게 110%→220%의 병기 피해를 준다",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "loot-fire": {
+    "legacyId": "skill_39",
+    "legacyName": "방화범",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "1턴 동안 준비 후 랜덤 적군 2명에게 110%→220%의 책략과 병기 피해를 주며, 목표가 화공 상태면 추가로 2턴 동안 지속되는 혼란 상태를 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.1,
+          "max": 2.2
+        },
+        {
+          "dmgType": "책략",
+          "min": 1.1,
+          "max": 2.2
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n"
+      ],
+      "statusEffects": [
+        "혼란",
+        "화공"
+      ]
+    },
+    "prepTurns": 1,
+    "clauses": [
+      {
+        "text": "1턴 동안 준비 후 랜덤 적군 2명에게 110%→220%의 책략과 병기 피해를 주며",
+        "impl": [
+          "damage[0]",
+          "prepTurns"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 화공 상태면 추가로 2턴 동안 지속되는 혼란 상태를 부여한다",
+        "impl": [
+          "statusEffects[0]",
+          "statusEffects[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "strategize": {
+    "legacyId": "skill_40",
+    "legacyName": "전략 계획",
+    "legacyType": "액티브",
+    "legacyProcRate": "45%",
+    "raw": "2턴 동안 랜덤 적군 2명의 무력, 지력, 통솔, 선공이 12.5→25 감소한다(지력의 영향 받음), 2회 중첩될 수 있다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "무력",
+          "min": -25,
+          "max": -12.5,
+          "target": "random_enemy_n",
+          "duration": 2,
+          "maxStacks": 2
+        },
+        {
+          "stat": "지력",
+          "min": -25,
+          "max": -12.5,
+          "target": "random_enemy_n",
+          "duration": 2,
+          "maxStacks": 2
+        },
+        {
+          "stat": "통솔",
+          "min": -25,
+          "max": -12.5,
+          "target": "random_enemy_n",
+          "duration": 2,
+          "maxStacks": 2
+        },
+        {
+          "stat": "선공",
+          "min": -25,
+          "max": -12.5,
+          "target": "random_enemy_n",
+          "duration": 2,
+          "maxStacks": 2
+        }
+      ],
+      "statusEffects": [],
+      "targets": []
+    },
+    "manualOverride": true,
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "2턴 동안 랜덤 적군 2명의 무력",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "선공이 12.5→25 감소한다(지력의 영향 받음)",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "2회 중첩될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "no-hardship": {
+    "legacyId": "skill_41",
+    "legacyName": "강철의 의지",
+    "legacyType": "액티브",
+    "legacyProcRate": "38.5%~ 70%",
+    "raw": "2턴 동안 우군 2명의 연타 확률이 22.5%→45%, 회유이(가) 20% 증가한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "연타확률",
+          "min": 0.225,
+          "max": 0.45
+        },
+        {
+          "stat": "회유",
+          "min": 0.2,
+          "max": 0.2
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_ally_n"
+      ],
+      "statusEffects": []
+    },
+    "manualOverride": true,
+    "clauses": [
+      {
+        "text": "2턴 동안 우군 2명의 연타 확률이 22.5%→45%",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "회유이(가) 20% 증가한다",
+        "impl": [
+          "buffs[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "fresh-breeze": {
+    "legacyId": "skill_42",
+    "legacyName": "청풍 질주",
+    "legacyType": "액티브",
+    "legacyProcRate": "60%",
+    "raw": "랜덤 아군 2명의 디버프 상태 1가지를 제거하며, 병력을 회복시킨다(치유율 90%→180%, 지력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.9,
+          "max": 1.8
+        }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_ally_n",
+        "random_ally_n"
+      ],
+      "statusEffects": [],
+      "dispel": [
+        {
+          "target": "random_ally_n",
+          "count": 1
+        },
+        {
+          "target": "random_ally_n",
+          "count": 1
+        }
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 아군 2명의 디버프 상태 1가지를 제거",
+        "impl": [
+          "dispel[0]",
+          "dispel[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "병력을 회복시킨다(치유율 90%→180%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "see-fire": {
+    "legacyId": "skill_43",
+    "legacyName": "예리한 판단",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "랜덤 아군 단일 목표의 병력을 회복시키고(치유율 130%→260%, 지력의 영향 받음), 해당 목표에게 2턴 동안 정신 회복을(를) 부여한다.",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 1.3,
+          "max": 2.6
+        }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_ally_n",
+        "random_ally_n"
+      ],
+      "statusEffects": [
+        "정신 회복"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 아군 단일 목표의 병력을 회복시키고(치유율 130%→260%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "해당 목표에게 2턴 동안 정신 회복을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "qingnang": {
+    "legacyId": "skill_44",
+    "legacyName": "청낭 치료",
+    "legacyType": "액티브",
+    "legacyProcRate": "55%",
+    "raw": "병력이 가장 낮은 아군 단일 목표의 디버프 상태 3가지를 제거하며, 병력을 회복시킨다(치유율 130%→260%, 지력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 1.3,
+          "max": 2.6
+        }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "lowest_hp_ally",
+        "random_ally_n"
+      ],
+      "statusEffects": [],
+      "dispel": [
+        {
+          "target": "lowest_hp_ally",
+          "count": 3
+        }
+      ]
+    },
+    "clauses": [
+      {
+        "text": "병력이 가장 낮은 아군 단일 목표의 디버프 상태 3가지를 제거",
+        "impl": [
+          "dispel[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "병력을 회복시킨다(치유율 130%→260%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "sing-wine": {
+    "legacyId": "skill_45",
+    "legacyName": "전장의 노래",
+    "legacyType": "액티브",
+    "legacyProcRate": "65%",
+    "raw": "랜덤 아군 2명의 병력을 회복시키며(치유율 65%→130%, 지력의 영향 받음) 2턴 동안 통솔을 8→16포인트 증가시킨다.",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.65,
+          "max": 1.3
+        }
+      ],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "min": 8,
+          "max": 16,
+          "target": "random_ally_n",
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "targets": [
+        "random_ally_n",
+        "random_ally_n"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "랜덤 아군 2명의 병력을 회복시키며(치유율 65%→130%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음) 2턴 동안 통솔을 8→16포인트 증가시킨다",
+        "impl": [
+          "statMods[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "stone-wall": {
+    "legacyId": "skill_46",
+    "legacyName": "견고한 방어",
+    "legacyType": "액티브",
+    "legacyProcRate": "55%",
+    "raw": "적군 전체를 조롱하고, 2턴 동안 자신이 받는 피해가 15%→30% 감소한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.15,
+          "max": -0.3,
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": [
+        "조롱"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "적군 전체를 조롱",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 자신이 받는 피해가 15%→30% 감소한다",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "clear-fields": {
+    "legacyId": "skill_47",
+    "legacyName": "청야 전술",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "적군 전체를 조롱하며, 2턴 동안 자신의 통솔이 18→36포인트 증가한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "min": 18,
+          "max": 36,
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": [
+        "조롱"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "적군 전체를 조롱",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 자신의 통솔이 18→36포인트 증가한다",
+        "impl": [
+          "statMods[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "subdue-soldiers": {
+    "legacyId": "skill_48",
+    "legacyName": "적군 굴복",
+    "legacyType": "액티브",
+    "legacyProcRate": "22%~ 40%",
+    "raw": "랜덤 적군 2명에게 1턴 동안 지속되는 무장 해제를(를) 부여한다. 목표가 무장 해제를 이미 보유한 경우, 2턴 동안 목표가 주는 피해가 7.5%→15% 감소한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "min": -0.075,
+          "max": -0.15,
+          "duration": 1,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n"
+      ],
+      "statusEffects": [
+        "무장 해제"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 2명에게 1턴 동안 지속되는 무장 해제를(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 무장 해제를 이미 보유한 경우",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 목표가 주는 피해가 7.5%→15% 감소한다",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "speed-first": {
+    "legacyId": "skill_49",
+    "legacyName": "신속전개",
+    "legacyType": "추격",
+    "legacyProcRate": "40%",
+    "raw": "일반 공격 후 2턴 동안 자신의 선공이 15→30포인트 증가하며, 랜덤 적군 2명에게 90%→180%의 병기 피해(추가로 선공의 영향 받음)를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.9,
+          "max": 1.8
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "선공",
+          "min": 15,
+          "max": 30,
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "targets": [
+        "random_enemy_n",
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후 2턴 동안 자신의 선공이 15→30포인트 증가",
+        "impl": [
+          "statMods[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "랜덤 적군 2명에게 90%→180%의 병기 피해(추가로 선공의 영향 받음)를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "thousand-raid": {
+    "legacyId": "skill_50",
+    "legacyName": "천리기습",
+    "legacyType": "추격",
+    "legacyProcRate": "40%",
+    "raw": "일반 공격 후, 선공이 가장 낮은 적군 단일 목표에게 140%→280%의 병기 피해(추가로 양측 선공 차이의 영향 받음)를 주며, 목표가 후열이면 추가로 50%→100%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.4,
+          "max": 2.8
+        },
+        {
+          "dmgType": "병기",
+          "min": 0.5,
+          "max": 1
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "선공이 가장 낮은 적군 단일 목표에게 140%→280%의 병기 피해(추가로 양측 선공 차이의 영향 받음)를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 후열이면 추가로 50%→100%의 병기 피해를 준다",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "iron-cavalry": {
+    "legacyId": "skill_51",
+    "legacyName": "철기병 돌격",
+    "legacyType": "추격",
+    "legacyProcRate": "40%",
+    "raw": "일반 공격 후, 2턴 동안 자신의 회심 확률이 10%→20% 증가하며, 이후 해당 목표에게 200%→400%의 병기 피해를 준다. 발동 여부와 상관없이 해당 피해 계수가 매 턴 25% 감소한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 2,
+          "max": 4,
+          "turnScale": {
+            "perTurn": -0.25,
+            "mode": "mult"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "회심",
+          "min": 0.1,
+          "max": 0.2,
+          "target": "self",
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "2턴 동안 자신의 회심 확률이 10%→20% 증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "해당 목표에게 200%→400%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "발동 여부와 상관없이 해당 피해 계수가 매 턴 25% 감소한다",
+        "impl": [
+          "damage[0].turnScale"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "exploit-void": {
+    "legacyId": "skill_52",
+    "legacyName": "허점 공격",
+    "legacyType": "추격",
+    "legacyProcRate": "40%",
+    "raw": "일반 공격 후, 랜덤 적군 단일 목표에게 140%→280%의 병기 피해를 준다. 목표가 허약 상태면 이번 피해 수치가 30% 증가하며, 허약 상태가 아니면 65% 확률로 1턴 동안 지속되는 허약을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.4,
+          "max": 2.8
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1"
+      ],
+      "statusEffects": [
+        "허약"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "랜덤 적군 단일 목표에게 140%→280%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 허약 상태면 이번 피해 수치가 30% 증가",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "허약 상태가 아니면 65% 확률로 1턴 동안 지속되는 허약을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "gate-halberd": {
+    "legacyId": "skill_53",
+    "legacyName": "원문사극",
+    "legacyType": "추격",
+    "legacyProcRate": "70%",
+    "raw": "일반 공격 후, 목표에게 110%→220%의 병기 피해를 부여한다. 자신이 후열이면 75% 확률로 2턴 동안 자신의 액티브 전법 발동률이 5%→10% 증가하며, 3회 중첩할 수 있다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.1,
+          "max": 2.2,
+          "target": "trigger_defender"
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "액티브발동률",
+          "min": 0.05,
+          "max": 0.1,
+          "target": "self",
+          "chance": 0.75,
+          "duration": 2,
+          "maxStacks": 3,
+          "condition": {
+            "type": "position",
+            "who": "self",
+            "pos": "back"
+          }
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "specialApplied": true,
+    "preciseApplied": true,
+    "trigger": {
+      "event": "damage",
+      "role": "dealt",
+      "chance": 0.75
+    },
+    "procRateFixed": true,
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "목표에게 110%→220%의 병기 피해를 부여한다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "자신이 후열이면 75% 확률로 2턴 동안 자신의 액티브 전법 발동률이 5%→10% 증가",
+        "impl": [
+          "buffs[0]",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "3회 중첩할 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "attack-unready": {
+    "legacyId": "skill_54",
+    "legacyName": "무방비 공격",
+    "legacyType": "추격",
+    "legacyProcRate": "40%",
+    "raw": "일반 공격 후, 공격 목표에게 140%→280%의 병기 피해를 주고 1턴 동안 지속되는 침묵을(를) 부여한다. 목표가 침묵 상태면 50% 확률로 1턴 동안 지속되는 공포을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.4,
+          "max": 2.8,
+          "target": "trigger_defender"
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "침묵",
+          "target": "trigger_defender"
+        },
+        {
+          "name": "공포",
+          "target": "trigger_defender",
+          "chance": 0.5,
+          "condition": {
+            "type": "hasStatus",
+            "who": "target",
+            "status": "침묵"
+          }
+        }
+      ],
+      "targets": []
+    },
+    "specialApplied": true,
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "공격 목표에게 140%→280%의 병기 피해를 주고 1턴 동안 지속되는 침묵을(를) 부여한다",
+        "impl": [
+          "damage[0]",
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 침묵 상태면 50% 확률로 1턴 동안 지속되는 공포을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]",
+          "statusEffects[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "sweep-army": {
+    "legacyId": "skill_55",
+    "legacyName": "천군 소탕",
+    "legacyType": "추격",
+    "legacyProcRate": "45%",
+    "raw": "일반 공격 후, 전체 적군에게 60%→120%의 병기 피해를 준다. 시전 성공 후, 추격 전법피해가 8%증가하고, 최대 5회 중첩되며, 전투종료까지 지속된다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.6,
+          "max": 1.2
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "추격전법피해",
+          "min": 0.08,
+          "max": 0.08,
+          "target": "self",
+          "duration": 999,
+          "maxStacks": 5
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "all_enemy"
+      ],
+      "statusEffects": []
+    },
+    "trigger": {
+      "event": "damage",
+      "role": "dealt",
+      "chance": 0.45
+    },
+    "triggerApplied": true,
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전체 적군에게 60%→120%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "시전 성공 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "추격 전법피해가 8%증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "최대 5회 중첩",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전투종료까지 지속된다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "battlefield-raid": {
+    "legacyId": "skill_56",
+    "legacyName": "순간 돌습",
+    "legacyType": "추격",
+    "legacyProcRate": "40%",
+    "raw": "일반 공격 후, 2턴 동안 목표의 통솔을 15→30포인트 감소시키며, 이후 해당 목표에게 125%→250%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.25,
+          "max": 2.5
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "min": -15,
+          "max": -30,
+          "target": "tag:main",
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "targets": [],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "2턴 동안 목표의 통솔을 15→30포인트 감소시키며",
+        "impl": [
+          "statMods[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "해당 목표에게 125%→250%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "disrupt-formation": {
+    "legacyId": "skill_57",
+    "legacyName": "적진 교란",
+    "legacyType": "추격",
+    "legacyProcRate": "35%",
+    "raw": "일반 공격 후, 공격 목표에게 110%→220%의 병기 피해를 주며, 1턴 동안 지속되는 혼란을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.1,
+          "max": 2.2
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [],
+      "statusEffects": [
+        "혼란"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "공격 목표에게 110%→220%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "1턴 동안 지속되는 혼란을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "night-raid": {
+    "legacyId": "skill_58",
+    "legacyName": "야습",
+    "legacyType": "추격",
+    "legacyProcRate": "45%",
+    "raw": "일반 공격 후, 랜덤 적군 2명에게 60%→120%의 병기 피해를 주며, 자신의 선공이 목표보다 높으면 추가로 25%→50%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.6,
+          "max": 1.2
+        },
+        {
+          "dmgType": "병기",
+          "min": 0.25,
+          "max": 0.5
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n",
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "랜덤 적군 2명에게 60%→120%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "자신의 선공이 목표보다 높으면 추가로 25%→50%의 병기 피해를 준다",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "raid-granary": {
+    "legacyId": "skill_59",
+    "legacyName": "창고 기습",
+    "legacyType": "추격",
+    "legacyProcRate": "45%",
+    "raw": "일반 공격 후, 공격 목표에게 150%→300%의 책략 피해를 주며, 2턴 동안 지속되는 군량 고갈을(를) 부여한다. 목표가 이미 군량 고갈 상태를 보유한 경우, 추가로 해당 목표에게 50%→100%의 책략 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1.5,
+          "max": 3
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.5,
+          "max": 1
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [],
+      "statusEffects": [
+        "군량 고갈"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "공격 목표에게 150%→300%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 지속되는 군량 고갈을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 이미 군량 고갈 상태를 보유한 경우",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "추가로 해당 목표에게 50%→100%의 책략 피해를 준다",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "stratagems": {
+    "legacyId": "skill_60",
+    "legacyName": "넘치는 계책",
+    "legacyType": "추격",
+    "legacyProcRate": "40%",
+    "raw": "일반 공격 후, 랜덤 적군 단일 목표에게 125%→250%의 책략 피해를 주며, 후열 적군을 우선 선택한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1.25,
+          "max": 2.5
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "랜덤 적군 단일 목표에게 125%→250%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "후열 적군을 우선 선택한다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "light-support": {
+    "legacyId": "skill_61",
+    "legacyName": "경무장",
+    "legacyType": "추격",
+    "legacyProcRate": "27.5%~ 50%",
+    "raw": "일반 공격 후, 랜덤 아군 2명에게 1스택의 방어을(를) 부여하고, 2턴 동안 해당 아군의 받는 피해를 10%→20% 감소시킨다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.1,
+          "max": -0.2,
+          "target": "random_ally_n",
+          "duration": 2
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "방어",
+          "target": "random_ally_n"
+        }
+      ],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "trigger": {
+      "event": "damage",
+      "role": "dealt",
+      "chance": 0.5
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "랜덤 아군 2명에게 1스택의 방어을(를) 부여",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 해당 아군의 받는 피해를 10%→20% 감소시킨다",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "brave-three-armies": {
+    "legacyId": "skill_62",
+    "legacyName": "용맹한 삼군",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신의 회유이(가) 15%→30% 증가하며, 일반 공격 후, 자신이 주는 병기 피해가 3%→6% 증가한다. 6회 중첩될 수 있다. 일반 공격을 3회 누적 시전한 후 랜덤 적군 단일 목표에게 100%→200%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1,
+          "max": 2,
+          "target": "random_enemy_1"
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "주는병기피해",
+          "min": 0.03,
+          "max": 0.06,
+          "target": "self",
+          "duration": 999,
+          "maxStacks": 6
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "trigger": {
+      "event": "damage",
+      "role": "dealt",
+      "chance": 1
+    },
+    "alwaysOnBuffs": [
+      {
+        "stat": "회유",
+        "min": 0.15,
+        "max": 0.3,
+        "target": "self",
+        "duration": 999,
+        "maxStacks": 1
+      }
+    ],
+    "clauses": [
+      {
+        "text": "자신의 회유이(가) 15%→30% 증가",
+        "impl": [
+          "alwaysOnBuffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "자신이 주는 병기 피해가 3%→6% 증가한다",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "6회 중첩될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "일반 공격을 3회 누적 시전한 후 랜덤 적군 단일 목표에게 100%→200%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "ten-thousand": {
+    "legacyId": "skill_63",
+    "legacyName": "일인천군",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "일반 공격 후, 60% 확률로 공격 목표의 우군 2명에게 이번 일반 공격의 50%→100%의 피해 전달을(를) 준다. 자신의 무력이 목표보다 높으면 추가로 15%→30%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.15,
+          "max": 0.3,
+          "chance": 0.6
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n"
+      ],
+      "statusEffects": []
+    },
+    "chanceFixed": true,
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "60% 확률로 공격 목표의 우군 2명에게 이번 일반 공격의 50%→100%의 피해 전달을(를) 준다",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "자신의 무력이 목표보다 높으면 추가로 15%→30%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ],
+    "transfer": {
+      "chance": 0.6,
+      "ratio": 1,
+      "target": "target_allies",
+      "count": 2
+    }
+  },
+  "assault": {
+    "legacyId": "skill_64",
+    "legacyName": "강습",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "일반 공격 후, 랜덤 적군 단일 목표에게 이번 일반 공격 40%→80%의 피해 전달을(를) 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.4,
+          "max": 0.8
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1"
+      ],
+      "statusEffects": []
+    },
+    "manualOverride": true,
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "랜덤 적군 단일 목표에게 이번 일반 공격 40%→80%의 피해 전달을(를) 준다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ],
+    "transfer": {
+      "ratio": 0.8,
+      "target": "random_enemy_1",
+      "count": 1
+    }
+  },
+  "brave-in-danger": {
+    "legacyId": "skill_65",
+    "legacyName": "위기의 결전",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신의 반격 확률이 20%→40% 증가하며, 받는 일반 공격 피해가 10%→20% 감소한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "받는일반공격피해",
+          "min": -0.1,
+          "max": -0.2,
+          "target": "self",
+          "duration": 999,
+          "maxStacks": 1
+        },
+        {
+          "stat": "반격확률",
+          "min": 0.2,
+          "max": 0.4,
+          "target": "self",
+          "duration": 999,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "manualOverride": true,
+    "clauses": [
+      {
+        "text": "자신의 반격 확률이 20%→40% 증가",
+        "impl": [
+          "buffs[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "받는 일반 공격 피해가 10%→20% 감소한다",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "pursue-remnants": {
+    "legacyId": "skill_66",
+    "legacyName": "패잔병 척결",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "책략 피해를 준 후, 30%→60% 확률로 랜덤 적군 단일 목표에게 일반 공격을 1회 부여하며, 매 턴 최대 1회 발동된다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1"
+      ],
+      "statusEffects": []
+    },
+    "manualOverride": true,
+    "trigger": {
+      "maxPerTurn": 1,
+      "event": "damage",
+      "role": "dealt",
+      "filterDmgType": "책략",
+      "chance": 0.6
+    },
+    "triggerApplied": true,
+    "clauses": [
+      {
+        "text": "책략 피해를 준 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "30%→60% 확률로 랜덤 적군 단일 목표에게 일반 공격을 1회 부여",
+        "impl": [
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "매 턴 최대 1회 발동된다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "talk-laugh-heart": {
+    "legacyId": "skill_67",
+    "legacyName": "독설가",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "적군이 디버프 상태를 받으면 60% 확률로 랜덤 적군 단일 목표에게 55%→110%의 책략 피해를 주며, 매 턴 최대 2회 발동된다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.55,
+          "max": 1.1,
+          "target": "random_enemy_1"
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "trigger": {
+      "maxPerTurn": 2,
+      "event": "debuff",
+      "role": "ally_side",
+      "chance": 0.6
+    },
+    "triggerApplied": true,
+    "clauses": [
+      {
+        "text": "적군이 디버프 상태를 받으면 60% 확률로 랜덤 적군 단일 목표에게 55%→110%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "매 턴 최대 2회 발동된다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "unstoppable": {
+    "legacyId": "skill_68",
+    "legacyName": "예리한 통찰",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신의 방어 관통이(가) 8%→16%, 주는 피해가 17.5%→35% 증가한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "min": 0.175,
+          "max": 0.35,
+          "duration": 999,
+          "maxStacks": 1
+        },
+        {
+          "stat": "방어관통",
+          "min": 0.08,
+          "max": 0.16,
+          "target": "self",
+          "duration": 999,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "자신의 방어 관통이(가) 8%→16%",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "주는 피해가 17.5%→35% 증가한다",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "best-strategy": {
+    "legacyId": "skill_69",
+    "legacyName": "충신의 기재",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신의 묘책이(가) 12%→24% 증가한다(지력의 영향 받음). 책략 피해를 준 후, 50% 확률로 2턴 동안 자신의 지력이 5→10포인트 증가하며, 4회 중첩될 수 있다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "지력",
+          "min": 5,
+          "max": 10,
+          "duration": 2,
+          "maxStacks": 4
+        }
+      ],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "trigger": {
+      "event": "damage",
+      "role": "dealt",
+      "filterDmgType": "책략",
+      "chance": 0.5
+    },
+    "triggerApplied": true,
+    "alwaysOnBuffs": [
+      {
+        "stat": "묘책",
+        "min": 0.12,
+        "max": 0.24,
+        "target": "self",
+        "duration": 999,
+        "maxStacks": 1
+      }
+    ],
+    "clauses": [
+      {
+        "text": "자신의 묘책이(가) 12%→24% 증가한다(지력의 영향 받음)",
+        "impl": [
+          "alwaysOnBuffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "책략 피해를 준 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "50% 확률로 2턴 동안 자신의 지력이 5→10포인트 증가",
+        "impl": [
+          "statMods[0]",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "4회 중첩될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "divine-aid": {
+    "legacyId": "skill_70",
+    "legacyName": "신의 가호",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "액티브 전법 발동률이 4%→8% 증가하며, 액티브 전법 피해가 7.5%→15% 증가한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "액티브발동률",
+          "min": 0.04,
+          "max": 0.08,
+          "target": "self",
+          "duration": 999
+        },
+        {
+          "stat": "주는액티브피해",
+          "min": 0.075,
+          "max": 0.15,
+          "target": "self",
+          "duration": 999,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "manualOverride": true,
+    "procRateFixed": true,
+    "clauses": [
+      {
+        "text": "액티브 전법 발동률이 4%→8% 증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "액티브 전법 피해가 7.5%→15% 증가한다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "valiant-form": {
+    "legacyId": "skill_71",
+    "legacyName": "듬직한 자태",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신의 연타 확률이 30%→60% 증가하며, 주는 피해가 5%→10% 증가한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "연타확률",
+          "min": 0.3,
+          "max": 0.6,
+          "duration": 2,
+          "maxStacks": 1
+        },
+        {
+          "stat": "주는피해",
+          "min": 0.05,
+          "max": 0.1,
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "자신의 연타 확률이 30%→60% 증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "주는 피해가 5%→10% 증가한다",
+        "impl": [
+          "buffs[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "support-selfless": {
+    "legacyId": "skill_72",
+    "legacyName": "전력 지원",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신이 피해를 받기 직전, 50% 확률로 우군 2명의 병력을 회복시킨다(치유율 25%→50%, 지력과 통솔의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.25,
+          "max": 0.5,
+          "chance": 0.5
+        }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_ally_n"
+      ],
+      "statusEffects": []
+    },
+    "chanceFixed": true,
+    "clauses": [
+      {
+        "text": "자신이 피해를 받기 직전",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "50% 확률로 우군 2명의 병력을 회복시킨다(치유율 25%→50%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력과 통솔의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ],
+    "trigger": {
+      "event": "damage",
+      "role": "taken",
+      "chance": 0.5
+    }
+  },
+  "rest-army": {
+    "legacyId": "skill_73",
+    "legacyName": "평화의 기운",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "매 턴 종료 시, 전열 아군 전체의 병력을 회복한다(치유율 45%→90%, 지력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.45,
+          "max": 0.9
+        }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "targets": [],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "매 턴 종료 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전열 아군 전체의 병력을 회복한다(치유율 45%→90%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "war-sustains-war": {
+    "legacyId": "skill_74",
+    "legacyName": "전쟁 조달",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "무력이 10→20포인트 증가하며, 일반 공격 후, 자신의 병력을 회복한다(치유율 55%→110%, 지력과 무력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.55,
+          "max": 1.1
+        }
+      ],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "무력",
+          "min": 10,
+          "max": 20,
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "무력이 10→20포인트 증가",
+        "impl": [
+          "statMods[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "자신의 병력을 회복한다(치유율 55%→110%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력과 무력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "spring-breeze": {
+    "legacyId": "skill_75",
+    "legacyName": "지혜의 바람",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "매 턴 행동 시, 자신의 병력을 회복한다(치유율 70%→140%, 지력과 통솔의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.7,
+          "max": 1.4
+        }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "매 턴 행동 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "자신의 병력을 회복한다(치유율 70%→140%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력과 통솔의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "taxation": {
+    "legacyId": "skill_76",
+    "legacyName": "세금 과징수",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "전투 중 디버프 효과 부여 후, 자신의 병력을 회복하며(치유율 20%→40%, 지력과 통솔의 영향 받음), 2턴 동안 자신이 받는 피해가 5%→10% 감소한다. 4회 중첩될 수 있다. 턴마다 최대 10회 발동된다.",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.2,
+          "max": 0.4
+        }
+      ],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.05,
+          "max": -0.1,
+          "duration": 2,
+          "maxStacks": 4
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "trigger": {
+      "maxPerTurn": 10,
+      "event": "debuff",
+      "role": "self_cast",
+      "chance": 1
+    },
+    "triggerApplied": true,
+    "clauses": [
+      {
+        "text": "전투 중 디버프 효과 부여 후",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "자신의 병력을 회복",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(치유율 20%→40%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력과 통솔의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "2턴 동안 자신이 받는 피해가 5%→10% 감소한다",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "4회 중첩될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "턴마다 최대 10회 발동된다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "calm": {
+    "legacyId": "skill_77",
+    "legacyName": "고요한 제압",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "홀수 턴에 자신이 일반 공격할 수 없으며, 받는 병기 피해, 받는 일반 공격 피해, 받는 추격 전법 피해가 17.5%→35% 감소한다. 짝수 턴에 자신이 액티브 전법을 발동할 수 없으며, 받는 책략 피해, 받는 액티브 전법 피해가 17.5%→35% 감소한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "받는병기피해",
+          "min": -0.175,
+          "max": -0.35,
+          "target": "self",
+          "duration": 1,
+          "maxStacks": 1,
+          "turnCond": {
+            "parity": "odd"
+          }
+        },
+        {
+          "stat": "받는책략피해",
+          "min": -0.175,
+          "max": -0.35,
+          "target": "self",
+          "duration": 1,
+          "maxStacks": 1,
+          "turnCond": {
+            "parity": "even"
+          }
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "manualOverride": true,
+    "clauses": [
+      {
+        "text": "홀수 턴에 자신이 일반 공격할 수 없",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "받는 병기 피해",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "받는 일반 공격 피해",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "받는 추격 전법 피해가 17.5%→35% 감소한다",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "짝수 턴에 자신이 액티브 전법을 발동할 수 없",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "받는 책략 피해",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "받는 액티브 전법 피해가 17.5%→35% 감소한다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ],
+    "selfRestrict": {
+      "oddNoBasic": true,
+      "evenNoActive": true
+    }
+  },
+  "u-liu-bei": {
+    "legacyId": "uskill_1",
+    "legacyName": "백성과 함께",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전투 시작 시, 전체 아군의 통솔이 9→18포인트 증가하며(지력의 영향 받음), 매 턴 종료 시, 전체 아군의 병력을 회복한다(치유율 50%→100%, 지력의 영향 받음). 병력이 가장 낮은 아군 단일 목표의 디버프 상태 1가지를 제거하고, 1회 추가로 회복시킨다(치유율 45%→90%, 지력이 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.5,
+          "max": 1
+        },
+        {
+          "min": 0.45,
+          "max": 0.9
+        }
+      ],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "min": 9,
+          "max": 18,
+          "duration": 999,
+          "maxStacks": 1
+        }
+      ],
+      "targets": [
+        "all_ally",
+        "lowest_hp_ally",
+        "random_ally_n"
+      ],
+      "statusEffects": [],
+      "dispel": [
+        {
+          "target": "lowest_hp_ally",
+          "count": 1
+        }
+      ]
+    },
+    "clauses": [
+      {
+        "text": "전투 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전체 아군의 통솔이 9→18포인트 증가",
+        "impl": [
+          "statMods[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "매 턴 종료 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전체 아군의 병력을 회복한다(치유율 50%→100%",
+        "impl": [
+          "heal[0]",
+          "heal[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "병력이 가장 낮은 아군 단일 목표의 디버프 상태 1가지를 제거",
+        "impl": [
+          "dispel[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "1회 추가로 회복시킨다(치유율 45%→90%",
+        "impl": [
+          "heal[0]",
+          "heal[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력이 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-cao-cao": {
+    "legacyId": "uskill_2",
+    "legacyName": "난세의 간웅",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전투 시작 시, 전체 아군이 받는 피해가 7%→14% 감소하며(지력의 영향 받음), 3%→6%의 회유와(과) 심리 공격을(를) 획득한다(지력의 영향 받음). 통솔이 가장 높은 아군 단일 목표가 피해를 받을 때마다 15%→30% 확률로 자신의 병력을 회복한다(치유율 20%→40%, 지력과 통솔의 영향 받음).",
+    "effects": {
+      "heal": [
+        {
+          "min": 0.2,
+          "max": 0.4,
+          "actor": "self",
+          "target": "self"
+        }
+      ],
+      "damage": [],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.07,
+          "max": -0.14,
+          "target": "all_ally",
+          "duration": 999
+        },
+        {
+          "stat": "회유",
+          "min": 0.03,
+          "max": 0.06,
+          "target": "all_ally",
+          "duration": 999
+        },
+        {
+          "stat": "심리공격",
+          "min": 0.03,
+          "max": 0.06,
+          "target": "all_ally",
+          "duration": 999
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "trigger": {
+      "event": "damage",
+      "role": "ally_taken",
+      "chance": 0.3,
+      "requireDefenderIs": "highest_command_ally"
+    },
+    "triggerApplied": true,
+    "preciseApplied": true,
+    "alwaysOnBuffs": [
+      {
+        "stat": "받는피해",
+        "min": -0.07,
+        "max": -0.14,
+        "target": "all_ally",
+        "duration": 999,
+        "maxStacks": 1
+      },
+      {
+        "stat": "회유",
+        "min": 0.03,
+        "max": 0.06,
+        "target": "all_ally",
+        "duration": 999,
+        "maxStacks": 1
+      },
+      {
+        "stat": "심리공격",
+        "min": 0.03,
+        "max": 0.06,
+        "target": "all_ally",
+        "duration": 999,
+        "maxStacks": 1
+      }
+    ],
+    "clauses": [
+      {
+        "text": "전투 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전체 아군이 받는 피해가 7%→14% 감소",
+        "impl": [
+          "alwaysOnBuffs[0]",
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "3%→6%의 회유와(과) 심리 공격을(를) 획득한다(지력의 영향 받음)",
+        "impl": [
+          "alwaysOnBuffs[1]",
+          "alwaysOnBuffs[2]",
+          "buffs[1]",
+          "buffs[2]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "통솔이 가장 높은 아군 단일 목표가 피해를 받을 때마다 15%→30% 확률로 자신의 병력을 회복한다(치유율 20%→40%",
+        "impl": [
+          "heal[0]",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력과 통솔의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-sun-quan": {
+    "legacyId": "uskill_3",
+    "legacyName": "강동 호거",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "자신이 액티브 전법을 학습할 때마다 전체 아군의 액티브 전법 발동률이 3.5%→7% 증가하고, 받는 병기 피해가 2.5%→5% 감소한다. 자신이 액티브 전법이 아닌 전법을 학습할 때마다 전체 아군의 14%→28% 연타 확률이 증가하고, 받는 책략 피해가 2.5%→5%(모든 효과는 자신의 최고 속성 영향을 받음) 감소한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "manualOverride": true,
+    "special": "loadout_count_buff",
+    "clauses": [
+      {
+        "text": "자신이 액티브 전법을 학습할 때마다 전체 아군의 액티브 전법 발동률이 3.5%→7% 증가",
+        "impl": [
+          "special:loadout_count_buff"
+        ],
+        "status": "special"
+      },
+      {
+        "text": "받는 병기 피해가 2.5%→5% 감소한다",
+        "impl": [
+          "special:loadout_count_buff"
+        ],
+        "status": "special"
+      },
+      {
+        "text": "자신이 액티브 전법이 아닌 전법을 학습할 때마다 전체 아군의 14%→28% 연타 확률이 증가",
+        "impl": [
+          "special:loadout_count_buff"
+        ],
+        "status": "special"
+      },
+      {
+        "text": "받는 책략 피해가 2.5%→5%(모든 효과는 자신의 최고 속성 영향을 받음) 감소한다",
+        "impl": [
+          "special:loadout_count_buff"
+        ],
+        "status": "special"
+      }
+    ]
+  },
+  "u-zhuge-liang": {
+    "legacyId": "uskill_4",
+    "legacyName": "초선차전",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "자신의 심리 공격이(가) 12%→24% 증가하며, 자신이 피해를 주거나 받으면 50% 확률로 랜덤 적군 단일 목표에게 40%→80%의 책략 피해를 주고, 매 턴 5회 발동될 수 있다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.4,
+          "max": 0.8
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1",
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "trigger": {
+      "event": "damage",
+      "role": "either",
+      "chance": 0.5,
+      "maxPerTurn": 5
+    },
+    "triggerApplied": true,
+    "alwaysOnBuffs": [
+      {
+        "stat": "심리공격",
+        "min": 0.12,
+        "max": 0.24,
+        "target": "self",
+        "duration": 999,
+        "maxStacks": 1
+      }
+    ],
+    "clauses": [
+      {
+        "text": "자신의 심리 공격이(가) 12%→24% 증가",
+        "impl": [
+          "alwaysOnBuffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "자신이 피해를 주거나 받으면 50% 확률로 랜덤 적군 단일 목표에게 40%→80%의 책략 피해를 주고",
+        "impl": [
+          "damage[0]",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "매 턴 5회 발동될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-guan-yu": {
+    "legacyId": "uskill_5",
+    "legacyName": "화하 진압",
+    "legacyType": "액티브",
+    "legacyProcRate": "45%",
+    "raw": "2턴 동안 자신의 액티브 전법 발동률이 4%→8% 증가하며, 위협 상태를 보유한 적군 1명마다 추가로 3% 증가한다. 이후 전체 적군에게 90%→180%의 병기 피해를 주며, 목표가 제어 상태을(를) 보유하면 목표가 탈주병을(를) 생성하게 한다(무력의 영향 받음).",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.9,
+          "max": 1.8,
+          "target": "all_enemy",
+          "tag": "main"
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "액티브발동률",
+          "min": 0.04,
+          "max": 0.08,
+          "target": "self",
+          "duration": 2,
+          "countScale": {
+            "status": "위협",
+            "side": "enemy",
+            "perCount": 0.03
+          }
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "탈주병",
+          "target": "tag:main",
+          "condition": {
+            "type": "hasAnyStatus",
+            "who": "target",
+            "statuses": [
+              "공포",
+              "무장 해제",
+              "침묵",
+              "혼란",
+              "조롱",
+              "허약",
+              "군량 고갈"
+            ]
+          }
+        }
+      ],
+      "targets": []
+    },
+    "specialApplied": true,
+    "clauses": [
+      {
+        "text": "2턴 동안 자신의 액티브 전법 발동률이 4%→8% 증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "위협 상태를 보유한 적군 1명마다 추가로 3% 증가한다",
+        "impl": [
+          "buffs[0].countScale"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "전체 적군에게 90%→180%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 제어 상태을(를) 보유하면 목표가 탈주병을(를) 생성하게 한다(무력의 영향 받음)",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ],
+    "desertionStat": "무력",
+    "desertionCoef": 2.4,
+    "desertionBase": 330
+  },
+  "u-zhao-yun": {
+    "legacyId": "uskill_6",
+    "legacyName": "칠진칠출",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신의 피신 확률이 17.5%→35% 증가하며, 피신 성공 후, 용담 발동: 랜덤 적군 2명에게 즉시 45%→90%의 병기 피해를 주며, 현재 턴에서 다음 용담의 피해 계수가 5%→10% 감소한다. 용담은 매 턴 7회 발동될 수 있다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.45,
+          "max": 0.9,
+          "target": "random_enemy_n",
+          "turnDecay": 0.1
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [],
+      "statusEffects": []
+    },
+    "trigger": {
+      "event": "evade",
+      "role": "self",
+      "chance": 1,
+      "maxPerTurn": 7
+    },
+    "alwaysOnBuffs": [
+      {
+        "stat": "피신",
+        "min": 0.175,
+        "max": 0.35,
+        "target": "self",
+        "duration": 999,
+        "maxStacks": 1
+      }
+    ],
+    "clauses": [
+      {
+        "text": "자신의 피신 확률이 17.5%→35% 증가",
+        "impl": [
+          "alwaysOnBuffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "피신 성공 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "용담 발동: 랜덤 적군 2명에게 즉시 45%→90%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "현재 턴에서 다음 용담의 피해 계수가 5%→10% 감소한다",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "용담은 매 턴 7회 발동될 수 있다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "u-ma-chao": {
+    "legacyId": "uskill_7",
+    "legacyName": "기병 돌격",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신의 회심 확률이 22.5%→45% 증가하며, 회심 피해를 준 후, 목표에게 추격 피해 발동: 통솔을 무시하는 30%→60%의 병기 피해(회심 발동 불가)를 1회 준다. 목표가 디버프 상태를 보유한 경우, 추격 피해가 20% 증가하며, 추격 피해는 매 턴 5회 발동될 수 있다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.3,
+          "max": 0.6,
+          "target": "trigger_defender",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasAnyDebuff",
+              "who": "target"
+            },
+            "mult": 0.2
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "회심",
+          "min": 0.225,
+          "max": 0.45,
+          "target": "self",
+          "duration": 999
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "trigger": {
+      "event": "damage",
+      "role": "dealt",
+      "requireCrit": true,
+      "chance": 1,
+      "maxPerTurn": 5
+    },
+    "triggerApplied": true,
+    "preciseApplied": true,
+    "alwaysOnBuffs": [
+      {
+        "stat": "회심",
+        "min": 0.225,
+        "max": 0.45,
+        "target": "self",
+        "duration": 999,
+        "maxStacks": 1
+      }
+    ],
+    "clauses": [
+      {
+        "text": "자신의 회심 확률이 22.5%→45% 증가",
+        "impl": [
+          "alwaysOnBuffs[0]",
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "회심 피해를 준 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "목표에게 추격 피해 발동: 통솔을 무시하는 30%→60%의 병기 피해(회심 발동 불가)를 1회 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 디버프 상태를 보유한 경우",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "추격 피해가 20% 증가",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "추격 피해는 매 턴 5회 발동될 수 있다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "u-guo-jia": {
+    "legacyId": "uskill_8",
+    "legacyName": "주도면밀",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전투 시작 시, 자신과 지력이 가장 높은 우군의 액티브 전법 발동률이 3%→6% 증가한다. 자신이 액티브 전법 발동 성공 후, 35%→70% 확률로 1회 추가 발동한다(추가로 전법 준비할 필요 없음).",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "액티브발동률",
+          "min": 0.03,
+          "max": 0.06,
+          "target": "self",
+          "duration": 999
+        },
+        {
+          "stat": "액티브발동률",
+          "min": 0.03,
+          "max": 0.06,
+          "target": "highest_intel_ally",
+          "duration": 999
+        },
+        {
+          "stat": "액티브재발동",
+          "min": 0.35,
+          "max": 0.7,
+          "target": "self",
+          "duration": 999,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "manualOverride": true,
+    "procRateFixed": true,
+    "clauses": [
+      {
+        "text": "전투 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "자신과 지력이 가장 높은 우군의 액티브 전법 발동률이 3%→6% 증가한다",
+        "impl": [
+          "buffs[0]",
+          "buffs[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "자신이 액티브 전법 발동 성공 후",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "35%→70% 확률로 1회 추가 발동한다(추가로 전법 준비할 필요 없음)",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "u-dian-wei": {
+    "legacyId": "uskill_9",
+    "legacyName": "고대의 악래",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신의 반격 확률이 30%→60% 증가하며, 자신이 피해를 받은 후, 2턴 동안 자신의 반격 피해가 10%→20%, 통솔이 10→20포인트 증가한다. 5회 중첩될 수 있다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "반격피해",
+          "min": 0.1,
+          "max": 0.2,
+          "target": "self",
+          "duration": 2,
+          "maxStacks": 5
+        }
+      ],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "min": 10,
+          "max": 20,
+          "duration": 2,
+          "maxStacks": 5
+        }
+      ],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "trigger": {
+      "event": "damage",
+      "role": "taken",
+      "chance": 1
+    },
+    "triggerApplied": true,
+    "alwaysOnBuffs": [
+      {
+        "stat": "반격확률",
+        "min": 0.3,
+        "max": 0.6,
+        "target": "self",
+        "duration": 999,
+        "maxStacks": 1
+      }
+    ],
+    "clauses": [
+      {
+        "text": "자신의 반격 확률이 30%→60% 증가",
+        "impl": [
+          "alwaysOnBuffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "자신이 피해를 받은 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "2턴 동안 자신의 반격 피해가 10%→20%",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "통솔이 10→20포인트 증가한다",
+        "impl": [
+          "statMods[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "5회 중첩될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-zhou-yu": {
+    "legacyId": "uskill_10",
+    "legacyName": "기지의 승리",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전투 중, 전체 적군과 아군이 이상 상태 효과를 받으면 자신이 70% 확률로 기지 발동: 랜덤 적군 2명에게 즉시 30%→60%의 책략 피해를 준다. 매 턴 기지는 최대 4회 발동되며, 기지 총 4회 발동 후, 전체 아군의 병력을 회복한다(치유율 20%→40%, 지력의 영향 받음).",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.3,
+          "max": 0.6
+        }
+      ],
+      "targets": [
+        "random_enemy_n"
+      ],
+      "heal": [
+        {
+          "min": 0.2,
+          "max": 0.4,
+          "target": "all_ally",
+          "afterProcs": 4
+        }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": []
+    },
+    "trigger": {
+      "event": "debuff",
+      "role": "any",
+      "chance": 0.7,
+      "maxPerTurn": 4,
+      "abnormalOnly": true
+    },
+    "triggerApplied": true,
+    "clauses": [
+      {
+        "text": "전투 중",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "전체 적군과 아군이 이상 상태 효과를 받으면 자신이 70% 확률로 기지 발동: 랜덤 적군 2명에게 즉시 30%→60%의 책략 피해를 준다",
+        "impl": [
+          "damage[0]",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "매 턴 기지는 최대 4회 발동",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "기지 총 4회 발동 후",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "전체 아군의 병력을 회복한다(치유율 20%→40%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-sun-shangxiang": {
+    "legacyId": "uskill_11",
+    "legacyName": "궁희",
+    "legacyType": "추격",
+    "legacyProcRate": "65%",
+    "raw": "일반 공격 후, 랜덤 적군 단일 목표에게 160%→320%의 병기 피해를 주며, 적에 이성이 1명 있을 때마다 해당 피해 계수가 25%→50% 증가하고, 75% 확률로 후열 목표를 우선적으로 선택한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.6,
+          "max": 3.2,
+          "target": "random_enemy_1",
+          "scaleBy": {
+            "kind": "oppositeGender",
+            "per": 0.5,
+            "cap": 3
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "trigger": {
+      "event": "damage",
+      "role": "dealt",
+      "chance": 0.75
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "랜덤 적군 단일 목표에게 160%→320%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "적에 이성이 1명 있을 때마다 해당 피해 계수가 25%→50% 증가",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "75% 확률로 후열 목표를 우선적으로 선택한다",
+        "impl": [
+          "damage[0]",
+          "trigger"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-lü-meng": {
+    "legacyId": "uskill_12",
+    "legacyName": "백의도강",
+    "legacyType": "액티브",
+    "legacyProcRate": "70%",
+    "raw": "랜덤 적군 2명에게 90%→180%의 책략 피해를 주며, 2턴 동안 지속되는 군량 고갈을(를) 부여한다. 목표가 군량 고갈 상태면 추가로 목표에게 40%→80%의 책략 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 0.9,
+          "max": 1.8
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.4,
+          "max": 0.8
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n"
+      ],
+      "statusEffects": [
+        "군량 고갈"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 2명에게 90%→180%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 지속되는 군량 고갈을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 군량 고갈 상태면 추가로 목표에게 40%→80%의 책략 피해를 준다",
+        "impl": [
+          "damage[1]",
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-dong-zhuo": {
+    "legacyId": "uskill_13",
+    "legacyName": "압도적 권력",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "매 턴 행동 시, 전체 적군과 아군의 통솔을 10→20포인트 탈취하고, 전체 적군에게 30%→60%의 병기와 책략 피해(추가로 통솔의 영향 받음)를 준다. 탈취한 통솔은 턴 종료 시 반환되며, 탈취 효과는 매 턴 10% 감소한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.3,
+          "max": 0.6,
+          "statScale": {
+            "stat": "통솔"
+          }
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.3,
+          "max": 0.6,
+          "statScale": {
+            "stat": "통솔"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "min": -20,
+          "max": -10,
+          "target": "all_enemy",
+          "duration": 1,
+          "maxStacks": 1,
+          "turnScale": {
+            "perTurn": -0.1,
+            "mode": "mult"
+          }
+        }
+      ],
+      "targets": [
+        "all_enemy"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "매 턴 행동 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전체 적군과 아군의 통솔을 10→20포인트 탈취",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "전체 적군에게 30%→60%의 병기와 책략 피해(추가로 통솔의 영향 받음)를 준다",
+        "impl": [
+          "damage[0].statScale",
+          "damage[1]",
+          "damage[1].statScale"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "탈취한 통솔은 턴 종료 시 반환",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "탈취 효과는 매 턴 10% 감소한다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "u-lü-bu": {
+    "legacyId": "uskill_14",
+    "legacyName": "무쌍의 용사",
+    "legacyType": "액티브",
+    "legacyProcRate": "22%~ 40%",
+    "raw": "전체 적군과 서로 1회의 일반 공격을 진행한다(서로 일반 공격 진행 시 자신의 무장 해제 상태 면역). 자신의 무력 수치가 목표보다 높으면 추가로 50%→100%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1,
+          "max": 1,
+          "target": "all_enemy",
+          "reciprocal": true,
+          "tag": "main",
+          "asBasicAttack": true
+        },
+        {
+          "dmgType": "병기",
+          "min": 0.5,
+          "max": 1,
+          "target": "tag:main",
+          "condition": {
+            "type": "statCompareUnits",
+            "who1": "attacker",
+            "who2": "target",
+            "stat": "무력",
+            "op": ">"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "specialApplied": true,
+    "clauses": [
+      {
+        "text": "전체 적군과 서로 1회의 일반 공격을 진행한다(서로 일반 공격 진행 시 자신의 무장 해제 상태 면역)",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "자신의 무력 수치가 목표보다 높으면 추가로 50%→100%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]",
+          "damage[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-hua-tuo": {
+    "legacyId": "uskill_15",
+    "legacyName": "마비산",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "턴 종료 시, 병력이 가장 낮은 아군 단일 목표가 받는 피해가 8%→16% 감소하며(지력의 영향 받음), 1턴 동안 해당 목표에게 정신 회복을(를) 부여한다. 또한 해당 목표의 병력을 회복시킨다(치유율 120%→240%, 지력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 1.2,
+          "max": 2.4
+        }
+      ],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.08,
+          "max": -0.16,
+          "duration": 1,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "lowest_hp_ally",
+        "random_ally_n"
+      ],
+      "statusEffects": [
+        "정신 회복"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "턴 종료 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "병력이 가장 낮은 아군 단일 목표가 받는 피해가 8%→16% 감소",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "1턴 동안 해당 목표에게 정신 회복을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "해당 목표의 병력을 회복시킨다(치유율 120%→240%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-zhang-jiao": {
+    "legacyId": "uskill_16",
+    "legacyName": "황천의 시대",
+    "legacyType": "액티브",
+    "legacyProcRate": "60%",
+    "raw": "1턴 동안 준비 후 전체 적군에게 150%→300%의 책략 피해를 주며, 상대가 보유 중인 디버프 상태 1개당 책략 피해 계수가 15%→30% 증가한다. 3회 증가할 수 있으며, 자신이 황천 효과를 획득한다: 준비 전 전법 발동 시, 25%→50% 확률로 준비를 1턴 건너뛴다. 4턴 지속된다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1.5,
+          "max": 3
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "all_enemy",
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "prepTurns": 1,
+    "clauses": [
+      {
+        "text": "1턴 동안 준비 후 전체 적군에게 150%→300%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]",
+          "prepTurns"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "상대가 보유 중인 디버프 상태 1개당 책략 피해 계수가 15%→30% 증가한다",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "3회 증가할 수 있",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "자신이 황천 효과를 획득한다: 준비 전 전법 발동 시",
+        "impl": [
+          "prepTurns"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "25%→50% 확률로 준비를 1턴 건너뛴다",
+        "impl": [
+          "prepTurns"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "4턴 지속된다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-diao-chan": {
+    "legacyId": "uskill_17",
+    "legacyName": "폐월",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신이 이성에게 받는 피해가 15%→30% 감소한다(최고 속성의 영향 받음). 매 턴 종료 시, 무력이 가장 높은 우군 단일 목표의 병기 피해가 7.5%→15% 증가하며, 이번 턴에 초선에게 피해를 준 목표에게 통솔을 무시하는 30%→60%의 병기 피해를 1회 준다(회심 발동 불가).",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.3,
+          "max": 0.6,
+          "target": "trigger_attacker",
+          "ignoreDef": true,
+          "noCrit": true
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.15,
+          "max": -0.3,
+          "target": "self",
+          "duration": 999
+        },
+        {
+          "stat": "주는피해",
+          "min": 0.075,
+          "max": 0.15,
+          "target": "highest_power_ally",
+          "duration": 2
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "자신이 이성에게 받는 피해가 15%→30% 감소한다(최고 속성의 영향 받음)",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "매 턴 종료 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "무력이 가장 높은 우군 단일 목표의 병기 피해가 7.5%→15% 증가",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "이번 턴에 초선에게 피해를 준 목표에게 통솔을 무시하는 30%→60%의 병기 피해를 1회 준다(회심 발동 불가)",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-taishi-ci": {
+    "legacyId": "uskill_18",
+    "legacyName": "완벽한 사격",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "매 턴 시작 시, 45%→50% 확률로 축력 1스택 획득: 일반 공격 성공 후, 모든 축력 스택수를 소모하여 추가로 일반 공격을 시전한다(무장 해제 상태 무시, 일반 공격 횟수는 축력 스택수와 동일, 최대 10스택까지 중첩 가능). 자신이 일반 공격을 시전하기 전 이미 무장 해제 또는 일반 공격 불가 상태일 경우 45%→50% 확률로 1스택의 축력을 획득한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "manualOverride": true,
+    "clauses": [
+      {
+        "text": "매 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "45%→50% 확률로 축력 1스택 획득: 일반 공격 성공 후",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "모든 축력 스택수를 소모하여 추가로 일반 공격을 시전한다(무장 해제 상태 무시",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "일반 공격 횟수는 축력 스택수와 동일",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "최대 10스택까지 중첩 가능)",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "자신이 일반 공격을 시전하기 전 이미 무장 해제 또는 일반 공격 불가 상태일 경우 45%→50% 확률로 1스택의 축력을 획득한다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ],
+    "special": "charge_shot",
+    "chargeChance": 0.5,
+    "chargeMax": 10
+  },
+  "u-da-qiao": {
+    "legacyId": "uskill_19",
+    "legacyName": "국색",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "매 턴 시작 시, 랜덤 적군 2명이 받는 피해가 1턴 동안 10%→20% 증가하며, 랜덤 아군 2명의 병력을 회복시킨다(치유율 90%→180%, 지력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.9,
+          "max": 1.8
+        }
+      ],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": 0.1,
+          "max": 0.2,
+          "target": "random_enemy_n",
+          "duration": 1,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n",
+        "random_ally_n",
+        "random_ally_n"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "매 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "랜덤 적군 2명이 받는 피해가 1턴 동안 10%→20% 증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "랜덤 아군 2명의 병력을 회복시킨다(치유율 90%→180%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-lu-su": {
+    "legacyId": "uskill_20",
+    "legacyName": "형주 분할",
+    "legacyType": "액티브",
+    "legacyProcRate": "45%",
+    "raw": "적군과 아군 전체의 랜덤 목표 4개에게 1턴 동안 지속되는 무장 해제을(를) 부여한다. 아군 목표가 선택되면 1턴 동안 목표가 받는 피해가 10%→20% 감소한다(지력의 영향 받음). 적군 목표가 선택되면 1턴 동안 목표가 받는 피해가 10%→20% 증가한다(지력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.1,
+          "max": -0.2,
+          "duration": 1,
+          "maxStacks": 1
+        },
+        {
+          "stat": "받는피해",
+          "min": 0.1,
+          "max": 0.2,
+          "duration": 1,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [],
+      "statusEffects": [
+        "무장 해제"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "적군과 아군 전체의 랜덤 목표 4개에게 1턴 동안 지속되는 무장 해제을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "아군 목표가 선택되면 1턴 동안 목표가 받는 피해가 10%→20% 감소한다(지력의 영향 받음)",
+        "impl": [
+          "buffs[0]",
+          "buffs[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "적군 목표가 선택되면 1턴 동안 목표가 받는 피해가 10%→20% 증가한다(지력의 영향 받음)",
+        "impl": [
+          "buffs[0]",
+          "buffs[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-gan-ning": {
+    "legacyId": "uskill_21",
+    "legacyName": "수전의 제왕",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "일반 공격 피해가 75%→150% 증가하며, 일반 공격 전, 2턴 동안 자신의 무력이 6→12포인트 증가한다. 4회 중첩될 수 있다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "주는일반공격피해",
+          "min": 0.75,
+          "max": 1.5,
+          "target": "self",
+          "duration": 999,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [
+        {
+          "stat": "무력",
+          "min": 6,
+          "max": 12,
+          "duration": 2,
+          "maxStacks": 4
+        }
+      ],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 피해가 75%→150% 증가",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "일반 공격 전",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "2턴 동안 자신의 무력이 6→12포인트 증가한다",
+        "impl": [
+          "statMods[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "4회 중첩될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-xu-chu": {
+    "legacyId": "uskill_22",
+    "legacyName": "백병 혈전",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "전투 시작 시, 자신의 선공과 무력이 10→20포인트 증가하며, 연타 확률이 50%→100% 증가하고, 통솔이 15포인트 감소한다. 아군 전체가 일반 공격을 4회 누적 시전할 때마다, 아군 전체의 방어 관통이(가) 1%→2% 증가한다(무력의 영향 받음).",
+    "effects": {
+      "statMods": [
+        {
+          "stat": "선공",
+          "min": 10,
+          "max": 20,
+          "target": "self"
+        },
+        {
+          "stat": "무력",
+          "min": 10,
+          "max": 20,
+          "target": "self"
+        },
+        {
+          "stat": "통솔",
+          "min": -15,
+          "max": -15,
+          "target": "self"
+        }
+      ],
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "연타확률",
+          "min": 0.5,
+          "max": 1,
+          "target": "self"
+        }
+      ],
+      "statusEffects": [],
+      "targets": []
+    },
+    "specialApplied": true,
+    "special": "team_basic_attack_stack",
+    "clauses": [
+      {
+        "text": "전투 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "자신의 선공과 무력이 10→20포인트 증가",
+        "impl": [
+          "statMods[0]",
+          "statMods[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "연타 확률이 50%→100% 증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "통솔이 15포인트 감소한다",
+        "impl": [
+          "statMods[2]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "아군 전체가 일반 공격을 4회 누적 시전할 때마다",
+        "impl": [
+          "special:team_basic_attack_stack"
+        ],
+        "status": "special"
+      },
+      {
+        "text": "아군 전체의 방어 관통이(가) 1%→2% 증가한다(무력의 영향 받음)",
+        "impl": [
+          "special:team_basic_attack_stack"
+        ],
+        "status": "special"
+      }
+    ]
+  },
+  "u-deng-ai": {
+    "legacyId": "uskill_23",
+    "legacyName": "둔전령",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전투 시작 후 첫 3턴 동안 전체 적군과 아군이 주는 피해가 17.5%→35% 감소한다. 매 턴 시작 시, 전체 아군이 받는 회복 효과가 10% 증가하며, 해당 효과는 중첩될 수 있다. 이후 전체 아군의 병력이 회복된다(치유율 50%→100%, 지력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.5,
+          "max": 1,
+          "target": "all_ally"
+        }
+      ],
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "min": -0.175,
+          "max": -0.35,
+          "target": "all_enemy",
+          "duration": 3,
+          "maxStacks": 1,
+          "turnCond": {
+            "maxTurn": 3
+          }
+        },
+        {
+          "stat": "주는피해",
+          "min": -0.175,
+          "max": -0.35,
+          "target": "all_ally",
+          "duration": 3,
+          "maxStacks": 1,
+          "turnCond": {
+            "maxTurn": 3
+          }
+        },
+        {
+          "stat": "받는회복량",
+          "min": 0.1,
+          "max": 0.1,
+          "target": "all_ally",
+          "duration": 999,
+          "maxStacks": 8
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "전투 시작 후 첫 3턴 동안 전체 적군과 아군이 주는 피해가 17.5%→35% 감소한다",
+        "impl": [
+          "buffs[0]",
+          "buffs[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "매 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전체 아군이 받는 회복 효과가 10% 증가",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "해당 효과는 중첩될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전체 아군의 병력이 회복된다(치유율 50%→100%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-xiahou-dun": {
+    "legacyId": "uskill_24",
+    "legacyName": "강렬",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신이 피해를 받은 후, 20%→40% 확률로 피해를 준 목표에게 40%→80%의 병기 피해를 주며(추가로 통솔의 영향 받음), 2턴 동안 해당 목표가 주는 피해가 15%→30% 감소한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.4,
+          "max": 0.8,
+          "target": "trigger_attacker",
+          "statScale": {
+            "stat": "통솔"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "min": -0.15,
+          "max": -0.3,
+          "target": "trigger_attacker",
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [],
+      "targets": []
+    },
+    "trigger": {
+      "event": "damage",
+      "role": "taken",
+      "chance": 0.4
+    },
+    "triggerApplied": true,
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "자신이 피해를 받은 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "20%→40% 확률로 피해를 준 목표에게 40%→80%의 병기 피해를 주며(추가로 통솔의 영향 받음)",
+        "impl": [
+          "damage[0].statScale",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 해당 목표가 주는 피해가 15%→30% 감소한다",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-zhen-luo": {
+    "legacyId": "uskill_25",
+    "legacyName": "바람과 눈꽃",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "매 턴 시작 시, 자신의 병력을 회복하며(치유율 70%→140%, 지력의 영향 받음), 우군 1명(후열 우선 선택)이 낙수의 여신을 1턴 동안 획득한다: 자신의 병력을 회복하며(치유율 70%→140%, 지력의 영향 받음), 주는 피해가 12.5%→25% 증가한다. 낙수의 여신 획득 후, 처음으로 일반 공격이 아닌 피해 시전 시 회심 및 묘책이(가) 반드시 발동된다.",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.7,
+          "max": 1.4
+        },
+        {
+          "min": 0.7,
+          "max": 1.4
+        }
+      ],
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "min": 0.125,
+          "max": 0.25,
+          "duration": 1,
+          "maxStacks": 1
+        },
+        {
+          "stat": "확정회심",
+          "min": 1,
+          "max": 1,
+          "target": "random_ally_n",
+          "nonBasicOnly": true
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_ally_n",
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "매 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "자신의 병력을 회복",
+        "impl": [
+          "heal[0]",
+          "heal[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(치유율 70%→140%",
+        "impl": [
+          "heal[0]",
+          "heal[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "우군 1명(후열 우선 선택)이 낙수의 여신을 1턴 동안 획득한다: 자신의 병력을 회복",
+        "impl": [
+          "heal[0]",
+          "heal[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(치유율 70%→140%",
+        "impl": [
+          "heal[0]",
+          "heal[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "주는 피해가 12.5%→25% 증가한다",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "낙수의 여신 획득 후",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "처음으로 일반 공격이 아닌 피해 시전 시 회심 및 묘책이(가) 반드시 발동된다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "u-zhang-fei": {
+    "legacyId": "uskill_26",
+    "legacyName": "만인의 적",
+    "legacyType": "액티브",
+    "legacyProcRate": "55%",
+    "raw": "전체 적군에게 70%→140%의 병기 피해를 주며, 2턴 동안 지속되는 공포을(를) 부여한다. 목표가 이미 위협 상태를 보유한 경우, 30%→60% 확률로 1턴 동안 지속되는 위협을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.7,
+          "max": 1.4,
+          "target": "all_enemy",
+          "tag": "main"
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "위협",
+          "target": "tag:main",
+          "duration": 2
+        },
+        {
+          "name": "공포",
+          "target": "tag:main",
+          "chance": 0.6,
+          "duration": 1,
+          "condition": {
+            "type": "hasStatus",
+            "who": "target",
+            "status": "위협"
+          }
+        }
+      ],
+      "targets": []
+    },
+    "specialApplied": true,
+    "clauses": [
+      {
+        "text": "전체 적군에게 70%→140%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 지속되는 공포을(를) 부여한다",
+        "impl": [
+          "statusEffects[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 이미 위협 상태를 보유한 경우",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "30%→60% 확률로 1턴 동안 지속되는 위협을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-huang-yueying": {
+    "legacyId": "uskill_27",
+    "legacyName": "목우유마",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "홀수 턴 시작 시, 전체 아군이 주는 피해가 12.5%→25% 증가하며(지력의 영향 받음), 턴 종료까지 지속된다. 짝수 턴 시작 시, 전체 아군이 병력을 회복한다(치유율 110%→220%, 지력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 1.1,
+          "max": 2.2
+        }
+      ],
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "min": 0.125,
+          "max": 0.25,
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "all_ally"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "홀수 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전체 아군이 주는 피해가 12.5%→25% 증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "턴 종료까지 지속된다",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "짝수 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전체 아군이 병력을 회복한다(치유율 110%→220%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-xun-yu": {
+    "legacyId": "uskill_28",
+    "legacyName": "인재 등용",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전체 아군의 묘책와(과) 간파이(가) 12.5%→25% 증가한다(지력의 영향 받음). 자신이 주는 회복 효과에 15%→30% 확률로(묘책의 영향 받음) 2배 회복 효과가 발동된다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "묘책",
+          "min": 0.125,
+          "max": 0.25,
+          "target": "all_ally"
+        },
+        {
+          "stat": "간파",
+          "min": 0.125,
+          "max": 0.25,
+          "target": "all_ally"
+        },
+        {
+          "stat": "회복2배확률",
+          "min": 0.15,
+          "max": 0.3,
+          "target": "self"
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "all_ally"
+      ],
+      "statusEffects": []
+    },
+    "manualOverride": true,
+    "clauses": [
+      {
+        "text": "전체 아군의 묘책와(과) 간파이(가) 12.5%→25% 증가한다(지력의 영향 받음)",
+        "impl": [
+          "buffs[0]",
+          "buffs[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "자신이 주는 회복 효과에 15%→30% 확률로(묘책의 영향 받음) 2배 회복 효과가 발동된다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "u-xiahou-yuan": {
+    "legacyId": "uskill_29",
+    "legacyName": "신속기습",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "매 턴 행동 시, 1턴 동안 자신의 무력 수치가 선공 수치의 20%→40% 만큼 증가한다. 자신보다 선공이 낮은 적군 1명 당 1스택의 신속을 획득한다: 1턴 동안 주는 피해와 회심 확률이 2.5%→5% 증가하며(선공의 영향 받음), 해당 적군에게 15%→30%의 병기 피해를 준다.",
+    "effects": {
+      "statMods": [
+        {
+          "stat": "무력",
+          "min": 46.900000000000006,
+          "max": 93.80000000000001,
+          "target": "self"
+        }
+      ],
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.15,
+          "max": 0.3,
+          "target": "all_enemy",
+          "condition": {
+            "type": "statCompareUnits",
+            "who1": "attacker",
+            "who2": "target",
+            "stat": "선공",
+            "op": ">"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "주는피해",
+          "min": 0,
+          "max": 0,
+          "countScale": {
+            "statCompare": {
+              "stat": "선공",
+              "op": "<"
+            },
+            "perCount": 0.03
+          }
+        },
+        {
+          "stat": "회심",
+          "min": 0,
+          "max": 0,
+          "target": "self",
+          "duration": 1,
+          "countScale": {
+            "statCompare": {
+              "stat": "선공",
+              "op": "<"
+            },
+            "perCount": 0.05
+          }
+        }
+      ],
+      "statusEffects": [],
+      "targets": []
+    },
+    "specialApplied": true,
+    "clauses": [
+      {
+        "text": "매 턴 행동 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "1턴 동안 자신의 무력 수치가 선공 수치의 20%→40% 만큼 증가한다",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "자신보다 선공이 낮은 적군 1명 당 1스택의 신속을 획득한다: 1턴 동안 주는 피해와 회심 확률이 2.5%→5% 증가",
+        "impl": [
+          "buffs[0].countScale",
+          "buffs[1].countScale"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(선공의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "해당 적군에게 15%→30%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-cao-ren": {
+    "legacyId": "uskill_30",
+    "legacyName": "고진양번",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "홀수 턴에 자신이 후열로부터 받는 피해가 15%→30% 감소하고(통솔의 영향 받음), 전열로부터 받는 피해가 7.5%→15% 감소한다(통솔의 영향 받음). 짝수 턴 시작 시, 37.5%→75% 확률로 랜덤 적군 2명에게 1턴 동안 지속되는 침묵을(를) 부여하며, 확률은 목표마다 개별적으로 판정된다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.15,
+          "max": -0.3,
+          "duration": 1,
+          "maxStacks": 1
+        },
+        {
+          "stat": "받는피해",
+          "min": -0.075,
+          "max": -0.15,
+          "duration": 1,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n",
+        "self"
+      ],
+      "statusEffects": [
+        {
+          "name": "침묵",
+          "chance": 0.75
+        }
+      ]
+    },
+    "chanceFixed": true,
+    "clauses": [
+      {
+        "text": "홀수 턴에 자신이 후열로부터 받는 피해가 15%→30% 감소",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(통솔의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전열로부터 받는 피해가 7.5%→15% 감소한다(통솔의 영향 받음)",
+        "impl": [
+          "buffs[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "짝수 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "37.5%→75% 확률로 랜덤 적군 2명에게 1턴 동안 지속되는 침묵을(를) 부여",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "확률은 목표마다 개별적으로 판정된다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-xu-shu": {
+    "legacyId": "uskill_31",
+    "legacyName": "겸손한 자세",
+    "legacyType": "액티브",
+    "legacyProcRate": "65%",
+    "raw": "랜덤 적군 단일 목표에게 110%→220%의 책략과 병기 피해를 준다. 목표의 무력이 지력보다 높으면 무장 해제을(를) 부여하며, 반대일 경우 침묵을(를) 부여한다. 1턴 지속.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1.1,
+          "max": 2.2,
+          "target": "random_enemy_1",
+          "tag": "main"
+        },
+        {
+          "dmgType": "병기",
+          "min": 1.1,
+          "max": 2.2,
+          "target": "tag:main"
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "무장 해제",
+          "target": "tag:main",
+          "condition": {
+            "type": "statCompareSelf",
+            "who": "target",
+            "stat1": "무력",
+            "stat2": "지력",
+            "op": ">"
+          }
+        },
+        {
+          "name": "침묵",
+          "target": "tag:main",
+          "condition": {
+            "type": "statCompareSelf",
+            "who": "target",
+            "stat1": "무력",
+            "stat2": "지력",
+            "op": "<"
+          }
+        }
+      ],
+      "targets": []
+    },
+    "specialApplied": true,
+    "clauses": [
+      {
+        "text": "랜덤 적군 단일 목표에게 110%→220%의 책략과 병기 피해를 준다",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표의 무력이 지력보다 높으면 무장 해제을(를) 부여",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "반대일 경우 침묵을(를) 부여한다",
+        "impl": [
+          "statusEffects[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "1턴 지속",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-huang-zhong": {
+    "legacyId": "uskill_32",
+    "legacyName": "전장 평정",
+    "legacyType": "추격",
+    "legacyProcRate": "55%",
+    "raw": "일반 공격 후, 2턴 동안 공격 목표의 선공과 무력을 12→24 감소시킨다(무력의 영향 받음). 이후 디버프 상태를 보유한 적군 목표에게 90%→180%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.9,
+          "max": 1.8,
+          "target": "trigger_defender",
+          "condition": {
+            "type": "hasAnyDebuff",
+            "who": "target"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "선공",
+          "min": -24,
+          "max": -12,
+          "target": "trigger_defender",
+          "duration": 2
+        },
+        {
+          "stat": "무력",
+          "min": -24,
+          "max": -12,
+          "target": "trigger_defender",
+          "duration": 2
+        }
+      ],
+      "statusEffects": [],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "trigger": {
+      "event": "damage",
+      "role": "dealt",
+      "chance": 0.55
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "2턴 동안 공격 목표의 선공과 무력을 12→24 감소시킨다(무력의 영향 받음)",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "디버프 상태를 보유한 적군 목표에게 90%→180%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-xu-sheng": {
+    "legacyId": "uskill_33",
+    "legacyName": "백리의성",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전투 시작 후 4턴 동안 전체 아군이 피해를 받기 직전 12.5%→25% 확률로(통솔의 영향 받음) 1스택의 방어을(를) 획득한다. 4번째 턴 시작 시, 자신의 통솔이 20→40포인트 증가하며, 전체 적군에게 2턴 동안 지속되는 홍수 상태를 부여한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "min": 20,
+          "max": 40,
+          "target": "self",
+          "duration": 999,
+          "turnCond": {
+            "turns": [
+              4
+            ]
+          }
+        }
+      ],
+      "statusEffects": [
+        {
+          "name": "방어",
+          "target": "all_ally",
+          "chance": 0.25,
+          "turnCond": {
+            "maxTurn": 4
+          }
+        },
+        {
+          "name": "홍수",
+          "target": "all_enemy",
+          "turnCond": {
+            "turns": [
+              4
+            ]
+          }
+        }
+      ],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "전투 시작 후 4턴 동안 전체 아군이 피해를 받기 직전 12.5%→25% 확률로(통솔의 영향 받음) 1스택의 방어을(를) 획득한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "4번째 턴 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "자신의 통솔이 20→40포인트 증가",
+        "impl": [
+          "statMods[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "전체 적군에게 2턴 동안 지속되는 홍수 상태를 부여한다",
+        "impl": [
+          "statusEffects[1]"
+        ],
+        "status": "ok"
+      }
+    ],
+    "trigger": {
+      "event": "damage",
+      "role": "ally_taken",
+      "chance": 0.25
+    }
+  },
+  "u-cai-wenji": {
+    "legacyId": "uskill_34",
+    "legacyName": "비분시",
+    "legacyType": "액티브",
+    "legacyProcRate": "65%",
+    "raw": "전체 아군의 병력을 회복하고(치유율 60%→120%, 지력의 영향 받음), 1스택의 방어을(를) 부여한다. 목표가 전열이면 추가로 병력을 회복한다(치유율 25%→50%, 지력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.6,
+          "max": 1.2,
+          "target": "all_ally"
+        },
+        {
+          "min": 0.25,
+          "max": 0.5,
+          "target": "all_ally",
+          "condition": {
+            "type": "position",
+            "who": "target",
+            "pos": "front"
+          }
+        }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "방어",
+          "target": "all_ally"
+        }
+      ],
+      "targets": []
+    },
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "전체 아군의 병력을 회복",
+        "impl": [
+          "heal[0]",
+          "heal[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(치유율 60%→120%",
+        "impl": [
+          "heal[0]",
+          "heal[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "1스택의 방어을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 전열이면 추가로 병력을 회복한다(치유율 25%→50%",
+        "impl": [
+          "heal[0]",
+          "heal[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-li-ru": {
+    "legacyId": "uskill_35",
+    "legacyName": "군주 시해",
+    "legacyType": "액티브",
+    "legacyProcRate": "37%~ 55%",
+    "raw": "랜덤 적군 2명에게 2턴 동안 지속되는 짐독 상태를 1스택 부여하며, 우군 2명이 2턴 동안 시해 상태를 획득한다: 짐독 상태인 목표에게 병기 또는 책략 피해를 준 후, 25%→50% 확률로 목표에게 1스택의 짐독 상태를 부여한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n"
+      ],
+      "statusEffects": [
+        {
+          "name": "짐독",
+          "target": "random_enemy_n",
+          "duration": 2
+        },
+        {
+          "name": "시해",
+          "target": "random_ally_n",
+          "duration": 2
+        }
+      ]
+    },
+    "manualOverride": true,
+    "clauses": [
+      {
+        "text": "랜덤 적군 2명에게 2턴 동안 지속되는 짐독 상태를 1스택 부여",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "우군 2명이 2턴 동안 시해 상태를 획득한다: 짐독 상태인 목표에게 병기 또는 책략 피해를 준 후",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "25%→50% 확률로 목표에게 1스택의 짐독 상태를 부여한다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "u-pang-de": {
+    "legacyId": "uskill_36",
+    "legacyName": "필사의 돌격",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "전투 3번째, 5번째 턴에 자신이 행동 시, 2턴 동안 전체 적군의 통솔과 지력을 15→30포인트 감소시킨다(무력의 영향 받음). 이어서 170%→340%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.7,
+          "max": 3.4
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "min": -15,
+          "max": -30,
+          "target": "all_enemy",
+          "duration": 2,
+          "maxStacks": 1
+        },
+        {
+          "stat": "지력",
+          "min": -15,
+          "max": -30,
+          "target": "all_enemy",
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "targets": [
+        "all_enemy",
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "onlyTurns": [
+      3,
+      5
+    ],
+    "clauses": [
+      {
+        "text": "전투 3번째",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "5번째 턴에 자신이 행동 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "2턴 동안 전체 적군의 통솔과 지력을 15→30포인트 감소시킨다(무력의 영향 받음)",
+        "impl": [
+          "statMods[0]",
+          "statMods[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "이어서 170%→340%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-zou-shi": {
+    "legacyId": "uskill_37",
+    "legacyName": "눈부신 자태",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "전투 시작 시, 전체 아군이 눈짓 획득: 받는 피해, 받는 추격 전법 피해, 받는 액티브 전법 피해가 8%→16% 감소한다. 주씨가 병기 피해를 받은 후, 60% 확률로 전체 아군의 눈짓 효과가 1%→2% 감소하며, 최대 8회 감소한다. 4번째 턴부터, 매 턴 랜덤 아군 2명의 병력을 회복한다(치유율 70%→140%, 지력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.7,
+          "max": 1.4
+        }
+      ],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.08,
+          "max": -0.16,
+          "target": "all_ally",
+          "duration": 999,
+          "maxStacks": 1
+        },
+        {
+          "stat": "받는추격피해",
+          "min": -0.08,
+          "max": -0.16,
+          "target": "all_ally",
+          "duration": 999,
+          "maxStacks": 1
+        },
+        {
+          "stat": "받는액티브피해",
+          "min": -0.08,
+          "max": -0.16,
+          "target": "all_ally",
+          "duration": 999,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "all_ally",
+        "random_ally_n",
+        "random_ally_n"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "전투 시작 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "전체 아군이 눈짓 획득: 받는 피해",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "받는 추격 전법 피해",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "받는 액티브 전법 피해가 8%→16% 감소한다",
+        "impl": [
+          "buffs[2]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "주씨가 병기 피해를 받은 후",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "60% 확률로 전체 아군의 눈짓 효과가 1%→2% 감소",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "최대 8회 감소한다",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "4번째 턴부터",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "매 턴 랜덤 아군 2명의 병력을 회복한다(치유율 70%→140%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ],
+    "trigger": {
+      "event": "damage",
+      "role": "ally_taken",
+      "chance": 0.6
+    }
+  },
+  "u-zhang-bao": {
+    "legacyId": "uskill_38",
+    "legacyName": "도술의 귀재",
+    "legacyType": "액티브",
+    "legacyProcRate": "60%",
+    "raw": "랜덤 적군 2명에게 140%→280%의 책략 피해를 주며, 2턴 동안 지속되는 요술와(과) 폭풍 상태를 부여한다. 목표가 요술 상태면 이번 피해가 35% 증가한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1.4,
+          "max": 2.8
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n"
+      ],
+      "statusEffects": [
+        "폭풍",
+        "요술"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 2명에게 140%→280%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 지속되는 요술와(과) 폭풍 상태를 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 요술 상태면 이번 피해가 35% 증가한다",
+        "impl": [
+          "statusEffects[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-yuan-shao": {
+    "legacyId": "uskill_39",
+    "legacyName": "군웅 집결",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "매 턴 행동 시, 무력/지력/선공이 가장 높은 아군 단일 목표가 무력/지력/선공이 가장 낮은 적군 단일 목표에게 각각 37.5%→75%의 병기와 책략 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.375,
+          "max": 0.75,
+          "actor": "highest_combined_ally",
+          "target": "lowest_combined_enemy"
+        },
+        {
+          "dmgType": "책략",
+          "min": 0.375,
+          "max": 0.75,
+          "actor": "highest_combined_ally",
+          "target": "lowest_combined_enemy"
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [],
+      "statusEffects": []
+    },
+    "manualOverride": true,
+    "clauses": [
+      {
+        "text": "매 턴 행동 시",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "무력/지력/선공이 가장 높은 아군 단일 목표가 무력/지력/선공이 가장 낮은 적군 단일 목표에게 각각 37.5%→75%의 병기와 책략 피해를 준다",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-zhang-he": {
+    "legacyId": "uskill_40",
+    "legacyName": "적진 돌파",
+    "legacyType": "액티브",
+    "legacyProcRate": "60%",
+    "raw": "자신의 방어 관통이(가) 2.5%→5% 증가하며, 전투 종료까지 지속되고, 4회 중첩될 수 있다. 이후 랜덤 적군 2명에게 110%→220%의 병기 피해를 주며, 65% 확률로 1턴 동안 지속되는 무장 해제을(를) 부여한다. 목표가 이미 무장 해제 상태면 이번 피해가 30% 증가한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.1,
+          "max": 2.2,
+          "target": "random_enemy_n",
+          "tag": "main",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "hasStatus",
+              "who": "target",
+              "status": "무장 해제"
+            },
+            "mult": 0.3
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "방어관통",
+          "min": 0.025,
+          "max": 0.05,
+          "target": "self",
+          "duration": 999,
+          "maxStacks": 4
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "무장 해제",
+          "target": "tag:main",
+          "chance": 0.65
+        }
+      ],
+      "targets": []
+    },
+    "specialApplied": true,
+    "preciseApplied": true,
+    "clauses": [
+      {
+        "text": "자신의 방어 관통이(가) 2.5%→5% 증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "전투 종료까지 지속되고",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "4회 중첩될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "랜덤 적군 2명에게 110%→220%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "65% 확률로 1턴 동안 지속되는 무장 해제을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 이미 무장 해제 상태면 이번 피해가 30% 증가한다",
+        "impl": [
+          "damage[0].conditionalBonusMult",
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-xiao-qiao": {
+    "legacyId": "uskill_41",
+    "legacyName": "천향",
+    "legacyType": "액티브",
+    "legacyProcRate": "40%",
+    "raw": "랜덤 적군 2명에게 1턴 동안 지속되는 허약을(를) 부여한다. 랜덤 아군 2명의 병력을 회복시킨다(치유율 125%→250%, 지력의 영향 받음).",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 1.25,
+          "max": 2.5
+        }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n",
+        "random_ally_n",
+        "random_ally_n"
+      ],
+      "statusEffects": [
+        "허약"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 2명에게 1턴 동안 지속되는 허약을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "랜덤 아군 2명의 병력을 회복시킨다(치유율 125%→250%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-sun-ce": {
+    "legacyId": "uskill_42",
+    "legacyName": "강동 제패",
+    "legacyType": "액티브",
+    "legacyProcRate": "65%",
+    "raw": "적군 랜덤 2명에게 125%→250%의 병기 피해를 주고, 자신과 랜덤 아군 단일 목표의 병력을 회복한다(치유율 32.5%→65%, 무력의 영향 받음).",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.25,
+          "max": 2.5
+        }
+      ],
+      "heal": [
+        {
+          "min": 0.325,
+          "max": 0.65
+        }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_ally_n",
+        "random_ally_n",
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "적군 랜덤 2명에게 125%→250%의 병기 피해를 주고",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "자신과 랜덤 아군 단일 목표의 병력을 회복한다(치유율 32.5%→65%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "무력의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ]
+  },
+  "u-cheng-yu": {
+    "legacyId": "uskill_43",
+    "legacyName": "용맹의 화신",
+    "legacyType": "액티브",
+    "legacyProcRate": "60%",
+    "raw": "랜덤 적군 단일 목표가 탈주병을(를) 생성하게 한다(지력의 영향 받음). 이후 해당 적군에게 180%→360%의 책략 피해를 주며, 목표가 전열이면 피해 계수가 80% 증가한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "책략",
+          "min": 1.8,
+          "max": 3.6,
+          "target": "tag:main",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "isFront",
+              "who": "target"
+            },
+            "mult": 0.8
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [],
+      "statusEffects": [
+        {
+          "name": "탈주병",
+          "target": "random_enemy_1",
+          "tag": "main"
+        }
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 단일 목표가 탈주병을(를) 생성하게 한다(지력의 영향 받음)",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "해당 적군에게 180%→360%의 책략 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 전열이면 피해 계수가 80% 증가한다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ],
+    "desertionStat": "지력",
+    "desertionCoef": 2.4,
+    "desertionBase": 330
+  },
+  "u-yu-jin": {
+    "legacyId": "uskill_44",
+    "legacyName": "침착한 지휘",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신의 통솔이 15→30포인트 증가한다. 매 턴 처음 피해를 받은 후, 랜덤 적군 2명이 받는 피해가 5%→10% 증가하며(통솔의 영향 받음), 30%→60% 확률로 공격자에게 2턴 동안 지속되는 무장 해제 효과를 부여한다.",
+    "effects": {
+      "damage": [],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": 0.05,
+          "max": 0.1,
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "min": 15,
+          "max": 30,
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "targets": [
+        "random_enemy_n",
+        "self"
+      ],
+      "statusEffects": [
+        {
+          "name": "무장 해제",
+          "chance": 0.6
+        }
+      ]
+    },
+    "chanceFixed": true,
+    "clauses": [
+      {
+        "text": "자신의 통솔이 15→30포인트 증가한다",
+        "impl": [
+          "statMods[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "매 턴 처음 피해를 받은 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "랜덤 적군 2명이 받는 피해가 5%→10% 증가",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "(통솔의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "30%→60% 확률로 공격자에게 2턴 동안 지속되는 무장 해제 효과를 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ],
+    "trigger": {
+      "event": "damage",
+      "role": "taken",
+      "chance": 1,
+      "maxPerTurn": 1
+    }
+  },
+  "u-xu-huang": {
+    "legacyId": "uskill_45",
+    "legacyName": "승승장구",
+    "legacyType": "액티브",
+    "legacyProcRate": "60%",
+    "raw": "랜덤 적군 단일 목표에게 175%→350%의 병기 피해를 주며, 1턴 동안 지속되는 침묵을(를) 부여한다. 목표가 이미 침묵 상태를 보유 중이거나 병력이 가장 낮은 적군 단일 목표면 이번 피해 수치가 30% 증가한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.75,
+          "max": 3.5
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "lowest_hp_enemy",
+        "random_enemy_1"
+      ],
+      "statusEffects": [
+        "침묵"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "랜덤 적군 단일 목표에게 175%→350%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "1턴 동안 지속되는 침묵을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 이미 침묵 상태를 보유 중이거나 병력이 가장 낮은 적군 단일 목표면 이번 피해 수치가 30% 증가한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-guan-ping": {
+    "legacyId": "uskill_46",
+    "legacyName": "청룡 출격",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "자신이 병기 피해를 준 후, 37.5%→75% 확률로 용의 포효 발동: 목표에게 2턴 동안 지속되는 위협을(를) 부여하며, 목표가 위협 상태면 목표에게 50%→100%의 병기 피해를 주는 것으로 변경된다. 매 턴 용의 포효가 4회 발동될 수 있다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.5,
+          "max": 1,
+          "target": "trigger_defender"
+        }
+      ],
+      "statusEffects": [
+        "위협"
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": []
+    },
+    "trigger": {
+      "event": "damage",
+      "role": "dealt",
+      "filterDmgType": "병기",
+      "chance": 0.75,
+      "maxPerTurn": 4
+    },
+    "triggerApplied": true,
+    "clauses": [
+      {
+        "text": "자신이 병기 피해를 준 후",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "37.5%→75% 확률로 용의 포효 발동: 목표에게 2턴 동안 지속되는 위협을(를) 부여",
+        "impl": [
+          "statusEffects[0]",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표가 위협 상태면 목표에게 50%→100%의 병기 피해를 주는 것으로 변경된다",
+        "impl": [
+          "damage[0]",
+          "statusEffects[0]",
+          "trigger"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "매 턴 용의 포효가 4회 발동될 수 있다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  },
+  "u-cheng-pu": {
+    "legacyId": "uskill_47",
+    "legacyName": "흥왕의 위업",
+    "legacyType": "지휘",
+    "legacyProcRate": "100%",
+    "raw": "전체 아군에게 병기 피해를 준 후, 60% 확률로 병력을 회복한다(치유율 20%→40%, 지력과 통솔의 영향 받음). 책략 피해를 준 후, 60% 확률로 2턴 동안 받는 피해가 7%→14% 감소하며, 2회 중첩될 수 있다.",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 0.2,
+          "max": 0.4,
+          "chance": 0.6
+        }
+      ],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.07,
+          "max": -0.14,
+          "duration": 2,
+          "maxStacks": 2,
+          "chance": 0.6
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "all_ally"
+      ],
+      "statusEffects": []
+    },
+    "chanceFixed": true,
+    "clauses": [
+      {
+        "text": "전체 아군에게 병기 피해를 준 후",
+        "impl": [],
+        "status": "MISSING"
+      },
+      {
+        "text": "60% 확률로 병력을 회복한다(치유율 20%→40%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력과 통솔의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "책략 피해를 준 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "60% 확률로 2턴 동안 받는 피해가 7%→14% 감소",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2회 중첩될 수 있다",
+        "impl": [],
+        "status": "NOTE"
+      }
+    ],
+    "trigger": {
+      "event": "damage",
+      "role": "ally_dealt",
+      "chance": 0.6
+    }
+  },
+  "u-zhou-cang": {
+    "legacyId": "uskill_48",
+    "legacyName": "충성과 용맹",
+    "legacyType": "패시브",
+    "legacyProcRate": "100%",
+    "raw": "매 턴 행동 시 자신의 병력을 회복한다(치유율 100%→200%, 지력과 통솔의 영향 받음). 22.5%→45% 확률로 랜덤 적군 2명에게 2턴 동안 지속되는 조롱 및 위협 상태를 부여한다.",
+    "effects": {
+      "damage": [],
+      "heal": [
+        {
+          "min": 1,
+          "max": 2
+        }
+      ],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n",
+        "self"
+      ],
+      "statusEffects": [
+        {
+          "name": "위협",
+          "chance": 0.45
+        },
+        {
+          "name": "조롱",
+          "chance": 0.45
+        }
+      ]
+    },
+    "chanceFixed": true,
+    "clauses": [
+      {
+        "text": "매 턴 행동 시 자신의 병력을 회복한다(치유율 100%→200%",
+        "impl": [
+          "heal[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력과 통솔의 영향 받음)",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "22.5%→45% 확률로 랜덤 적군 2명에게 2턴 동안 지속되는 조롱 및 위협 상태를 부여한다",
+        "impl": [
+          "statusEffects[0]",
+          "statusEffects[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-yan-liang": {
+    "legacyId": "uskill_49",
+    "legacyName": "남다른 완력",
+    "legacyType": "추격",
+    "legacyProcRate": "100%",
+    "raw": "일반 공격 후, 현재 공격 목표에게 75%→150%의 병기 피해를 주며, 목표의 무력이 자신보다 낮으면 추가로 35%→70%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.75,
+          "max": 1.5
+        },
+        {
+          "dmgType": "병기",
+          "min": 0.35,
+          "max": 0.7
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "self"
+      ],
+      "statusEffects": []
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "현재 공격 목표에게 75%→150%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표의 무력이 자신보다 낮으면 추가로 35%→70%의 병기 피해를 준다",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-wen-chou": {
+    "legacyId": "uskill_50",
+    "legacyName": "치열한 교전",
+    "legacyType": "추격",
+    "legacyProcRate": "55%",
+    "raw": "일반 공격 후, 2턴 동안 백발백중 상태를 획득하며, 이후 병력이 가장 낮은 적군 단일 목표에게 140%→280%의 병기 피해를 준다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.4,
+          "max": 2.8
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "lowest_hp_enemy"
+      ],
+      "statusEffects": [
+        "백발백중"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "일반 공격 후",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "2턴 동안 백발백중 상태를 획득",
+        "impl": [],
+        "status": "NOTE"
+      },
+      {
+        "text": "병력이 가장 낮은 적군 단일 목표에게 140%→280%의 병기 피해를 준다",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-zhang-liang": {
+    "legacyId": "uskill_51",
+    "legacyName": "괴술",
+    "legacyType": "액티브",
+    "legacyProcRate": "65%",
+    "raw": "2턴 동안 자신의 회유와(과) 피신 확률이 12.5%→25% 증가하며, 이후 랜덤 적군 2명에게 110%→220%의 병기 피해를 주고, 2턴 동안 지속되는 요술을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.1,
+          "max": 2.2
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "피신",
+          "min": 0.125,
+          "max": 0.25,
+          "target": "self",
+          "duration": 2,
+          "maxStacks": 1
+        },
+        {
+          "stat": "회유",
+          "min": 0.125,
+          "max": 0.25,
+          "target": "self",
+          "duration": 2,
+          "maxStacks": 1
+        }
+      ],
+      "statMods": [],
+      "targets": [
+        "random_enemy_n",
+        "self"
+      ],
+      "statusEffects": [
+        "요술"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "2턴 동안 자신의 회유와(과) 피신 확률이 12.5%→25% 증가",
+        "impl": [
+          "buffs[0]",
+          "buffs[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "랜덤 적군 2명에게 110%→220%의 병기 피해를 주고",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 지속되는 요술을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-huang-gai": {
+    "legacyId": "uskill_52",
+    "legacyName": "고육지계",
+    "legacyType": "액티브",
+    "legacyProcRate": "50%",
+    "raw": "2턴 동안 자신이 받는 피해가 15%→30% 감소한다(통솔의 영향 받음). 지력이 가장 높은 우군이 자신에게 30%→60%의 병기 피해를 주며, 랜덤 적군 2명에게 110%→220%의 책략 피해를 주고, 2턴 동안 지속되는 화공을(를) 부여한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 0.3,
+          "max": 0.6,
+          "actor": "highest_intel_ally",
+          "target": "self"
+        },
+        {
+          "dmgType": "책략",
+          "min": 1.1,
+          "max": 2.2,
+          "target": "random_enemy_n"
+        }
+      ],
+      "heal": [],
+      "buffs": [
+        {
+          "stat": "받는피해",
+          "min": -0.15,
+          "max": -0.3,
+          "target": "self"
+        }
+      ],
+      "statMods": [],
+      "statusEffects": [
+        {
+          "name": "화공",
+          "target": "random_enemy_n"
+        }
+      ],
+      "targets": []
+    },
+    "specialApplied": true,
+    "clauses": [
+      {
+        "text": "2턴 동안 자신이 받는 피해가 15%→30% 감소한다(통솔의 영향 받음)",
+        "impl": [
+          "buffs[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "지력이 가장 높은 우군이 자신에게 30%→60%의 병기 피해를 주며",
+        "impl": [
+          "damage[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "랜덤 적군 2명에게 110%→220%의 책략 피해를 주고",
+        "impl": [
+          "damage[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "2턴 동안 지속되는 화공을(를) 부여한다",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-hua-xiong": {
+    "legacyId": "uskill_53",
+    "legacyName": "장군의 무용",
+    "legacyType": "액티브",
+    "legacyProcRate": "100%",
+    "raw": "2턴 동안 자신에게 침묵을(를) 부여한다. 랜덤 적군 단일 목표에게 125%→250%의 병기 피해와 일반 공격을 1회 시전한다(무장 해제 상태 무시).",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.25,
+          "max": 2.5
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [],
+      "targets": [
+        "random_enemy_1",
+        "self"
+      ],
+      "statusEffects": [
+        "무장 해제",
+        "침묵"
+      ]
+    },
+    "clauses": [
+      {
+        "text": "2턴 동안 자신에게 침묵을(를) 부여한다",
+        "impl": [
+          "statusEffects[1]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "랜덤 적군 단일 목표에게 125%→250%의 병기 피해와 일반 공격을 1회 시전한다(무장 해제 상태 무시)",
+        "impl": [
+          "damage[0]",
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      }
+    ]
+  },
+  "u-sun-jian": {
+    "legacyId": "uskill_54",
+    "legacyName": "무열파로",
+    "legacyType": "액티브",
+    "legacyProcRate": "55%",
+    "raw": "2턴 동안 랜덤 적군 단일 목표의 통솔을 20→40포인트 감소시키며(무력 또는 통솔 중 높은 수치의 영향 받음), 125%→250%의 병기 피해를 준다(추가로 통솔의 영향 받음). 그리고 1턴 동안 지속되는 공포을(를) 부여하고, 목표의 통솔이 자신보다 높으면 통솔 감소 효과를 50% 증가한다.",
+    "effects": {
+      "damage": [
+        {
+          "dmgType": "병기",
+          "min": 1.25,
+          "max": 2.5,
+          "target": "random_enemy_1",
+          "tag": "main",
+          "statScale": {
+            "stat": "통솔"
+          }
+        }
+      ],
+      "heal": [],
+      "buffs": [],
+      "statMods": [
+        {
+          "stat": "통솔",
+          "min": -40,
+          "max": -20,
+          "target": "tag:main",
+          "conditionalBonusMult": {
+            "condition": {
+              "type": "statCompareUnits",
+              "who1": "target",
+              "who2": "attacker",
+              "stat": "통솔",
+              "op": ">"
+            },
+            "mult": 0.5
+          }
+        }
+      ],
+      "statusEffects": [
+        {
+          "name": "공포",
+          "target": "tag:main"
+        }
+      ],
+      "targets": []
+    },
+    "specialApplied": true,
+    "clauses": [
+      {
+        "text": "2턴 동안 랜덤 적군 단일 목표의 통솔을 20→40포인트 감소시키며(무력 또는 통솔 중 높은 수치의 영향 받음)",
+        "impl": [
+          "damage[0].statScale"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "125%→250%의 병기 피해를 준다(추가로 통솔의 영향 받음)",
+        "impl": [
+          "damage[0]",
+          "damage[0].statScale"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "1턴 동안 지속되는 공포을(를) 부여",
+        "impl": [
+          "statusEffects[0]"
+        ],
+        "status": "ok"
+      },
+      {
+        "text": "목표의 통솔이 자신보다 높으면 통솔 감소 효과를 50% 증가한다",
+        "impl": [],
+        "status": "MISSING"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "2026-10-02-confirmed-rules",
+  "date": "2026-10-02",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "게임 규칙 확인 4건 반영 (R-001~004)",
+  "body": "직접 게임에서 확인해 주신 규칙입니다. data/common/confirmed-rules.json 에 근거로 남겼습니다.\n- R-001 액티브 전법 안의 '일반 공격'(여포 무쌍의 용사) 뒤에도 추격 전법이 발동한다 → 엔진은 이미 그렇게 동작, 감사의 '규칙 확인 필요' 경고 796건을 정상으로 정리\n- R-002 무장 스탯은 한국판 DB 엑셀(50레벨) 값이 기본\n- R-003 엑셀의 병법 = 각 무장의 금병법. 시뮬에는 금병법만 반영, 나머지 세팅 병법은 개인 선택이라 제외\n- R-004 상태 부여 확률은 대상마다 따로 판정 (피해 확률은 발동 1회 판정 유지)",
+  "refs": [
+    "u-lü-bu",
+    "gate-halberd"
+  ],
+  "source": "사용자 게임 확인",
+  "author": "Claude",
+  "commit": "ef5f50f172c0",
+  "files": [
+    "apps/mcp-server/src/server.ts",
+    "apps/web/src/styles.css",
+    "apps/web/src/views/audit.ts",
+    "apps/web/src/views/codex.ts",
+    "apps/web/src/views/sim.ts",
+    "apps/web/src/views/tierdecks.ts",
+    "data/audit/latest.json",
+    "data/common/confirmed-rules.json",
+    "data/engine/manuals.json",
+    "data/kr/generals.json",
+    "docs/DESIGN.md",
+    "packages/audit/src/dynamic.ts",
+    "packages/audit/src/expect.ts",
+    "packages/audit/src/index.ts",
+    "packages/audit/src/report.ts",
+    "packages/data-tools/src/bundle.ts",
+    "packages/data-tools/src/import-excel.ts",
+    "packages/engine/src/index.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/engine/src/model.ts",
+    "tests/manuals.test.ts"
+  ]
+}

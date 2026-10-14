@@ -1,0 +1,3079 @@
+{
+  "note": "한국어명 ↔ 번체/간체. season 은 해외 원작 기준",
+  "names": [
+    {
+      "kind": "무장",
+      "ko": "조조",
+      "zhTW": "曹操",
+      "zhCN": "曹操",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "순욱",
+      "zhTW": "荀彧",
+      "zhCN": "荀彧",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "하후돈",
+      "zhTW": "夏侯惇",
+      "zhCN": "夏侯惇",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "등애",
+      "zhTW": "鄧艾",
+      "zhCN": "邓艾",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "사마의",
+      "zhTW": "司馬懿",
+      "zhCN": "司马懿",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "무장",
+      "ko": "악진",
+      "zhTW": "樂進",
+      "zhCN": "乐进",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "무장",
+      "ko": "장료",
+      "zhTW": "張遼",
+      "zhCN": "张辽",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "무장",
+      "ko": "가후",
+      "zhTW": "賈詡",
+      "zhCN": "贾诩",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "무장",
+      "ko": "견희",
+      "zhTW": "甄洛",
+      "zhCN": "甄洛",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "유비",
+      "zhTW": "劉備",
+      "zhCN": "刘备",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "관우",
+      "zhTW": "關羽",
+      "zhCN": "关羽",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "장비",
+      "zhTW": "張飛",
+      "zhCN": "张飞",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "조운",
+      "zhTW": "趙雲",
+      "zhCN": "赵云",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "마초",
+      "zhTW": "馬超",
+      "zhCN": "马超",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "감부인",
+      "zhTW": "甘夫人",
+      "zhCN": "甘夫人",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "무장",
+      "ko": "황월영",
+      "zhTW": "黃月英",
+      "zhCN": "黄月英",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "손권",
+      "zhTW": "孫權",
+      "zhCN": "孙权",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "손견",
+      "zhTW": "孫堅",
+      "zhCN": "孙坚",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "손책",
+      "zhTW": "孫策",
+      "zhCN": "孙策",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "주유",
+      "zhTW": "周瑜",
+      "zhCN": "周瑜",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "육손",
+      "zhTW": "陸遜",
+      "zhCN": "陆逊",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "무장",
+      "ko": "주태",
+      "zhTW": "周泰",
+      "zhCN": "周泰",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "무장",
+      "ko": "황개",
+      "zhTW": "黃蓋",
+      "zhCN": "黄盖",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "서성",
+      "zhTW": "徐盛",
+      "zhCN": "徐盛",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "대교",
+      "zhTW": "大喬",
+      "zhCN": "大乔",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "노숙",
+      "zhTW": "魯肅",
+      "zhCN": "鲁肃",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "원소",
+      "zhTW": "袁紹",
+      "zhCN": "袁绍",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "초선",
+      "zhTW": "貂蟬",
+      "zhCN": "貂蝉",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "여포",
+      "zhTW": "呂布",
+      "zhCN": "吕布",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "진궁",
+      "zhTW": "陳宮",
+      "zhCN": "陈宫",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "무장",
+      "ko": "마운록",
+      "zhTW": "馬雲祿",
+      "zhCN": "马云禄",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "무장",
+      "ko": "곽가",
+      "zhTW": "郭嘉",
+      "zhCN": "郭嘉",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "서황",
+      "zhTW": "徐晃",
+      "zhCN": "徐晃",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "하후연",
+      "zhTW": "夏侯淵",
+      "zhCN": "夏侯渊",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "정욱",
+      "zhTW": "程昱",
+      "zhCN": "程昱",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "조인",
+      "zhTW": "曹仁",
+      "zhCN": "曹仁",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "전위",
+      "zhTW": "典韋",
+      "zhCN": "典韦",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "장합",
+      "zhTW": "張郃",
+      "zhCN": "张郃",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "허저",
+      "zhTW": "許褚",
+      "zhCN": "许褚",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "우금",
+      "zhTW": "于禁",
+      "zhCN": "于禁",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "왕랑",
+      "zhTW": "王朗",
+      "zhCN": "王朗",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "양수",
+      "zhTW": "楊修",
+      "zhCN": "杨修",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "유엽",
+      "zhTW": "劉曄",
+      "zhCN": "刘晔",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "종요",
+      "zhTW": "鍾繇",
+      "zhCN": "钟繇",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "조진",
+      "zhTW": "曹真",
+      "zhCN": "曹真",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "문빙",
+      "zhTW": "文聘",
+      "zhCN": "文聘",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "장패",
+      "zhTW": "臧霸",
+      "zhCN": "臧霸",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "곽회",
+      "zhTW": "郭淮",
+      "zhCN": "郭淮",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "조홍",
+      "zhTW": "曹洪",
+      "zhCN": "曹洪",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "제갈량",
+      "zhTW": "諸葛亮",
+      "zhCN": "诸葛亮",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "서서",
+      "zhTW": "徐庶",
+      "zhCN": "徐庶",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "황충",
+      "zhTW": "黃忠",
+      "zhCN": "黄忠",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "관평",
+      "zhTW": "關平",
+      "zhCN": "关平",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "주창",
+      "zhTW": "周倉",
+      "zhCN": "周仓",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "미축",
+      "zhTW": "糜竺",
+      "zhCN": "糜竺",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "사마가",
+      "zhTW": "沙摩柯",
+      "zhCN": "沙摩柯",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "마량",
+      "zhTW": "馬良",
+      "zhCN": "马良",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "마속",
+      "zhTW": "馬謖",
+      "zhCN": "马谡",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "간옹",
+      "zhTW": "簡雍",
+      "zhCN": "简雍",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "법정",
+      "zhTW": "法正",
+      "zhCN": "法正",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "무장",
+      "ko": "방통",
+      "zhTW": "龐統",
+      "zhCN": "庞统",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "무장",
+      "ko": "손상향",
+      "zhTW": "孫尚香",
+      "zhCN": "孙尚香",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "소교",
+      "zhTW": "小喬",
+      "zhCN": "小乔",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "감녕",
+      "zhTW": "甘寧",
+      "zhCN": "甘宁",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "정보",
+      "zhTW": "程普",
+      "zhCN": "程普",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "여몽",
+      "zhTW": "呂蒙",
+      "zhCN": "吕蒙",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "태사자",
+      "zhTW": "太史慈",
+      "zhCN": "太史慈",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "진무",
+      "zhTW": "陳武",
+      "zhCN": "陈武",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "정봉",
+      "zhTW": "丁奉",
+      "zhCN": "丁奉",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "동습",
+      "zhTW": "董襲",
+      "zhCN": "董袭",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "장흠",
+      "zhTW": "蔣欽",
+      "zhCN": "蒋钦",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "한당",
+      "zhTW": "韓當",
+      "zhCN": "韩当",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "반장",
+      "zhTW": "潘璋",
+      "zhCN": "潘璋",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "채문희",
+      "zhTW": "蔡文姬",
+      "zhCN": "蔡文姬",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "이유",
+      "zhTW": "李儒",
+      "zhCN": "李儒",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "장각",
+      "zhTW": "張角",
+      "zhCN": "张角",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "화웅",
+      "zhTW": "華雄",
+      "zhCN": "华雄",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "안량",
+      "zhTW": "顏良",
+      "zhCN": "颜良",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "문추",
+      "zhTW": "文醜",
+      "zhCN": "文丑",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "화타",
+      "zhTW": "華佗",
+      "zhCN": "华佗",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "방덕",
+      "zhTW": "龐德",
+      "zhCN": "庞德",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "동탁",
+      "zhTW": "董卓",
+      "zhCN": "董卓",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "추씨",
+      "zhTW": "鄒氏",
+      "zhCN": "邹氏",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "장량",
+      "zhTW": "張梁",
+      "zhCN": "张梁",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "장보",
+      "zhTW": "張寶",
+      "zhCN": "张宝",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "진림",
+      "zhTW": "陳琳",
+      "zhCN": "陈琳",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "유표",
+      "zhTW": "劉表",
+      "zhCN": "刘表",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "곽도",
+      "zhTW": "郭圖",
+      "zhCN": "郭图",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "노식",
+      "zhTW": "盧植",
+      "zhCN": "卢植",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "공융",
+      "zhTW": "孔融",
+      "zhCN": "孔融",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "장만성",
+      "zhTW": "張曼成",
+      "zhCN": "张曼成",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "황보숭",
+      "zhTW": "皇甫嵩",
+      "zhCN": "皇甫嵩",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "무장",
+      "ko": "전풍",
+      "zhTW": "田豐",
+      "zhCN": "田丰",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "무장",
+      "ko": "공손찬",
+      "zhTW": "公孫瓚",
+      "zhCN": "公孙瓒",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "무장",
+      "ko": "강유",
+      "zhTW": "姜維",
+      "zhCN": "姜维",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "SP 제갈량",
+      "zhTW": "SP諸葛亮",
+      "zhCN": "SP诸葛亮",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "마등",
+      "zhTW": "馬騰",
+      "zhCN": "马腾",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "관은병",
+      "zhTW": "關銀屏",
+      "zhCN": "关银屏",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "좌자",
+      "zhTW": "左慈",
+      "zhCN": "左慈",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "장녕",
+      "zhTW": "張寧",
+      "zhCN": "张宁",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "왕이",
+      "zhTW": "王異",
+      "zhCN": "王异",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "주준",
+      "zhTW": "朱儁",
+      "zhCN": "朱俊",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "원술",
+      "zhTW": "袁術",
+      "zhCN": "袁术",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "연의 공손찬",
+      "zhTW": "演義騎瓚",
+      "zhCN": "演义骑瓒",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "연의 원소",
+      "zhTW": "演義弓袁",
+      "zhCN": "演义弓袁",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "연의 장료",
+      "zhTW": "演義張遼",
+      "zhCN": "演义张辽",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "연의 감녕",
+      "zhTW": "演義甘寧·槍",
+      "zhCN": "演义甘宁·枪",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "연의 관우",
+      "zhTW": "演義關羽·弓",
+      "zhCN": "演义关羽·弓",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "연의 조인",
+      "zhTW": "演義曹仁·槍",
+      "zhCN": "演义曹仁·枪",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "무장",
+      "ko": "맹획",
+      "zhTW": "孟獲",
+      "zhCN": "孟获",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "무장",
+      "ko": "축융부인",
+      "zhTW": "祝融夫人",
+      "zhCN": "祝融夫人",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "무장",
+      "ko": "고순",
+      "zhTW": "高順",
+      "zhCN": "高顺",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "무장",
+      "ko": "조비",
+      "zhTW": "曹丕",
+      "zhCN": "曹丕",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "무장",
+      "ko": "위연",
+      "zhTW": "魏延",
+      "zhCN": "魏延",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "무장",
+      "ko": "우길",
+      "zhTW": "于吉",
+      "zhCN": "于吉",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "무장",
+      "ko": "군웅 SP 제갈량",
+      "zhTW": "諸葛轉群",
+      "zhCN": "诸葛转群",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "무장",
+      "ko": "위 SP 제갈량",
+      "zhTW": "魏·SP諸葛",
+      "zhCN": "魏·SP诸葛",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "무장",
+      "ko": "촉 주태",
+      "zhTW": "蜀·周泰",
+      "zhCN": "蜀·周泰",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "전법",
+      "ko": "허점 공략",
+      "zhTW": "避其銳氣",
+      "zhCN": "避其锐气",
+      "aliases": [
+        "피기예기"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "청낭 치료",
+      "zhTW": "青囊急救",
+      "zhCN": "青囊急救",
+      "aliases": [
+        "청낭급구",
+        "청낭치료"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "전쟁 종식",
+      "zhTW": "鑄甲銷戈",
+      "zhCN": "铸甲销戈",
+      "aliases": [
+        "주갑소과"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "세금 과징수",
+      "zhTW": "橫徵暴斂",
+      "zhCN": "横征暴敛",
+      "aliases": [
+        "횡정폭렴"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "전력 지원",
+      "zhTW": "忘私相助",
+      "zhCN": "忘私相助",
+      "aliases": [
+        "망사상조",
+        "헌신 지원"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "고요한 제압",
+      "zhTW": "以靜制動",
+      "zhCN": "以静制动",
+      "aliases": [
+        "침착 대응",
+        "이정제동"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "청풍 질주",
+      "zhTW": "清風驅疾",
+      "zhCN": "清风驱疾",
+      "aliases": [
+        "청풍구질"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "충신의 기재",
+      "zhTW": "王佐之才",
+      "zhCN": "王佐之才",
+      "aliases": [
+        "왕좌지재"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "연전연승",
+      "zhTW": "勝敵益強",
+      "zhCN": "胜敌益强",
+      "aliases": [
+        "승적익강"
+      ],
+      "season": "S2"
+    },
+    {
+      "kind": "전법",
+      "ko": "요새 함락",
+      "zhTW": "摧堅克難",
+      "zhCN": "摧坚克难",
+      "aliases": [
+        "최견극난"
+      ],
+      "season": "S2"
+    },
+    {
+      "kind": "전법",
+      "ko": "예리한 통찰",
+      "zhTW": "銳不可當",
+      "zhCN": "锐不可当",
+      "aliases": [
+        "예불가당",
+        "예리한 돌격"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "파죽지세",
+      "zhTW": "勢如破竹",
+      "zhCN": "势如破竹",
+      "aliases": [
+        "세여파죽"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "천하평론",
+      "zhTW": "指點乾坤",
+      "zhCN": "指点乾坤",
+      "aliases": [
+        "지점건곤",
+        "천하 지도"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "신의 가호",
+      "zhTW": "如有神助",
+      "zhCN": "如有神助",
+      "aliases": [
+        "신의 도움"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "난공불락",
+      "zhTW": "固若金湯",
+      "zhCN": "固若金汤",
+      "aliases": [
+        "고약금탕",
+        "철벽 방어"
+      ],
+      "season": "S2"
+    },
+    {
+      "kind": "전법",
+      "ko": "견고한 방어",
+      "zhTW": "堅如磐石",
+      "zhCN": "坚如磐石",
+      "aliases": [
+        "견여반석"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "준비 완료",
+      "zhTW": "蓄勢待發",
+      "zhCN": "蓄势待发",
+      "aliases": [
+        "축세대발",
+        "기세 축적"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "결사의 다짐",
+      "zhTW": "披堅執銳",
+      "zhCN": "披坚执锐",
+      "aliases": [
+        "피견집예",
+        "강철의 희생"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "정의의 희생",
+      "zhTW": "捨生取義",
+      "zhCN": "舍生取义",
+      "aliases": [
+        "사생취의"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "강철의 의지",
+      "zhTW": "無難之志",
+      "zhCN": "无难之志",
+      "aliases": [
+        "난관 없는 의지"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "철기병 돌격",
+      "zhTW": "鐵騎橫衝",
+      "zhCN": "铁骑横冲",
+      "aliases": [
+        "철기횡충",
+        "철기 횡충"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "신속 전개",
+      "zhTW": "兵貴神速",
+      "zhCN": "兵贵神速",
+      "aliases": [
+        "병귀신속"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "팔방전",
+      "zhTW": "戰八方",
+      "zhCN": "战八方",
+      "aliases": [
+        "전팔방",
+        "전방위 공격"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "보급 차단",
+      "zhTW": "斷敵糧道",
+      "zhCN": "断敌粮道",
+      "aliases": [
+        "단적양도"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "백전불태",
+      "zhTW": "百戰不殆",
+      "zhCN": "百战不殆",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "일심협력",
+      "zhTW": "同舟共濟",
+      "zhCN": "同舟共济",
+      "aliases": [
+        "동주공제"
+      ],
+      "season": "S3"
+    },
+    {
+      "kind": "전법",
+      "ko": "금성의 철벽",
+      "zhTW": "金城湯池",
+      "zhCN": "金城汤池",
+      "aliases": [
+        "금성탕지"
+      ],
+      "season": "S3"
+    },
+    {
+      "kind": "전법",
+      "ko": "출기불의",
+      "zhTW": "出其不意",
+      "zhCN": "出其不意",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "기문둔갑",
+      "zhTW": "奇門遁甲",
+      "zhCN": "奇门遁甲",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "예측의 신",
+      "zhTW": "料事如神",
+      "zhCN": "料事如神",
+      "aliases": [
+        "요사여신"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "맹렬한 화염",
+      "zhTW": "烈火張天",
+      "zhCN": "烈火张天",
+      "aliases": [
+        "열화장천",
+        "화염천지"
+      ],
+      "season": "S3"
+    },
+    {
+      "kind": "전법",
+      "ko": "도광양회",
+      "zhTW": "韜光養晦",
+      "zhCN": "韬光养晦",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "전법",
+      "ko": "허실 간파",
+      "zhTW": "明其虛實",
+      "zhCN": "明其虚实",
+      "aliases": [
+        "명기허실"
+      ],
+      "season": "S3"
+    },
+    {
+      "kind": "전법",
+      "ko": "음과 양",
+      "zhTW": "奇正相生",
+      "zhCN": "奇正相生",
+      "aliases": [
+        "기정상생"
+      ],
+      "season": "S2"
+    },
+    {
+      "kind": "전법",
+      "ko": "화공전술",
+      "zhTW": "烈火焚營",
+      "zhCN": "烈火焚营",
+      "aliases": [
+        "열화분영",
+        "화공 전술"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "광풍의 분노",
+      "zhTW": "狂風大作",
+      "zhCN": "狂风大作",
+      "aliases": [
+        "광풍대작"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "임인유현",
+      "zhTW": "任人唯賢",
+      "zhCN": "任人唯贤",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "전법",
+      "ko": "무방비 공격",
+      "zhTW": "攻其不備",
+      "zhCN": "攻其不备",
+      "aliases": [
+        "공기불비"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "틈새 공략",
+      "zhTW": "乘間投隙",
+      "zhCN": "乘间投隙",
+      "aliases": [
+        "승간투극",
+        "틈새 공격"
+      ],
+      "season": "S2"
+    },
+    {
+      "kind": "전법",
+      "ko": "삼군 압도",
+      "zhTW": "三軍奪氣",
+      "zhCN": "三军夺气",
+      "aliases": [
+        "삼군탈기",
+        "삼군 사기 저하"
+      ],
+      "season": "S2"
+    },
+    {
+      "kind": "전법",
+      "ko": "천리기습",
+      "zhTW": "千里突襲",
+      "zhCN": "千里突袭",
+      "aliases": [
+        "천리 기습"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "병력 강화",
+      "zhTW": "繕甲厲兵",
+      "zhCN": "缮甲厉兵",
+      "aliases": [
+        "선갑려병",
+        "장비 점검"
+      ],
+      "season": "S3"
+    },
+    {
+      "kind": "전법",
+      "ko": "기민한 전술",
+      "zhTW": "沖銳巧變",
+      "zhCN": "冲锐巧变",
+      "aliases": [
+        "충예교변"
+      ],
+      "season": "S3"
+    },
+    {
+      "kind": "전법",
+      "ko": "지혜의 바람",
+      "zhTW": "如沐春風",
+      "zhCN": "如沐春风",
+      "aliases": [
+        "여목춘풍"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "적재적소",
+      "zhTW": "知人善任",
+      "zhCN": "知人善任",
+      "aliases": [
+        "지인선임"
+      ],
+      "season": "S2"
+    },
+    {
+      "kind": "전법",
+      "ko": "궁추불사",
+      "zhTW": "窮追不捨",
+      "zhCN": "穷追不舍",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "전법",
+      "ko": "재해 이용",
+      "zhTW": "巧利天災",
+      "zhCN": "巧利天灾",
+      "aliases": [
+        "교리천재",
+        "천재 활용"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "일인천군",
+      "zhTW": "萬夫莫當",
+      "zhCN": "万夫莫当",
+      "aliases": [
+        "만부막당",
+        "만부부당"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "사인",
+      "zhTW": "射人",
+      "zhCN": "射人",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "모지",
+      "zhTW": "謀智",
+      "zhCN": "谋智",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "사마",
+      "zhTW": "射馬",
+      "zhCN": "射马",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "용무",
+      "zhTW": "勇武",
+      "zhCN": "勇武",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "출격",
+      "zhTW": "出擊",
+      "zhCN": "出击",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "담심",
+      "zhTW": "談心",
+      "zhCN": "谈心",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "격려",
+      "zhTW": "激勵",
+      "zhCN": "激励",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "중격",
+      "zhTW": "重擊",
+      "zhCN": "重击",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "개지",
+      "zhTW": "開智",
+      "zhCN": "开智",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "파진",
+      "zhTW": "破陣",
+      "zhCN": "破阵",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "전후",
+      "zhTW": "殿後",
+      "zhCN": "殿后",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "전장의 노래",
+      "zhTW": "詠歌嘗酒",
+      "zhCN": "咏歌尝酒",
+      "aliases": [
+        "영가상주"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "기풍당당",
+      "zhTW": "克敵如風",
+      "zhCN": "克敌如风",
+      "aliases": [
+        "극적여풍"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "넘치는 계책",
+      "zhTW": "奇計迭出",
+      "zhCN": "奇计迭出",
+      "aliases": [
+        "기계첩출"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "순간 돌습",
+      "zhTW": "臨陣突襲",
+      "zhCN": "临阵突袭",
+      "aliases": [
+        "임진돌습"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "패잔병 척결",
+      "zhTW": "計逐窮寇",
+      "zhCN": "计逐穷寇",
+      "aliases": [
+        "계축궁구"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "측면 공격",
+      "zhTW": "疾行側擊",
+      "zhCN": "疾行侧击",
+      "aliases": [
+        "질행측격"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "독설가",
+      "zhTW": "談笑誅心",
+      "zhCN": "谈笑诛心",
+      "aliases": [
+        "담소주심"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "수중전",
+      "zhTW": "決水破敵",
+      "zhCN": "决水破敌",
+      "aliases": [
+        "결수파적"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "청야 전술",
+      "zhTW": "堅壁清野",
+      "zhCN": "坚壁清野",
+      "aliases": [
+        "견벽청야"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "속수무책",
+      "zhTW": "束手無策",
+      "zhCN": "束手无策",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "평화의 기운",
+      "zhTW": "來好息師",
+      "zhCN": "来好息师",
+      "aliases": [
+        "내호식사"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "적진 교란",
+      "zhTW": "亂敵方陣",
+      "zhCN": "乱敌方阵",
+      "aliases": [
+        "난적방진"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "화검",
+      "zhTW": "火羽",
+      "zhCN": "火羽",
+      "aliases": [
+        "화우"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "강습",
+      "zhTW": "強襲",
+      "zhCN": "强袭",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "양책 수립",
+      "zhTW": "籌劃良策",
+      "zhCN": "筹划良策",
+      "aliases": [
+        "주획양책"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "전쟁 조달",
+      "zhTW": "以戰養戰",
+      "zhCN": "以战养战",
+      "aliases": [
+        "이전양전"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "결정적인 수",
+      "zhTW": "一計決勝",
+      "zhCN": "一计决胜",
+      "aliases": [
+        "일계결승"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "적군 굴복",
+      "zhTW": "屈人之兵",
+      "zhCN": "屈人之兵",
+      "aliases": [
+        "굴인지병"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "위기의 결전",
+      "zhTW": "臨危勇烈",
+      "zhCN": "临危勇烈",
+      "aliases": [
+        "임위용렬"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "늠름한 자태",
+      "zhTW": "驍勇之姿",
+      "zhCN": "骁勇之姿",
+      "aliases": [
+        "효용지자"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "비상한 전략",
+      "zhTW": "上兵伐謀",
+      "zhCN": "上兵伐谋",
+      "aliases": [
+        "상병벌모"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "응전",
+      "zhTW": "迎敵",
+      "zhCN": "迎敌",
+      "aliases": [
+        "영적"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "민중 봉기",
+      "zhTW": "揭竿而起",
+      "zhCN": "揭竿而起",
+      "aliases": [
+        "게간이기"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "야습",
+      "zhTW": "夜襲",
+      "zhCN": "夜袭",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "문과 무",
+      "zhTW": "文治武功",
+      "zhCN": "文治武功",
+      "aliases": [
+        "문치무공"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "압도적 승리",
+      "zhTW": "斬將奪旗",
+      "zhCN": "斩将夺旗",
+      "aliases": [
+        "참장탈기"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "경무장",
+      "zhTW": "輕裝馳援",
+      "zhCN": "轻装驰援",
+      "aliases": [
+        "경장치원"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "찬란한 위명",
+      "zhTW": "威名顯赫",
+      "zhCN": "威名显赫",
+      "aliases": [
+        "위명현혁"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "전략 계획",
+      "zhTW": "運籌帷幄",
+      "zhCN": "运筹帷幄",
+      "aliases": [
+        "운주유악"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "퇴로 매복",
+      "zhTW": "伏兵四起",
+      "zhCN": "伏兵四起",
+      "aliases": [
+        "복병사기"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "기습 제압",
+      "zhTW": "破軍襲敵",
+      "zhCN": "破军袭敌",
+      "aliases": [
+        "파군습적"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "청천벽력",
+      "zhTW": "五雷轟頂",
+      "zhCN": "五雷轰顶",
+      "aliases": [
+        "오뢰굉정"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "용맹한 삼군",
+      "zhTW": "勇冠三軍",
+      "zhCN": "勇冠三军",
+      "aliases": [
+        "용관삼군"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "최상의 지략",
+      "zhTW": "上智為間",
+      "zhCN": "上智为间",
+      "aliases": [
+        "상지위간"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "원문사극",
+      "zhTW": "轅門射戟",
+      "zhCN": "辕门射戟",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "구름과 바람",
+      "zhTW": "風卷殘雲",
+      "zhCN": "风卷残云",
+      "aliases": [
+        "풍권잔운"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "천군 소탕",
+      "zhTW": "橫掃千軍",
+      "zhCN": "横扫千军",
+      "aliases": [
+        "횡소천군"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "방화범",
+      "zhTW": "趁火打劫",
+      "zhCN": "趁火打劫",
+      "aliases": [
+        "진화타겁"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "창고 기습",
+      "zhTW": "計襲糧倉",
+      "zhCN": "计袭粮仓",
+      "aliases": [
+        "계습양창"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "허점 공격",
+      "zhTW": "乘虛而入",
+      "zhCN": "乘虚而入",
+      "aliases": [
+        "승허이입"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "인재 기용",
+      "zhTW": "任人擇勢",
+      "zhCN": "任人择势",
+      "aliases": [
+        "임인택세"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "문무겸비",
+      "zhTW": "文武雙全",
+      "zhCN": "文武双全",
+      "aliases": [
+        "문무쌍전"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "포위 돌파",
+      "zhTW": "破陣馳圍",
+      "zhCN": "破阵驰围",
+      "aliases": [
+        "파진치위"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "예리한 판단",
+      "zhTW": "洞若觀火",
+      "zhCN": "洞若观火",
+      "aliases": [
+        "통약관화",
+        "동약관화"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "칠군수몰",
+      "zhTW": "水淹七軍",
+      "zhCN": "水淹七军",
+      "aliases": [
+        "수엄칠군"
+      ],
+      "season": "S1"
+    },
+    {
+      "kind": "전법",
+      "ko": "절충어모",
+      "zhTW": "折衝禦侮",
+      "zhCN": "折冲御侮",
+      "aliases": [
+        "절충어회"
+      ],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "좌예절봉",
+      "zhTW": "挫銳折鋒",
+      "zhCN": "挫锐折锋",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "운지포모",
+      "zhTW": "運智鋪謀",
+      "zhCN": "运智铺谋",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "보보위영",
+      "zhTW": "步步為營",
+      "zhCN": "步步为营",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "징전비후",
+      "zhTW": "懲前毖後",
+      "zhCN": "惩前毖后",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "세근벌수",
+      "zhTW": "洗筋伐髓",
+      "zhCN": "洗筋伐髓",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "공성계",
+      "zhTW": "空城計",
+      "zhCN": "空城计",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "모이후동",
+      "zhTW": "謀而後動",
+      "zhCN": "谋而后动",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "신략제변",
+      "zhTW": "神略制變",
+      "zhCN": "神略制变",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "황천혹심",
+      "zhTW": "黃天惑心",
+      "zhCN": "黄天惑心",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "단과탈봉",
+      "zhTW": "斷戈奪鋒",
+      "zhCN": "断戈夺锋",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "십면매복",
+      "zhTW": "十面埋伏",
+      "zhCN": "十面埋伏",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "영·절충어모",
+      "zhTW": "影·折衝",
+      "zhCN": "影·折冲",
+      "aliases": [
+        "그림자 절충어모"
+      ],
+      "season": "문정 1"
+    },
+    {
+      "kind": "전법",
+      "ko": "어적임전",
+      "zhTW": "禦敵臨前",
+      "zhCN": "御敌临前",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "전법",
+      "ko": "도봉음혈",
+      "zhTW": "蹈鋒飲血",
+      "zhCN": "蹈锋饮血",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "전법",
+      "ko": "천묵수적",
+      "zhTW": "踐墨隨敵",
+      "zhCN": "践墨随敌",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "전법",
+      "ko": "잠룡재연",
+      "zhTW": "潛龍在淵",
+      "zhCN": "潜龙在渊",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "전법",
+      "ko": "군인쟁봉",
+      "zhTW": "群刃爭鋒",
+      "zhCN": "群刃争锋",
+      "aliases": [
+        "군웅 진영 전법"
+      ],
+      "season": "문정 2"
+    },
+    {
+      "kind": "전법",
+      "ko": "촉의관홍",
+      "zhTW": "蜀義貫虹",
+      "zhCN": "蜀义贯虹",
+      "aliases": [
+        "촉 진영 전법"
+      ],
+      "season": "문정 2"
+    },
+    {
+      "kind": "전법",
+      "ko": "위무휘편",
+      "zhTW": "魏武揮鞭",
+      "zhCN": "魏武挥鞭",
+      "aliases": [
+        "위 진영 전법"
+      ],
+      "season": "문정 2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "난세의 간웅",
+      "zhTW": "亂世奸雄",
+      "zhCN": "乱世奸雄",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "건계거인",
+      "zhTW": "建計舉人",
+      "zhCN": "建计举人",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "강렬",
+      "zhTW": "剛烈",
+      "zhCN": "刚烈",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "둔전령",
+      "zhTW": "屯田令",
+      "zhCN": "屯田令",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "매의 응시",
+      "zhTW": "鷹視狼顧",
+      "zhCN": "鹰视狼顾",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "매전선등",
+      "zhTW": "每戰先登",
+      "zhCN": "每战先登",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "풍습소요",
+      "zhTW": "風襲逍遙",
+      "zhCN": "风袭逍遥",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "궤도현기",
+      "zhTW": "詭道玄機",
+      "zhCN": "诡道玄机",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "유풍회설",
+      "zhTW": "流風回雪",
+      "zhCN": "流风回雪",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "휴민도강",
+      "zhTW": "攜民渡江",
+      "zhCN": "携民渡江",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "위진화하",
+      "zhTW": "威震華夏",
+      "zhCN": "威震华夏",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "만인지적",
+      "zhTW": "萬人之敵",
+      "zhCN": "万人之敌",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "칠진칠출",
+      "zhTW": "七進七出",
+      "zhCN": "七进七出",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "종마횡창",
+      "zhTW": "縱馬橫槍",
+      "zhCN": "纵马横枪",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "황사숙인",
+      "zhTW": "皇思淑仁",
+      "zhCN": "皇思淑仁",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "목우유마",
+      "zhTW": "木牛流馬",
+      "zhCN": "木牛流马",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "호거강동",
+      "zhTW": "虎踞江東",
+      "zhCN": "虎踞江东",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "무열파로",
+      "zhTW": "武烈破虜",
+      "zhCN": "武烈破虏",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "제패강동",
+      "zhTW": "制霸江東",
+      "zhCN": "制霸江东",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "임기제승",
+      "zhTW": "臨機制勝",
+      "zhCN": "临机制胜",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "화소연영",
+      "zhTW": "火燒連營",
+      "zhCN": "火烧连营",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "불굴의 의지",
+      "zhTW": "不屈意志",
+      "zhCN": "不屈意志",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "고육계",
+      "zhTW": "苦肉計",
+      "zhCN": "苦肉计",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "백리의성",
+      "zhTW": "百里疑城",
+      "zhCN": "百里疑城",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "국색",
+      "zhTW": "國色",
+      "zhCN": "国色",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "획상분형",
+      "zhTW": "劃湘分荊",
+      "zhCN": "划湘分荆",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "합취군웅",
+      "zhTW": "合聚群雄",
+      "zhCN": "合聚群雄",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "폐월",
+      "zhTW": "閉月",
+      "zhCN": "闭月",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "효용무전",
+      "zhTW": "驍勇無前",
+      "zhCN": "骁勇无前",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "지령종계",
+      "zhTW": "智令從計",
+      "zhCN": "智令从计",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "홍장요란",
+      "zhTW": "紅妝繚亂",
+      "zhCN": "红妆缭乱",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "산무유책",
+      "zhTW": "算無遺策",
+      "zhCN": "算无遗策",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "장구직입",
+      "zhTW": "長驅直入",
+      "zhCN": "长驱直入",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "신속분습",
+      "zhTW": "神速奔襲",
+      "zhCN": "神速奔袭",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "용관분육",
+      "zhTW": "勇冠賁育",
+      "zhCN": "勇冠贲育",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "고진양번",
+      "zhTW": "固鎮襄樊",
+      "zhCN": "固镇襄樊",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "고지악래",
+      "zhTW": "古之惡來",
+      "zhCN": "古之恶来",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "대파가정",
+      "zhTW": "大破街亭",
+      "zhCN": "大破街亭",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "나의혈전",
+      "zhTW": "裸衣血戰",
+      "zhCN": "裸衣血战",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "지군의중",
+      "zhTW": "持軍毅重",
+      "zhCN": "持军毅重",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "고재박아",
+      "zhTW": "高才博雅",
+      "zhCN": "高才博雅",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "첩대",
+      "zhTW": "捷對",
+      "zhCN": "捷对",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "요적제승",
+      "zhTW": "料敵制勝",
+      "zhCN": "料敌制胜",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "비홍희해",
+      "zhTW": "飛鴻戲海",
+      "zhCN": "飞鸿戏海",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "연연난측",
+      "zhTW": "淵然難測",
+      "zhCN": "渊然难测",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "액수형강",
+      "zhTW": "扼守荊江",
+      "zhCN": "扼守荆江",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "강저파적",
+      "zhTW": "江渚破敵",
+      "zhCN": "江渚破敌",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "독진옹량",
+      "zhTW": "督陣雍涼",
+      "zhCN": "督阵雍凉",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "팔호웅수",
+      "zhTW": "八虎雄首",
+      "zhCN": "八虎雄首",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "초선차전",
+      "zhTW": "草船借箭",
+      "zhCN": "草船借箭",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "절절학문",
+      "zhTW": "折節學問",
+      "zhCN": "折节学问",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "정군양위",
+      "zhTW": "定軍揚威",
+      "zhCN": "定军扬威",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "용음사해",
+      "zhTW": "龍吟四海",
+      "zhCN": "龙吟四海",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "충렬용무",
+      "zhTW": "忠烈勇武",
+      "zhCN": "忠烈勇武",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "견기행사",
+      "zhTW": "見機行事",
+      "zhCN": "见机行事",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "오계만력",
+      "zhTW": "五溪蠻力",
+      "zhCN": "五溪蛮力",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "백미양명",
+      "zhTW": "白眉良名",
+      "zhCN": "白眉良名",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "재기과인",
+      "zhTW": "才器過人",
+      "zhCN": "才器过人",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "고담활론",
+      "zhTW": "高談闊論",
+      "zhCN": "高谈阔论",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "도사지기",
+      "zhTW": "睹事知機",
+      "zhCN": "睹事知机",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "연환계",
+      "zhTW": "連環計",
+      "zhCN": "连环计",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "궁요희",
+      "zhTW": "弓腰姬",
+      "zhCN": "弓腰姬",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "천향",
+      "zhTW": "天香",
+      "zhCN": "天香",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "금범거괴",
+      "zhTW": "錦帆渠魁",
+      "zhCN": "锦帆渠魁",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "흥왕정패",
+      "zhTW": "興王定霸",
+      "zhCN": "兴王定霸",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "백의도강",
+      "zhTW": "白衣渡江",
+      "zhCN": "白衣渡江",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "현무허발",
+      "zhTW": "弦無虛發",
+      "zhCN": "弦无虚发",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "한전무외",
+      "zhTW": "悍戰無畏",
+      "zhCN": "悍战无畏",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "분용당선",
+      "zhTW": "奮勇當先",
+      "zhCN": "奋勇当先",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "비신단홍",
+      "zhTW": "飛身斷虹",
+      "zhCN": "飞身断虹",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "무략강홍",
+      "zhTW": "武略江洪",
+      "zhCN": "武略江洪",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "원비선사",
+      "zhTW": "猿臂善射",
+      "zhCN": "猿臂善射",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "치군절인",
+      "zhTW": "馳軍截刃",
+      "zhCN": "驰军截刃",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "비분시",
+      "zhTW": "悲憤詩",
+      "zhCN": "悲愤诗",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "짐음독시",
+      "zhTW": "鴆飲毒弑",
+      "zhCN": "鸩饮毒弑",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "황천당립",
+      "zhTW": "黃天當立",
+      "zhCN": "黄天当立",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "요무양위",
+      "zhTW": "耀武揚威",
+      "zhCN": "耀武扬威",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "여력과인",
+      "zhTW": "膂力過人",
+      "zhCN": "膂力过人",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "교봉진위",
+      "zhTW": "交鋒震威",
+      "zhCN": "交锋震威",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "마비산",
+      "zhTW": "麻沸散",
+      "zhCN": "麻沸散",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "함진도난",
+      "zhTW": "陷陣蹈難",
+      "zhCN": "陷阵蹈难",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "권경조야",
+      "zhTW": "權傾朝野",
+      "zhCN": "权倾朝野",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "고반생자",
+      "zhTW": "顧盼生姿",
+      "zhCN": "顾盼生姿",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "요무",
+      "zhTW": "妖武",
+      "zhCN": "妖武",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "요풍대작",
+      "zhTW": "妖風大作",
+      "zhCN": "妖风大作",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "토적격문",
+      "zhTW": "討賊檄文",
+      "zhCN": "讨贼檄文",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "과도한남",
+      "zhTW": "跨蹈漢南",
+      "zhCN": "跨蹈汉南",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "곡사첨미",
+      "zhTW": "曲辭諂媚",
+      "zhCN": "曲辞谄媚",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "국지주석",
+      "zhTW": "國之柱石",
+      "zhCN": "国之柱石",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "언사격렬",
+      "zhTW": "言辭激烈",
+      "zhCN": "言辞激烈",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "신상사",
+      "zhTW": "神上使",
+      "zhCN": "神上使",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "평란정반",
+      "zhTW": "平亂定叛",
+      "zhCN": "平乱定叛",
+      "aliases": [],
+      "season": "S1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "천계조적",
+      "zhTW": "薦計阻敵",
+      "zhCN": "荐计阻敌",
+      "aliases": [],
+      "season": "S2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "위진새외",
+      "zhTW": "威震塞外",
+      "zhCN": "威震塞外",
+      "aliases": [],
+      "season": "S3"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "구벌중원",
+      "zhTW": "九伐中原",
+      "zhCN": "九伐中原",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "성라기포",
+      "zhTW": "星羅棋布",
+      "zhCN": "星罗棋布",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "웅거서량",
+      "zhTW": "雄踞西涼",
+      "zhCN": "雄踞西凉",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "호소생위",
+      "zhTW": "虎嘯生威",
+      "zhCN": "虎啸生威",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "운행우시",
+      "zhTW": "雲行雨施",
+      "zhCN": "云行雨施",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "태평여향",
+      "zhTW": "太平餘響",
+      "zhCN": "太平余响",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "교책인봉",
+      "zhTW": "巧策引鋒",
+      "zhCN": "巧策引锋",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "위사필궐",
+      "zhTW": "圍師必闕",
+      "zhCN": "围师必阙",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "참호천자",
+      "zhTW": "僭號天子",
+      "zhCN": "僭号天子",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "북강질봉",
+      "zhTW": "北疆疾鋒",
+      "zhCN": "北疆疾锋",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "사세삼공",
+      "zhTW": "四世三公",
+      "zhCN": "四世三公",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "위진소요",
+      "zhTW": "威震逍遙",
+      "zhCN": "威震逍遥",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "금범거괴·백기겁영",
+      "zhTW": "錦帆渠魁·百騎劫營",
+      "zhCN": "锦帆渠魁·百骑劫营",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "위진화하·단도부회",
+      "zhTW": "威震華夏·單刀赴會",
+      "zhCN": "威震华夏·单刀赴会",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "고진양번·철벽거수",
+      "zhTW": "固鎮襄樊·鐵壁據守",
+      "zhCN": "固镇襄樊·铁壁据守",
+      "aliases": [],
+      "season": "문정 1"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "웅호남강",
+      "zhTW": "雄護南疆",
+      "zhCN": "雄护南疆",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "남강열인",
+      "zhTW": "南疆烈刃",
+      "zhCN": "南疆烈刃",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "서사무퇴",
+      "zhTW": "誓死無退",
+      "zhCN": "誓死无退",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "권어구석",
+      "zhTW": "權御九錫",
+      "zhCN": "权御九锡",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "자오기모",
+      "zhTW": "子午奇謀",
+      "zhCN": "子午奇谋",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "풍급우회",
+      "zhTW": "風急雨晦",
+      "zhCN": "风急雨晦",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "성라기포",
+      "zhTW": "星羅棋布",
+      "zhCN": "星罗棋布",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "성라기포",
+      "zhTW": "星羅棋布",
+      "zhCN": "星罗棋布",
+      "aliases": [],
+      "season": "문정 2"
+    },
+    {
+      "kind": "고유전법",
+      "ko": "불굴의 의지",
+      "zhTW": "不屈意志",
+      "zhCN": "不屈意志",
+      "aliases": [],
+      "season": "문정 2"
+    }
+  ]
+}

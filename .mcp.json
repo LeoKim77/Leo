@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cheonha-sim": {
+      "command": "pnpm",
+      "args": ["--silent", "--filter", "@cheonha/mcp-server", "start"]
+    }
+  }
+}

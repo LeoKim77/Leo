@@ -1,0 +1,134 @@
+// 앱 상태: 데이터 번들, 감사 결과, 보유 목록(브라우저 저장)
+import type { GameBundle, ChangelogEntry, DeckSpec } from '@cheonha/engine';
+import type { AuditReport } from '@cheonha/audit';
+
+export type Bundle = GameBundle & { changelog: ChangelogEntry[] };
+
+export const app = {
+  bundle: null as unknown as Bundle,
+  audit: null as AuditReport | null,
+  decklab: null as any,
+  season: 'S2',
+};
+
+const STORE_KEY = 'cheonha-lab:user:v1';
+export interface UserData {
+  ownedGenerals: string[];
+  ownedSkills: string[];
+  decks: Array<DeckSpec & { id: string; savedAt: string }>;
+}
+// 보유 무장·전법·내 덱 저장.
+// claude.ai 아티팩트에서는 휴대폰 앱의 브라우저 저장소가 다시 열 때 비워질 수 있어서,
+// 아티팩트 데이터베이스(db 기능, 문서 user/main)에 저장하고 브라우저 저장소는 보조로만 쓴다.
+const EMPTY_USER: UserData = { ownedGenerals: [], ownedSkills: [], decks: [] };
+let memUser: UserData | null = null;
+let dbDoc: any = null;
+let dbTimer: any = null;
+export let userStoreStatus: 'local' | 'cloud' | 'cloud-error' = 'local';
+
+export function loadUser(): UserData {
+  if (memUser) return structuredClone(memUser);
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (raw) { memUser = { ...EMPTY_USER, ...JSON.parse(raw) }; return structuredClone(memUser!); }
+  } catch { /* 저장소 차단 등 */ }
+  return structuredClone(EMPTY_USER);
+}
+export function saveUser(u: UserData) {
+  memUser = structuredClone(u);
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(u)); } catch { /* 무시 */ }
+  if (dbDoc) {
+    clearTimeout(dbTimer);
+    dbTimer = setTimeout(() => {
+      dbDoc.set({ ...memUser, savedAt: new Date().toISOString() })
+        .then(() => { userStoreStatus = 'cloud'; })
+        .catch(() => { userStoreStatus = 'cloud-error'; });
+    }, 400);
+  }
+}
+
+/** 아티팩트 데이터베이스에서 보유 정보를 불러온다. 불러오면 true (화면을 다시 그려야 함) */
+export async function syncUserFromCloud(): Promise<boolean> {
+  const c = (window as any).claude;
+  if (!c?.use) return false;
+  try {
+    const db = await Promise.race([c.use('db'), new Promise(r => setTimeout(() => r(null), 12000))]) as any;
+    if (!db) return false;
+    dbDoc = db.doc('user/main');
+    const snap = await dbDoc.get();
+    userStoreStatus = 'cloud';
+    if (snap.exists) {
+      const d = snap.data() || {};
+      memUser = { ...EMPTY_USER, ownedGenerals: d.ownedGenerals || [], ownedSkills: d.ownedSkills || [], decks: d.decks || [] };
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(memUser)); } catch { /* 무시 */ }
+      return true;
+    }
+    // 클라우드에 아직 없으면 이 기기에 있던 것을 올려 둔다
+    if (memUser || localStorage.getItem(STORE_KEY)) saveUser(loadUser());
+    return false;
+  } catch { userStoreStatus = 'cloud-error'; return false; }
+}
+
+/** 단일 파일 빌드는 데이터를 <script type="application/json" id="…"> 로 품고 있다 */
+function embedded(id: string): any | undefined {
+  const el = document.getElementById(id);
+  if (!el?.textContent) return undefined;
+  try { return JSON.parse(el.textContent); } catch { return undefined; }
+}
+
+export async function loadData() {
+  const get = async (p: string) => {
+    const tag = { './data/bundle.json': 'cheonha-bundle', './data/audit.json': 'cheonha-audit' }[p];
+    const e = tag ? embedded(tag) : undefined;
+    if (e) return e;
+    const r = await fetch(p); if (!r.ok) throw new Error(`${p} ${r.status}`); return r.json();
+  };
+  app.bundle = await get('./data/bundle.json');
+  app.season = app.bundle.season;
+  app.audit = await get('./data/audit.json').catch(() => null);
+}
+export async function loadDecklab() {
+  if (!app.decklab) app.decklab = embedded('cheonha-decklab') ?? await (await fetch('./data/reference-decklab.json')).json();
+  return app.decklab;
+}
+
+const SEASON_ORDER = (s: string) => parseInt(s.replace(/\D/g, '') || '0', 10);
+/** 선택한 시즌까지 출시된 항목인가 (한국 서버 기준) */
+export const inSeason = (season: string) => SEASON_ORDER(season) <= SEASON_ORDER(app.season);
+
+export const generalById = (id: string) => app.bundle.generals.find(g => g.id === id);
+export const skillById = (id: string) => app.bundle.skills.find(s => s.id === id);
+/** 기획 플랫폼(정본 규정·도감) 카테고리 링크 */
+export const designLink = (cat: string) => `${(app.bundle as any)?.site?.designUrl || ''}#c-${cat}`;
+export const skillAudit = (id: string) => app.audit?.skills.find(s => s.id === id);
+
+/** 해외 표기 → 한국판 용어 (웹용 간이판: 데이터 도구와 같은 표 사용) */
+export function ko(text: string): string {
+  if (!text) return text;
+  let out = text;
+  const map = [...app.bundle.termMap].filter(m => m.from !== m.to && (m as any).autoReplace !== false).sort((a, b) => b.from.length - a.from.length);
+  for (const m of map) if (out.includes(m.from)) out = out.split(m.from).join(m.to);
+  return out;
+}
+
+/** 임시값·추정값 항목 (공개 자료 대기) — dataStatus 에서 '임시·미확인·추정·확인 필요' 인 것 */
+export const DATA_FIELD: Record<string, string> = { stats: '능력치', unitType: '병종', row: '배치', faction: '진영', name: '이름', kind: '전법 종류', text: '원문', procRate: '발동률' };
+export function tentative(ds?: Record<string, string>): Array<[string, string]> {
+  return Object.entries(ds || {}).filter(([, v]) => /임시|미확인|추정|확인 필요|번역/.test(v)).map(([k, v]) => [DATA_FIELD[k] || k, v]);
+}
+/** 지금 고른 시즌보다 뒤 시즌 자료가 있으면 그 시즌 id */
+export function laterSeasonWithData(): string | undefined {
+  const order = (x: string) => parseInt(x.replace(/\D/g, '') || '0', 10);
+  const later = app.bundle.seasons.map(x => x.id).filter(id => order(id) > order(app.season));
+  return later.find(id => app.bundle.tierDecks.some(t => t.season === id) || app.bundle.generals.some(g => g.season === id));
+}
+/** 화면 안 버튼에서 시즌 바꾸기 — 상단 선택 상자도 맞추고 지금 화면을 다시 그린다 */
+export function setSeason(id: string) {
+  app.season = id;
+  const sel = document.getElementById('season-select') as HTMLSelectElement | null;
+  if (sel) sel.value = id;
+  window.dispatchEvent(new HashChangeEvent('hashchange'));
+}
+export function seasonLabel(id: string) {
+  return app.bundle.seasons.find(s => s.id === id)?.label || id;
+}

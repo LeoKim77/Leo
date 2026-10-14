@@ -1,0 +1,1378 @@
+{
+  "id": "2026-10-05-zgl-lx-zy",
+  "date": "2026-10-05",
+  "season": "S2",
+  "source": "사용자 전보 녹화 2편(1~3턴 / 4~6턴·통계), 구글 드라이브. 아군 제갈량(전열)·육손·주유(후열) 기형진 vs 훈련소 NPC(LV12 토지 수비군) 서서(전열)·여몽·노숙(후열) 기형진, 최대 병력 16,000. 승리(6턴). NPC 세 번째 전법 Lv9(여몽 청풍 질주 170%). 주유 기지의 승리 툴팁 61.8%·41.2% = 승품 1.",
+  "links": [
+    "https://drive.google.com/file/d/1ZBmxhYStsyFOymNj_L-VnQ1wbgif_dWh/view",
+    "https://drive.google.com/file/d/1eVwMnX_E0W_ElA-rtv-eixPsPzfvvSoX/view"
+  ],
+  "battle": {
+    "ally": {
+      "formation": "기형진",
+      "units": [
+        {
+          "generalId": "zhuge-liang",
+          "skills": [
+            "loot-fire",
+            "talk-laugh-heart"
+          ],
+          "manual": "출사표"
+        },
+        {
+          "generalId": "lu-xun",
+          "skills": [
+            "hide-light",
+            "best-strategy"
+          ],
+          "manual": "분영"
+        },
+        {
+          "generalId": "zhou-yu",
+          "skills": [
+            "see-truth",
+            "war-sustains-war"
+          ]
+        }
+      ]
+    },
+    "enemy": {
+      "formation": "기형진",
+      "units": [
+        "xu-shu",
+        "lü-meng",
+        "lu-su"
+      ],
+      "skills": {
+        "xu-shu": [
+          "civil-military",
+          "flood-seven"
+        ],
+        "lü-meng": [
+          "direct-world",
+          "fresh-breeze"
+        ],
+        "lu-su": [
+          "foresight",
+          "strategize"
+        ]
+      }
+    }
+  },
+  "outOfScopeSeen": [
+    "진영 오 강화 능력치 +5%",
+    "병종 보너스(궁병 주는 피해 +5%, 창병 등)",
+    "병종 진급(완벽한 사격 1턴 추격 +5%)",
+    "건물 기술(능력치 +20, 국가별 피해 ±5%, 강궁 회심·묘책 +10%)",
+    "기좌 직업 숙련(받는 책략 피해 −5%)",
+    "인연(조정의 기둥, 나라의 동량 주는 책략 +8%, 괄목상대)",
+    "장비(상아 바둑돌 받는 치유 +4%, 탈것-천운 관통·간파 +5%)",
+    "일반 병법(약지·시리·심리·기동·화계·호익)"
+  ],
+  "tooltips": [
+    {
+      "turn": 1,
+      "unit": "zhuge-liang",
+      "stats": {
+        "무력": 97.7,
+        "지력": 366.5,
+        "통솔": 245.75,
+        "선공": 158.07
+      },
+      "troops": 8899,
+      "maxTroops": 8899,
+      "mods": {
+        "주는피해": 0.1,
+        "주는책략피해": 0.08,
+        "받는피해": -0.11,
+        "받는책략피해": -0.05,
+        "심리공격": 0.24,
+        "간파": 0.06
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "lu-xun",
+      "stats": {
+        "무력": 112.4,
+        "지력": 325.55,
+        "통솔": 221.6,
+        "선공": 160.7
+      },
+      "troops": 8577,
+      "maxTroops": 8577,
+      "mods": {
+        "주는피해": 0.22,
+        "주는책략피해": 0.08,
+        "받는피해": -0.05,
+        "받는책략피해": -0.05,
+        "심리공격": 0.05
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "zhou-yu",
+      "stats": {
+        "무력": 169.52,
+        "지력": 338.78,
+        "통솔": 240.39,
+        "선공": 167.52
+      },
+      "troops": 9115,
+      "maxTroops": 9115,
+      "mods": {
+        "주는피해": 0.22,
+        "주는책략피해": 0.08,
+        "받는피해": -0.05,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "xu-shu",
+      "stats": {
+        "무력": 192.67,
+        "지력": 235.72,
+        "통솔": 194.77,
+        "선공": 203.7
+      },
+      "troops": 16000,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.021,
+        "받는피해": 0.0468
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "lü-meng",
+      "stats": {
+        "무력": 187.95,
+        "지력": 245.7,
+        "통솔": 193.2,
+        "선공": 185.32
+      },
+      "troops": 16000,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.141,
+        "받는피해": -0.014
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "lu-su",
+      "stats": {
+        "무력": 93.45,
+        "지력": 248.85,
+        "통솔": 181.12,
+        "선공": 183.22
+      },
+      "troops": 16000,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.141,
+        "받는피해": 0.106
+      }
+    }
+  ],
+  "damageSamples": [
+    {
+      "turn": 1,
+      "attacker": "xu-shu",
+      "defender": "zhuge-liang",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 216,
+      "at": {
+        "zhuge-liang": {
+          "troops": 8899
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "lü-meng",
+      "defender": "zhuge-liang",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 207,
+      "at": {
+        "zhuge-liang": {
+          "troops": 8683
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "zhuge-liang",
+      "defender": "xu-shu",
+      "kind": "초선차전",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "observed": 573,
+      "at": {
+        "zhuge-liang": {
+          "troops": 8476
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "zhuge-liang",
+      "defender": "lu-su",
+      "kind": "초선차전",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "observed": 678,
+      "at": {
+        "zhuge-liang": {
+          "troops": 8614
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 1,
+      "attacker": "zhuge-liang",
+      "defender": "xu-shu",
+      "kind": "초선차전",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "observed": 566,
+      "at": {
+        "zhuge-liang": {
+          "troops": 8777
+        },
+        "xu-shu": {
+          "troops": 15427
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "zhou-yu",
+      "defender": "xu-shu",
+      "kind": "기지의 승리",
+      "dmgType": "책략",
+      "ratio": 0.6,
+      "observed": 465,
+      "at": {
+        "xu-shu": {
+          "troops": 14861
+        }
+      },
+      "grade": 1,
+      "note": "인게임 툴팁 61.8%(승품 1)"
+    },
+    {
+      "turn": 1,
+      "attacker": "zhou-yu",
+      "defender": "lu-su",
+      "kind": "기지의 승리",
+      "dmgType": "책략",
+      "ratio": 0.6,
+      "observed": 632,
+      "at": {
+        "lu-su": {
+          "troops": 15322
+        }
+      },
+      "grade": 1,
+      "counter": 0.15
+    },
+    {
+      "turn": 1,
+      "attacker": "zhuge-liang",
+      "defender": "xu-shu",
+      "kind": "독설가",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 905,
+      "at": {
+        "zhuge-liang": {
+          "troops": 8834,
+          "mods": {
+            "받는피해": 0.1752
+          }
+        },
+        "xu-shu": {
+          "troops": 14396
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "zhuge-liang",
+      "defender": "lu-su",
+      "kind": "초선차전",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "observed": 762,
+      "at": {
+        "zhuge-liang": {
+          "troops": 8834,
+          "mods": {
+            "받는피해": 0.1752
+          }
+        },
+        "lu-su": {
+          "troops": 14690
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 1,
+      "attacker": "lu-su",
+      "defender": "zhuge-liang",
+      "kind": "예측의 신",
+      "dmgType": "책략",
+      "ratio": 1.8,
+      "observed": 539,
+      "at": {
+        "lu-su": {
+          "troops": 13437,
+          "mods": {
+            "받는피해": -0.1752
+          }
+        },
+        "zhuge-liang": {
+          "troops": 8834,
+          "mods": {
+            "받는피해": 0.1752
+          }
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "lu-su",
+      "defender": "lu-xun",
+      "kind": "예측의 신",
+      "dmgType": "책략",
+      "ratio": 1.8,
+      "observed": 626,
+      "at": {
+        "lu-su": {
+          "troops": 13437,
+          "mods": {
+            "받는피해": -0.1752
+          }
+        },
+        "lu-xun": {
+          "troops": 8577,
+          "mods": {
+            "받는피해": 0.2352
+          }
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "zhou-yu",
+      "defender": "xu-shu",
+      "kind": "허실 간파",
+      "dmgType": "책략",
+      "ratio": 1.4,
+      "observed": 1040,
+      "at": {
+        "zhou-yu": {
+          "stats": {
+            "무력": 139.09,
+            "지력": 339.59,
+            "통솔": 241.21
+          }
+        },
+        "xu-shu": {
+          "troops": 12511,
+          "stats": {
+            "지력": 204.47,
+            "통솔": 163.52
+          },
+          "mods": {
+            "받는피해": -0.2175
+          }
+        }
+      },
+      "note": "주유 지력은 첫 목표에게서 빼앗은 뒤 값"
+    },
+    {
+      "turn": 1,
+      "attacker": "zhou-yu",
+      "defender": "lü-meng",
+      "kind": "허실 간파",
+      "dmgType": "책략",
+      "ratio": 1.4,
+      "observed": 1462,
+      "at": {
+        "zhou-yu": {
+          "stats": {
+            "무력": 139.09,
+            "지력": 371.77,
+            "통솔": 273.38
+          }
+        },
+        "lü-meng": {
+          "troops": 15510,
+          "stats": {
+            "지력": 213.52,
+            "통솔": 161.02
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 1,
+      "attacker": "zhou-yu",
+      "defender": "lü-meng",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 405,
+      "at": {
+        "zhou-yu": {
+          "stats": {
+            "무력": 139.09,
+            "지력": 371.77,
+            "통솔": 273.38
+          }
+        },
+        "lü-meng": {
+          "troops": 14048,
+          "stats": {
+            "지력": 213.52,
+            "통솔": 161.02
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 2,
+      "attacker": "xu-shu",
+      "defender": "zhou-yu",
+      "kind": "문무겸비",
+      "dmgType": "책략",
+      "ratio": 2.2,
+      "observed": 442,
+      "at": {
+        "xu-shu": {
+          "troops": 11471,
+          "stats": {
+            "지력": 204.47,
+            "통솔": 163.52
+          },
+          "mods": {
+            "받는피해": -0.3375
+          }
+        },
+        "zhou-yu": {
+          "stats": {
+            "무력": 139.09,
+            "지력": 371.77,
+            "통솔": 273.38
+          },
+          "mods": {
+            "받는피해": -0.164
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "xu-shu",
+      "defender": "zhou-yu",
+      "kind": "문무겸비",
+      "dmgType": "병기",
+      "ratio": 2.2,
+      "observed": 417,
+      "at": {
+        "xu-shu": {
+          "troops": 11471,
+          "stats": {
+            "지력": 204.47,
+            "통솔": 163.52
+          }
+        },
+        "zhou-yu": {
+          "troops": 8673,
+          "stats": {
+            "무력": 139.09,
+            "지력": 371.77,
+            "통솔": 273.38
+          },
+          "mods": {
+            "받는피해": -0.164
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "lü-meng",
+      "defender": "zhuge-liang",
+      "kind": "백의도강",
+      "dmgType": "책략",
+      "ratio": 1.8,
+      "observed": 477,
+      "at": {
+        "lü-meng": {
+          "troops": 13643,
+          "stats": {
+            "지력": 213.52,
+            "통솔": 161.02
+          }
+        },
+        "zhuge-liang": {
+          "troops": 8295,
+          "stats": {
+            "무력": 67.27,
+            "지력": 336.07,
+            "통솔": 215.32
+          },
+          "mods": {
+            "받는피해": 0.0684
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "lü-meng",
+      "defender": "zhou-yu",
+      "kind": "백의도강",
+      "dmgType": "책략",
+      "ratio": 1.8,
+      "observed": 360,
+      "at": {
+        "lü-meng": {
+          "troops": 13643,
+          "stats": {
+            "지력": 213.52,
+            "통솔": 161.02
+          }
+        },
+        "zhou-yu": {
+          "troops": 8256,
+          "stats": {
+            "무력": 139.09,
+            "지력": 371.77,
+            "통솔": 273.38
+          },
+          "mods": {
+            "받는피해": -0.164
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "xu-shu",
+      "defender": "lu-xun",
+      "kind": "천하평론",
+      "dmgType": "병기",
+      "ratio": 0.8,
+      "observed": 247,
+      "at": {
+        "xu-shu": {
+          "troops": 11063,
+          "stats": {
+            "지력": 204.47,
+            "통솔": 163.52
+          }
+        },
+        "lu-xun": {
+          "troops": 7951,
+          "mods": {
+            "받는피해": 0.2352
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "xu-shu",
+      "defender": "zhuge-liang",
+      "kind": "천하평론",
+      "dmgType": "병기",
+      "ratio": 0.8,
+      "observed": 212,
+      "at": {
+        "xu-shu": {
+          "troops": 11063,
+          "stats": {
+            "지력": 204.47,
+            "통솔": 163.52
+          }
+        },
+        "zhuge-liang": {
+          "troops": 7818,
+          "stats": {
+            "무력": 67.27,
+            "지력": 336.07,
+            "통솔": 215.32
+          },
+          "mods": {
+            "받는피해": 0.0684
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "xu-shu",
+      "defender": "zhou-yu",
+      "kind": "천하평론",
+      "dmgType": "병기",
+      "ratio": 0.8,
+      "observed": 150,
+      "at": {
+        "xu-shu": {
+          "troops": 11063,
+          "stats": {
+            "지력": 204.47,
+            "통솔": 163.52
+          }
+        },
+        "zhou-yu": {
+          "troops": 7896,
+          "stats": {
+            "무력": 139.09,
+            "지력": 371.77,
+            "통솔": 273.38
+          },
+          "mods": {
+            "받는피해": -0.164
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "lu-su",
+      "defender": "zhuge-liang",
+      "kind": "천하평론",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "observed": 239,
+      "at": {
+        "lu-su": {
+          "troops": 12984,
+          "mods": {
+            "받는피해": -0.1752
+          }
+        },
+        "zhuge-liang": {
+          "troops": 7606,
+          "stats": {
+            "무력": 67.27,
+            "지력": 336.07,
+            "통솔": 215.32
+          },
+          "mods": {
+            "받는피해": 0.0684
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "lu-su",
+      "defender": "zhou-yu",
+      "kind": "천하평론",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "observed": 173,
+      "at": {
+        "lu-su": {
+          "troops": 12984,
+          "mods": {
+            "받는피해": -0.1752
+          }
+        },
+        "zhou-yu": {
+          "troops": 7746,
+          "stats": {
+            "무력": 139.09,
+            "지력": 371.77,
+            "통솔": 273.38
+          },
+          "mods": {
+            "받는피해": -0.164
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "lu-su",
+      "defender": "lu-xun",
+      "kind": "천하평론",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "observed": 273,
+      "at": {
+        "lu-su": {
+          "troops": 12984,
+          "mods": {
+            "받는피해": -0.1752
+          }
+        },
+        "lu-xun": {
+          "troops": 7704,
+          "mods": {
+            "받는피해": 0.2352
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "zhuge-liang",
+      "defender": "lu-su",
+      "kind": "초선차전",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "observed": 420,
+      "at": {
+        "zhuge-liang": {
+          "troops": 7367,
+          "stats": {
+            "무력": 67.27,
+            "지력": 336.07,
+            "통솔": 215.32
+          },
+          "mods": {
+            "받는피해": 0.0684
+          }
+        },
+        "lu-su": {
+          "troops": 12984,
+          "mods": {
+            "받는피해": -0.1752
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 2,
+      "attacker": "lü-meng",
+      "defender": "lu-xun",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 286,
+      "at": {
+        "lü-meng": {
+          "troops": 13643,
+          "stats": {
+            "지력": 213.52,
+            "통솔": 161.02
+          }
+        },
+        "lu-xun": {
+          "troops": 7431,
+          "mods": {
+            "받는피해": 0.2352
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "lu-su",
+      "defender": "zhuge-liang",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 204,
+      "at": {
+        "lu-su": {
+          "troops": 12564,
+          "mods": {
+            "받는피해": -0.014
+          }
+        },
+        "zhuge-liang": {
+          "troops": 7398,
+          "stats": {
+            "무력": 36.84,
+            "지력": 305.64,
+            "통솔": 184.89
+          },
+          "mods": {
+            "받는피해": 0.0684
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "lu-xun",
+      "defender": "xu-shu",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 194,
+      "at": {
+        "lu-xun": {
+          "troops": 7145,
+          "mods": {
+            "받는피해": -0.05,
+            "주는책략피해": 0.17
+          }
+        },
+        "xu-shu": {
+          "troops": 11063,
+          "stats": {
+            "지력": 204.47,
+            "통솔": 163.52
+          },
+          "mods": {
+            "받는피해": -0.3375
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "zhou-yu",
+      "defender": "lu-su",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1.0,
+      "observed": 310,
+      "at": {
+        "zhou-yu": {
+          "troops": 7896,
+          "stats": {
+            "무력": 108.66,
+            "지력": 341.34,
+            "통솔": 242.95
+          },
+          "mods": {
+            "받는피해": -0.164
+          }
+        },
+        "lu-su": {
+          "troops": 12564,
+          "mods": {
+            "받는피해": -0.014
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 2,
+      "attacker": "zhuge-liang",
+      "defender": "xu-shu",
+      "kind": "방화범",
+      "dmgType": "책략",
+      "ratio": 2.2,
+      "observed": 922,
+      "at": {
+        "zhuge-liang": {
+          "troops": 7194,
+          "stats": {
+            "무력": 36.84,
+            "지력": 305.64,
+            "통솔": 184.89
+          }
+        },
+        "xu-shu": {
+          "troops": 10869,
+          "stats": {
+            "지력": 204.47,
+            "통솔": 163.52
+          },
+          "mods": {
+            "받는피해": -0.3375
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "zhuge-liang",
+      "defender": "xu-shu",
+      "kind": "초선차전",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "observed": 343,
+      "at": {
+        "zhuge-liang": {
+          "troops": 7261,
+          "stats": {
+            "무력": 36.84,
+            "지력": 305.64,
+            "통솔": 184.89
+          }
+        },
+        "xu-shu": {
+          "troops": 9947,
+          "stats": {
+            "지력": 204.47,
+            "통솔": 163.52
+          },
+          "mods": {
+            "받는피해": -0.3375
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "zhuge-liang",
+      "defender": "xu-shu",
+      "kind": "방화범",
+      "dmgType": "병기",
+      "ratio": 2.2,
+      "observed": 315,
+      "at": {
+        "zhuge-liang": {
+          "troops": 7311,
+          "stats": {
+            "무력": 36.84,
+            "지력": 305.64,
+            "통솔": 184.89
+          }
+        },
+        "xu-shu": {
+          "troops": 9269,
+          "stats": {
+            "지력": 204.47,
+            "통솔": 163.52
+          },
+          "mods": {
+            "받는피해": -0.3375
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "zhuge-liang",
+      "defender": "lu-su",
+      "kind": "방화범",
+      "dmgType": "책략",
+      "ratio": 2.2,
+      "observed": 1295,
+      "at": {
+        "zhuge-liang": {
+          "troops": 7311,
+          "stats": {
+            "무력": 36.84,
+            "지력": 305.64,
+            "통솔": 184.89
+          }
+        },
+        "lu-su": {
+          "troops": 12254,
+          "mods": {
+            "받는피해": -0.014
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 2,
+      "attacker": "zhuge-liang",
+      "defender": "lü-meng",
+      "kind": "초선차전",
+      "dmgType": "책략",
+      "ratio": 0.8,
+      "observed": 556,
+      "at": {
+        "zhuge-liang": {
+          "troops": 7405,
+          "stats": {
+            "무력": 36.84,
+            "지력": 305.64,
+            "통솔": 184.89
+          }
+        },
+        "lü-meng": {
+          "troops": 13643,
+          "stats": {
+            "지력": 213.52,
+            "통솔": 161.02
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 2,
+      "attacker": "zhuge-liang",
+      "defender": "lu-su",
+      "kind": "방화범",
+      "dmgType": "병기",
+      "ratio": 2.2,
+      "observed": 439,
+      "at": {
+        "zhuge-liang": {
+          "troops": 7471,
+          "stats": {
+            "무력": 36.84,
+            "지력": 305.64,
+            "통솔": 184.89
+          }
+        },
+        "lu-su": {
+          "troops": 10959,
+          "mods": {
+            "받는피해": -0.014
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 3,
+      "attacker": "lu-xun",
+      "defender": "xu-shu",
+      "kind": "화소연영",
+      "dmgType": "책략",
+      "ratio": 2.2,
+      "observed": 1250,
+      "at": {
+        "lu-xun": {
+          "troops": 6431,
+          "mods": {
+            "주는책략피해": 0.24
+          }
+        },
+        "xu-shu": {
+          "troops": 5888,
+          "stats": {
+            "지력": 203.7,
+            "통솔": 194.77
+          },
+          "mods": {
+            "받는피해": -0.2175
+          }
+        }
+      }
+    },
+    {
+      "turn": 4,
+      "attacker": "lu-xun",
+      "defender": "lu-su",
+      "kind": "화소연영",
+      "dmgType": "책략",
+      "ratio": 2.2,
+      "observed": 2268,
+      "at": {
+        "lu-xun": {
+          "troops": 5756,
+          "stats": {
+            "무력": 81.97,
+            "지력": 305.12,
+            "통솔": 171.17
+          },
+          "mods": {
+            "주는책략피해": 0.41
+          }
+        },
+        "lu-su": {
+          "troops": 5986,
+          "stats": {
+            "지력": 216.17
+          },
+          "mods": {
+            "받는피해": -0.014,
+            "받는액티브피해": -0.12
+          }
+        }
+      },
+      "note": "묘책 150%",
+      "crit": true,
+      "counter": 0.15
+    },
+    {
+      "turn": 4,
+      "attacker": "zhou-yu",
+      "defender": "xu-shu",
+      "kind": "허실 간파",
+      "dmgType": "책략",
+      "ratio": 1.4,
+      "observed": 802,
+      "at": {
+        "zhou-yu": {
+          "troops": 4549,
+          "stats": {
+            "무력": 169.52,
+            "지력": 370.93,
+            "통솔": 252.54
+          }
+        },
+        "xu-shu": {
+          "troops": 1376,
+          "stats": {
+            "지력": 171.55,
+            "통솔": 162.62
+          },
+          "mods": {
+            "받는피해": -0.3375
+          }
+        }
+      }
+    },
+    {
+      "turn": 4,
+      "attacker": "zhou-yu",
+      "defender": "lü-meng",
+      "kind": "허실 간파",
+      "dmgType": "책략",
+      "ratio": 1.4,
+      "observed": 869,
+      "at": {
+        "zhou-yu": {
+          "troops": 4549,
+          "stats": {
+            "무력": 169.52,
+            "지력": 404.01,
+            "통솔": 285.62
+          }
+        },
+        "lü-meng": {
+          "troops": 8079,
+          "stats": {
+            "지력": 212.61,
+            "통솔": 160.11
+          },
+          "mods": {
+            "받는액티브피해": -0.12
+          }
+        }
+      },
+      "counter": 0.15
+    }
+  ],
+  "healSamples": [
+    {
+      "turn": 3,
+      "healer": "zhou-yu",
+      "target": "lu-xun",
+      "skill": "기지의 승리-회복 #1",
+      "ratio": 0.4,
+      "grade": 1,
+      "observed": 179,
+      "healerStats": {
+        "지력": 341.34,
+        "무력": 108.66
+      }
+    },
+    {
+      "turn": 3,
+      "healer": "zhou-yu",
+      "target": "lu-xun",
+      "skill": "기지의 승리-회복 #2",
+      "ratio": 0.4,
+      "grade": 1,
+      "observed": 178,
+      "healerStats": {
+        "지력": 341.34,
+        "무력": 108.66
+      }
+    },
+    {
+      "turn": 4,
+      "healer": "zhou-yu",
+      "target": "lu-xun",
+      "skill": "기지의 승리-회복 #3",
+      "ratio": 0.4,
+      "grade": 1,
+      "observed": 135,
+      "healerStats": {
+        "지력": 277.92,
+        "무력": 108.66
+      }
+    },
+    {
+      "turn": 5,
+      "healer": "zhou-yu",
+      "target": "lu-xun",
+      "skill": "기지의 승리-회복 #4",
+      "ratio": 0.4,
+      "grade": 1,
+      "observed": 228,
+      "healerStats": {
+        "지력": 404.01,
+        "무력": 169.52
+      }
+    },
+    {
+      "turn": 6,
+      "healer": "zhou-yu",
+      "target": "lu-xun",
+      "skill": "기지의 승리-회복 #5",
+      "ratio": 0.4,
+      "grade": 1,
+      "observed": 175,
+      "healerStats": {
+        "지력": 338.78,
+        "무력": 169.52
+      }
+    },
+    {
+      "turn": 3,
+      "healer": "lü-meng",
+      "target": "xu-shu",
+      "skill": "청풍 질주(Lv9 170%)",
+      "ratio": 1.7,
+      "observed": 421,
+      "healerStats": {
+        "지력": 213.52
+      }
+    },
+    {
+      "turn": 3,
+      "healer": "lü-meng",
+      "target": "lü-meng",
+      "skill": "청풍 질주(Lv9 170%)",
+      "ratio": 1.7,
+      "observed": 489,
+      "healerStats": {
+        "지력": 245.7
+      }
+    },
+    {
+      "turn": 5,
+      "healer": "lü-meng",
+      "target": "lü-meng",
+      "skill": "청풍 질주(Lv9 170%)",
+      "ratio": 1.7,
+      "observed": 481,
+      "healerStats": {
+        "지력": 245.7
+      }
+    },
+    {
+      "turn": 5,
+      "healer": "lü-meng",
+      "target": "lu-su",
+      "skill": "청풍 질주(Lv9 170%)",
+      "ratio": 1.7,
+      "observed": 482,
+      "healerStats": {
+        "지력": 245.7
+      }
+    }
+  ],
+  "influenceSamples": [
+    {
+      "turn": 1,
+      "skill": "형주 분할 받는 피해 증가",
+      "caster": "노숙",
+      "base": 20,
+      "observed": 28.52,
+      "stat": "지력",
+      "statValue": 248.85
+    },
+    {
+      "turn": 5,
+      "skill": "형주 분할 받는 피해 증가",
+      "caster": "노숙",
+      "base": 20,
+      "observed": 27.95,
+      "stat": "지력",
+      "statValue": 231.17
+    },
+    {
+      "turn": 1,
+      "skill": "허실 간파 지력·통솔 빼앗기(승품1 추정 ×1.03 제외 전)",
+      "caster": "주유",
+      "base": 20,
+      "observed": 31.24,
+      "stat": "지력",
+      "statValue": 308.35
+    },
+    {
+      "turn": 1,
+      "skill": "허실 간파 지력·통솔 빼앗기",
+      "caster": "주유",
+      "base": 20,
+      "observed": 32.17,
+      "stat": "지력",
+      "statValue": 339.59
+    },
+    {
+      "turn": 4,
+      "skill": "허실 간파 지력·통솔 빼앗기",
+      "caster": "주유",
+      "base": 20,
+      "observed": 32.15,
+      "stat": "지력",
+      "statValue": 338.78
+    },
+    {
+      "turn": 4,
+      "skill": "허실 간파 지력·통솔 빼앗기",
+      "caster": "주유",
+      "base": 20,
+      "observed": 33.08,
+      "stat": "지력",
+      "statValue": 370.93
+    },
+    {
+      "turn": 3,
+      "skill": "분영 소각(최고 속성 5%)",
+      "caster": "육손",
+      "base": 5,
+      "observed": 7.707,
+      "stat": "지력",
+      "statValue": 325.55
+    },
+    {
+      "turn": 4,
+      "skill": "분영 소각(최고 속성 5%)",
+      "caster": "육손",
+      "base": 5,
+      "observed": 7.556,
+      "stat": "지력",
+      "statValue": 305.12
+    },
+    {
+      "turn": 6,
+      "skill": "분영 소각(최고 속성 5%)",
+      "caster": "육손",
+      "base": 5,
+      "observed": 7.919,
+      "stat": "지력",
+      "statValue": 355.55
+    },
+    {
+      "turn": 1,
+      "skill": "전략 계획 능력치 감소(NPC 노숙, 전법 등급 미상)",
+      "caster": "노숙",
+      "base": 25,
+      "observed": 30.42,
+      "stat": "지력",
+      "statValue": 248.85
+    },
+    {
+      "turn": 1,
+      "skill": "도광양회 고유 액티브 발동률",
+      "caster": "육손",
+      "base": 6,
+      "observed": 12.5,
+      "stat": "지력",
+      "statValue": 325.55,
+      "note": "툴팁 '고유 액티브전법 발동률 12.50%'"
+    }
+  ],
+  "grades": {
+    "u-zhou-yu": 1
+  },
+  "explained": [
+    "병종 상성: 아군 궁병 → 노숙·여몽(창병) 피해 표본은 상성 +15%(counter)를 곱해 비교 — 시뮬 기본은 병종 효과 제외(R-015)"
+  ]
+}

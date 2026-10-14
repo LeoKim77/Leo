@@ -1,0 +1,600 @@
+[
+  {
+    "id": "u-yang-xiu",
+    "name": {
+      "ko": "민첩한 대응"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "yang-xiu",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "지휘",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "적군 전체가 액티브 전법 발동 후, 적에게 50%의 책략 피해를 준다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-liu-ye",
+    "name": {
+      "ko": "지피지기"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "liu-ye",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.35,
+    "procRateText": "35%",
+    "text": "1턴 동안 준비 후 랜덤 적군 2명에게 2턴 동안 지속되는 침묵 상태를 부여하며, 160%의 책략 피해를 준다. 목표가 침묵 상태를 보유 중이면, 추가로 160%의 책략 피해를 준다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-wen-pin",
+    "name": {
+      "ko": "형강 사수"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "wen-pin",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "액티브",
+    "trait": "방어",
+    "procRate": 0.6,
+    "procRateText": "60%",
+    "text": "자신의 통솔이 40포인트 증가하며, 2턴 지속되는 정신 회복을(를) 획득한다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-cao-hong",
+    "name": {
+      "ko": "팔호의 수장"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "cao-hong",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "1턴 동안 준비 후 랜덤 적군 단일 목표에게 360%의 병기와 책략 피해를 준다. 목표가 홍수 상태면 이번 피해가 30% 증가한다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-zhong-yao",
+    "name": {
+      "ko": "비상"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhong-yao",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.65,
+    "procRateText": "65%",
+    "text": "적군 전체에게 110%의 책략 피해를 주며, 2턴 동안 자신의 간파이(가) 10% 증가한다, 2회 중첩될 수 있다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-cao-zhen",
+    "name": {
+      "ko": "예측 불가"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "cao-zhen",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "받는 피해가 병기 피해면 자신이 받는 병기 피해가 10% 감소한다. 그렇지 않으면 자신이 받는 책략 피해가 10% 감소하며, 최대 5회 발동된다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-zang-ba",
+    "name": {
+      "ko": "강가 격파"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zang-ba",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "1턴 동안 준비 후 2턴 동안 랜덤 적군 2명의 통솔을 35포인트 감소시키고, 이후 280%의 병기 피해를 준다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-guo-huai",
+    "name": {
+      "ko": "옹량 지휘"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "guo-huai",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "패시브",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신이 받는 피해가 14% 감소하며(통솔의 영향 받음), 자신이 병기 피해를 받은 후, 60% 확률로 2턴 동안 공격자의 무력을 20포인트 감소시킨다, 2회 중첩될 수 있다. 자신이 책략 피해를 받은 후, 60% 확률로 2턴 동안 공격자의 지력을 20포인트 감소시킨다, 2회 중첩될 수 있다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-jian-yong",
+    "name": {
+      "ko": "공리공론"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "jian-yong",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "액티브",
+    "trait": "치유",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "2턴 동안 랜덤 아군 2명이 받는 책략 피해가 20% 감소하며, 병력을 회복한다(치유율: 140%, 지력의 영향 받음).",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-ma-su",
+    "name": {
+      "ko": "뛰어난 인재"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "ma-su",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "패시브",
+    "trait": "책략",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 묘책 확률이 12% 증가하며, 짝수 턴에 적군 전체에게 100%의 책략 피해를 준다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-ma-liang",
+    "name": {
+      "ko": "흰눈썹 장군"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "ma-liang",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "액티브",
+    "trait": "책략",
+    "procRate": 0.4,
+    "procRateText": "40%",
+    "text": "전체 적군에게 110%의 책략 피해를 주며, 2턴 동안 지속되는 위협을(를) 부여한다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-shamoke",
+    "name": {
+      "ko": "완력"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "shamoke",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신이 주는 피해가 60% 증가하며, 매 턴 피해를 3회 받은 후, 자신이 1턴 동안 공포 상태가 된다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-chen-wu",
+    "name": {
+      "ko": "무외의 경지"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "chen-wu",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "액티브",
+    "trait": "병기",
+    "procRate": 0.45,
+    "procRateText": "45%",
+    "text": "1턴 동안 준비 후 1턴 동안 자신의 무력이 30포인트 증가하며, 이후 전체 적군에게 260%~300%의 병기 피해를 준다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-han-dang",
+    "name": {
+      "ko": "명사수"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "han-dang",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "우군이 일반 공격한 후, 자신은 35% 확률로 아군의 공격 목표에게 추가로 일반 공격을 1회 부여한다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-dong-xi",
+    "name": {
+      "ko": "도약일격"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "dong-xi",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "패시브",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신이 정신 회복 상태를 획득하고, 매 턴 행동 시, 자신이 받는 회복 효과가 10% 증가한다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-jiang-qin",
+    "name": {
+      "ko": "천하무략"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "jiang-qin",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "액티브",
+    "trait": "문무",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "2턴 동안 자신의 지력과 무력이 20포인트 증가하며, 2회 중첩될 수 있다. 랜덤 적군 2명에 2턴 동안 지속되는 홍수을(를) 부여하며, 목표가 이미 홍수 상태면 100%의 병기와 책략 피해를 준다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-ding-feng",
+    "name": {
+      "ko": "용감한 선봉"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "ding-feng",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "추격",
+    "trait": "병기",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "일반 공격 후, 2턴 동안 자신의 선공이 25 증가한다. 이후 전체 적군에게 80%의 병기 피해를 준다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-pan-zhang",
+    "name": {
+      "ko": "진군 차단"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "pan-zhang",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "패시브",
+    "trait": "병기",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 무력과 통솔이 10% 증가하며, 자신의 액티브 또는 추격 전법 발동 후, 60% 확률로 랜덤 적군 단일 목표에게 80%의 병기 피해를 준다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-kong-rong",
+    "name": {
+      "ko": "격렬한 언사"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "kong-rong",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "액티브",
+    "trait": "문무",
+    "procRate": 0.5,
+    "procRateText": "50%",
+    "text": "지력이 가장 높은 적군 단일 목표를 2턴 동안 조롱하며, 우군 랜덤 1명이 해당 상대에게 160%의 병기 피해와 책략 피해를 준다. 이후 해당 우군의 병력을 회복시킨다(치유율 140%, 지력의 영향 받음).",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-zhang-mancheng",
+    "name": {
+      "ko": "천공장군"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "zhang-mancheng",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "패시브",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 행동 시, 80% 확률로 랜덤 적군 2명에게 2턴 동안 지속되는 요술을(를) 부여한다. 자신이 피해를 받을 때, 피해를 준 상대가 요술 상태면 이번 피해가 30% 감소한다(통솔의 영향 받음).",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-huangfu-song-hero",
+    "name": {
+      "ko": "반란 평정"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "huangfu-song-hero",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "자신의 통솔이 60포인트 증가하며, 자신이 피해를 받은 후, 50% 확률로 2턴 동안 공격자가 주는 피해를 10% 감소시킨다, 4회 중첩될 수 있다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-lu-zhi",
+    "name": {
+      "ko": "나라의 기둥"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "lu-zhi",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "지휘",
+    "trait": "방어",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "홀수 턴 종료 시, 자신과 랜덤 우군 단일 목표에게 1스택의 방어을(를) 부여하며, 자신의 병력을 회복한다(치유율 180%, 지력과 통솔의 영향 받음).",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  },
+  {
+    "id": "u-guo-tu",
+    "name": {
+      "ko": "아첨의 귀재"
+    },
+    "isUnique": true,
+    "ownerGeneralId": "guo-tu",
+    "season": "S1",
+    "grade": "영웅",
+    "kind": "지휘",
+    "trait": "보조",
+    "procRate": 1,
+    "procRateText": "100%",
+    "text": "매 턴 시작 시, 지력이 가장 높은 우군이 주는 피해가 30% 증가하며, 5% 확률로 1턴 동안 혼란 상태가 되고, 혼란 확률은 매 턴 5% 증가한다. 매 턴 종료 시, 지력이 가장 높은 우군이 랜덤 적군 단일 목표에게 100%의 책략 피해를 준다.",
+    "clauses": [],
+    "dataStatus": {
+      "text": "녹화 원문(10레벨 환산 = 1레벨 + 9×(2레벨−1레벨))"
+    },
+    "sources": [
+      {
+        "kind": "recording",
+        "label": "사용자 녹화 2026-10-11 무장_영웅.mp4 (고유 전법 팝업)",
+        "url": "https://drive.google.com/file/d/1kFvrhJGeA2SX93sKKB9-Wxqbwl9XFRy9/view"
+      }
+    ]
+  }
+]

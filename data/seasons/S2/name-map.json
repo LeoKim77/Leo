@@ -1,0 +1,11 @@
+{
+  "note": "시즌2(한국 기준, 풍운재기) 티어덱 시트 → 내부 id 대응표. 무장·전법은 엑셀 원본과 S3 층에서 이름으로 찾고, 이름이 다른 것만 여기에 적는다.",
+  "sheet": {
+    "id": "1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA",
+    "tierGid": "1811908888",
+    "label": "천하결전 시즌2 티어덱 시트 (공유 구글 시트)"
+  },
+  "generals": [],
+  "skills": [],
+  "manualMarks": { "prefix": "금·", "placeholders": ["장서각"] }
+}

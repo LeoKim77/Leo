@@ -1,0 +1,25 @@
+{
+  "id": "2026-10-02-s2-tierdecks",
+  "date": "2026-10-02",
+  "season": "S2",
+  "category": "티어덱",
+  "title": "시즌2 티어덱 시트 반영 — 21개",
+  "body": "공유 구글 시트 '시즌2 티어덱' 탭(풍운재기)을 읽어 S2 티어덱 21개를 넣었습니다. 지금까지 엑셀에는 S1 티어덱만 있어서 S2 화면에 S1 덱이 보였는데, 이제 S2 덱이 나옵니다.\n- 덱마다 진형, 전법 2칸(대안 '/'), 대체 전법, 병종·병종특화, 금병법('금·'), 장비·장비특기·탈것특기, 능력치 분배를 담았습니다.\n- 병종 칸의 '-전환'(예: 원소 중방패병-전환)은 덱에서 병종을 바꾼 것으로 보고 시뮬에 반영했습니다. 세부 병종(중/경/장/석 등)과 병종특화는 아직 시뮬에 넣지 않았습니다.\n- '아무 치료 전법'처럼 종류만 적힌 칸은 빈 칸으로 시뮬합니다(화면에 '△' 표시).\n- 금성의 철벽·맹렬한 화염·허실 간파·기민한 전술·일심협력·병력 강화는 S3 신규가 아니라 엑셀 이후에 나온 S2 전법이라 시즌을 S2로 바로잡았습니다.\n- 시트 가져오기를 줄 이름(전법·대체전법·병종·병법·스텟…) 기준으로 바꿔, 시즌마다 줄 구성이 달라도 같은 도구로 읽습니다.",
+  "refs": [],
+  "author": "Claude",
+  "files": [
+    "apps/web/src/views/tierdecks.ts",
+    "data/seasons/S2/generals.json",
+    "data/seasons/S2/name-map.json",
+    "data/seasons/S2/skills.json",
+    "data/seasons/S2/tier-decks.json",
+    "data/seasons/S3/name-map.json",
+    "data/seasons/S3/skills.json",
+    "data/sources/gsheet/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/1811908888.json",
+    "data/sources/gsheet/1seywjJ_B1YWFlfuWaQNPBKLSQT7dgkakDPInLJP6NfA/index.json",
+    "packages/data-tools/src/bundle.ts",
+    "packages/data-tools/src/import-season.ts",
+    "packages/engine/src/model.ts"
+  ],
+  "commit": "8065614f7b35"
+}

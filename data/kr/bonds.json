@@ -1,0 +1,826 @@
+[
+  {
+    "id": "bond-001",
+    "name": "천하삼분",
+    "required": 3,
+    "memberNames": [
+      "조조",
+      "유비",
+      "손권"
+    ],
+    "memberIds": [
+      "cao-cao",
+      "liu-bei",
+      "sun-quan"
+    ],
+    "text": "부대 내 인연 무장이 받는 피해가 6% 감소한다."
+  },
+  {
+    "id": "bond-002",
+    "name": "도원결의",
+    "required": 3,
+    "memberNames": [
+      "유비",
+      "관우",
+      "장비"
+    ],
+    "memberIds": [
+      "liu-bei",
+      "guan-yu",
+      "zhang-fei"
+    ],
+    "text": "3번째 턴에 부대 내 인연 무장이 행동 전에 자신의 모든 디버프 상태를 제거한다."
+  },
+  {
+    "id": "bond-003",
+    "name": "완벽한 조합",
+    "required": 2,
+    "memberNames": [
+      "유비",
+      "손상향"
+    ],
+    "memberIds": [
+      "liu-bei",
+      "sun-shangxiang"
+    ],
+    "text": "부대 내 인연 무장이 받는 책략 피해가 6% 감소한다."
+  },
+  {
+    "id": "bond-004",
+    "name": "황실의 인연",
+    "required": 2,
+    "memberNames": [
+      "유비",
+      "감부인"
+    ],
+    "memberIds": [
+      "liu-bei",
+      "gan-furen"
+    ],
+    "text": "부대 내 인연 무장이 받는 병기 피해가 6% 감소한다."
+  },
+  {
+    "id": "bond-005",
+    "name": "소열제",
+    "required": 1,
+    "memberNames": [
+      "유비"
+    ],
+    "memberIds": [
+      "liu-bei"
+    ],
+    "text": "등극 시즌 기간에 아군 전체의 활성화한 진영 보너스-[촉] 효과가 50% 증가한다."
+  },
+  {
+    "id": "bond-006",
+    "name": "명실상부",
+    "required": 2,
+    "memberNames": [
+      "제갈량",
+      "뉴제갈량",
+      "황월영"
+    ],
+    "memberIds": [
+      "zhuge-liang",
+      "?뉴제갈량",
+      "huang-yueying"
+    ],
+    "text": "부대 내 인연 무장이 받는 치유 효과가 8% 증가한다."
+  },
+  {
+    "id": "bond-007",
+    "name": "서촉의 지혜",
+    "required": 3,
+    "memberNames": [
+      "제갈량",
+      "뉴제갈량",
+      "서서",
+      "방통",
+      "법정"
+    ],
+    "memberIds": [
+      "zhuge-liang",
+      "?뉴제갈량",
+      "xu-shu",
+      "pang-tong",
+      "fa-zheng"
+    ],
+    "text": "부대 내 인연 무장이 받는 책략 피해가 8% 감소한다."
+  },
+  {
+    "id": "bond-008",
+    "name": "나라의 동량",
+    "required": 3,
+    "memberNames": [
+      "제갈량",
+      "뉴제갈량",
+      "주유",
+      "사마의"
+    ],
+    "memberIds": [
+      "zhuge-liang",
+      "?뉴제갈량",
+      "zhou-yu",
+      "sima-yi"
+    ],
+    "text": "전투 중 최초 3회 동안 주는 책략 피해가 50% 증가한다."
+  },
+  {
+    "id": "bond-009",
+    "name": "정신 계승",
+    "required": 2,
+    "memberNames": [
+      "제갈량",
+      "뉴제갈량",
+      "강유"
+    ],
+    "memberIds": [
+      "zhuge-liang",
+      "?뉴제갈량",
+      "jiang-wei"
+    ],
+    "text": "부대 내 인연 무장의 지력과 통솔이 6% 증가한다."
+  },
+  {
+    "id": "bond-010",
+    "name": "제갈 가문",
+    "required": 2,
+    "memberNames": [
+      "제갈근",
+      "제갈량",
+      "뉴제갈량"
+    ],
+    "memberIds": [
+      "?제갈근",
+      "zhuge-liang",
+      "?뉴제갈량"
+    ],
+    "text": "부대 내 인연 무장의 방어 관통과 간파가 증가한다. 아군에 제갈 가문 인연의 무장이 1명 있을 때마다 제갈 가문 인연의 전체 무장 방어 관통과 간파가 5% 증가한다."
+  },
+  {
+    "id": "bond-011",
+    "name": "오호상장",
+    "required": 3,
+    "memberNames": [
+      "관우",
+      "장비",
+      "황충",
+      "조운",
+      "마초"
+    ],
+    "memberIds": [
+      "guan-yu",
+      "zhang-fei",
+      "huang-zhong",
+      "zhao-yun",
+      "ma-chao"
+    ],
+    "text": "부대 내 인연 무장의 회심 확률이 10% 증가한다."
+  },
+  {
+    "id": "bond-012",
+    "name": "깊은 의리",
+    "required": 2,
+    "memberNames": [
+      "관우",
+      "관평",
+      "주창",
+      "관은병"
+    ],
+    "memberIds": [
+      "guan-yu",
+      "guan-ping",
+      "zhou-cang",
+      "guan-yinping"
+    ],
+    "text": "부대 내 인연 무장의 방어 관통이 6% 증가한다."
+  },
+  {
+    "id": "bond-013",
+    "name": "서량의 철기",
+    "required": 2,
+    "memberNames": [
+      "마초",
+      "마운록",
+      "마등"
+    ],
+    "memberIds": [
+      "ma-chao",
+      "ma-yunlu",
+      "ma-teng"
+    ],
+    "text": "부대 내 인연 무장의 추격 전법 피해가 8% 증가한다."
+  },
+  {
+    "id": "bond-014",
+    "name": "서량의 영웅",
+    "required": 2,
+    "memberNames": [
+      "마등",
+      "마초"
+    ],
+    "memberIds": [
+      "ma-teng",
+      "ma-chao"
+    ],
+    "text": "부대 내 인연 무장의 병기 피해가 5% 증가한다."
+  },
+  {
+    "id": "bond-015",
+    "name": "노익장",
+    "required": 2,
+    "memberNames": [
+      "정보",
+      "황개",
+      "황충"
+    ],
+    "memberIds": [
+      "cheng-pu",
+      "huang-gai",
+      "huang-zhong"
+    ],
+    "text": "부대 내 인연 무장이 받는 피해가 5% 감소한다."
+  },
+  {
+    "id": "bond-016",
+    "name": "전장의 동지",
+    "required": 2,
+    "memberNames": [
+      "위연",
+      "황충"
+    ],
+    "memberIds": [
+      "wei-yan",
+      "huang-zhong"
+    ],
+    "text": "부대에서 인연 무장이 행동 시, 50% 확률로 적군 랜덤 단일 목표에게 공포 효과를 부여한다."
+  },
+  {
+    "id": "bond-017",
+    "name": "강동의 대업",
+    "required": 3,
+    "memberNames": [
+      "손견",
+      "손책",
+      "손권",
+      "손상향",
+      "뉴손견"
+    ],
+    "memberIds": [
+      "sun-jian",
+      "sun-ce",
+      "sun-quan",
+      "sun-shangxiang",
+      "?뉴손견"
+    ],
+    "text": "부대 내 인연 무장이 주는 피해가 7% 증가한다."
+  },
+  {
+    "id": "bond-018",
+    "name": "좌우군 와해",
+    "required": 3,
+    "memberNames": [
+      "손권",
+      "감녕",
+      "주태"
+    ],
+    "memberIds": [
+      "sun-quan",
+      "gan-ning",
+      "zhou-tai"
+    ],
+    "text": "부대 내 인연 무장의 무력이 20포인트 증가한다."
+  },
+  {
+    "id": "bond-019",
+    "name": "천상천하",
+    "required": 2,
+    "memberNames": [
+      "손권",
+      "보연사"
+    ],
+    "memberIds": [
+      "sun-quan",
+      "?보연사"
+    ],
+    "text": "부대 내 인연 무장이 첫 3턴 동안 받는 피해가 12% 감소한다."
+  },
+  {
+    "id": "bond-020",
+    "name": "위업 계승",
+    "required": 1,
+    "memberNames": [
+      "손권"
+    ],
+    "memberIds": [
+      "sun-quan"
+    ],
+    "text": "등극 시즌 기간에 아군 전체의 활성화한 진영 보너스-[오] 효과가 50% 증가한다."
+  },
+  {
+    "id": "bond-021",
+    "name": "부창부수",
+    "required": 2,
+    "memberNames": [
+      "주유",
+      "소교"
+    ],
+    "memberIds": [
+      "zhou-yu",
+      "xiao-qiao"
+    ],
+    "text": "부대 내 인연 무장의 액티브 전법 발동률이 4% 증가한다."
+  },
+  {
+    "id": "bond-022",
+    "name": "동오 대도독",
+    "required": 3,
+    "memberNames": [
+      "주유",
+      "노숙",
+      "여몽",
+      "육손"
+    ],
+    "memberIds": [
+      "zhou-yu",
+      "lu-su",
+      "lü-meng",
+      "lu-xun"
+    ],
+    "text": "부대 내 인연 무장이 심리 공격을 8% 획득한다."
+  },
+  {
+    "id": "bond-023",
+    "name": "고육지계",
+    "required": 2,
+    "memberNames": [
+      "주유",
+      "황개"
+    ],
+    "memberIds": [
+      "zhou-yu",
+      "huang-gai"
+    ],
+    "text": "부대 내 인연 무장이 처음 우군에게 피해를 받은 후, 받는 액티브 전법 피해가 12% 감소한다."
+  },
+  {
+    "id": "bond-024",
+    "name": "조정의 기둥",
+    "required": 2,
+    "memberNames": [
+      "장소",
+      "육손",
+      "주유",
+      "육항",
+      "제갈근"
+    ],
+    "memberIds": [
+      "?장소",
+      "lu-xun",
+      "zhou-yu",
+      "?육항",
+      "?제갈근"
+    ],
+    "text": "부대 내 인연 무장이 이상 상태를 보유한 목표에게 주는 피해가 8% 증가한다."
+  },
+  {
+    "id": "bond-025",
+    "name": "괄목상대",
+    "required": 2,
+    "memberNames": [
+      "여몽",
+      "노숙"
+    ],
+    "memberIds": [
+      "lü-meng",
+      "lu-su"
+    ],
+    "text": "전투 3번째 턴 시작 시, 부대 내 인연 무장이 받는 액티브 전법 피해가 12% 감소한다."
+  },
+  {
+    "id": "bond-026",
+    "name": "신정 격전",
+    "required": 2,
+    "memberNames": [
+      "태사자",
+      "손책"
+    ],
+    "memberIds": [
+      "taishi-ci",
+      "sun-ce"
+    ],
+    "text": "부대 내 인연 무장의 무력이 20포인트 증가한다."
+  },
+  {
+    "id": "bond-027",
+    "name": "만궁일격",
+    "required": 2,
+    "memberNames": [
+      "태사자",
+      "감녕",
+      "능통"
+    ],
+    "memberIds": [
+      "taishi-ci",
+      "gan-ning",
+      "?능통"
+    ],
+    "text": "부대 내 인연 무장의 일반 공격 피해가 8% 증가한다"
+  },
+  {
+    "id": "bond-028",
+    "name": "오국의 미녀",
+    "required": 2,
+    "memberNames": [
+      "소교",
+      "대교",
+      "보연사"
+    ],
+    "memberIds": [
+      "xiao-qiao",
+      "da-qiao",
+      "?보연사"
+    ],
+    "text": "부대 내 인연 무장의 지력이 20포인트 증가한다."
+  },
+  {
+    "id": "bond-029",
+    "name": "경건한 의식",
+    "required": 2,
+    "memberNames": [
+      "손책",
+      "대교"
+    ],
+    "memberIds": [
+      "sun-ce",
+      "da-qiao"
+    ],
+    "text": "부대 내 인연 무장의 통솔이 20포인트 증가한다."
+  },
+  {
+    "id": "bond-030",
+    "name": "강표의 호신",
+    "required": 2,
+    "memberNames": [
+      "황개",
+      "감녕",
+      "서성",
+      "정보",
+      "주태",
+      "능통",
+      "장흠",
+      "정봉",
+      "동습",
+      "한당",
+      "진무",
+      "반장"
+    ],
+    "memberIds": [
+      "huang-gai",
+      "gan-ning",
+      "xu-sheng",
+      "cheng-pu",
+      "zhou-tai",
+      "?능통",
+      "jiang-qin",
+      "ding-feng",
+      "dong-xi",
+      "han-dang",
+      "chen-wu",
+      "pan-zhang"
+    ],
+    "text": "부대 내 인연 무장의 통솔이 10포인트 증가, 받는 피해가 3% 감소한다."
+  },
+  {
+    "id": "bond-031",
+    "name": "호위의 의지",
+    "required": 2,
+    "memberNames": [
+      "조조",
+      "허저",
+      "전위"
+    ],
+    "memberIds": [
+      "cao-cao",
+      "xu-chu",
+      "dian-wei"
+    ],
+    "text": "부대 내 인연 무장의 일반 공격 피해가 12% 증가한다."
+  },
+  {
+    "id": "bond-032",
+    "name": "황위 계승",
+    "required": 2,
+    "memberNames": [
+      "조조",
+      "조비"
+    ],
+    "memberIds": [
+      "cao-cao",
+      "cao-pi"
+    ],
+    "text": "부대 내 인연 무장의 통솔이 20포인트 증가한다."
+  },
+  {
+    "id": "bond-033",
+    "name": "무황과 선후",
+    "required": 2,
+    "memberNames": [
+      "변부인",
+      "조조"
+    ],
+    "memberIds": [
+      "?변부인",
+      "cao-cao"
+    ],
+    "text": "부대 내 인연 무장이 초반 3턴까지 받는 책략 피해가 15% 감소한다."
+  },
+  {
+    "id": "bond-034",
+    "name": "위국의 왕",
+    "required": 1,
+    "memberNames": [
+      "조조"
+    ],
+    "memberIds": [
+      "cao-cao"
+    ],
+    "text": "등극 시즌 기간에 아군 전체의 활성화한 진영 보너스-[위] 효과가 50% 증가한다."
+  },
+  {
+    "id": "bond-035",
+    "name": "5대 군사",
+    "required": 3,
+    "memberNames": [
+      "곽가",
+      "정욱",
+      "순욱",
+      "순유",
+      "가후"
+    ],
+    "memberIds": [
+      "guo-jia",
+      "cheng-yu",
+      "xun-yu",
+      "?순유",
+      "jia-xu"
+    ],
+    "text": "부대 내 인연 무장의 간파가 5% 증가, 받는 피해가 4% 감소한다."
+  },
+  {
+    "id": "bond-036",
+    "name": "궁술 대결",
+    "required": 2,
+    "memberNames": [
+      "서황",
+      "허저"
+    ],
+    "memberIds": [
+      "xu-huang",
+      "xu-chu"
+    ],
+    "text": "부대 내 인연 무장의 방어 관통이 5% 증가한다."
+  },
+  {
+    "id": "bond-037",
+    "name": "궁중의 미",
+    "required": 2,
+    "memberNames": [
+      "조비",
+      "견희"
+    ],
+    "memberIds": [
+      "cao-pi",
+      "zhen-luo"
+    ],
+    "text": "부대 내 인연 무장이 받는 병기 피해가 6% 감소한다."
+  },
+  {
+    "id": "bond-038",
+    "name": "조위의 종장",
+    "required": 2,
+    "memberNames": [
+      "하후돈",
+      "하후연",
+      "조인",
+      "조순",
+      "조진",
+      "조홍"
+    ],
+    "memberIds": [
+      "xiahou-dun",
+      "xiahou-yuan",
+      "cao-ren",
+      "?조순",
+      "cao-zhen",
+      "cao-hong"
+    ],
+    "text": "부대 내 인연 무장의 최고 속성이 15포인트 증가한다."
+  },
+  {
+    "id": "bond-039",
+    "name": "오자양장",
+    "required": 2,
+    "memberNames": [
+      "우금",
+      "장합",
+      "서황",
+      "장료",
+      "악진"
+    ],
+    "memberIds": [
+      "yu-jin",
+      "zhang-he",
+      "xu-huang",
+      "zhang-liao",
+      "yue-jin"
+    ],
+    "text": "부대 내 인연 무장의 방어 관통이 6% 증가한다."
+  },
+  {
+    "id": "bond-040",
+    "name": "하북 정장",
+    "required": 2,
+    "memberNames": [
+      "안량",
+      "문추",
+      "장합"
+    ],
+    "memberIds": [
+      "yan-liang",
+      "wen-chou",
+      "zhang-he"
+    ],
+    "text": "부대 내 인연 무장의 무력이 20포인트 증가한다."
+  },
+  {
+    "id": "bond-041",
+    "name": "한말의 혼란",
+    "required": 2,
+    "memberNames": [
+      "동탁",
+      "여포",
+      "이유",
+      "화웅"
+    ],
+    "memberIds": [
+      "dong-zhuo",
+      "lü-bu",
+      "li-ru",
+      "hua-xiong"
+    ],
+    "text": "부대 내 인연 무장의 통솔이 20포인트 증가한다."
+  },
+  {
+    "id": "bond-042",
+    "name": "격동의 인연",
+    "required": 2,
+    "memberNames": [
+      "여포",
+      "초선"
+    ],
+    "memberIds": [
+      "lü-bu",
+      "diao-chan"
+    ],
+    "text": "부대 내 인연 무장이 받는 일반 공격 피해와 추격 전법 피해가 12% 감소한다."
+  },
+  {
+    "id": "bond-043",
+    "name": "용맹한 비장",
+    "required": 2,
+    "memberNames": [
+      "여포",
+      "장료",
+      "진궁"
+    ],
+    "memberIds": [
+      "lü-bu",
+      "zhang-liao",
+      "chen-gong"
+    ],
+    "text": "부대 내 인연 무장의 회유가 10% 증가한다."
+  },
+  {
+    "id": "bond-044",
+    "name": "적진 돌격",
+    "required": 2,
+    "memberNames": [
+      "여포",
+      "고순"
+    ],
+    "memberIds": [
+      "lü-bu",
+      "gao-shun"
+    ],
+    "text": "부대 내 인연 무장의 병기 피해가 5% 증가한다."
+  },
+  {
+    "id": "bond-045",
+    "name": "황건봉기",
+    "required": 3,
+    "memberNames": [
+      "장각",
+      "장보",
+      "장량",
+      "장녕",
+      "장만성"
+    ],
+    "memberIds": [
+      "zhang-jiao",
+      "zhang-bao",
+      "zhang-liang",
+      "zhang-ning",
+      "zhang-mancheng"
+    ],
+    "text": "전투 후, 2턴 동안 부대 내 인연 무장의 액티브 전법 발동률이 8% 증가한다."
+  },
+  {
+    "id": "bond-046",
+    "name": "자연의 도법",
+    "required": 3,
+    "memberNames": [
+      "장각",
+      "우길",
+      "좌자"
+    ],
+    "memberIds": [
+      "zhang-jiao",
+      "yu-ji",
+      "zuo-ci"
+    ],
+    "text": "전투 후 3턴 동안 부대 내 인연 무장이 준비 전법 발동 시, 20% 확률로 준비를 1턴 건너뛴다."
+  },
+  {
+    "id": "bond-047",
+    "name": "태평성대",
+    "required": 2,
+    "memberNames": [
+      "장각",
+      "장녕"
+    ],
+    "memberIds": [
+      "zhang-jiao",
+      "zhang-ning"
+    ],
+    "text": "부대 내 인연 무장이 받는 병기 피해가 6% 감소한다."
+  },
+  {
+    "id": "bond-048",
+    "name": "사세삼공",
+    "required": 2,
+    "memberNames": [
+      "원소",
+      "원술"
+    ],
+    "memberIds": [
+      "yuan-shao",
+      "yuan-shu"
+    ],
+    "text": "부대 내 인연 무장이 받는 책략 피해가 3% 감소, 받는 병기 피해가 3% 감소한다."
+  },
+  {
+    "id": "bond-049",
+    "name": "우아한 자태",
+    "required": 2,
+    "memberNames": [
+      "왕이",
+      "보연사",
+      "대교",
+      "견희",
+      "장춘화"
+    ],
+    "memberIds": [
+      "wang-yi",
+      "?보연사",
+      "da-qiao",
+      "zhen-luo",
+      "?장춘화"
+    ],
+    "text": "부대 내 인연 무장이 피해를 받으면 35% 확률로 피해를 준 대상의 최고 속성이 5포인트 감소하며, 5회 중첩될 수 있다."
+  },
+  {
+    "id": "bond-050",
+    "name": "난세의 미인",
+    "required": 3,
+    "memberNames": [
+      "초선",
+      "채문희",
+      "주씨",
+      "견희",
+      "왕이",
+      "손상향",
+      "감부인"
+    ],
+    "memberIds": [
+      "diao-chan",
+      "cai-wenji",
+      "?주씨",
+      "zhen-luo",
+      "wang-yi",
+      "sun-shangxiang",
+      "gan-furen"
+    ],
+    "text": "전투 시작 시 부대 인연 무장이 2스택의 방어를 획득한다."
+  }
+]

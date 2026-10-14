@@ -1,0 +1,21 @@
+{
+  "id": "2026-10-03-replay-check",
+  "date": "2026-10-03",
+  "season": "S2",
+  "category": "검증",
+  "title": "전보 역재현 검증 도구 (replay:check) · 스탯 영향 계수 점검",
+  "body": "사용자 제안: 녹화 영상의 전투를 그대로 재현하고 툴팁 스탯을 세팅해 엔진 계수와 바로 비교한다.\n- 새 도구 pnpm replay:check: data/replays 의 툴팁 스탯·병력·증감을 그 턴 상태로 무장에 덮어쓰고, 전보의 피해·회복·효과 수치를 한 건씩 엔진 공식으로 다시 계산해 실측과 비교. 발동·대상·피신은 전보 그대로 고정(턴 전체를 다시 돌리면 확률 결과가 달라져 비교가 흐려짐).\n- 조운·주태·악진 영상 결과: 일반 공격 455 vs 450(−1.1%), 요새 함락 523 vs 495(−5.4%), 581 vs 604(+4.0%, 견희 스탯은 2턴 툴팁), 결사 회복 297 vs 333(+12.1%)·218 vs 248(+13.8%).\n- 스탯 영향 점검: 보유 전법의 \"(○○의 영향 받음)\" 73절 중 수치 효과 23절만 잠정식(1+(스탯−100)×0.285%) 적용, 회복 28절은 회복 공식, 확률·포인트 증감 22절은 미반영. 잠정식 자체가 미검증 → 검증 우선순위 34→80, 표본 형식(influenceSamples) 추가.\n엔진: calcDamage·calcHeal 을 검증 도구용으로 공개.",
+  "refs": [],
+  "author": "Claude",
+  "commit": "1addeb67f5d6",
+  "files": [
+    "CLAUDE.md",
+    "package.json",
+    "data/replays/2026-10-03-zhoutai-zhaoyun-yuejin.json",
+    "data/verification/engine-assumptions.json",
+    "data/verification/queue.json",
+    "packages/data-tools/src/replay-check.ts",
+    "packages/engine/src/legacy/core.js",
+    "tests/replay.test.ts"
+  ]
+}

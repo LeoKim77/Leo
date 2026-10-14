@@ -1,0 +1,633 @@
+{
+  "id": "2026-10-08-zhoutai-xiahoudun-huanggai",
+  "date": "2026-10-08",
+  "season": "S2",
+  "source": "사용자 전보 녹화 '주황하_통계~2턴'(구글 드라이브 폴더). 녹화 계획 2판(탱커·대신 받기 판). 아군 주태(전열)·황개·하후돈 기형진(진영 오 +5%) vs LV12 토지 수비군 여몽·채문희·소교 안형진(병력 16,000). 통계 화면(8턴 무승부)과 포진~2턴(3턴 첫머리) 전보.",
+  "links": [
+    "https://drive.google.com/drive/folders/18dz74PpR1GsArw1f-5n7A9UfqmhJ3vgR"
+  ],
+  "battle": {
+    "ally": {
+      "formation": "기형진",
+      "units": [
+        {
+          "generalId": "zhou-tai",
+          "skills": [
+            "supply-cut",
+            "blazing-sky"
+          ],
+          "manual": "역전"
+        },
+        {
+          "generalId": "huang-gai",
+          "skills": [
+            "golden-fortress",
+            "prepare-armor"
+          ],
+          "manual": "견결"
+        },
+        {
+          "generalId": "xiahou-dun",
+          "skills": [
+            "see-truth",
+            "choose-momentum"
+          ],
+          "manual": "위협"
+        }
+      ]
+    },
+    "enemy": {
+      "formation": "안형진",
+      "units": [
+        "lü-meng",
+        "cai-wenji",
+        "xiao-qiao"
+      ]
+    }
+  },
+  "outOfScopeSeen": [
+    "진영 오 +5% (능력치)",
+    "건물 기술(능력치 +20, 받는 피해 −5% 등)",
+    "일반 병법 <호익>·<역전 아님: 저력 선본>·기술-경기·기술-방어 태세·병종 정통-초지일관·병종 특성-적군 섬멸 (R-054: 금병법만 반영)",
+    "기좌 직업 숙련(받는 책략 −5%)"
+  ],
+  "tooltips": [
+    {
+      "turn": 1,
+      "unit": "huang-gai",
+      "stats": {
+        "무력": 194.3,
+        "지력": 193.25,
+        "통솔": 335.55,
+        "선공": 199.02
+      },
+      "troops": 10000,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.22,
+        "받는피해": -0.0785,
+        "받는병기피해": -0.055,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "xiahou-dun",
+      "stats": {
+        "무력": 240.5,
+        "지력": 143.9,
+        "통솔": 297.72,
+        "선공": 179.6
+      },
+      "troops": 10000,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.17,
+        "받는피해": -0.05,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "zhou-tai",
+      "stats": {
+        "무력": 182.75,
+        "지력": 112.4,
+        "통솔": 325.57,
+        "선공": 154.92
+      },
+      "troops": 9384,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": 0.05,
+        "받는피해": -0.1367,
+        "받는병기피해": -0.075,
+        "받는책략피해": -0.05
+      }
+    },
+    {
+      "turn": 2,
+      "unit": "zhou-tai",
+      "stats": {
+        "무력": 182.75,
+        "지력": 112.4,
+        "통솔": 325.57,
+        "선공": 154.92
+      },
+      "troops": 7427,
+      "maxTroops": 10000,
+      "mods": {
+        "주는피해": -0.1,
+        "받는피해": -0.1971,
+        "받는병기피해": -0.075,
+        "받는책략피해": -0.05
+      },
+      "note": "주는 피해 −10%·받는 피해 −19.71% 는 병법 <저력>·기술-방어 태세가 섞인 실측값(범위 밖이지만 실제 피해에 들어갔으므로 그대로 둔다)"
+    },
+    {
+      "turn": 1,
+      "unit": "lü-meng",
+      "stats": {
+        "무력": 187.95,
+        "지력": 245.7,
+        "통솔": 193.2,
+        "선공": 185.32
+      },
+      "troops": 16000,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.185
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "cai-wenji",
+      "stats": {
+        "무력": 30.45,
+        "지력": 242.02,
+        "통솔": 195.82,
+        "선공": 182.7
+      },
+      "troops": 15240,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.035
+      }
+    },
+    {
+      "turn": 1,
+      "unit": "xiao-qiao",
+      "stats": {
+        "무력": 42.0,
+        "지력": 221.55,
+        "통솔": 191.1,
+        "선공": 190.57
+      },
+      "troops": 15218,
+      "maxTroops": 16000,
+      "mods": {
+        "주는피해": 0.035
+      }
+    }
+  ],
+  "damageSamples": [
+    {
+      "turn": 1,
+      "attacker": "xiahou-dun",
+      "defender": "lü-meng",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 346,
+      "at": {
+        "lü-meng": {
+          "troops": 16000
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "huang-gai",
+      "defender": "cai-wenji",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 316,
+      "at": {
+        "cai-wenji": {
+          "troops": 15240,
+          "stats": {
+            "지력": 227.02
+          }
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "huang-gai",
+      "defender": "cai-wenji",
+      "kind": "고육지계",
+      "dmgType": "책략",
+      "ratio": 2.2,
+      "observed": 760,
+      "at": {
+        "cai-wenji": {
+          "troops": 16000
+        }
+      },
+      "note": "전보는 '하후돈이 고육지계 효과를 발동' 줄 아래에 찍히지만 피해는 황개의 고육지계 — 황개 스탯으로 계산"
+    },
+    {
+      "turn": 1,
+      "attacker": "huang-gai",
+      "defender": "xiao-qiao",
+      "kind": "고육지계",
+      "dmgType": "책략",
+      "ratio": 2.2,
+      "observed": 782,
+      "at": {
+        "xiao-qiao": {
+          "troops": 16000
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "zhou-tai",
+      "defender": "xiao-qiao",
+      "kind": "맹렬한 화염(2타)",
+      "dmgType": "병기",
+      "ratio": 0.9,
+      "observed": 313,
+      "at": {
+        "zhou-tai": {
+          "mods": {
+            "받는피해": -0.1367
+          }
+        },
+        "xiao-qiao": {
+          "troops": 15321,
+          "stats": {
+            "지력": 206.55
+          }
+        }
+      },
+      "note": "1타(책략)는 방어에 막힘. 2타는 일반 공격 대비 0.9배(채문희 303 ≈ 333×0.9)라 병기 — 엔진 순서(책략→병기)와 같음",
+      "counter": 0.15
+    },
+    {
+      "turn": 1,
+      "attacker": "zhou-tai",
+      "defender": "cai-wenji",
+      "kind": "맹렬한 화염(2타)",
+      "dmgType": "병기",
+      "ratio": 0.9,
+      "observed": 303,
+      "at": {
+        "cai-wenji": {
+          "troops": 15339,
+          "stats": {
+            "지력": 227.02
+          }
+        }
+      },
+      "counter": 0.15,
+      "note": "1타(책략)는 방어에 막힘. 2타는 일반 공격 대비 0.9배(채문희 303 ≈ 333×0.9)라 병기 — 엔진 순서(책략→병기)와 같음"
+    },
+    {
+      "turn": 1,
+      "attacker": "zhou-tai",
+      "defender": "lü-meng",
+      "kind": "맹렬한 화염(2타)",
+      "dmgType": "병기",
+      "ratio": 0.9,
+      "observed": 274,
+      "at": {
+        "lü-meng": {
+          "troops": 15884,
+          "stats": {
+            "지력": 230.7
+          }
+        }
+      },
+      "note": "1타(책략)는 방어에 막힘. 2타는 일반 공격 대비 0.9배(채문희 303 ≈ 333×0.9)라 병기 — 엔진 순서(책략→병기)와 같음"
+    },
+    {
+      "turn": 1,
+      "attacker": "zhou-tai",
+      "defender": "cai-wenji",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 333,
+      "at": {
+        "cai-wenji": {
+          "troops": 15036
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 1,
+      "attacker": "zhou-tai",
+      "defender": "xiao-qiao",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 379,
+      "at": {
+        "xiao-qiao": {
+          "troops": 15008,
+          "stats": {
+            "지력": 206.55
+          },
+          "mods": {
+            "주는피해": -0.115
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 2,
+      "attacker": "xiahou-dun",
+      "defender": "xiao-qiao",
+      "kind": "강렬(+역전 20%)",
+      "dmgType": "병기",
+      "ratio": 0.96,
+      "tag": "active",
+      "observed": 762,
+      "at": {
+        "xiahou-dun": {
+          "stats": {
+            "선공": 149.6
+          }
+        },
+        "xiao-qiao": {
+          "troops": 14629,
+          "stats": {
+            "지력": 206.55
+          }
+        }
+      },
+      "note": "80% × (역전 다음 피해 +20%) = 96%. 통솔 영향(statScale)은 엔진 공식 그대로",
+      "excluded": "강렬의 \"(추가로 통솔의 영향 받음)\" 배율이 엔진 예상(1.42배)보다 훨씬 큼(실측 역산 2.19배) — 무열황제 표본(1.49배)과 엇갈려 계수를 고치지 않고 검증 대기(V-강렬)로 둠. 피해 RMS 에서 뺌"
+    },
+    {
+      "turn": 2,
+      "attacker": "xiahou-dun",
+      "defender": "cai-wenji",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 440,
+      "at": {
+        "cai-wenji": {
+          "troops": 14370,
+          "stats": {
+            "통솔": 170.13,
+            "지력": 201.33
+          },
+          "mods": {
+            "받는피해": 0.035
+          }
+        }
+      },
+      "note": "허실 간파 뒤 채문희 통솔 170.13(툴팁)"
+    },
+    {
+      "turn": 2,
+      "attacker": "huang-gai",
+      "defender": "cai-wenji",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 315,
+      "at": {
+        "cai-wenji": {
+          "troops": 14703
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "zhou-tai",
+      "defender": "xiao-qiao",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 283,
+      "at": {
+        "xiao-qiao": {
+          "troops": 13924,
+          "stats": {
+            "지력": 179.89,
+            "통솔": 164.44
+          },
+          "mods": {
+            "주는피해": -0.515
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 2,
+      "attacker": "zhou-tai",
+      "defender": "cai-wenji",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 300,
+      "at": {
+        "cai-wenji": {
+          "troops": 13930,
+          "stats": {
+            "지력": 201.33,
+            "통솔": 170.13
+          },
+          "mods": {
+            "받는피해": 0.035
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 2,
+      "attacker": "zhou-tai",
+      "defender": "xiao-qiao",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 303,
+      "at": {
+        "xiao-qiao": {
+          "troops": 13641,
+          "stats": {
+            "지력": 179.89,
+            "통솔": 164.44
+          }
+        }
+      },
+      "counter": 0.15
+    },
+    {
+      "turn": 1,
+      "attacker": "lü-meng",
+      "defender": "zhou-tai",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 189,
+      "at": {
+        "zhou-tai": {
+          "troops": 9978
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "cai-wenji",
+      "defender": "zhou-tai",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 98,
+      "at": {
+        "zhou-tai": {
+          "troops": 9384
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "attacker": "lü-meng",
+      "defender": "huang-gai",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 185,
+      "at": {
+        "lü-meng": {
+          "stats": {
+            "지력": 230.7
+          }
+        },
+        "huang-gai": {
+          "troops": 9983,
+          "mods": {
+            "받는피해": -0.4959
+          }
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "lü-meng",
+      "defender": "zhou-tai",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 179,
+      "at": {
+        "lü-meng": {
+          "stats": {
+            "지력": 230.7
+          }
+        },
+        "zhou-tai": {
+          "troops": 8613
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "cai-wenji",
+      "defender": "huang-gai",
+      "kind": "일반 공격",
+      "dmgType": "병기",
+      "ratio": 1,
+      "observed": 72,
+      "at": {
+        "cai-wenji": {
+          "stats": {
+            "지력": 227.02
+          }
+        },
+        "huang-gai": {
+          "troops": 9262,
+          "mods": {
+            "받는피해": -0.4959,
+            "받는병기피해": -0.1498
+          }
+        }
+      },
+      "counter": 0.15,
+      "note": "고육지계(−34.87)·견결(−6.87)은 황개 3턴 행동 시작에 사라지므로 2턴 내내 남아 있음"
+    },
+    {
+      "turn": 2,
+      "attacker": "lü-meng",
+      "defender": "zhou-tai",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 318,
+      "at": {
+        "lü-meng": {
+          "stats": {
+            "지력": 230.7
+          }
+        },
+        "zhou-tai": {
+          "troops": 7034
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "attacker": "lü-meng",
+      "defender": "huang-gai",
+      "kind": "보급 차단(턴 종료)",
+      "dmgType": "책략",
+      "ratio": 1.1,
+      "observed": 188,
+      "at": {
+        "lü-meng": {
+          "stats": {
+            "지력": 230.7
+          }
+        },
+        "huang-gai": {
+          "troops": 9190,
+          "mods": {
+            "받는피해": -0.4959,
+            "받는병기피해": -0.1498
+          }
+        }
+      },
+      "note": "고육지계·견결은 황개 3턴 행동 시작에 사라짐 — 2턴 종료 때 아직 −49.59%"
+    }
+  ],
+  "healSamples": [],
+  "influenceSamples": [
+    {
+      "turn": 1,
+      "skill": "고육지계 받는 피해 감소(곱연산 표기 34.87% = x × (1 − 0.0785))",
+      "caster": "황개",
+      "base": 30,
+      "observed": 37.84,
+      "stat": "통솔",
+      "statValue": 335.55
+    },
+    {
+      "turn": 2,
+      "skill": "허실 간파 탈취(채문희)",
+      "caster": "하후돈",
+      "base": 20,
+      "observed": 25.69,
+      "stat": "지력",
+      "statValue": 143.9
+    },
+    {
+      "turn": 2,
+      "skill": "허실 간파 탈취(소교, 1스택 뒤)",
+      "caster": "하후돈",
+      "base": 20,
+      "observed": 26.65,
+      "stat": "지력",
+      "statValue": 169.59
+    },
+    {
+      "turn": 2,
+      "skill": "강렬 '추가로 통솔의 영향' 피해 배율(×100) — 762 역산",
+      "caster": "하후돈",
+      "base": 100,
+      "observed": 219,
+      "stat": "통솔",
+      "statValue": 297.72,
+      "note": "80% × 역전 1.2 × 배율 = 762 / (하후돈 기본 피해 361). 무열황제 표본은 1.49배(통솔 321)로 지금 식과 맞음"
+    }
+  ]
+}

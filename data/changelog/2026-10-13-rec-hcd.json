@@ -1,0 +1,31 @@
+{
+  "id": "2026-10-13-rec-hcd",
+  "date": "2026-10-13",
+  "season": "S2",
+  "category": "엔진 수정",
+  "title": "녹화 검증 화타·초선·대교: 준비 전법 침묵 취소, 마비산·화수·폐월 대상(우군) 수정",
+  "body": "녹화 계획 8판(설계서 P-0051)을 준비~8턴 판독하고 피해 38건·회복 16건을 역재현했다(책략 RMS 8.8%, 병기 14.0%, 회복 3.5% — 공통 계수는 그대로). 확인 항목 5개(안형진 중열 통솔 +20·청낭경·화수·상사문부·원문대로 손본 6개 전법) 모두 확인. FIX-031 준비 중 전법은 침묵·공포에 걸리는 순간 취소. FIX-032 마비산·화수·폐월의 우군은 자신 제외, 폐월 병기 피해 증가 1턴, 마비산 순서·지력 가중치 0.28%, 형주 분할 가중치 0.29%. 승품·병종 등 3가지는 질문 P-0052.",
+  "refs": [
+    "u-hua-tuo",
+    "u-diao-chan",
+    "u-lu-su",
+    "five-thunder",
+    "calamity"
+  ],
+  "author": "Claude",
+  "commit": "eca4b2d",
+  "files": [
+    "packages/engine/src/legacy/core.js",
+    "packages/engine/src/skills/u-hua-tuo.ts",
+    "packages/engine/src/skills/u-diao-chan.ts",
+    "packages/engine/src/skills/u-lu-su.ts",
+    "packages/engine/src/manuals/m-diao-chan-2.ts",
+    "packages/data-tools/src/replay-check.ts",
+    "data/replays/2026-10-13-huatuo-diaochan-daqiao.json",
+    "data/verification/recording-plan.json",
+    "data/verification/engine-assumptions.json",
+    "data/design/spec.json",
+    "tests/rec-hcd.test.ts",
+    "tests/replay.test.ts"
+  ]
+}

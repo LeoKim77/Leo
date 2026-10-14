@@ -1,0 +1,89 @@
+{
+  "note": "deck-lab 에 인용된 해외 원출처. 수집 시 이 목록을 우선 참고한다.",
+  "hosts": [
+    {
+      "host": "sanmou-wiki.vercel.app",
+      "count": 190
+    },
+    {
+      "host": "wiki2.gamer.com.tw",
+      "count": 53
+    },
+    {
+      "host": "cdn.sgmdtx.com",
+      "count": 41
+    },
+    {
+      "host": "wiki.ldmnq.com",
+      "count": 28
+    },
+    {
+      "host": "www.sgmdtx.com",
+      "count": 15
+    },
+    {
+      "host": "news.17173.com",
+      "count": 11
+    },
+    {
+      "host": "www.taptap.cn",
+      "count": 5
+    },
+    {
+      "host": "www.7724.com",
+      "count": 3
+    },
+    {
+      "host": "github.com",
+      "count": 3
+    },
+    {
+      "host": "newslg.biligames.com",
+      "count": 2
+    },
+    {
+      "host": "forum.gamer.com.tw",
+      "count": 2
+    },
+    {
+      "host": "www.bilibili.com",
+      "count": 1
+    },
+    {
+      "host": "docs.google.com",
+      "count": 1
+    },
+    {
+      "host": "m.ali213.net",
+      "count": 1
+    },
+    {
+      "host": "game.xiaomi.com",
+      "count": 1
+    },
+    {
+      "host": "www.9game.cn",
+      "count": 1
+    },
+    {
+      "host": "www.mumudroid.com",
+      "count": 1
+    },
+    {
+      "host": "www.18183.com",
+      "count": 1
+    },
+    {
+      "host": "www.house0562.com",
+      "count": 1
+    },
+    {
+      "host": "bbs.4399.cn",
+      "count": 1
+    },
+    {
+      "host": "www.233leyuan.com",
+      "count": 1
+    }
+  ]
+}

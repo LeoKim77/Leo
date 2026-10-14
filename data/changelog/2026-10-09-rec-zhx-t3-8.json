@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-09-rec-zhx-t3-8",
+  "date": "2026-10-09",
+  "season": "S2",
+  "category": "전투 계수",
+  "title": "녹화 2판 3~8턴 역재현 — 병력 계수, 주태 대신 받기 통솔 영향, 강렬 통솔 가중치",
+  "body": "주태·하후돈·황개 vs 여몽·채문희·소교 3~8턴 녹화를 모두 읽고 피해 45건을 역재현했다. ① 병력이 크게 준 무장의 피해를 엔진이 2배 넘게 잡고 있었다(주태 병력 645 보급 차단 실측 104 / 엔진 245). 피해의 병력 계수를 (병력/1만)^0.1 → (min(병력, 1만)/1만)^0.35 로 바꿨다(FIX-025). 녹화 6판 오차 병기 16.7→14.1%, 책략 21.3→14.7%. ② 주태 불굴의 의지가 대신 받는 피해 감소 50% 에 통솔 영향이 빠져 있었다. 실측 66~68% 감소(통솔 325.57)에 맞춰 50% × (1 + (통솔−100)×0.148%)로(FIX-026). ③ 강렬의 '추가로 통솔의 영향' 피해 배율이 실측 약 2.07배로 공통 식(1.4~1.5배)보다 커서 전법별 가중치를 뒀다: 강렬 0.46%, 무열황제 0.25%(FEAT-031, 잠정). 인재 기용 회심·묘책 190%, 역전, 침묵·허약 1턴, 보급 차단은 엔진과 같음을 확인했다(P-0043).",
+  "refs": ["zhou-tai", "xiahou-dun", "huang-gai", "sun-jian"],
+  "author": "Claude",
+  "commit": "162e5f7",
+  "files": [
+    "packages/engine/src/legacy/core.js",
+    "packages/engine/src/skills/u-xiahou-dun.ts",
+    "packages/engine/src/skills/u-sun-jian.ts",
+    "packages/engine/src/skills/u-zhou-tai.ts",
+    "data/replays/2026-10-09-zhoutai-xiahoudun-huanggai-t3-8.json",
+    "data/design/posts/P-0043.json",
+    "data/design/spec.json",
+    "data/verification/engine-assumptions.json",
+    "data/verification/recording-plan.json",
+    "tests/rec-zhx.test.ts",
+    "tests/replay.test.ts"
+  ]
+}

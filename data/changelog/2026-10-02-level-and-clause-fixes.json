@@ -1,0 +1,33 @@
+{
+  "id": "2026-10-02-level-and-clause-fixes",
+  "date": "2026-10-02",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "전법 수치 뒤집힘 4건 수정, 결사의 다짐·눈부신 자태·고요한 제압 보완",
+  "body": "새 감사 규칙 S09(레벨 보간 방향)로 10레벨 효과가 절반만 들어가던 전법 4개를 찾아 고쳤습니다.\n- 전략 계획: 4종 스탯 -12.5 → -25\n- 압도적 권력(동탁): 통솔 탈취 10 → 20 (금병법 왕신 적용 시 32)\n- 전장 평정(황충): 선공·무력 -12 → -24\n- 무열파로(손견): 통솔 -20 → -40\n\n원문과 구조가 달랐던 전법도 다시 만들었습니다.\n- 결사의 다짐: 받은 무장이 '결사'(행동 전 회복 + 받는 병기 피해 -20%), '다짐'(일반 공격 후 50% 추가 피해)을 직접 발동 (엔진 FEAT-003 효과 부여)\n- 눈부신 자태(추씨): 주씨가 병기 피해를 받으면 60% 확률로 눈짓 효과가 2%씩 약해짐(최대 8회), 4턴부터 회복\n- 고요한 제압: 빠져 있던 받는 일반 공격·추격(홀수 턴)·액티브(짝수 턴) 피해 감소 추가\n\nv1.12b 의 오래된 '미반영' 표시 중 실제로는 구현된 절들을 검토해 정정했습니다(data/engine/clause-review.json).\n감사 결과: 실패 7건 — 모두 엔진에 없는 메커니즘(주태 불굴의 의지, 법정 간파력, 방통 연환)",
+  "refs": [
+    "strategize",
+    "u-dong-zhuo",
+    "u-huang-zhong",
+    "u-sun-jian",
+    "armor-edge",
+    "u-zou-shi",
+    "calm"
+  ],
+  "author": "Claude",
+  "commit": "4e6fa9b2bf51",
+  "files": [
+    "apps/web/src/views/codex.ts",
+    "data/audit/latest.json",
+    "data/engine/authored.json",
+    "data/engine/clause-review.json",
+    "data/engine/manuals.json",
+    "data/engine/overrides.json",
+    "packages/audit/src/report.ts",
+    "packages/audit/src/static.ts",
+    "packages/data-tools/src/bundle.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/engine/src/model.ts",
+    "tests/manuals.test.ts"
+  ]
+}

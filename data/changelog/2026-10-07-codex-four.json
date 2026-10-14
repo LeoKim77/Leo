@@ -1,0 +1,12 @@
+{
+  "id": "2026-10-07-codex-four",
+  "date": "2026-10-07",
+  "season": "S1",
+  "category": "전법 데이터",
+  "title": "전설 전법 4개 캡처 대조 — 변경 없음 (광풍의 분노·찬란한 위명·재해 이용·전력 지원)",
+  "body": "사용자 캡처로 도감 녹화에 없던 전설 4개를 확인했다. 원문(10레벨)·유형·특성·발동률이 모두 기존 데이터와 같아 수정 없음. 이로써 S1·S2 전설 전법 도감 대조 완료(P-0038).",
+  "refs": ["strong-wind", "famous", "calamity", "support-selfless"],
+  "author": "Claude",
+  "commit": "478f6b8",
+  "files": ["data/design/posts/P-0038.json"]
+}

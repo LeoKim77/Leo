@@ -1,0 +1,2041 @@
+{
+ "note": "금병법(각 무장 전용 병법) 엔진 정의. 사용자 확인 R-003: 시뮬에는 금병법만 반영. status: ok=원문대로, approx=근사, unsupported=미지원(시뮬 제외). parts=패시브 전법처럼 붙는 효과, static=편성 시 고정 증감, unit=무장 속성, uniquePatch=고유 전법 수정.",
+ "manuals": {
+  "liu-bei": [
+   {
+    "name": "국지한서",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "_factionOverride": "촉"
+    },
+    "note": "진영 보너스가 없으면 3명 진영 보너스(전 속성 +10%)를 적용"
+   },
+   {
+    "name": "인의론",
+    "status": "approx",
+    "parts": [],
+    "static": {
+     "mods": {
+      "주는회복량": 0.12
+     }
+    },
+    "note": "치유폭 +12%만 반영(지력 영향 미반영). \"우군 4회 치유마다 정신 회복\"은 미지원"
+   }
+  ],
+  "cao-cao": [
+   {
+    "name": "맹덕신서 상권",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "주는액티브피해",
+         "min": 0.05,
+         "max": 0.05,
+         "target": "all_ally",
+         "duration": 999,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "battleStart"
+     }
+    ]
+   },
+   {
+    "name": "맹덕신서 하권",
+    "status": "approx",
+    "parts": [
+     {
+      "_timing": "battleStart",
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": [],
+       "grants": [
+        {
+         "key": "맹덕신서",
+         "target": "all_ally",
+         "skill": {
+          "_timing": "beforeBasic",
+          "effects": {
+           "damage": [],
+           "heal": [],
+           "buffs": [],
+           "statMods": [
+            {
+             "stat": "최고속성",
+             "min": 8,
+             "max": 8,
+             "target": "self",
+             "duration": 1,
+             "maxStacks": 3
+            }
+           ],
+           "statusEffects": [],
+           "targets": []
+          }
+         }
+        }
+       ]
+      }
+     }
+    ],
+    "note": "게임 원문(2026-10-03): 아군 전원 일반 공격 직전마다 최고 속성 +8, 3중첩, 턴 종료까지. 지력 영향 미반영, \"턴 종료까지\"는 다음 자기 행동 전까지로 근사"
+   }
+  ],
+  "sun-quan": [
+   {
+    "name": "동관한기",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "받는피해",
+         "min": -0.05,
+         "max": -0.05,
+         "target": "all_ally",
+         "duration": 2,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "cast",
+       "castType": "액티브",
+       "role": "self",
+       "chance": 1,
+       "maxPerTurn": 9
+      }
+     }
+    ]
+   },
+   {
+    "name": "후주",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": [],
+       "dispel": [
+        {
+         "target": "self",
+         "count": 1
+        }
+       ]
+      },
+      "_timing": "action",
+      "onlyTurns": [
+       2,
+       4,
+       6,
+       8
+      ]
+     }
+    ]
+   }
+  ],
+  "zhuge-liang": [
+   {
+    "name": "출사표",
+    "status": "approx",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "받는피해",
+         "min": 0.12,
+         "max": 0.12,
+         "target": "random_enemy_n",
+         "duration": 1,
+         "maxStacks": 1,
+         "turnCond": {
+          "parity": "odd"
+         }
+        },
+        {
+         "stat": "받는피해",
+         "min": -0.12,
+         "max": -0.12,
+         "target": "random_ally_n",
+         "duration": 1,
+         "maxStacks": 1,
+         "turnCond": {
+          "parity": "even"
+         }
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "turnStart"
+     }
+    ],
+    "note": "\"홀수/짝수 턴에\"를 턴 시작 시 1턴 지속으로 해석"
+   }
+  ],
+  "guan-yu": [
+   {
+    "name": "왕예",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "액티브발동률",
+         "min": 0.04,
+         "max": 0.04,
+         "target": "self",
+         "duration": 2,
+         "maxStacks": 2
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "damage",
+       "role": "taken",
+       "filterDmgType": "책략",
+       "chance": 0.5,
+       "maxPerTurn": 9
+      }
+     }
+    ]
+   },
+   {
+    "name": "오상",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "병력우위대상피해": 0.1,
+      "탈주병증가_병력우위": 0.3
+     }
+    },
+    "note": "탈주병 증가는 모든 탈주병에 적용(고유 전법 화하 진압만 탈주병을 만듦)"
+   }
+  ],
+  "zhao-yun": [
+   {
+    "name": "신용",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "피신": 0.05,
+      "회유": 0.05
+     }
+    }
+   }
+  ],
+  "ma-chao": [
+   {
+    "name": "철기령",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "회심": 0.06,
+      "회심피해": 0.1
+     }
+    }
+   },
+   {
+    "name": "마술",
+    "status": "approx",
+    "parts": [],
+    "static": {
+     "mods": {
+      "회심피해": 0.15
+     }
+    },
+    "uniquePatch": {
+     "effects.damage.0.min": 1.68,
+     "effects.damage.0.max": 1.68,
+     "trigger.maxPerTurn": 1
+    },
+    "note": "기병 돌격의 척살 피해 +180%(계수 ×2.8), 척살은 매 턴 1회"
+   }
+  ],
+  "guo-jia": [
+   {
+    "name": "십승론",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "받는액티브피해": -0.12,
+      "받는추격피해": -0.12
+     }
+    }
+   }
+  ],
+  "dian-wei": [
+   {
+    "name": "절무",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "stats": {
+      "무력": 10
+     },
+     "mods": {
+      "반격피해": 0.2
+     }
+    }
+   },
+   {
+    "name": "어전",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "방어관통": 0.07,
+      "반격피해": 0.1
+     }
+    }
+   }
+  ],
+  "zhou-yu": [
+   {
+    "name": "화계",
+    "status": "approx",
+    "parts": [
+     {
+      "effects": {
+       "damage": [
+        {
+         "dmgType": "책략",
+         "min": 0.6,
+         "max": 0.6,
+         "target": "random_enemy_n"
+        }
+       ],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "debuff",
+       "role": "ally_side",
+       "statusName": "화공",
+       "chance": 0.35,
+       "maxPerTurn": 2
+      }
+     }
+    ],
+    "note": "기지 효과 = 랜덤 적군 2명 60% 책략 피해(근사). 게임 원문: 적군이 화공 상태를 부여 받을 때마다 판정"
+   }
+  ],
+  "sun-shangxiang": [
+   {
+    "name": "무녀전",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "주는피해": 0.05,
+      "연타확률": 0.12
+     }
+    }
+   }
+  ],
+  "lü-meng": [
+   {
+    "name": "권학",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [
+        {
+         "stat": "지력",
+         "min": 30,
+         "max": 30,
+         "target": "self",
+         "duration": 999,
+         "maxStacks": 1
+        }
+       ],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "turnEnd",
+      "onlyTurns": [
+       3
+      ]
+     }
+    ],
+    "static": {
+     "mods": {
+      "받는책략피해": -0.06
+     }
+    }
+   }
+  ],
+  "dong-zhuo": [
+   {
+    "name": "왕신",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "stats": {
+      "통솔": 30
+     }
+    },
+    "uniquePatch": {
+     "effects.statMods.0.min": -32,
+     "effects.statMods.0.max": -32
+    },
+    "note": "압도적 권력 탈취량 +60%"
+   }
+  ],
+  "lü-bu": [
+   {
+    "name": "도발",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [
+        {
+         "dmgType": "병기",
+         "min": 1,
+         "max": 1,
+         "target": "highest_power_enemy",
+         "reciprocal": true,
+         "asBasicAttack": true
+        }
+       ],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "turnStart",
+      "onlyTurns": [
+       2
+      ]
+     }
+    ],
+    "static": {
+     "mods": {
+      "받는병기피해": -0.07
+     }
+    }
+   },
+   {
+    "name": "무쌍",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "받는병기피해": -0.05,
+      "반격확률": 0.2
+     }
+    }
+   }
+  ],
+  "hua-tuo": [
+   {
+    "name": "청낭경",
+    "status": "unsupported",
+    "parts": [],
+    "note": "\"치유한 목표의 주는 피해 증가\"는 회복 이벤트가 필요해 아직 미지원"
+   },
+   {
+    "name": "오금희",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [
+        {
+         "name": "방어",
+         "target": "all_ally",
+         "chance": 0.25,
+         "duration": 99
+        }
+       ],
+       "targets": []
+      },
+      "_timing": "turnStart",
+      "onlyTurns": [
+       4,
+       5,
+       6,
+       7,
+       8
+      ]
+     }
+    ]
+   }
+  ],
+  "zhang-jiao": [
+   {
+    "name": "태평도법",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "묘책",
+         "min": 0.04,
+         "max": 0.04,
+         "target": "self",
+         "duration": 999,
+         "maxStacks": 6
+        },
+        {
+         "stat": "주는책략피해",
+         "min": 0.04,
+         "max": 0.04,
+         "target": "self",
+         "duration": 999,
+         "maxStacks": 6
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "cast",
+       "castType": "액티브",
+       "role": "self",
+       "chance": 1,
+       "maxPerTurn": 9
+      }
+     }
+    ]
+   }
+  ],
+  "diao-chan": [
+   {
+    "name": "상련",
+    "status": "approx",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "방어관통",
+         "min": 0.09,
+         "max": 0.09,
+         "target": "highest_power_ally",
+         "duration": 2,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "turnEnd"
+     }
+    ],
+    "note": "턴 종료 시 1턴 = 다음 턴 행동까지 유지로 해석"
+   },
+   {
+    "name": "화수",
+    "status": "approx",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "연타확률",
+         "min": 0.3,
+         "max": 0.3,
+         "target": "highest_power_ally",
+         "duration": 2,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "turnEnd"
+     }
+    ],
+    "note": "턴 종료 시 1턴 = 다음 턴 행동까지 유지로 해석"
+   }
+  ],
+  "taishi-ci": [
+   {
+    "name": "축력",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "추격발동률",
+         "min": 0.15,
+         "max": 0.15,
+         "target": "self",
+         "duration": 1,
+         "maxStacks": 1,
+         "turnCond": {
+          "parity": "even"
+         }
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "turnStart"
+     }
+    ]
+   }
+  ],
+  "da-qiao": [
+   {
+    "name": "상사문부",
+    "status": "ok",
+    "parts": [],
+    "uniquePatch": {
+     "effects.buffs.0.target": "all_enemy",
+     "effects.heal.0.min": 0.45,
+     "effects.heal.0.max": 0.9
+    },
+    "note": "국색 디버프 대상 → 적군 전체, 회복 -50%"
+   }
+  ],
+  "lu-su": [
+   {
+    "name": "치국론",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [
+        {
+         "name": "군량 고갈",
+         "target": "random_enemy_1",
+         "duration": 2
+        }
+       ],
+       "targets": []
+      },
+      "trigger": {
+       "event": "cast",
+       "castType": "액티브",
+       "role": "self",
+       "chance": 1,
+       "maxPerTurn": 1
+      }
+     }
+    ],
+    "static": {
+     "mods": {
+      "받는피해": -0.07
+     }
+    }
+   },
+   {
+    "name": "탑상책",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "받는책략피해",
+         "min": 0.04,
+         "max": 0.04,
+         "target": "random_enemy_1",
+         "duration": 1,
+         "maxStacks": 3
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "cast",
+       "castType": "액티브",
+       "role": "ally_side",
+       "chance": 1,
+       "maxPerTurn": 1
+      }
+     }
+    ]
+   }
+  ],
+  "gan-ning": [
+   {
+    "name": "산림탈기",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [
+        {
+         "dmgType": "책략",
+         "min": 0.3,
+         "max": 0.3,
+         "target": "random_enemy_1"
+        }
+       ],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "beforeBasic",
+      "chance": 0.6
+     }
+    ],
+    "static": {
+     "mods": {
+      "받는병기피해": -0.05,
+      "회유": 0.05
+     }
+    },
+    "note": "게임 원문(2026-10-03 미리보기): 일반 공격 전 60% 확률로 랜덤 적군 1명에게 30% 책략 피해. 엑셀 원문(\"주는 책략 피해 30% 증가\")은 오기"
+   },
+   {
+    "name": "겁술",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [
+        {
+         "dmgType": "병기",
+         "min": 1,
+         "max": 1,
+         "target": "lowest_hp_enemy",
+         "asBasicAttack": true,
+         "chance": 0.3
+        }
+       ],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "turnEnd"
+     }
+    ],
+    "static": {
+     "mods": {
+      "추격발동률": -1
+     }
+    }
+   }
+  ],
+  "deng-ai": [
+   {
+    "name": "제하론",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "방어관통",
+         "min": 0.03,
+         "max": 0.03,
+         "target": "random_ally_n",
+         "duration": 999,
+         "maxStacks": 8
+        },
+        {
+         "stat": "간파",
+         "min": 0.03,
+         "max": 0.03,
+         "target": "random_ally_n",
+         "duration": 999,
+         "maxStacks": 8
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "turnStart"
+     }
+    ]
+   }
+  ],
+  "xiahou-dun": [
+   {
+    "name": "위협",
+    "status": "approx",
+    "parts": [],
+    "uniquePatch": {
+     "effects.buffs.0.min": -0.4,
+     "effects.buffs.0.max": -0.4
+    },
+    "note": "강렬 피해 감소 30% → 40%(+10%p로 해석, ×1.1 이면 33%)"
+   }
+  ],
+  "zhen-luo": [
+   {
+    "name": "낙신부 상권",
+    "status": "approx",
+    "parts": [],
+    "uniquePatch": {
+     "effects.heal.0.max": 1.54,
+     "effects.heal.1.max": 1.54,
+     "effects.targets": [
+      "highest_intel_ally",
+      "self"
+     ]
+    },
+    "note": "낙수의 여신 대상 → 지력 최고 우군, 회복 +10%"
+   },
+   {
+    "name": "낙신부 하권",
+    "status": "approx",
+    "parts": [],
+    "uniquePatch": {
+     "effects.heal.0.max": 1.54,
+     "effects.heal.1.max": 1.54,
+     "effects.targets": [
+      "highest_power_ally",
+      "self"
+     ]
+    },
+    "note": "낙수의 여신 대상 → 무력 최고 우군, 회복 +10%"
+   }
+  ],
+  "zhang-fei": [
+   {
+    "name": "신정후도명",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "uniqueProcAdd": 1
+    },
+    "uniquePatch": {
+     "effects.statusEffects.0.chance": 0.12,
+     "effects.damage.0.min": 0.91,
+     "effects.damage.0.max": 0.91
+    },
+    "note": "만인의 적 발동률 +100%, 위협 확률 12%, 피해 계수 140%×0.65"
+   }
+  ],
+  "huang-yueying": [
+   {
+    "name": "기관술",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [
+        {
+         "name": "조롱",
+         "target": "all_enemy",
+         "chance": 0.35,
+         "duration": 1,
+         "caster": "highest_command_ally",
+         "chanceOnce": true
+        }
+       ],
+       "targets": []
+      },
+      "_timing": "turnStart"
+     }
+    ],
+    "note": "35% 판정 1번 → 성공 시 적군 전체 조롱(R-021). 조롱 시전자 = 통솔 최고 우군(FEAT-015)"
+   },
+   {
+    "name": "천공비록",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [
+        {
+         "dmgType": "책략",
+         "min": 1,
+         "max": 1,
+         "target": "trigger_attacker",
+         "turnCond": {
+          "parity": "odd"
+         }
+        }
+       ],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "damage",
+       "role": "ally_taken",
+       "requireDefenderIs": "highest_intel_ally",
+       "chance": 1,
+       "maxPerTurn": 1
+      }
+     }
+    ]
+   }
+  ],
+  "xun-yu": [
+   {
+    "name": "북한",
+    "status": "approx",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "묘책",
+         "min": 0.06,
+         "max": 0.06,
+         "target": "highest_intel_ally",
+         "duration": 999,
+         "maxStacks": 1
+        },
+        {
+         "stat": "회심피해",
+         "min": 0.1,
+         "max": 0.1,
+         "target": "highest_intel_ally",
+         "duration": 999,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "battleStart"
+     }
+    ],
+    "note": "묘책 피해 +10%는 회심/묘책 공용 피해 증가로 근사"
+   }
+  ],
+  "xiahou-yuan": [
+   {
+    "name": "신속",
+    "status": "approx",
+    "parts": [],
+    "static": {
+     "mods": {
+      "회심피해": 0.12
+     }
+    },
+    "note": "선공 영향 미반영"
+   }
+  ],
+  "cao-ren": [
+   {
+    "name": "수도",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "받는액티브피해",
+         "min": -0.12,
+         "max": -0.12,
+         "target": "all_ally",
+         "duration": 999,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "battleStart"
+     }
+    ]
+   }
+  ],
+  "xu-shu": [
+   {
+    "name": "장검행",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "statFromStat": {
+      "stat": "무력",
+      "from": "지력",
+      "ratio": 0.25
+     },
+     "_strategyThenPhys": 0.4
+    },
+    "note": "무력 +지력×25%(편성 시), 책략 피해 후 다음 병기 피해 +40%(FEAT-015)"
+   },
+   {
+    "name": "문공",
+    "status": "ok",
+    "parts": [],
+    "uniquePatch": {
+     "effects.damage.1.dmgType": "책략",
+     "effects.damage.1.min": 2.42,
+     "effects.damage.1.max": 2.42,
+     "effects.damage.0.min": 2.42,
+     "effects.damage.0.max": 2.42
+    },
+    "note": "겸손한 자세 병기 피해 → 책략, 전법 피해 +10%"
+   }
+  ],
+  "huang-zhong": [
+   {
+    "name": "궁술",
+    "status": "unsupported",
+    "parts": [],
+    "note": "\"턴 종료 전 일반 공격 2회 미만\" 조건은 턴별 공격 횟수 집계가 필요해 미지원"
+   }
+  ],
+  "xu-sheng": [
+   {
+    "name": "의성",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [
+        {
+         "name": "홍수",
+         "target": "random_enemy_n",
+         "duration": 2
+        }
+       ],
+       "targets": []
+      },
+      "_timing": "turnStart",
+      "onlyTurns": [
+       1
+      ]
+     }
+    ],
+    "note": "홍수 상태 적이 아군에게 주는 피해 −8%, 서성 생존 중(FEAT-015)",
+    "unit": {
+     "floodWard": 0.08
+    }
+   }
+  ],
+  "cai-wenji": [
+   {
+    "name": "호가십팔박",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [
+        {
+         "stat": "지력",
+         "min": -30,
+         "max": -30,
+         "target": "random_enemy_n",
+         "duration": 1,
+         "maxStacks": 1
+        }
+       ],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "cast",
+       "castType": "액티브",
+       "castSkill": "unique",
+       "role": "self",
+       "chance": 1,
+       "maxPerTurn": 1
+      }
+     }
+    ],
+    "unit": {
+     "uniqueProcAdd": 0.1
+    },
+    "uniquePatch": {
+     "effects.heal.0.max": 0.96,
+     "effects.heal.1.max": 0.4
+    }
+   }
+  ],
+  "li-ru": [
+   {
+    "name": "비호",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "회유",
+         "min": 0.06,
+         "max": 0.06,
+         "target": "random_ally_n",
+         "duration": 999,
+         "maxStacks": 1
+        },
+        {
+         "stat": "심리공격",
+         "min": 0.06,
+         "max": 0.06,
+         "target": "random_ally_n",
+         "duration": 999,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [
+        {
+         "name": "방어",
+         "target": "self",
+         "duration": 99
+        },
+        {
+         "name": "방어",
+         "target": "self",
+         "duration": 99
+        }
+       ],
+       "targets": []
+      },
+      "_timing": "battleStart"
+     }
+    ],
+    "note": "방어 2스택(FIX-004)"
+   }
+  ],
+  "pang-de": [
+   {
+    "name": "초기",
+    "status": "ok",
+    "parts": [],
+    "uniquePatch": {
+     "onlyTurns": [
+      2,
+      4
+     ]
+    }
+   },
+   {
+    "name": "상마",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [
+        {
+         "stat": "무력",
+         "min": 20,
+         "max": 20,
+         "target": "all_ally",
+         "duration": 999,
+         "maxStacks": 1,
+         "condition": {
+          "type": "unitType",
+          "who": "target",
+          "value": "기병"
+         }
+        },
+        {
+         "stat": "선공",
+         "min": 20,
+         "max": 20,
+         "target": "all_ally",
+         "duration": 999,
+         "maxStacks": 1,
+         "condition": {
+          "type": "unitType",
+          "who": "target",
+          "value": "기병"
+         }
+        }
+       ],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "battleStart"
+     }
+    ]
+   }
+  ],
+  "zhang-bao": [
+   {
+    "name": "태평도법",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "받는액티브피해",
+         "min": 0.1,
+         "max": 0.1,
+         "target": "trigger_target",
+         "duration": 2,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "debuff",
+       "role": "ally_side",
+       "statusName": "요술",
+       "chance": 1,
+       "maxPerTurn": 9
+      }
+     }
+    ]
+   }
+  ],
+  "yuan-shao": [
+   {
+    "name": "세가",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "_factionOverride": "군"
+    }
+   }
+  ],
+  "zhang-he": [
+   {
+    "name": "임기응변",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "stats": {
+      "무력": 15
+     },
+     "mods": {
+      "액티브발동률": 0.03
+     }
+    }
+   }
+  ],
+  "xiao-qiao": [
+   {
+    "name": "관문",
+    "status": "unsupported",
+    "parts": [],
+    "note": "\"여성 무장의 첫 회복 효과 발동 시\"는 회복 이벤트가 필요해 미지원"
+   },
+   {
+    "name": "공근신",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "uniqueProcAdd": 0.15
+    },
+    "uniquePatch": {
+     "effects.heal.0.min": 0.625,
+     "effects.heal.0.max": 1.25
+    }
+   }
+  ],
+  "sun-ce": [
+   {
+    "name": "패왕전",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": [],
+       "dispel": [
+        {
+         "target": "self",
+         "count": 1
+        }
+       ]
+      },
+      "trigger": {
+       "event": "cast",
+       "castType": "액티브",
+       "role": "self",
+       "chance": 0.65,
+       "maxPerTurn": 9
+      }
+     }
+    ]
+   },
+   {
+    "name": "무구",
+    "status": "approx",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [
+        {
+         "name": "위협",
+         "target": "random_enemy_1",
+         "duration": 2
+        }
+       ],
+       "targets": []
+      },
+      "trigger": {
+       "event": "cast",
+       "castType": "액티브",
+       "role": "self",
+       "chance": 0.4,
+       "maxPerTurn": 9
+      }
+     }
+    ],
+    "note": "무력 영향 미반영. 부여 상태는 위협(게임 원문, 엑셀은 공포로 오기)"
+   }
+  ],
+  "cheng-yu": [
+   {
+    "name": "지용",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "탈주병증가": 0.3
+     }
+    },
+    "unit": {
+     "uniqueProcAdd": 0.05
+    }
+   }
+  ],
+  "yu-jin": [
+   {
+    "name": "지군",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "주는피해",
+         "min": -0.1,
+         "max": -0.1,
+         "target": "trigger_target",
+         "duration": 1,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "debuff",
+       "role": "self_cast",
+       "statusName": "무장 해제",
+       "chance": 1,
+       "maxPerTurn": 9
+      }
+     }
+    ],
+    "static": {
+     "mods": {
+      "받는피해": -0.08
+     }
+    }
+   }
+  ],
+  "xu-huang": [
+   {
+    "name": "파군",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "주는액티브피해": 0.06,
+      "방어관통": 0.06
+     }
+    }
+   }
+  ],
+  "guan-ping": [
+   {
+    "name": "용음",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [
+        {
+         "name": "공포",
+         "target": "all_enemy",
+         "duration": 2
+        }
+       ],
+       "targets": []
+      },
+      "_timing": "turnStart",
+      "onlyTurns": [
+       1
+      ]
+     }
+    ]
+   }
+  ],
+  "cheng-pu": [
+   {
+    "name": "호신",
+    "status": "approx",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [
+        {
+         "min": 2,
+         "max": 2,
+         "target": "self"
+        }
+       ],
+       "buffs": [
+        {
+         "stat": "받는피해",
+         "min": -0.12,
+         "max": -0.12,
+         "target": "self",
+         "duration": 999,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "damage",
+       "role": "taken",
+       "chance": 1,
+       "maxPerTurn": 1,
+       "maxPerBattle": 1,
+       "condition": {
+        "type": "troopsBelow",
+        "who": "self",
+        "ratio": 0.5
+       }
+      }
+     }
+    ],
+    "note": "통솔 영향 미반영"
+   }
+  ],
+  "zhou-cang": [
+   {
+    "name": "충렬",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "stats": {
+      "통솔": 15
+     }
+    },
+    "uniquePatch": {
+     "effects.statusEffects.0.chance": 0.65,
+     "effects.statusEffects.1.chance": 0.65
+    },
+    "note": "이상 상태 확률 45% → 65%(+20%p로 해석)"
+   }
+  ],
+  "yan-liang": [
+   {
+    "name": "무·상",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "주는피해",
+         "min": 0.1,
+         "max": 0.1,
+         "target": "trigger_attacker",
+         "duration": 2,
+         "maxStacks": 1
+        },
+        {
+         "stat": "방어관통",
+         "min": 0.06,
+         "max": 0.06,
+         "target": "trigger_attacker",
+         "duration": 2,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "cast",
+       "castType": "추격",
+       "casterIs": [
+        "self",
+        "highest_power_ally"
+       ],
+       "chance": 1,
+       "maxPerTurn": 9
+      }
+     }
+    ]
+   }
+  ],
+  "wen-chou": [
+   {
+    "name": "무·하",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "받는피해",
+         "min": -0.07,
+         "max": -0.07,
+         "target": "trigger_attacker",
+         "duration": 2,
+         "maxStacks": 2
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "trigger": {
+       "event": "cast",
+       "castType": "추격",
+       "casterIs": [
+        "self",
+        "highest_power_ally"
+       ],
+       "chance": 1,
+       "maxPerTurn": 9
+      }
+     }
+    ]
+   }
+  ],
+  "zhang-liang": [
+   {
+    "name": "태평도법",
+    "status": "approx",
+    "parts": [],
+    "static": {
+     "mods": {
+      "회유": 0.08,
+      "피신": 0.08
+     }
+    },
+    "note": "\"1번째 턴 괴술 발동 후 랜덤 적 1명 능력 소진\"은 미지원"
+   }
+  ],
+  "huang-gai": [
+   {
+    "name": "견결",
+    "status": "unsupported",
+    "parts": [],
+    "note": "\"우군의 피해를 대신 받은 후\"는 피해 분담 이벤트가 필요해 미지원"
+   }
+  ],
+  "hua-xiong": [
+   {
+    "name": "신무",
+    "status": "unsupported",
+    "parts": [],
+    "note": "\"능력 소진 효과 면역\"은 미지원"
+   }
+  ],
+  "sun-jian": [
+   {
+    "name": "무열",
+    "status": "approx",
+    "parts": [],
+    "static": {
+     "mods": {
+      "받는병기피해": -0.08
+     }
+    },
+    "note": "통솔 영향 미반영"
+   }
+  ],
+  "yue-jin": [
+   {
+    "name": "동등",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "받는책략피해",
+         "min": -0.06,
+         "max": -0.06,
+         "target": "self",
+         "duration": 999,
+         "maxStacks": 1
+        },
+        {
+         "stat": "받는책략피해",
+         "min": -0.06,
+         "max": -0.06,
+         "target": "random_same_row_ally",
+         "duration": 999,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "battleStart"
+     }
+    ],
+    "note": "자신 + 같은 열(전열/후열) 랜덤 우군 1명 (FEAT-011 대상)"
+   }
+  ],
+  "xu-chu": [
+   {
+    "name": "정남권종",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "추격발동률": 0.05,
+      "추격전법피해": 0.12
+     }
+    }
+   },
+   {
+    "name": "전서",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "회심",
+         "min": 0.15,
+         "max": 0.15,
+         "target": "self",
+         "duration": 3,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      },
+      "_timing": "battleStart"
+     }
+    ]
+   }
+  ],
+  "pang-tong": [
+   {
+    "name": "책략",
+    "status": "unsupported",
+    "parts": [],
+    "note": "고유 전법 연환계의 「연환」(피해 전달)이 엔진 미지원이라 이 금병법도 시뮬 제외"
+   }
+  ],
+  "gan-furen": [
+   {
+    "name": "한녀전",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "피신": 0.14
+     }
+    }
+   }
+  ],
+  "zhang-liao": [
+   {
+    "name": "기전",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "row": "front",
+     "mods": {
+      "회유": 0.12,
+      "주는피해": 0.05
+     }
+    },
+    "note": "진형 칸이 전열일 때만 적용"
+   }
+  ],
+  "lu-xun": [
+   {
+    "name": "분량",
+    "status": "ok",
+    "parts": [
+     {
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [
+        {
+         "name": "군량 고갈",
+         "target": "trigger_target",
+         "duration": 2
+        }
+       ],
+       "targets": []
+      },
+      "trigger": {
+       "event": "debuff",
+       "role": "ally_side",
+       "statusName": "화공",
+       "chance": 0.5,
+       "maxPerTurn": 9
+      },
+      "onlyTurns": [
+       1,
+       2,
+       3
+      ]
+     }
+    ],
+    "note": "우리 편이 적에게 화공을 부여할 때마다 50% 판정(1~3턴)"
+   },
+   {
+    "name": "분영",
+    "status": "approx",
+    "parts": [],
+    "static": {
+     "mods": {
+      "심리공격": 0.05
+     }
+    },
+    "note": "심리 공격 +5%만 반영. 연소 상태가 엔진 미지원이라 \"연소 시 최고 속성 5% 추가 감소\"는 제외"
+   }
+  ],
+  "zhou-tai": [
+   {
+    "name": "불굴",
+    "status": "ok",
+    "parts": [
+     {
+      "_timing": "battleStart",
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "받는병기피해",
+         "min": -0.06,
+         "max": -0.06,
+         "target": "self",
+         "duration": 999,
+         "maxStacks": 1
+        },
+        {
+         "stat": "받는병기피해",
+         "min": -0.06,
+         "max": -0.06,
+         "target": "random_same_row_ally",
+         "duration": 999,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      }
+     }
+    ],
+    "note": "자신 + 같은 열(전열/후열) 랜덤 우군 1명. 같은 열 우군이 없으면 자신만"
+   },
+   {
+    "name": "역전",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "_guardReversal": {
+      "bonus": 0.2,
+      "healRatio": 0.5
+     }
+    },
+    "note": "대신 받아 준 우군의 다음 피해 +20%, 그 피해의 50%만큼 주태 회복(전보: 회복 177~222)"
+   }
+  ],
+  "zou-shi": [
+   {
+    "name": "세속",
+    "status": "approx",
+    "parts": [],
+    "uniquePatch": {
+     "parts.1.effects.heal.0.min": 1.68,
+     "parts.1.effects.heal.0.max": 1.68,
+     "_keepTiming": true
+    },
+    "note": "회복 계수 140% → 168%(×1.2). 눈짓의 지력 영향은 공식 미확인이라 미반영"
+   }
+  ],
+  "chen-gong": [
+   {
+    "name": "논무",
+    "status": "ok",
+    "parts": [
+     {
+      "_timing": "battleStart",
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": [],
+       "grants": [
+        {
+         "key": "논무",
+         "target": "highest_power_ally",
+         "skill": {
+          "trigger": {
+           "event": "cast",
+           "castType": "추격",
+           "role": "self",
+           "maxPerTurn": 9
+          },
+          "effects": {
+           "damage": [],
+           "heal": [],
+           "buffs": [
+            {
+             "stat": "추격전법피해",
+             "min": 0.02,
+             "max": 0.02,
+             "target": "self",
+             "duration": 999,
+             "maxStacks": 10
+            }
+           ],
+           "statMods": [],
+           "statusEffects": [],
+           "targets": []
+          }
+         }
+        }
+       ]
+      }
+     }
+    ],
+    "note": "전투 시작 시 무력 최고 우군에게 부여, 추격 발동마다 추격 전법 피해 +2%(최대 10회)"
+   }
+  ],
+  "ma-yunlu": [
+   {
+    "name": "풍속통의",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "allyTypeHighestPct": {
+      "unitType": "기병",
+      "pct": 0.05
+     }
+    },
+    "note": "무장 기본 병종이 기병인 아군(자신 포함)의 최고 속성 +5%"
+   }
+  ],
+  "fa-zheng": [
+   {
+    "name": "문도",
+    "status": "ok",
+    "parts": [
+     {
+      "_timing": "battleStart",
+      "effects": {
+       "damage": [],
+       "heal": [],
+       "buffs": [
+        {
+         "stat": "주는병기피해",
+         "min": -0.1,
+         "max": -0.1,
+         "target": "all_enemy",
+         "duration": 4,
+         "maxStacks": 1
+        }
+       ],
+       "statMods": [],
+       "statusEffects": [],
+       "targets": []
+      }
+     }
+    ]
+   }
+  ],
+  "tian-feng": [
+   {
+    "name": "권략",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "uniqueProcAdd": 0.1
+    },
+    "note": "지략 방어 발동률 60% → 70%"
+   }
+  ],
+  "gongsun-zan": [
+   {
+    "name": "서좌",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "추격발동률": 0.07
+     }
+    }
+   },
+   {
+    "name": "백마의종",
+    "status": "ok",
+    "parts": [],
+    "unit": {
+     "_evadeGrowth": {
+      "ratio": 0.02,
+      "max": 8,
+      "stats": [
+       "무력",
+       "지력"
+      ]
+     }
+    },
+    "note": "피신 시점의 선공 기준"
+   }
+  ],
+  "sima-yi": [
+   {
+    "name": "대략",
+    "status": "ok",
+    "parts": [],
+    "static": {
+     "mods": {
+      "받는피해": -0.05
+     }
+    },
+    "unit": {
+     "_stackHeal": {
+      "key": "포석",
+      "thresholds": [
+       4,
+       8
+      ],
+      "ratio": 0.8
+     }
+    },
+    "note": "매의 응시의 포석이 처음 4스택·8스택이 될 때 아군 전체 회복 80%(지력 영향은 일반 회복 공식대로). 포석 쌓임은 매의 응시 근사(발동마다 1 + 50%로 1) 기준"
+   }
+  ]
+ }
+}

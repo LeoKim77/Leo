@@ -1,0 +1,21 @@
+{
+  "id": "2026-10-03-grade-rule",
+  "date": "2026-10-03",
+  "season": "S2",
+  "category": "전투 계수",
+  "title": "R-017 무승급·무승품 기준 · 승품 보정 후 피해 계수 재추정",
+  "body": "사용자 확인 R-017: 시뮬은 무장 무승급·전법 무승품(엑셀 원문 수치) 기준. 무장 승급 1당 능력치 +10, 전법 승품은 효과 수치 증가.\n- 승품 보너스: 1 ≈ +2.4%, 2 ≈ +4.8%, 4 = +12% (전장의 노래 상세 화면: 치유율 145.6%·통솔 17.92 = 원문 ×1.12). 3·5 는 잠정(+8.4%·+15.6%) → 검증 대기.\n- 조황화 녹화 승품: 전장의 노래 4·화검 5·평화의 기운 3·청풍 질주 1·마비산 1·천하평론 1·화공전술 2. 역검증 표본에 반영.\n- 전장의 노래 통솔 17.92 는 지력 영향이 아니라 승품 4 로 설명됨 → 스탯 영향 예외에서 제외.\n- 아군 책략 표본 추가: 조조 화공전술 → 대교 346·견희 408·손책 318(심리 공격 회복량으로 복원).\n- 재추정: 병기 (250 + 0.85×무력 − 0.6×통솔) × (병력/10000)^0.1 → RMS 9.6%(25건), 책략 1.5×지력×(병력/10000)^0.1 → 9.4%(8건). 회복은 승품 보정 후 화타·황월영 −8%~+6%.\n- 감사 실패 6 → 5 (기습 제압 발동률 경고가 다시 기준선 안쪽).",
+  "refs": [],
+  "author": "Claude",
+  "commit": "c23620c00173",
+  "files": [
+    "data/audit/latest.json",
+    "data/common/confirmed-rules.json",
+    "data/replays/2026-10-03-jhh-training.json",
+    "data/verification/engine-assumptions.json",
+    "data/verification/queue.json",
+    "packages/data-tools/src/replay-check.ts",
+    "packages/engine/src/legacy/core.js",
+    "tests/replay.test.ts"
+  ]
+}

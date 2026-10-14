@@ -1,0 +1,26 @@
+{
+  "id": "P-0024",
+  "date": "2026-10-04",
+  "cat": "verification",
+  "type": "검증완료",
+  "title": "[녹화 검증] 조황화 훈련소 전투 — 책략 계수·역검증",
+  "body": "조조·화타·황월영 기형진 vs 훈련소 NPC(세 번째 전법 Lv9) 녹화 5개로 역검증:\n- 책략 피해 = 1.5 × 지력 × (병력/10000)^0.1, 책략 11건 RMS 4.8%\n- 피격자 지력은 받는 책략 피해에 영향 없음(같은 시전의 대상끼리 비교) → P-0022 일부 답\n- 병기 25건·책략 8건 계수 재추정, 전법 승품 보정(1단계당 +3%)\n역재현 파일: data/replays/2026-10-03-jhh-training.json",
+  "status": "시뮬 반영",
+  "specIds": [
+    "J2",
+    "VER1"
+  ],
+  "rules": [],
+  "links": [
+    {
+      "label": "조황화 녹화 5개 (폴더)",
+      "url": "https://drive.google.com/drive/folders/1mydV0G-9i3w5pRH77M9QdQxGd8-V-mmq"
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-04",
+      "change": "작성"
+    }
+  ]
+}

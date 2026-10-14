@@ -1,0 +1,6052 @@
+{
+  "generals": [
+    {
+      "id": "cao-cao",
+      "name": "조조",
+      "original": "曹操",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "xun-yu",
+      "name": "순욱",
+      "original": "荀彧",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "xiahou-dun",
+      "name": "하후돈",
+      "original": "夏侯惇",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "deng-ai",
+      "name": "등애",
+      "original": "鄧艾",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "sima-yi",
+      "name": "사마의",
+      "original": "司馬懿",
+      "faction": "위",
+      "season": "S3"
+    },
+    {
+      "id": "yue-jin",
+      "name": "악진",
+      "original": "樂進",
+      "faction": "위",
+      "season": "S3"
+    },
+    {
+      "id": "zhang-liao",
+      "name": "장료",
+      "original": "張遼",
+      "faction": "위",
+      "season": "S2"
+    },
+    {
+      "id": "jia-xu",
+      "name": "가후",
+      "original": "賈詡",
+      "faction": "위",
+      "season": "S2"
+    },
+    {
+      "id": "zhen-luo",
+      "name": "견희",
+      "original": "甄洛",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "liu-bei",
+      "name": "유비",
+      "original": "劉備",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "guan-yu",
+      "name": "관우",
+      "original": "關羽",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "zhang-fei",
+      "name": "장비",
+      "original": "張飛",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "zhao-yun",
+      "name": "조운",
+      "original": "趙雲",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "ma-chao",
+      "name": "마초",
+      "original": "馬超",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "gan-furen",
+      "name": "감부인",
+      "original": "甘夫人",
+      "faction": "촉",
+      "season": "S3"
+    },
+    {
+      "id": "huang-yueying",
+      "name": "황월영",
+      "original": "黃月英",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "sun-quan",
+      "name": "손권",
+      "original": "孫權",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "sun-jian",
+      "name": "손견",
+      "original": "孫堅",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "sun-ce",
+      "name": "손책",
+      "original": "孫策",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "zhou-yu",
+      "name": "주유",
+      "original": "周瑜",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "lu-xun",
+      "name": "육손",
+      "original": "陸遜",
+      "faction": "오",
+      "season": "S2"
+    },
+    {
+      "id": "zhou-tai",
+      "name": "주태",
+      "original": "周泰",
+      "faction": "오",
+      "season": "S3"
+    },
+    {
+      "id": "huang-gai",
+      "name": "황개",
+      "original": "黃蓋",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "xu-sheng",
+      "name": "서성",
+      "original": "徐盛",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "da-qiao",
+      "name": "대교",
+      "original": "大喬",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "lu-su",
+      "name": "노숙",
+      "original": "魯肅",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "yuan-shao",
+      "name": "원소",
+      "original": "袁紹",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "diao-chan",
+      "name": "초선",
+      "original": "貂蟬",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "lü-bu",
+      "name": "여포",
+      "original": "呂布",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "chen-gong",
+      "name": "진궁",
+      "original": "陳宮",
+      "faction": "군",
+      "season": "S2"
+    },
+    {
+      "id": "ma-yunlu",
+      "name": "마운록",
+      "original": "馬雲祿",
+      "faction": "촉",
+      "season": "S2"
+    },
+    {
+      "id": "guo-jia",
+      "name": "곽가",
+      "original": "郭嘉",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "xu-huang",
+      "name": "서황",
+      "original": "徐晃",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "xiahou-yuan",
+      "name": "하후연",
+      "original": "夏侯淵",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "cheng-yu",
+      "name": "정욱",
+      "original": "程昱",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "cao-ren",
+      "name": "조인",
+      "original": "曹仁",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "dian-wei",
+      "name": "전위",
+      "original": "典韋",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "zhang-he",
+      "name": "장합",
+      "original": "張郃",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "xu-chu",
+      "name": "허저",
+      "original": "許褚",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "yu-jin",
+      "name": "우금",
+      "original": "于禁",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "wang-lang",
+      "name": "왕랑",
+      "original": "王朗",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "yang-xiu",
+      "name": "양수",
+      "original": "楊修",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "liu-ye",
+      "name": "유엽",
+      "original": "劉曄",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "zhong-yao",
+      "name": "종요",
+      "original": "鍾繇",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "cao-zhen",
+      "name": "조진",
+      "original": "曹真",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "wen-pin",
+      "name": "문빙",
+      "original": "文聘",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "zang-ba",
+      "name": "장패",
+      "original": "臧霸",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "guo-huai",
+      "name": "곽회",
+      "original": "郭淮",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "cao-hong",
+      "name": "조홍",
+      "original": "曹洪",
+      "faction": "위",
+      "season": "S1"
+    },
+    {
+      "id": "zhuge-liang",
+      "name": "제갈량",
+      "original": "諸葛亮",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "xu-shu",
+      "name": "서서",
+      "original": "徐庶",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "huang-zhong",
+      "name": "황충",
+      "original": "黃忠",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "guan-ping",
+      "name": "관평",
+      "original": "關平",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "zhou-cang",
+      "name": "주창",
+      "original": "周倉",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "mi-zhu",
+      "name": "미축",
+      "original": "糜竺",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "shamoke",
+      "name": "사마가",
+      "original": "沙摩柯",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "ma-liang",
+      "name": "마량",
+      "original": "馬良",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "ma-su",
+      "name": "마속",
+      "original": "馬謖",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "jian-yong",
+      "name": "간옹",
+      "original": "簡雍",
+      "faction": "촉",
+      "season": "S1"
+    },
+    {
+      "id": "fa-zheng",
+      "name": "법정",
+      "original": "法正",
+      "faction": "촉",
+      "season": "S2"
+    },
+    {
+      "id": "pang-tong",
+      "name": "방통",
+      "original": "龐統",
+      "faction": "촉",
+      "season": "S3"
+    },
+    {
+      "id": "sun-shangxiang",
+      "name": "손상향",
+      "original": "孫尚香",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "xiao-qiao",
+      "name": "소교",
+      "original": "小喬",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "gan-ning",
+      "name": "감녕",
+      "original": "甘寧",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "cheng-pu",
+      "name": "정보",
+      "original": "程普",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "lü-meng",
+      "name": "여몽",
+      "original": "呂蒙",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "taishi-ci",
+      "name": "태사자",
+      "original": "太史慈",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "chen-wu",
+      "name": "진무",
+      "original": "陳武",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "ding-feng",
+      "name": "정봉",
+      "original": "丁奉",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "dong-xi",
+      "name": "동습",
+      "original": "董襲",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "jiang-qin",
+      "name": "장흠",
+      "original": "蔣欽",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "han-dang",
+      "name": "한당",
+      "original": "韓當",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "pan-zhang",
+      "name": "반장",
+      "original": "潘璋",
+      "faction": "오",
+      "season": "S1"
+    },
+    {
+      "id": "cai-wenji",
+      "name": "채문희",
+      "original": "蔡文姬",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "li-ru",
+      "name": "이유",
+      "original": "李儒",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "zhang-jiao",
+      "name": "장각",
+      "original": "張角",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "hua-xiong",
+      "name": "화웅",
+      "original": "華雄",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "yan-liang",
+      "name": "안량",
+      "original": "顏良",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "wen-chou",
+      "name": "문추",
+      "original": "文醜",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "hua-tuo",
+      "name": "화타",
+      "original": "華佗",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "pang-de",
+      "name": "방덕",
+      "original": "龐德",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "dong-zhuo",
+      "name": "동탁",
+      "original": "董卓",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "zou-shi",
+      "name": "추씨",
+      "original": "鄒氏",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "zhang-liang",
+      "name": "장량",
+      "original": "張梁",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "zhang-bao",
+      "name": "장보",
+      "original": "張寶",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "chen-lin",
+      "name": "진림",
+      "original": "陳琳",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "liu-biao",
+      "name": "유표",
+      "original": "劉表",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "guo-tu",
+      "name": "곽도",
+      "original": "郭圖",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "lu-zhi",
+      "name": "노식",
+      "original": "盧植",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "kong-rong",
+      "name": "공융",
+      "original": "孔融",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "zhang-mancheng",
+      "name": "장만성",
+      "original": "張曼成",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "huangfu-song",
+      "name": "황보숭",
+      "original": "皇甫嵩",
+      "faction": "군",
+      "season": "S1"
+    },
+    {
+      "id": "tian-feng",
+      "name": "전풍",
+      "original": "田豐",
+      "faction": "군",
+      "season": "S2"
+    },
+    {
+      "id": "gongsun-zan",
+      "name": "공손찬",
+      "original": "公孫瓚",
+      "faction": "군",
+      "season": "S3"
+    },
+    {
+      "id": "jiang-wei",
+      "name": "강유",
+      "original": "姜維",
+      "faction": "촉",
+      "season": "문정 1",
+      "imageUrl": "https://cdn.sgmdtx.com/img/jiang_wei.png"
+    },
+    {
+      "id": "sp-zhuge-liang",
+      "name": "SP 제갈량",
+      "original": "SP諸葛亮",
+      "faction": "촉",
+      "season": "문정 1",
+      "imageUrl": "https://cdn.sgmdtx.com/img/zhu_ge_liang2.png"
+    },
+    {
+      "id": "ma-teng",
+      "name": "마등",
+      "original": "馬騰",
+      "faction": "군",
+      "season": "문정 1",
+      "imageUrl": "https://cdn.sgmdtx.com/img/ma_teng.png"
+    },
+    {
+      "id": "guan-yinping",
+      "name": "관은병",
+      "original": "關銀屏",
+      "faction": "촉",
+      "season": "문정 1",
+      "imageUrl": "https://cdn.sgmdtx.com/img/guan_yin_ping.png"
+    },
+    {
+      "id": "zuo-ci",
+      "name": "좌자",
+      "original": "左慈",
+      "faction": "군",
+      "season": "문정 1",
+      "imageUrl": "https://cdn.sgmdtx.com/img/zuo_ci.png"
+    },
+    {
+      "id": "zhang-ning",
+      "name": "장녕",
+      "original": "張寧",
+      "faction": "군",
+      "season": "문정 1",
+      "imageUrl": "https://cdn.sgmdtx.com/img/zhang_ning.png"
+    },
+    {
+      "id": "wang-yi",
+      "name": "왕이",
+      "original": "王異",
+      "faction": "위",
+      "season": "문정 1",
+      "imageUrl": "https://cdn.sgmdtx.com/img/wang_yi.png"
+    },
+    {
+      "id": "zhu-jun",
+      "name": "주준",
+      "original": "朱儁",
+      "faction": "군",
+      "season": "문정 1",
+      "imageUrl": "https://cdn.sgmdtx.com/img/zhu_jun.png"
+    },
+    {
+      "id": "yuan-shu",
+      "name": "원술",
+      "original": "袁術",
+      "faction": "군",
+      "season": "문정 1",
+      "imageUrl": "https://cdn.sgmdtx.com/img/yuan_shu.png"
+    },
+    {
+      "id": "romance-gongsun-zan",
+      "name": "연의 공손찬",
+      "original": "演義騎瓚",
+      "faction": "군",
+      "season": "문정 1",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/gong_sun_zan.png"
+    },
+    {
+      "id": "romance-yuan-shao",
+      "name": "연의 원소",
+      "original": "演義弓袁",
+      "faction": "군",
+      "season": "문정 1",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/yuan_shao.png"
+    },
+    {
+      "id": "romance-zhang-liao",
+      "name": "연의 장료",
+      "original": "演義張遼",
+      "faction": "위",
+      "season": "문정 1",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/zhang_liao.png"
+    },
+    {
+      "id": "romance-gan-ning",
+      "name": "연의 감녕",
+      "original": "演義甘寧·槍",
+      "faction": "오",
+      "season": "문정 1",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/gan_ning.png"
+    },
+    {
+      "id": "romance-guan-yu",
+      "name": "연의 관우",
+      "original": "演義關羽·弓",
+      "faction": "촉",
+      "season": "문정 1",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/guan_yu.png"
+    },
+    {
+      "id": "romance-cao-ren",
+      "name": "연의 조인",
+      "original": "演義曹仁·槍",
+      "faction": "위",
+      "season": "문정 1",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/cao_ren.png"
+    },
+    {
+      "id": "meng-huo",
+      "name": "맹획",
+      "original": "孟獲",
+      "faction": "군",
+      "season": "문정 2",
+      "imageUrl": "https://cdn.sgmdtx.com/img/meng_huo.png"
+    },
+    {
+      "id": "zhu-rong",
+      "name": "축융부인",
+      "original": "祝融夫人",
+      "faction": "군",
+      "season": "문정 2",
+      "imageUrl": "https://cdn.sgmdtx.com/img/zhu_rong_fu_ren.png"
+    },
+    {
+      "id": "gao-shun",
+      "name": "고순",
+      "original": "高順",
+      "faction": "군",
+      "season": "문정 2",
+      "imageUrl": "https://cdn.sgmdtx.com/img/gao_shun.png"
+    },
+    {
+      "id": "cao-pi",
+      "name": "조비",
+      "original": "曹丕",
+      "faction": "위",
+      "season": "문정 2",
+      "imageUrl": "https://cdn.sgmdtx.com/img/cao_pi.png"
+    },
+    {
+      "id": "wei-yan",
+      "name": "위연",
+      "original": "魏延",
+      "faction": "촉",
+      "season": "문정 2",
+      "imageUrl": "https://cdn.sgmdtx.com/img/wei_yan.png"
+    },
+    {
+      "id": "yu-ji",
+      "name": "우길",
+      "original": "于吉",
+      "faction": "군",
+      "season": "문정 2",
+      "imageUrl": "https://cdn.sgmdtx.com/img/yu_ji.png"
+    },
+    {
+      "id": "group-sp-zhuge",
+      "name": "군웅 SP 제갈량",
+      "original": "諸葛轉群",
+      "faction": "군",
+      "season": "문정 2",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/zhu_ge_liang2.png"
+    },
+    {
+      "id": "wei-sp-zhuge",
+      "name": "위 SP 제갈량",
+      "original": "魏·SP諸葛",
+      "faction": "위",
+      "season": "문정 2",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/zhu_ge_liang2.png"
+    },
+    {
+      "id": "shu-zhou-tai",
+      "name": "촉 주태",
+      "original": "蜀·周泰",
+      "faction": "촉",
+      "season": "문정 2",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/zhou_tai.png"
+    }
+  ],
+  "tactics": [
+    {
+      "id": "avoid-edge",
+      "name": "허점 공략",
+      "original": "避其銳氣",
+      "season": "S1",
+      "aliases": [
+        "피기예기"
+      ]
+    },
+    {
+      "id": "qingnang",
+      "name": "청낭 치료",
+      "original": "青囊急救",
+      "season": "S1",
+      "aliases": [
+        "청낭급구",
+        "청낭치료"
+      ]
+    },
+    {
+      "id": "forge-armor",
+      "name": "전쟁 종식",
+      "original": "鑄甲銷戈",
+      "season": "S1",
+      "aliases": [
+        "주갑소과"
+      ]
+    },
+    {
+      "id": "taxation",
+      "name": "세금 과징수",
+      "original": "橫徵暴斂",
+      "season": "S1",
+      "aliases": [
+        "횡정폭렴"
+      ]
+    },
+    {
+      "id": "support-selfless",
+      "name": "전력 지원",
+      "original": "忘私相助",
+      "season": "S1",
+      "aliases": [
+        "망사상조",
+        "헌신 지원"
+      ]
+    },
+    {
+      "id": "calm",
+      "name": "고요한 제압",
+      "original": "以靜制動",
+      "season": "S1",
+      "aliases": [
+        "침착 대응",
+        "이정제동"
+      ]
+    },
+    {
+      "id": "fresh-breeze",
+      "name": "청풍 질주",
+      "original": "清風驅疾",
+      "season": "S1",
+      "aliases": [
+        "청풍구질"
+      ]
+    },
+    {
+      "id": "best-strategy",
+      "name": "충신의 기재",
+      "original": "王佐之才",
+      "season": "S1",
+      "aliases": [
+        "왕좌지재"
+      ]
+    },
+    {
+      "id": "overwhelming-win",
+      "name": "연전연승",
+      "original": "勝敵益強",
+      "season": "S2",
+      "aliases": [
+        "승적익강"
+      ]
+    },
+    {
+      "id": "break-hardship",
+      "name": "요새 함락",
+      "original": "摧堅克難",
+      "season": "S2",
+      "aliases": [
+        "최견극난"
+      ]
+    },
+    {
+      "id": "unstoppable",
+      "name": "예리한 통찰",
+      "original": "銳不可當",
+      "season": "S1",
+      "aliases": [
+        "예불가당",
+        "예리한 돌격"
+      ]
+    },
+    {
+      "id": "break-through",
+      "name": "파죽지세",
+      "original": "勢如破竹",
+      "season": "S1",
+      "aliases": [
+        "세여파죽"
+      ]
+    },
+    {
+      "id": "direct-world",
+      "name": "천하평론",
+      "original": "指點乾坤",
+      "season": "S1",
+      "aliases": [
+        "지점건곤",
+        "천하 지도"
+      ]
+    },
+    {
+      "id": "divine-aid",
+      "name": "신의 가호",
+      "original": "如有神助",
+      "season": "S1",
+      "aliases": [
+        "신의 도움"
+      ]
+    },
+    {
+      "id": "solid-defense",
+      "name": "난공불락",
+      "original": "固若金湯",
+      "season": "S2",
+      "aliases": [
+        "고약금탕",
+        "철벽 방어"
+      ]
+    },
+    {
+      "id": "stone-wall",
+      "name": "견고한 방어",
+      "original": "堅如磐石",
+      "season": "S1",
+      "aliases": [
+        "견여반석"
+      ]
+    },
+    {
+      "id": "ready",
+      "name": "준비 완료",
+      "original": "蓄勢待發",
+      "season": "S1",
+      "aliases": [
+        "축세대발",
+        "기세 축적"
+      ]
+    },
+    {
+      "id": "armor-edge",
+      "name": "결사의 다짐",
+      "original": "披堅執銳",
+      "season": "S1",
+      "aliases": [
+        "피견집예",
+        "강철의 희생"
+      ]
+    },
+    {
+      "id": "sacrifice",
+      "name": "정의의 희생",
+      "original": "捨生取義",
+      "season": "S1",
+      "aliases": [
+        "사생취의"
+      ]
+    },
+    {
+      "id": "no-hardship",
+      "name": "강철의 의지",
+      "original": "無難之志",
+      "season": "S1",
+      "aliases": [
+        "난관 없는 의지"
+      ]
+    },
+    {
+      "id": "iron-cavalry",
+      "name": "철기병 돌격",
+      "original": "鐵騎橫衝",
+      "season": "S1",
+      "aliases": [
+        "철기횡충",
+        "철기 횡충"
+      ]
+    },
+    {
+      "id": "speed-first",
+      "name": "신속 전개",
+      "original": "兵貴神速",
+      "season": "S1",
+      "aliases": [
+        "병귀신속"
+      ]
+    },
+    {
+      "id": "all-directions",
+      "name": "팔방전",
+      "original": "戰八方",
+      "season": "S1",
+      "aliases": [
+        "전팔방",
+        "전방위 공격"
+      ]
+    },
+    {
+      "id": "supply-cut",
+      "name": "보급 차단",
+      "original": "斷敵糧道",
+      "season": "S1",
+      "aliases": [
+        "단적양도"
+      ]
+    },
+    {
+      "id": "hundred-battles",
+      "name": "백전불태",
+      "original": "百戰不殆",
+      "season": "S1"
+    },
+    {
+      "id": "same-boat",
+      "name": "일심협력",
+      "original": "同舟共濟",
+      "season": "S3",
+      "aliases": [
+        "동주공제"
+      ]
+    },
+    {
+      "id": "golden-fortress",
+      "name": "금성의 철벽",
+      "original": "金城湯池",
+      "season": "S3",
+      "aliases": [
+        "금성탕지"
+      ]
+    },
+    {
+      "id": "unexpected",
+      "name": "출기불의",
+      "original": "出其不意",
+      "season": "S1"
+    },
+    {
+      "id": "qimen",
+      "name": "기문둔갑",
+      "original": "奇門遁甲",
+      "season": "S1"
+    },
+    {
+      "id": "foresight",
+      "name": "예측의 신",
+      "original": "料事如神",
+      "season": "S1",
+      "aliases": [
+        "요사여신"
+      ]
+    },
+    {
+      "id": "blazing-sky",
+      "name": "맹렬한 화염",
+      "original": "烈火張天",
+      "season": "S3",
+      "aliases": [
+        "열화장천",
+        "화염천지"
+      ]
+    },
+    {
+      "id": "hide-light",
+      "name": "도광양회",
+      "original": "韜光養晦",
+      "season": "S2"
+    },
+    {
+      "id": "see-truth",
+      "name": "허실 간파",
+      "original": "明其虛實",
+      "season": "S3",
+      "aliases": [
+        "명기허실"
+      ]
+    },
+    {
+      "id": "odd-even",
+      "name": "음과 양",
+      "original": "奇正相生",
+      "season": "S2",
+      "aliases": [
+        "기정상생"
+      ]
+    },
+    {
+      "id": "fire-camp",
+      "name": "화공전술",
+      "original": "烈火焚營",
+      "season": "S1",
+      "aliases": [
+        "열화분영",
+        "화공 전술"
+      ]
+    },
+    {
+      "id": "strong-wind",
+      "name": "광풍의 분노",
+      "original": "狂風大作",
+      "season": "S1",
+      "aliases": [
+        "광풍대작"
+      ]
+    },
+    {
+      "id": "know-people",
+      "name": "임인유현",
+      "original": "任人唯賢",
+      "season": "S2"
+    },
+    {
+      "id": "attack-unready",
+      "name": "무방비 공격",
+      "original": "攻其不備",
+      "season": "S1",
+      "aliases": [
+        "공기불비"
+      ]
+    },
+    {
+      "id": "strike-gap",
+      "name": "틈새 공략",
+      "original": "乘間投隙",
+      "season": "S2",
+      "aliases": [
+        "승간투극",
+        "틈새 공격"
+      ]
+    },
+    {
+      "id": "drain-morale",
+      "name": "삼군 압도",
+      "original": "三軍奪氣",
+      "season": "S2",
+      "aliases": [
+        "삼군탈기",
+        "삼군 사기 저하"
+      ]
+    },
+    {
+      "id": "thousand-raid",
+      "name": "천리기습",
+      "original": "千里突襲",
+      "season": "S1",
+      "aliases": [
+        "천리 기습"
+      ]
+    },
+    {
+      "id": "prepare-armor",
+      "name": "병력 강화",
+      "original": "繕甲厲兵",
+      "season": "S3",
+      "aliases": [
+        "선갑려병",
+        "장비 점검"
+      ]
+    },
+    {
+      "id": "charge-change",
+      "name": "기민한 전술",
+      "original": "沖銳巧變",
+      "season": "S3",
+      "aliases": [
+        "충예교변"
+      ]
+    },
+    {
+      "id": "spring-breeze",
+      "name": "지혜의 바람",
+      "original": "如沐春風",
+      "season": "S1",
+      "aliases": [
+        "여목춘풍"
+      ]
+    },
+    {
+      "id": "use-talent",
+      "name": "적재적소",
+      "original": "知人善任",
+      "season": "S2",
+      "aliases": [
+        "지인선임"
+      ]
+    },
+    {
+      "id": "relentless-chase",
+      "name": "궁추불사",
+      "original": "窮追不捨",
+      "season": "S2"
+    },
+    {
+      "id": "calamity",
+      "name": "재해 이용",
+      "original": "巧利天災",
+      "season": "S1",
+      "aliases": [
+        "교리천재",
+        "천재 활용"
+      ]
+    },
+    {
+      "id": "ten-thousand",
+      "name": "일인천군",
+      "original": "萬夫莫當",
+      "season": "S1",
+      "aliases": [
+        "만부막당",
+        "만부부당"
+      ]
+    },
+    {
+      "id": "shoot-man",
+      "name": "사인",
+      "original": "射人",
+      "season": "S1"
+    },
+    {
+      "id": "wisdom",
+      "name": "모지",
+      "original": "謀智",
+      "season": "S1"
+    },
+    {
+      "id": "shoot-horse",
+      "name": "사마",
+      "original": "射馬",
+      "season": "S1"
+    },
+    {
+      "id": "bravery",
+      "name": "용무",
+      "original": "勇武",
+      "season": "S1"
+    },
+    {
+      "id": "sortie",
+      "name": "출격",
+      "original": "出擊",
+      "season": "S1"
+    },
+    {
+      "id": "heart-talk",
+      "name": "담심",
+      "original": "談心",
+      "season": "S1"
+    },
+    {
+      "id": "encourage",
+      "name": "격려",
+      "original": "激勵",
+      "season": "S1"
+    },
+    {
+      "id": "heavy-strike",
+      "name": "중격",
+      "original": "重擊",
+      "season": "S1"
+    },
+    {
+      "id": "open-wisdom",
+      "name": "개지",
+      "original": "開智",
+      "season": "S1"
+    },
+    {
+      "id": "break-formation",
+      "name": "파진",
+      "original": "破陣",
+      "season": "S1"
+    },
+    {
+      "id": "rear-guard",
+      "name": "전후",
+      "original": "殿後",
+      "season": "S1"
+    },
+    {
+      "id": "sing-wine",
+      "name": "전장의 노래",
+      "original": "詠歌嘗酒",
+      "season": "S1",
+      "aliases": [
+        "영가상주"
+      ]
+    },
+    {
+      "id": "defeat-like-wind",
+      "name": "기풍당당",
+      "original": "克敵如風",
+      "season": "S1",
+      "aliases": [
+        "극적여풍"
+      ]
+    },
+    {
+      "id": "stratagems",
+      "name": "넘치는 계책",
+      "original": "奇計迭出",
+      "season": "S1",
+      "aliases": [
+        "기계첩출"
+      ]
+    },
+    {
+      "id": "battlefield-raid",
+      "name": "순간 돌습",
+      "original": "臨陣突襲",
+      "season": "S1",
+      "aliases": [
+        "임진돌습"
+      ]
+    },
+    {
+      "id": "pursue-remnants",
+      "name": "패잔병 척결",
+      "original": "計逐窮寇",
+      "season": "S1",
+      "aliases": [
+        "계축궁구"
+      ]
+    },
+    {
+      "id": "swift-flank",
+      "name": "측면 공격",
+      "original": "疾行側擊",
+      "season": "S1",
+      "aliases": [
+        "질행측격"
+      ]
+    },
+    {
+      "id": "talk-laugh-heart",
+      "name": "독설가",
+      "original": "談笑誅心",
+      "season": "S1",
+      "aliases": [
+        "담소주심"
+      ]
+    },
+    {
+      "id": "flood-break",
+      "name": "수중전",
+      "original": "決水破敵",
+      "season": "S1",
+      "aliases": [
+        "결수파적"
+      ]
+    },
+    {
+      "id": "clear-fields",
+      "name": "청야 전술",
+      "original": "堅壁清野",
+      "season": "S1",
+      "aliases": [
+        "견벽청야"
+      ]
+    },
+    {
+      "id": "helpless",
+      "name": "속수무책",
+      "original": "束手無策",
+      "season": "S1"
+    },
+    {
+      "id": "rest-army",
+      "name": "평화의 기운",
+      "original": "來好息師",
+      "season": "S1",
+      "aliases": [
+        "내호식사"
+      ]
+    },
+    {
+      "id": "disrupt-formation",
+      "name": "적진 교란",
+      "original": "亂敵方陣",
+      "season": "S1",
+      "aliases": [
+        "난적방진"
+      ]
+    },
+    {
+      "id": "fire-feather",
+      "name": "화검",
+      "original": "火羽",
+      "season": "S1",
+      "aliases": [
+        "화우"
+      ]
+    },
+    {
+      "id": "assault",
+      "name": "강습",
+      "original": "強襲",
+      "season": "S1"
+    },
+    {
+      "id": "good-plan",
+      "name": "양책 수립",
+      "original": "籌劃良策",
+      "season": "S1",
+      "aliases": [
+        "주획양책"
+      ]
+    },
+    {
+      "id": "war-sustains-war",
+      "name": "전쟁 조달",
+      "original": "以戰養戰",
+      "season": "S1",
+      "aliases": [
+        "이전양전"
+      ]
+    },
+    {
+      "id": "one-plan-win",
+      "name": "결정적인 수",
+      "original": "一計決勝",
+      "season": "S1",
+      "aliases": [
+        "일계결승"
+      ]
+    },
+    {
+      "id": "subdue-soldiers",
+      "name": "적군 굴복",
+      "original": "屈人之兵",
+      "season": "S1",
+      "aliases": [
+        "굴인지병"
+      ]
+    },
+    {
+      "id": "brave-in-danger",
+      "name": "위기의 결전",
+      "original": "臨危勇烈",
+      "season": "S1",
+      "aliases": [
+        "임위용렬"
+      ]
+    },
+    {
+      "id": "valiant-form",
+      "name": "늠름한 자태",
+      "original": "驍勇之姿",
+      "season": "S1",
+      "aliases": [
+        "효용지자"
+      ]
+    },
+    {
+      "id": "supreme-war",
+      "name": "비상한 전략",
+      "original": "上兵伐謀",
+      "season": "S1",
+      "aliases": [
+        "상병벌모"
+      ]
+    },
+    {
+      "id": "meet-enemy",
+      "name": "응전",
+      "original": "迎敵",
+      "season": "S1",
+      "aliases": [
+        "영적"
+      ]
+    },
+    {
+      "id": "raise-banner",
+      "name": "민중 봉기",
+      "original": "揭竿而起",
+      "season": "S1",
+      "aliases": [
+        "게간이기"
+      ]
+    },
+    {
+      "id": "night-raid",
+      "name": "야습",
+      "original": "夜襲",
+      "season": "S1"
+    },
+    {
+      "id": "civil-martial",
+      "name": "문과 무",
+      "original": "文治武功",
+      "season": "S1",
+      "aliases": [
+        "문치무공"
+      ]
+    },
+    {
+      "id": "take-banner",
+      "name": "압도적 승리",
+      "original": "斬將奪旗",
+      "season": "S1",
+      "aliases": [
+        "참장탈기"
+      ]
+    },
+    {
+      "id": "light-support",
+      "name": "경무장",
+      "original": "輕裝馳援",
+      "season": "S1",
+      "aliases": [
+        "경장치원"
+      ]
+    },
+    {
+      "id": "famous",
+      "name": "찬란한 위명",
+      "original": "威名顯赫",
+      "season": "S1",
+      "aliases": [
+        "위명현혁"
+      ]
+    },
+    {
+      "id": "strategize",
+      "name": "전략 계획",
+      "original": "運籌帷幄",
+      "season": "S1",
+      "aliases": [
+        "운주유악"
+      ]
+    },
+    {
+      "id": "ambushes",
+      "name": "퇴로 매복",
+      "original": "伏兵四起",
+      "season": "S1",
+      "aliases": [
+        "복병사기"
+      ]
+    },
+    {
+      "id": "break-army",
+      "name": "기습 제압",
+      "original": "破軍襲敵",
+      "season": "S1",
+      "aliases": [
+        "파군습적"
+      ]
+    },
+    {
+      "id": "five-thunder",
+      "name": "청천벽력",
+      "original": "五雷轟頂",
+      "season": "S1",
+      "aliases": [
+        "오뢰굉정"
+      ]
+    },
+    {
+      "id": "brave-three-armies",
+      "name": "용맹한 삼군",
+      "original": "勇冠三軍",
+      "season": "S1",
+      "aliases": [
+        "용관삼군"
+      ]
+    },
+    {
+      "id": "highest-wisdom",
+      "name": "최상의 지략",
+      "original": "上智為間",
+      "season": "S1",
+      "aliases": [
+        "상지위간"
+      ]
+    },
+    {
+      "id": "gate-halberd",
+      "name": "원문사극",
+      "original": "轅門射戟",
+      "season": "S1"
+    },
+    {
+      "id": "wind-cloud",
+      "name": "구름과 바람",
+      "original": "風卷殘雲",
+      "season": "S1",
+      "aliases": [
+        "풍권잔운"
+      ]
+    },
+    {
+      "id": "sweep-army",
+      "name": "천군 소탕",
+      "original": "橫掃千軍",
+      "season": "S1",
+      "aliases": [
+        "횡소천군"
+      ]
+    },
+    {
+      "id": "loot-fire",
+      "name": "방화범",
+      "original": "趁火打劫",
+      "season": "S1",
+      "aliases": [
+        "진화타겁"
+      ]
+    },
+    {
+      "id": "raid-granary",
+      "name": "창고 기습",
+      "original": "計襲糧倉",
+      "season": "S1",
+      "aliases": [
+        "계습양창"
+      ]
+    },
+    {
+      "id": "exploit-void",
+      "name": "허점 공격",
+      "original": "乘虛而入",
+      "season": "S1",
+      "aliases": [
+        "승허이입"
+      ]
+    },
+    {
+      "id": "choose-momentum",
+      "name": "인재 기용",
+      "original": "任人擇勢",
+      "season": "S1",
+      "aliases": [
+        "임인택세"
+      ]
+    },
+    {
+      "id": "civil-military",
+      "name": "문무겸비",
+      "original": "文武雙全",
+      "season": "S1",
+      "aliases": [
+        "문무쌍전"
+      ]
+    },
+    {
+      "id": "encircle-break",
+      "name": "포위 돌파",
+      "original": "破陣馳圍",
+      "season": "S1",
+      "aliases": [
+        "파진치위"
+      ]
+    },
+    {
+      "id": "see-fire",
+      "name": "예리한 판단",
+      "original": "洞若觀火",
+      "season": "S1",
+      "aliases": [
+        "통약관화",
+        "동약관화"
+      ]
+    },
+    {
+      "id": "flood-seven",
+      "name": "칠군수몰",
+      "original": "水淹七軍",
+      "season": "S1",
+      "aliases": [
+        "수엄칠군"
+      ]
+    },
+    {
+      "id": "fold-charge",
+      "name": "절충어모",
+      "original": "折衝禦侮",
+      "season": "문정 1",
+      "aliases": [
+        "절충어회"
+      ],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/zhe_chong_yu_hui.png"
+    },
+    {
+      "id": "blunt-edge",
+      "name": "좌예절봉",
+      "original": "挫銳折鋒",
+      "season": "문정 1",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/cuo_rui_zhe_feng.png"
+    },
+    {
+      "id": "plot-strategy",
+      "name": "운지포모",
+      "original": "運智鋪謀",
+      "season": "문정 1",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/yun_zhi_fu_mou.png"
+    },
+    {
+      "id": "step-camp",
+      "name": "보보위영",
+      "original": "步步為營",
+      "season": "문정 1",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/bu_bu_wei_ying.png"
+    },
+    {
+      "id": "punish-past",
+      "name": "징전비후",
+      "original": "懲前毖後",
+      "season": "문정 1",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/cheng_qian_bi_hou.png"
+    },
+    {
+      "id": "wash-marrow",
+      "name": "세근벌수",
+      "original": "洗筋伐髓",
+      "season": "문정 1",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/xi_jin_fa_sui.png"
+    },
+    {
+      "id": "empty-city",
+      "name": "공성계",
+      "original": "空城計",
+      "season": "문정 1",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/kong_cheng_ji.png"
+    },
+    {
+      "id": "plan-after",
+      "name": "모이후동",
+      "original": "謀而後動",
+      "season": "문정 1",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/mou_er_hou_dong.png"
+    },
+    {
+      "id": "divine-change",
+      "name": "신략제변",
+      "original": "神略制變",
+      "season": "문정 1",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/mou_lue_zhi_bian.png"
+    },
+    {
+      "id": "yellow-heaven",
+      "name": "황천혹심",
+      "original": "黃天惑心",
+      "season": "문정 1",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/huang_tian_huo_xin.png"
+    },
+    {
+      "id": "break-spear-edge",
+      "name": "단과탈봉",
+      "original": "斷戈奪鋒",
+      "season": "문정 1",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/duan_ge_duo_feng.png"
+    },
+    {
+      "id": "ten-ambush",
+      "name": "십면매복",
+      "original": "十面埋伏",
+      "season": "문정 1",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/shi_mian_mai_fu.png"
+    },
+    {
+      "id": "season-shadow-fold",
+      "name": "영·절충어모",
+      "original": "影·折衝",
+      "season": "문정 1",
+      "aliases": [
+        "그림자 절충어모"
+      ],
+      "rarity": "시즌",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/zhe_chong_yu_hui.png"
+    },
+    {
+      "id": "enemy-before",
+      "name": "어적임전",
+      "original": "禦敵臨前",
+      "season": "문정 2",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/yu_di_lin_qian.png"
+    },
+    {
+      "id": "blood-drink",
+      "name": "도봉음혈",
+      "original": "蹈鋒飲血",
+      "season": "문정 2",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/dao_feng_yin_xue.png"
+    },
+    {
+      "id": "ink-follow",
+      "name": "천묵수적",
+      "original": "踐墨隨敵",
+      "season": "문정 2",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/jian_mo_sui_di.png"
+    },
+    {
+      "id": "hidden-dragon",
+      "name": "잠룡재연",
+      "original": "潛龍在淵",
+      "season": "문정 2",
+      "aliases": [],
+      "rarity": "전설",
+      "inventoryRequired": true,
+      "imageUrl": "https://cdn.sgmdtx.com/img/qian_long_zai_yuan.png"
+    },
+    {
+      "id": "season-group-blades",
+      "name": "군인쟁봉",
+      "original": "群刃爭鋒",
+      "season": "문정 2",
+      "aliases": [
+        "군웅 진영 전법"
+      ],
+      "rarity": "시즌",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/wu_nan_man_ru_qin.png"
+    },
+    {
+      "id": "season-shu-rainbow",
+      "name": "촉의관홍",
+      "original": "蜀義貫虹",
+      "season": "문정 2",
+      "aliases": [
+        "촉 진영 전법"
+      ],
+      "rarity": "시즌",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/wu_shu_guo.png"
+    },
+    {
+      "id": "season-wei-whip",
+      "name": "위무휘편",
+      "original": "魏武揮鞭",
+      "season": "문정 2",
+      "aliases": [
+        "위 진영 전법"
+      ],
+      "rarity": "시즌",
+      "inventoryRequired": false,
+      "imageUrl": "https://cdn.sgmdtx.com/img/wu_wei_guo.png"
+    }
+  ],
+  "generalSkills": {
+    "cao-cao": {
+      "generalId": "cao-cao",
+      "name": "난세의 간웅",
+      "original": "亂世奸雄",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "전투 시작 시 아군 전체가 받는 모든 피해가 14% 감소하고 병인·모략 흡혈이 6% 증가한다. 통솔이 가장 높은 아군은 피해를 줄 때 30% 확률로 병력 40%를 회복한다.",
+      "roleSummary": "전군 감쇄·흡혈·고통솔 아군 회복",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E6%9B%B9%E6%93%8D",
+      "verification": "공개 DB 확인"
+    },
+    "xun-yu": {
+      "generalId": "xun-yu",
+      "name": "건계거인",
+      "original": "建計舉人",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "아군 전체의 기책과 간파가 15% 증가한다(지력 영향). 자신이 주는 회복은 35% 확률로 2배가 된다(기책 영향).",
+      "roleSummary": "전군 기책·간파·회복 폭발 지원",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%8D%80%E5%BD%A7",
+      "verification": "공개 DB 확인"
+    },
+    "xiahou-dun": {
+      "generalId": "xiahou-dun",
+      "name": "강렬",
+      "original": "剛烈",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "피해를 받은 뒤 40% 확률로 공격자에게 통솔 영향을 받는 병인 피해 80%를 주고, 2턴 동안 그 대상의 피해량을 30% 낮춘다.",
+      "roleSummary": "전열 반격·공격자 약화",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%A4%8F%E4%BE%AF%E6%83%87",
+      "verification": "공개 DB 확인"
+    },
+    "deng-ai": {
+      "generalId": "deng-ai",
+      "name": "둔전령",
+      "original": "屯田令",
+      "type": "지휘",
+      "category": "치료",
+      "triggerRate": "100%",
+      "effect": "첫 3턴 동안 모든 부대의 피해량이 35% 감소한다. 매 턴 아군 전체의 받는 회복 효과가 10%씩 누적 증가한 뒤 아군 전체 병력을 100% 회복한다.",
+      "roleSummary": "초반 전장 감쇄·누적 회복",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%84%A7%E8%89%BE",
+      "verification": "공개 DB 확인"
+    },
+    "sima-yi": {
+      "generalId": "sima-yi",
+      "name": "매의 응시",
+      "original": "鷹視狼顧",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "100%",
+      "effect": "무작위 고유 진법 이익 1개를 얻고 50% 확률로 하나를 더 얻는다. 적 2명에게 모략 피해 50%를 주며, 보유한 진법 이익마다 계수가 20% 증가한다. 최대 8개까지 반영된다.",
+      "roleSummary": "진법 이익 누적·후반 모략 폭발",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%8F%B8%E9%A6%AC%E6%87%BF",
+      "verification": "공개 DB 확인"
+    },
+    "yue-jin": {
+      "generalId": "yue-jin",
+      "name": "매전선등",
+      "original": "每戰先登",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "자신과 같은 열의 무작위 아군 1명이 선공 30, 피해량 14%, 피해 감소 14%를 얻는다. 첫 2턴에는 전열 대상 효과가 30% 추가 증가한다.",
+      "roleSummary": "동열 강화·초반 전열 가속",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E6%A8%82%E9%80%B2",
+      "verification": "공개 DB 확인"
+    },
+    "zhang-liao": {
+      "generalId": "zhang-liao",
+      "name": "풍습소요",
+      "original": "風襲逍遙",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "병인 관통이 20% 증가한다. 매 턴 시작 시 60% 확률로 명료를 얻고, 전열에 있을 때 피해를 주면 후열을 우선해 50%의 전이 피해를 추가한다.",
+      "roleSummary": "관통·제어 대응·후열 압박",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E9%81%BC",
+      "verification": "공개 DB 확인"
+    },
+    "jia-xu": {
+      "generalId": "jia-xu",
+      "name": "궤도현기",
+      "original": "詭道玄機",
+      "type": "지휘",
+      "category": "모략",
+      "triggerRate": "100%",
+      "effect": "매 턴 시작 시 무작위 적군과 아군 1명에게 2턴 혼란을 건다. 이미 혼란인 적은 모략 피해 300%를 받고, 이미 혼란인 아군과 자신은 110% 회복한다. 아군 오인 피해는 60% 감소한다.",
+      "roleSummary": "혼란 확산·적 폭발·아군 회복",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%B3%88%E8%A9%A1",
+      "verification": "공개 DB 확인"
+    },
+    "zhen-luo": {
+      "generalId": "zhen-luo",
+      "name": "유풍회설",
+      "original": "流風回雪",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "매 턴 시작 시 자신의 병력을 140% 회복한다(지력 영향). 무작위 아군 1명(후열 우선)은 1턴 동안 낙신을 얻어 병력을 140% 회복하고 주는 피해가 25% 증가하며, 낙신 뒤 첫 비일반 공격은 회심과 기책이 반드시 발동한다.",
+      "roleSummary": "자체 회복·후열 폭발·확정 회심·기책",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E7%94%84%E6%B4%9B",
+      "verification": "공개 DB 확인"
+    },
+    "liu-bei": {
+      "generalId": "liu-bei",
+      "name": "휴민도강",
+      "original": "攜民渡江",
+      "type": "지휘",
+      "category": "치료",
+      "triggerRate": "100%",
+      "effect": "아군 전체 통솔이 18 증가한다. 매 턴 종료 시 아군 전체 병력을 100% 회복하고, 병력이 가장 낮은 아군의 약화 1개를 정화한 뒤 90% 추가 회복한다.",
+      "roleSummary": "전군 통솔·광역 회복·정화",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%8A%89%E5%82%99",
+      "verification": "공개 DB 확인"
+    },
+    "guan-yu": {
+      "generalId": "guan-yu",
+      "name": "위진화하",
+      "original": "威震華夏",
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "45%",
+      "effect": "2턴 동안 자신의 능동 전법 발동률이 8% 증가하고, 공포 상태 적 1명마다 3%가 추가된다. 적 전체에 병인 피해 160%를 주며, 제어 중인 적에게는 유랑병 상태를 만든다.",
+      "roleSummary": "능동 가속·광역 병인·제어 연계",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%97%9C%E7%BE%BD",
+      "verification": "공개 DB 확인"
+    },
+    "zhang-fei": {
+      "generalId": "zhang-fei",
+      "name": "만인지적",
+      "original": "萬人之敵",
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "55%",
+      "effect": "적군 전체에 140% 병인 피해를 준다. 공포 상태인 적은 30% 확률로 1턴 기절하고, 공포가 없는 적은 2턴 동안 공포 상태가 된다.",
+      "roleSummary": "광역 병인·공포 확산·기절 연계",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E9%A3%9B",
+      "verification": "공개 DB 확인"
+    },
+    "zhao-yun": {
+      "generalId": "zhao-yun",
+      "name": "칠진칠출",
+      "original": "七進七出",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "회피가 35% 증가한다. 회피 성공 시 무작위 적 2명에게 병인 피해 90%를 주며 같은 턴 반복 발동마다 계수가 10% 감소한다. 한 턴 최대 7회 발동한다.",
+      "roleSummary": "고회피 전열·연속 반격",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%B6%99%E9%9B%B2",
+      "verification": "공개 DB 확인"
+    },
+    "ma-chao": {
+      "generalId": "ma-chao",
+      "name": "종마횡창",
+      "original": "縱馬橫槍",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "회심이 45% 증가한다. 회심 발생 뒤 방어를 무시하는 병인 피해 60%를 추가하며, 대상이 약화 상태면 20%가 더해진다. 한 턴 최대 5회 발동한다.",
+      "roleSummary": "고회심·방어 무시·약화 연계",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%A6%AC%E8%B6%85",
+      "verification": "공개 DB 확인"
+    },
+    "gan-furen": {
+      "generalId": "gan-furen",
+      "name": "황사숙인",
+      "original": "皇思淑仁",
+      "type": "지휘",
+      "category": "치료",
+      "triggerRate": "100%",
+      "effect": "매 턴 시작 시 60% 확률로 아군 2명의 회피를 2턴 동안 18% 높인다. 턴 종료 시 아군 2명의 병력을 120% 회복한다.",
+      "roleSummary": "회피 지원·지속 회복",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E7%94%98%E5%A4%AB%E4%BA%BA",
+      "verification": "공개 DB 확인"
+    },
+    "huang-yueying": {
+      "generalId": "huang-yueying",
+      "name": "목우유마",
+      "original": "木牛流馬",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "홀수 턴 시작 시 아군 전체 피해량이 25% 증가하고, 짝수 턴 시작 시 아군 전체 병력을 220% 회복한다.",
+      "roleSummary": "홀수 턴 증폭·짝수 턴 광역 회복",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%BB%83%E6%9C%88%E8%8B%B1",
+      "verification": "공개 DB 확인"
+    },
+    "sun-quan": {
+      "generalId": "sun-quan",
+      "name": "호거강동",
+      "original": "虎踞江東",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "아군이 장착한 능동 전법 1개마다 아군 전체 능동 발동률이 7% 증가하고 받는 병인 피해가 5% 감소한다. 비능동 전법 1개마다 연격이 28% 증가하고 받는 모략 피해가 5% 감소한다.",
+      "roleSummary": "장착 전법 유형에 따른 전군 발동·연격 지원",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E6%AC%8A",
+      "verification": "공개 DB 확인"
+    },
+    "sun-jian": {
+      "generalId": "sun-jian",
+      "name": "무열파로",
+      "original": "武烈破虜",
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "55%",
+      "effect": "무작위 적군 1명의 통솔을 40 낮춰 2턴 지속시키고(무력·통솔 중 높은 값 영향), 250% 병인 피해를 준다. 대상 통솔이 자신보다 낮으면 1턴 기절시키고, 높으면 통솔 감소량이 50% 증가한다.",
+      "roleSummary": "통솔 절단·단일 강타·조건부 기절",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E5%A0%85",
+      "verification": "공개 DB 확인"
+    },
+    "sun-ce": {
+      "generalId": "sun-ce",
+      "name": "제패강동",
+      "original": "制霸江東",
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "65%",
+      "effect": "적 2명에게 병인 피해 200%를 주며 후열이면 50%가 추가된다. 자신의 병력을 100% 회복하고 전열이면 회복 계수가 30% 추가된다.",
+      "roleSummary": "광역 병인·위치별 피해 또는 회복 강화",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E7%AD%96",
+      "verification": "공개 DB 확인"
+    },
+    "zhou-yu": {
+      "generalId": "zhou-yu",
+      "name": "임기제승",
+      "original": "臨機制勝",
+      "type": "지휘",
+      "category": "모략",
+      "triggerRate": "100%",
+      "effect": "어느 부대든 이상 상태를 얻을 때 70% 확률로 적 2명에게 모략 피해 60%를 준다. 한 턴 최대 4회이며, 4회 발동하면 아군 전체 병력을 40% 회복한다.",
+      "roleSummary": "상태 발생 연쇄 피해·광역 회복",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%91%A8%E7%91%9C",
+      "verification": "공개 DB 확인"
+    },
+    "lu-xun": {
+      "generalId": "lu-xun",
+      "name": "화소연영",
+      "original": "火燒連營",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "60%",
+      "effect": "적 1명에게 2턴 화염을 건다. 이미 화염이면 연소 중첩을 더하고 모략 피해 220%를 주며, 40% 확률로 연소를 한 번 더 추가한다.",
+      "roleSummary": "화염 중첩·단일 모략 폭발",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%99%B8%E9%81%9C",
+      "verification": "공개 DB 확인"
+    },
+    "zhou-tai": {
+      "generalId": "zhou-tai",
+      "name": "불굴의 의지",
+      "original": "不屈意志",
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "아군이 현재 병력의 10%를 넘는 피해를 받을 때 80% 확률로 대신 받는다. 아군 1명당 매 턴 3회이며 대신 받는 피해는 50% 감소한다. 아군이 살아 있으면 치명 피해를 100% 확률로 버티되 발동할 때마다 다음 확률이 10% 낮아진다.",
+      "roleSummary": "대신 맞기·피해 감소·치명 생존",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%91%A8%E6%B3%B0",
+      "verification": "공개 DB 확인"
+    },
+    "huang-gai": {
+      "generalId": "huang-gai",
+      "name": "고육계",
+      "original": "苦肉計",
+      "type": "액티브",
+      "category": "방어",
+      "triggerRate": "50%",
+      "effect": "2턴 동안 받는 피해가 30% 감소한다. 지력이 가장 높은 아군이 황개에게 병인 피해 60%를 준 뒤, 적 2명에게 모략 피해 220%와 2턴 화염을 건다.",
+      "roleSummary": "자해 조건·광역 화염·생존 보정",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%BB%83%E8%93%8B",
+      "verification": "공개 DB 확인"
+    },
+    "xu-sheng": {
+      "generalId": "xu-sheng",
+      "name": "백리의성",
+      "original": "百里疑城",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "첫 4턴 동안 아군 전체는 피해를 받기 전 25% 확률로 저항 1회를 얻는다. 4턴 시작 시 아군 전체 통솔이 40 증가하고 적 전체에 2턴 수몰을 건다.",
+      "roleSummary": "초반 저항·4턴 통솔·광역 수몰",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%BE%90%E7%9B%9B",
+      "verification": "공개 DB 확인"
+    },
+    "da-qiao": {
+      "generalId": "da-qiao",
+      "name": "국색",
+      "original": "國色",
+      "type": "지휘",
+      "category": "치료",
+      "triggerRate": "100%",
+      "effect": "매 턴 시작 시 적 2명이 받는 피해를 20% 높이고, 아군 2명의 병력을 180% 회복한다.",
+      "roleSummary": "적 피해 증폭·아군 이중 회복",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%A4%A7%E5%96%AC",
+      "verification": "공개 DB 확인"
+    },
+    "lu-su": {
+      "generalId": "lu-su",
+      "name": "획상분형",
+      "original": "劃湘分荊",
+      "type": "액티브",
+      "category": "보조",
+      "triggerRate": "45%",
+      "effect": "전체 부대 중 무작위 4명을 고른다. 아군이면 1턴 무장해제와 피해 감소 20%를, 적군이면 1턴 무장해제와 받는 피해 증가 20%를 부여한다.",
+      "roleSummary": "무작위 무장해제·아군 보호·적 증폭",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%AD%AF%E8%82%85",
+      "verification": "공개 DB 확인"
+    },
+    "yuan-shao": {
+      "generalId": "yuan-shao",
+      "name": "합취군웅",
+      "original": "合聚群雄",
+      "type": "지휘",
+      "category": "문무",
+      "triggerRate": "100%",
+      "effect": "각 부대가 행동할 때 아군 중 무력·지력·선공이 각각 가장 높은 장수가 적군 중 해당 능력이 가장 낮은 대상을 공격해 병인 및 모략 피해 75%를 준다.",
+      "roleSummary": "전군 능력 최고치 연동·약점 저격",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%A2%81%E7%B4%B9",
+      "verification": "공개 DB 확인"
+    },
+    "diao-chan": {
+      "generalId": "diao-chan",
+      "name": "폐월",
+      "original": "閉月",
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "이성 장수에게 받는 피해가 25% 감소한다. 턴 종료 시 무력이 가장 높은 아군의 병인 피해가 15% 증가하고, 초선을 공격했던 부대에 방어 무시 병인 피해 45%를 준다.",
+      "roleSummary": "대인 감쇄·고무력 아군 보복 지원",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%B2%82%E8%9F%AC",
+      "verification": "공개 DB 확인"
+    },
+    "lü-bu": {
+      "generalId": "lü-bu",
+      "name": "효용무전",
+      "original": "驍勇無前",
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "22%",
+      "effect": "모든 적군과 서로 일반 공격을 1회씩 한다. 이 과정에서 자신은 무장해제에 면역이며, 자신의 무력이 대상보다 높으면 병인 피해 100%를 추가한다.",
+      "roleSummary": "전군 결투·무장해제 면역·무력 우위 추가타",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%91%82%E5%B8%83",
+      "verification": "공개 DB 확인"
+    },
+    "chen-gong": {
+      "generalId": "chen-gong",
+      "name": "지령종계",
+      "original": "智令從計",
+      "type": "지휘",
+      "category": "모략",
+      "triggerRate": "100%",
+      "effect": "매 턴 시작 시 무력이 가장 높은 아군이 받는 모략 피해를 15% 낮춘다. 그 아군이 추격 전법을 발동하면 무작위 적 1명에게 모략 피해 140%를 준다.",
+      "roleSummary": "물리 핵심 보호·추격 연동 모략 추가타",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%99%B3%E5%AE%AE",
+      "verification": "공개 DB 확인"
+    },
+    "ma-yunlu": {
+      "generalId": "ma-yunlu",
+      "name": "홍장요란",
+      "original": "紅妝繚亂",
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "70%",
+      "effect": "일반 공격 뒤 대상에게 2턴 공포를 걸고 병인 피해 220%를 준다. 80% 확률로 같은 계수의 병인 피해를 한 번 더 준다.",
+      "roleSummary": "고확률 공포·연속 추격",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%A6%AC%E9%9B%B2%E7%A5%BF",
+      "verification": "공개 DB 확인"
+    },
+    "guo-jia": {
+      "generalId": "guo-jia",
+      "name": "산무유책",
+      "original": "算無遺策",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "자신과 지력이 가장 높은 아군의 능동 전법 발동률이 6% 증가한다. 자신이 능동 전법을 발동한 뒤 60% 확률로 다시 발동하며 준비 전법은 준비 과정 없이 효과만 반복한다.",
+      "roleSummary": "능동 발동 보조·자체 재시전",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%83%AD%E5%98%89",
+      "verification": "공개 DB 확인"
+    },
+    "xu-huang": {
+      "generalId": "xu-huang",
+      "name": "장구직입",
+      "original": "長驅直入",
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "60%",
+      "effect": "무작위 적군 1명에게 350% 병인 피해를 주고 1턴 동안 전법 봉쇄를 부여한다. 대상이 이미 전법 봉쇄 상태이거나 적군 중 병력이 가장 낮으면 이번 피해가 30% 증가한다.",
+      "roleSummary": "고계수 단일 병인·전법 봉쇄·마무리",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%BE%90%E6%99%83",
+      "verification": "공개 DB 확인"
+    },
+    "xiahou-yuan": {
+      "generalId": "xiahou-yuan",
+      "name": "신속분습",
+      "original": "神速奔襲",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "매 턴 행동할 때 자신의 무력이 선공의 40%만큼 증가해 1턴 지속된다. 선공 판정에서 1위라면 1턴 동안 신속을 얻어 주는 피해와 회심 확률이 25% 증가한다.",
+      "roleSummary": "선공 환산 무력·최속 회심·피해 증폭",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%A4%8F%E4%BE%AF%E6%B7%B5",
+      "verification": "공개 DB 확인"
+    },
+    "cheng-yu": {
+      "generalId": "cheng-yu",
+      "name": "용관분육",
+      "original": "勇冠賁育",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "60%",
+      "effect": "무작위 적군 1명에게 360% 모략 피해를 준다. 대상이 전열이면 도주병을 추가로 발생시킨다(지력 영향).",
+      "roleSummary": "단일 고계수 모략·전열 병력 손실",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E7%A8%8B%E6%98%B1",
+      "verification": "공개 DB 확인"
+    },
+    "cao-ren": {
+      "generalId": "cao-ren",
+      "name": "고진양번",
+      "original": "固鎮襄樊",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "홀수 턴에는 후열이 받는 피해가 30%, 전열이 받는 피해가 15% 감소한다. 짝수 턴 시작 시 대상마다 75% 확률로 적 2명에게 1턴 침묵을 건다.",
+      "roleSummary": "열별 감쇄·짝수 턴 침묵",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E6%9B%B9%E4%BB%81",
+      "verification": "공개 DB 확인"
+    },
+    "dian-wei": {
+      "generalId": "dian-wei",
+      "name": "고지악래",
+      "original": "古之惡來",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "반격이 60% 증가한다. 피해를 받은 뒤 2턴 동안 반격 피해와 통솔이 각각 20 증가하며 최대 5회 중첩된다.",
+      "roleSummary": "반격·피격 누적 통솔·피해 강화",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%85%B8%E9%9F%8B",
+      "verification": "공개 DB 확인"
+    },
+    "zhang-he": {
+      "generalId": "zhang-he",
+      "name": "대파가정",
+      "original": "大破街亭",
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "60%",
+      "effect": "자신의 방어 관통이 5% 증가하며 전투 종료까지 최대 4회 중첩된다. 이어서 무작위 적군 2명에게 220% 병인 피해를 주고 65% 확률로 1턴 무장해제를 부여한다. 이미 무장해제 상태면 피해가 30% 증가한다.",
+      "roleSummary": "관통 누적·이중 병인·무장해제 연계",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E9%83%83",
+      "verification": "공개 DB 확인"
+    },
+    "xu-chu": {
+      "generalId": "xu-chu",
+      "name": "나의혈전",
+      "original": "裸衣血戰",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "전투 시작 시 자신의 선공과 무력이 각각 20 증가하고 연격률이 100% 증가하는 대신 통솔이 15 감소한다.",
+      "roleSummary": "초반 연격 확정·선공·무력 집중",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%A8%B1%E8%A4%9A",
+      "verification": "공개 DB 확인"
+    },
+    "yu-jin": {
+      "generalId": "yu-jin",
+      "name": "지군의중",
+      "original": "持軍毅重",
+      "type": "패시브",
+      "category": "방어",
+      "triggerRate": "100%",
+      "effect": "자신의 통솔이 30 증가한다. 매 턴 처음 피해를 받은 뒤 무작위 적군 2명이 받는 피해를 8% 높이고(통솔 영향), 60% 확률로 공격자를 2턴 동안 무장해제한다.",
+      "roleSummary": "고통솔 전열·피격 증폭·무장해제",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E4%BA%8E%E7%A6%81",
+      "verification": "공개 DB 확인"
+    },
+    "wang-lang": {
+      "generalId": "wang-lang",
+      "name": "고재박아",
+      "original": "高才博雅",
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "자신의 지력이 30 증가한다.",
+      "roleSummary": "상시 지력 강화",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/wanglang.html",
+      "verification": "보조 DB 확인"
+    },
+    "yang-xiu": {
+      "generalId": "yang-xiu",
+      "name": "첩대",
+      "original": "捷對",
+      "type": "지휘",
+      "category": "모략",
+      "triggerRate": "100%",
+      "effect": "적군이 액티브 전법을 발동한 뒤 해당 적군에게 50% 모략 피해를 준다.",
+      "roleSummary": "적 액티브 반응형 모략 피해",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/yangxiu.html",
+      "verification": "보조 DB 확인"
+    },
+    "liu-ye": {
+      "generalId": "liu-ye",
+      "name": "요적제승",
+      "original": "料敵制勝",
+      "type": "액티브·준비",
+      "category": "모략",
+      "triggerRate": "35%",
+      "effect": "1턴 준비 후 무작위 적군 2명에게 2턴 동안 전법 봉쇄를 부여하고 160% 모략 피해를 준다. 대상이 이미 전법 봉쇄 상태라면 160% 모략 피해를 추가로 준다.",
+      "roleSummary": "이중 전법 봉쇄·상태 대상 추가 모략",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/liuye.html",
+      "verification": "보조 DB 확인"
+    },
+    "zhong-yao": {
+      "generalId": "zhong-yao",
+      "name": "비홍희해",
+      "original": "飛鴻戲海",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "65%",
+      "effect": "적군 전체에 110% 모략 피해를 주고 자신의 간파가 10% 증가해 2턴 지속되며 최대 2회 중첩된다.",
+      "roleSummary": "광역 모략·간파 누적",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/zhongyao.html",
+      "verification": "보조 DB 확인"
+    },
+    "cao-zhen": {
+      "generalId": "cao-zhen",
+      "name": "연연난측",
+      "original": "淵然難測",
+      "type": "지휘",
+      "category": "방어",
+      "triggerRate": "100%",
+      "effect": "피해를 받은 뒤 병인 피해였다면 받는 병인 피해가 10% 감소하고, 그 외 피해였다면 받는 모략 피해가 10% 감소한다. 최대 5회 발동한다.",
+      "roleSummary": "피격 유형별 누적 감쇄",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E6%9B%B9%E7%9C%9F",
+      "verification": "공개 DB 확인"
+    },
+    "wen-pin": {
+      "generalId": "wen-pin",
+      "name": "액수형강",
+      "original": "扼守荊江",
+      "type": "액티브",
+      "category": "방어",
+      "triggerRate": "60%",
+      "effect": "자신의 통솔이 40 증가하고 2턴 동안 정신 회복 상태를 얻는다.",
+      "roleSummary": "통솔 강화·제어 면역",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/wenpin.html",
+      "verification": "보조 DB 확인"
+    },
+    "zang-ba": {
+      "generalId": "zang-ba",
+      "name": "강저파적",
+      "original": "江渚破敵",
+      "type": "액티브·준비",
+      "category": "병인",
+      "triggerRate": "40%",
+      "effect": "1턴 준비 후 무작위 적군 2명의 통솔을 35 낮춰 2턴 지속시키고 280% 병인 피해를 준다.",
+      "roleSummary": "이중 통솔 절단·준비형 병인",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/zangba.html",
+      "verification": "보조 DB 확인"
+    },
+    "guo-huai": {
+      "generalId": "guo-huai",
+      "name": "독진옹량",
+      "original": "督陣雍涼",
+      "type": "패시브",
+      "category": "방어",
+      "triggerRate": "100%",
+      "effect": "자신이 받는 피해가 14% 감소한다(통솔 영향). 병인 피해를 받으면 60% 확률로 공격자의 무력을 20 낮추고, 모략 피해를 받으면 60% 확률로 공격자의 지력을 20 낮춘다. 각각 2턴 지속, 최대 2회 중첩된다.",
+      "roleSummary": "상시 감쇄·피격 유형별 공격자 약화",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/guohuai.html",
+      "verification": "보조 DB 확인"
+    },
+    "cao-hong": {
+      "generalId": "cao-hong",
+      "name": "팔호웅수",
+      "original": "八虎雄首",
+      "type": "액티브·준비",
+      "category": "병인",
+      "triggerRate": "40%",
+      "effect": "1턴 준비 후 무작위 적군 1명에게 각각 360% 병인 피해와 모략 피해를 준다. 대상이 홍수 상태면 이번 피해가 30% 증가한다.",
+      "roleSummary": "준비형 문무 강타·홍수 연계",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E6%9B%B9%E6%B4%AA",
+      "verification": "공개 DB 확인"
+    },
+    "zhuge-liang": {
+      "generalId": "zhuge-liang",
+      "name": "초선차전",
+      "original": "草船借箭",
+      "type": "지휘",
+      "category": "모략",
+      "triggerRate": "100%",
+      "effect": "모략 흡혈이 24% 증가한다. 피해를 주거나 받을 때 50% 확률로 무작위 적 1명에게 모략 피해 80%를 주며 한 턴 최대 5회 발동한다.",
+      "roleSummary": "모략 흡혈·공방 양면 연속 추가타",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%AB%B8%E8%91%9B%E4%BA%AE",
+      "verification": "공개 DB 확인"
+    },
+    "xu-shu": {
+      "generalId": "xu-shu",
+      "name": "절절학문",
+      "original": "折節學問",
+      "type": "액티브",
+      "category": "문무",
+      "triggerRate": "60%",
+      "effect": "무작위 적군 1명에게 각각 220% 모략 피해와 병인 피해를 준다. 대상의 무력이 지력보다 높으면 1턴 무장해제, 그렇지 않으면 1턴 전법 봉쇄를 부여한다.",
+      "roleSummary": "문무 이중 피해·능력치별 제어",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%BE%90%E5%BA%B6",
+      "verification": "공개 DB 확인"
+    },
+    "huang-zhong": {
+      "generalId": "huang-zhong",
+      "name": "정군양위",
+      "original": "定軍揚威",
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "55%",
+      "effect": "일반 공격 뒤 대상의 선공과 무력을 2턴 동안 24 낮춘다. 대상이 이미 약화 상태면 병인 피해 180%를 추가한다.",
+      "roleSummary": "선공·무력 약화·약화 대상 추격",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%BB%83%E5%BF%A0",
+      "verification": "공개 DB 확인"
+    },
+    "guan-ping": {
+      "generalId": "guan-ping",
+      "name": "용음사해",
+      "original": "龍吟四海",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "병인 피해를 준 뒤 75% 확률로 용음을 발동한다. 대상에게 2턴 공포를 부여하며, 이미 공포 상태라면 대신 100% 병인 피해를 준다. 한 턴 최대 4회 발동한다.",
+      "roleSummary": "공포 생성·반복 병인 추가타",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%97%9C%E5%B9%B3",
+      "verification": "공개 DB 확인"
+    },
+    "zhou-cang": {
+      "generalId": "zhou-cang",
+      "name": "충렬용무",
+      "original": "忠烈勇武",
+      "type": "패시브",
+      "category": "방어",
+      "triggerRate": "100%",
+      "effect": "매 턴 행동할 때 자신의 병력을 200% 회복한다(지력·통솔 영향). 40% 확률로 무작위 적군 2명에게 도발과 공포를 2턴 동안 부여한다.",
+      "roleSummary": "자가 회복·광역 도발·공포 전열",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%91%A8%E5%80%89",
+      "verification": "공개 DB 확인"
+    },
+    "mi-zhu": {
+      "generalId": "mi-zhu",
+      "name": "견기행사",
+      "original": "見機行事",
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "아군 중 지력이 가장 높은 1명의 지력을 20 높이고, 무력이 가장 높은 1명의 무력을 20 높인다. 2턴 지속된다.",
+      "roleSummary": "최고 지력·무력 아군 능력 강화",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/mizhu.html",
+      "verification": "보조 DB 확인"
+    },
+    "shamoke": {
+      "generalId": "shamoke",
+      "name": "오계만력",
+      "original": "五溪蠻力",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "자신이 주는 피해가 60% 증가한다. 한 턴에 피해를 3회 받으면 자신이 1턴 동안 기절한다.",
+      "roleSummary": "고증폭·피격 횟수 자체 제약",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/shamoke.html",
+      "verification": "보조 DB 확인"
+    },
+    "ma-liang": {
+      "generalId": "ma-liang",
+      "name": "백미양명",
+      "original": "白眉良名",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "50%",
+      "effect": "적군 전체에 110% 모략 피해를 주고 2턴 동안 공포를 부여한다.",
+      "roleSummary": "광역 공포·모략 피해",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/maliang.html",
+      "verification": "보조 DB 확인"
+    },
+    "ma-su": {
+      "generalId": "ma-su",
+      "name": "재기과인",
+      "original": "才器過人",
+      "type": "패시브",
+      "category": "모략",
+      "triggerRate": "100%",
+      "effect": "자신의 기책 확률이 12% 증가한다. 홀수 턴마다 적군 전체에 100% 모략 피해를 준다.",
+      "roleSummary": "기책 강화·홀수 턴 광역 모략",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/masu.html",
+      "verification": "보조 DB 확인"
+    },
+    "jian-yong": {
+      "generalId": "jian-yong",
+      "name": "고담활론",
+      "original": "高談闊論",
+      "type": "액티브",
+      "category": "치료",
+      "triggerRate": "50%",
+      "effect": "무작위 아군 2명이 받는 모략 피해를 20% 낮춰 2턴 지속시키고, 병력을 140% 회복한다.",
+      "roleSummary": "이중 모략 감쇄·회복",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/jianyong.html",
+      "verification": "보조 DB 확인"
+    },
+    "fa-zheng": {
+      "generalId": "fa-zheng",
+      "name": "도사지기",
+      "original": "睹事知機",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "100%",
+      "effect": "적군 전체에 도사지기를 부여한다. 대상이 다음 비일반 공격 피해를 받은 뒤 공격자의 병력을 60% 회복시키고(지력 영향), 법정에게서 120% 모략 피해를 추가로 받는다.",
+      "roleSummary": "전군 표식·아군 회복·추가 모략",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E6%B3%95%E6%AD%A3",
+      "verification": "공개 DB 확인"
+    },
+    "pang-tong": {
+      "generalId": "pang-tong",
+      "name": "연환계",
+      "original": "連環計",
+      "type": "지휘",
+      "category": "모략",
+      "triggerRate": "100%",
+      "effect": "모략 관통이 20% 증가한다. 홀수 턴에는 적 전체가 1턴 연환 상태가 되며, 피해를 받은 대상의 다른 아군 2명이 그 피해의 25%를 전이 피해로 받는다.",
+      "roleSummary": "모략 관통·홀수 턴 광역 연환",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%BE%90%E7%B5%B1",
+      "verification": "공개 DB 확인"
+    },
+    "sun-shangxiang": {
+      "generalId": "sun-shangxiang",
+      "name": "궁요희",
+      "original": "弓腰姬",
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "65%",
+      "effect": "일반 공격 후 무작위 적군 1명에게 320% 병인 피해를 준다. 이성 적군 1명마다 계수가 30% 증가하고, 75% 확률로 후열을 우선 공격한다.",
+      "roleSummary": "후열 저격·이성 수 비례 고계수 추격",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%AD%AB%E5%B0%9A%E9%A6%99",
+      "verification": "공개 DB 확인"
+    },
+    "xiao-qiao": {
+      "generalId": "xiao-qiao",
+      "name": "천향",
+      "original": "天香",
+      "type": "액티브",
+      "category": "치료",
+      "triggerRate": "35%",
+      "effect": "적 2명에게 1턴 허약을 부여하고 아군 2명의 병력을 250% 회복한다.",
+      "roleSummary": "적 허약·고계수 이중 회복",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%B0%8F%E5%96%AC",
+      "verification": "공개 DB 확인"
+    },
+    "gan-ning": {
+      "generalId": "gan-ning",
+      "name": "금범거괴",
+      "original": "錦帆渠魁",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "일반 공격 피해가 140% 증가한다. 일반 공격 전에 자신의 무력이 10 증가해 2턴 지속되며 최대 4회 중첩된다.",
+      "roleSummary": "일반 공격 증폭·무력 누적",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E7%94%98%E5%AF%A7",
+      "verification": "공개 DB 확인"
+    },
+    "cheng-pu": {
+      "generalId": "cheng-pu",
+      "name": "흥왕정패",
+      "original": "興王定霸",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "아군이 병인 피해를 준 뒤 60% 확률로 병력을 40% 회복한다(지력·통솔 영향). 모략 피해를 준 뒤에는 60% 확률로 받는 피해가 14% 감소해 2턴 지속되며 최대 2회 중첩된다.",
+      "roleSummary": "병인 회복·모략 감쇄·전군 유지력",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E7%A8%8B%E6%99%AE",
+      "verification": "공개 DB 확인"
+    },
+    "lü-meng": {
+      "generalId": "lü-meng",
+      "name": "백의도강",
+      "original": "白衣渡江",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "70%",
+      "effect": "적 2명에게 모략 피해 160%와 2턴 단량을 건다. 이미 단량인 대상에게는 모략 피해 80%를 추가한다.",
+      "roleSummary": "광역 단량·상태 대상 추가 피해",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%91%82%E8%92%99",
+      "verification": "공개 DB 확인"
+    },
+    "taishi-ci": {
+      "generalId": "taishi-ci",
+      "name": "현무허발",
+      "original": "弦無虛發",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "매 턴 90% 확률로 충전 1회를 얻고 일반 공격 뒤 충전을 모두 소비해 추가 일반 공격을 한다. 일반 공격 전 무장해제 등으로 행동할 수 없으면 95% 확률로 충전을 얻는다.",
+      "roleSummary": "충전 누적·추가 일반 공격·무장해제 보상",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%A4%AA%E5%8F%B2%E6%85%88",
+      "verification": "공개 DB 확인"
+    },
+    "chen-wu": {
+      "generalId": "chen-wu",
+      "name": "한전무외",
+      "original": "悍戰無畏",
+      "type": "액티브·준비",
+      "category": "병인",
+      "triggerRate": "45%",
+      "effect": "1턴 준비 후 자신의 무력이 30 증가해 1턴 지속되고, 적군 전체에 300% 병인 피해를 준다.",
+      "roleSummary": "자체 무력 강화·고계수 광역 병인",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%99%B3%E6%AD%A6",
+      "verification": "공개 DB 확인"
+    },
+    "ding-feng": {
+      "generalId": "ding-feng",
+      "name": "분용당선",
+      "original": "奮勇當先",
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "50%",
+      "effect": "일반 공격 후 자신의 선공이 25 증가해 2턴 지속된다. 이어서 적군 전체에 80% 병인 피해를 준다.",
+      "roleSummary": "선공 누적·광역 추격",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E4%B8%81%E5%A5%89",
+      "verification": "공개 DB 확인"
+    },
+    "dong-xi": {
+      "generalId": "dong-xi",
+      "name": "비신단홍",
+      "original": "飛身斷虹",
+      "type": "패시브",
+      "category": "방어",
+      "triggerRate": "100%",
+      "effect": "자신이 정신 회복 상태를 얻는다. 매 턴 행동할 때 자신이 받는 회복 효과가 10% 증가한다.",
+      "roleSummary": "상시 제어 면역·회복 증폭",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%91%A3%E8%A5%B2",
+      "verification": "공개 DB 확인"
+    },
+    "jiang-qin": {
+      "generalId": "jiang-qin",
+      "name": "무략강홍",
+      "original": "武略江洪",
+      "type": "액티브",
+      "category": "문무",
+      "triggerRate": "50%",
+      "effect": "자신의 지력과 무력이 각각 20 증가해 2턴 지속되며 최대 2회 중첩된다. 무작위 적군 2명에게 2턴 홍수를 부여하고, 이미 홍수 상태라면 각각 100% 병인 피해와 모략 피해를 준다.",
+      "roleSummary": "문무 능력 누적·홍수 생성·이중 피해",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%94%A3%E6%AC%BD",
+      "verification": "공개 DB 확인"
+    },
+    "han-dang": {
+      "generalId": "han-dang",
+      "name": "원비선사",
+      "original": "猿臂善射",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "아군이 일반 공격한 뒤 35% 확률로 그 대상에게 추가 일반 공격을 1회 한다.",
+      "roleSummary": "아군 일반 공격 연동 추가타",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%9F%93%E7%95%B6",
+      "verification": "공개 DB 확인"
+    },
+    "pan-zhang": {
+      "generalId": "pan-zhang",
+      "name": "치군절인",
+      "original": "馳軍截刃",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "자신의 무력과 통솔이 10% 증가한다. 액티브 또는 추격 전법을 발동한 뒤 60% 확률로 무작위 적군 1명에게 80% 병인 피해를 준다.",
+      "roleSummary": "무력·통솔 강화·전법 연동 추가타",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E6%BD%98%E7%92%8B",
+      "verification": "공개 DB 확인"
+    },
+    "cai-wenji": {
+      "generalId": "cai-wenji",
+      "name": "비분시",
+      "original": "悲憤詩",
+      "type": "액티브",
+      "category": "치료",
+      "triggerRate": "65%",
+      "effect": "병력이 가장 낮은 아군과 통솔이 가장 높은 아군의 병력을 180% 회복하고 저항 1회를 준다. 이미 저항이 있으면 60%를 추가 회복한다.",
+      "roleSummary": "저병력·고통솔 표적 회복과 저항",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%94%A1%E6%96%87%E5%A7%AC",
+      "verification": "공개 DB 확인"
+    },
+    "li-ru": {
+      "generalId": "li-ru",
+      "name": "짐음독시",
+      "original": "鴆飲毒弑",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "55%",
+      "effect": "무작위 적군 2명에게 2턴 동안 짐독 1중첩을 부여하고, 아군 2명에게 2턴 동안 짐시를 부여한다. 짐독 대상에게 병인 또는 모략 피해를 주면 50% 확률로 짐독이 1중첩 추가된다.",
+      "roleSummary": "광역 독 표식·아군 피해 연동 중첩",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E6%9D%8E%E5%84%92",
+      "verification": "공개 DB 확인"
+    },
+    "zhang-jiao": {
+      "generalId": "zhang-jiao",
+      "name": "황천당립",
+      "original": "黃天當立",
+      "type": "액티브·준비",
+      "category": "모략",
+      "triggerRate": "60%",
+      "effect": "1턴 준비 뒤 적 전체에 모략 피해 300%를 준다. 대상의 약화 1개마다 계수가 30% 증가하며 최대 3개까지 반영된다. 이후 4턴 동안 50% 확률로 준비를 건너뛴다.",
+      "roleSummary": "약화 수 비례 광역 폭발·준비 생략",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E8%A7%92",
+      "verification": "공개 DB 확인"
+    },
+    "hua-xiong": {
+      "generalId": "hua-xiong",
+      "name": "요무양위",
+      "original": "耀武揚威",
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "자신이 2턴 동안 전법 봉쇄 상태가 된다. 무작위 적군 1명에게 250% 병인 피해와 일반 공격 1회를 주며, 이 일반 공격은 무장해제를 무시한다.",
+      "roleSummary": "자체 제약·고계수 병인·강제 일반 공격",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%8F%AF%E9%9B%84",
+      "verification": "공개 DB 확인"
+    },
+    "yan-liang": {
+      "generalId": "yan-liang",
+      "name": "여력과인",
+      "original": "膂力過人",
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "일반 공격 후 현재 대상에게 150% 병인 피해를 준다. 대상의 무력이 자신보다 낮으면 70% 병인 피해를 추가한다.",
+      "roleSummary": "확정 추격·무력 우위 추가 피해",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%A1%8F%E8%89%AF",
+      "verification": "공개 DB 확인"
+    },
+    "wen-chou": {
+      "generalId": "wen-chou",
+      "name": "교봉진위",
+      "original": "交鋒震威",
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "55%",
+      "effect": "일반 공격 후 2턴 동안 필중을 얻고, 적군 중 병력이 가장 낮은 1명에게 280% 병인 피해를 준다.",
+      "roleSummary": "필중 확보·저병력 마무리",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E6%96%87%E9%86%9C",
+      "verification": "공개 DB 확인"
+    },
+    "hua-tuo": {
+      "generalId": "hua-tuo",
+      "name": "마비산",
+      "original": "麻沸散",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "턴 종료 시 아군 중 병력이 가장 낮은 1명이 받는 피해를 16% 낮추고(지력 영향) 1턴 동안 정신 회복을 부여한다. 이어서 병력을 240% 회복한다(지력 영향).",
+      "roleSummary": "저병력 감쇄·제어 면역·고계수 회복",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%8F%AF%E4%BD%97",
+      "verification": "공개 DB 확인"
+    },
+    "pang-de": {
+      "generalId": "pang-de",
+      "name": "함진도난",
+      "original": "陷陣蹈難",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "3·5턴에 적군 전체의 통솔과 지력을 각각 30 낮춰 2턴 지속시키고(무력 영향), 이어서 340% 병인 피해를 준다.",
+      "roleSummary": "지정 턴 광역 약화·고계수 병인",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%BE%90%E5%BE%B7",
+      "verification": "공개 DB 확인"
+    },
+    "dong-zhuo": {
+      "generalId": "dong-zhuo",
+      "name": "권경조야",
+      "original": "權傾朝野",
+      "type": "지휘",
+      "category": "문무",
+      "triggerRate": "100%",
+      "effect": "각 부대가 행동할 때 모든 아군과 적군에게서 통솔 20을 빼앗고, 통솔 영향을 받는 병인·모략 피해 60%를 적 전체에 준다. 전투 종료 시 통솔을 돌려주며 강탈량은 매 턴 10%씩 감소한다.",
+      "roleSummary": "전장 통솔 강탈·광역 문무 피해",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E8%91%A3%E5%8D%93",
+      "verification": "공개 DB 확인"
+    },
+    "zou-shi": {
+      "generalId": "zou-shi",
+      "name": "고반생자",
+      "original": "顧盼生姿",
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "전투 시작 시 아군 전체가 고반을 얻어 받는 피해·추격 피해·액티브 피해가 16% 감소한다. 추씨가 병인 피해를 받으면 60% 확률로 이 감쇄가 2%씩 낮아지며 최대 8회 적용된다. 4턴부터 매 턴 무작위 아군 2명의 병력을 140% 회복한다(지력 영향).",
+      "roleSummary": "전군 초반 감쇄·후반 이중 회복",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E9%84%92%E6%B0%8F",
+      "verification": "공개 DB 확인"
+    },
+    "zhang-liang": {
+      "generalId": "zhang-liang",
+      "name": "요무",
+      "original": "妖武",
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "65%",
+      "effect": "자신의 병인 흡혈과 회피율이 각각 25% 증가해 2턴 지속된다. 이어서 무작위 적군 2명에게 220% 병인 피해를 주고 2턴 동안 요술을 부여한다.",
+      "roleSummary": "흡혈·회피 강화·광역 요술 병인",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E6%A2%81",
+      "verification": "공개 DB 확인"
+    },
+    "zhang-bao": {
+      "generalId": "zhang-bao",
+      "name": "요풍대작",
+      "original": "妖風大作",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "60%",
+      "effect": "무작위 적군 2명에게 280% 모략 피해를 주고 2턴 동안 요술과 폭풍을 부여한다. 이미 요술 상태인 대상은 이번 피해가 35% 증가한다.",
+      "roleSummary": "요술·폭풍 생성·상태 대상 증폭",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E5%AF%B6",
+      "verification": "공개 DB 확인"
+    },
+    "chen-lin": {
+      "generalId": "chen-lin",
+      "name": "토적격문",
+      "original": "討賊檄文",
+      "type": "액티브",
+      "category": "보조",
+      "triggerRate": "30%",
+      "effect": "자신이 1턴 동안 정신 회복 상태를 얻는다.",
+      "roleSummary": "자체 제어 면역",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/chenlin.html",
+      "verification": "보조 DB 확인"
+    },
+    "liu-biao": {
+      "generalId": "liu-biao",
+      "name": "과도한남",
+      "original": "跨蹈漢南",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "30%",
+      "effect": "무작위 적군 1명에게 130% 모략 피해를 준다.",
+      "roleSummary": "단일 모략 공격",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/liubiao.html",
+      "verification": "보조 DB 확인"
+    },
+    "guo-tu": {
+      "generalId": "guo-tu",
+      "name": "곡사첨미",
+      "original": "曲辭諂媚",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "매 턴 시작 시 아군 중 지력이 가장 높은 1명이 주는 피해가 30% 증가한다. 그 아군은 5% 확률로 1턴 혼란에 빠지며 확률은 매 턴 5%씩 증가한다. 턴 종료 시 해당 아군이 무작위 적군 1명에게 100% 모략 피해를 준다.",
+      "roleSummary": "최고 지력 아군 증폭·혼란 위험·추가타",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/guotu.html",
+      "verification": "보조 DB 확인"
+    },
+    "lu-zhi": {
+      "generalId": "lu-zhi",
+      "name": "국지주석",
+      "original": "國之柱石",
+      "type": "지휘",
+      "category": "방어",
+      "triggerRate": "100%",
+      "effect": "홀수 턴 종료 시 자신과 무작위 아군 1명이 저항 1중첩을 얻고, 자신의 병력을 180% 회복한다(통솔 추가 영향).",
+      "roleSummary": "홀수 턴 저항·자가 회복 전열",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/luzhi.html",
+      "verification": "보조 DB 확인"
+    },
+    "kong-rong": {
+      "generalId": "kong-rong",
+      "name": "언사격렬",
+      "original": "言辭激烈",
+      "type": "액티브",
+      "category": "문무",
+      "triggerRate": "50%",
+      "effect": "적군 중 지력이 가장 높은 1명을 2턴 동안 도발한다. 무작위 아군 1명이 그 대상에게 각각 160% 병인 피해와 모략 피해를 준 뒤 병력을 140% 회복한다.",
+      "roleSummary": "고지력 적 도발·아군 문무 합공·회복",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/wujiangtujian/kongrong.html",
+      "verification": "보조 DB 확인"
+    },
+    "zhang-mancheng": {
+      "generalId": "zhang-mancheng",
+      "name": "신상사",
+      "original": "神上使",
+      "type": "패시브",
+      "category": "방어",
+      "triggerRate": "100%",
+      "effect": "매 턴 행동할 때 80% 확률로 무작위 적군 2명에게 2턴 요술을 부여한다. 피해를 받을 때 공격자가 요술 상태라면 이번 피해가 30% 감소한다(통솔 영향).",
+      "roleSummary": "광역 요술·요술 대상 피해 감쇄",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%BC%B5%E6%9B%BC%E6%88%90",
+      "verification": "공개 DB 확인"
+    },
+    "huangfu-song": {
+      "generalId": "huangfu-song",
+      "name": "평란정반",
+      "original": "平亂定叛",
+      "type": "지휘",
+      "category": "방어",
+      "triggerRate": "100%",
+      "effect": "자신의 통솔이 60 증가한다. 피해를 받은 뒤 50% 확률로 공격자가 주는 피해를 10% 낮춰 2턴 지속시키며 최대 4회 중첩된다.",
+      "roleSummary": "고통솔 전열·공격자 피해 누적 약화",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E7%9A%87%E7%94%AB%E5%B5%A9",
+      "verification": "공개 DB 확인"
+    },
+    "tian-feng": {
+      "generalId": "tian-feng",
+      "name": "천계조적",
+      "original": "薦計阻敵",
+      "type": "액티브",
+      "category": "보조",
+      "triggerRate": "60%",
+      "effect": "통솔이 가장 높은 아군에게 저항 1회와 2턴 동안 무력·지력·선공 40을 준다. 통솔이 가장 낮은 적은 같은 기간 무력·지력·선공이 40 감소한다.",
+      "roleSummary": "고통솔 아군 강화·저통솔 적 약화",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E7%94%B0%E8%B1%90",
+      "verification": "공개 DB 확인"
+    },
+    "gongsun-zan": {
+      "generalId": "gongsun-zan",
+      "name": "위진새외",
+      "original": "威震塞外",
+      "type": "추격",
+      "category": "문무",
+      "triggerRate": "50%",
+      "effect": "일반 공격 뒤 자신의 회피가 2턴 동안 24% 증가한다. 적 2명에게 병인 및 모략 피해 140%를 주며 자신과 대상의 선공 차이에 따라 계수가 증가한다.",
+      "roleSummary": "회피·광역 문무 추격·선공 차이 보정",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%85%AC%E5%AD%AB%E7%93%9A",
+      "verification": "공개 DB 확인"
+    },
+    "jiang-wei": {
+      "generalId": "jiang-wei",
+      "name": "구벌중원",
+      "original": "九伐中原",
+      "type": "지휘",
+      "category": "문무",
+      "triggerRate": "100%",
+      "effect": "매 턴 종료 시 3회의 토벌을 얻습니다. 토벌마다 무작위 적군 2명에게 각각 40% 병인 피해와 모략 피해를 주며, 아군이 피해를 줄 때마다 이번 전법의 피해 계수가 5% 상승해 최대 9회 중첩됩니다. 토벌이 3회면 병력이 가장 낮은 적에게 이반을 부여합니다.",
+      "roleSummary": "누적 토벌·문무 광역 피해·이반",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E5%A7%9C%E7%BB%B4/",
+      "verification": "보조 DB 확인"
+    },
+    "sp-zhuge-liang": {
+      "generalId": "sp-zhuge-liang",
+      "name": "성라기포",
+      "original": "星羅棋布",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "아군 전체가 받는 모략 피해가 10% 감소하며 자신에게는 효과가 30% 증가합니다. 진형 전법 효과가 70% 상승하고 전투 시작 시 전용 기판 효과를 부여합니다.",
+      "roleSummary": "진형 증폭·전군 모략 감쇄",
+      "sourceUrl": "https://www.sgmdtx.com/wj/SP%E8%AF%B8%E8%91%9B%E4%BA%AE/",
+      "verification": "보조 DB 확인"
+    },
+    "ma-teng": {
+      "generalId": "ma-teng",
+      "name": "웅거서량",
+      "original": "雄踞西涼",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "첫 3턴 동안 무작위 아군 2명의 추격 전법 피해가 20% 상승합니다. 해당 아군은 행동 종료 시 50% 확률로 추가 일반 공격을 1회 합니다.",
+      "roleSummary": "추격 증폭·추가 일반 공격",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E9%A9%AC%E8%85%BE/",
+      "verification": "보조 DB 확인"
+    },
+    "guan-yinping": {
+      "generalId": "guan-yinping",
+      "name": "호소생위",
+      "original": "虎嘯生威",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "매 턴 처음으로 액티브 전법을 발동한 뒤 40% 확률로 무작위 적군 2명에게 260% 병인 피해를 주고 1턴 동안 허약을 부여합니다.",
+      "roleSummary": "액티브 연계·광역 병인·허약",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E5%85%B3%E9%93%B6%E5%B1%8F/",
+      "verification": "보조 DB 확인"
+    },
+    "zuo-ci": {
+      "generalId": "zuo-ci",
+      "name": "운행우시",
+      "original": "雲行雨施",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "전투 시작 시 구름 10중첩을 얻습니다. 자신이 받는 피해가 20% 감소하고 구름 수에 따라 추가로 감소합니다. 아군의 액티브 전법이 발동에 실패하면 50% 확률로 구름 1중첩을 소모해 다시 판정합니다.",
+      "roleSummary": "액티브 재판정·자가 감쇄",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E5%B7%A6%E6%85%88/",
+      "verification": "보조 DB 확인"
+    },
+    "zhang-ning": {
+      "generalId": "zhang-ning",
+      "name": "태평여향",
+      "original": "太平餘響",
+      "type": "지휘",
+      "category": "모략",
+      "triggerRate": "100%",
+      "effect": "아군이 액티브 전법을 발동한 뒤 80% 확률로 무작위 적군 2명에게 140% 모략 피해를 줍니다. 같은 턴에 반복될 때마다 발동률이 10% 감소합니다. 요술 상태인 적에게 준 피해의 40%만큼 병력이 가장 낮은 아군을 회복합니다.",
+      "roleSummary": "액티브 반응 추가타·요술 흡혈",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E5%BC%A0%E5%AE%81/",
+      "verification": "보조 DB 확인"
+    },
+    "wang-yi": {
+      "generalId": "wang-yi",
+      "name": "교책인봉",
+      "original": "巧策引鋒",
+      "type": "패시브",
+      "category": "모략",
+      "triggerRate": "100%",
+      "effect": "일반 공격 또는 추격 전법 발동 후 40% 확률로 무작위 적군 2명에게 100% 모략 피해를 주고, 받는 피해를 4% 증가시킵니다. 전투 중 최대 4회 중첩됩니다.",
+      "roleSummary": "법추격·광역 모략·피해 증폭",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E7%8E%8B%E5%BC%82/",
+      "verification": "보조 DB 확인"
+    },
+    "zhu-jun": {
+      "generalId": "zhu-jun",
+      "name": "위사필궐",
+      "original": "圍師必闕",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "70%",
+      "effect": "무작위 적군 2명에게서 통솔 26을 빼앗아 자신과 통솔이 가장 높은 아군에게 균등하게 나눠 2턴 지속시키고, 이어서 두 대상에게 180% 모략 피해를 줍니다.",
+      "roleSummary": "통솔 탈취·이중 모략",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E6%9C%B1%E5%84%81/",
+      "verification": "보조 DB 확인"
+    },
+    "yuan-shu": {
+      "generalId": "yuan-shu",
+      "name": "참호천자",
+      "original": "僭號天子",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "첫 4턴 동안 아군 전체의 통솔이 80 상승하고 턴 종료마다 15씩 감소합니다. 4턴에 통솔이 가장 높은 아군이 옥새를 얻어 주는 피해가 15% 증가하며, 행동 종료 시 적군 전체에 160% 병인 피해를 줍니다.",
+      "roleSummary": "초반 전군 통솔·옥새 광역타",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E8%A2%81%E6%9C%AF/",
+      "verification": "보조 DB 확인"
+    },
+    "romance-gongsun-zan": {
+      "generalId": "romance-gongsun-zan",
+      "name": "북강질봉",
+      "original": "北疆疾鋒",
+      "type": "추격",
+      "category": "문무",
+      "triggerRate": "60%",
+      "effect": "일반 공격 후 무작위 적군 2명의 무력과 지력을 각각 16 빼앗아 2턴 동안 유지하며 최대 2회 중첩합니다. 이어 두 대상에게 각각 140% 병인 피해와 모략 피해를 주며 양측의 선공 차이에 추가 영향을 받습니다. 대상이 방패병이면 이번 피해가 15% 증가합니다.",
+      "roleSummary": "무력·지력 탈취·광역 문무 추격·방패병 추가 피해",
+      "sourceUrl": "https://news.17173.com/content/07012025/095404991.shtml",
+      "verification": "보조 DB 확인"
+    },
+    "romance-yuan-shao": {
+      "generalId": "romance-yuan-shao",
+      "name": "사세삼공",
+      "original": "四世三公",
+      "type": "액티브",
+      "category": "문무",
+      "triggerRate": "60%",
+      "effect": "아군 중 무력·지력·선공이 각각 가장 높은 장수가 적군 중 해당 능력치가 가장 낮은 대상에게 각각 100% 병인 피해와 모략 피해를 줍니다. 해당 피해가 회심 또는 기책을 발동하면 대상에게 통솔의 영향을 받는 도망병을 추가합니다.",
+      "roleSummary": "세 능력치 최고 아군 연동·약점 저격·도망병",
+      "sourceUrl": "https://news.17173.com/content/07012025/095404991.shtml",
+      "verification": "보조 DB 확인"
+    },
+    "romance-zhang-liao": {
+      "generalId": "romance-zhang-liao",
+      "name": "위진소요",
+      "original": "威震逍遙",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "매 턴 시작 시 60% 확률로 1턴 동안 명료를 얻으며 잃은 병력의 영향을 받습니다. 아군이 일반 공격 또는 추격 전법을 발동할 때마다 자신이 40% 확률로 무작위 적군에게 일반 공격을 1회 하며 후열을 우선합니다. 이 추가 공격은 무력의 영향을 받고 매 턴 최대 3회 발동합니다.",
+      "roleSummary": "아군 일반·추격 반응·후열 우선 추가 공격·제어 대응",
+      "sourceUrl": "https://news.17173.com/content/06182025/134206740.shtml",
+      "verification": "보조 DB 확인"
+    },
+    "romance-gan-ning": {
+      "generalId": "romance-gan-ning",
+      "name": "금범거괴·백기겁영",
+      "original": "錦帆渠魁·百騎劫營",
+      "type": "패시브·연의",
+      "category": "병인·반격",
+      "triggerRate": "100% (조건부 반격 30%)",
+      "effect": "일반 공격 피해가 120% 증가합니다. 적이 추격 전법을 발동하면 30% 확률로 무장 해제를 무시하고 반격하며, 대상이 주는 피해를 8% 낮춰 2턴 지속시킵니다. 최대 3회 중첩됩니다.",
+      "roleSummary": "추격 전법 반응 반격·피해 감쇄·창병 저격",
+      "sourceUrl": "https://news.17173.com/content/08032025/150603987.shtml",
+      "verification": "보조 DB 확인"
+    },
+    "romance-guan-yu": {
+      "generalId": "romance-guan-yu",
+      "name": "위진화하·단도부회",
+      "original": "威震華夏·單刀赴會",
+      "type": "액티브·연의",
+      "category": "병인·제어",
+      "triggerRate": "75%",
+      "effect": "단도부회 선택 시 궁병으로 전환되고 고유 액티브 전법 발동률이 75%가 됩니다. 회심을 중심으로 적군 전체 병인 피해와 제어 연계를 강화하며 연의 궁병 병법 신사와 함께 사용합니다.",
+      "roleSummary": "고발동 광역 병인·제어·연의 궁병",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E5%85%AC%E9%97%9C%E6%BC%94%E7%BE%A9%E9%9A%8A%E8%A9%B3%E7%B4%B0%E4%BB%8B%E7%B4%B9&ss=147646",
+      "verification": "보조 DB 확인"
+    },
+    "romance-cao-ren": {
+      "generalId": "romance-cao-ren",
+      "name": "고진양번·철벽거수",
+      "original": "固鎮襄樊·鐵壁據守",
+      "type": "지휘·연의",
+      "category": "방어·반격",
+      "triggerRate": "100%",
+      "effect": "철벽거수 선택 시 방패병에서 창병으로 전환됩니다. 전투 시작 시 통솔이 가장 높은 아군의 반격률과 반격 피해를 높여 전위 중심의 반격 연계를 만들며, 연의 창병 병법 창봉과 3창병 조건으로 완성합니다.",
+      "roleSummary": "창병 전환·반격 핵심 보호·3창병 연계",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%8F%8D%E6%93%8A%E5%85%B8%E9%9F%8B%E9%9A%8A&ss=147646",
+      "verification": "보조 DB 확인"
+    },
+    "meng-huo": {
+      "generalId": "meng-huo",
+      "name": "웅호남강",
+      "original": "雄護南疆",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "아군 전체가 받는 병인 피해가 8% 감소하며 남만 장수는 이 효과가 50% 증가합니다. 적의 능력치가 감소하면 35% 확률로 무력이 가장 높은 아군이 추가 병인 피해를 줍니다.",
+      "roleSummary": "남만 감쇄·속성 저하 반응",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E5%AD%9F%E8%8E%B7/",
+      "verification": "보조 DB 확인"
+    },
+    "zhu-rong": {
+      "generalId": "zhu-rong",
+      "name": "남강열인",
+      "original": "南疆烈刃",
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "능력치가 감소한 적에게 병인 피해를 주면 40% 확률로 반드시 회심이 발생하고, 피해량의 25%만큼 병력이 가장 낮은 아군을 회복합니다. 행동 시 무작위 적군 2명의 무력·통솔을 각각 20 빼앗고 적군 전체에 90% 병인 피해를 줍니다.",
+      "roleSummary": "속성 탈취·회심·아군 회복",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E7%A5%9D%E8%9E%8D%E5%A4%AB%E4%BA%BA/",
+      "verification": "보조 DB 확인"
+    },
+    "gao-shun": {
+      "generalId": "gao-shun",
+      "name": "서사무퇴",
+      "original": "誓死無退",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "아군이 누적 5000 피해를 줄 때마다 방패 효과를 얻어 주는 피해가 4% 증가하고 받는 피해가 4% 감소합니다. 최대 5회 중첩되며, 무작위 적군 2명에게 100% 병인 피해를 줍니다.",
+      "roleSummary": "누적 피해 방패·공수 증폭",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E9%AB%98%E9%A1%BA/",
+      "verification": "보조 DB 확인"
+    },
+    "cao-pi": {
+      "generalId": "cao-pi",
+      "name": "권어구석",
+      "original": "權御九錫",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "무작위 적군 2명에게서 피해 감소 8%를 빼앗습니다. 선공이 가장 낮은 아군은 구석을 얻으며, 행동할 때마다 무작위 적군 2명에게서 지력 10을 빼앗아 중첩합니다.",
+      "roleSummary": "적 감쇄 탈취·저속 아군 지력 누적",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E6%9B%B9%E4%B8%95/",
+      "verification": "보조 DB 확인"
+    },
+    "wei-yan": {
+      "generalId": "wei-yan",
+      "name": "자오기모",
+      "original": "子午奇謀",
+      "type": "지휘",
+      "category": "병인",
+      "triggerRate": "100%",
+      "effect": "공포를 부여할 때 60% 병인 피해를 주고 30% 계수의 출혈을 추가합니다. 출혈을 부여할 때마다 병인 흡혈이 3% 상승해 최대 15회 중첩됩니다. 9회와 15회 중첩 시 모든 출혈 피해를 즉시 결산합니다.",
+      "roleSummary": "공포 연계·출혈 누적·즉시 결산",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E9%AD%8F%E5%BB%B6/",
+      "verification": "보조 DB 확인"
+    },
+    "yu-ji": {
+      "generalId": "yu-ji",
+      "name": "풍급우회",
+      "original": "風急雨晦",
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "55%",
+      "effect": "적군 전체에 120% 모략 피해를 주고 2턴 동안 홍수를 부여합니다. 자신과 같은 열의 아군은 병력 200% 회복, 1턴 전법 봉쇄 면역, 액티브 발동률 10% 상승 중 2개 효과를 얻습니다.",
+      "roleSummary": "광역 홍수·동열 회복·액티브 보조",
+      "sourceUrl": "https://www.sgmdtx.com/wj/%E4%BA%8E%E5%90%89/",
+      "verification": "보조 DB 확인"
+    },
+    "group-sp-zhuge": {
+      "generalId": "sp-zhuge-liang",
+      "name": "성라기포",
+      "original": "星羅棋布",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "아군 전체가 받는 모략 피해가 10% 감소하며 자신에게는 효과가 30% 증가합니다. 진형 전법 효과가 70% 상승하고 전투 시작 시 전용 기판 효과를 부여합니다.",
+      "roleSummary": "진형 증폭·전군 모략 감쇄",
+      "sourceUrl": "https://www.sgmdtx.com/wj/SP%E8%AF%B8%E8%91%9B%E4%BA%AE/",
+      "verification": "보조 DB 확인"
+    },
+    "wei-sp-zhuge": {
+      "generalId": "sp-zhuge-liang",
+      "name": "성라기포",
+      "original": "星羅棋布",
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "아군 전체가 받는 모략 피해가 10% 감소하며 자신에게는 효과가 30% 증가합니다. 진형 전법 효과가 70% 상승하고 전투 시작 시 전용 기판 효과를 부여합니다.",
+      "roleSummary": "진형 증폭·전군 모략 감쇄",
+      "sourceUrl": "https://www.sgmdtx.com/wj/SP%E8%AF%B8%E8%91%9B%E4%BA%AE/",
+      "verification": "보조 DB 확인"
+    },
+    "shu-zhou-tai": {
+      "generalId": "zhou-tai",
+      "name": "불굴의 의지",
+      "original": "不屈意志",
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "effect": "아군이 현재 병력의 10%를 넘는 피해를 받을 때 80% 확률로 대신 받는다. 아군 1명당 매 턴 3회이며 대신 받는 피해는 50% 감소한다. 아군이 살아 있으면 치명 피해를 100% 확률로 버티되 발동할 때마다 다음 확률이 10% 낮아진다.",
+      "roleSummary": "대신 맞기·피해 감소·치명 생존",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/generals/%E5%91%A8%E6%B3%B0",
+      "verification": "공개 DB 확인"
+    }
+  },
+  "tacticDetails": {
+    "avoid-edge": {
+      "type": "지휘",
+      "category": "방어",
+      "triggerRate": "100%",
+      "maxEffect": "전투 시작 후 첫 4턴 동안 자신과 무작위 아군 1명이 받는 피해가 26% 감소합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%81%BF%E5%85%B6%E9%8A%B3%E6%B0%A3"
+    },
+    "qingnang": {
+      "type": "액티브",
+      "category": "치료",
+      "triggerRate": "55%",
+      "maxEffect": "아군 중 병력이 가장 낮은 1명의 부정 상태 3개를 해제하고 병력을 회복합니다(치료율 260%, 지력 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%9D%92%E5%9B%8A%E6%80%A5%E6%95%91"
+    },
+    "forge-armor": {
+      "type": "지휘",
+      "category": "방어",
+      "triggerRate": "100%",
+      "maxEffect": "전투 시작 후 첫 3턴 동안, 턴 시작 시 아군 전체가 65% 확률로 저항 1중첩(피해 1회 무효)을 얻습니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%91%84%E7%94%B2%E9%8A%B7%E6%88%88"
+    },
+    "taxation": {
+      "type": "패시브",
+      "category": "방어",
+      "triggerRate": "100%",
+      "maxEffect": "부정 효과를 부여한 뒤 자신의 병력을 회복합니다(치료율 40%, 지력·통솔 영향). 자신이 받는 피해도 10% 감소하며 2턴 지속, 최대 4회 중첩됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%A9%AB%E5%BE%B5%E6%9A%B4%E6%96%82"
+    },
+    "support-selfless": {
+      "type": "패시브",
+      "category": "치료",
+      "triggerRate": "100%",
+      "maxEffect": "자신이 피해를 받기 전에 50% 확률로 두 명의 아군 병력을 회복합니다(치료율 50%, 지력·통솔 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%BF%98%E7%A7%81%E7%9B%B8%E5%8A%A9"
+    },
+    "calm": {
+      "type": "패시브",
+      "category": "방어",
+      "triggerRate": "100%",
+      "maxEffect": "홀수 턴에는 자신이 일반 공격을 할 수 없으며, 자신과 무작위 아군 1명이 받는 병인 피해·일반 공격 피해·추격 전법 피해가 20% 감소합니다(통솔 영향). 짝수 턴에는 자신이 액티브 전법을 발동할 수 없으며, 자신과 무작위 아군 1명이 받는 모략 피해·액티브 전법 피해가 20% 감소합니다(통솔 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%BB%A5%E9%9D%9C%E5%88%B6%E5%8B%95",
+      "patchNote": "최근 패치: 자기 단독 35% 감쇄에서 자신+무작위 아군 1명 20% 감쇄로 변경."
+    },
+    "fresh-breeze": {
+      "type": "액티브",
+      "category": "치료",
+      "triggerRate": "60%",
+      "maxEffect": "무작위 아군 2명의 부정 상태를 각각 1개 해제하고 병력을 회복합니다(치료율 180%, 지력 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%B8%85%E9%A2%A8%E9%A9%85%E7%96%BE"
+    },
+    "best-strategy": {
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "자신의 기책 확률이 20% 상승합니다(지력 영향). 모략 피해를 준 뒤 50% 확률로 지력이 10 상승하며 2턴 지속, 최대 4회 중첩됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%8E%8B%E4%BD%90%E4%B9%8B%E6%89%8D"
+    },
+    "overwhelming-win": {
+      "type": "패시브",
+      "category": "문무",
+      "triggerRate": "100%",
+      "maxEffect": "병인 피해를 주면 자신의 무력이 16 상승하고, 모략 피해를 주면 지력이 16 상승합니다. 각각 최대 8회 중첩됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%8B%9D%E6%95%B5%E7%9B%8A%E5%BC%B7"
+    },
+    "break-hardship": {
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "maxEffect": "자신의 회심 확률이 20% 상승합니다. 매 턴 행동 종료 시 무작위 적군 2명에게 110% 병인 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%91%A7%E5%A0%85%E5%85%8B%E9%9B%A3"
+    },
+    "unstoppable": {
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "자신의 방어 관통이 16%, 주는 피해가 35% 상승합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%8A%B3%E4%B8%8D%E5%8F%AF%E7%95%B6"
+    },
+    "break-through": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "50%",
+      "maxEffect": "자신의 회심 확률이 20% 상승하고 2턴 지속됩니다. 이어서 적군 전체에 140% 병인 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%8B%A2%E5%A6%82%E7%A0%B4%E7%AB%B9"
+    },
+    "direct-world": {
+      "type": "액티브",
+      "category": "문무",
+      "triggerRate": "50%",
+      "maxEffect": "아군 중 무력이 가장 높은 1명이 적군 전체에 80% 병인 피해를 주고, 지력이 가장 높은 1명이 적군 전체에 80% 모략 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%8C%87%E9%BB%9E%E4%B9%BE%E5%9D%A4"
+    },
+    "divine-aid": {
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "액티브 전법 발동률이 8%, 액티브 전법 피해가 15% 상승합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%A6%82%E6%9C%89%E7%A5%9E%E5%8A%A9"
+    },
+    "solid-defense": {
+      "type": "지휘",
+      "category": "방어",
+      "triggerRate": "100%",
+      "maxEffect": "자신의 통솔이 15% 상승합니다. 2턴부터 매 턴 시작 시 60% 확률로 무작위 적군 2명을 도발하며 2턴 지속됩니다(통솔 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%9B%BA%E8%8B%A5%E9%87%91%E6%B9%AF"
+    },
+    "stone-wall": {
+      "type": "액티브",
+      "category": "방어",
+      "triggerRate": "55%",
+      "maxEffect": "적군 전체를 도발하고 자신이 받는 피해를 30% 감소시킵니다. 2턴 지속됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%A0%85%E5%A6%82%E7%A3%90%E7%9F%B3"
+    },
+    "ready": {
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "매 턴 시작 시 아군 2명이 주는 피해가 7% 상승합니다. 전투 종료까지 지속되며 중첩할 수 있습니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%93%84%E5%8B%A2%E5%BE%85%E7%99%BC"
+    },
+    "armor-edge": {
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "전투 시작 시 무작위 아군 1명(전열 우선)이 피견 효과를 얻습니다. 행동 전 병력을 회복하고(치료율 80%, 대상의 지력·통솔 영향) 받는 병인 피해가 20% 감소합니다. 무력이 가장 높은 아군은 집예 효과를 얻어 일반 공격 후 50% 확률로 무작위 적군 1명에게 100% 병인 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%8A%AB%E5%A0%85%E5%9F%B7%E9%8A%B3"
+    },
+    "sacrifice": {
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "전투 시작 후 첫 2턴 동안 아군 전체의 연격률이 30% 상승합니다. 무력이 가장 높은 아군은 정신 회복(제어 효과 면역)을 얻고, 자신은 무장해제 상태가 됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%8D%A8%E7%94%9F%E5%8F%96%E7%BE%A9",
+      "patchNote": "최근 패치: 장착자에게 부여되는 제어가 기절에서 무장해제로 완화."
+    },
+    "no-hardship": {
+      "type": "액티브",
+      "category": "보조",
+      "triggerRate": "70%",
+      "maxEffect": "아군 2명의 연격률이 45%, 병인 흡혈이 20% 상승합니다. 2턴 지속됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%84%A1%E9%9B%A3%E4%B9%8B%E5%BF%97"
+    },
+    "iron-cavalry": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "40%",
+      "maxEffect": "일반 공격 후 자신의 회심 확률이 20% 상승해 2턴 지속되고, 현재 대상에게 400% 병인 피해를 줍니다. 발동 여부와 관계없이 피해 계수는 매 턴 25%씩 감소합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%90%B5%E9%A8%8E%E6%A9%AB%E8%A1%9D"
+    },
+    "speed-first": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "40%",
+      "maxEffect": "일반 공격 후 자신의 선공이 30 상승해 2턴 지속되고, 무작위 적군 2명에게 180% 병인 피해를 줍니다(선공 수치 추가 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%85%B5%E8%B2%B4%E7%A5%9E%E9%80%9F"
+    },
+    "all-directions": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "55%",
+      "maxEffect": "적군 전체에 130% 병인 피해를 주고 공포 상태를 부여합니다. 2턴 지속됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%88%B0%E5%85%AB%E6%96%B9"
+    },
+    "supply-cut": {
+      "type": "지휘",
+      "category": "모략",
+      "triggerRate": "100%",
+      "maxEffect": "턴 시작 시 적군 1명에게 단량 상태를 부여해 2턴 지속시킵니다. 턴 종료 시 단량 상태인 적군에게 110% 모략 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%96%B7%E6%95%B5%E7%B3%A7%E9%81%93"
+    },
+    "hundred-battles": {
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "아군 중 통솔·지력·무력이 가장 높은 대상이 피해를 받을 때 60% 확률로 해당 능력치가 7 상승합니다. 전투 종료까지 지속되며 최대 8회 중첩되고, 같은 대상에게 여러 효과가 적용될 수 있습니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%99%BE%E6%88%B0%E4%B8%8D%E6%AE%86"
+    },
+    "same-boat": {
+      "type": "지휘",
+      "category": "치료",
+      "triggerRate": "100%",
+      "maxEffect": "매 턴 행동 시 자신과 무작위 아군 1명의 병력을 회복합니다(치료율 50%, 지력·통솔 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%90%8C%E8%88%9F%E5%85%B1%E6%BF%9F"
+    },
+    "golden-fortress": {
+      "type": "지휘",
+      "category": "방어",
+      "triggerRate": "100%",
+      "maxEffect": "턴 시작 시 아군 전체가 44.4% 확률로 저항 1중첩(피해 1회 무효)을 얻습니다. 확률은 매 턴 12%씩 감소합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%87%91%E5%9F%8E%E6%B9%AF%E6%B1%A0"
+    },
+    "unexpected": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "55%",
+      "maxEffect": "무작위 적군 1명에게 350% 모략 피해를 줍니다. 대상에게 부정 상태가 있으면 이번 피해가 25% 상승합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%87%BA%E5%85%B6%E4%B8%8D%E6%84%8F"
+    },
+    "qimen": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "40%",
+      "maxEffect": "1턴 준비 후 적군 전체에 250% 모략 피해를 주고 25% 확률로 1턴간 기절시킵니다. 대상의 이상 상태 1종당 피해 계수가 25%, 기절 확률이 8% 상승하며 최대 5회 적용됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%A5%87%E9%96%80%E9%81%81%E7%94%B2"
+    },
+    "foresight": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "45%",
+      "maxEffect": "무작위 적군 2명에게 180% 모략 피해를 주고 50% 확률로 전법 봉쇄(액티브 전법 발동 불가)를 부여합니다. 1턴 지속됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%96%99%E4%BA%8B%E5%A6%82%E7%A5%9E"
+    },
+    "blazing-sky": {
+      "type": "액티브",
+      "category": "문무",
+      "triggerRate": "50%",
+      "maxEffect": "적군 전체에 화공 상태를 부여해 2턴 지속시키고, 각각 50%의 모략 피해와 병인 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%83%88%E7%81%AB%E5%BC%B5%E5%A4%A9"
+    },
+    "hide-light": {
+      "type": "패시브",
+      "category": "모략",
+      "triggerRate": "100%",
+      "maxEffect": "고유 액티브 전법 발동률이 6% 상승합니다(지력 영향). 매 턴 시작 시 자신이 주는 모략 피해가 8% 상승하며 전투 종료까지 중첩됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%9F%9C%E5%85%89%E9%A4%8A%E6%99%A6"
+    },
+    "see-truth": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "45%",
+      "maxEffect": "무작위 적군 2명의 지력과 통솔을 11.1만큼 빼앗아 2턴 지속시키고(지력 영향), 77.7% 모략 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%98%8E%E5%85%B6%E8%99%9B%E5%AF%A6"
+    },
+    "odd-even": {
+      "type": "지휘",
+      "category": "치료",
+      "triggerRate": "100%",
+      "maxEffect": "2턴부터 턴 시작 시 65% 확률로 무작위 아군 2명의 병력을 회복하고(치료율 150%, 지력 영향), 턴 종료 시 65% 확률로 무작위 적군 2명에게 150% 모략 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%A5%87%E6%AD%A3%E7%9B%B8%E7%94%9F"
+    },
+    "fire-camp": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "45%",
+      "maxEffect": "적군 전체에 80% 모략 피해를 주고 화공 상태를 부여해 2턴 지속시킵니다. 이어서 무작위 적군 1명에게 80% 모략 피해를 주는 소각 공격을 3회 합니다. 대상이 폭풍 상태면 소각 피해가 30% 상승합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%83%88%E7%81%AB%E7%84%9A%E7%87%9F"
+    },
+    "strong-wind": {
+      "type": "지휘",
+      "category": "모략",
+      "triggerRate": "100%",
+      "maxEffect": "2·4턴 시작 시 적군과 아군 전체가 2턴간 폭풍 상태가 됩니다. 홀수 턴 시작 시 60% 확률로 적군 전체에 100% 모략 피해를 주고, 짝수 턴 시작 시 60% 확률로 무작위 적군 1명에게 280% 모략 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%8B%82%E9%A2%A8%E5%A4%A7%E4%BD%9C"
+    },
+    "know-people": {
+      "type": "액티브",
+      "category": "보조",
+      "triggerRate": "60%",
+      "maxEffect": "무작위 아군 2명이 주는 피해가 15%, 통솔이 25 상승합니다. 2턴 지속됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%BB%BB%E4%BA%BA%E5%94%AF%E8%B3%A2"
+    },
+    "attack-unready": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "40%",
+      "maxEffect": "일반 공격 후 현재 대상에게 280% 병인 피해를 주고 1턴간 전법 봉쇄를 부여합니다. 대상이 이미 전법 봉쇄 상태면 50% 확률로 1턴간 기절시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%94%BB%E5%85%B6%E4%B8%8D%E5%82%99"
+    },
+    "strike-gap": {
+      "type": "추격",
+      "category": "모략",
+      "triggerRate": "60%",
+      "maxEffect": "일반 공격 후 무작위 적군 1명에게 1턴간 혼란을 부여하고 120% 모략 피해를 줍니다. 대상이 이미 혼란 상태면 대상 측의 무작위 아군 1명에게 100% 모략 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%B9%98%E9%96%93%E6%8A%95%E9%9A%99"
+    },
+    "drain-morale": {
+      "type": "추격",
+      "category": "보조",
+      "triggerRate": "55%",
+      "maxEffect": "일반 공격 후 현재 대상의 무력·지력·통솔을 각각 30 감소시킵니다. 2턴 지속되며 최대 5회 중첩됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%B8%89%E8%BB%8D%E5%A5%AA%E6%B0%A3"
+    },
+    "thousand-raid": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "40%",
+      "maxEffect": "일반 공격 후 선공이 가장 낮은 적군 1명에게 280% 병인 피해를 줍니다(양측 선공 차이 추가 영향). 대상이 후열이면 100% 병인 피해를 추가로 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%8D%83%E9%87%8C%E7%AA%81%E8%A5%B2"
+    },
+    "prepare-armor": {
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "maxEffect": "자신의 반격률이 27.7% 상승합니다. 일반 공격에 성공하면 자신이 받는 병인 피해가 2.7% 감소하며 2턴 지속, 최대 4회 중첩됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%B9%95%E7%94%B2%E5%8E%B2%E5%85%B5"
+    },
+    "charge-change": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "40%",
+      "maxEffect": "무작위 적군 1명에게 360% 병인 피해를 주고, 자신이 다음에 사용하는 준비형 전법의 준비 턴을 일정 횟수 생략합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%B2%96%E9%8A%B3%E5%B7%A7%E8%AE%8A"
+    },
+    "spring-breeze": {
+      "type": "패시브",
+      "category": "치료",
+      "triggerRate": "100%",
+      "maxEffect": "매 턴 행동 시 자신의 병력을 회복합니다(치료율 140%, 지력·통솔 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%A6%82%E6%B2%90%E6%98%A5%E9%A2%A8"
+    },
+    "use-talent": {
+      "type": "액티브",
+      "category": "방어",
+      "triggerRate": "75%",
+      "maxEffect": "지력이 가장 높은 아군 1명이 받는 피해를 25% 감소시켜 2턴 지속시키고(지력 영향), 저항 1중첩(피해 1회 무효)을 부여합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%9F%A5%E4%BA%BA%E5%96%84%E4%BB%BB"
+    },
+    "relentless-chase": {
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "maxEffect": "매 턴 행동 시 60% 확률로 이상 상태가 있는 적군에게 각각 120% 병인 피해를 줍니다. 대상마다 발동 여부를 따로 판정합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%AA%AE%E8%BF%BD%E4%B8%8D%E6%8D%A8"
+    },
+    "calamity": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "50%",
+      "maxEffect": "자신을 제외한 적군·아군 전체에 140% 모략 피해를 줍니다. 적군 대상이 화공 상태면 35% 확률로 혼란, 홍수 상태면 35% 확률로 무장해제, 폭풍 상태면 35% 확률로 전법 봉쇄를 각각 1턴 부여합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%B7%A7%E5%88%A9%E5%A4%A9%E7%81%BD"
+    },
+    "ten-thousand": {
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "maxEffect": "일반 공격 후 60% 확률로 현재 대상의 아군 2명에게 해당 일반 공격 피해의 100%만큼 전이 피해를 줍니다. 자신의 무력이 대상보다 높으면 30% 병인 피해를 추가로 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%90%AC%E5%A4%AB%E8%8E%AB%E7%95%B6"
+    },
+    "shoot-man": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "45%",
+      "maxEffect": "일반 공격 후 현재 대상에게 100% 병인 피해를 줍니다. 대상의 선공이 100보다 낮으면 이번 피해가 25% 상승합니다.",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/zhanfa/sheren.html"
+    },
+    "wisdom": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "50%",
+      "maxEffect": "무작위 적군 1명에게 120% 모략 피해를 줍니다.",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/zhanfa/mouzhi.html"
+    },
+    "shoot-horse": {
+      "type": "추격",
+      "category": "보조",
+      "triggerRate": "70%",
+      "maxEffect": "일반 공격 후 현재 대상의 선공을 30 감소시킵니다. 대상이 기병이면 선공을 20 추가로 감소시키며 2턴 지속됩니다.",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/zhanfa/shema.html"
+    },
+    "bravery": {
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "자신의 무력이 20 상승합니다.",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/zhanfa/yongwu.html"
+    },
+    "sortie": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "50%",
+      "maxEffect": "무작위 적군 1명에게 120% 병인 피해를 줍니다.",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/zhanfa/chuji.html"
+    },
+    "heart-talk": {
+      "type": "액티브",
+      "category": "방어",
+      "triggerRate": "40%",
+      "maxEffect": "무작위 적군 1명에게 혼란을 부여합니다. 1턴 지속됩니다.",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/zhanfa/tanxin.html"
+    },
+    "encourage": {
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "아군 2명의 무력이 14 상승합니다.",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/zhanfa/jili.html"
+    },
+    "heavy-strike": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "40%",
+      "maxEffect": "일반 공격 후 현재 대상에게 120% 병인 피해를 줍니다.",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/zhanfa/zhongji.html"
+    },
+    "open-wisdom": {
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "아군 2명의 지력이 12 상승합니다.",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/zhanfa/kaizhi.html"
+    },
+    "break-formation": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "40%",
+      "maxEffect": "일반 공격 후 현재 대상의 통솔을 30 감소시킵니다. 2턴 지속됩니다.",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/zhanfa/pozhen.html"
+    },
+    "rear-guard": {
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "자신의 통솔이 24 상승합니다.",
+      "sourceUrl": "https://wiki.ldmnq.com/sanguo_modingtianxia/zhanfa/dianhou.html"
+    },
+    "sing-wine": {
+      "type": "액티브",
+      "category": "치료",
+      "triggerRate": "65%",
+      "maxEffect": "무작위 아군 2명의 병력을 회복하고(치료율 130%, 지력 영향), 통솔을 16 상승시킵니다. 2턴 지속됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%A9%A0%E6%AD%8C%E5%98%97%E9%85%92"
+    },
+    "defeat-like-wind": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "50%",
+      "maxEffect": "무작위 적군 1명에게 240% 병인 피해를 주고(후열 우선) 폭풍 상태를 부여해 2턴 지속시킵니다. 대상이 이미 폭풍 상태면 선공을 25 감소시켜 2턴 지속시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%85%8B%E6%95%B5%E5%A6%82%E9%A2%A8"
+    },
+    "stratagems": {
+      "type": "추격",
+      "category": "모략",
+      "triggerRate": "40%",
+      "maxEffect": "일반 공격 후 무작위 적군 1명에게 250% 모략 피해를 줍니다. 적군 후열을 우선 선택합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%A5%87%E8%A8%88%E8%BF%AD%E5%87%BA"
+    },
+    "battlefield-raid": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "40%",
+      "maxEffect": "일반 공격 후 대상의 통솔을 30 감소시켜 2턴 지속시키고, 이어서 250% 병인 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%87%A8%E9%99%A3%E7%AA%81%E8%A5%B2"
+    },
+    "pursue-remnants": {
+      "type": "패시브",
+      "category": "모략",
+      "triggerRate": "100%",
+      "maxEffect": "모략 피해를 준 뒤 60% 확률로 무작위 적군 1명에게 일반 공격을 1회 합니다. 턴마다 최대 1회 발동합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%A8%88%E9%80%90%E7%AA%AE%E5%AF%87"
+    },
+    "swift-flank": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "60%",
+      "maxEffect": "무작위 적군 1명에게 150% 병인 피해를 주고 공포 상태를 부여해 2턴 지속시킵니다. 이 공격을 2회 사용합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%96%BE%E8%A1%8C%E5%81%B4%E6%93%8A"
+    },
+    "talk-laugh-heart": {
+      "type": "패시브",
+      "category": "모략",
+      "triggerRate": "100%",
+      "maxEffect": "적군에게 부정 상태가 부여될 때 60% 확률로 무작위 적군 1명에게 110% 모략 피해를 줍니다. 턴마다 최대 2회 발동합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%AB%87%E7%AC%91%E8%AA%85%E5%BF%83"
+    },
+    "flood-break": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "60%",
+      "maxEffect": "무작위 적군 2명에게 100% 모략 피해를 줍니다. 대상이 홍수 상태면 60% 모략 피해를 추가로 주고, 아니면 홍수 상태를 부여해 2턴 지속시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%B1%BA%E6%B0%B4%E7%A0%B4%E6%95%B5"
+    },
+    "clear-fields": {
+      "type": "액티브",
+      "category": "방어",
+      "triggerRate": "50%",
+      "maxEffect": "적군 전체를 도발하고 자신의 통솔을 36 상승시킵니다. 2턴 지속됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%A0%85%E5%A3%81%E6%B8%85%E9%87%8E"
+    },
+    "helpless": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "45%",
+      "maxEffect": "무작위 적군 1명에게 200% 모략 피해를 주고 1턴간 전법 봉쇄를 부여합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%9D%9F%E6%89%8B%E7%84%A1%E7%AD%96"
+    },
+    "rest-army": {
+      "type": "패시브",
+      "category": "치료",
+      "triggerRate": "100%",
+      "maxEffect": "매 턴 종료 시 아군 전열 전체의 병력을 회복합니다(치료율 90%, 지력 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%BE%86%E5%A5%BD%E6%81%AF%E5%B8%AB"
+    },
+    "disrupt-formation": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "35%",
+      "maxEffect": "일반 공격 후 현재 대상에게 220% 병인 피해를 주고 1턴간 혼란을 부여합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%BA%82%E6%95%B5%E6%96%B9%E9%99%A3"
+    },
+    "fire-feather": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "40%",
+      "maxEffect": "적군 전체에 150% 병인 피해를 주고 화공 상태를 부여해 2턴 지속시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%81%AB%E7%BE%BD"
+    },
+    "assault": {
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "maxEffect": "일반 공격 후 무작위 적군 1명에게 해당 일반 공격 피해의 80%만큼 전이 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%BC%B7%E8%A5%B2"
+    },
+    "good-plan": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "50%",
+      "maxEffect": "자신의 지력을 20 상승시켜 2턴 지속시키고, 무작위 적군 2명에게 160% 모략 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%B1%8C%E5%8A%83%E8%89%AF%E7%AD%96"
+    },
+    "war-sustains-war": {
+      "type": "패시브",
+      "category": "치료",
+      "triggerRate": "100%",
+      "maxEffect": "자신의 무력이 20 상승합니다. 일반 공격 후 자신의 병력을 회복합니다(치료율 110%, 지력·무력 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%BB%A5%E6%88%B0%E9%A4%8A%E6%88%B0"
+    },
+    "one-plan-win": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "35%",
+      "maxEffect": "1턴 준비 후 무작위 적군 2명에게 220% 모략 피해를 주고 허약 상태를 부여해 2턴 지속시킵니다. 대상이 이미 허약 상태면 50% 모략 피해를 추가로 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%B8%80%E8%A8%88%E6%B1%BA%E5%8B%9D"
+    },
+    "subdue-soldiers": {
+      "type": "액티브",
+      "category": "방어",
+      "triggerRate": "40%",
+      "maxEffect": "무작위 적군 2명에게 무장해제를 부여해 1턴 지속시킵니다. 대상이 이미 무장해제 상태면 주는 피해를 15% 감소시켜 2턴 지속시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%B1%88%E4%BA%BA%E4%B9%8B%E5%85%B5"
+    },
+    "brave-in-danger": {
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "maxEffect": "자신의 반격률이 40% 상승하고, 일반 공격으로 받는 피해가 20% 감소합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%87%A8%E5%8D%B1%E5%8B%87%E7%83%88"
+    },
+    "valiant-form": {
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "자신의 연격률이 60%, 주는 피해가 10% 상승합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%A9%8D%E5%8B%87%E4%B9%8B%E5%A7%BF"
+    },
+    "supreme-war": {
+      "type": "지휘",
+      "category": "모략",
+      "triggerRate": "100%",
+      "maxEffect": "턴 시작 시 무작위 적군 1명에게 120% 모략 피해를 줍니다. 이 전법의 피해 계수는 턴마다 10%씩 상승합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%B8%8A%E5%85%B5%E4%BC%90%E8%AC%80"
+    },
+    "meet-enemy": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "50%",
+      "maxEffect": "1턴 준비 후 자신의 방어 관통이 20% 상승해 2턴 지속되고, 적군 1명에게 440% 병인 피해를 줍니다. 전열 대상을 우선 선택합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%BF%8E%E6%95%B5"
+    },
+    "raise-banner": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "45%",
+      "maxEffect": "무작위 적군 2명에게 150% 병인 피해를 주고 단량 상태를 부여해 1턴 지속시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%8F%AD%E7%AB%BF%E8%80%8C%E8%B5%B7"
+    },
+    "night-raid": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "45%",
+      "maxEffect": "일반 공격 후 무작위 적군 2명에게 120% 병인 피해를 줍니다. 자신의 선공이 대상보다 높으면 50% 병인 피해를 추가로 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%A4%9C%E8%A5%B2"
+    },
+    "civil-martial": {
+      "type": "지휘",
+      "category": "문무",
+      "triggerRate": "100%",
+      "maxEffect": "매 턴 행동 시 60% 확률로 무작위 적군 2명에게 각각 100% 병인 피해와 모략 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%96%87%E6%B2%BB%E6%AD%A6%E5%8A%9F"
+    },
+    "take-banner": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "55%",
+      "maxEffect": "통솔이 가장 낮은 적군 1명에게 220% 병인 피해를 주고 단량 상태를 부여해 2턴 지속시킵니다. 대상이 이미 단량 상태면 80% 병인 피해를 추가로 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%96%AC%E5%B0%87%E5%A5%AA%E6%97%97"
+    },
+    "light-support": {
+      "type": "추격",
+      "category": "방어",
+      "triggerRate": "50%",
+      "maxEffect": "일반 공격 후 무작위 아군 2명에게 저항 1중첩(피해 1회 무효)을 부여하고, 받는 피해를 20% 감소시켜 2턴 지속시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%BC%95%E8%A3%9D%E9%A6%B3%E6%8F%B4"
+    },
+    "famous": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "50%",
+      "maxEffect": "자신의 병인 흡혈이 30% 상승해 2턴 지속됩니다. 이어서 무작위 적군 2명에게 220% 병인 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%A8%81%E5%90%8D%E9%A1%AF%E8%B5%AB"
+    },
+    "strategize": {
+      "type": "액티브",
+      "category": "보조",
+      "triggerRate": "45%",
+      "maxEffect": "무작위 적군 2명의 무력·지력·통솔·선공을 각각 30 감소시킵니다(지력 영향). 2턴 지속됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%81%8B%E7%B1%8C%E5%B8%B7%E5%B9%84"
+    },
+    "ambushes": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "50%",
+      "maxEffect": "무작위 적군 1명에게 최소 100%, 최대 140% 병인 피해를 주는 공격을 4회 사용합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%BC%8F%E5%85%B5%E5%9B%9B%E8%B5%B7"
+    },
+    "break-army": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "50%",
+      "maxEffect": "1턴 준비 후 적군 전체에 300% 병인 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%A0%B4%E8%BB%8D%E8%A5%B2%E6%95%B5"
+    },
+    "five-thunder": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "50%",
+      "maxEffect": "1턴 준비 후 무작위 적군 1명에게 160% 모략 피해를 주는 공격을 5회 사용합니다. 홍수 상태인 대상을 적중할 때마다 40% 모략 피해를 추가로 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%BA%94%E9%9B%B7%E8%BD%9F%E9%A0%82"
+    },
+    "brave-three-armies": {
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "maxEffect": "자신의 병인 흡혈이 30% 상승합니다. 일반 공격 후 자신이 주는 병인 피해가 6% 상승하며 최대 6회 중첩됩니다. 일반 공격을 누적 3회 하면 무작위 적군 1명에게 200% 병인 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%8B%87%E5%86%A0%E4%B8%89%E8%BB%8D"
+    },
+    "highest-wisdom": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "45%",
+      "maxEffect": "무작위 적군 1명에게 혼란을 부여해 1턴 지속시키고 300% 모략 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%B8%8A%E6%99%BA%E7%82%BA%E9%96%93"
+    },
+    "gate-halberd": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "70%",
+      "maxEffect": "일반 공격 후 무작위 적군 1명에게 200% 병인 피해를 줍니다. 자신이 후열이면 75% 확률로 액티브 전법 발동률이 10% 상승해 2턴 지속되며 최대 3회 중첩됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%BD%85%E9%96%80%E5%B0%84%E6%88%9F"
+    },
+    "wind-cloud": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "60%",
+      "maxEffect": "무작위 적군 2명에게 190% 병인 피해를 줍니다. 대상이 폭풍 상태면 자신이 주는 피해가 15% 증가해 2턴 지속되며 최대 2회 중첩됩니다. 자신이 폭풍 상태면 회피율이 10% 상승해 2턴 지속됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%A2%A8%E5%8D%B7%E6%AE%98%E9%9B%B2",
+      "patchNote": "최근 패치: 피해 180%→190%, 폭풍 대상 보정이 주는 피해 +15%(2턴·최대 2중첩)로 변경."
+    },
+    "sweep-army": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "45%",
+      "maxEffect": "일반 공격 후 적군 전체에 120% 병인 피해를 줍니다. 발동에 성공하면 다음 횡소천군의 피해 계수가 12% 상승하며 전투 종료까지 최대 5회 중첩됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%A9%AB%E6%8E%83%E5%8D%83%E8%BB%8D"
+    },
+    "loot-fire": {
+      "type": "액티브",
+      "category": "문무",
+      "triggerRate": "50%",
+      "maxEffect": "1턴 준비 후 무작위 적군 2명에게 각각 220% 모략 피해와 병인 피해를 줍니다. 대상이 화공 상태면 혼란을 추가로 부여해 2턴 지속시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%B6%81%E7%81%AB%E6%89%93%E5%8A%AB"
+    },
+    "raid-granary": {
+      "type": "추격",
+      "category": "모략",
+      "triggerRate": "45%",
+      "maxEffect": "일반 공격 후 현재 대상에게 300% 모략 피해를 주고 단량 상태를 부여해 2턴 지속시킵니다. 대상이 이미 단량 상태면 100% 모략 피해를 추가로 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%A8%88%E8%A5%B2%E7%B3%A7%E5%80%89"
+    },
+    "exploit-void": {
+      "type": "추격",
+      "category": "병인",
+      "triggerRate": "40%",
+      "maxEffect": "일반 공격 후 무작위 적군 1명에게 280% 병인 피해를 줍니다. 대상이 허약 상태면 이번 피해가 30% 상승하고, 허약 상태가 아니면 80% 확률로 1턴간 허약을 부여합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%B9%98%E8%99%9B%E8%80%8C%E5%85%A5",
+      "patchNote": "최근 패치: 비허약 대상의 허약 부여 확률 65%→80%."
+    },
+    "choose-momentum": {
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "3턴부터 아군 2명이 매 턴 80% 확률로 다음 피해에서 회심과 기책을 반드시 발동합니다. 해당 회심·기책 피해도 40% 상승합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E4%BB%BB%E4%BA%BA%E6%93%87%E5%8B%A2"
+    },
+    "civil-military": {
+      "type": "액티브",
+      "category": "문무",
+      "triggerRate": "65%",
+      "maxEffect": "무력이 가장 높은 적군 1명에게 220% 모략 피해를 주고, 지력이 가장 높은 적군 1명에게 220% 병인 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%96%87%E6%AD%A6%E9%9B%99%E5%85%A8"
+    },
+    "encircle-break": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "60%",
+      "maxEffect": "1턴 준비 후 무작위 적군 1명이 받는 피해를 30% 증가시켜 2턴 지속시키고, 이어서 440% 병인 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%A0%B4%E9%99%A3%E9%A6%B3%E5%9C%8D"
+    },
+    "see-fire": {
+      "type": "액티브",
+      "category": "치료",
+      "triggerRate": "50%",
+      "maxEffect": "무작위 아군 1명의 병력을 회복하고(치료율 260%, 지력 영향), 청성(제어 효과 면역)을 부여해 2턴 지속시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%B4%9E%E8%8B%A5%E8%A7%80%E7%81%AB"
+    },
+    "flood-seven": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "40%",
+      "maxEffect": "1턴 준비 후 적군 전체에 홍수 상태를 부여해 2턴 지속시키고 260% 병인 피해를 줍니다. 이어서 전법 봉쇄 또는 무장해제 중 하나를 1턴 부여합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%B0%B4%E6%B7%B9%E4%B8%83%E8%BB%8D"
+    },
+    "fold-charge": {
+      "type": "지휘",
+      "category": "방어",
+      "triggerRate": "100%",
+      "maxEffect": "전투 시작 후 첫 3턴 동안 무작위 아군 2명이 받는 피해가 24% 감소합니다(지력 영향). 4턴 시작 시 아군 전체 병력을 회복합니다(치료율 360%, 지력 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%8A%98%E8%A1%9D%E7%A6%A6%E4%BE%AE"
+    },
+    "blunt-edge": {
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "첫 3턴 동안 적군 중 무력이 가장 높은 장수가 주는 병인 피해와 지력이 가장 높은 장수가 주는 모략 피해가 각각 25% 감소합니다(통솔 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%8C%AB%E9%8A%B3%E6%8A%98%E9%8B%92"
+    },
+    "plot-strategy": {
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "일반 공격 후 자신의 모략 피해가 7% 상승하며 최대 5회 중첩됩니다. 모략 피해를 준 뒤 50% 확률로 무작위 적군 1명을 일반 공격하며 턴마다 1회 발동합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%81%8B%E6%99%BA%E9%8B%AA%E8%AC%80"
+    },
+    "step-camp": {
+      "type": "지휘",
+      "category": "방어",
+      "triggerRate": "100%",
+      "maxEffect": "매 턴 시작 시 60% 확률로 자신과 무작위 아군 1명이 받는 피해가 24% 감소해 1턴 지속됩니다(통솔 영향). 발동률은 매 턴 10%씩 상승하며 장수별로 판정합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%AD%A5%E6%AD%A5%E7%82%BA%E7%87%9F"
+    },
+    "punish-past": {
+      "type": "지휘",
+      "category": "모략",
+      "triggerRate": "100%",
+      "maxEffect": "매 턴 시작 시 무작위 적군 2명에게 90% 모략 피해를 주며 전군 누적 치료량의 영향을 받습니다. 턴 종료 시 아군 전열의 병력을 회복합니다(치료율 50%, 지력 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%87%B2%E5%89%8D%E6%AF%96%E5%BE%8C"
+    },
+    "wash-marrow": {
+      "type": "패시브",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "턴 시작 시 주는 피해가 10% 상승하며 최대 3회 중첩됩니다. 행동 시 55% 확률로 병력을 200% 회복하고, 별도 55% 확률로 받는 피해가 20% 감소해 1턴 지속됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%B4%97%E7%AD%8B%E4%BC%90%E9%AB%93"
+    },
+    "empty-city": {
+      "type": "지휘",
+      "category": "보조",
+      "triggerRate": "100%",
+      "maxEffect": "첫 3턴 동안 양측 전체의 액티브 전법 발동률이 14% 감소합니다(지력 영향). 4턴부터 아군 최고 지력 장수의 모략 피해가 16% 상승하고 최저 지력 장수가 받는 모략 피해는 16% 감소합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%A9%BA%E5%9F%8E%E8%A8%88"
+    },
+    "plan-after": {
+      "type": "추격",
+      "category": "모략",
+      "triggerRate": "75%",
+      "maxEffect": "일반 공격 후 적군 전체에 40% 모략 피해를 줍니다. 50% 확률로 1회 추가 발동하며, 피해 계수는 매 턴 12%씩 상승합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%AC%80%E8%80%8C%E5%BE%8C%E5%8B%95"
+    },
+    "divine-change": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "100%",
+      "maxEffect": "첫 4턴에는 무작위 아군 2명의 병력을 회복하고(치료율 110%, 지력 영향), 이후 4턴에는 무작위 적군 2명에게 160% 모략 피해를 줍니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%A5%9E%E7%95%A5%E5%88%B6%E8%AE%8A"
+    },
+    "yellow-heaven": {
+      "type": "액티브",
+      "category": "모략",
+      "triggerRate": "55%",
+      "maxEffect": "적군 전체에 140% 모략 피해와 요술을 부여해 2턴 지속시킵니다. 이미 요술 상태라면 주는 피해를 16% 더 낮춰 1턴 지속시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%BB%83%E5%A4%A9%E6%83%91%E5%BF%83"
+    },
+    "break-spear-edge": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "50%",
+      "maxEffect": "무작위 적군 2명에게 220% 병인 피해를 주고 75% 확률로 무장해제를 부여해 1턴 지속시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%96%B7%E6%88%88%E5%A5%AA%E9%8B%92"
+    },
+    "ten-ambush": {
+      "type": "액티브",
+      "category": "병인",
+      "triggerRate": "45%",
+      "maxEffect": "적군 전체에 150% 병인 피해를 주고 75% 확률로 단량을 부여해 1턴 지속시킵니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%8D%81%E9%9D%A2%E5%9F%8B%E4%BC%8F"
+    },
+    "season-shadow-fold": {
+      "type": "시즌",
+      "category": "방어",
+      "triggerRate": "시나리오 해금",
+      "maxEffect": "문정 1의 그림자 전법입니다. 원본 절충어모 계열 효과를 사용하며 보유 전법 수에는 포함하지 않습니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E5%BD%B1%C2%B7%E6%8A%98%E8%A1%9D"
+    },
+    "enemy-before": {
+      "type": "액티브",
+      "category": "방어",
+      "triggerRate": "75%",
+      "maxEffect": "자신과 무작위 아군 1명이 받는 피해가 20% 감소해 1턴 지속됩니다(선공 영향). 자신이 전열이면 자신의 병력을 120% 회복합니다(지력·선공 영향).",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%A6%A6%E6%95%B5%E8%87%A8%E5%89%8D"
+    },
+    "blood-drink": {
+      "type": "패시브",
+      "category": "병인",
+      "triggerRate": "100%",
+      "maxEffect": "피해를 받은 뒤 55% 확률로 무력이 5 상승하며 최대 15회 중첩됩니다. 공격자에게 공포를 부여하고, 이미 공포 상태면 받는 피해를 8% 높여 최대 2회 중첩합니다. 턴마다 최대 4회 발동합니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%B9%88%E9%8B%92%E9%A3%B2%E8%A1%80"
+    },
+    "ink-follow": {
+      "type": "패시브",
+      "category": "방어",
+      "triggerRate": "100%",
+      "maxEffect": "첫 3턴 동안 피해를 받은 뒤 60% 확률로 피해를 준 적의 무력과 지력을 각각 50 낮춥니다. 턴 종료까지 지속되며 최대 3회 중첩됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%B8%90%E5%A2%A8%E9%9A%A8%E6%95%B5"
+    },
+    "hidden-dragon": {
+      "type": "지휘",
+      "category": "문무",
+      "triggerRate": "100%",
+      "maxEffect": "첫 3턴 동안 자신은 일반 공격을 할 수 없습니다. 4·6·8턴 종료 시 적군 전체에 각각 340%·380%·420% 피해를 줍니다. 피해 유형은 자신의 무력과 지력 중 더 높은 능력치에 따라 병인 또는 모략으로 결정됩니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E6%BD%9B%E9%BE%8D%E5%9C%A8%E6%B7%B5"
+    },
+    "season-group-blades": {
+      "type": "시즌",
+      "category": "보조",
+      "triggerRate": "군웅 3인",
+      "maxEffect": "군웅 3인 편성 시 최고 무력 아군이 추격 전법을 발동할수록 피해와 회복이 누적되고, 액티브 전법을 시도하면 추격 발동률·피해가 상승합니다. 시나리오 자동 해금 전법입니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E7%BE%A4%E5%88%83%E7%88%AD%E9%8B%92"
+    },
+    "season-shu-rainbow": {
+      "type": "시즌",
+      "category": "보조",
+      "triggerRate": "촉 3인",
+      "maxEffect": "촉 3인 편성 시 고유 액티브 발동으로 적 전체에 공포를 부여하고, 이상 상태 부여 시 받는 피해 감소, 부정 상태 부여 시 전군 피해 증가가 누적됩니다. 시나리오 자동 해금 전법입니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E8%9C%80%E7%BE%A9%E8%B2%AB%E8%99%B9"
+    },
+    "season-wei-whip": {
+      "type": "시즌",
+      "category": "보조",
+      "triggerRate": "위 3인",
+      "maxEffect": "문정 2에서 개방되는 위 진영 전법입니다. 시트의 위나라 편성에만 적용하며 보유 전법 수에는 포함하지 않습니다.",
+      "sourceUrl": "https://sanmou-wiki.vercel.app/tactics/%E9%AD%8F%E6%AD%A6%E6%8F%AE%E9%9E%AD"
+    }
+  },
+  "tacticRarities": {
+    "avoid-edge": "영웅",
+    "qingnang": "전설",
+    "forge-armor": "영웅",
+    "taxation": "전설",
+    "support-selfless": "전설",
+    "calm": "전설",
+    "fresh-breeze": "전설",
+    "best-strategy": "전설",
+    "overwhelming-win": "전설",
+    "break-hardship": "전설",
+    "unstoppable": "전설",
+    "break-through": "전설",
+    "direct-world": "전설",
+    "divine-aid": "영웅",
+    "solid-defense": "전설",
+    "stone-wall": "전설",
+    "ready": "전설",
+    "armor-edge": "전설",
+    "sacrifice": "전설",
+    "no-hardship": "전설",
+    "iron-cavalry": "전설",
+    "speed-first": "전설",
+    "all-directions": "전설",
+    "supply-cut": "전설",
+    "hundred-battles": "전설",
+    "same-boat": "전설",
+    "golden-fortress": "전설",
+    "unexpected": "전설",
+    "qimen": "전설",
+    "foresight": "전설",
+    "blazing-sky": "전설",
+    "hide-light": "전설",
+    "see-truth": "전설",
+    "odd-even": "전설",
+    "fire-camp": "전설",
+    "strong-wind": "전설",
+    "know-people": "영웅",
+    "attack-unready": "전설",
+    "strike-gap": "전설",
+    "drain-morale": "전설",
+    "thousand-raid": "전설",
+    "prepare-armor": "전설",
+    "charge-change": "전설",
+    "spring-breeze": "영웅",
+    "use-talent": "전설",
+    "relentless-chase": "영웅",
+    "calamity": "전설",
+    "ten-thousand": "전설",
+    "shoot-man": "고급",
+    "wisdom": "고급",
+    "shoot-horse": "고급",
+    "bravery": "고급",
+    "sortie": "고급",
+    "heart-talk": "고급",
+    "encourage": "고급",
+    "heavy-strike": "고급",
+    "open-wisdom": "고급",
+    "break-formation": "고급",
+    "rear-guard": "고급",
+    "sing-wine": "영웅",
+    "defeat-like-wind": "영웅",
+    "stratagems": "영웅",
+    "battlefield-raid": "영웅",
+    "pursue-remnants": "영웅",
+    "swift-flank": "영웅",
+    "talk-laugh-heart": "영웅",
+    "flood-break": "영웅",
+    "clear-fields": "영웅",
+    "helpless": "영웅",
+    "rest-army": "영웅",
+    "disrupt-formation": "영웅",
+    "fire-feather": "영웅",
+    "assault": "영웅",
+    "good-plan": "영웅",
+    "war-sustains-war": "영웅",
+    "one-plan-win": "영웅",
+    "subdue-soldiers": "영웅",
+    "brave-in-danger": "영웅",
+    "valiant-form": "영웅",
+    "supreme-war": "영웅",
+    "meet-enemy": "영웅",
+    "raise-banner": "영웅",
+    "night-raid": "영웅",
+    "civil-martial": "영웅",
+    "take-banner": "전설",
+    "light-support": "전설",
+    "famous": "전설",
+    "strategize": "전설",
+    "ambushes": "전설",
+    "break-army": "전설",
+    "five-thunder": "전설",
+    "brave-three-armies": "전설",
+    "highest-wisdom": "전설",
+    "gate-halberd": "전설",
+    "wind-cloud": "전설",
+    "sweep-army": "전설",
+    "loot-fire": "전설",
+    "raid-granary": "전설",
+    "exploit-void": "전설",
+    "choose-momentum": "전설",
+    "civil-military": "전설",
+    "encircle-break": "전설",
+    "see-fire": "전설",
+    "flood-seven": "전설",
+    "fold-charge": "전설",
+    "blunt-edge": "전설",
+    "plot-strategy": "전설",
+    "step-camp": "전설",
+    "punish-past": "전설",
+    "wash-marrow": "전설",
+    "empty-city": "전설",
+    "plan-after": "전설",
+    "divine-change": "전설",
+    "yellow-heaven": "전설",
+    "break-spear-edge": "전설",
+    "ten-ambush": "전설",
+    "season-shadow-fold": "시즌",
+    "enemy-before": "전설",
+    "blood-drink": "전설",
+    "ink-follow": "전설",
+    "hidden-dragon": "전설",
+    "season-group-blades": "시즌",
+    "season-shu-rainbow": "시즌",
+    "season-wei-whip": "시즌"
+  },
+  "tacticEffects": {
+    "avoid-edge": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "qingnang": "병력 회복·정화 중심 전법입니다. 지력·통솔 보정과 발동 시점을 함께 확인하세요.",
+    "forge-armor": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "taxation": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "support-selfless": "병력 회복·정화 중심 전법입니다. 지력·통솔 보정과 발동 시점을 함께 확인하세요.",
+    "calm": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "fresh-breeze": "병력 회복·정화 중심 전법입니다. 지력·통솔 보정과 발동 시점을 함께 확인하세요.",
+    "best-strategy": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "overwhelming-win": "병인과 모략을 함께 사용하는 혼합 피해 전법입니다. 무력·지력 적용 대상을 먼저 확인하세요.",
+    "break-hardship": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "unstoppable": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "break-through": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "direct-world": "병인과 모략을 함께 사용하는 혼합 피해 전법입니다. 무력·지력 적용 대상을 먼저 확인하세요.",
+    "divine-aid": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "solid-defense": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "stone-wall": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "ready": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "armor-edge": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "sacrifice": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "no-hardship": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "iron-cavalry": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "speed-first": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "all-directions": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "supply-cut": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "hundred-battles": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "same-boat": "병력 회복·정화 중심 전법입니다. 지력·통솔 보정과 발동 시점을 함께 확인하세요.",
+    "golden-fortress": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "unexpected": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "qimen": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "foresight": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "blazing-sky": "병인과 모략을 함께 사용하는 혼합 피해 전법입니다. 무력·지력 적용 대상을 먼저 확인하세요.",
+    "hide-light": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "see-truth": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "odd-even": "병력 회복·정화 중심 전법입니다. 지력·통솔 보정과 발동 시점을 함께 확인하세요.",
+    "fire-camp": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "strong-wind": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "know-people": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "attack-unready": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "strike-gap": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "drain-morale": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "thousand-raid": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "prepare-armor": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "charge-change": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "spring-breeze": "병력 회복·정화 중심 전법입니다. 지력·통솔 보정과 발동 시점을 함께 확인하세요.",
+    "use-talent": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "relentless-chase": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "calamity": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "ten-thousand": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "shoot-man": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "wisdom": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "shoot-horse": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "bravery": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "sortie": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "heart-talk": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "encourage": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "heavy-strike": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "open-wisdom": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "break-formation": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "rear-guard": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "sing-wine": "병력 회복·정화 중심 전법입니다. 지력·통솔 보정과 발동 시점을 함께 확인하세요.",
+    "defeat-like-wind": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "stratagems": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "battlefield-raid": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "pursue-remnants": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "swift-flank": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "talk-laugh-heart": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "flood-break": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "clear-fields": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "helpless": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "rest-army": "병력 회복·정화 중심 전법입니다. 지력·통솔 보정과 발동 시점을 함께 확인하세요.",
+    "disrupt-formation": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "fire-feather": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "assault": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "good-plan": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "war-sustains-war": "병력 회복·정화 중심 전법입니다. 지력·통솔 보정과 발동 시점을 함께 확인하세요.",
+    "one-plan-win": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "subdue-soldiers": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "brave-in-danger": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "valiant-form": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "supreme-war": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "meet-enemy": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "raise-banner": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "night-raid": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "civil-martial": "병인과 모략을 함께 사용하는 혼합 피해 전법입니다. 무력·지력 적용 대상을 먼저 확인하세요.",
+    "take-banner": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "light-support": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "famous": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "strategize": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "ambushes": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "break-army": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "five-thunder": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "brave-three-armies": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "highest-wisdom": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "gate-halberd": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "wind-cloud": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "sweep-army": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "loot-fire": "병인과 모략을 함께 사용하는 혼합 피해 전법입니다. 무력·지력 적용 대상을 먼저 확인하세요.",
+    "raid-granary": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "exploit-void": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "choose-momentum": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "civil-military": "병인과 모략을 함께 사용하는 혼합 피해 전법입니다. 무력·지력 적용 대상을 먼저 확인하세요.",
+    "encircle-break": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "see-fire": "병력 회복·정화 중심 전법입니다. 지력·통솔 보정과 발동 시점을 함께 확인하세요.",
+    "flood-seven": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "fold-charge": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "blunt-edge": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "plot-strategy": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "step-camp": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "punish-past": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "wash-marrow": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "empty-city": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "plan-after": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "divine-change": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "yellow-heaven": "지력 중심 모략 전법입니다. 기책 확률과 상태이상·준비 전법 연계를 함께 맞추세요.",
+    "break-spear-edge": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "ten-ambush": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "season-shadow-fold": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "enemy-before": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "blood-drink": "무력·선공 중심 물리 딜러용 전법입니다. 회심·연격·추격 조건과 행동 순서를 함께 확인하세요.",
+    "ink-follow": "피해 감소·도발·저항 등 생존 역할을 맡는 전법입니다. 전열 장수의 통솔과 배치를 함께 맞추세요.",
+    "hidden-dragon": "병인과 모략을 함께 사용하는 혼합 피해 전법입니다. 무력·지력 적용 대상을 먼저 확인하세요.",
+    "season-group-blades": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "season-shu-rainbow": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다.",
+    "season-wei-whip": "아군 강화 또는 적군 약화를 담당하는 전법입니다. 적용 대상과 선공 순서가 핵심입니다."
+  },
+  "tacticMeanings": {
+    "avoid-edge": "",
+    "qingnang": "",
+    "forge-armor": "",
+    "taxation": "",
+    "support-selfless": "",
+    "calm": "",
+    "fresh-breeze": "",
+    "best-strategy": "",
+    "overwhelming-win": "",
+    "break-hardship": "",
+    "unstoppable": "",
+    "break-through": "",
+    "direct-world": "",
+    "divine-aid": "",
+    "solid-defense": "",
+    "stone-wall": "",
+    "ready": "",
+    "armor-edge": "",
+    "sacrifice": "",
+    "no-hardship": "",
+    "iron-cavalry": "",
+    "speed-first": "",
+    "all-directions": "",
+    "supply-cut": "",
+    "hundred-battles": "",
+    "same-boat": "",
+    "golden-fortress": "",
+    "unexpected": "",
+    "qimen": "",
+    "foresight": "",
+    "blazing-sky": "",
+    "hide-light": "",
+    "see-truth": "",
+    "odd-even": "",
+    "fire-camp": "",
+    "strong-wind": "",
+    "know-people": "어진 사람만 골라 쓰다",
+    "attack-unready": "",
+    "strike-gap": "",
+    "drain-morale": "",
+    "thousand-raid": "",
+    "prepare-armor": "",
+    "charge-change": "",
+    "spring-breeze": "",
+    "use-talent": "",
+    "relentless-chase": "끝까지 추격하고 놓지 않다",
+    "calamity": "",
+    "ten-thousand": "",
+    "shoot-man": "적장을 사격",
+    "wisdom": "지략과 지혜",
+    "shoot-horse": "전마를 사격",
+    "bravery": "용맹과 무력",
+    "sortie": "출전하여 공격",
+    "heart-talk": "마음을 터놓고 이야기하다",
+    "encourage": "아군의 사기를 북돋우다",
+    "heavy-strike": "무겁게 내리치다",
+    "open-wisdom": "지혜를 열어 주다",
+    "break-formation": "적의 진형을 깨뜨리다",
+    "rear-guard": "후미를 지키다",
+    "sing-wine": "",
+    "defeat-like-wind": "",
+    "stratagems": "",
+    "battlefield-raid": "",
+    "pursue-remnants": "",
+    "swift-flank": "",
+    "talk-laugh-heart": "",
+    "flood-break": "",
+    "clear-fields": "",
+    "helpless": "",
+    "rest-army": "",
+    "disrupt-formation": "",
+    "fire-feather": "",
+    "assault": "",
+    "good-plan": "",
+    "war-sustains-war": "",
+    "one-plan-win": "",
+    "subdue-soldiers": "",
+    "brave-in-danger": "",
+    "valiant-form": "",
+    "supreme-war": "",
+    "meet-enemy": "",
+    "raise-banner": "",
+    "night-raid": "",
+    "civil-martial": "",
+    "take-banner": "",
+    "light-support": "",
+    "famous": "",
+    "strategize": "",
+    "ambushes": "",
+    "break-army": "",
+    "five-thunder": "",
+    "brave-three-armies": "",
+    "highest-wisdom": "",
+    "gate-halberd": "",
+    "wind-cloud": "",
+    "sweep-army": "",
+    "loot-fire": "",
+    "raid-granary": "",
+    "exploit-void": "",
+    "choose-momentum": "",
+    "civil-military": "",
+    "encircle-break": "",
+    "see-fire": "",
+    "flood-seven": "",
+    "fold-charge": "적의 공격을 막아냄",
+    "blunt-edge": "적의 예봉을 꺾음",
+    "plot-strategy": "지략과 계책을 펼침",
+    "step-camp": "걸음마다 진영을 굳힘",
+    "punish-past": "지난 일을 경계해 뒤를 삼감",
+    "wash-marrow": "근골을 씻어 체질을 바꿈",
+    "empty-city": "빈 성으로 적을 속이는 계책",
+    "plan-after": "충분히 꾀한 뒤 움직임",
+    "divine-change": "신묘한 계략으로 변화에 대응",
+    "yellow-heaven": "황천의 힘으로 마음을 현혹",
+    "break-spear-edge": "무기를 끊고 예봉을 빼앗음",
+    "ten-ambush": "사방에 매복을 펼침",
+    "season-shadow-fold": "절충어모의 그림자 전법",
+    "enemy-before": "적을 앞에 두고 맞섬",
+    "blood-drink": "예봉을 밟고 피를 마심",
+    "ink-follow": "법도를 실천하며 적에 대응",
+    "hidden-dragon": "깊은 곳에 몸을 숨긴 용",
+    "season-group-blades": "군웅의 칼날이 패권을 다툼",
+    "season-shu-rainbow": "촉의 의기가 무지개를 꿰뚫음",
+    "season-wei-whip": "위 무제가 채찍을 휘두름"
+  },
+  "tacticBasis": {
+    "avoid-edge": "공개 DB 2곳 최고 레벨 교차확인",
+    "qingnang": "공개 DB 2곳 최고 레벨 교차확인",
+    "forge-armor": "공개 DB 2곳 최고 레벨 교차확인",
+    "taxation": "공개 DB 2곳 최고 레벨 교차확인",
+    "support-selfless": "공개 DB 2곳 최고 레벨 교차확인",
+    "calm": "최신 밸런스 패치 적용값",
+    "fresh-breeze": "공개 DB 2곳 최고 레벨 교차확인",
+    "best-strategy": "공개 DB 2곳 최고 레벨 교차확인",
+    "overwhelming-win": "공개 DB 2곳 최고 레벨 교차확인",
+    "break-hardship": "공개 DB 2곳 최고 레벨 교차확인",
+    "unstoppable": "공개 DB 2곳 최고 레벨 교차확인",
+    "break-through": "공개 DB 2곳 최고 레벨 교차확인",
+    "direct-world": "공개 DB 2곳 최고 레벨 교차확인",
+    "divine-aid": "공개 DB 2곳 최고 레벨 교차확인",
+    "solid-defense": "공개 DB 2곳 최고 레벨 교차확인",
+    "stone-wall": "공개 DB 2곳 최고 레벨 교차확인",
+    "ready": "공개 DB 2곳 최고 레벨 교차확인",
+    "armor-edge": "공개 DB 2곳 최고 레벨 교차확인",
+    "sacrifice": "최신 밸런스 패치 적용값",
+    "no-hardship": "공개 DB 2곳 최고 레벨 교차확인",
+    "iron-cavalry": "공개 DB 2곳 최고 레벨 교차확인",
+    "speed-first": "공개 DB 2곳 최고 레벨 교차확인",
+    "all-directions": "공개 DB 2곳 최고 레벨 교차확인",
+    "supply-cut": "공개 DB 2곳 최고 레벨 교차확인",
+    "hundred-battles": "공개 DB 2곳 최고 레벨 교차확인",
+    "same-boat": "공개 DB 2곳 최고 레벨 교차확인",
+    "golden-fortress": "공개 DB 2곳 최고 레벨 교차확인",
+    "unexpected": "공개 DB 2곳 최고 레벨 교차확인",
+    "qimen": "공개 DB 2곳 최고 레벨 교차확인",
+    "foresight": "공개 DB 2곳 최고 레벨 교차확인",
+    "blazing-sky": "공개 DB 2곳 최고 레벨 교차확인",
+    "hide-light": "공개 DB 2곳 최고 레벨 교차확인",
+    "see-truth": "공개 DB 2곳 최고 레벨 교차확인",
+    "odd-even": "공개 DB 2곳 최고 레벨 교차확인",
+    "fire-camp": "공개 DB 2곳 최고 레벨 교차확인",
+    "strong-wind": "공개 DB 2곳 최고 레벨 교차확인",
+    "know-people": "공개 DB 2곳 최고 레벨 교차확인",
+    "attack-unready": "공개 DB 2곳 최고 레벨 교차확인",
+    "strike-gap": "공개 DB 2곳 최고 레벨 교차확인",
+    "drain-morale": "공개 DB 2곳 최고 레벨 교차확인",
+    "thousand-raid": "공개 DB 2곳 최고 레벨 교차확인",
+    "prepare-armor": "공개 DB 2곳 최고 레벨 교차확인",
+    "charge-change": "공개 DB 2곳 최고 레벨 교차확인",
+    "spring-breeze": "공개 DB 2곳 최고 레벨 교차확인",
+    "use-talent": "공개 DB 2곳 최고 레벨 교차확인",
+    "relentless-chase": "공개 DB 2곳 최고 레벨 교차확인",
+    "calamity": "공개 DB 2곳 최고 레벨 교차확인",
+    "ten-thousand": "공개 DB 2곳 최고 레벨 교차확인",
+    "shoot-man": "인게임 보조 전법 최고 레벨",
+    "wisdom": "인게임 보조 전법 최고 레벨",
+    "shoot-horse": "인게임 보조 전법 최고 레벨",
+    "bravery": "인게임 보조 전법 최고 레벨",
+    "sortie": "인게임 보조 전법 최고 레벨",
+    "heart-talk": "인게임 보조 전법 최고 레벨",
+    "encourage": "인게임 보조 전법 최고 레벨",
+    "heavy-strike": "인게임 보조 전법 최고 레벨",
+    "open-wisdom": "인게임 보조 전법 최고 레벨",
+    "break-formation": "인게임 보조 전법 최고 레벨",
+    "rear-guard": "인게임 보조 전법 최고 레벨",
+    "sing-wine": "공개 DB 2곳 최고 레벨 교차확인",
+    "defeat-like-wind": "공개 DB 2곳 최고 레벨 교차확인",
+    "stratagems": "공개 DB 2곳 최고 레벨 교차확인",
+    "battlefield-raid": "공개 DB 2곳 최고 레벨 교차확인",
+    "pursue-remnants": "공개 DB 2곳 최고 레벨 교차확인",
+    "swift-flank": "공개 DB 2곳 최고 레벨 교차확인",
+    "talk-laugh-heart": "공개 DB 2곳 최고 레벨 교차확인",
+    "flood-break": "공개 DB 2곳 최고 레벨 교차확인",
+    "clear-fields": "공개 DB 2곳 최고 레벨 교차확인",
+    "helpless": "공개 DB 2곳 최고 레벨 교차확인",
+    "rest-army": "공개 DB 2곳 최고 레벨 교차확인",
+    "disrupt-formation": "공개 DB 2곳 최고 레벨 교차확인",
+    "fire-feather": "공개 DB 2곳 최고 레벨 교차확인",
+    "assault": "공개 DB 2곳 최고 레벨 교차확인",
+    "good-plan": "공개 DB 2곳 최고 레벨 교차확인",
+    "war-sustains-war": "공개 DB 2곳 최고 레벨 교차확인",
+    "one-plan-win": "공개 DB 2곳 최고 레벨 교차확인",
+    "subdue-soldiers": "공개 DB 2곳 최고 레벨 교차확인",
+    "brave-in-danger": "공개 DB 2곳 최고 레벨 교차확인",
+    "valiant-form": "공개 DB 2곳 최고 레벨 교차확인",
+    "supreme-war": "공개 DB 2곳 최고 레벨 교차확인",
+    "meet-enemy": "공개 DB 2곳 최고 레벨 교차확인",
+    "raise-banner": "공개 DB 2곳 최고 레벨 교차확인",
+    "night-raid": "공개 DB 2곳 최고 레벨 교차확인",
+    "civil-martial": "공개 DB 2곳 최고 레벨 교차확인",
+    "take-banner": "공개 DB 2곳 최고 레벨 교차확인",
+    "light-support": "공개 DB 2곳 최고 레벨 교차확인",
+    "famous": "공개 DB 2곳 최고 레벨 교차확인",
+    "strategize": "공개 DB 2곳 최고 레벨 교차확인",
+    "ambushes": "공개 DB 2곳 최고 레벨 교차확인",
+    "break-army": "공개 DB 2곳 최고 레벨 교차확인",
+    "five-thunder": "공개 DB 2곳 최고 레벨 교차확인",
+    "brave-three-armies": "공개 DB 2곳 최고 레벨 교차확인",
+    "highest-wisdom": "공개 DB 2곳 최고 레벨 교차확인",
+    "gate-halberd": "공개 DB 2곳 최고 레벨 교차확인",
+    "wind-cloud": "최신 밸런스 패치 적용값",
+    "sweep-army": "공개 DB 2곳 최고 레벨 교차확인",
+    "loot-fire": "공개 DB 2곳 최고 레벨 교차확인",
+    "raid-granary": "공개 DB 2곳 최고 레벨 교차확인",
+    "exploit-void": "최신 밸런스 패치 적용값",
+    "choose-momentum": "공개 DB 2곳 최고 레벨 교차확인",
+    "civil-military": "공개 DB 2곳 최고 레벨 교차확인",
+    "encircle-break": "공개 DB 2곳 최고 레벨 교차확인",
+    "see-fire": "공개 DB 2곳 최고 레벨 교차확인",
+    "flood-seven": "공개 DB 2곳 최고 레벨 교차확인",
+    "fold-charge": "공개 DB 2곳 최고 레벨 교차확인",
+    "blunt-edge": "공개 DB 2곳 최고 레벨 교차확인",
+    "plot-strategy": "공개 DB 2곳 최고 레벨 교차확인",
+    "step-camp": "공개 DB 2곳 최고 레벨 교차확인",
+    "punish-past": "공개 DB 2곳 최고 레벨 교차확인",
+    "wash-marrow": "공개 DB 2곳 최고 레벨 교차확인",
+    "empty-city": "공개 DB 2곳 최고 레벨 교차확인",
+    "plan-after": "공개 DB 2곳 최고 레벨 교차확인",
+    "divine-change": "공개 DB 2곳 최고 레벨 교차확인",
+    "yellow-heaven": "공개 DB 2곳 최고 레벨 교차확인",
+    "break-spear-edge": "공개 DB 2곳 최고 레벨 교차확인",
+    "ten-ambush": "공개 DB 2곳 최고 레벨 교차확인",
+    "season-shadow-fold": "시나리오 자동 해금 효과",
+    "enemy-before": "공개 DB 2곳 최고 레벨 교차확인",
+    "blood-drink": "공개 DB 2곳 최고 레벨 교차확인",
+    "ink-follow": "공개 DB 2곳 최고 레벨 교차확인",
+    "hidden-dragon": "공개 DB 2곳 최고 레벨 교차확인",
+    "season-group-blades": "시나리오 자동 해금 효과",
+    "season-shu-rainbow": "시나리오 자동 해금 효과",
+    "season-wei-whip": "시나리오 자동 해금 효과"
+  },
+  "tacticFallbacks": {
+    "avoid-edge": [
+      "forge-armor",
+      "golden-fortress"
+    ],
+    "qingnang": [
+      "fresh-breeze",
+      "sing-wine"
+    ],
+    "forge-armor": [
+      "golden-fortress",
+      "avoid-edge"
+    ],
+    "taxation": [
+      "spring-breeze",
+      "support-selfless"
+    ],
+    "support-selfless": [
+      "same-boat",
+      "light-support"
+    ],
+    "calm": [
+      "avoid-edge",
+      "brave-in-danger"
+    ],
+    "fresh-breeze": [
+      "qingnang",
+      "sing-wine"
+    ],
+    "best-strategy": [
+      "hide-light",
+      "divine-aid"
+    ],
+    "overwhelming-win": [
+      "civil-military",
+      "unstoppable"
+    ],
+    "break-hardship": [
+      "unstoppable",
+      "break-through"
+    ],
+    "unstoppable": [
+      "break-through",
+      "famous"
+    ],
+    "break-through": [
+      "unstoppable",
+      "famous"
+    ],
+    "direct-world": [
+      "know-people",
+      "ready"
+    ],
+    "divine-aid": [
+      "famous",
+      "unstoppable"
+    ],
+    "solid-defense": [
+      "stone-wall",
+      "forge-armor"
+    ],
+    "stone-wall": [
+      "solid-defense",
+      "forge-armor"
+    ],
+    "ready": [
+      "hundred-battles",
+      "know-people"
+    ],
+    "armor-edge": [
+      "sacrifice",
+      "hundred-battles"
+    ],
+    "sacrifice": [
+      "light-support",
+      "armor-edge"
+    ],
+    "no-hardship": [
+      "valiant-form",
+      "war-sustains-war"
+    ],
+    "iron-cavalry": [
+      "speed-first",
+      "battlefield-raid"
+    ],
+    "speed-first": [
+      "thousand-raid",
+      "night-raid"
+    ],
+    "all-directions": [
+      "wind-cloud",
+      "sweep-army"
+    ],
+    "supply-cut": [
+      "raid-granary",
+      "take-banner"
+    ],
+    "hundred-battles": [
+      "armor-edge",
+      "ready"
+    ],
+    "same-boat": [
+      "qingnang",
+      "spring-breeze"
+    ],
+    "golden-fortress": [
+      "forge-armor",
+      "avoid-edge"
+    ],
+    "unexpected": [
+      "one-plan-win",
+      "good-plan"
+    ],
+    "qimen": [
+      "five-thunder",
+      "one-plan-win"
+    ],
+    "foresight": [
+      "helpless",
+      "one-plan-win"
+    ],
+    "blazing-sky": [
+      "fire-camp",
+      "fire-feather"
+    ],
+    "hide-light": [
+      "best-strategy",
+      "divine-aid"
+    ],
+    "see-truth": [
+      "highest-wisdom",
+      "strategize"
+    ],
+    "odd-even": [
+      "same-boat",
+      "good-plan"
+    ],
+    "fire-camp": [
+      "blazing-sky",
+      "fire-feather"
+    ],
+    "strong-wind": [
+      "fire-camp",
+      "blazing-sky"
+    ],
+    "know-people": [
+      "ready",
+      "hundred-battles"
+    ],
+    "attack-unready": [
+      "battlefield-raid",
+      "exploit-void"
+    ],
+    "strike-gap": [
+      "stratagems",
+      "raid-granary"
+    ],
+    "drain-morale": [
+      "break-formation",
+      "strategize"
+    ],
+    "thousand-raid": [
+      "speed-first",
+      "relentless-chase"
+    ],
+    "prepare-armor": [
+      "brave-in-danger",
+      "stone-wall"
+    ],
+    "charge-change": [
+      "encircle-break",
+      "break-army"
+    ],
+    "spring-breeze": [
+      "qingnang",
+      "same-boat"
+    ],
+    "use-talent": [
+      "light-support",
+      "golden-fortress"
+    ],
+    "calamity": [
+      "fire-camp",
+      "flood-break"
+    ],
+    "battlefield-raid": [
+      "pursue-remnants",
+      "swift-flank"
+    ],
+    "talk-laugh-heart": [
+      "best-strategy",
+      "unexpected"
+    ],
+    "clear-fields": [
+      "solid-defense",
+      "stone-wall"
+    ],
+    "one-plan-win": [
+      "qimen",
+      "foresight"
+    ],
+    "valiant-form": [
+      "famous",
+      "relentless-chase"
+    ],
+    "supreme-war": [
+      "best-strategy",
+      "highest-wisdom"
+    ],
+    "light-support": [
+      "support-selfless",
+      "qingnang"
+    ],
+    "famous": [
+      "unstoppable",
+      "divine-aid"
+    ],
+    "ambushes": [
+      "break-army",
+      "battlefield-raid"
+    ],
+    "five-thunder": [
+      "best-strategy",
+      "unexpected"
+    ],
+    "wind-cloud": [
+      "all-directions",
+      "flood-seven"
+    ],
+    "flood-seven": [
+      "all-directions",
+      "sweep-army"
+    ]
+  },
+  "formationEffects": {
+    "일자진": "아군 3명이 모두 전열에 배치되며 받는 피해가 8% 감소합니다. 피해를 고르게 분산하는 범용 전열형입니다.",
+    "기형진": "전열이 받는 피해 6% 감소, 후열이 주는 피해 12% 증가. 단일 전열로 후열 2명을 보호하는 덱에 적합합니다.",
+    "안형진": "전열 통솔 20 증가, 후열이 주는 피해 15% 증가. 전열 2명과 후열 주딜 1명 구조에 적합합니다.",
+    "방원진": "전열이 받는 피해 5% 감소, 후열 연격률 40% 증가. 후열 추격·연격 딜러를 집중 강화합니다.",
+    "추형진": "전열이 주는 피해 16% 증가, 후열이 받는 피해 5% 감소. 반격·전열 주딜을 쓰는 덱에 적합합니다.",
+    "어린진": "전열 회피율 12% 증가, 후열 회심·기책 확률 8% 증가. 회피 전열과 후열 쌍핵을 함께 보조합니다.",
+    "구행진": "전열이 받는 피해 8% 감소, 후열 연격률 25% 증가. S3 연격 계열 후열 딜러에 적합합니다.",
+    "언월진": "전열이 주는 피해 14% 증가, 후열이 받는 피해 5% 감소. S3 전열 주딜과 후열 보조 구조에 적합합니다.",
+    "봉시진": "공개 통합 시즌 자료에서 단일 주딜 집중형으로 쓰이는 표기입니다. 한국 서버 적용 시 정식 진형명과 수치를 확인해야 합니다."
+  },
+  "balancePatch": [
+    {
+      "id": "calm",
+      "name": "고요한 제압",
+      "kind": "전법",
+      "before": "홀수·짝수 턴에 자신만 해당 피해를 35% 감소",
+      "after": "홀수 턴: 자신과 무작위 아군 1명의 병인·일반 공격·추격 피해 20% 감소. 짝수 턴: 자신과 무작위 아군 1명의 모략·액티브 피해 20% 감소. 두 효과 모두 통솔 영향.",
+      "impact": "자기 단독 감쇄는 낮아졌지만 아군 1명까지 보호하는 팀 방어 전법으로 변경"
+    },
+    {
+      "id": "wind-cloud",
+      "name": "구름과 바람",
+      "kind": "전법",
+      "before": "적군 2명 180% 병인 피해, 폭풍 대상 피해 25% 증가",
+      "after": "적군 2명 190% 병인 피해. 폭풍 대상 적중 시 자신이 주는 피해 15% 증가(2턴, 최대 2중첩). 자신이 폭풍이면 회피 10% 증가(2턴).",
+      "impact": "폭풍 조합에서 단발 보정 대신 누적 피해 증가를 얻어 지속 화력이 상승"
+    },
+    {
+      "id": "sacrifice",
+      "name": "정의의 희생",
+      "kind": "전법",
+      "before": "첫 2턴 연격 30%, 최고 무력 아군 정신 회복, 자신 기절",
+      "after": "첫 2턴 연격 30%, 최고 무력 아군 정신 회복, 자신 무장해제",
+      "impact": "장착자가 액티브·지휘·패시브 전법을 계속 사용할 수 있어 활용 폭이 커짐"
+    },
+    {
+      "id": "exploit-void",
+      "name": "허점 공격",
+      "kind": "전법",
+      "before": "280% 병인 피해, 비허약 대상 허약 부여 65%",
+      "after": "280% 병인 피해, 비허약 대상 허약 부여 80%(1턴)",
+      "impact": "허약 선행 없이도 다음 공격을 안정적으로 연결하기 쉬워짐"
+    },
+    {
+      "id": "liu-bei-sword",
+      "name": "인덕",
+      "kind": "전용 특기",
+      "before": "유비 장착 시 전투 시작에 무작위 아군 장수 2명의 전체 속성 +3",
+      "after": "유비 장착 시 전투 시작에 본인을 제외한 아군 장수 2명의 전체 속성 +3",
+      "impact": "자웅쌍고검의 강화 대상이 두 부장으로 고정"
+    },
+    {
+      "id": "guo-jia-baixue",
+      "name": "촉락",
+      "kind": "전용 특기",
+      "before": "곽가 장착 시 아군 행동 때 40% 확률로 자신의 약화 상태 1종 제거",
+      "after": "곽가가 액티브 전법을 발동한 뒤 자신이 주는 피해 5% 증가(2턴, 최대 4중첩)",
+      "impact": "백설이 정화 장비에서 곽가의 능동 연속 발동용 화력 장비로 변경"
+    }
+  ],
+  "equipmentPatchEffects": {
+    "liu-bei": "자웅쌍고검·인덕: 전투 시작 시 유비를 제외한 아군 2명의 전체 속성 +3.",
+    "guo-jia": "백설·촉락: 곽가가 액티브 전법 발동 후 주는 피해 +5%(2턴, 최대 4중첩)."
+  },
+  "battleTerms": [
+    {
+      "id": "burn",
+      "name": "연소",
+      "kind": "상태효과",
+      "description": "화염 계열 설명문에서 지속 피해·중첩 조건으로 사용되는 상태입니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "confusion",
+      "name": "혼란",
+      "kind": "상태효과",
+      "description": "행동 대상을 통제하는 제어 효과로 설명된 상태입니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "fear",
+      "name": "공포",
+      "kind": "상태효과",
+      "description": "일반 공격을 제한하는 제어 효과로 사용되는 상태입니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "stun",
+      "name": "기절",
+      "kind": "상태효과",
+      "description": "행동을 제한하는 제어 효과로 사용되는 상태입니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "disarm",
+      "name": "무장 해제",
+      "kind": "상태효과",
+      "description": "일반 공격과 연관된 제어 효과로 설명된 상태입니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "silence",
+      "name": "침묵",
+      "kind": "상태효과",
+      "description": "액티브 전법 사용을 제한하는 제어 효과로 설명된 상태입니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "weakness",
+      "name": "허약",
+      "kind": "상태효과",
+      "description": "피해 발생을 제한하는 약화 상태로 설명됩니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "resistance",
+      "name": "저항",
+      "kind": "상태효과",
+      "description": "제어 효과 방어와 관련된 중첩형 상태로 사용됩니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "clarity",
+      "name": "청성",
+      "kind": "상태효과",
+      "description": "기존 덱 설명에서 제어 효과 면역으로 풀이된 상태입니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "counterattack",
+      "name": "반격",
+      "kind": "전투용어",
+      "description": "피격 또는 특정 조건 뒤 되받아치는 공격 구조입니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "pursuit",
+      "name": "추격",
+      "kind": "전투용어",
+      "description": "일반 공격 이후 이어지는 전법 유형과 연계를 가리킵니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "combo-attack",
+      "name": "연격",
+      "kind": "전투용어",
+      "description": "일반 공격 횟수 증가와 연결되는 전투용어입니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "evasion",
+      "name": "회피",
+      "kind": "전투용어",
+      "description": "공격을 피하고 후속 생존·반격 조건과 연결되는 전투용어입니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    },
+    {
+      "id": "supply-cut",
+      "name": "보급 차단",
+      "kind": "전투용어",
+      "description": "치료·보급 억제 구조와 연결되는 전투용어입니다.",
+      "verificationStatus": "reviewed",
+      "source": "천덱랩 기존 확정 데이터",
+      "evidenceType": "기존 한국어 설명문",
+      "counters": [],
+      "synergies": []
+    }
+  ],
+  "tacticBattleTermLinks": [
+    {
+      "tacticId": "avoid-edge",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "forge-armor",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "taxation",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "calm",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "calm",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "break-hardship",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "break-hardship",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "break-through",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "break-through",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "solid-defense",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "stone-wall",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "sacrifice",
+      "termId": "stun",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "sacrifice",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "no-hardship",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "iron-cavalry",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "iron-cavalry",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "speed-first",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "speed-first",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "all-directions",
+      "termId": "fear",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "all-directions",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "all-directions",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "golden-fortress",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "qimen",
+      "termId": "stun",
+      "relation": "활용",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "attack-unready",
+      "termId": "stun",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "attack-unready",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "attack-unready",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "strike-gap",
+      "termId": "confusion",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "thousand-raid",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "thousand-raid",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "prepare-armor",
+      "termId": "counterattack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "prepare-armor",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "prepare-armor",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "charge-change",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "charge-change",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "use-talent",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "relentless-chase",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "relentless-chase",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "calamity",
+      "termId": "confusion",
+      "relation": "활용",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "ten-thousand",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "ten-thousand",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "shoot-man",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "shoot-man",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "sortie",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "sortie",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "heart-talk",
+      "termId": "confusion",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "heart-talk",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "heavy-strike",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "heavy-strike",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "break-formation",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "break-formation",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "defeat-like-wind",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "defeat-like-wind",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "battlefield-raid",
+      "termId": "pursuit",
+      "relation": "활용",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "battlefield-raid",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "swift-flank",
+      "termId": "fear",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "swift-flank",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "swift-flank",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "clear-fields",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "disrupt-formation",
+      "termId": "confusion",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "disrupt-formation",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "disrupt-formation",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "fire-feather",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "fire-feather",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "assault",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "assault",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "one-plan-win",
+      "termId": "weakness",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "subdue-soldiers",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "brave-in-danger",
+      "termId": "counterattack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "brave-in-danger",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "brave-in-danger",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "valiant-form",
+      "termId": "combo-attack",
+      "relation": "활용",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "meet-enemy",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "meet-enemy",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "raise-banner",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "raise-banner",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "night-raid",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "night-raid",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "take-banner",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "take-banner",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "light-support",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "famous",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "famous",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "ambushes",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "ambushes",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "break-army",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "break-army",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "brave-three-armies",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "brave-three-armies",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "highest-wisdom",
+      "termId": "confusion",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "gate-halberd",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "gate-halberd",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "wind-cloud",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "wind-cloud",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "wind-cloud",
+      "termId": "evasion",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "sweep-army",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "sweep-army",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "loot-fire",
+      "termId": "confusion",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "exploit-void",
+      "termId": "weakness",
+      "relation": "활용",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "exploit-void",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "exploit-void",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "encircle-break",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "encircle-break",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "see-fire",
+      "termId": "clarity",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "flood-seven",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "flood-seven",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "fold-charge",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "step-camp",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "break-spear-edge",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "break-spear-edge",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "ten-ambush",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "ten-ambush",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "season-shadow-fold",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "enemy-before",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "blood-drink",
+      "termId": "fear",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "blood-drink",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "blood-drink",
+      "termId": "combo-attack",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "ink-follow",
+      "termId": "resistance",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "season-group-blades",
+      "termId": "pursuit",
+      "relation": "관련",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    },
+    {
+      "tacticId": "season-shu-rainbow",
+      "termId": "fear",
+      "relation": "생성",
+      "provenance": "시스템 추론",
+      "verificationStatus": "설명문 자동 연결"
+    }
+  ]
+}

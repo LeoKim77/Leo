@@ -1,0 +1,27 @@
+{
+  "id": "P-0026",
+  "date": "2026-10-03",
+  "cat": "manuals",
+  "type": "검증완료",
+  "title": "[화면 확인] 무장별 금병법 이름·내용 이미지",
+  "body": "금병법 이미지 파일 이름으로 무장별 금병법 이름·원문을 맞췄다(금병법 카테고리 목록).",
+  "status": "시뮬 반영",
+  "specIds": [
+    "MAN1"
+  ],
+  "rules": [
+    "R-003"
+  ],
+  "links": [
+    {
+      "label": "금병법 이미지 폴더",
+      "url": "https://drive.google.com/drive/folders/16fVdrDZXxLqh63OFYpgjJNA6JP_YPnVD"
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-03",
+      "change": "작성"
+    }
+  ]
+}

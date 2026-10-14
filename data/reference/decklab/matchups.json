@@ -1,0 +1,4501 @@
+{
+  "verifiedCounters": [
+    {
+      "enemyDeckId": "first-lubu",
+      "counterDeckId": "war-taoyuan",
+      "resultLabel": "승률 85%",
+      "evidence": "장서각 도원 공략에서 여포·진궁·악진을 ‘절호의 상대’로 명시하고 승률 85%를 제시합니다.",
+      "sourceLabel": "대만 S통합 장서각 도원 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%97%8F%E6%9B%B8%E9%96%A3%E6%A1%83%E5%9C%92%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "first-lubu",
+      "counterDeckId": "war-yue-xun-zhou",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "선등여포 공략에서 주유·순욱·악진을 여포 덱의 열세·피카운터 상대로 직접 분류합니다.",
+      "sourceLabel": "대만 S통합 선등여포 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E5%85%88%E7%99%BB%E5%91%82%E5%B8%83%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-02"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "war-taoyuan",
+      "resultLabel": "승률 75%",
+      "evidence": "장서각 도원 공략에서 원소·주태·마초를 ‘절호의 상대’로 명시하고 승률 75%를 제시합니다.",
+      "sourceLabel": "대만 S통합 장서각 도원 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%97%8F%E6%9B%B8%E9%96%A3%E6%A1%83%E5%9C%92%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-03"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "zhao-gan-diao",
+      "resultLabel": "승률 70% 이상",
+      "evidence": "조감초 창병 공략의 상대전 표에서 원소·주태·마초전 승률을 70% 이상으로 제시합니다.",
+      "sourceLabel": "대만 S통합 조감초 창병 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%B6%99%E7%94%98%E8%B2%82%E6%A7%8D%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-04"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "war-yue-xun-zhou",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "태원마 공략에서 주유·순욱·악진을 태원마의 불리한 상대인 ‘쌍주유 계열’로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 태원마 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-05"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "xu-huang-yu",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "태원마 공략에서 서성·황개·주유를 태원마의 불리한 상대인 ‘쌍주유 계열’로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 태원마 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-06"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-yue-xun-zhou",
+      "counterDeckId": "war-cao-xun-sima",
+      "resultLabel": "완벽 상성 명시",
+      "evidence": "순태위 사마의 쌍감대 공략에서 주유·순욱·악진을 ‘완벽하게 카운터’하는 상대로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 순태위 사마의 쌍감대 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%8D%80%E5%A4%AA%E5%B0%89%E5%8F%B8%E9%A6%AC%E9%9B%99%E6%B8%9B%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-07"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-yue-xun-zhou",
+      "counterDeckId": "zhao-gan-diao",
+      "resultLabel": "승률 약 65%",
+      "evidence": "조감초 창병 공략의 상대전 표에서 주유·순욱·악진전 승률을 약 65%로 제시합니다.",
+      "sourceLabel": "대만 S통합 조감초 창병 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%B6%99%E7%94%98%E8%B2%82%E6%A7%8D%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-08"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "xu-huang-yu",
+      "counterDeckId": "war-cao-xun-sima",
+      "resultLabel": "완벽 상성 명시",
+      "evidence": "순태위 사마의 쌍감대 공략에서 서성·황개·주유를 ‘완벽하게 카운터’하는 상대로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 순태위 사마의 쌍감대 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%8D%80%E5%A4%AA%E5%B0%89%E5%8F%B8%E9%A6%AC%E9%9B%99%E6%B8%9B%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-09"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "zhao-gan-diao",
+      "counterDeckId": "war-cao-xun-sima",
+      "resultLabel": "완벽 상성 명시",
+      "evidence": "순태위 사마의 쌍감대 공략에서 초선·조운·감부인을 ‘완벽하게 카운터’하는 상대로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 순태위 사마의 쌍감대 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%8D%80%E5%A4%AA%E5%B0%89%E5%8F%B8%E9%A6%AC%E9%9B%99%E6%B8%9B%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-10"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-cao-xun-sima",
+      "counterDeckId": "tai-yuan-ma",
+      "resultLabel": "안정적 우세 명시",
+      "evidence": "태원마 공략에서 순태위 사마의 쌍감대를 ‘안정적으로 이기는 우선 상대’로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 태원마 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-11"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-cao-xun-sima",
+      "counterDeckId": "war-da-zhang-ma",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "순태위 사마의 쌍감대 공략에서 대교·장비·마초를 쌍감대의 불리한 상대로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 순태위 사마의 쌍감대 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%8D%80%E5%A4%AA%E5%B0%89%E5%8F%B8%E9%A6%AC%E9%9B%99%E6%B8%9B%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-12"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-sun-lu-lu",
+      "counterDeckId": "tai-yuan-ma",
+      "resultLabel": "안정적 우세 명시",
+      "evidence": "태원마 공략에서 노숙·육손·손권을 ‘안정적으로 이기는 우선 상대’로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 태원마 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-13"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "tai-huang-yu",
+      "counterDeckId": "war-yue-xun-zhou",
+      "resultLabel": "상대 승률 30~35%",
+      "evidence": "태황유 공략의 상대전 표에서 주유·순욱·악진전 태황유 승률을 30~35%로 제시해 명확한 열세로 분류합니다.",
+      "sourceLabel": "대만 S통합 태황유 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E9%BB%83%E7%91%9C%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-14"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-zhao-gan-jiang",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "조감강 공략에서 월량마와 빠른 물리 덱을 주요 우세 상대로, 좌자 중심 상위 제어 덱을 약점으로 직접 구분합니다.",
+      "sourceLabel": "대만 W1 조감강 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E8%B6%99%E7%94%98%E5%A7%9C%E9%9A%8A",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-15"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-yellow-heaven",
+      "resultLabel": "월량마 대응 10/10",
+      "evidence": "좌원녕 공략의 상대전 평가에서 월량마 대응 항목을 10점으로 제시합니다.",
+      "sourceLabel": "대만 W1 좌원녕 연의 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%B7%A6%E8%A2%81%E5%AF%A7%E6%BC%94%E7%BE%A9%E9%9A%8A",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-16"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-jia-xun-zhu",
+      "resultLabel": "승률 70~80%",
+      "evidence": "가순제 공략에서 월량마전 예상 승률을 70~80%로 제시합니다.",
+      "sourceLabel": "대만 W1 가순제 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E8%B3%88%E8%8D%80%E8%AB%B8%E9%9A%8A",
+      "season": "문정 1",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-17"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-zhuge-guard",
+      "resultLabel": "승률 약 60%",
+      "evidence": "대만 W1 공존 공략에서 SP 제갈 호위를 추격·물리 대응으로 설명하고 월량마전 약 60%로 제시합니다.",
+      "sourceLabel": "대만 W1 3단계 공존 편성",
+      "sourceUrl": "https://forum.gamer.com.tw/C.php?bsn=83812&snA=587",
+      "season": "문정 1",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-18"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-moon-ma",
+      "resultLabel": "연요마 승률 40~45%",
+      "evidence": "연요마 2.0 공략에서 월량마전 승률을 40~45%의 근소 열세로 직접 제시합니다.",
+      "sourceLabel": "대만 W1 연요마 2.0 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E6%B7%B5%E9%81%BC%E9%A6%AC",
+      "season": "문정 1",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-19"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-xinhuo",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "연요마 공략에서 고배율 SP 제갈량·강유 신화창을 반드시 피해야 할 상대로 직접 분류합니다.",
+      "sourceLabel": "대만 W1 연요마 2.0 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E6%B7%B5%E9%81%BC%E9%A6%AC",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-20"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-romance-gan",
+      "resultLabel": "추격 기병 저격",
+      "evidence": "연의 감녕 반격창 공략에서 일반 공격·추격이 많은 3기병을 핵심 사냥 대상으로 직접 설명합니다.",
+      "sourceLabel": "대만 W1 연의 감녕 반격창 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%8F%8D%E6%93%8A%E6%BC%94%E7%BE%A9%E7%94%98%E5%AF%A7%E6%A7%8D%E9%9A%8A",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-21"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-romance-gan",
+      "resultLabel": "추격 기병 저격",
+      "evidence": "연의 감녕 반격창 공략에서 연의 장료를 포함한 일반 공격·추격 기병을 우선 상대하도록 명시합니다.",
+      "sourceLabel": "대만 W1 연의 감녕 반격창 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%8F%8D%E6%93%8A%E6%BC%94%E7%BE%A9%E7%94%98%E5%AF%A7%E6%A7%8D%E9%9A%8A",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-22"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-counter-dianwei",
+      "resultLabel": "물리 추격 저격",
+      "evidence": "연의 조인 반격 전위 공략에서 마초·장료 계열 일반 공격과 추격 물리 덱을 주요 저격 대상으로 직접 분류합니다.",
+      "sourceLabel": "대만 W1 연의 조인 반격 전위 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%8F%8D%E6%93%8A%E5%85%B8%E9%9F%8B%E9%9A%8A",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-23"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-counter-dianwei",
+      "resultLabel": "물리 추격 저격",
+      "evidence": "연의 조인 반격 전위 공략에서 장료·하후연처럼 일반 공격과 추격이 많은 편성을 주요 우세 상대로 명시합니다.",
+      "sourceLabel": "대만 W1 연의 조인 반격 전위 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%8F%8D%E6%93%8A%E5%85%B8%E9%9F%8B%E9%9A%8A",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-24"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-counter-xinhuo",
+      "resultLabel": "승률 70~80%",
+      "evidence": "W2 반격 신화창 공략에서 남만 기병전 승률을 70~80%로 제시합니다.",
+      "sourceLabel": "대만 W2 반격 신화창 남만 저격 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%8F%8D%E6%93%8A%E8%96%AA%E7%81%AB%E6%A7%8D%E9%8C%90%E5%BD%A2%E9%9A%8A%E5%B0%88%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-25"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-tai-fei-yan",
+      "resultLabel": "승률 약 60%",
+      "evidence": "W2 태비연 공략에서 남만전 약 60% 승률의 전용 저격 편성으로 평가합니다.",
+      "sourceLabel": "대만 W2 태비연 남만 저격 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%B3%B0%E9%A3%9B%E5%BB%B6%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-26"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-zhao-liu-xiang",
+      "resultLabel": "승률 80~85%",
+      "evidence": "W2 조유향 공략에서 남만 제갈전 승률을 80~85%로 제시합니다.",
+      "sourceLabel": "대만 W2 조유향 남만 저격 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E8%B6%99%E5%8A%89%E9%A6%99%E8%9C%80%E5%9C%8B%E9%99%A3%E7%87%9F%E9%9A%8A%E5%B0%88%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-27"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-left-lu-lu",
+      "resultLabel": "승률 80~85%",
+      "evidence": "W2 좌노육 공략의 주류 상대전 표에서 남만 제갈전 승률을 80~85%로 제시합니다.",
+      "sourceLabel": "대만 W2 좌노육 오나라 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E9%AD%AF%E9%99%B8%E5%90%B3%E5%9C%8B%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-28"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-cao-jia-yi",
+      "resultLabel": "승률 70~80%",
+      "evidence": "W2 조가왕 공략에서 완성형 편성의 고홍 남만 제갈전 승률을 70~80%로 제시합니다.",
+      "sourceLabel": "대만 W2 조가왕 공존 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%9B%B9%E8%B3%88%E7%95%B0%E9%9A%8A%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "context": "완성형 조가왕 기준",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-29"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "완성형 조가왕 기준"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-wei-brothers",
+      "resultLabel": "자료 불일치",
+      "evidence": "W2 위부자 사마의 공략에서 완성형의 남만 제갈전 승률을 80~85%로 제시합니다.",
+      "sourceLabel": "대만 W2 위부자 사마의 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%9B%B9%E6%93%8D%E7%88%B6%E5%AD%90%E5%8F%B8%E9%A6%AC%E6%87%BF%E9%AD%8F%E5%9C%8B%E9%9A%8A%E8%83%BD%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "context": "고감쇄 완성형 기준",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "legacy-30",
+        "w2-wei-brothers-vs-nanman-conflict-01"
+      ],
+      "evidenceCount": 2,
+      "weightedEvidenceScore": 0,
+      "aggregateStatus": "자료 불일치",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "고감쇄 완성형 기준",
+        "상대 위부자 백판",
+        "수치는 남만 관점의 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 2,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-zuo-tian-lu",
+      "counterDeckId": "w2-left-lu-lu",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "W2 좌노육 공략에서 좌전여포를 주류 사냥 대상으로 직접 분류합니다.",
+      "sourceLabel": "대만 W2 좌노육 오나라 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E9%AD%AF%E9%99%B8%E5%90%B3%E5%9C%8B%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "season": "문정 2",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-31"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-high-han-shield",
+      "counterDeckId": "w2-left-lu-lu",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "W2 좌노육 공략에서 대한 방패를 포함한 주류 육성·단핵 물리 덱에 절대적인 압박이 있다고 명시합니다.",
+      "sourceLabel": "대만 W2 좌노육 오나라 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E9%AD%AF%E9%99%B8%E5%90%B3%E5%9C%8B%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "season": "문정 2",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "legacy-32"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-xinhuo",
+      "counterDeckId": "w1-left-gong-guan",
+      "resultLabel": "출처 추정 65~75%",
+      "evidence": "좌공관 상세 공략의 상대전 표에서 신화창·안형 신화창을 명시하고 좌공관의 예상 승률을 65~75%로 제시합니다.",
+      "sourceLabel": "대만 W1 좌공관 상세 세팅",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E5%85%AC%E9%97%9C%E6%BC%94%E7%BE%A9%E9%9A%8A%E8%A9%B3%E7%B4%B0%E4%BB%8B%E7%B4%B9",
+      "context": "좌공찬·연의 관우의 전용 형태와 후반 완성 세팅 · 승률은 원문 추정치",
+      "season": "문정 1",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w1-left-gong-guan-vs-xinhuo-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 50,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "좌공찬·연의 관우의 전용 형태와 후반 완성 세팅",
+        "승률은 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-left-gong-guan",
+      "counterDeckId": "w1-han-shield",
+      "resultLabel": "상대 추정 25~35%",
+      "evidence": "좌공관 상세 공략의 상대전 표에서 대한방을 명시하고 좌공관 관점 예상 승률을 25~35%로 제시합니다.",
+      "sourceLabel": "대만 W1 좌공관 상세 세팅",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E5%85%AC%E9%97%9C%E6%BC%94%E7%BE%A9%E9%9A%8A%E8%A9%B3%E7%B4%B0%E4%BB%8B%E7%B4%B9",
+      "context": "대한방의 고감쇄·제어 완성 세팅 · 수치는 좌공관 관점의 원문 추정치",
+      "season": "문정 1",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w1-han-shield-vs-left-gong-guan-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "대한방의 고감쇄·제어 완성 세팅",
+        "수치는 좌공관 관점의 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-sp-wang",
+      "counterDeckId": "w2-left-tian-xiang",
+      "resultLabel": "실전 승리 · 출처 추정 85%",
+      "evidence": "좌전향 공략의 실전 표에서 조조·위 SP 제갈량·왕이를 상대로 승리한 전보 1건과 예상 승률 85%를 제시합니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "context": "출처 표기 중·고홍 편성 · 실전 표본 1건 · 승률은 원문 추정치",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-left-tian-xiang-vs-sp-wang-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 65,
+      "aggregateStatus": "단일 근거",
+      "confidence": "중간",
+      "ratingType": "실전 전보",
+      "conditions": [
+        "출처 표기 중·고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 1,
+      "totalSampleSize": 1
+    },
+    {
+      "enemyDeckId": "w2-wei-brothers",
+      "counterDeckId": "w2-left-tian-xiang",
+      "resultLabel": "실전 승리 · 출처 추정 85~90%",
+      "evidence": "좌전향 공략의 실전 표에서 사마의·조조·조비를 상대로 승리한 전보 1건과 예상 승률 85~90%를 제시합니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "context": "출처 표기 고홍 편성 · 실전 표본 1건 · 승률은 원문 추정치",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-left-tian-xiang-vs-wei-brothers-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 65,
+      "aggregateStatus": "단일 근거",
+      "confidence": "중간",
+      "ratingType": "실전 전보",
+      "conditions": [
+        "출처 표기 고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 1,
+      "totalSampleSize": 1
+    },
+    {
+      "enemyDeckId": "w2-zuo-tian-lu",
+      "counterDeckId": "w2-left-tian-xiang",
+      "resultLabel": "실전 승리 · 출처 추정 85%",
+      "evidence": "좌전향 공략의 실전 표에서 좌자·전풍·여포를 상대로 승리한 전보 1건과 예상 승률 85%를 제시합니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "context": "출처 표기 중·고홍 편성 · 실전 표본 1건 · 승률은 원문 추정치",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-left-tian-xiang-vs-zuo-tian-lu-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 65,
+      "aggregateStatus": "단일 근거",
+      "confidence": "중간",
+      "ratingType": "실전 전보",
+      "conditions": [
+        "출처 표기 중·고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 1,
+      "totalSampleSize": 1
+    },
+    {
+      "enemyDeckId": "w2-han-shield-zhu",
+      "counterDeckId": "w2-left-tian-xiang",
+      "resultLabel": "백판 실전 승리 · 출처 추정 90%",
+      "evidence": "좌전향 공략의 실전 표에서 백판 주준·황보숭·원술 대한방을 상대로 승리한 전보 1건과 예상 승률 90%를 제시합니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "context": "상대 백판 편성 한정 · 실전 표본 1건 · 승률은 원문 추정치",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-left-tian-xiang-vs-han-shield-zhu-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 65,
+      "aggregateStatus": "단일 근거",
+      "confidence": "중간",
+      "ratingType": "실전 전보",
+      "conditions": [
+        "상대 백판 편성 한정",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 1,
+      "totalSampleSize": 1
+    },
+    {
+      "enemyDeckId": "w2-moon-ma",
+      "counterDeckId": "w2-left-tian-xiang",
+      "resultLabel": "실전 승리 · 출처 추정 85%",
+      "evidence": "좌전향 공략의 실전 표에서 마초·SP 제갈량·악진 월량마를 상대로 승리한 전보 1건과 예상 승률 85%를 제시합니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "context": "출처 표기 고홍 편성 · 실전 표본 1건 · 승률은 원문 추정치",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-left-tian-xiang-vs-moon-ma-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 65,
+      "aggregateStatus": "단일 근거",
+      "confidence": "중간",
+      "ratingType": "실전 전보",
+      "conditions": [
+        "출처 표기 고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 1,
+      "totalSampleSize": 1
+    },
+    {
+      "enemyDeckId": "w2-left-tian-xiang",
+      "counterDeckId": "w2-zhang-sun-huang",
+      "resultLabel": "실전 승리 · 상대 추정 15~20%",
+      "evidence": "좌전향 공략의 실전 표에서 장녕·손권·황개가 좌자·전풍·손상향을 이긴 전보 1건을 제시하며, 좌전향 관점 예상 승률은 15~20%입니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "context": "출처 표기 고홍 편성 · 실전 표본 1건 · 수치는 좌전향 관점의 원문 추정치",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-zhang-sun-huang-vs-left-tian-xiang-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 62,
+      "aggregateStatus": "단일 근거",
+      "confidence": "중간",
+      "ratingType": "실전 전보",
+      "conditions": [
+        "출처 표기 고홍 편성",
+        "실전 표본 1건",
+        "수치는 좌전향 관점의 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 1,
+      "totalSampleSize": 1
+    },
+    {
+      "enemyDeckId": "w2-wei-brothers",
+      "counterDeckId": "w2-tai-fei-yan",
+      "resultLabel": "실전 승리 · 출처 추정 75~80%",
+      "evidence": "태비연 공략의 실전 표에서 사마의·조조·조비를 상대로 승리한 전보 1건과 예상 승률 75~80%를 제시합니다.",
+      "sourceLabel": "대만 W2 태비연 남만 저격 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%B3%B0%E9%A3%9B%E5%BB%B6%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "context": "출처 표기 고홍 편성 · 실전 표본 1건 · 승률은 원문 추정치",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-tai-fei-yan-vs-wei-brothers-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 65,
+      "aggregateStatus": "단일 근거",
+      "confidence": "중간",
+      "ratingType": "실전 전보",
+      "conditions": [
+        "출처 표기 고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 1,
+      "totalSampleSize": 1
+    },
+    {
+      "enemyDeckId": "w2-sp-wang",
+      "counterDeckId": "w2-tai-fei-yan",
+      "resultLabel": "실전 승리 · 출처 추정 65~70%",
+      "evidence": "태비연 공략의 실전 표에서 조조·위 SP 제갈량·왕이를 상대로 승리한 전보 1건과 예상 승률 65~70%를 제시합니다.",
+      "sourceLabel": "대만 W2 태비연 남만 저격 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%B3%B0%E9%A3%9B%E5%BB%B6%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "context": "출처 표기 고홍 편성 · 실전 표본 1건 · 승률은 원문 추정치",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-tai-fei-yan-vs-sp-wang-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 65,
+      "aggregateStatus": "단일 근거",
+      "confidence": "중간",
+      "ratingType": "실전 전보",
+      "conditions": [
+        "출처 표기 고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 1,
+      "totalSampleSize": 1
+    },
+    {
+      "enemyDeckId": "zhao-gan-diao",
+      "counterDeckId": "cao-yuan-ma",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "조원마 분석이 조감초를 직접 상대 항목으로 두고, 마초가 초선의 극단 제어를 피하면 유지력으로 우세하다고 평가합니다.",
+      "sourceLabel": "대만 S통합 조원마 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%9B%B9%E8%A2%81%E9%A6%AC%E4%BB%8B%E7%B4%B9",
+      "context": "마초가 초선의 핵심 제어를 연속으로 받지 않는 세팅",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "s-cao-yuan-ma-vs-zhao-gan-diao-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "마초가 초선의 핵심 제어를 연속으로 받지 않는 세팅"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "zhao-gan-diao",
+      "counterDeckId": "war-zhao-gan-sima",
+      "resultLabel": "출처 추정 60~66%",
+      "evidence": "조감사마 대전 분석이 조운·감부인·초선 조합을 직접 명시하고 일반형 기준 60~66% 우세로 제시합니다.",
+      "sourceLabel": "대만 S통합 조감사마 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%B6%99%E7%94%98%E5%8F%B8%E9%A6%AC%E9%9A%8A",
+      "context": "",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "s-zhao-gan-sima-vs-zhao-gan-diao-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 50,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-cao-xun-sima",
+      "counterDeckId": "war-point-zhangliao",
+      "resultLabel": "출처 추정 80% 이상",
+      "evidence": "지점장료 공략이 변형 순태위 사마의 편성을 직접 상대로 두고 실제 추정 승률 80% 이상이라고 설명합니다.",
+      "sourceLabel": "대만 S통합 지점장료 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%8C%87%E9%BB%9E%E5%BC%B5%E9%81%BC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "context": "공략의 백판 지점장료 완성 세팅 · 상대 순태위 변형 세팅",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "s-point-zhang-vs-xun-taiwei-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 50,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "공략의 백판 지점장료 완성 세팅",
+        "상대 순태위 변형 세팅"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-taoyuan",
+      "counterDeckId": "war-cao-xun-sima",
+      "resultLabel": "상대 승률 40%",
+      "evidence": "장서각 도원 공략이 사마의 쌍감대를 천적으로 명시하고 도원 관점 승률을 40%로 제시합니다.",
+      "sourceLabel": "대만 S통합 장서각 도원 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%97%8F%E6%9B%B8%E9%96%A3%E6%A1%83%E5%9C%92%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "context": "장서각 도원 완성형 기준 · 수치는 도원 관점의 원문 추정치",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "s-xun-taiwei-vs-taoyuan-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "장서각 도원 완성형 기준",
+        "수치는 도원 관점의 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-cao-xun-sima",
+      "counterDeckId": "da-yue-ma",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "순태위 사마의 공략이 대교·악진·마초 대폭발 편성을 직접 불리한 상대로 분류합니다.",
+      "sourceLabel": "대만 S통합 순태위 사마의 쌍감대 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%8D%80%E5%A4%AA%E5%B0%89%E5%8F%B8%E9%A6%AC%E9%9B%99%E6%B8%9B%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "context": "",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "s-da-yue-ma-vs-xun-taiwei-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "tai-huang-yu",
+      "counterDeckId": "war-cao-xu-sima",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "조서사마 기술궁 반격 공략이 태황유를 액티브 모략 덱의 직접 사냥 대상으로 명시합니다.",
+      "sourceLabel": "대만 S통합 조서사마 실전 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%9B%B9%E5%BE%90%E6%87%BF%E6%8A%80%E7%AA%AE%E5%8F%8D%E6%93%8A%E9%9A%8A%E8%97%8F%E6%9B%B8%E9%96%A3%E4%BB%8B%E7%B4%B9",
+      "context": "기술궁·반격 완성형",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "s-cao-xu-sima-vs-tai-huang-yu-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "기술궁·반격 완성형"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-da-xiao-zhou",
+      "counterDeckId": "war-cao-xu-sima",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "조서사마 기술궁 반격 공략이 주유·대교·소교 편성을 액티브 전법 의존 법사 덱의 직접 우세 상대로 명시합니다.",
+      "sourceLabel": "대만 S통합 조서사마 실전 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%9B%B9%E5%BE%90%E6%87%BF%E6%8A%80%E7%AA%AE%E5%8F%8D%E6%93%8A%E9%9A%8A%E8%97%8F%E6%9B%B8%E9%96%A3%E4%BB%8B%E7%B4%B9",
+      "context": "기술궁·반격 완성형",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "s-cao-xu-sima-vs-da-xiao-zhou-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "기술궁·반격 완성형"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "cao-yuan-ma",
+      "resultLabel": "공략 명시 미세 우세",
+      "evidence": "조원마 공략이 같은 마초 축의 태원마 내전을 직접 비교하며 조조 감쇄형이 진지전에서 미세 우세라고 평가합니다.",
+      "sourceLabel": "대만 S통합 조원마 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%9B%B9%E8%A2%81%E9%A6%AC%E4%BB%8B%E7%B4%B9",
+      "context": "동홍도·동전법 수준 비교",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "s-cao-yuan-ma-vs-tai-yuan-ma-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "동홍도·동전법 수준 비교"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "cao-yuan-ma",
+      "counterDeckId": "double-emperor-lu",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "조원마 분석이 쌍황육의 모략·연소 피해를 조원마 전열의 직접 약점으로 들며 피해야 할 상대로 명시합니다.",
+      "sourceLabel": "대만 S통합 조원마 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%9B%B9%E8%A2%81%E9%A6%AC%E4%BB%8B%E7%B4%B9",
+      "context": "",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "s-double-emperor-vs-cao-yuan-ma-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "cao-yuan-ma",
+      "counterDeckId": "war-point-zhangliao",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "지점장료 공략이 조원마를 주요 공훈 획득 대상과 우선 사냥감으로 직접 분류합니다.",
+      "sourceLabel": "대만 S통합 지점장료 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%8C%87%E9%BB%9E%E5%BC%B5%E9%81%BC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "context": "백판 지점장료 공략 세팅",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "s-point-zhang-vs-cao-yuan-ma-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "백판 지점장료 공략 세팅"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-liu-yuan-ma",
+      "counterDeckId": "tai-yuan-ma",
+      "resultLabel": "비교표 명시 미세 우세",
+      "evidence": "유원마·태원마 직접 비교표가 두 원소·마초 계열 내전에서 태원마의 폭발 구조가 조금 앞선다고 평가합니다.",
+      "sourceLabel": "대만 S통합 유원마 비교 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E4%B8%AD%E6%9C%9F%E6%A0%B8%E5%BD%88%E5%8A%89%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "context": "동등한 성장 수준의 공략 비교",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "s-tai-yuan-vs-liu-yuan-ma-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "동등한 성장 수준의 공략 비교"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-liu-yuan-ma",
+      "counterDeckId": "double-emperor-lu",
+      "resultLabel": "상대 추정 40~45%",
+      "evidence": "유원마 비교표가 쌍황육전 유원마 승률을 40~45%로 제시해 쌍황육 측 우세 자료로 구조화했습니다.",
+      "sourceLabel": "대만 S통합 유원마 비교 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E4%B8%AD%E6%9C%9F%E6%A0%B8%E5%BD%88%E5%8A%89%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "context": "수치는 유원마 관점의 원문 추정치",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "s-double-emperor-vs-liu-yuan-ma-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "수치는 유원마 관점의 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "double-emperor-lu",
+      "resultLabel": "상대 추정 35~40%",
+      "evidence": "유원마·태원마 비교표가 쌍황육전 태원마 승률을 35~40%로 제시해 쌍황육 측 우세 자료로 구조화했습니다.",
+      "sourceLabel": "대만 S통합 유원마 비교 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E4%B8%AD%E6%9C%9F%E6%A0%B8%E5%BD%88%E5%8A%89%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "context": "수치는 태원마 관점의 원문 추정치",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "s-double-emperor-vs-tai-yuan-ma-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "수치는 태원마 관점의 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "war-zhao-gan-guan",
+      "counterDeckId": "war-cao-xun-sima",
+      "resultLabel": "상대 추정 40~45%",
+      "evidence": "조감관 공략이 순태위 사마의 쌍감대를 직접 상대 항목으로 두고 조감관 관점 승률을 40~45%로 제시합니다.",
+      "sourceLabel": "대만 S통합 조감관 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%B6%99%E7%94%98%E9%97%9C%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "context": "수치는 조감관 관점의 원문 추정치",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "s-xun-taiwei-vs-zhao-gan-guan-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "수치는 조감관 관점의 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "double-emperor-lu",
+      "counterDeckId": "first-lubu",
+      "resultLabel": "상대 추정 35~40%",
+      "evidence": "쌍황육 대전표가 악진·진궁·여포전 쌍황육 승률을 35~40%로 제시해 선등여포 측 우세 자료로 구조화했습니다.",
+      "sourceLabel": "대만 S통합 쌍황육 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E9%9B%99%E7%9A%87%E9%99%B8%E4%BB%8B%E7%B4%B9",
+      "context": "수치는 쌍황육 관점의 원문 추정치",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "s-first-lubu-vs-double-emperor-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "수치는 쌍황육 관점의 원문 추정치"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "double-reduction-sima",
+      "counterDeckId": "war-point-zhangliao",
+      "resultLabel": "출처 추정 50~55%",
+      "evidence": "지점장료 공략의 사마의 쌍감 방패 대전 항목이 백판 기준 50~55%의 근소 우세를 제시합니다.",
+      "sourceLabel": "대만 S통합 지점장료 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%8C%87%E9%BB%9E%E5%BC%B5%E9%81%BC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "context": "공략의 백판 지점장료 세팅",
+      "season": "S 통합",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "s-point-zhang-vs-double-reduction-sima-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 50,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "공략의 백판 지점장료 세팅"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "tai-huang-yu",
+      "counterDeckId": "double-reduction-sima",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "태황유 공략이 사마의 쌍감대를 직접 고감쇄 천적으로 들고 상대하기 어려운 조합으로 분류합니다.",
+      "sourceLabel": "대만 S통합 태황유 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E9%BB%83%E7%91%9C%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "context": "",
+      "season": "S 통합",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "s-double-reduction-vs-tai-huang-yu-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-xinhuo",
+      "counterDeckId": "w1-cao-xun-wang",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "조순왕 공략이 신화창이 주류인 환경에서 이 편성을 직접 반제 수단으로 제시합니다.",
+      "sourceLabel": "대만 W1 조순왕 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E6%9B%B9%E8%8D%80%E7%95%B0%E9%9A%8A",
+      "context": "왕이 고홍도 권장",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w1-cao-xun-wang-vs-xinhuo-02"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "왕이 고홍도 권장"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-han-shield",
+      "resultLabel": "상성표 명시 우세",
+      "evidence": "W1 상성 분석이 대한방을 방어 반격 체계, 연요마를 폭발 속공 체계의 대표로 직접 명시하고 전자가 후자를 상대하는 절대 우세 구도로 설명합니다.",
+      "sourceLabel": "대만 W1 상성·승률 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E9%9A%8A%E4%BC%8D%E5%89%8B%E5%88%B6%E9%97%9C%E4%BF%82%E8%88%87%E5%8B%9D%E7%8E%87%E5%88%86%E6%9E%90",
+      "context": "",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w1-han-shield-vs-yuan-cavalry-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-han-shield",
+      "resultLabel": "상성표 명시 우세",
+      "evidence": "W1 상성 분석이 대한방을 방어 반격 체계, 월량마를 폭발 속공 체계의 대표로 직접 명시하고 전자가 후자를 상대하는 우세 구도로 분류합니다.",
+      "sourceLabel": "대만 W1 상성·승률 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E9%9A%8A%E4%BC%8D%E5%89%8B%E5%88%B6%E9%97%9C%E4%BF%82%E8%88%87%E5%8B%9D%E7%8E%87%E5%88%86%E6%9E%90",
+      "context": "",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w1-han-shield-vs-moon-ma-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-zhuge-guard",
+      "resultLabel": "상성표 명시 우세",
+      "evidence": "W1 상성 분석이 SP 제갈 호위를 방어 반격 체계, 연요마를 폭발 속공 체계의 대표로 직접 들어 우세 상성으로 분류합니다.",
+      "sourceLabel": "대만 W1 상성·승률 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E9%9A%8A%E4%BC%8D%E5%89%8B%E5%88%B6%E9%97%9C%E4%BF%82%E8%88%87%E5%8B%9D%E7%8E%87%E5%88%86%E6%9E%90",
+      "context": "",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w1-zhuge-guard-vs-yuan-cavalry-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-yuan-fire-bow",
+      "counterDeckId": "w1-left-gong-liao",
+      "resultLabel": "공략 명시 사냥 대상",
+      "evidence": "좌공료 공략이 손권·연의 원소·육손 편성을 전용 사냥 대상으로 직접 명시합니다.",
+      "sourceLabel": "대만 W1 좌공료 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%B7%A6%E5%85%AC%E9%81%BC%E6%BC%94%E7%BE%A9%E9%9A%8A",
+      "context": "연의 장료 홍도와 선공 세팅 확보",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w1-left-gong-liao-vs-yuan-fire-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "연의 장료 홍도와 선공 세팅 확보"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-yellow-heaven",
+      "counterDeckId": "w1-left-gong-liao",
+      "resultLabel": "공략 명시 사냥 대상",
+      "evidence": "좌공료 공략이 좌자·연의 원소·장녕 편성을 전용 사냥 대상으로 직접 명시합니다.",
+      "sourceLabel": "대만 W1 좌공료 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%B7%A6%E5%85%AC%E9%81%BC%E6%BC%94%E7%BE%A9%E9%9A%8A",
+      "context": "연의 장료 홍도와 선공 세팅 확보",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w1-left-gong-liao-vs-yellow-heaven-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "연의 장료 홍도와 선공 세팅 확보"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-left-gong-liao",
+      "resultLabel": "공략 명시 사냥 대상",
+      "evidence": "좌공료 공략이 마초·SP 제갈량·악진 월량마를 전용 사냥 대상으로 직접 명시합니다.",
+      "sourceLabel": "대만 W1 좌공료 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%B7%A6%E5%85%AC%E9%81%BC%E6%BC%94%E7%BE%A9%E9%9A%8A",
+      "context": "연의 장료 홍도와 선공 세팅 확보",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w1-left-gong-liao-vs-moon-ma-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "연의 장료 홍도와 선공 세팅 확보"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-romance-ma",
+      "counterDeckId": "w1-diao-han-shield",
+      "resultLabel": "출처 추정 80~85%",
+      "evidence": "초선 대한방 대전표가 연의 공손찬·마운록·마등 조합을 직접 명시하고 80~85% 우세로 제시합니다.",
+      "sourceLabel": "대만 W1 초선 대한방 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E8%B2%82%E6%BC%A2%E7%9B%BE",
+      "context": "",
+      "season": "문정 1",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w1-diao-han-vs-romance-ma-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 50,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-diao-han-shield",
+      "resultLabel": "공략 명시 안정 우세",
+      "evidence": "초선 대한방 대전표가 하후연·연의 장료·마등 연요마를 직접 상대로 들고 순수 병인 돌격을 안정적으로 흡수한다고 평가합니다.",
+      "sourceLabel": "대만 W1 초선 대한방 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E8%B2%82%E6%BC%A2%E7%9B%BE",
+      "context": "",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w1-diao-han-vs-yuan-cavalry-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-yuan-fire-bow",
+      "resultLabel": "공략 명시 진형 우세",
+      "evidence": "연요마 공략이 연의 원소 화궁의 기자진을 전열 쌍핵 연요마를 직접 억제하는 상성으로 설명합니다.",
+      "sourceLabel": "대만 W1 연요마 2.0 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E6%B7%B5%E9%81%BC%E9%A6%AC",
+      "context": "연의 원소 화궁의 기자진 세팅",
+      "season": "문정 1",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w1-yuan-fire-vs-yuan-cavalry-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "연의 원소 화궁의 기자진 세팅"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-sp-wang",
+      "counterDeckId": "w2-counter-xinhuo",
+      "resultLabel": "출처 추정 60~70%",
+      "evidence": "반격 신화창 대전표가 조조·위 SP 제갈량·왕이 조합을 직접 명시하고 60~70% 우세로 제시합니다.",
+      "sourceLabel": "대만 W2 반격 신화창 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%8F%8D%E6%93%8A%E8%96%AA%E7%81%AB%E6%A7%8D%E9%8C%90%E5%BD%A2%E9%9A%8A%E5%B0%88%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "context": "",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-counter-xinhuo-vs-sp-wang-02"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 50,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-wei-brothers",
+      "counterDeckId": "w2-left-lu-lu",
+      "resultLabel": "공략 명시 우세",
+      "evidence": "좌노육 공략이 사마의·조조·조비의 조조 부자 사마 방패를 중·저속 직접 사냥 대상으로 명시합니다.",
+      "sourceLabel": "대만 W2 좌노육 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E9%AD%AF%E9%99%B8%E5%90%B3%E5%9C%8B%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "context": "",
+      "season": "문정 2",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w2-left-lu-lu-vs-wei-brothers-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-han-shield-zhu",
+      "counterDeckId": "w2-left-lu-lu",
+      "resultLabel": "공략 명시 극우세",
+      "evidence": "좌노육 대전표가 황보숭·주준·원술 대한방을 직접 상대로 명시하고 중·저속 방패에 75~90% 범위의 극우세라고 평가합니다.",
+      "sourceLabel": "대만 W2 좌노육 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E9%AD%AF%E9%99%B8%E5%90%B3%E5%9C%8B%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "context": "",
+      "season": "문정 2",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w2-left-lu-lu-vs-han-shield-zhu-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-cao-xun-wang",
+      "counterDeckId": "w2-wei-brothers",
+      "resultLabel": "출처 추정 62~65%",
+      "evidence": "위부자 사마의 대전표가 조조·순욱·왕이 방원진을 직접 명시하고 62~65% 우세로 제시합니다.",
+      "sourceLabel": "대만 W2 위부자 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%9B%B9%E6%93%8D%E7%88%B6%E5%AD%90%E5%8F%B8%E9%A6%AC%E6%87%BF%E9%AD%8F%E5%9C%8B%E9%9A%8A%E8%83%BD%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "context": "",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-wei-brothers-vs-cao-xun-wang-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 50,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-cao-xun-wang",
+      "counterDeckId": "w2-cao-jia-yi",
+      "resultLabel": "출처 추정 65~75%",
+      "evidence": "조가왕 대전표가 순욱·조조·왕이 계열을 직접 상대 항목으로 두고 65~75% 우세로 제시합니다.",
+      "sourceLabel": "대만 W2 조가왕 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%9B%B9%E8%B3%88%E7%95%B0%E9%9A%8A%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "context": "",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-cao-jia-yi-vs-cao-xun-wang-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 50,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "출처 추정",
+      "conditions": [],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-counter-xinhuo",
+      "counterDeckId": "w2-cao-xun-wang",
+      "resultLabel": "중국 공략 명시 우세",
+      "evidence": "중국 S10 남군봉기 분석이 고홍 조조·순욱·왕이가 여러 신화창을 직접 압박한다고 명시합니다.",
+      "sourceLabel": "중국 17173 S10 남군봉기 분석",
+      "sourceUrl": "https://news.17173.com/content/09252025/204502220.shtml",
+      "context": "중국 S10 남군봉기와 한국 문정 2의 동일 콘텐츠군 · 왕이 고홍도",
+      "season": "문정 2",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w2-cao-xun-wang-vs-counter-xinhuo-cn-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "중국 S10 남군봉기와 한국 문정 2의 동일 콘텐츠군",
+        "왕이 고홍도"
+      ],
+      "regionCounts": {
+        "TW": 0,
+        "CN": 1
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-han-shield-zhu",
+      "counterDeckId": "w2-cao-xun-wang",
+      "resultLabel": "중국 공략 명시 우세",
+      "evidence": "중국 S10 남군봉기 분석이 고홍 조조·순욱·왕이가 대한방을 직접 압박한다고 명시합니다.",
+      "sourceLabel": "중국 17173 S10 남군봉기 분석",
+      "sourceUrl": "https://news.17173.com/content/09252025/204502220.shtml",
+      "context": "중국 S10 남군봉기와 한국 문정 2의 동일 콘텐츠군 · 왕이 고홍도",
+      "season": "문정 2",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w2-cao-xun-wang-vs-han-shield-cn-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "중국 S10 남군봉기와 한국 문정 2의 동일 콘텐츠군",
+        "왕이 고홍도"
+      ],
+      "regionCounts": {
+        "TW": 0,
+        "CN": 1
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-zuo-tian-lu",
+      "counterDeckId": "w2-nanman",
+      "resultLabel": "출처 추정 75~80%",
+      "evidence": "남만 급봉 대전표가 좌자·전풍·여포 조합을 직접 명시하고 남만 측 75~80% 우세로 제시합니다.",
+      "sourceLabel": "대만 W2 남만 급봉 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%8D%97%E8%A0%BB%E5%8F%8A%E9%8B%92%E9%9A%8A%E9%A6%96%E9%9A%8A%E5%BF%85%E7%B7%B4",
+      "context": "",
+      "season": "문정 2",
+      "evidenceKind": "정량",
+      "evidenceIds": [
+        "w2-nanman-vs-zuo-tian-lu-01",
+        "w2-nanman-vs-zuo-tian-lu-02"
+      ],
+      "evidenceCount": 2,
+      "weightedEvidenceScore": 97,
+      "aggregateStatus": "교차 검증",
+      "confidence": "높음",
+      "ratingType": "출처 추정",
+      "conditions": [
+        "대만 S5W2 남군봉기 메타 토론"
+      ],
+      "regionCounts": {
+        "TW": 2,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    },
+    {
+      "enemyDeckId": "w2-first-lubu",
+      "counterDeckId": "w2-nanman",
+      "resultLabel": "포럼 메타 평가 우세",
+      "evidence": "Bahamut 남군봉기 토론이 선등여포도 이번 시즌 남만에 불리하다고 상대 덱을 직접 명시합니다.",
+      "sourceLabel": "대만 Bahamut W2 남군봉기 메타 토론",
+      "sourceUrl": "https://forum.gamer.com.tw/C.php?bsn=83812&snA=608",
+      "context": "대만 S5W2 남군봉기 메타 토론",
+      "season": "문정 2",
+      "evidenceKind": "정성",
+      "evidenceIds": [
+        "w2-nanman-vs-first-lubu-01"
+      ],
+      "evidenceCount": 1,
+      "weightedEvidenceScore": 47,
+      "aggregateStatus": "단일 근거",
+      "confidence": "낮음",
+      "ratingType": "정성 판단",
+      "conditions": [
+        "대만 S5W2 남군봉기 메타 토론"
+      ],
+      "regionCounts": {
+        "TW": 1,
+        "CN": 0
+      },
+      "battleStatisticsCount": 0,
+      "totalSampleSize": 0
+    }
+  ],
+  "matchupEvidence": [
+    {
+      "id": "legacy-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "first-lubu",
+      "counterDeckId": "war-taoyuan",
+      "stance": "우세",
+      "resultLabel": "승률 85%",
+      "evidenceText": "장서각 도원 공략에서 여포·진궁·악진을 ‘절호의 상대’로 명시하고 승률 85%를 제시합니다.",
+      "sourceLabel": "대만 S통합 장서각 도원 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%97%8F%E6%9B%B8%E9%96%A3%E6%A1%83%E5%9C%92%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-02",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "first-lubu",
+      "counterDeckId": "war-yue-xun-zhou",
+      "stance": "우세",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "선등여포 공략에서 주유·순욱·악진을 여포 덱의 열세·피카운터 상대로 직접 분류합니다.",
+      "sourceLabel": "대만 S통합 선등여포 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E5%85%88%E7%99%BB%E5%91%82%E5%B8%83%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-03",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "war-taoyuan",
+      "stance": "우세",
+      "resultLabel": "승률 75%",
+      "evidenceText": "장서각 도원 공략에서 원소·주태·마초를 ‘절호의 상대’로 명시하고 승률 75%를 제시합니다.",
+      "sourceLabel": "대만 S통합 장서각 도원 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%97%8F%E6%9B%B8%E9%96%A3%E6%A1%83%E5%9C%92%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-04",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "zhao-gan-diao",
+      "stance": "우세",
+      "resultLabel": "승률 70% 이상",
+      "evidenceText": "조감초 창병 공략의 상대전 표에서 원소·주태·마초전 승률을 70% 이상으로 제시합니다.",
+      "sourceLabel": "대만 S통합 조감초 창병 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%B6%99%E7%94%98%E8%B2%82%E6%A7%8D%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-05",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "war-yue-xun-zhou",
+      "stance": "우세",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "태원마 공략에서 주유·순욱·악진을 태원마의 불리한 상대인 ‘쌍주유 계열’로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 태원마 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-06",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "xu-huang-yu",
+      "stance": "우세",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "태원마 공략에서 서성·황개·주유를 태원마의 불리한 상대인 ‘쌍주유 계열’로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 태원마 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-07",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-yue-xun-zhou",
+      "counterDeckId": "war-cao-xun-sima",
+      "stance": "우세",
+      "resultLabel": "완벽 상성 명시",
+      "evidenceText": "순태위 사마의 쌍감대 공략에서 주유·순욱·악진을 ‘완벽하게 카운터’하는 상대로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 순태위 사마의 쌍감대 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%8D%80%E5%A4%AA%E5%B0%89%E5%8F%B8%E9%A6%AC%E9%9B%99%E6%B8%9B%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-08",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-yue-xun-zhou",
+      "counterDeckId": "zhao-gan-diao",
+      "stance": "우세",
+      "resultLabel": "승률 약 65%",
+      "evidenceText": "조감초 창병 공략의 상대전 표에서 주유·순욱·악진전 승률을 약 65%로 제시합니다.",
+      "sourceLabel": "대만 S통합 조감초 창병 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%B6%99%E7%94%98%E8%B2%82%E6%A7%8D%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-09",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "xu-huang-yu",
+      "counterDeckId": "war-cao-xun-sima",
+      "stance": "우세",
+      "resultLabel": "완벽 상성 명시",
+      "evidenceText": "순태위 사마의 쌍감대 공략에서 서성·황개·주유를 ‘완벽하게 카운터’하는 상대로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 순태위 사마의 쌍감대 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%8D%80%E5%A4%AA%E5%B0%89%E5%8F%B8%E9%A6%AC%E9%9B%99%E6%B8%9B%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-10",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "zhao-gan-diao",
+      "counterDeckId": "war-cao-xun-sima",
+      "stance": "우세",
+      "resultLabel": "완벽 상성 명시",
+      "evidenceText": "순태위 사마의 쌍감대 공략에서 초선·조운·감부인을 ‘완벽하게 카운터’하는 상대로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 순태위 사마의 쌍감대 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%8D%80%E5%A4%AA%E5%B0%89%E5%8F%B8%E9%A6%AC%E9%9B%99%E6%B8%9B%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-11",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-cao-xun-sima",
+      "counterDeckId": "tai-yuan-ma",
+      "stance": "우세",
+      "resultLabel": "안정적 우세 명시",
+      "evidenceText": "태원마 공략에서 순태위 사마의 쌍감대를 ‘안정적으로 이기는 우선 상대’로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 태원마 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-12",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-cao-xun-sima",
+      "counterDeckId": "war-da-zhang-ma",
+      "stance": "우세",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "순태위 사마의 쌍감대 공략에서 대교·장비·마초를 쌍감대의 불리한 상대로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 순태위 사마의 쌍감대 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%8D%80%E5%A4%AA%E5%B0%89%E5%8F%B8%E9%A6%AC%E9%9B%99%E6%B8%9B%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-13",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-sun-lu-lu",
+      "counterDeckId": "tai-yuan-ma",
+      "stance": "우세",
+      "resultLabel": "안정적 우세 명시",
+      "evidenceText": "태원마 공략에서 노숙·육손·손권을 ‘안정적으로 이기는 우선 상대’로 직접 명시합니다.",
+      "sourceLabel": "대만 S통합 태원마 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-14",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "tai-huang-yu",
+      "counterDeckId": "war-yue-xun-zhou",
+      "stance": "우세",
+      "resultLabel": "상대 승률 30~35%",
+      "evidenceText": "태황유 공략의 상대전 표에서 주유·순욱·악진전 태황유 승률을 30~35%로 제시해 명확한 열세로 분류합니다.",
+      "sourceLabel": "대만 S통합 태황유 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E9%BB%83%E7%91%9C%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-15",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-zhao-gan-jiang",
+      "stance": "우세",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "조감강 공략에서 월량마와 빠른 물리 덱을 주요 우세 상대로, 좌자 중심 상위 제어 덱을 약점으로 직접 구분합니다.",
+      "sourceLabel": "대만 W1 조감강 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E8%B6%99%E7%94%98%E5%A7%9C%E9%9A%8A",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-16",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-yellow-heaven",
+      "stance": "우세",
+      "resultLabel": "월량마 대응 10/10",
+      "evidenceText": "좌원녕 공략의 상대전 평가에서 월량마 대응 항목을 10점으로 제시합니다.",
+      "sourceLabel": "대만 W1 좌원녕 연의 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%B7%A6%E8%A2%81%E5%AF%A7%E6%BC%94%E7%BE%A9%E9%9A%8A",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-17",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-jia-xun-zhu",
+      "stance": "우세",
+      "resultLabel": "승률 70~80%",
+      "evidenceText": "가순제 공략에서 월량마전 예상 승률을 70~80%로 제시합니다.",
+      "sourceLabel": "대만 W1 가순제 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E8%B3%88%E8%8D%80%E8%AB%B8%E9%9A%8A",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-18",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-zhuge-guard",
+      "stance": "우세",
+      "resultLabel": "승률 약 60%",
+      "evidenceText": "대만 W1 공존 공략에서 SP 제갈 호위를 추격·물리 대응으로 설명하고 월량마전 약 60%로 제시합니다.",
+      "sourceLabel": "대만 W1 3단계 공존 편성",
+      "sourceUrl": "https://forum.gamer.com.tw/C.php?bsn=83812&snA=587",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-19",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-moon-ma",
+      "stance": "우세",
+      "resultLabel": "연요마 승률 40~45%",
+      "evidenceText": "연요마 2.0 공략에서 월량마전 승률을 40~45%의 근소 열세로 직접 제시합니다.",
+      "sourceLabel": "대만 W1 연요마 2.0 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E6%B7%B5%E9%81%BC%E9%A6%AC",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-20",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-xinhuo",
+      "stance": "우세",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "연요마 공략에서 고배율 SP 제갈량·강유 신화창을 반드시 피해야 할 상대로 직접 분류합니다.",
+      "sourceLabel": "대만 W1 연요마 2.0 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E6%B7%B5%E9%81%BC%E9%A6%AC",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-21",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-romance-gan",
+      "stance": "우세",
+      "resultLabel": "추격 기병 저격",
+      "evidenceText": "연의 감녕 반격창 공략에서 일반 공격·추격이 많은 3기병을 핵심 사냥 대상으로 직접 설명합니다.",
+      "sourceLabel": "대만 W1 연의 감녕 반격창 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%8F%8D%E6%93%8A%E6%BC%94%E7%BE%A9%E7%94%98%E5%AF%A7%E6%A7%8D%E9%9A%8A",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-22",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-romance-gan",
+      "stance": "우세",
+      "resultLabel": "추격 기병 저격",
+      "evidenceText": "연의 감녕 반격창 공략에서 연의 장료를 포함한 일반 공격·추격 기병을 우선 상대하도록 명시합니다.",
+      "sourceLabel": "대만 W1 연의 감녕 반격창 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%8F%8D%E6%93%8A%E6%BC%94%E7%BE%A9%E7%94%98%E5%AF%A7%E6%A7%8D%E9%9A%8A",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-23",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-counter-dianwei",
+      "stance": "우세",
+      "resultLabel": "물리 추격 저격",
+      "evidenceText": "연의 조인 반격 전위 공략에서 마초·장료 계열 일반 공격과 추격 물리 덱을 주요 저격 대상으로 직접 분류합니다.",
+      "sourceLabel": "대만 W1 연의 조인 반격 전위 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%8F%8D%E6%93%8A%E5%85%B8%E9%9F%8B%E9%9A%8A",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-24",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-counter-dianwei",
+      "stance": "우세",
+      "resultLabel": "물리 추격 저격",
+      "evidenceText": "연의 조인 반격 전위 공략에서 장료·하후연처럼 일반 공격과 추격이 많은 편성을 주요 우세 상대로 명시합니다.",
+      "sourceLabel": "대만 W1 연의 조인 반격 전위 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%8F%8D%E6%93%8A%E5%85%B8%E9%9F%8B%E9%9A%8A",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-25",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-counter-xinhuo",
+      "stance": "우세",
+      "resultLabel": "승률 70~80%",
+      "evidenceText": "W2 반격 신화창 공략에서 남만 기병전 승률을 70~80%로 제시합니다.",
+      "sourceLabel": "대만 W2 반격 신화창 남만 저격 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%8F%8D%E6%93%8A%E8%96%AA%E7%81%AB%E6%A7%8D%E9%8C%90%E5%BD%A2%E9%9A%8A%E5%B0%88%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-26",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-tai-fei-yan",
+      "stance": "우세",
+      "resultLabel": "승률 약 60%",
+      "evidenceText": "W2 태비연 공략에서 남만전 약 60% 승률의 전용 저격 편성으로 평가합니다.",
+      "sourceLabel": "대만 W2 태비연 남만 저격 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%B3%B0%E9%A3%9B%E5%BB%B6%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-27",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-zhao-liu-xiang",
+      "stance": "우세",
+      "resultLabel": "승률 80~85%",
+      "evidenceText": "W2 조유향 공략에서 남만 제갈전 승률을 80~85%로 제시합니다.",
+      "sourceLabel": "대만 W2 조유향 남만 저격 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E8%B6%99%E5%8A%89%E9%A6%99%E8%9C%80%E5%9C%8B%E9%99%A3%E7%87%9F%E9%9A%8A%E5%B0%88%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-28",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-left-lu-lu",
+      "stance": "우세",
+      "resultLabel": "승률 80~85%",
+      "evidenceText": "W2 좌노육 공략의 주류 상대전 표에서 남만 제갈전 승률을 80~85%로 제시합니다.",
+      "sourceLabel": "대만 W2 좌노육 오나라 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E9%AD%AF%E9%99%B8%E5%90%B3%E5%9C%8B%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-29",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-cao-jia-yi",
+      "stance": "우세",
+      "resultLabel": "승률 70~80%",
+      "evidenceText": "W2 조가왕 공략에서 완성형 편성의 고홍 남만 제갈전 승률을 70~80%로 제시합니다.",
+      "sourceLabel": "대만 W2 조가왕 공존 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%9B%B9%E8%B3%88%E7%95%B0%E9%9A%8A%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "완성형 조가왕 기준"
+      ]
+    },
+    {
+      "id": "legacy-30",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-wei-brothers",
+      "stance": "우세",
+      "resultLabel": "승률 80~85%",
+      "evidenceText": "W2 위부자 사마의 공략에서 완성형의 남만 제갈전 승률을 80~85%로 제시합니다.",
+      "sourceLabel": "대만 W2 위부자 사마의 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%9B%B9%E6%93%8D%E7%88%B6%E5%AD%90%E5%8F%B8%E9%A6%AC%E6%87%BF%E9%AD%8F%E5%9C%8B%E9%9A%8A%E8%83%BD%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "고감쇄 완성형 기준"
+      ]
+    },
+    {
+      "id": "legacy-31",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-zuo-tian-lu",
+      "counterDeckId": "w2-left-lu-lu",
+      "stance": "우세",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "W2 좌노육 공략에서 좌전여포를 주류 사냥 대상으로 직접 분류합니다.",
+      "sourceLabel": "대만 W2 좌노육 오나라 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E9%AD%AF%E9%99%B8%E5%90%B3%E5%9C%8B%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "legacy-32",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-high-han-shield",
+      "counterDeckId": "w2-left-lu-lu",
+      "stance": "우세",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "W2 좌노육 공략에서 대한 방패를 포함한 주류 육성·단핵 물리 덱에 절대적인 압박이 있다고 명시합니다.",
+      "sourceLabel": "대만 W2 좌노육 오나라 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E9%AD%AF%E9%99%B8%E5%90%B3%E5%9C%8B%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-25",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "w1-left-gong-guan-vs-xinhuo-01",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-xinhuo",
+      "counterDeckId": "w1-left-gong-guan",
+      "stance": "우세",
+      "resultLabel": "출처 추정 65~75%",
+      "evidenceText": "좌공관 상세 공략의 상대전 표에서 신화창·안형 신화창을 명시하고 좌공관의 예상 승률을 65~75%로 제시합니다.",
+      "sourceLabel": "대만 W1 좌공관 상세 세팅",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E5%85%AC%E9%97%9C%E6%BC%94%E7%BE%A9%E9%9A%8A%E8%A9%B3%E7%B4%B0%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "reportedWinRate": {
+        "min": 65,
+        "max": 75,
+        "basis": "출처 추정"
+      },
+      "conditions": [
+        "좌공찬·연의 관우의 전용 형태와 후반 완성 세팅",
+        "승률은 원문 추정치"
+      ]
+    },
+    {
+      "id": "w1-han-shield-vs-left-gong-guan-01",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-left-gong-guan",
+      "counterDeckId": "w1-han-shield",
+      "stance": "우세",
+      "resultLabel": "상대 추정 25~35%",
+      "evidenceText": "좌공관 상세 공략의 상대전 표에서 대한방을 명시하고 좌공관 관점 예상 승률을 25~35%로 제시합니다.",
+      "sourceLabel": "대만 W1 좌공관 상세 세팅",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E5%85%AC%E9%97%9C%E6%BC%94%E7%BE%A9%E9%9A%8A%E8%A9%B3%E7%B4%B0%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "대한방의 고감쇄·제어 완성 세팅",
+        "수치는 좌공관 관점의 원문 추정치"
+      ]
+    },
+    {
+      "id": "w2-left-tian-xiang-vs-sp-wang-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-sp-wang",
+      "counterDeckId": "w2-left-tian-xiang",
+      "stance": "우세",
+      "resultLabel": "실전 승리 · 출처 추정 85%",
+      "evidenceText": "좌전향 공략의 실전 표에서 조조·위 SP 제갈량·왕이를 상대로 승리한 전보 1건과 예상 승률 85%를 제시합니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "실전 전보",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "동일",
+      "sourceReliability": "중간",
+      "sampleSize": 1,
+      "reportedWinRate": {
+        "min": 85,
+        "max": 85,
+        "basis": "출처 추정"
+      },
+      "conditions": [
+        "출처 표기 중·고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ]
+    },
+    {
+      "id": "w2-left-tian-xiang-vs-wei-brothers-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-wei-brothers",
+      "counterDeckId": "w2-left-tian-xiang",
+      "stance": "우세",
+      "resultLabel": "실전 승리 · 출처 추정 85~90%",
+      "evidenceText": "좌전향 공략의 실전 표에서 사마의·조조·조비를 상대로 승리한 전보 1건과 예상 승률 85~90%를 제시합니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "실전 전보",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "동일",
+      "sourceReliability": "중간",
+      "sampleSize": 1,
+      "reportedWinRate": {
+        "min": 85,
+        "max": 90,
+        "basis": "출처 추정"
+      },
+      "conditions": [
+        "출처 표기 고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ]
+    },
+    {
+      "id": "w2-left-tian-xiang-vs-zuo-tian-lu-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-zuo-tian-lu",
+      "counterDeckId": "w2-left-tian-xiang",
+      "stance": "우세",
+      "resultLabel": "실전 승리 · 출처 추정 85%",
+      "evidenceText": "좌전향 공략의 실전 표에서 좌자·전풍·여포를 상대로 승리한 전보 1건과 예상 승률 85%를 제시합니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "실전 전보",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "동일",
+      "sourceReliability": "중간",
+      "sampleSize": 1,
+      "reportedWinRate": {
+        "min": 85,
+        "max": 85,
+        "basis": "출처 추정"
+      },
+      "conditions": [
+        "출처 표기 중·고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ]
+    },
+    {
+      "id": "w2-left-tian-xiang-vs-han-shield-zhu-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-han-shield-zhu",
+      "counterDeckId": "w2-left-tian-xiang",
+      "stance": "우세",
+      "resultLabel": "백판 실전 승리 · 출처 추정 90%",
+      "evidenceText": "좌전향 공략의 실전 표에서 백판 주준·황보숭·원술 대한방을 상대로 승리한 전보 1건과 예상 승률 90%를 제시합니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "실전 전보",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "동일",
+      "sourceReliability": "중간",
+      "sampleSize": 1,
+      "reportedWinRate": {
+        "min": 90,
+        "max": 90,
+        "basis": "출처 추정"
+      },
+      "conditions": [
+        "상대 백판 편성 한정",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ]
+    },
+    {
+      "id": "w2-left-tian-xiang-vs-moon-ma-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-moon-ma",
+      "counterDeckId": "w2-left-tian-xiang",
+      "stance": "우세",
+      "resultLabel": "실전 승리 · 출처 추정 85%",
+      "evidenceText": "좌전향 공략의 실전 표에서 마초·SP 제갈량·악진 월량마를 상대로 승리한 전보 1건과 예상 승률 85%를 제시합니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "실전 전보",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "동일",
+      "sourceReliability": "중간",
+      "sampleSize": 1,
+      "reportedWinRate": {
+        "min": 85,
+        "max": 85,
+        "basis": "출처 추정"
+      },
+      "conditions": [
+        "출처 표기 고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ]
+    },
+    {
+      "id": "w2-zhang-sun-huang-vs-left-tian-xiang-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-left-tian-xiang",
+      "counterDeckId": "w2-zhang-sun-huang",
+      "stance": "우세",
+      "resultLabel": "실전 승리 · 상대 추정 15~20%",
+      "evidenceText": "좌전향 공략의 실전 표에서 장녕·손권·황개가 좌자·전풍·손상향을 이긴 전보 1건을 제시하며, 좌전향 관점 예상 승률은 15~20%입니다.",
+      "sourceLabel": "대만 W2 좌전향 공존·실전 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E7%94%B0%E9%A6%99%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "실전 전보",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "동일",
+      "sourceReliability": "중간",
+      "sampleSize": 1,
+      "conditions": [
+        "출처 표기 고홍 편성",
+        "실전 표본 1건",
+        "수치는 좌전향 관점의 원문 추정치"
+      ]
+    },
+    {
+      "id": "w2-tai-fei-yan-vs-wei-brothers-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-wei-brothers",
+      "counterDeckId": "w2-tai-fei-yan",
+      "stance": "우세",
+      "resultLabel": "실전 승리 · 출처 추정 75~80%",
+      "evidenceText": "태비연 공략의 실전 표에서 사마의·조조·조비를 상대로 승리한 전보 1건과 예상 승률 75~80%를 제시합니다.",
+      "sourceLabel": "대만 W2 태비연 남만 저격 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%B3%B0%E9%A3%9B%E5%BB%B6%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "실전 전보",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "동일",
+      "sourceReliability": "중간",
+      "sampleSize": 1,
+      "reportedWinRate": {
+        "min": 75,
+        "max": 80,
+        "basis": "출처 추정"
+      },
+      "conditions": [
+        "출처 표기 고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ]
+    },
+    {
+      "id": "w2-tai-fei-yan-vs-sp-wang-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-sp-wang",
+      "counterDeckId": "w2-tai-fei-yan",
+      "stance": "우세",
+      "resultLabel": "실전 승리 · 출처 추정 65~70%",
+      "evidenceText": "태비연 공략의 실전 표에서 조조·위 SP 제갈량·왕이를 상대로 승리한 전보 1건과 예상 승률 65~70%를 제시합니다.",
+      "sourceLabel": "대만 W2 태비연 남만 저격 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%B3%B0%E9%A3%9B%E5%BB%B6%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "실전 전보",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "동일",
+      "sourceReliability": "중간",
+      "sampleSize": 1,
+      "reportedWinRate": {
+        "min": 65,
+        "max": 70,
+        "basis": "출처 추정"
+      },
+      "conditions": [
+        "출처 표기 고홍 편성",
+        "실전 표본 1건",
+        "승률은 원문 추정치"
+      ]
+    },
+    {
+      "id": "s-cao-yuan-ma-vs-zhao-gan-diao-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "zhao-gan-diao",
+      "counterDeckId": "cao-yuan-ma",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "조원마 분석이 조감초를 직접 상대 항목으로 두고, 마초가 초선의 극단 제어를 피하면 유지력으로 우세하다고 평가합니다.",
+      "sourceLabel": "대만 S통합 조원마 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%9B%B9%E8%A2%81%E9%A6%AC%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "마초가 초선의 핵심 제어를 연속으로 받지 않는 세팅"
+      ]
+    },
+    {
+      "id": "s-zhao-gan-sima-vs-zhao-gan-diao-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "zhao-gan-diao",
+      "counterDeckId": "war-zhao-gan-sima",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "출처 추정 60~66%",
+      "evidenceText": "조감사마 대전 분석이 조운·감부인·초선 조합을 직접 명시하고 일반형 기준 60~66% 우세로 제시합니다.",
+      "sourceLabel": "대만 S통합 조감사마 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%B6%99%E7%94%98%E5%8F%B8%E9%A6%AC%E9%9A%8A",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "reportedWinRate": {
+        "min": 60,
+        "max": 66,
+        "basis": "출처 추정"
+      },
+      "conditions": []
+    },
+    {
+      "id": "s-point-zhang-vs-xun-taiwei-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-cao-xun-sima",
+      "counterDeckId": "war-point-zhangliao",
+      "stance": "우세",
+      "assessment": "strongly_favorable",
+      "resultLabel": "출처 추정 80% 이상",
+      "evidenceText": "지점장료 공략이 변형 순태위 사마의 편성을 직접 상대로 두고 실제 추정 승률 80% 이상이라고 설명합니다.",
+      "sourceLabel": "대만 S통합 지점장료 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%8C%87%E9%BB%9E%E5%BC%B5%E9%81%BC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "reportedWinRate": {
+        "min": 80,
+        "max": 100,
+        "basis": "출처 추정"
+      },
+      "conditions": [
+        "공략의 백판 지점장료 완성 세팅",
+        "상대 순태위 변형 세팅"
+      ]
+    },
+    {
+      "id": "s-xun-taiwei-vs-taoyuan-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-taoyuan",
+      "counterDeckId": "war-cao-xun-sima",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "상대 승률 40%",
+      "evidenceText": "장서각 도원 공략이 사마의 쌍감대를 천적으로 명시하고 도원 관점 승률을 40%로 제시합니다.",
+      "sourceLabel": "대만 S통합 장서각 도원 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%97%8F%E6%9B%B8%E9%96%A3%E6%A1%83%E5%9C%92%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "장서각 도원 완성형 기준",
+        "수치는 도원 관점의 원문 추정치"
+      ]
+    },
+    {
+      "id": "s-da-yue-ma-vs-xun-taiwei-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-cao-xun-sima",
+      "counterDeckId": "da-yue-ma",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "순태위 사마의 공략이 대교·악진·마초 대폭발 편성을 직접 불리한 상대로 분류합니다.",
+      "sourceLabel": "대만 S통합 순태위 사마의 쌍감대 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%8D%80%E5%A4%AA%E5%B0%89%E5%8F%B8%E9%A6%AC%E9%9B%99%E6%B8%9B%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "s-cao-xu-sima-vs-tai-huang-yu-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "tai-huang-yu",
+      "counterDeckId": "war-cao-xu-sima",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "조서사마 기술궁 반격 공략이 태황유를 액티브 모략 덱의 직접 사냥 대상으로 명시합니다.",
+      "sourceLabel": "대만 S통합 조서사마 실전 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%9B%B9%E5%BE%90%E6%87%BF%E6%8A%80%E7%AA%AE%E5%8F%8D%E6%93%8A%E9%9A%8A%E8%97%8F%E6%9B%B8%E9%96%A3%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "기술궁·반격 완성형"
+      ]
+    },
+    {
+      "id": "s-cao-xu-sima-vs-da-xiao-zhou-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-da-xiao-zhou",
+      "counterDeckId": "war-cao-xu-sima",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "조서사마 기술궁 반격 공략이 주유·대교·소교 편성을 액티브 전법 의존 법사 덱의 직접 우세 상대로 명시합니다.",
+      "sourceLabel": "대만 S통합 조서사마 실전 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%9B%B9%E5%BE%90%E6%87%BF%E6%8A%80%E7%AA%AE%E5%8F%8D%E6%93%8A%E9%9A%8A%E8%97%8F%E6%9B%B8%E9%96%A3%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "기술궁·반격 완성형"
+      ]
+    },
+    {
+      "id": "s-cao-yuan-ma-vs-tai-yuan-ma-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "cao-yuan-ma",
+      "stance": "우세",
+      "assessment": "slightly_favorable",
+      "resultLabel": "공략 명시 미세 우세",
+      "evidenceText": "조원마 공략이 같은 마초 축의 태원마 내전을 직접 비교하며 조조 감쇄형이 진지전에서 미세 우세라고 평가합니다.",
+      "sourceLabel": "대만 S통합 조원마 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%9B%B9%E8%A2%81%E9%A6%AC%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "동홍도·동전법 수준 비교"
+      ]
+    },
+    {
+      "id": "s-double-emperor-vs-cao-yuan-ma-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "cao-yuan-ma",
+      "counterDeckId": "double-emperor-lu",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "조원마 분석이 쌍황육의 모략·연소 피해를 조원마 전열의 직접 약점으로 들며 피해야 할 상대로 명시합니다.",
+      "sourceLabel": "대만 S통합 조원마 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%9B%B9%E8%A2%81%E9%A6%AC%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "s-point-zhang-vs-cao-yuan-ma-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "cao-yuan-ma",
+      "counterDeckId": "war-point-zhangliao",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "지점장료 공략이 조원마를 주요 공훈 획득 대상과 우선 사냥감으로 직접 분류합니다.",
+      "sourceLabel": "대만 S통합 지점장료 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%8C%87%E9%BB%9E%E5%BC%B5%E9%81%BC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "백판 지점장료 공략 세팅"
+      ]
+    },
+    {
+      "id": "s-tai-yuan-vs-liu-yuan-ma-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-liu-yuan-ma",
+      "counterDeckId": "tai-yuan-ma",
+      "stance": "우세",
+      "assessment": "slightly_favorable",
+      "resultLabel": "비교표 명시 미세 우세",
+      "evidenceText": "유원마·태원마 직접 비교표가 두 원소·마초 계열 내전에서 태원마의 폭발 구조가 조금 앞선다고 평가합니다.",
+      "sourceLabel": "대만 S통합 유원마 비교 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E4%B8%AD%E6%9C%9F%E6%A0%B8%E5%BD%88%E5%8A%89%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "동등한 성장 수준의 공략 비교"
+      ]
+    },
+    {
+      "id": "s-double-emperor-vs-liu-yuan-ma-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-liu-yuan-ma",
+      "counterDeckId": "double-emperor-lu",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "상대 추정 40~45%",
+      "evidenceText": "유원마 비교표가 쌍황육전 유원마 승률을 40~45%로 제시해 쌍황육 측 우세 자료로 구조화했습니다.",
+      "sourceLabel": "대만 S통합 유원마 비교 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E4%B8%AD%E6%9C%9F%E6%A0%B8%E5%BD%88%E5%8A%89%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "수치는 유원마 관점의 원문 추정치"
+      ]
+    },
+    {
+      "id": "s-double-emperor-vs-tai-yuan-ma-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "tai-yuan-ma",
+      "counterDeckId": "double-emperor-lu",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "상대 추정 35~40%",
+      "evidenceText": "유원마·태원마 비교표가 쌍황육전 태원마 승률을 35~40%로 제시해 쌍황육 측 우세 자료로 구조화했습니다.",
+      "sourceLabel": "대만 S통합 유원마 비교 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E4%B8%AD%E6%9C%9F%E6%A0%B8%E5%BD%88%E5%8A%89%E8%A2%81%E9%A6%AC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "수치는 태원마 관점의 원문 추정치"
+      ]
+    },
+    {
+      "id": "s-xun-taiwei-vs-zhao-gan-guan-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "war-zhao-gan-guan",
+      "counterDeckId": "war-cao-xun-sima",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "상대 추정 40~45%",
+      "evidenceText": "조감관 공략이 순태위 사마의 쌍감대를 직접 상대 항목으로 두고 조감관 관점 승률을 40~45%로 제시합니다.",
+      "sourceLabel": "대만 S통합 조감관 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E8%B6%99%E7%94%98%E9%97%9C%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "수치는 조감관 관점의 원문 추정치"
+      ]
+    },
+    {
+      "id": "s-first-lubu-vs-double-emperor-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "double-emperor-lu",
+      "counterDeckId": "first-lubu",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "상대 추정 35~40%",
+      "evidenceText": "쌍황육 대전표가 악진·진궁·여포전 쌍황육 승률을 35~40%로 제시해 선등여포 측 우세 자료로 구조화했습니다.",
+      "sourceLabel": "대만 S통합 쌍황육 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E9%9B%99%E7%9A%87%E9%99%B8%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "수치는 쌍황육 관점의 원문 추정치"
+      ]
+    },
+    {
+      "id": "s-point-zhang-vs-double-reduction-sima-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "double-reduction-sima",
+      "counterDeckId": "war-point-zhangliao",
+      "stance": "우세",
+      "assessment": "slightly_favorable",
+      "resultLabel": "출처 추정 50~55%",
+      "evidenceText": "지점장료 공략의 사마의 쌍감 방패 대전 항목이 백판 기준 50~55%의 근소 우세를 제시합니다.",
+      "sourceLabel": "대만 S통합 지점장료 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%8C%87%E9%BB%9E%E5%BC%B5%E9%81%BC%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "reportedWinRate": {
+        "min": 50,
+        "max": 55,
+        "basis": "출처 추정"
+      },
+      "conditions": [
+        "공략의 백판 지점장료 세팅"
+      ]
+    },
+    {
+      "id": "s-double-reduction-vs-tai-huang-yu-01",
+      "season": "S 통합",
+      "contentGroup": "S 통합",
+      "region": "TW",
+      "enemyDeckId": "tai-huang-yu",
+      "counterDeckId": "double-reduction-sima",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "태황유 공략이 사마의 쌍감대를 직접 고감쇄 천적으로 들고 상대하기 어려운 조합으로 분류합니다.",
+      "sourceLabel": "대만 S통합 태황유 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AS%E6%95%B4%E5%90%88%E8%B3%BD%E5%AD%A3%E6%B3%B0%E9%BB%83%E7%91%9C%E9%9A%8A%E4%BB%8B%E7%B4%B9",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "w1-cao-xun-wang-vs-xinhuo-02",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-xinhuo",
+      "counterDeckId": "w1-cao-xun-wang",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "조순왕 공략이 신화창이 주류인 환경에서 이 편성을 직접 반제 수단으로 제시합니다.",
+      "sourceLabel": "대만 W1 조순왕 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E6%9B%B9%E8%8D%80%E7%95%B0%E9%9A%8A",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "왕이 고홍도 권장"
+      ]
+    },
+    {
+      "id": "w1-han-shield-vs-yuan-cavalry-01",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-han-shield",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "상성표 명시 우세",
+      "evidenceText": "W1 상성 분석이 대한방을 방어 반격 체계, 연요마를 폭발 속공 체계의 대표로 직접 명시하고 전자가 후자를 상대하는 절대 우세 구도로 설명합니다.",
+      "sourceLabel": "대만 W1 상성·승률 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E9%9A%8A%E4%BC%8D%E5%89%8B%E5%88%B6%E9%97%9C%E4%BF%82%E8%88%87%E5%8B%9D%E7%8E%87%E5%88%86%E6%9E%90",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "w1-han-shield-vs-moon-ma-01",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-han-shield",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "상성표 명시 우세",
+      "evidenceText": "W1 상성 분석이 대한방을 방어 반격 체계, 월량마를 폭발 속공 체계의 대표로 직접 명시하고 전자가 후자를 상대하는 우세 구도로 분류합니다.",
+      "sourceLabel": "대만 W1 상성·승률 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E9%9A%8A%E4%BC%8D%E5%89%8B%E5%88%B6%E9%97%9C%E4%BF%82%E8%88%87%E5%8B%9D%E7%8E%87%E5%88%86%E6%9E%90",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "w1-zhuge-guard-vs-yuan-cavalry-01",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-zhuge-guard",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "상성표 명시 우세",
+      "evidenceText": "W1 상성 분석이 SP 제갈 호위를 방어 반격 체계, 연요마를 폭발 속공 체계의 대표로 직접 들어 우세 상성으로 분류합니다.",
+      "sourceLabel": "대만 W1 상성·승률 분석",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E9%9A%8A%E4%BC%8D%E5%89%8B%E5%88%B6%E9%97%9C%E4%BF%82%E8%88%87%E5%8B%9D%E7%8E%87%E5%88%86%E6%9E%90",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "w1-left-gong-liao-vs-yuan-fire-01",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-yuan-fire-bow",
+      "counterDeckId": "w1-left-gong-liao",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 사냥 대상",
+      "evidenceText": "좌공료 공략이 손권·연의 원소·육손 편성을 전용 사냥 대상으로 직접 명시합니다.",
+      "sourceLabel": "대만 W1 좌공료 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%B7%A6%E5%85%AC%E9%81%BC%E6%BC%94%E7%BE%A9%E9%9A%8A",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "연의 장료 홍도와 선공 세팅 확보"
+      ]
+    },
+    {
+      "id": "w1-left-gong-liao-vs-yellow-heaven-01",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-yellow-heaven",
+      "counterDeckId": "w1-left-gong-liao",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 사냥 대상",
+      "evidenceText": "좌공료 공략이 좌자·연의 원소·장녕 편성을 전용 사냥 대상으로 직접 명시합니다.",
+      "sourceLabel": "대만 W1 좌공료 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%B7%A6%E5%85%AC%E9%81%BC%E6%BC%94%E7%BE%A9%E9%9A%8A",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "연의 장료 홍도와 선공 세팅 확보"
+      ]
+    },
+    {
+      "id": "w1-left-gong-liao-vs-moon-ma-01",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-moon-ma",
+      "counterDeckId": "w1-left-gong-liao",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 사냥 대상",
+      "evidenceText": "좌공료 공략이 마초·SP 제갈량·악진 월량마를 전용 사냥 대상으로 직접 명시합니다.",
+      "sourceLabel": "대만 W1 좌공료 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E5%B7%A6%E5%85%AC%E9%81%BC%E6%BC%94%E7%BE%A9%E9%9A%8A",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "연의 장료 홍도와 선공 세팅 확보"
+      ]
+    },
+    {
+      "id": "w1-diao-han-vs-romance-ma-01",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-romance-ma",
+      "counterDeckId": "w1-diao-han-shield",
+      "stance": "우세",
+      "assessment": "strongly_favorable",
+      "resultLabel": "출처 추정 80~85%",
+      "evidenceText": "초선 대한방 대전표가 연의 공손찬·마운록·마등 조합을 직접 명시하고 80~85% 우세로 제시합니다.",
+      "sourceLabel": "대만 W1 초선 대한방 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E8%B2%82%E6%BC%A2%E7%9B%BE",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "reportedWinRate": {
+        "min": 80,
+        "max": 85,
+        "basis": "출처 추정"
+      },
+      "conditions": []
+    },
+    {
+      "id": "w1-diao-han-vs-yuan-cavalry-01",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-diao-han-shield",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 안정 우세",
+      "evidenceText": "초선 대한방 대전표가 하후연·연의 장료·마등 연요마를 직접 상대로 들고 순수 병인 돌격을 안정적으로 흡수한다고 평가합니다.",
+      "sourceLabel": "대만 W1 초선 대한방 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E8%B2%82%E6%BC%A2%E7%9B%BE",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "w1-yuan-fire-vs-yuan-cavalry-01",
+      "season": "문정 1",
+      "contentGroup": "W1 업주산하",
+      "region": "TW",
+      "enemyDeckId": "w1-yuan-cavalry",
+      "counterDeckId": "w1-yuan-fire-bow",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 진형 우세",
+      "evidenceText": "연요마 공략이 연의 원소 화궁의 기자진을 전열 쌍핵 연요마를 직접 억제하는 상성으로 설명합니다.",
+      "sourceLabel": "대만 W1 연요마 2.0 공략",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW1%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%88%B0%E5%A0%B4%E7%86%B1%E9%96%80%E9%99%A3%E5%AE%B9%E6%B7%B5%E9%81%BC%E9%A6%AC",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "연의 원소 화궁의 기자진 세팅"
+      ]
+    },
+    {
+      "id": "w2-counter-xinhuo-vs-sp-wang-02",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-sp-wang",
+      "counterDeckId": "w2-counter-xinhuo",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "출처 추정 60~70%",
+      "evidenceText": "반격 신화창 대전표가 조조·위 SP 제갈량·왕이 조합을 직접 명시하고 60~70% 우세로 제시합니다.",
+      "sourceLabel": "대만 W2 반격 신화창 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%8F%8D%E6%93%8A%E8%96%AA%E7%81%AB%E6%A7%8D%E9%8C%90%E5%BD%A2%E9%9A%8A%E5%B0%88%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "reportedWinRate": {
+        "min": 60,
+        "max": 70,
+        "basis": "출처 추정"
+      },
+      "conditions": []
+    },
+    {
+      "id": "w2-left-lu-lu-vs-wei-brothers-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-wei-brothers",
+      "counterDeckId": "w2-left-lu-lu",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "공략 명시 우세",
+      "evidenceText": "좌노육 공략이 사마의·조조·조비의 조조 부자 사마 방패를 중·저속 직접 사냥 대상으로 명시합니다.",
+      "sourceLabel": "대만 W2 좌노육 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E9%AD%AF%E9%99%B8%E5%90%B3%E5%9C%8B%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "w2-left-lu-lu-vs-han-shield-zhu-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-han-shield-zhu",
+      "counterDeckId": "w2-left-lu-lu",
+      "stance": "우세",
+      "assessment": "strongly_favorable",
+      "resultLabel": "공략 명시 극우세",
+      "evidenceText": "좌노육 대전표가 황보숭·주준·원술 대한방을 직접 상대로 명시하고 중·저속 방패에 75~90% 범위의 극우세라고 평가합니다.",
+      "sourceLabel": "대만 W2 좌노육 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%B7%A6%E9%AD%AF%E9%99%B8%E5%90%B3%E5%9C%8B%E9%9A%8A%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": []
+    },
+    {
+      "id": "w2-wei-brothers-vs-cao-xun-wang-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-cao-xun-wang",
+      "counterDeckId": "w2-wei-brothers",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "출처 추정 62~65%",
+      "evidenceText": "위부자 사마의 대전표가 조조·순욱·왕이 방원진을 직접 명시하고 62~65% 우세로 제시합니다.",
+      "sourceLabel": "대만 W2 위부자 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%9B%B9%E6%93%8D%E7%88%B6%E5%AD%90%E5%8F%B8%E9%A6%AC%E6%87%BF%E9%AD%8F%E5%9C%8B%E9%9A%8A%E8%83%BD%E5%85%8B%E5%88%B6%E5%8D%97%E8%A0%BB",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "reportedWinRate": {
+        "min": 62,
+        "max": 65,
+        "basis": "출처 추정"
+      },
+      "conditions": []
+    },
+    {
+      "id": "w2-cao-jia-yi-vs-cao-xun-wang-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-cao-xun-wang",
+      "counterDeckId": "w2-cao-jia-yi",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "출처 추정 65~75%",
+      "evidenceText": "조가왕 대전표가 순욱·조조·왕이 계열을 직접 상대 항목으로 두고 65~75% 우세로 제시합니다.",
+      "sourceLabel": "대만 W2 조가왕 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E6%9B%B9%E8%B3%88%E7%95%B0%E9%9A%8A%E5%85%B1%E5%AD%98%E5%BF%85%E7%B7%B4",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "reportedWinRate": {
+        "min": 65,
+        "max": 75,
+        "basis": "출처 추정"
+      },
+      "conditions": []
+    },
+    {
+      "id": "w2-cao-xun-wang-vs-counter-xinhuo-cn-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "CN",
+      "enemyDeckId": "w2-counter-xinhuo",
+      "counterDeckId": "w2-cao-xun-wang",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "중국 공략 명시 우세",
+      "evidenceText": "중국 S10 남군봉기 분석이 고홍 조조·순욱·왕이가 여러 신화창을 직접 압박한다고 명시합니다.",
+      "sourceLabel": "중국 17173 S10 남군봉기 분석",
+      "sourceUrl": "https://news.17173.com/content/09252025/204502220.shtml",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "중국 S10 남군봉기와 한국 문정 2의 동일 콘텐츠군",
+        "왕이 고홍도"
+      ]
+    },
+    {
+      "id": "w2-cao-xun-wang-vs-han-shield-cn-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "CN",
+      "enemyDeckId": "w2-han-shield-zhu",
+      "counterDeckId": "w2-cao-xun-wang",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "중국 공략 명시 우세",
+      "evidenceText": "중국 S10 남군봉기 분석이 고홍 조조·순욱·왕이가 대한방을 직접 압박한다고 명시합니다.",
+      "sourceLabel": "중국 17173 S10 남군봉기 분석",
+      "sourceUrl": "https://news.17173.com/content/09252025/204502220.shtml",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "중국 S10 남군봉기와 한국 문정 2의 동일 콘텐츠군",
+        "왕이 고홍도"
+      ]
+    },
+    {
+      "id": "w2-nanman-vs-zuo-tian-lu-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-zuo-tian-lu",
+      "counterDeckId": "w2-nanman",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "출처 추정 75~80%",
+      "evidenceText": "남만 급봉 대전표가 좌자·전풍·여포 조합을 직접 명시하고 남만 측 75~80% 우세로 제시합니다.",
+      "sourceLabel": "대만 W2 남만 급봉 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%8D%97%E8%A0%BB%E5%8F%8A%E9%8B%92%E9%9A%8A%E9%A6%96%E9%9A%8A%E5%BF%85%E7%B7%B4",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "reportedWinRate": {
+        "min": 75,
+        "max": 80,
+        "basis": "출처 추정"
+      },
+      "conditions": []
+    },
+    {
+      "id": "w2-nanman-vs-zuo-tian-lu-02",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-zuo-tian-lu",
+      "counterDeckId": "w2-nanman",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "포럼 메타 평가 우세",
+      "evidenceText": "Bahamut 남군봉기 토론이 좌전여포가 이번 시즌 남만에 불리하다고 상대 덱을 직접 명시합니다.",
+      "sourceLabel": "대만 Bahamut W2 남군봉기 메타 토론",
+      "sourceUrl": "https://forum.gamer.com.tw/C.php?bsn=83812&snA=608",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "대만 S5W2 남군봉기 메타 토론"
+      ]
+    },
+    {
+      "id": "w2-nanman-vs-first-lubu-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-first-lubu",
+      "counterDeckId": "w2-nanman",
+      "stance": "우세",
+      "assessment": "favorable",
+      "resultLabel": "포럼 메타 평가 우세",
+      "evidenceText": "Bahamut 남군봉기 토론이 선등여포도 이번 시즌 남만에 불리하다고 상대 덱을 직접 명시합니다.",
+      "sourceLabel": "대만 Bahamut W2 남군봉기 메타 토론",
+      "sourceUrl": "https://forum.gamer.com.tw/C.php?bsn=83812&snA=608",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "대만 S5W2 남군봉기 메타 토론"
+      ]
+    },
+    {
+      "id": "w2-wei-brothers-vs-nanman-conflict-01",
+      "season": "문정 2",
+      "contentGroup": "W2 문정",
+      "region": "TW",
+      "enemyDeckId": "w2-nanman",
+      "counterDeckId": "w2-wei-brothers",
+      "stance": "열세",
+      "assessment": "strongly_unfavorable",
+      "resultLabel": "반대 자료 · 상대 추정 85~90%",
+      "evidenceText": "남만 급봉 대전표는 조조·조비·사마의 백판 편성을 직접 상대하고 남만 관점 85~90% 우세로 제시해, 기존 위부자 우세 공략과 충돌합니다.",
+      "sourceLabel": "대만 W2 남만 급봉 대전표",
+      "sourceUrl": "https://wiki2.gamer.com.tw/wiki.php?ss=147646&n=147646%3AW2%E5%95%8F%E9%BC%8E%E8%B3%BD%E5%AD%A3%E5%8D%97%E8%A0%BB%E5%8F%8A%E9%8B%92%E9%9A%8A%E9%A6%96%E9%9A%8A%E5%BF%85%E7%B7%B4",
+      "retrievedAt": "2026-08-28",
+      "evidenceType": "공략 평가",
+      "opponentExplicit": true,
+      "seasonMatch": true,
+      "setupMatch": "부분",
+      "sourceReliability": "중간",
+      "conditions": [
+        "상대 위부자 백판",
+        "수치는 남만 관점의 원문 추정치"
+      ]
+    }
+  ],
+  "favorableMatchupCombos": [
+    {
+      "season": "문정 2",
+      "counterDeckId": "w2-left-tian-xiang",
+      "favorableEnemyDeckIds": [
+        "w2-sp-wang",
+        "w2-wei-brothers",
+        "w2-zuo-tian-lu",
+        "w2-han-shield-zhu",
+        "w2-moon-ma"
+      ],
+      "matchupCount": 5,
+      "averageEvidenceScore": 65
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "war-cao-xun-sima",
+      "favorableEnemyDeckIds": [
+        "war-yue-xun-zhou",
+        "xu-huang-yu",
+        "zhao-gan-diao",
+        "war-taoyuan",
+        "war-zhao-gan-guan"
+      ],
+      "matchupCount": 5,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 2",
+      "counterDeckId": "w2-left-lu-lu",
+      "favorableEnemyDeckIds": [
+        "w2-nanman",
+        "w2-zuo-tian-lu",
+        "w2-high-han-shield",
+        "w2-wei-brothers",
+        "w2-han-shield-zhu"
+      ],
+      "matchupCount": 5,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 2",
+      "counterDeckId": "w2-tai-fei-yan",
+      "favorableEnemyDeckIds": [
+        "w2-nanman",
+        "w2-wei-brothers",
+        "w2-sp-wang"
+      ],
+      "matchupCount": 3,
+      "averageEvidenceScore": 59
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "war-point-zhangliao",
+      "favorableEnemyDeckIds": [
+        "war-cao-xun-sima",
+        "cao-yuan-ma",
+        "double-reduction-sima"
+      ],
+      "matchupCount": 3,
+      "averageEvidenceScore": 49
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "war-yue-xun-zhou",
+      "favorableEnemyDeckIds": [
+        "first-lubu",
+        "tai-yuan-ma",
+        "tai-huang-yu"
+      ],
+      "matchupCount": 3,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "tai-yuan-ma",
+      "favorableEnemyDeckIds": [
+        "war-cao-xun-sima",
+        "war-sun-lu-lu",
+        "war-liu-yuan-ma"
+      ],
+      "matchupCount": 3,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-han-shield",
+      "favorableEnemyDeckIds": [
+        "w1-left-gong-guan",
+        "w1-yuan-cavalry",
+        "w1-moon-ma"
+      ],
+      "matchupCount": 3,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "double-emperor-lu",
+      "favorableEnemyDeckIds": [
+        "cao-yuan-ma",
+        "war-liu-yuan-ma",
+        "tai-yuan-ma"
+      ],
+      "matchupCount": 3,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-left-gong-liao",
+      "favorableEnemyDeckIds": [
+        "w1-yuan-fire-bow",
+        "w1-yellow-heaven",
+        "w1-moon-ma"
+      ],
+      "matchupCount": 3,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 2",
+      "counterDeckId": "w2-nanman",
+      "favorableEnemyDeckIds": [
+        "w2-zuo-tian-lu",
+        "w2-first-lubu"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 72
+    },
+    {
+      "season": "문정 2",
+      "counterDeckId": "w2-counter-xinhuo",
+      "favorableEnemyDeckIds": [
+        "w2-nanman",
+        "w2-sp-wang"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 49
+    },
+    {
+      "season": "문정 2",
+      "counterDeckId": "w2-cao-jia-yi",
+      "favorableEnemyDeckIds": [
+        "w2-nanman",
+        "w2-cao-xun-wang"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 49
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-diao-han-shield",
+      "favorableEnemyDeckIds": [
+        "w1-romance-ma",
+        "w1-yuan-cavalry"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 49
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "war-taoyuan",
+      "favorableEnemyDeckIds": [
+        "first-lubu",
+        "tai-yuan-ma"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "zhao-gan-diao",
+      "favorableEnemyDeckIds": [
+        "tai-yuan-ma",
+        "war-yue-xun-zhou"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-zhuge-guard",
+      "favorableEnemyDeckIds": [
+        "w1-moon-ma",
+        "w1-yuan-cavalry"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-romance-gan",
+      "favorableEnemyDeckIds": [
+        "w1-moon-ma",
+        "w1-yuan-cavalry"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-counter-dianwei",
+      "favorableEnemyDeckIds": [
+        "w1-moon-ma",
+        "w1-yuan-cavalry"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "cao-yuan-ma",
+      "favorableEnemyDeckIds": [
+        "zhao-gan-diao",
+        "tai-yuan-ma"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "war-cao-xu-sima",
+      "favorableEnemyDeckIds": [
+        "tai-huang-yu",
+        "war-da-xiao-zhou"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 2",
+      "counterDeckId": "w2-cao-xun-wang",
+      "favorableEnemyDeckIds": [
+        "w2-counter-xinhuo",
+        "w2-han-shield-zhu"
+      ],
+      "matchupCount": 2,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 2",
+      "counterDeckId": "w2-zhang-sun-huang",
+      "favorableEnemyDeckIds": [
+        "w2-left-tian-xiang"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 62
+    },
+    {
+      "season": "문정 2",
+      "counterDeckId": "w2-wei-brothers",
+      "favorableEnemyDeckIds": [
+        "w2-cao-xun-wang"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 50
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-left-gong-guan",
+      "favorableEnemyDeckIds": [
+        "w1-xinhuo"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 50
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "war-zhao-gan-sima",
+      "favorableEnemyDeckIds": [
+        "zhao-gan-diao"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 50
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "xu-huang-yu",
+      "favorableEnemyDeckIds": [
+        "tai-yuan-ma"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "war-da-zhang-ma",
+      "favorableEnemyDeckIds": [
+        "war-cao-xun-sima"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-zhao-gan-jiang",
+      "favorableEnemyDeckIds": [
+        "w1-moon-ma"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-yellow-heaven",
+      "favorableEnemyDeckIds": [
+        "w1-moon-ma"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-jia-xun-zhu",
+      "favorableEnemyDeckIds": [
+        "w1-moon-ma"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-moon-ma",
+      "favorableEnemyDeckIds": [
+        "w1-yuan-cavalry"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-xinhuo",
+      "favorableEnemyDeckIds": [
+        "w1-yuan-cavalry"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 2",
+      "counterDeckId": "w2-zhao-liu-xiang",
+      "favorableEnemyDeckIds": [
+        "w2-nanman"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "da-yue-ma",
+      "favorableEnemyDeckIds": [
+        "war-cao-xun-sima"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "first-lubu",
+      "favorableEnemyDeckIds": [
+        "double-emperor-lu"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "S 통합",
+      "counterDeckId": "double-reduction-sima",
+      "favorableEnemyDeckIds": [
+        "tai-huang-yu"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-cao-xun-wang",
+      "favorableEnemyDeckIds": [
+        "w1-xinhuo"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    },
+    {
+      "season": "문정 1",
+      "counterDeckId": "w1-yuan-fire-bow",
+      "favorableEnemyDeckIds": [
+        "w1-yuan-cavalry"
+      ],
+      "matchupCount": 1,
+      "averageEvidenceScore": 47
+    }
+  ],
+  "verifiedCounterDeckProfiles": [
+    {
+      "id": "w1-left-gong-liao",
+      "name": "좌자·연의 공손찬·연의 장료",
+      "originalName": "左公遼演義隊",
+      "season": "문정 1",
+      "tierLabel": "명시 상성 편성",
+      "generalIds": [
+        "zuo-ci",
+        "romance-gongsun-zan",
+        "romance-zhang-liao"
+      ]
+    },
+    {
+      "id": "w1-diao-han-shield",
+      "name": "초선·황보숭·주준",
+      "originalName": "貂漢盾",
+      "season": "문정 1",
+      "tierLabel": "명시 상성 편성",
+      "generalIds": [
+        "diao-chan",
+        "huangfu-song",
+        "zhu-jun"
+      ]
+    },
+    {
+      "id": "w2-cao-xun-wang",
+      "name": "조조·순욱·왕이",
+      "originalName": "曹荀異·W2",
+      "season": "문정 2",
+      "tierLabel": "선행 서버 편성",
+      "generalIds": [
+        "cao-cao",
+        "xun-yu",
+        "wang-yi"
+      ]
+    },
+    {
+      "id": "w2-first-lubu",
+      "name": "여포·진궁·악진",
+      "originalName": "先登呂·W2",
+      "season": "문정 2",
+      "tierLabel": "명시 상성 편성",
+      "generalIds": [
+        "lü-bu",
+        "chen-gong",
+        "yue-jin"
+      ]
+    },
+    {
+      "id": "w2-counter-xinhuo",
+      "name": "유비·강유·SP 제갈량",
+      "originalName": "反擊薪火槍",
+      "season": "문정 2",
+      "tierLabel": "남만 저격",
+      "generalIds": [
+        "liu-bei",
+        "jiang-wei",
+        "sp-zhuge-liang"
+      ]
+    },
+    {
+      "id": "w2-tai-fei-yan",
+      "name": "촉 주태·장비·위연",
+      "originalName": "泰飛延",
+      "season": "문정 2",
+      "tierLabel": "남만 저격",
+      "generalIds": [
+        "shu-zhou-tai",
+        "zhang-fei",
+        "wei-yan"
+      ]
+    },
+    {
+      "id": "w2-zhao-liu-xiang",
+      "name": "조운·유비·손상향",
+      "originalName": "趙劉香",
+      "season": "문정 2",
+      "tierLabel": "남만 저격",
+      "generalIds": [
+        "zhao-yun",
+        "liu-bei",
+        "sun-shangxiang"
+      ]
+    },
+    {
+      "id": "w2-left-lu-lu",
+      "name": "좌자·노숙·육손",
+      "originalName": "左魯陸",
+      "season": "문정 2",
+      "tierLabel": "광역 저격",
+      "generalIds": [
+        "zuo-ci",
+        "lu-su",
+        "lu-xun"
+      ]
+    },
+    {
+      "id": "w2-cao-jia-yi",
+      "name": "조조·가후·왕이",
+      "originalName": "曹賈異",
+      "season": "문정 2",
+      "tierLabel": "남만 저격",
+      "generalIds": [
+        "cao-cao",
+        "jia-xu",
+        "wang-yi"
+      ]
+    },
+    {
+      "id": "w2-left-tian-xiang",
+      "name": "좌자·전풍·손상향",
+      "originalName": "左田香",
+      "season": "문정 2",
+      "tierLabel": "실전 근거 편성",
+      "generalIds": [
+        "zuo-ci",
+        "tian-feng",
+        "sun-shangxiang"
+      ]
+    },
+    {
+      "id": "w2-han-shield-zhu",
+      "name": "주준·황보숭·원술",
+      "originalName": "大漢盾·朱儁型",
+      "season": "문정 2",
+      "tierLabel": "백판 실전 상대",
+      "generalIds": [
+        "zhu-jun",
+        "huangfu-song",
+        "yuan-shu"
+      ]
+    },
+    {
+      "id": "w2-moon-ma",
+      "name": "마초·SP 제갈량·악진",
+      "originalName": "月亮馬·W2",
+      "season": "문정 2",
+      "tierLabel": "실전 상대 편성",
+      "generalIds": [
+        "ma-chao",
+        "sp-zhuge-liang",
+        "yue-jin"
+      ]
+    },
+    {
+      "id": "w2-zhang-sun-huang",
+      "name": "장녕·손권·황개",
+      "originalName": "張寧孫權黃蓋",
+      "season": "문정 2",
+      "tierLabel": "실전 근거 편성",
+      "generalIds": [
+        "zhang-ning",
+        "sun-quan",
+        "huang-gai"
+      ]
+    }
+  ],
+  "verifiedCounterEnemyIds": [
+    "first-lubu",
+    "tai-yuan-ma",
+    "war-yue-xun-zhou",
+    "xu-huang-yu",
+    "zhao-gan-diao",
+    "war-cao-xun-sima",
+    "war-sun-lu-lu",
+    "tai-huang-yu",
+    "w1-moon-ma",
+    "w1-yuan-cavalry",
+    "w2-nanman",
+    "w2-zuo-tian-lu",
+    "w2-high-han-shield",
+    "w1-xinhuo",
+    "w1-left-gong-guan",
+    "w2-sp-wang",
+    "w2-wei-brothers",
+    "w2-han-shield-zhu",
+    "w2-moon-ma",
+    "w2-left-tian-xiang",
+    "war-taoyuan",
+    "war-da-xiao-zhou",
+    "cao-yuan-ma",
+    "war-liu-yuan-ma",
+    "war-zhao-gan-guan",
+    "double-emperor-lu",
+    "double-reduction-sima",
+    "w1-yuan-fire-bow",
+    "w1-yellow-heaven",
+    "w1-romance-ma",
+    "w2-cao-xun-wang",
+    "w2-counter-xinhuo",
+    "w2-first-lubu"
+  ]
+}

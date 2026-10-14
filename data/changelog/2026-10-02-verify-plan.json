@@ -1,0 +1,21 @@
+{
+  "id": "2026-10-02-verify-plan",
+  "date": "2026-10-02",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "녹화할 검증 전투 짜기 추가",
+  "body": "감사 탭 맨 위 '녹화할 검증 전투'에서 [내 보유 카드로 짜기]를 누르면, 보유 무장·전법으로 검증 대기 항목을 가장 적은 전투 수에 담은 부대를 짜 줍니다.\n- 부대마다 필수 무장·전법·금병법과 '전보에서 볼 것' 목록이 나옵니다. 비어 있는 칸은 '자유'입니다.\n- 엔진 가정(피해 대상 공유, 확률 판정, 지속 턴 등)처럼 영향이 큰 항목을 앞 전투에 넣습니다.\n- 보유 카드로 볼 수 없는 항목은 필요한 카드와 함께 따로 보여 줍니다.\n- 같은 기능을 MCP verification_plan 으로도 쓸 수 있습니다.\n예시(전부 보유): 11판으로 55개 항목 전부, 1·2번 전투만으로 30개.",
+  "refs": [],
+  "author": "Claude",
+  "files": [
+    "apps/mcp-server/src/server.ts",
+    "apps/web/src/compute.ts",
+    "apps/web/src/views/audit.ts",
+    "data/verification/engine-assumptions.json",
+    "data/verification/queue.json",
+    "packages/recommender/src/index.ts",
+    "tests/recommender.test.ts",
+    "packages/recommender/src/verify-plan.ts"
+  ],
+  "commit": "7f3a7d9070c8"
+}

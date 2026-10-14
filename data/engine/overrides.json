@@ -1,0 +1,207 @@
+{
+  "note": "[2026-10-04 이후] 전법 정의의 정본은 packages/engine/src/skills/<id>.ts 함수 파일이다. 이 파일은 함수 파일을 처음 만들 때(pnpm gen:skills)만 쓰이는 원천 — 여기를 고쳐도 이미 있는 함수 파일에는 반영되지 않는다. 수정은 pnpm skill:revise 로. (예전 설명: 엔진 효과 정의(data/engine/skills.json, v1.12b 에서 자동 변환)에 덮어쓰는 검수된 수정. import-legacy 를 다시 돌려도 유지된다. set 의 키는 점(.)으로 구분한 경로.)",
+  "skills": {
+    "flood-seven": {
+      "date": "2026-10-02",
+      "found": "감사 D06-targets",
+      "reason": "원문 '적군 전체에게 … 260%의 병기 피해' 인데 대상 코드가 비어 있어 랜덤 1명만 맞았다.",
+      "set": {
+        "effects.targets": [
+          "all_enemy"
+        ]
+      }
+    },
+    "thousand-raid": {
+      "date": "2026-10-02",
+      "found": "감사 D06-targets",
+      "reason": "원문 '선공이 가장 낮은 적군 단일 목표에게 280% … 목표가 후열이면 추가로 100%'. 대상이 랜덤이었고 후열 조건 없이 추가 피해가 항상 들어갔다.",
+      "set": {
+        "effects.targets": [
+          "lowest_speed_enemy"
+        ],
+        "effects.damage.1.condition": {
+          "type": "position",
+          "who": "target",
+          "pos": "back"
+        }
+      }
+    },
+    "night-raid": {
+      "date": "2026-10-02",
+      "found": "감사 D06-targets",
+      "reason": "원문 '자신의 선공이 목표보다 높으면 추가로 50%'. 조건 없이 추가 피해가 항상 들어갔다.",
+      "set": {
+        "effects.damage.1.condition": {
+          "type": "statCompareUnits",
+          "who1": "self",
+          "who2": "target",
+          "stat": "선공",
+          "op": ">"
+        }
+      }
+    },
+    "strategize": {
+      "date": "2026-10-02",
+      "found": "감사 S09 / 절 검토",
+      "reason": "레벨 보간이 뒤집혀(25→12.5) 10레벨에서 12.5만 감소했다. 원문 10레벨 25 감소.",
+      "set": {
+        "effects.statMods.0.min": -25,
+        "effects.statMods.0.max": -25,
+        "effects.statMods.1.min": -25,
+        "effects.statMods.1.max": -25,
+        "effects.statMods.2.min": -25,
+        "effects.statMods.2.max": -25,
+        "effects.statMods.3.min": -25,
+        "effects.statMods.3.max": -25
+      }
+    },
+    "u-dong-zhuo": {
+      "date": "2026-10-02",
+      "found": "감사 S09 / 절 검토",
+      "reason": "레벨 보간이 뒤집혀 10레벨에서 통솔 10만 탈취했다. 원문 20 탈취.",
+      "set": {
+        "effects.statMods.0.min": -20,
+        "effects.statMods.0.max": -20
+      }
+    },
+    "u-huang-zhong": {
+      "date": "2026-10-02",
+      "found": "감사 S09 / 절 검토",
+      "reason": "레벨 보간이 뒤집혀 24가 아니라 12만 감소했다.",
+      "set": {
+        "effects.statMods.0.min": -24,
+        "effects.statMods.0.max": -24,
+        "effects.statMods.1.min": -24,
+        "effects.statMods.1.max": -24
+      }
+    },
+    "u-sun-jian": {
+      "date": "2026-10-02",
+      "found": "감사 S09 / 절 검토",
+      "reason": "레벨 보간이 뒤집혀 40이 아니라 20만 감소했다.",
+      "set": {
+        "effects.statMods.0.min": -40,
+        "effects.statMods.0.max": -40
+      }
+    },
+    "calm": {
+      "date": "2026-10-02",
+      "found": "감사 S09 / 절 검토",
+      "reason": "원문의 감소 항목 중 받는 일반 공격·추격 피해(홀수 턴), 받는 액티브 피해(짝수 턴)가 빠져 있었다.",
+      "set": {
+        "effects.buffs.2": {
+          "stat": "받는일반공격피해",
+          "min": -0.35,
+          "max": -0.35,
+          "target": "self",
+          "duration": 1,
+          "maxStacks": 1,
+          "turnCond": {
+            "parity": "odd"
+          }
+        },
+        "effects.buffs.3": {
+          "stat": "받는추격피해",
+          "min": -0.35,
+          "max": -0.35,
+          "target": "self",
+          "duration": 1,
+          "maxStacks": 1,
+          "turnCond": {
+            "parity": "odd"
+          }
+        },
+        "effects.buffs.4": {
+          "stat": "받는액티브피해",
+          "min": -0.35,
+          "max": -0.35,
+          "target": "self",
+          "duration": 1,
+          "maxStacks": 1,
+          "turnCond": {
+            "parity": "even"
+          }
+        }
+      }
+    },
+    "support-selfless": {
+      "date": "2026-10-04",
+      "found": "확률 순서 감사 S10 (사용자 지적: 난공불락)",
+      "reason": "원문 'N% 확률로 [대상]에게 …' — 확률이 대상 앞이라 시전 1회 판정, 성공 시 대상 전원(R-021). 대상마다 따로 굴리던 것을 고침 / 게임 문구 '우군 2명' = 자신 제외(R-034)",
+      "set": {
+        "effects.heal.0.chanceOnce": true,
+        "effects.heal.0.target": "random_friend_n"
+      }
+    },
+    "u-zhou-cang": {
+      "date": "2026-10-04",
+      "found": "확률 순서 감사 S10",
+      "reason": "원문 'N% 확률로 [대상]에게 …' — 확률이 대상 앞이라 시전 1회 판정, 성공 시 대상 전원(R-021). 대상마다 따로 굴리던 것을 고침 — 조롱 및 위협은 같은 판정 공유",
+      "set": {
+        "effects.statusEffects.0.chanceOnce": true,
+        "effects.statusEffects.1.chanceOnce": true
+      }
+    },
+    "avoid-edge": {
+      "date": "2026-10-04",
+      "found": "공용 규칙 R-028 대상 정리 (자신과 우군 혼합 대상 점검)",
+      "reason": "'자신과 랜덤 우군 단일 목표' — 대상 코드에 self 가 섞여 버프가 자신에게만 걸리던 것을 자신 + 자신 뺀 우군 1명으로",
+      "set": {
+        "effects.buffs.0.target": "self_and_random_ally_1"
+      }
+    },
+    "u-sun-ce": {
+      "date": "2026-10-04",
+      "found": "공용 규칙 R-028 대상 정리 (자신과 우군 혼합 대상 점검)",
+      "reason": "'적군 랜덤 2명에게 피해, 자신과 랜덤 우군 단일 목표 회복' — 피해가 적 1명에게만, 회복이 자신 포함 2명 무작위로 나가던 것을 원문대로",
+      "set": {
+        "effects.damage.0.target": "random_enemy_n",
+        "effects.heal.0.target": "self_and_random_ally_1"
+      }
+    },
+    "sacrifice": {
+      "date": "2026-10-04",
+      "found": "공용 규칙 R-028 대상 정리 (자신과 우군 혼합 대상 점검)",
+      "reason": "'전체 우군 연타 확률 증가'가 자신에게만, 정신 회복·무장 해제 대상이 뒤섞이던 것을 원문대로: 연타 → 전체 우군, 정신 회복 → 무력 최고 우군, 무장 해제 → 자신 (각 2턴)",
+      "set": {
+        "effects.buffs.0.target": "all_ally",
+        "effects.statusEffects.0": {
+          "name": "무장 해제",
+          "target": "self",
+          "duration": 2
+        },
+        "effects.statusEffects.1": {
+          "name": "정신 회복",
+          "target": "highest_power_ally",
+          "duration": 2
+        }
+      }
+    },
+    "calamity": {
+      "date": "2026-10-04",
+      "found": "공용 규칙 R-028 대상 정리 (자신과 우군 혼합 대상 점검)",
+      "reason": "'자신을 제외한 전체 적군과 우군에게 140% 책략 피해' — 적군에게만 주던 피해를 자신 뺀 전장 전원으로",
+      "set": {
+        "effects.damage.0.target": "all_except_self"
+      }
+    },
+    "ready": {
+      "date": "2026-10-04",
+      "found": "사용자 게임 캡처 (전법 검색 '우군'·'아군', 2026-10-04) — R-034",
+      "reason": "게임 문구 '우군 2명' = 자신 제외",
+      "set": {
+        "effects.targets.0": "random_friend_n"
+      }
+    },
+    "choose-momentum": {
+      "date": "2026-10-04",
+      "found": "사용자 게임 캡처 (전법 검색 '우군'·'아군', 2026-10-04) — R-034",
+      "reason": "게임 문구 '우군 2명' = 자신 제외",
+      "set": {
+        "effects.targets.0": "random_friend_n",
+        "effects.buffs.0.target": "random_friend_n",
+        "effects.buffs.1.target": "random_friend_n"
+      }
+    }
+  }
+}

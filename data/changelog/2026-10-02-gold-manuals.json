@@ -1,0 +1,38 @@
+{
+  "id": "2026-10-02-gold-manuals",
+  "date": "2026-10-02",
+  "season": "S2",
+  "category": "전투 규칙",
+  "title": "금병법 72개 전투 반영",
+  "body": "엑셀 DB의 금병법(무장 58명, 72개)을 전투 엔진에 넣었습니다(data/engine/manuals.json).\n- 원문대로 48개 · 근사 19개 · 미지원 5개(화타 청낭경, 황충 궁술, 소교 관문, 황개 견결, 화웅 신무 — 시뮬에서 제외)\n- 덱마다 금병법 1개를 고릅니다. 티어덱은 '세팅 병법'에 적힌 금병법을 자동 선택하고, 없으면 첫 금병법을 씁니다.\n- 고유 전법을 고치는 금병법(장비 신정후도명, 방덕 초기, 대교 상사문부 등)은 그 무장의 고유 전법 사본에만 적용됩니다.\n- 엔진에 '액티브·추격 발동 후', '특정 상태 부여 후', '전투당 1회', '병력 50% 미만' 같은 계기를 추가했습니다(FEAT-001).\n- 감사: 금병법 정의·실전 발동·원문 효과 발생을 검사합니다. 현재 실전 발동·효과 검사 모두 통과.",
+  "refs": [
+    "u-zhang-fei",
+    "u-pang-de",
+    "u-da-qiao"
+  ],
+  "author": "Claude",
+  "commit": "ef5f50f172c0",
+  "files": [
+    "apps/mcp-server/src/server.ts",
+    "apps/web/src/styles.css",
+    "apps/web/src/views/audit.ts",
+    "apps/web/src/views/codex.ts",
+    "apps/web/src/views/sim.ts",
+    "apps/web/src/views/tierdecks.ts",
+    "data/audit/latest.json",
+    "data/common/confirmed-rules.json",
+    "data/engine/manuals.json",
+    "data/kr/generals.json",
+    "docs/DESIGN.md",
+    "packages/audit/src/dynamic.ts",
+    "packages/audit/src/expect.ts",
+    "packages/audit/src/index.ts",
+    "packages/audit/src/report.ts",
+    "packages/data-tools/src/bundle.ts",
+    "packages/data-tools/src/import-excel.ts",
+    "packages/engine/src/index.ts",
+    "packages/engine/src/legacy/core.js",
+    "packages/engine/src/model.ts",
+    "tests/manuals.test.ts"
+  ]
+}

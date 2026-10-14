@@ -1,0 +1,596 @@
+{
+  "liu-bei": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 151.5,
+      "지력": 209.5,
+      "통솔": 215,
+      "선공": 139
+    },
+    "legacyRole": "치유",
+    "legacyPosition": "전열"
+  },
+  "cao-cao": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 141,
+      "지력": 217,
+      "통솔": 233,
+      "선공": 142.5
+    },
+    "legacyRole": "보조방어",
+    "legacyPosition": "전열"
+  },
+  "sun-quan": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 185.5,
+      "지력": 200,
+      "통솔": 205.5,
+      "선공": 190.5
+    },
+    "legacyRole": "문무보조",
+    "legacyPosition": "균형"
+  },
+  "zhuge-liang": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 76,
+      "지력": 275,
+      "통솔": 226,
+      "선공": 139.5
+    },
+    "legacyRole": "책략",
+    "legacyPosition": "균형"
+  },
+  "guan-yu": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 257.5,
+      "지력": 153.5,
+      "통솔": 210.5,
+      "선공": 200.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "zhao-yun": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 249.5,
+      "지력": 153,
+      "통솔": 214.5,
+      "선공": 180.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "전열"
+  },
+  "ma-chao": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 257,
+      "지력": 108.5,
+      "통솔": 189,
+      "선공": 201.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "guo-jia": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 46.5,
+      "지력": 255,
+      "통솔": 177,
+      "선공": 143.5
+    },
+    "legacyRole": "책략",
+    "legacyPosition": "후열"
+  },
+  "dian-wei": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 259,
+      "지력": 60.5,
+      "통솔": 201.5,
+      "선공": 180
+    },
+    "legacyRole": "방어병기",
+    "legacyPosition": "전열"
+  },
+  "zhou-yu": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 124.5,
+      "지력": 251.5,
+      "통솔": 204.5,
+      "선공": 148.5
+    },
+    "legacyRole": "책략",
+    "legacyPosition": "후열"
+  },
+  "sun-shangxiang": {
+    "gender": "F",
+    "legacyStats": {
+      "무력": 226,
+      "지력": 128,
+      "통솔": 180,
+      "선공": 190.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "lü-meng": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 188,
+      "지력": 225,
+      "통솔": 193,
+      "선공": 186.5
+    },
+    "legacyRole": "책략",
+    "legacyPosition": "후열"
+  },
+  "dong-zhuo": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 211,
+      "지력": 158,
+      "통솔": 215,
+      "선공": 181.5
+    },
+    "legacyRole": "문무방어",
+    "legacyPosition": "전열"
+  },
+  "lü-bu": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 275,
+      "지력": 73,
+      "통솔": 187.5,
+      "선공": 204.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "hua-tuo": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 30.5,
+      "지력": 223.5,
+      "통솔": 148,
+      "선공": 141.5
+    },
+    "legacyRole": "치유",
+    "legacyPosition": "후열"
+  },
+  "zhang-jiao": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 56.5,
+      "지력": 240.5,
+      "통솔": 204.5,
+      "선공": 138.5
+    },
+    "legacyRole": "책략",
+    "legacyPosition": "후열"
+  },
+  "diao-chan": {
+    "gender": "F",
+    "legacyStats": {
+      "무력": 40.5,
+      "지력": 215,
+      "통솔": 184.5,
+      "선공": 156.5
+    },
+    "legacyRole": "방어",
+    "legacyPosition": "전열"
+  },
+  "taishi-ci": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 234.5,
+      "지력": 155,
+      "통솔": 202.5,
+      "선공": 207
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "da-qiao": {
+    "gender": "F",
+    "legacyStats": {
+      "무력": 41.5,
+      "지력": 202.5,
+      "통솔": 190.5,
+      "선공": 121
+    },
+    "legacyRole": "보조치유",
+    "legacyPosition": "균형"
+  },
+  "lu-su": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 90,
+      "지력": 229,
+      "통솔": 180.5,
+      "선공": 184.5
+    },
+    "legacyRole": "보조",
+    "legacyPosition": "균형"
+  },
+  "gan-ning": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 237.5,
+      "지력": 150,
+      "통솔": 194.5,
+      "선공": 200.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "xu-chu": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 251.5,
+      "지력": 66.5,
+      "통솔": 177,
+      "선공": 199
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "deng-ai": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 184,
+      "지력": 206,
+      "통솔": 186.5,
+      "선공": 153.5
+    },
+    "legacyRole": "치유",
+    "legacyPosition": "균형"
+  },
+  "xiahou-dun": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 222,
+      "지력": 123,
+      "통솔": 214.5,
+      "선공": 160
+    },
+    "legacyRole": "방어",
+    "legacyPosition": "전열"
+  },
+  "zhen-luo": {
+    "gender": "F",
+    "legacyStats": {
+      "무력": 33.5,
+      "지력": 211,
+      "통솔": 184,
+      "선공": 133.5
+    },
+    "legacyRole": "보조치유",
+    "legacyPosition": "균형"
+  },
+  "zhang-fei": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 260,
+      "지력": 117,
+      "통솔": 191,
+      "선공": 184.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "huang-yueying": {
+    "gender": "F",
+    "legacyStats": {
+      "무력": 47.5,
+      "지력": 223,
+      "통솔": 174,
+      "선공": 146
+    },
+    "legacyRole": "보조치유",
+    "legacyPosition": "균형"
+  },
+  "xun-yu": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 46.5,
+      "지력": 255,
+      "통솔": 158,
+      "선공": 139.5
+    },
+    "legacyRole": "보조치유",
+    "legacyPosition": "후열"
+  },
+  "xiahou-yuan": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 227,
+      "지력": 96.5,
+      "통솔": 188,
+      "선공": 234.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "cao-ren": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 148.5,
+      "지력": 155.5,
+      "통솔": 230.5,
+      "선공": 121.5
+    },
+    "legacyRole": "방어",
+    "legacyPosition": "전열"
+  },
+  "xu-shu": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 192.5,
+      "지력": 236.5,
+      "통솔": 172.5,
+      "선공": 205
+    },
+    "legacyRole": "문무",
+    "legacyPosition": "후열"
+  },
+  "huang-zhong": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 240.5,
+      "지력": 137,
+      "통솔": 185.5,
+      "선공": 169.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "xu-sheng": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 169.5,
+      "지력": 181.5,
+      "통솔": 211,
+      "선공": 110
+    },
+    "legacyRole": "방어",
+    "legacyPosition": "전열"
+  },
+  "cai-wenji": {
+    "gender": "F",
+    "legacyStats": {
+      "무력": 30,
+      "지력": 221.5,
+      "통솔": 173.5,
+      "선공": 183
+    },
+    "legacyRole": "치유",
+    "legacyPosition": "균형"
+  },
+  "li-ru": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 44.5,
+      "지력": 229,
+      "통솔": 162,
+      "선공": 159.5
+    },
+    "legacyRole": "책략",
+    "legacyPosition": "후열"
+  },
+  "pang-de": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 226,
+      "지력": 110,
+      "통솔": 177.5,
+      "선공": 207.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "zou-shi": {
+    "gender": "F",
+    "legacyStats": {
+      "무력": 28.5,
+      "지력": 186.5,
+      "통솔": 170.5,
+      "선공": 150.5
+    },
+    "legacyRole": "보조치유",
+    "legacyPosition": "후열"
+  },
+  "zhang-bao": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 78,
+      "지력": 213.5,
+      "통솔": 185.5,
+      "선공": 152.5
+    },
+    "legacyRole": "책략",
+    "legacyPosition": "후열"
+  },
+  "yuan-shao": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 180,
+      "지력": 182,
+      "통솔": 206.5,
+      "선공": 180.5
+    },
+    "legacyRole": "문무보조",
+    "legacyPosition": "균형"
+  },
+  "zhang-he": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 233.5,
+      "지력": 119.5,
+      "통솔": 196.5,
+      "선공": 163.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "xiao-qiao": {
+    "gender": "F",
+    "legacyStats": {
+      "무력": 41,
+      "지력": 201,
+      "통솔": 170,
+      "선공": 192.5
+    },
+    "legacyRole": "보조치유",
+    "legacyPosition": "후열"
+  },
+  "sun-ce": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 241.5,
+      "지력": 142,
+      "통솔": 216,
+      "선공": 200.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "균형"
+  },
+  "cheng-yu": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 75.5,
+      "지력": 234,
+      "통솔": 170.5,
+      "선공": 185
+    },
+    "legacyRole": "책략",
+    "legacyPosition": "후열"
+  },
+  "yu-jin": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 163,
+      "지력": 109.5,
+      "통솔": 204.5,
+      "선공": 119
+    },
+    "legacyRole": "방어",
+    "legacyPosition": "전열"
+  },
+  "xu-huang": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 234,
+      "지력": 123,
+      "통솔": 193.5,
+      "선공": 181
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "guan-ping": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 229,
+      "지력": 101.5,
+      "통솔": 183.5,
+      "선공": 192
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "cheng-pu": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 158,
+      "지력": 158,
+      "통솔": 207,
+      "선공": 144
+    },
+    "legacyRole": "보조",
+    "legacyPosition": "전열"
+  },
+  "zhou-cang": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 174,
+      "지력": 121,
+      "통솔": 211.5,
+      "선공": 167
+    },
+    "legacyRole": "방어",
+    "legacyPosition": "전열"
+  },
+  "yan-liang": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 227,
+      "지력": 88,
+      "통솔": 176.5,
+      "선공": 205
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "wen-chou": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 228,
+      "지력": 78.5,
+      "통솔": 175,
+      "선공": 196
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "zhang-liang": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 212.5,
+      "지력": 72.5,
+      "통솔": 208,
+      "선공": 177
+    },
+    "legacyRole": "방어병기",
+    "legacyPosition": "전열"
+  },
+  "huang-gai": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 173,
+      "지력": 173,
+      "통솔": 222,
+      "선공": 178.5
+    },
+    "legacyRole": "보조",
+    "legacyPosition": "균형"
+  },
+  "hua-xiong": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 224.5,
+      "지력": 75.5,
+      "통솔": 176.5,
+      "선공": 207
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "후열"
+  },
+  "sun-jian": {
+    "gender": "M",
+    "legacyStats": {
+      "무력": 209,
+      "지력": 120.5,
+      "통솔": 228,
+      "선공": 158.5
+    },
+    "legacyRole": "병기",
+    "legacyPosition": "전열"
+  }
+}

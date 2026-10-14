@@ -1,0 +1,2228 @@
+[
+  {
+    "id": "tier-s1-01",
+    "season": "S1",
+    "tier": "T0+",
+    "name": "대황노",
+    "units": [
+      {
+        "generalId": "zhuge-liang",
+        "generalName": "제갈량",
+        "statPriority": "지력",
+        "skillNames": [
+          "충신의 기재",
+          "독설가"
+        ],
+        "skillIds": [
+          "best-strategy",
+          "talk-laugh-heart"
+        ],
+        "manualSlots": [
+          [
+            "출사표"
+          ],
+          [
+            "시리"
+          ],
+          [
+            "탈계"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "huang-gai",
+        "generalName": "황개",
+        "statPriority": "선공",
+        "skillNames": [
+          "천하평론",
+          "신의 가호"
+        ],
+        "skillIds": [
+          "direct-world",
+          "divine-aid"
+        ],
+        "manualSlots": [
+          [
+            "귀모"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "수심"
+          ]
+        ],
+        "statCombo": "통솔 / 선공"
+      },
+      {
+        "generalId": "da-qiao",
+        "generalName": "대교",
+        "statPriority": "지력",
+        "skillNames": [
+          "보급 차단",
+          "세금 과징수"
+        ],
+        "skillIds": [
+          "supply-cut",
+          "taxation"
+        ],
+        "manualSlots": [
+          [
+            "상사문부"
+          ],
+          [
+            "합모"
+          ],
+          [
+            "대파"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-02",
+    "season": "S1",
+    "tier": "T0",
+    "name": "문무곽가",
+    "units": [
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "지력",
+        "skillNames": [
+          "준비 완료",
+          "허점 공략"
+        ],
+        "skillIds": [
+          "ready",
+          "avoid-edge"
+        ],
+        "manualSlots": [
+          [
+            "맹덕신서 상권"
+          ],
+          [
+            "병세"
+          ],
+          [
+            "병령",
+            "어적"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "guo-jia",
+        "generalName": "곽가",
+        "statPriority": "지력 (아군 전체 지력 1위 유지)",
+        "skillNames": [
+          "문무겸비",
+          "출기불의"
+        ],
+        "skillIds": [
+          "civil-military",
+          "unexpected"
+        ],
+        "manualSlots": [
+          [
+            "귀모"
+          ],
+          [
+            "합모"
+          ],
+          [
+            "전속"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "xun-yu",
+        "generalName": "순욱",
+        "statPriority": "지력 (선공은 곽가보다 높게 세팅)",
+        "skillNames": [
+          "예측의 신",
+          "청낭 치료"
+        ],
+        "skillIds": [
+          "foresight",
+          "qingnang"
+        ],
+        "manualSlots": [
+          [
+            "책략"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "대모"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-03",
+    "season": "S1",
+    "tier": "T0",
+    "name": "손상향",
+    "units": [
+      {
+        "generalId": "sun-shangxiang",
+        "generalName": "손상향",
+        "statPriority": "무력 (적당히 선공 가점)",
+        "skillNames": [
+          "신속전개",
+          "예리한 통찰"
+        ],
+        "skillIds": [
+          "speed-first",
+          "unstoppable"
+        ],
+        "manualSlots": [
+          [
+            "무의서"
+          ],
+          [
+            "만투"
+          ],
+          [
+            "질전"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      },
+      {
+        "generalId": "zhen-luo",
+        "generalName": "견희",
+        "statPriority": "지력",
+        "skillNames": [
+          "정의의 희생",
+          "허점 공략"
+        ],
+        "skillIds": [
+          "sacrifice",
+          "avoid-edge"
+        ],
+        "manualSlots": [
+          [
+            "선용"
+          ],
+          [
+            "병령",
+            "여병"
+          ],
+          [
+            "전속"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "xiao-qiao",
+        "generalName": "소교",
+        "statPriority": "선공",
+        "skillNames": [
+          "강철의 의지",
+          "팔방전"
+        ],
+        "skillIds": [
+          "no-hardship",
+          "all-directions"
+        ],
+        "manualSlots": [
+          [
+            "공근신"
+          ],
+          [
+            "기동",
+            "구전"
+          ],
+          [
+            "수심",
+            "전세"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-04",
+    "season": "S1",
+    "tier": "T0",
+    "name": "충의궁",
+    "units": [
+      {
+        "generalId": "liu-bei",
+        "generalName": "유비",
+        "statPriority": "지력",
+        "skillNames": [
+          "허점 공략",
+          "강철의 의지"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "no-hardship"
+        ],
+        "manualSlots": [
+          [
+            "인의론"
+          ],
+          [
+            "선용"
+          ],
+          [
+            "병민"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "zhang-fei",
+        "generalName": "장비",
+        "statPriority": "선공",
+        "skillNames": [
+          "칠군수몰",
+          "경무장"
+        ],
+        "skillIds": [
+          "flood-seven",
+          "light-support"
+        ],
+        "manualSlots": [
+          [
+            "촉덕전",
+            "도명"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "만투"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      },
+      {
+        "generalId": "huang-zhong",
+        "generalName": "황충",
+        "statPriority": "무력 (적당히 선공 가점)",
+        "skillNames": [
+          "신속전개",
+          "예리한 통찰"
+        ],
+        "skillIds": [
+          "speed-first",
+          "unstoppable"
+        ],
+        "manualSlots": [
+          [
+            "궁술"
+          ],
+          [
+            "시리"
+          ],
+          [
+            "전세"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-05",
+    "season": "S1",
+    "tier": "T0",
+    "name": "순조유",
+    "units": [
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "지력",
+        "skillNames": [
+          "허점 공략",
+          "보급 차단"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "supply-cut"
+        ],
+        "manualSlots": [
+          [
+            "기종"
+          ],
+          [
+            "상호"
+          ],
+          [
+            "병령",
+            "합모"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "zhou-yu",
+        "generalName": "주유",
+        "statPriority": "무력 (아군 중 무력이 가장 높게 설정)",
+        "skillNames": [
+          "충신의 기재",
+          "독설가"
+        ],
+        "skillIds": [
+          "best-strategy",
+          "talk-laugh-heart"
+        ],
+        "manualSlots": [
+          [
+            "사기"
+          ],
+          [
+            "기계"
+          ],
+          [
+            "시리"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "xun-yu",
+        "generalName": "순욱",
+        "statPriority": "지력",
+        "skillNames": [
+          "화공전술",
+          "광풍의 분노"
+        ],
+        "skillIds": [
+          "fire-camp",
+          "strong-wind"
+        ],
+        "manualSlots": [
+          [
+            "고무"
+          ],
+          [
+            "오시"
+          ],
+          [
+            "전민"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-06",
+    "season": "S1",
+    "tier": "T1+",
+    "name": "어룡기",
+    "units": [
+      {
+        "generalId": "liu-bei",
+        "generalName": "유비",
+        "statPriority": "지력 (아군 전체에서 지력 1위를 유지)",
+        "skillNames": [
+          "허점 공략",
+          "청낭 치료"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "qingnang"
+        ],
+        "manualSlots": [
+          [
+            "인의론"
+          ],
+          [
+            "부소"
+          ],
+          [
+            "려군"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "zhao-yun",
+        "generalName": "조운",
+        "statPriority": "무력 (아군 중 무력이 가장 높게 설정)",
+        "skillNames": [
+          "예리한 통찰",
+          "찬란한 위명"
+        ],
+        "skillIds": [
+          "unstoppable",
+          "famous"
+        ],
+        "manualSlots": [
+          [
+            "신용"
+          ],
+          [
+            "승전"
+          ],
+          [
+            "전예"
+          ]
+        ],
+        "statCombo": "무력 / 통솔"
+      },
+      {
+        "generalId": "diao-chan",
+        "generalName": "초선",
+        "statPriority": "통솔 (많은 속성 가점 방어)",
+        "skillNames": [
+          "경무장",
+          "백전불태"
+        ],
+        "skillIds": [
+          "light-support",
+          "hundred-battles"
+        ],
+        "manualSlots": [
+          [
+            "장원"
+          ],
+          [
+            "선용"
+          ],
+          [
+            "겁영"
+          ]
+        ],
+        "statCombo": "무력 / 통솔"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-07",
+    "season": "S1",
+    "tier": "T1+",
+    "name": "초원마",
+    "units": [
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "지력",
+        "skillNames": [
+          "허점 공략",
+          "청낭 치료"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "qingnang"
+        ],
+        "manualSlots": [
+          [
+            "기종"
+          ],
+          [
+            "병민"
+          ],
+          [
+            "병령"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "ma-chao",
+        "generalName": "마초",
+        "statPriority": "무력 (적당히 선공 가점)",
+        "skillNames": [
+          "파죽지세",
+          "예리한 통찰"
+        ],
+        "skillIds": [
+          "break-through",
+          "unstoppable"
+        ],
+        "manualSlots": [
+          [
+            "지려혜"
+          ],
+          [
+            "구전"
+          ],
+          [
+            "전예"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      },
+      {
+        "generalId": "dong-zhuo",
+        "generalName": "동탁",
+        "statPriority": "통솔 (선공은 마초보다 1점 높게 세팅)",
+        "skillNames": [
+          "천하평론",
+          "준비 완료"
+        ],
+        "skillIds": [
+          "direct-world",
+          "ready"
+        ],
+        "manualSlots": [
+          [
+            "파촉"
+          ],
+          [
+            "겁영"
+          ],
+          [
+            "선용"
+          ]
+        ],
+        "statCombo": "통솔 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-08",
+    "season": "S1",
+    "tier": "T1+",
+    "name": "동작궁",
+    "units": [
+      {
+        "generalId": "da-qiao",
+        "generalName": "대교",
+        "statPriority": "지력",
+        "skillNames": [
+          "세금 과징수",
+          "보급 차단"
+        ],
+        "skillIds": [
+          "taxation",
+          "supply-cut"
+        ],
+        "manualSlots": [
+          [
+            "오시"
+          ],
+          [
+            "점복"
+          ],
+          [
+            "선용"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "zhou-yu",
+        "generalName": "주유",
+        "statPriority": "지력",
+        "skillNames": [
+          "충신의 기재",
+          "화공전술"
+        ],
+        "skillIds": [
+          "best-strategy",
+          "fire-camp"
+        ],
+        "manualSlots": [
+          [
+            "화계",
+            "시리"
+          ],
+          [
+            "계모"
+          ],
+          [
+            "시리"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "xiao-qiao",
+        "generalName": "소교",
+        "statPriority": "선공",
+        "skillNames": [
+          "예측의 신",
+          "기문둔갑"
+        ],
+        "skillIds": [
+          "foresight",
+          "qimen"
+        ],
+        "manualSlots": [
+          [
+            "공근신"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "전동"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-09",
+    "season": "S1",
+    "tier": "T1+",
+    "name": "촉검",
+    "units": [
+      {
+        "generalId": "liu-bei",
+        "generalName": "유비",
+        "statPriority": "지력",
+        "skillNames": [
+          "허점 공략",
+          "청낭 치료"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "qingnang"
+        ],
+        "manualSlots": [
+          [
+            "인의론"
+          ],
+          [
+            "사패"
+          ],
+          [
+            "병민"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "zhang-fei",
+        "generalName": "장비",
+        "statPriority": "선공",
+        "skillNames": [
+          "칠군수몰",
+          "천하평론"
+        ],
+        "skillIds": [
+          "flood-seven",
+          "direct-world"
+        ],
+        "manualSlots": [
+          [
+            "신정후도명"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "만투"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      },
+      {
+        "generalId": "xu-shu",
+        "generalName": "서서",
+        "statPriority": "지력 (적당히 선공 가점)",
+        "skillNames": [
+          "문무겸비",
+          "예리한 통찰"
+        ],
+        "skillIds": [
+          "civil-military",
+          "unstoppable"
+        ],
+        "manualSlots": [
+          [
+            "겸제"
+          ],
+          [
+            "시리"
+          ],
+          [
+            "문무"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-10",
+    "season": "S1",
+    "tier": "T1+",
+    "name": "공진창",
+    "units": [
+      {
+        "generalId": "zhao-yun",
+        "generalName": "조운",
+        "statPriority": "무력",
+        "skillNames": [
+          "예리한 통찰",
+          "찬란한 위명"
+        ],
+        "skillIds": [
+          "unstoppable",
+          "famous"
+        ],
+        "manualSlots": [
+          [
+            "유인"
+          ],
+          [
+            "승전"
+          ],
+          [
+            "합영"
+          ]
+        ],
+        "statCombo": "무력 / 통솔"
+      },
+      {
+        "generalId": "liu-bei",
+        "generalName": "유비",
+        "statPriority": "지력",
+        "skillNames": [
+          "허점 공략",
+          "천하평론"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "direct-world"
+        ],
+        "manualSlots": [
+          [
+            "인의론",
+            "천공비록"
+          ],
+          [
+            "부위"
+          ],
+          [
+            "구전"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "zhuge-liang",
+        "generalName": "제갈량",
+        "statPriority": "지력",
+        "skillNames": [
+          "화공전술",
+          "광풍의 분노"
+        ],
+        "skillIds": [
+          "fire-camp",
+          "strong-wind"
+        ],
+        "manualSlots": [
+          [
+            "출사표"
+          ],
+          [
+            "기계"
+          ],
+          [
+            "탈계"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-11",
+    "season": "S1",
+    "tier": "T1+",
+    "name": "견향궁",
+    "note": "용인도 높음, 더욱 안정적",
+    "units": [
+      {
+        "generalId": "xu-sheng",
+        "generalName": "서성",
+        "statPriority": "통솔",
+        "skillNames": [
+          "허점 공략",
+          "정의의 희생"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "sacrifice"
+        ],
+        "manualSlots": [
+          [
+            "의성"
+          ],
+          [
+            "태통"
+          ],
+          [
+            "병령"
+          ]
+        ],
+        "statCombo": "통솔 / 선공"
+      },
+      {
+        "generalId": "zhen-luo",
+        "generalName": "견희",
+        "statPriority": "지력",
+        "skillNames": [
+          "강철의 의지",
+          "광풍의 분노"
+        ],
+        "skillIds": [
+          "no-hardship",
+          "strong-wind"
+        ],
+        "manualSlots": [
+          [
+            "낙신"
+          ],
+          [
+            "전해"
+          ],
+          [
+            "인화"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      },
+      {
+        "generalId": "sun-shangxiang",
+        "generalName": "손상향",
+        "statPriority": "무력 (비웅 선공 선택 가능)",
+        "skillNames": [
+          "신속전개",
+          "예리한 통찰"
+        ],
+        "skillIds": [
+          "speed-first",
+          "unstoppable"
+        ],
+        "manualSlots": [
+          [
+            "효희전"
+          ],
+          [
+            "질투"
+          ],
+          [
+            "병구"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-12",
+    "season": "S1",
+    "tier": "T1+",
+    "name": "초채장",
+    "note": "새로운 무소과금 흑과기, 병력 손실 적지 않음",
+    "units": [
+      {
+        "generalId": "diao-chan",
+        "generalName": "초선",
+        "statPriority": "통솔",
+        "skillNames": [
+          "전력 지원",
+          "백전불태"
+        ],
+        "skillIds": [
+          "support-selfless",
+          "hundred-battles"
+        ],
+        "manualSlots": [
+          [
+            "초전"
+          ],
+          [
+            "전용"
+          ],
+          [
+            "병록"
+          ]
+        ],
+        "statCombo": "통솔 / 선공"
+      },
+      {
+        "generalId": "cai-wenji",
+        "generalName": "채문희",
+        "statPriority": "30 선공 후 나머지 지력 올인",
+        "skillNames": [
+          "전략 계획",
+          "예측의 신"
+        ],
+        "skillIds": [
+          "strategize",
+          "foresight"
+        ],
+        "manualSlots": [
+          [
+            "호가십팔박"
+          ],
+          [
+            "선용"
+          ],
+          [
+            "보도"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      },
+      {
+        "generalId": "zhang-liang",
+        "generalName": "장량",
+        "statPriority": "무력",
+        "skillNames": [
+          "팔방전",
+          "압도적 승리"
+        ],
+        "skillIds": [
+          "all-directions",
+          "take-banner"
+        ],
+        "manualSlots": [
+          [
+            "인중지걸"
+          ],
+          [
+            "기산",
+            "효모"
+          ],
+          [
+            "은심"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-13",
+    "season": "S1",
+    "tier": "T1+",
+    "name": "동량궁",
+    "note": "어느 정도 위력은 있으나 공존하기 어려움",
+    "units": [
+      {
+        "generalId": "yuan-shao",
+        "generalName": "원소",
+        "statPriority": "통솔 투자하되, 남는 속성은 선공 세팅",
+        "skillNames": [
+          "천하평론",
+          "백전불태"
+        ],
+        "skillIds": [
+          "direct-world",
+          "hundred-battles"
+        ],
+        "manualSlots": [
+          [
+            "맹주"
+          ],
+          [
+            "모전"
+          ],
+          [
+            "의모"
+          ]
+        ],
+        "statCombo": "통솔 / 선공"
+      },
+      {
+        "generalId": "zhuge-liang",
+        "generalName": "제갈량",
+        "statPriority": "지력 투자하되, 아군 전체에서 지력/통솔 1위를 유지",
+        "skillNames": [
+          "충신의 기재",
+          "예리한 통찰"
+        ],
+        "skillIds": [
+          "best-strategy",
+          "unstoppable"
+        ],
+        "manualSlots": [
+          [
+            "출사표"
+          ],
+          [
+            "시리"
+          ],
+          [
+            "탈계"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "xun-yu",
+        "generalName": "순욱",
+        "statPriority": "지력 투자하되, 남는 속성은 통솔 세팅",
+        "skillNames": [
+          "허점 공략",
+          "청낭 치료"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "qingnang"
+        ],
+        "manualSlots": [
+          [
+            "왕좌"
+          ],
+          [
+            "웅재"
+          ],
+          [
+            "기만"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-14",
+    "season": "S1",
+    "tier": "T1",
+    "name": "호위",
+    "note": "병인 부대를 직접 카운터 치는 조합, 손상향에 강세, 충의에 판정승",
+    "units": [
+      {
+        "generalId": "zhen-luo",
+        "generalName": "견희",
+        "statPriority": "지력 투자하되, 아군 전체에서 선공 1위를 유지",
+        "skillNames": [
+          "백전불태",
+          "청낭 치료"
+        ],
+        "skillIds": [
+          "hundred-battles",
+          "qingnang"
+        ],
+        "manualSlots": [
+          [
+            "낙신부 하권"
+          ],
+          [
+            "선용"
+          ],
+          [
+            "오로",
+            "병령"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      },
+      {
+        "generalId": "dian-wei",
+        "generalName": "전위",
+        "statPriority": "무력 투자하되, 아군 전체에서 통솔 1위를 유지",
+        "skillNames": [
+          "용맹한 삼군",
+          "일인천군"
+        ],
+        "skillIds": [
+          "brave-three-armies",
+          "ten-thousand"
+        ],
+        "manualSlots": [
+          [
+            "역무"
+          ],
+          [
+            "승합"
+          ],
+          [
+            "기해"
+          ]
+        ],
+        "statCombo": "무력 / 통솔"
+      },
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "지력",
+        "skillNames": [
+          "정의의 희생",
+          "결사의 다짐"
+        ],
+        "skillIds": [
+          "sacrifice",
+          "armor-edge"
+        ],
+        "manualSlots": [
+          [
+            "맹덕신서 하권"
+          ],
+          [
+            "무선"
+          ],
+          [
+            "병장",
+            "병령"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-15",
+    "season": "S1",
+    "tier": "T1",
+    "name": "연격 여포",
+    "note": "성능 발동이 불안정하여 기복이 있으나, 주로 듬직한 자태 발동 여부에 좌우됨",
+    "units": [
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "지력",
+        "skillNames": [
+          "결사의 다짐",
+          "정의의 희생"
+        ],
+        "skillIds": [
+          "armor-edge",
+          "sacrifice"
+        ],
+        "manualSlots": [
+          [
+            "신서"
+          ],
+          [
+            "대모"
+          ],
+          [
+            "의모"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "diao-chan",
+        "generalName": "초선",
+        "statPriority": "선공",
+        "skillNames": [
+          "화공전술",
+          "전력 지원"
+        ],
+        "skillIds": [
+          "fire-camp",
+          "support-selfless"
+        ],
+        "manualSlots": [
+          [
+            "폐월"
+          ],
+          [
+            "선용"
+          ],
+          [
+            "오로"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "lü-bu",
+        "generalName": "여포",
+        "statPriority": "무력 (비웅 선공 선택 가능)",
+        "skillNames": [
+          "원문사극",
+          "신속전개"
+        ],
+        "skillIds": [
+          "gate-halberd",
+          "speed-first"
+        ],
+        "manualSlots": [
+          [
+            "여전"
+          ],
+          [
+            "부투"
+          ],
+          [
+            "전무"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-16",
+    "season": "S1",
+    "tier": "T1",
+    "name": "손소유",
+    "note": "공격은 주로 제어가 얼마나 잘 들어가는지에 달림",
+    "units": [
+      {
+        "generalId": "zhou-yu",
+        "generalName": "주유",
+        "statPriority": "지력",
+        "skillNames": [
+          "화공전술",
+          "광풍의 분노"
+        ],
+        "skillIds": [
+          "fire-camp",
+          "strong-wind"
+        ],
+        "manualSlots": [
+          [
+            "화계"
+          ],
+          [
+            "탈계"
+          ],
+          [
+            "시리"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "sun-quan",
+        "generalName": "손권",
+        "statPriority": "선공",
+        "skillNames": [
+          "칠군수몰",
+          "기문둔갑"
+        ],
+        "skillIds": [
+          "flood-seven",
+          "qimen"
+        ],
+        "manualSlots": [
+          [
+            "동관한기"
+          ],
+          [
+            "선기"
+          ],
+          [
+            "은심"
+          ]
+        ],
+        "statCombo": "통솔 / 선공"
+      },
+      {
+        "generalId": "xiao-qiao",
+        "generalName": "소교",
+        "statPriority": "선공",
+        "skillNames": [
+          "예측의 신",
+          "전략 계획"
+        ],
+        "skillIds": [
+          "foresight",
+          "strategize"
+        ],
+        "manualSlots": [
+          [
+            "공근선"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "은심"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-17",
+    "season": "S1",
+    "tier": "T1",
+    "name": "변종 촉검",
+    "units": [
+      {
+        "generalId": "zhao-yun",
+        "generalName": "조운",
+        "statPriority": "무력 투자하되, 아군 전체에서 무력/통솔 1위를 유지",
+        "skillNames": [
+          "예리한 통찰",
+          "찬란한 위명"
+        ],
+        "skillIds": [
+          "unstoppable",
+          "famous"
+        ],
+        "manualSlots": [
+          [
+            "신용"
+          ],
+          [
+            "조축"
+          ],
+          [
+            "전예"
+          ]
+        ],
+        "statCombo": "무력 / 통솔"
+      },
+      {
+        "generalId": "liu-bei",
+        "generalName": "유비",
+        "statPriority": "지력",
+        "skillNames": [
+          "허점 공략",
+          "천하평론"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "direct-world"
+        ],
+        "manualSlots": [
+          [
+            "인의론"
+          ],
+          [
+            "선용"
+          ],
+          [
+            "합모"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "xu-shu",
+        "generalName": "서서",
+        "statPriority": "지력",
+        "skillNames": [
+          "문무겸비",
+          "신의 가호"
+        ],
+        "skillIds": [
+          "civil-military",
+          "divine-aid"
+        ],
+        "manualSlots": [
+          [
+            "겸제"
+          ],
+          [
+            "보시행"
+          ],
+          [
+            "문무"
+          ]
+        ],
+        "statCombo": "지력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-18",
+    "season": "S1",
+    "tier": "T1",
+    "name": "쌍감 관우",
+    "note": "세팅을 많이 타며, 준비 완료가 필수임",
+    "units": [
+      {
+        "generalId": "xiahou-dun",
+        "generalName": "하후돈",
+        "statPriority": "통솔",
+        "skillNames": [
+          "정의의 희생",
+          "전력 지원"
+        ],
+        "skillIds": [
+          "sacrifice",
+          "support-selfless"
+        ],
+        "manualSlots": [
+          [
+            "위진"
+          ],
+          [
+            "단패"
+          ],
+          [
+            "수토"
+          ]
+        ],
+        "statCombo": "무력 / 통솔"
+      },
+      {
+        "generalId": "guan-yu",
+        "generalName": "관우",
+        "statPriority": "무력",
+        "skillNames": [
+          "팔방전",
+          "칠군수몰"
+        ],
+        "skillIds": [
+          "all-directions",
+          "flood-seven"
+        ],
+        "manualSlots": [
+          [
+            "오상"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "은심"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      },
+      {
+        "generalId": "deng-ai",
+        "generalName": "등애",
+        "statPriority": "지력",
+        "skillNames": [
+          "준비 완료",
+          "청낭 치료"
+        ],
+        "skillIds": [
+          "ready",
+          "qingnang"
+        ],
+        "manualSlots": [
+          [
+            "제하론"
+          ],
+          [
+            "매군",
+            "이적"
+          ],
+          [
+            "선수"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-19",
+    "season": "S1",
+    "tier": "T1",
+    "name": "서초웅",
+    "note": "초원마 하위 호환 대체",
+    "units": [
+      {
+        "generalId": "xu-sheng",
+        "generalName": "서성",
+        "statPriority": "지력",
+        "skillNames": [
+          "전쟁 종식",
+          "경무장"
+        ],
+        "skillIds": [
+          "forge-armor",
+          "light-support"
+        ],
+        "manualSlots": [
+          [
+            "의성"
+          ],
+          [
+            "병감"
+          ],
+          [
+            "병령"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "ma-chao",
+        "generalName": "마초",
+        "statPriority": "무력 (적당히 선공 가점 선택 가능)",
+        "skillNames": [
+          "파죽지세",
+          "예리한 통찰"
+        ],
+        "skillIds": [
+          "break-through",
+          "unstoppable"
+        ],
+        "manualSlots": [
+          [
+            "철기령"
+          ],
+          [
+            "구전"
+          ],
+          [
+            "담전"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      },
+      {
+        "generalId": "yuan-shao",
+        "generalName": "원소",
+        "statPriority": "통솔 투자하되, 선공은 마초보다 1점 낮게 세팅",
+        "skillNames": [
+          "강철의 의지",
+          "결사의 다짐"
+        ],
+        "skillIds": [
+          "no-hardship",
+          "armor-edge"
+        ],
+        "manualSlots": [
+          [
+            "맹주"
+          ],
+          [
+            "전용"
+          ],
+          [
+            "선용"
+          ]
+        ],
+        "statCombo": "통솔 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-20",
+    "season": "S1",
+    "tier": "T1",
+    "name": "흑과기 파갑창",
+    "units": [
+      {
+        "generalId": "cao-cao",
+        "generalName": "조조",
+        "statPriority": "지력",
+        "skillNames": [
+          "허점 공략",
+          "청낭 치료"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "qingnang"
+        ],
+        "manualSlots": [
+          [
+            "맹덕신서 상권"
+          ],
+          [
+            "적용"
+          ],
+          [
+            "선수"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "xu-chu",
+        "generalName": "허저",
+        "statPriority": "무력 (적당히 선공 가점 선택 가능)",
+        "skillNames": [
+          "경무장",
+          "무방비 공격"
+        ],
+        "skillIds": [
+          "light-support",
+          "attack-unready"
+        ],
+        "manualSlots": [
+          [
+            "정남사공"
+          ],
+          [
+            "질투"
+          ],
+          [
+            "만투"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      },
+      {
+        "generalId": "zhang-he",
+        "generalName": "장합",
+        "statPriority": "무력",
+        "skillNames": [
+          "팔방전",
+          "압도적 승리"
+        ],
+        "skillIds": [
+          "all-directions",
+          "take-banner"
+        ],
+        "manualSlots": [
+          [
+            "기개"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "은심"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-21",
+    "season": "S1",
+    "tier": "T1",
+    "name": "쌍감방덕",
+    "note": "노평민 흑과기 뚱뚱이조",
+    "units": [
+      {
+        "generalId": "diao-chan",
+        "generalName": "초선",
+        "statPriority": "통솔",
+        "skillNames": [
+          "전력 지원",
+          "견고한 방어"
+        ],
+        "skillIds": [
+          "support-selfless",
+          "stone-wall"
+        ],
+        "manualSlots": [
+          [
+            "한단"
+          ],
+          [
+            "적용"
+          ],
+          [
+            "선수"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "pang-de",
+        "generalName": "방덕",
+        "statPriority": "무력 (적당히 선공 가점 선택 가능)",
+        "skillNames": [
+          "예리한 통찰",
+          "찬란한 위명"
+        ],
+        "skillIds": [
+          "unstoppable",
+          "famous"
+        ],
+        "manualSlots": [
+          [
+            "초기"
+          ],
+          [
+            "승전"
+          ],
+          [
+            "시리"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      },
+      {
+        "generalId": "dong-zhuo",
+        "generalName": "동탁",
+        "statPriority": "통솔 투자하되, 아군 전체에서 선공 1위를 유지",
+        "skillNames": [
+          "팔방전",
+          "압도적 승리"
+        ],
+        "skillIds": [
+          "all-directions",
+          "take-banner"
+        ],
+        "manualSlots": [
+          [
+            "왕손"
+          ],
+          [
+            "시리"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "statCombo": "선공 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-22",
+    "season": "S1",
+    "tier": "T1-",
+    "name": "쌍감하후",
+    "note": "세팅을 많이 타며, 준비 완료가 필수임",
+    "units": [
+      {
+        "generalId": "xiahou-dun",
+        "generalName": "하후돈",
+        "statPriority": "통솔",
+        "skillNames": [
+          "세금 과징수",
+          "전력 지원"
+        ],
+        "skillIds": [
+          "taxation",
+          "support-selfless"
+        ],
+        "manualSlots": [
+          [
+            "위덕"
+          ],
+          [
+            "분치"
+          ],
+          [
+            "수토"
+          ]
+        ],
+        "statCombo": "무력 / 통솔"
+      },
+      {
+        "generalId": "xiahou-yuan",
+        "generalName": "하후연",
+        "statPriority": "선공",
+        "skillNames": [
+          "파죽지세",
+          "찬란한 위명"
+        ],
+        "skillIds": [
+          "break-through",
+          "famous"
+        ],
+        "manualSlots": [
+          [
+            "신속"
+          ],
+          [
+            "작전"
+          ],
+          [
+            "현기"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      },
+      {
+        "generalId": "deng-ai",
+        "generalName": "등애",
+        "statPriority": "지력",
+        "skillNames": [
+          "준비 완료",
+          "청낭 치료"
+        ],
+        "skillIds": [
+          "ready",
+          "qingnang"
+        ],
+        "manualSlots": [
+          [
+            "제하론"
+          ],
+          [
+            "수군",
+            "둔적"
+          ],
+          [
+            "선귀"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-23",
+    "season": "S1",
+    "tier": "T1-",
+    "name": "쌍감곽가",
+    "note": "세팅을 많이 타며, 준비 완료가 필수임",
+    "units": [
+      {
+        "generalId": "xiahou-dun",
+        "generalName": "하후돈",
+        "statPriority": "통솔",
+        "skillNames": [
+          "세금 과징수",
+          "전력 지원"
+        ],
+        "skillIds": [
+          "taxation",
+          "support-selfless"
+        ],
+        "manualSlots": [
+          [
+            "위덕"
+          ],
+          [
+            "분치"
+          ],
+          [
+            "수토"
+          ]
+        ],
+        "statCombo": "무력 / 통솔"
+      },
+      {
+        "generalId": "guo-jia",
+        "generalName": "곽가",
+        "statPriority": "지력",
+        "skillNames": [
+          "수전 섬멸",
+          "문무겸비"
+        ],
+        "skillIds": [
+          "flood-break",
+          "civil-military"
+        ],
+        "manualSlots": [
+          [
+            "귀모"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "deng-ai",
+        "generalName": "등애",
+        "statPriority": "지력",
+        "skillNames": [
+          "준비 완료",
+          "청낭 치료"
+        ],
+        "skillIds": [
+          "ready",
+          "qingnang"
+        ],
+        "manualSlots": [
+          [
+            "제하론"
+          ],
+          [
+            "수군",
+            "둔적"
+          ],
+          [
+            "합모"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-24",
+    "season": "S1",
+    "tier": "T1-",
+    "name": "문무도원",
+    "units": [
+      {
+        "generalId": "liu-bei",
+        "generalName": "유비",
+        "statPriority": "지력",
+        "skillNames": [
+          "허점 공략",
+          "청낭 치료"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "qingnang"
+        ],
+        "manualSlots": [
+          [
+            "인의론"
+          ],
+          [
+            "선용"
+          ],
+          [
+            "병감"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "zhang-fei",
+        "generalName": "장비",
+        "statPriority": "선공에 30 투자 후 나머지 무력 올인",
+        "skillNames": [
+          "압도적 승리",
+          "칠군수몰"
+        ],
+        "skillIds": [
+          "take-banner",
+          "flood-seven"
+        ],
+        "manualSlots": [
+          [
+            "신정후도명"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      },
+      {
+        "generalId": "guan-yu",
+        "generalName": "관우",
+        "statPriority": "무력",
+        "skillNames": [
+          "찬란한 위명",
+          "문무겸비"
+        ],
+        "skillIds": [
+          "famous",
+          "civil-military"
+        ],
+        "manualSlots": [
+          [
+            "오상"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  },
+  {
+    "id": "tier-s1-25",
+    "season": "S1",
+    "tier": "T1-",
+    "name": "삼손",
+    "note": "공격은 주로 제어가 얼마나 잘 들어가는지에 달림",
+    "units": [
+      {
+        "generalId": "sun-quan",
+        "generalName": "손권",
+        "statPriority": "통솔",
+        "skillNames": [
+          "허점 공략",
+          "압도적 승리"
+        ],
+        "skillIds": [
+          "avoid-edge",
+          "take-banner"
+        ],
+        "manualSlots": [
+          [
+            "무열"
+          ],
+          [
+            "병령"
+          ],
+          [
+            "수토"
+          ]
+        ],
+        "statCombo": "지력 / 통솔"
+      },
+      {
+        "generalId": "sun-jian",
+        "generalName": "손견",
+        "statPriority": "선공",
+        "skillNames": [
+          "예측의 신",
+          "기문둔갑"
+        ],
+        "skillIds": [
+          "foresight",
+          "qimen"
+        ],
+        "manualSlots": [
+          [
+            "동관한기"
+          ],
+          [
+            "선기"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "statCombo": "통솔 / 선공"
+      },
+      {
+        "generalId": "sun-ce",
+        "generalName": "손책",
+        "statPriority": "무력 (적당히 선공 가점 선택 가능)",
+        "skillNames": [
+          "팔방전",
+          "압도적 승리"
+        ],
+        "skillIds": [
+          "all-directions",
+          "take-banner"
+        ],
+        "manualSlots": [
+          [
+            "패왕전"
+          ],
+          [
+            "기동"
+          ],
+          [
+            "여심"
+          ]
+        ],
+        "statCombo": "무력 / 선공"
+      }
+    ],
+    "source": {
+      "kind": "kr-db",
+      "label": "천하결전 DB 엑셀 (S2, 2025-09-25)",
+      "note": "원 출처: (배포용) S1 삼국지: 천하결전 | 힛파비전"
+    }
+  }
+]
